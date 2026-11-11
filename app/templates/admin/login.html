@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ingresar — Panel de administración</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+  <div class="admin-shell" style="max-width:360px; padding-top:12vh">
+    <div class="hero">
+      <div class="hero__eyebrow">Centro de Aprendizaje</div>
+      <h1>Panel de administración</h1>
+    </div>
+    {% if error %}<div class="flash flash--error">{{ error }}</div>{% endif %}
+    <form method="post" class="admin-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <div class="admin-field">
+        <label for="contrasena">Contraseña</label>
+        <input class="input" style="padding-left:12px" type="password" id="contrasena" name="contrasena" autofocus required />
+      </div>
+      <button type="submit" class="btn btn--primary">Ingresar</button>
+    </form>
+  </div>
+</body>
+</html>

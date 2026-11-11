@@ -1,0 +1,47 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ 'Editar' if categoria else 'Nuevo' }} módulo — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">{{ tema.nombre }}</a><span class="sep">/</span>
+  {{ 'Editar' if categoria else 'Nuevo' }} módulo
+</nav>
+<h1>{{ 'Editar módulo' if categoria else 'Nuevo módulo' }}</h1>
+
+<form method="post" class="admin-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field-row">
+    <div class="admin-field">
+      <label for="titulo">Título</label>
+      <input class="input" style="padding-left:12px" id="titulo" name="titulo" value="{{ categoria.titulo if categoria else '' }}" required />
+    </div>
+    {% if not categoria %}
+    <div class="admin-field">
+      <label for="slug">Slug</label>
+      <input class="input" style="padding-left:12px" id="slug" name="slug" placeholder="Se genera del título si lo dejás vacío" />
+    </div>
+    {% endif %}
+    <div class="admin-field" style="max-width:100px">
+      <label for="icono">Ícono</label>
+      <input class="input" style="padding-left:12px" id="icono" name="icono" value="{{ categoria.icono if categoria else '📁' }}" />
+    </div>
+  </div>
+  <div class="admin-field">
+    <label for="resumen">Resumen</label>
+    <textarea class="input" id="resumen" name="resumen">{{ categoria.resumen if categoria else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="audiencia">¿Para quién es este módulo?</label>
+    <input class="input" style="padding-left:12px" id="audiencia" name="audiencia" value="{{ categoria.audiencia if categoria else '' }}" />
+  </div>
+  <div class="admin-field" style="max-width:220px">
+    <label for="dificultad">Dificultad</label>
+    <select class="input" id="dificultad" name="dificultad">
+      {% for valor, etiqueta in [('basico', '🟢 Básico'), ('intermedio', '🟡 Intermedio'), ('avanzado', '🔴 Avanzado')] %}
+      <option value="{{ valor }}" {{ 'selected' if (categoria.dificultad if categoria else 'basico') == valor else '' }}>{{ etiqueta }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div><button type="submit" class="btn btn--primary">{{ 'Guardar cambios' if categoria else 'Crear módulo' }}</button></div>
+</form>
+{% endblock %}

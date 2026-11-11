@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de la capacitadora — TIMBÓ</title>
+<style>
+:root{
+  --bg:#f7f7fa; --paper:#ffffff; --ink:#1f2330; --muted:#5d6475; --line:#e3e5ec;
+  --accent:#d6245e; --accent2:#5b3f99; --accent3:#f07a2a; --soft:#fbeef3;
+  --ok:#1f7a4d; --okbg:#e8f5ee; --warn:#9a5a00; --warnbg:#fff4e0; --tip:#3a4fb0; --tipbg:#eef1ff;
+  --radius:12px; --grad:linear-gradient(90deg,#5b3f99,#d6245e 55%,#f07a2a);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+a{color:var(--accent2)}
+.layout{display:grid;grid-template-columns:290px 1fr;max-width:1320px;margin:0 auto}
+nav.toc{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 18px;border-right:1px solid var(--line);background:var(--paper)}
+nav.toc .brand{font-weight:800;font-size:1.15rem;margin-bottom:4px}
+nav.toc .brand span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.toc p.sub{margin:0 0 16px;color:var(--muted);font-size:.85rem}
+nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+nav.toc li{margin:1px 0}
+nav.toc a{display:block;padding:5px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:.9rem}
+nav.toc a:hover{background:var(--soft);color:var(--accent)}
+nav.toc ol ol a{padding-left:24px;font-size:.84rem;color:var(--muted)}
+.btn{display:inline-block;margin-top:14px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);cursor:pointer;font:inherit;font-size:.85rem}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+main{padding:32px 48px 80px;min-width:0}
+header.hero{background:var(--paper);border-radius:var(--radius);padding:32px;border:1px solid var(--line);position:relative;overflow:hidden}
+header.hero:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--grad)}
+header.hero h1{margin:0 0 6px;font-size:2rem;line-height:1.2}
+header.hero p{margin:4px 0;color:var(--muted)}
+section{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px 32px;margin-top:22px}
+h2{margin:0 0 12px;font-size:1.45rem;line-height:1.25}
+h2 .n{display:inline-block;min-width:2em;color:var(--accent)}
+h3{margin:26px 0 8px;font-size:1.12rem;color:var(--accent2)}
+h4{margin:18px 0 6px;font-size:1rem}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:4px 0 8px 44px}
+ol.steps>li:before{content:counter(s);position:absolute;left:0;top:2px;width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9rem}
+figure{margin:14px 0 18px;break-inside:avoid}
+figure img{max-width:min(100%,720px);height:auto;border:1px solid var(--line);border-radius:10px;display:block;background:#fff}
+figure.sm img{max-width:420px;width:100%}
+figcaption{font-size:.83rem;color:var(--muted);margin-top:6px}
+.box{border-radius:10px;padding:12px 16px;margin:14px 0;border-left:5px solid}
+.box p{margin:4px 0}
+.box.ok{background:var(--okbg);border-color:var(--ok)}
+.box.warn{background:var(--warnbg);border-color:var(--warn)}
+.box.tip{background:var(--tipbg);border-color:var(--tip)}
+.box.key{background:var(--soft);border-color:var(--accent)}
+.box strong.t{display:block;margin-bottom:2px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:1px 8px;border-radius:999px;vertical-align:middle;margin-left:4px;letter-spacing:.02em}
+.tag.c{background:var(--okbg);color:var(--ok)}
+.tag.u{background:var(--warnbg);color:var(--warn)}
+.tag.r{background:var(--tipbg);color:var(--tip)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f3f3f8}
+.tablewrap{overflow-x:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card h4{margin-top:0}
+code,kbd{background:#f1f1f6;border-radius:5px;padding:1px 6px;font-size:.9em}
+.muted{color:var(--muted)}
+.top{display:inline-block;margin-top:14px;font-size:.82rem;color:var(--muted)}
+.mobile-toc{display:none}
+@media (max-width:1000px){
+  .layout{display:block}
+  nav.toc{display:none}
+  .mobile-toc{display:block;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-top:16px}
+  .mobile-toc summary{font-weight:700;cursor:pointer}
+  .mobile-toc ol{padding-left:20px;margin:8px 0 0}
+  .mobile-toc li{margin:4px 0}
+  main{padding:16px}
+  section{padding:20px 18px}
+  header.hero{padding:24px 18px}
+  header.hero h1{font-size:1.5rem}
+  .grid2{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff;font-size:11pt}
+  nav.toc,.mobile-toc,.btn,.top{display:none!important}
+  .layout{display:block}
+  main{padding:0}
+  section,header.hero{border:none;padding:0;margin-top:18pt}
+  section{break-before:page}
+  section:first-of-type{break-before:auto}
+  a{color:inherit;text-decoration:none}
+  figure img{max-height:9cm;width:auto}
+  .box,table,figure,ol.steps>li{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" aria-label="Índice">
+  <div class="brand"><span>TIMBÓ</span> · Guía de la capacitadora</div>
+  <p class="sub">Material de estudio y de preparación de clases</p>
+  <ol>
+    <li><a href="#uso">1. Cómo usar esta guía</a></li>
+    <li><a href="#fuentes">2. Material consultado y límites</a></li>
+    <li><a href="#que-es">3. Qué es TIMBÓ y por qué se usa</a></li>
+    <li><a href="#normativa">4. Marco normativo clave</a></li>
+    <li><a href="#cursos">5. Los dos cursos: estructura</a></li>
+    <li><a href="#conceptos">6. Conceptos que hay que dominar</a></li>
+    <li><a href="#modulos">7. Módulos del sistema</a></li>
+    <li><a href="#ingreso">8. Ingreso al sistema</a></li>
+    <li><a href="#caratula">9. Solicitud de caratulación</a></li>
+    <li><a href="#evaluar">10. Evaluar carátulas (Mesa de Entradas)</a></li>
+    <li><a href="#gestion">11. Bandeja Gestión y asignación</a></li>
+    <li><a href="#trabajar">12. Trabajar dentro del expediente</a>
+      <ol>
+        <li><a href="#subir">Subir archivos</a></li>
+        <li><a href="#incorporar">Incorporar y ordenar</a></li>
+        <li><a href="#vincular-do">Vincular documento oficial</a></li>
+        <li><a href="#subsanar">Subsanar</a></li>
+      </ol></li>
+    <li><a href="#enviar">13. Enviar: pase, guarda y archivo</a></li>
+    <li><a href="#vincular-fusionar">14. Vincular y fusionar expedientes</a></li>
+    <li><a href="#consulta">15. Consulta de expedientes</a></li>
+    <li><a href="#docs-oficiales">16. Documentos oficiales</a>
+      <ol>
+        <li><a href="#comunicaciones">Comunicaciones oficiales</a></li>
+        <li><a href="#catalogo-do">Catálogo de tipos de DO</a></li>
+      </ol></li>
+    <li><a href="#aar">17. Actos Administrativos Registrables</a></li>
+    <li><a href="#atencion-virtual">18. Atención Virtual</a></li>
+    <li><a href="#visualizacion">19. Gestión de visualización (vistas)</a></li>
+    <li><a href="#oficinas">20. Oficinas, usuarios y permisos</a></li>
+    <li><a href="#tramites">21. Incorporar trámites internos y externos</a></li>
+    <li><a href="#firma">22. Firma digital y puesto de trabajo</a></li>
+    <li><a href="#seguridad">23. Seguridad de la información</a></li>
+    <li><a href="#errores">24. Errores frecuentes y soluciones</a></li>
+    <li><a href="#ensenar">25. Cómo enseñarlo: recomendaciones</a></li>
+    <li><a href="#practicas">26. Ejercicios prácticos sugeridos</a></li>
+    <li><a href="#contactos">27. Contactos de soporte</a></li>
+    <li><a href="#pendientes">28. Pendiente de verificar</a></li>
+  </ol>
+  <button class="btn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+</nav>
+
+<main>
+<header class="hero" id="inicio">
+  <h1>TIMBÓ: guía de estudio para la capacitadora</h1>
+  <p>Ecosistema de Gestión Digital de la Provincia de Santa Fe — enfoque en su uso en hospitales públicos.</p>
+  <p class="muted">Elaborada a partir de los cursos <em>“Timbó, paso a paso. Hacia una administración pública 100% digital (2026_2)”</em> y <em>“Plataforma TIMBO” (Capacitación a Soportes Técnicos – Firma Digital)</em> del Aula Virtual provincial. Contenido revisado el 07/11/2026.</p>
+</header>
+
+<details class="mobile-toc">
+  <summary>Índice de contenidos</summary>
+  <ol>
+    <li><a href="#uso">Cómo usar esta guía</a></li><li><a href="#fuentes">Material consultado y límites</a></li>
+    <li><a href="#que-es">Qué es TIMBÓ</a></li><li><a href="#normativa">Marco normativo</a></li>
+    <li><a href="#cursos">Estructura de los cursos</a></li><li><a href="#conceptos">Conceptos clave</a></li>
+    <li><a href="#modulos">Módulos del sistema</a></li><li><a href="#ingreso">Ingreso</a></li>
+    <li><a href="#caratula">Solicitud de caratulación</a></li><li><a href="#evaluar">Evaluar carátulas</a></li>
+    <li><a href="#gestion">Bandeja Gestión</a></li><li><a href="#trabajar">Trabajar el expediente</a></li>
+    <li><a href="#enviar">Enviar, guarda y archivo</a></li><li><a href="#vincular-fusionar">Vincular y fusionar</a></li>
+    <li><a href="#consulta">Consulta</a></li><li><a href="#docs-oficiales">Documentos oficiales</a></li><li><a href="#aar">Actos Administrativos Registrables</a></li><li><a href="#atencion-virtual">Atención Virtual</a></li>
+    <li><a href="#visualizacion">Gestión de visualización</a></li><li><a href="#oficinas">Oficinas y usuarios</a></li>
+    <li><a href="#tramites">Trámites internos y externos</a></li><li><a href="#firma">Firma digital</a></li>
+    <li><a href="#seguridad">Seguridad</a></li><li><a href="#errores">Errores frecuentes</a></li>
+    <li><a href="#ensenar">Cómo enseñarlo</a></li><li><a href="#practicas">Ejercicios</a></li>
+    <li><a href="#contactos">Contactos</a></li><li><a href="#pendientes">Pendiente de verificar</a></li>
+  </ol>
+</details>
+
+<!-- 1 -->
+<section id="uso">
+  <h2><span class="n">1.</span>Cómo usar esta guía</h2>
+  <p>Esta guía resume y ordena el contenido de los dos cursos para que puedas estudiarlo y después enseñarlo. Cada afirmación lleva una etiqueta que indica de dónde sale:</p>
+  <ul>
+    <li><span class="tag c">CONFIRMADO</span> Está en el material oficial de los cursos (PDF, video, presentación o texto del aula).</li>
+    <li><span class="tag u">NO VERIFICADO</span> Aparece de forma indirecta (por ejemplo, en consultas del foro) o no pude confirmarlo en el material. Antes de enseñarlo, verificalo con soporte.</li>
+    <li><span class="tag r">RECOMENDACIÓN</span> Es una sugerencia didáctica mía para las capacitaciones, no una regla del sistema.</li>
+  </ul>
+  <p>Cuando una sección entera proviene del material oficial, la etiqueta figura una vez en el título. Las capturas de pantalla provienen de los instructivos oficiales del curso y muestran usuarios de prueba (“usuario”, “usuario78”), sin datos reales.</p>
+  <div class="box key"><strong class="t">Importante sobre el enfoque hospitalario</strong>
+  <p>Los cursos están dirigidos a toda la Administración Pública Provincial; no tienen contenidos específicos para hospitales. Los ejemplos hospitalarios de esta guía son <strong>ilustrativos y ficticios</strong> <span class="tag r">RECOMENDACIÓN</span>. Lo único confirmado respecto de Salud es que el Ministerio de Salud está alcanzado por el uso obligatorio del módulo TIMBÓ COMPRAS (Circular N° 3/2026) <span class="tag c">CONFIRMADO</span>.</p></div>
+</section>
+
+<!-- 2 -->
+<section id="fuentes">
+  <h2><span class="n">2.</span>Material consultado y límites</h2>
+  <h3>Curso “Timbó, paso a paso” (2026_2)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Recurso</th><th>Tipo</th><th>Estado</th></tr>
+    <tr><td>Programa del curso</td><td>PDF (4 p.)</td><td>Leído completo</td></tr>
+    <tr><td>Video de bienvenida</td><td>YouTube (1:36)</td><td>Transcripción leída</td></tr>
+    <tr><td>1.1 Sin miedo al cambio · 1.2 Gobierno Digital · 1.3 Material de lectura</td><td>Presentaciones Genially</td><td>Texto leído completo</td></tr>
+    <tr><td>Highlight de Normativas</td><td>PDF (13 p.)</td><td>Leído completo</td></tr>
+    <tr><td>Video “¿Qué es Timbó?”</td><td>YouTube (4:28)</td><td>Transcripción leída</td></tr>
+    <tr><td>Criterios para la carga de oficinas y usuarios</td><td>PDF (4 p.)</td><td>Leído completo</td></tr>
+    <tr><td>Incorporación de trámites internos / externos</td><td>2 PDF</td><td>Leídos completos</td></tr>
+    <tr><td>2.1 Ciberseguridad para la administración pública</td><td>Genially</td><td>Texto leído completo</td></tr>
+    <tr><td>¿Cómo gestionar Expedientes Electrónicos (EE)?</td><td>PDF (37 p.)</td><td>Leído completo; capturas extraídas</td></tr>
+    <tr><td>¿Cómo gestionar la visualización de un EE?</td><td>PDF (24 p.)</td><td>Leído completo; capturas extraídas</td></tr>
+    <tr><td>Video “Capacitación en Gestión de EE y Documentos Oficiales”</td><td>YouTube (32 min)</td><td>Transcripción leída (con pequeñas omisiones por cortes)</td></tr>
+    <tr><td>Video “¿Cómo gestionar la visualización de un expediente?”</td><td>YouTube (4:28)</td><td>Transcripción leída</td></tr>
+    <tr><td>Foros (Novedades y Consultas técnicas)</td><td>Foro</td><td>Revisadas algunas consultas (sin datos personales en esta guía)</td></tr>
+    <tr><td>Módulo 5: ¿Cómo gestionar Documentos Oficiales (DDOO)?</td><td>PDF (34 p.)</td><td>Leído completo; capturas extraídas</td></tr>
+    <tr><td>Módulo 5: Tipos y clases de Documentos Oficiales</td><td>PDF (19 p.)</td><td>Leído completo (catálogo)</td></tr>
+    <tr><td>Módulo 6: ¿Cómo gestionar Actos Administrativos Registrables (AAR)?</td><td>PDF (25 p.)</td><td>Leído completo; capturas extraídas</td></tr>
+    <tr><td>Módulo 6: video “Actos Administrativos Registrables ¿Cómo lo hacemos?”</td><td>YouTube (7:33)</td><td>Transcripción leída</td></tr>
+    <tr><td>Módulo 7: ¿Cómo trabajar en Atención Virtual (AV)?</td><td>PDF (18 p.)</td><td>Leído completo; capturas extraídas</td></tr>
+    <tr><td>Módulo 7: videos “Atención Virtual ¿Cómo lo hacemos?” y “Consultar un Expediente mediante Atención Virtual”</td><td>YouTube (8:45 y 1:45)</td><td>Transcripciones leídas</td></tr>
+    <tr><td>Chequeos de lectura 1 a 7, Evaluación final y encuesta</td><td>Cuestionarios</td><td><strong>No abiertos</strong> (son evaluaciones personales)</td></tr>
+  </table></div>
+  <h3>Curso “Plataforma TIMBO” (Soportes técnicos – Firma digital)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Recurso</th><th>Estado</th></tr>
+    <tr><td>Texto de todas las secciones del aula (acceso, usuarios, tokens, drivers, Java, Firmador, Moorea Signer, Mesa de soporte)</td><td>Leído completo</td></tr>
+    <tr><td>Implementación Firma Digital (PDF, 2 p.)</td><td>Leído completo</td></tr>
+    <tr><td>Guía de Preguntas Frecuentes (PDF, 10 p.)</td><td>Leído completo</td></tr>
+    <tr><td>Manual de instalación del componente Firmador (PDF, 11 p.)</td><td>Leído completo</td></tr>
+    <tr><td>Documento “Firma Digital”, Modelos de Tokens, Manuales de instalación Windows / Mac / Linux, Manual iTop</td><td><strong>No leídos en detalle</strong> (contenido técnico para informáticos)</td></tr>
+    <tr><td>6 videos alojados en el aula (circuitos de firma de decretos, reunión del 04/03/2024)</td><td><strong>No consultados</strong>: no fue posible acceder a su audio</td></tr>
+    <tr><td>Cuestionario de autoevaluación</td><td><strong>No abierto</strong></td></tr>
+  </table></div>
+  <div class="box ok"><strong class="t">Los 7 módulos del curso están incluidos</strong>
+  <p>Los módulos 5 (Documentos Oficiales), 6 (Actos Administrativos Registrables) y 7 (Atención Virtual) se habilitaron después de la primera revisión. Se incorporaron el 08/11/2026.</p></div>
+</section>
+
+<!-- 3 -->
+<section id="que-es">
+  <h2><span class="n">3.</span>Qué es TIMBÓ y por qué se usa <span class="tag c">CONFIRMADO</span></h2>
+  <p><strong>TIMBÓ</strong> es el Ecosistema de Gestión Digital (EGD) de la Provincia de Santa Fe: un ecosistema de aplicaciones que toda la administración pública provincial usará como <strong>única plataforma</strong> para tramitar en forma digital todas sus gestiones administrativas. Lo usan tanto organismos centralizados como descentralizados.</p>
+  <ul>
+    <li>Fue aprobado por el <strong>Decreto 191/2024</strong>, que además <strong>discontinúa la plataforma GDE</strong> (Gestión Documental Electrónica).</li>
+    <li>Se enmarca en el programa <strong>Territorio 5.0</strong>, que busca digitalizar la administración pública santafesina.</li>
+    <li>Reemplaza al expediente en papel: la tramitación pasa a ser <strong>íntegramente digital</strong>.</li>
+  </ul>
+  <h3>El mensaje del Módulo Introductorio: “Sin miedo al cambio”</h3>
+  <p>El curso propone trabajar la resistencia al cambio. La innovación pública se mide por su capacidad de <strong>crear valor público</strong>: las ideas tienen que ser innovadoras, tenerse en cuenta en las decisiones y ser útiles. Según el material, se innova en el Estado para:</p>
+  <ul>
+    <li>responder a las necesidades públicas y desburocratizar procesos internos y externos;</li>
+    <li>contener costos y usar mejor el presupuesto;</li>
+    <li>mejorar los servicios y las políticas públicas;</li>
+    <li>aprovechar las tecnologías de la información y la comunicación;</li>
+    <li>generar una nueva cultura organizacional que conecte a los trabajadores del Estado más allá del territorio.</li>
+  </ul>
+  <h3>Ventajas de la despapelización (Gobierno Digital)</h3>
+  <div class="grid2">
+    <div class="card"><h4>Reduce costos</h4><p>Se ahorran papel, tinta, carpetas, traslados y tiempo del personal.</p></div>
+    <div class="card"><h4>Impacto ambiental</h4><p>Menos consumo de recursos y menos residuos.</p></div>
+    <div class="card"><h4>Optimiza el espacio</h4><p>Se libera espacio físico de archivo.</p></div>
+    <div class="card"><h4>Abre la gestión</h4><p>Cada trámite es visible, trazable y accesible, lo que fortalece la confianza.</p></div>
+  </div>
+  <p>Los <strong>9 principios del Gobierno Digital</strong> presentados en el curso son: de calidad, centrado en la ciudadanía, simple y ágil, interoperabilidad, orientado al desarrollo, integrador, eficiente en el uso de las tecnologías, transparencia en el acceso a la información pública y participativo.</p>
+  <p>Los <strong>desafíos</strong> mencionados son: igualdad en el acceso a la tecnología, nueva cultura organizacional, interoperabilidad de sistemas y ciberseguridad.</p>
+</section>
+
+<!-- 4 -->
+<section id="normativa">
+  <h2><span class="n">4.</span>Marco normativo clave <span class="tag c">CONFIRMADO</span></h2>
+  <p>Fuente: PDF “Highlight de Normativas” del curso. Abajo, lo más útil para explicarle a un equipo hospitalario.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Norma</th><th>Qué hay que saber</th></tr>
+    <tr><td>Ley 14.256</td><td>Gobernanza de datos, acceso a la información pública, ciudadanía digital. Las bases de datos son bien del dominio público y deben estar en formato digital. Define innovación pública y gobierno digital.</td></tr>
+    <tr><td>Ley 12.491</td><td>Adhiere a la Ley Nacional de Firma Digital 25.506. Autoriza la firma digital en todo el sector público provincial. Promueve la despapelización.</td></tr>
+    <tr><td>Decreto 191/24</td><td>Crea Territorio 5.0, aprueba TIMBÓ como sistema de gestión documental y discontinúa GDE.</td></tr>
+    <tr><td>Decreto 399/24</td><td>Procedimiento de firma digital de decretos (obligatorio).</td></tr>
+    <tr><td>Decreto 400/24</td><td>Programa de Despapelización obligatorio para todas las áreas.</td></tr>
+    <tr><td>Decreto 982/24</td><td>Régimen de disposición final de documentos de archivo (plazos de guarda y descarte).</td></tr>
+    <tr><td>Decreto 496/25</td><td>Programa “SIMPLE” de simplificación; sello “Trámite Ágil y Simplificado”.</td></tr>
+    <tr><td>Decreto 2518/25</td><td><strong>1 de julio de 2026</strong>: fecha límite para digitalizar todas las actuaciones administrativas. Desde esa fecha se prohíbe iniciar gestiones en papel por el SIE.</td></tr>
+    <tr><td>Circular 3/2025</td><td>Reglamento General para la Gestión Digital Interna en TIMBÓ (RGGD-Timbó): principios rectores, criterios de oficinas y permisos, caratulación, uso obligatorio de Documentos Oficiales.</td></tr>
+    <tr><td>Circular 4/2025</td><td>Clasificación de actos administrativos. Firma electrónica (mayoría de documentos, sin token) y firma digital (con token: decretos, resoluciones de ministros y excepciones).</td></tr>
+    <tr><td>Circular 6/2025</td><td>Gestión de visualización de expedientes para el Tribunal de Cuentas.</td></tr>
+    <tr><td>Circulares 3/2024 y 5/2024</td><td>“Una vez digital, siempre digital”. Los documentos con firma digital o electrónica tienen validez legal y deben conservarse en formato digital (se recomienda no imprimirlos).</td></tr>
+    <tr><td>Circulares 4/2024 y 7/2025</td><td>Principio de “una sola vez”: no pedir documentación que el Estado ya tiene.</td></tr>
+    <tr><td>Circulares 1/2026 y 3/2026</td><td>Uso obligatorio de <strong>TIMBÓ COMPRAS</strong>; la 3/2026 lo extiende a todas las carteras, <strong>incluido el Ministerio de Salud</strong>.</td></tr>
+    <tr><td>Circular 4/2026</td><td>Incorporación de procedimientos de atención ciudadana (“Atenciones Virtuales”).</td></tr>
+    <tr><td>Circular 5/2026</td><td>Fin de los expedientes en papel en el Ministerio de Gobierno e Innovación Pública desde el 1/5/2026. La documentación debe ser “nativa digital”: <strong>se prohíbe escanear originales en papel</strong> para gestiones internas. Los Promotores Ministeriales de Innovación (PMI) son responsables de la implementación.</td></tr>
+    <tr><td>Circular 6/2026</td><td>Desde el <strong>1/6/2026</strong>, todo el personal debe tener <strong>domicilio digital en el Portal Ciudadano (nivel 2)</strong> para recibir notificaciones y recibos de sueldo.</td></tr>
+  </table></div>
+  <h3>Principios rectores del RGGD-Timbó (art. 2)</h3>
+  <ol>
+    <li><strong>Progresividad</strong>: los trámites se incorporan de a poco.</li>
+    <li><strong>No regresión</strong>: un trámite que se inició en TIMBÓ no puede volver al papel, salvo excepciones fundadas y autorizadas.</li>
+    <li><strong>Presunción de autoría e intransferibilidad de las credenciales</strong>: lo que se hace con tu clave se presume hecho por vos. <strong>Prestar la clave está prohibido</strong> y el usuario responde por el mal uso.</li>
+    <li><strong>Uso de datos con fines operativos, estadísticos y de mejora continua</strong>.</li>
+    <li><strong>Protección de datos personales y anonimización</strong>.</li>
+  </ol>
+  <div class="box tip"><strong class="t">Para la clase <span class="tag r">RECOMENDACIÓN</span></strong>
+  <p>En los hospitales es habitual compartir la computadora o “dejar la sesión abierta para la compañera”. Usá el principio 3 para explicar que eso no es solo una mala práctica: está prohibido y todo lo que se haga queda a nombre del titular.</p></div>
+</section>
+
+<!-- 5 -->
+<section id="cursos">
+  <h2><span class="n">5.</span>Los dos cursos: estructura <span class="tag c">CONFIRMADO</span></h2>
+  <div class="grid2">
+    <div class="card">
+      <h4>“Timbó, paso a paso” (curso para agentes)</h4>
+      <p>Autoadministrable, en cápsulas de microlearning, con automatriculación. Lo organizan la Secretaría de Gestión Pública, la Secretaría de Tecnologías para la Gestión y la Secretaría de Recursos Humanos y Función Pública.</p>
+      <ul>
+        <li>Módulo Introductorio: Sin miedo al cambio y Gobierno Digital</li>
+        <li>Módulo II: Timbó de principio a fin</li>
+        <li>Módulo III: Seguridad de la información</li>
+        <li>Módulo IV: Expedientes Electrónicos</li>
+        <li>Módulo V: Documentos Oficiales</li>
+        <li>Módulo VI: Actos Administrativos Registrables</li>
+        <li>Módulo VII: Atención Virtual</li><li>Evaluación final y encuesta de valoración</li>
+      </ul>
+      <p><strong>Aprobación:</strong> cada “chequeo de lectura” se aprueba con el 70% para habilitar el módulo siguiente. Al final hay una evaluación y una encuesta. El certificado aparece en el historial de capacitaciones 15 días después de terminar (solo para agentes de la Administración Pública Provincial).</p>
+    </div>
+    <div class="card">
+      <h4>“Plataforma TIMBO” (curso para soportes técnicos)</h4>
+      <p>Capacitación para referentes técnicos de las Sectoriales de Informática sobre cómo configurar puestos de trabajo para la <strong>firma digital con token</strong> en la Plataforma de Gestión Digital (origen: circuito de firma digital de decretos, 2024).</p>
+      <ul>
+        <li>Introducción a la firma digital</li>
+        <li>Circuitos de firma de decretos (Legal y Técnica, firmantes, Despacho)</li>
+        <li>Instalación del puesto: acceso, usuario, token, drivers, Java 11, Firmador, Moorea Signer</li>
+        <li>Mesa de soporte (iTop), foro y preguntas frecuentes</li>
+        <li>Autoevaluación sin límite de intentos</li>
+      </ul>
+      <p class="muted">En un hospital interesa sobre todo a Informática y a quienes firman digitalmente (autoridades con token).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="conceptos">
+  <h2><span class="n">6.</span>Conceptos que hay que dominar <span class="tag c">CONFIRMADO</span></h2>
+  <div class="tablewrap"><table>
+    <tr><th style="width:26%">Concepto</th><th>Definición según el curso</th></tr>
+    <tr><td>Expediente Electrónico (EE)</td><td>Reemplaza al expediente en papel. Promueve la sustitución del papel por medios digitales válidos.</td></tr>
+    <tr><td>Solicitud de caratulación</td><td>Primer paso para crear un EE. Cualquier usuario que pertenezca a una oficina puede pedirla.</td></tr>
+    <tr><td>Oficina caratuladora</td><td>La que confirma la solicitud y genera el expediente. Por lo general es la <strong>Mesa de Entradas</strong> de cada jurisdicción. No todas las oficinas caratuladoras reciben cualquier código de trámite.</td></tr>
+    <tr><td>Código de trámite (tema)</td><td>Clasifica el expediente. Hay más de 100 habilitados y se agregan nuevos a medida que se relevan las actividades.</td></tr>
+    <tr><td>Motivo</td><td>Descripción del trámite. Tiene que ser clara y precisa porque sirve para buscarlo. No hay que usar “varios”, “tramitaciones varias” ni términos genéricos.</td></tr>
+    <tr><td>Visibilidad: público / reservado</td><td>Por defecto, público. “Reservado” se usa en casos especiales (lo indica la Unidad de Gestión) y exige agregar responsables que puedan verlo.</td></tr>
+    <tr><td>Número de EE</td><td>Ejemplo <code>EE-2025-00000058-APPSF-PE</code>: EE + año + número correlativo compartido por toda la Administración + APPSF (Administración Pública Provincial de Santa Fe) + organismo (PE = Poder Ejecutivo; varía en organismos descentralizados).</td></tr>
+    <tr><td>Documento incorporado</td><td>Documento oficial con número de orden dentro del EE. Su orden es permanente: <strong>no se puede eliminar</strong>. Si tiene un error, se subsana.</td></tr>
+    <tr><td>Documento informativo</td><td>Papeles de trabajo, borradores o referencias que acompañan al EE sin formar parte formal de él. No lleva número de orden y se puede eliminar (como el “sobre carátula” del papel).</td></tr>
+    <tr><td>Documento pendiente</td><td>Bandeja previa: el documento se subió pero todavía no se definió si va como incorporado o como informativo.</td></tr>
+    <tr><td>Pase</td><td>Envío del EE a otra oficina para que continúe el circuito.</td></tr>
+    <tr><td>Providencia</td><td>Comentario obligatorio del pase. Impulsa, ordena o dispone medidas. Genera un documento nuevo que se incorpora solo al EE.</td></tr>
+    <tr><td>Guarda temporal</td><td>Separa el EE de la bandeja Gestión mientras se espera algo (un informe, un dictamen). Requiere permisos especiales. En guarda, el EE solo se consulta.</td></tr>
+    <tr><td>Archivo</td><td>Estado final después de la guarda. Es <strong>irreversible</strong>: el EE ya no se puede rehabilitar, aunque sigue disponible para consulta.</td></tr>
+    <tr><td>Subsanar</td><td>Corregir uno o varios documentos incorporados mediante un Documento Oficial. El original queda marcado “SN” y la corrección se incorpora en el último orden.</td></tr>
+    <tr><td>Vincular / Fusionar</td><td>Vincular relaciona EE solo como consulta (es reversible). Fusionar agrupa varios en uno “cabecera” que es el que se tramita (es <strong>irreversible</strong> y requiere permiso).</td></tr>
+    <tr><td>Documento Oficial (DO)</td><td>Documento producido en TIMBÓ con características especiales (firma conjunta, comunicable, etc.). Puede ser libre, importado o de tipo formulario. Puede vincularse a un EE.</td></tr>
+    <tr><td>Firma electrónica</td><td>La que realizan todos los usuarios para confirmar acciones en TIMBÓ. No requiere token.</td></tr>
+    <tr><td>Firma digital</td><td>Criptográfica, con token. Reservada a ciertos usuarios (gobernador, ministros, ciertos secretarios), para decretos, resoluciones de ministros y excepciones.</td></tr>
+    <tr><td>Vista de expediente</td><td>Permiso temporal para consultar un EE que está en otra oficina. Se <em>solicita</em> o se <em>comparte</em>.</td></tr>
+  </table></div>
+  <div class="box ok"><strong class="t">Validez jurídica</strong><p>Según el material del Módulo Introductorio, “tanto la firma electrónica como la firma digital tienen la misma validez jurídica en la firma de documentos en el sistema TIMBÓ”. La Circular 5/2024 equipara ambas firmas a sus equivalentes en papel. <span class="tag c">CONFIRMADO</span></p>
+  <p class="muted">Matiz: la guía de preguntas frecuentes del curso de soporte aclara que la firma electrónica no reemplaza a la firma ológrafa con el mismo valor probatorio que la digital (Ley 25.506). Si preguntan por usos fuera de TIMBÓ, derivá la consulta.</p></div>
+</section>
+
+<!-- 7 -->
+<section id="modulos">
+  <h2><span class="n">7.</span>Módulos del sistema <span class="tag c">CONFIRMADO</span></h2>
+  <p>Fuente: video “¿Qué es Timbó?” e instructivos. A la izquierda de la pantalla está el menú con los módulos. <strong>Para verlos, el usuario tiene que estar cargado en una oficina y tener los permisos correspondientes</strong>; si no, los módulos no aparecen.</p>
+  <figure class="sm"><img src="img/menu-principal.jpg" alt="Menú lateral de TIMBÓ con los módulos Expedientes, Documentos oficiales, Comunicaciones oficiales, Lista de destinatarios, Oficinas y Administrador Local"><figcaption>Menú principal (instructivo oficial de EE).</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Módulo</th><th>Para qué sirve</th></tr>
+    <tr><td><strong>Expedientes</strong></td><td>Submenús: <em>Solicitud de caratulación</em> (pedir carátulas), <em>Gestión</em> (cargar documentación y hacer pases), <em>Consulta</em> (descripción e historial), <em>Visibilidad</em> (público/reservado y quién puede verlo) y <em>Gestión de visualización</em> (pedir o compartir vistas).</td></tr>
+    <tr><td><strong>Documentos oficiales</strong></td><td>Producir documentos propios (independientes o vinculables a un EE). Incluye Gestión (pendientes, iniciados por mí, aprobados, rechazados, tramitados por mí), Consulta y Visibilidad.</td></tr>
+    <tr><td><strong>Comunicaciones oficiales</strong></td><td>Comunicaciones entre oficinas de ministerios, direcciones, secretarías y registros incorporados a TIMBÓ. Llegan cuando se firma un DO “comunicable”. Ver <a href="#comunicaciones">Comunicaciones oficiales</a>.</td></tr>
+    <tr><td><strong>Actos administrativos registrables</strong></td><td>Resoluciones digitales: iniciar, firmar, protocolizar e ingresar el link del SIN (solo con permisos de gestor, firmante o seguimiento). Ver <a href="#aar">sección 17</a>.</td></tr>
+    <tr><td><strong>Lista de destinatarios</strong></td><td>Listas de agentes y de ciudadanos; registro de a quién se enviaron EE, DO y comunicaciones.</td></tr>
+    <tr><td><strong>Atención virtual</strong></td><td>Bandeja de solicitudes que la ciudadanía inicia con documentación cargada, para responderlas. Ver <a href="#atencion-virtual">sección 18</a>.</td></tr>
+    <tr><td><strong>Oficinas</strong></td><td>Organigrama de la Administración (Poder Legislativo, organismos descentralizados, Poder Ejecutivo). También sirve para obtener el <strong>código de oficina</strong>.</td></tr>
+    <tr><td><strong>Administrador Local</strong></td><td>Aparece en el menú de la captura oficial; corresponde a la gestión local de usuarios (los Administradores Locales gestionan los usuarios de cada repartición). <span class="tag u">NO VERIFICADO</span> No hay instructivo publicado sobre sus funciones.</td></tr>
+    <tr><td><strong>TIMBÓ COMPRAS</strong></td><td>Módulo de procedimientos de selección de contratistas, obligatorio según las Circulares 1/2026 y 3/2026. <span class="tag u">NO VERIFICADO</span> El curso no explica su uso.</td></tr>
+  </table></div>
+</section>
+
+<!-- 8 -->
+<section id="ingreso">
+  <h2><span class="n">8.</span>Ingreso al sistema <span class="tag c">CONFIRMADO</span></h2>
+  <ol class="steps">
+    <li>Entrar a <strong>tramites.santafe.gob.ar</strong> (dirección que figura en los instructivos de EE y de visualización, y en el curso de soporte). El video “¿Qué es Timbó?” también indica entrar por <strong>www.santafe.gob.ar/ms/timbo</strong> y luego tocar <em>Ingresar</em>.</li>
+    <li>Escribir el usuario de <strong>ID Ciudadana / Intranet</strong>: CUIL, IUP o email.</li>
+    <li>Escribir la contraseña. Es la misma que se usa en Intranet, por ejemplo para ver el recibo de sueldo.</li>
+    <li>Presionar <strong>Iniciar sesión</strong>. Aparece el escritorio general con el menú desplegable a la izquierda.</li>
+  </ol>
+  <figure class="sm"><img src="img/ingreso-login.jpg" alt="Pantalla de ingreso de Timbó con ID Ciudadana: usuario, contraseña y botón Iniciar sesión"><figcaption>Pantalla de ingreso con ID Ciudadana.</figcaption></figure>
+  <ul>
+    <li>Quien no tiene cuenta debe crearla con la opción <strong>Crear cuenta</strong>.</li>
+    <li>Quien olvidó la contraseña puede usar <strong>¿Olvidaste tu contraseña?</strong> o consultar el manual de ID Ciudadana.</li>
+  </ul>
+</section>
+
+<!-- 9 -->
+<section id="caratula">
+  <h2><span class="n">9.</span>Solicitud de caratulación <span class="tag c">CONFIRMADO</span></h2>
+  <p>Todo EE nace con una solicitud de caratulación. La puede hacer cualquier usuario que integre una oficina.</p>
+  <ol class="steps">
+    <li>Menú <strong>Expedientes → Solicitud de caratulación</strong>.</li>
+    <li>Botón <strong>Nuevo Trámite</strong>.<figure><img src="img/menu-expedientes.jpg" alt="Menú Expedientes desplegado y botón Nuevo Trámite"></figure></li>
+    <li>Elegir <strong>Solicitud de caratulación → Iniciar</strong>.<figure><img src="img/nuevo-tramite.jpg" alt="Lista de trámites con Solicitud de Caratulación e Iniciar"></figure></li>
+    <li>Completar el formulario:
+      <ul>
+        <li><strong>Interno / Externo</strong>: interno si el trámite está dentro del Poder Ejecutivo y se inicia de oficio; externo cuando lo presenta un ciudadano, proveedor o persona ajena a la administración. En el video se aclara que, en principio, todos son internos y que los externos llegan por otro módulo.</li>
+        <li><strong>¿Es urgente?</strong>: marcarlo solo cuando venga indicado.</li>
+        <li><strong>Código del trámite (*)</strong>: el tema. Se puede escribir para buscarlo o elegirlo de la lista.</li>
+        <li><strong>Oficina caratuladora (*)</strong>: normalmente la Mesa de Entradas.</li>
+        <li><strong>Información del iniciador (*)</strong>: viene precargada y se puede editar (también email y teléfono).</li>
+        <li><strong>Motivo (*)</strong>: claro, preciso y sin abreviaturas. El video sugiere incluir nombre y apellido completos, DNI, CUIL o el número de un expediente anterior para facilitar la búsqueda.</li>
+        <li><strong>Tipo de visibilidad</strong>: público por defecto; reservado solo en casos especiales.</li>
+        <li><strong>Responsables</strong>: solo si es reservado (<em>Agregar Responsable</em>).</li>
+        <li><strong>Relación con otro expediente</strong>: dato informativo (por ejemplo, de TIMBÓ o del SIE). No genera ninguna acción.</li>
+      </ul>
+      <figure><img src="img/formulario-caratulacion.jpg" alt="Formulario Solicitud de Caratulación: interno o externo, urgente, código del trámite"></figure></li>
+    <li><strong>Guardar</strong> y confirmar con <strong>Guardar</strong> otra vez.</li>
+    <li>Se genera un <strong>número de solicitud</strong> (por ejemplo, SCAR-…) que la identifica hasta que se apruebe. La solicitud queda en la pestaña <strong>En curso</strong> y se deriva sola a la oficina caratuladora.<figure><img src="img/solicitud-en-curso.jpg" alt="Bandeja Solicitud de caratulación con una solicitud en curso"></figure></li>
+  </ol>
+  <h3>Pestañas de la bandeja</h3>
+  <ul>
+    <li><strong>En curso</strong>: solicitudes iniciadas y en trámite.</li>
+    <li><strong>Caratuladas</strong>: aprobadas. Desde ese momento el expediente ya tiene número.</li>
+    <li><strong>Rechazadas</strong>: el motivo se ve en el <em>Historial</em> (tres puntos).</li>
+  </ul>
+  <p>Si una pestaña muestra una caja vacía, es porque no hay solicitudes en ese estado.</p>
+  <figure class="sm"><img src="img/historial-rechazo.jpg" alt="Ventana Historial con el motivo de rechazo de una carátula"><figcaption>Historial de una solicitud rechazada.</figcaption></figure>
+  <div class="box tip"><strong class="t">Ejemplo hospitalario (ficticio) <span class="tag r">RECOMENDACIÓN</span></strong>
+  <p><em>Motivo correcto:</em> “Solicitud de compra de 200 cajas de guantes de nitrilo talle M para el Servicio de Guardia — Pedido interno N° 45/2026”.</p>
+  <p><em>Motivo incorrecto:</em> “Varios guardia” o “Compras”.</p>
+  <p>Cuando el trámite involucra a pacientes, recordá que la información de salud es información personal (Módulo III). Consultá con la autoridad de tu área qué datos identificatorios corresponde poner en el motivo. El curso no trae una regla específica para datos de salud.</p></div>
+</section>
+
+<!-- 10 -->
+<section id="evaluar">
+  <h2><span class="n">10.</span>Evaluar carátulas (usuarios con permiso de caratulación) <span class="tag c">CONFIRMADO</span></h2>
+  <p>Los usuarios de Mesa de Entradas con permiso de caratulación ven pestañas adicionales, entre ellas <strong>Pendientes de Evaluación</strong> (además de <em>Caratuladas por mí</em> y <em>Rechazadas por mí</em>).</p>
+  <figure><img src="img/pendientes-evaluacion.jpg" alt="Pestaña Pendientes de Evaluación"></figure>
+  <ol class="steps">
+    <li>En la solicitud, tocar los <strong>tres puntos</strong>. Opciones: <em>Evaluar</em>, <em>Ver flujo</em> e <em>Historial</em>.<figure><img src="img/evaluar-menu.jpg" alt="Menú de tres puntos con Evaluar, Ver flujo e Historial"></figure></li>
+    <li><strong>Evaluar</strong>: permite ver, descargar y analizar el pedido. Hay que controlar que el código de trámite y el motivo sean coherentes.</li>
+    <li><strong>Acciones → Firmar</strong> (aprobar) o <strong>Rechazar</strong>. Se puede agregar un comentario opcional; en el rechazo conviene explicar el motivo e indicar que hagan una nueva solicitud.<figure class="sm"><img src="img/acciones-firmar-rechazar.jpg" alt="Ventana Acciones con Firmar y Rechazar"></figure></li>
+    <li><strong>Continuar</strong>.</li>
+    <li>Para oficializar la carátula: <strong>Firma electrónica → Confirmar</strong>. Aparece un mensaje de confirmación.<figure class="sm"><img src="img/firma-electronica.jpg" alt="Selección del sistema de firma: Firma electrónica"></figure></li>
+  </ol>
+  <figure class="sm"><img src="img/firmador-inhabilitado.jpg" alt="Mensaje Firmador digital inhabilitado"><figcaption>Este mensaje <strong>no es un error</strong>: indica que el usuario no tiene firma digital (token) y que debe usar la firma electrónica.</figcaption></figure>
+  <div class="box tip"><strong class="t">Ejemplo del video</strong><p>Si piden una “bonificación por título” y en el motivo escriben “compra de bidones de agua”, la solicitud se rechaza porque no hay relación entre el código y el motivo.</p></div>
+</section>
+
+<!-- 11 -->
+<section id="gestion">
+  <h2><span class="n">11.</span>Bandeja Gestión y asignación de expedientes <span class="tag c">CONFIRMADO</span></h2>
+  <p>Menú <strong>Expedientes → Gestión</strong>. Pestañas:</p>
+  <figure><img src="img/pestanas-gestion.jpg" alt="Pestañas Asignados, Gestión, Guarda temporal, Archivo y Gestión por jerarquía"></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Pestaña</th><th>Qué contiene</th></tr>
+    <tr><td>Asignados</td><td>Expedientes que el agente tiene para tramitar.</td></tr>
+    <tr><td>Gestión</td><td>Todos los expedientes recibidos por la oficina, asignados o no.</td></tr>
+    <tr><td>Guarda temporal</td><td>Expedientes separados momentáneamente (requiere permisos especiales).</td></tr>
+    <tr><td>Archivo</td><td>Expedientes enviados al archivo definitivo. Solo consulta.</td></tr>
+    <tr><td>Gestión por jerarquía</td><td>Expedientes en gestión en oficinas de jerarquía inferior. Si no aparece ninguno, es porque no hay.</td></tr>
+  </table></div>
+  <p>Filtros de búsqueda disponibles: número de expediente, tema (código de trámite), motivo, asignado y fechas desde/hasta.</p>
+  <figure><img src="img/asignados.jpg" alt="Pestaña Asignados con expedientes electrónicos"></figure>
+  <h3>Asignación</h3>
+  <p>Para trabajar un expediente, tiene que estar <strong>asignado</strong> al usuario. Cuando se aprueba la carátula, el EE se asigna solo a quien la pidió. Cuando un EE llega a la oficina por un pase, aparece asignado a <strong>“Todos”</strong> (en azul).</p>
+  <figure><img src="img/asignado-todos.jpg" alt="Expediente con la indicación Todos en azul"></figure>
+  <ul>
+    <li><strong>Usuario con permiso de supervisor</strong>: hace clic en <em>Todos</em> y busca al compañero al que se lo asigna.</li>
+    <li><strong>Cualquier usuario</strong>: hace clic en <em>Todos</em> y elige <strong>Asignar a mí mismo</strong>.</li>
+    <li><strong>Desasignar</strong> (video): clic en el nombre en azul → <em>Desasignar expediente</em>. El EE vuelve a la pestaña Gestión para que lo tome otra persona.</li>
+  </ul>
+  <div class="grid2">
+    <figure class="sm"><img src="img/asignar-a-otro.jpg" alt="Ventana Asignar Expediente buscando un usuario"><figcaption>Asignar a otro usuario (supervisor).</figcaption></figure>
+    <figure class="sm"><img src="img/asignar-a-mi.jpg" alt="Botón Asignar a mí mismo"><figcaption>Asignar a mí mismo.</figcaption></figure>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="trabajar">
+  <h2><span class="n">12.</span>Trabajar dentro del expediente <span class="tag c">CONFIRMADO</span></h2>
+  <p>En la pestaña <strong>Asignados</strong>, los tres puntos del EE despliegan la botonera:</p>
+  <div class="grid2">
+    <figure><img src="img/menu-tres-puntos.jpg" alt="Menú desplegado de un expediente asignado"></figure>
+    <div>
+      <ul>
+        <li><strong>Gestor de Expediente</strong>: todo el contenido (datos y documentos incorporados, informativos y pendientes).</li>
+        <li><strong>Acciones</strong>: acceso directo a pase, guarda temporal o archivo, según los permisos.</li>
+        <li><strong>Ver documentación de expediente</strong>.</li>
+        <li><strong>Ver flujo</strong>.</li>
+        <li><strong>Vincular / Fusionar expedientes</strong>.</li>
+        <li><strong>Previsualizar</strong>: el documento inicial.</li>
+        <li><strong>Historial</strong>: usuarios, fecha, hora y acciones.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Cada documento del EE ofrece, desde sus tres puntos, <em>Previsualizar</em>, <em>Descargar</em> y <em>Ver detalles</em> (en los incorporados también <em>Validar firmas</em>).</p>
+
+  <h3 id="subir">Subir un archivo</h3>
+  <ol class="steps">
+    <li><strong>Acciones → Subir nuevo archivo</strong>.</li>
+    <li><strong>Agrega un archivo</strong> (o arrastrarlo) y elegirlo en el dispositivo.<figure class="sm"><img src="img/subir-archivo.jpg" alt="Ventana Subir Archivos"></figure></li>
+    <li>Completar <strong>Nombre</strong> (sale del archivo y se puede cambiar) y <strong>Referencia</strong> (breve: qué es o para qué sirve).<figure class="sm"><img src="img/nombre-referencia.jpg" alt="Campos Nombre y Referencia del archivo"></figure></li>
+    <li><strong>Subir</strong>. El archivo queda en <strong>Documentos pendientes</strong>.</li>
+  </ol>
+  <div class="box warn"><strong class="t">Formatos y tamaño</strong>
+  <p>Para <strong>incorporar</strong>: solo PDF, máximo 50 MB, porque va a llevar firma. Como <strong>informativo</strong>: otros formatos (texto, planilla, imagen, etc.). En el video se aclara que el límite de 50 MB vale para ambos casos.</p></div>
+
+  <h3 id="incorporar">Incorporar y ordenar</h3>
+  <ol class="steps">
+    <li>Antes de incorporar, <strong>previsualizar</strong> cada documento pendiente para confirmar que es el correcto (recomendación del video). Mientras están pendientes, se pueden eliminar.</li>
+    <li>Tildar los documentos y presionar <strong>Incorporar Documentos</strong>.</li>
+    <li>Si hay más de uno, ordenarlos arrastrando el ícono de la izquierda → <strong>Continuar</strong>.<figure class="sm"><img src="img/orden-documentos.jpg" alt="Establecer el orden de los documentos"></figure></li>
+    <li>Oficializar con <strong>Firma electrónica</strong> y confirmar. El sistema avisa que la acción no se puede deshacer.<figure class="sm"><img src="img/firma-incorporar.jpg" alt="Firma electrónica para incorporar documentos"></figure></li>
+  </ol>
+
+  <h3 id="vincular-do">Vincular un Documento Oficial (DO)</h3>
+  <ol class="steps">
+    <li>Copiar el <strong>número del DO</strong> desde el módulo Documentos Oficiales.</li>
+    <li>En el EE: <strong>Acciones → Vincular Documento</strong>.</li>
+    <li>Pegar el número y buscar con la <strong>lupa</strong>.<figure class="sm"><img src="img/vincular-do-buscar.jpg" alt="Ventana Vincular Documento con el número del documento"></figure></li>
+    <li>Revisar la referencia y el nombre → <strong>Vincular → Confirmar → Continuar</strong>.<figure class="sm"><img src="img/vincular-do-encontrado.jpg" alt="Documento encontrado con referencia y botón Vincular"></figure></li>
+    <li>El DO queda en pendientes. Tildarlo y elegir <strong>Incorporar Documentos</strong>. Como el DO ya está firmado, no pide la firma del usuario.</li>
+  </ol>
+
+  <h3 id="subsanar">Subsanar documentos</h3>
+  <p>Sirve para rectificar documentos ya incorporados. <strong>Solo se subsana con un Documento Oficial</strong>. Las carátulas y las providencias no se pueden subsanar.</p>
+  <ol class="steps">
+    <li>Botón <strong>Subsanar Documentos</strong>.</li>
+    <li>Tildar el documento a subsanar → <strong>Continuar</strong>.<figure class="sm"><img src="img/subsanar.jpg" alt="Ventana Subsanar documentos"></figure></li>
+    <li>Ingresar el número del DO de subsanación → <strong>Confirmar</strong>.</li>
+    <li>Aparece en pendientes como <strong>PS</strong> (pendiente de subsanación). Tildarlo → <strong>Incorporar documentos</strong>.</li>
+    <li>El original queda marcado <strong>SN</strong> (subsanado) y el nuevo se incorpora en el último orden. Desde los tres puntos se puede ver el documento de subsanación.<figure class="sm"><img src="img/subsanado-menu.jpg" alt="Opciones de un documento subsanado SN"></figure></li>
+  </ol>
+</section>
+
+<!-- 13 -->
+<section id="enviar">
+  <h2><span class="n">13.</span>Enviar el expediente: pase, guarda temporal y archivo <span class="tag c">CONFIRMADO</span></h2>
+  <p>Cuando termina su parte, el usuario toca <strong>Enviar Expediente</strong> (botón al final de la pantalla). Según sus permisos, verá <em>Realizar Pase</em>, <em>Enviar a Guarda Temporal</em> o <em>Archivo</em>.</p>
+  <figure class="sm"><img src="img/enviar-acciones.jpg" alt="Ventana Acciones: Enviar a Guarda Temporal y Realizar Pase"></figure>
+  <h3>Realizar pase</h3>
+  <ol class="steps">
+    <li>Elegir la <strong>Oficina primaria</strong> (Ministerio u organismo) y la <strong>Oficina secundaria</strong> (la oficina específica). Se puede buscar por palabra clave o por código → <strong>Continuar</strong>.<figure class="sm"><img src="img/realizar-pase.jpg" alt="Realizar pase: oficina primaria y secundaria"></figure></li>
+    <li>Escribir la <strong>providencia</strong> (comentario obligatorio) → <strong>Continuar</strong> → <strong>Confirmar</strong>. La providencia se incorpora sola como documento.<figure class="sm"><img src="img/providencia.jpg" alt="Campo de comentario de la providencia"></figure></li>
+  </ol>
+  <p>La oficina destino lo recibe en <strong>Expedientes → Gestión</strong>, asignado a “Todos”.</p>
+  <h3>Cómo redactar la providencia</h3>
+  <ul>
+    <li>Ser conciso y profesional.</li>
+    <li>No identificar la oficina (ya se eligió en el paso anterior).</li>
+    <li>No incluir información de la gestión.</li>
+    <li>Si el texto es extenso, incorporarlo como DO o como archivo adjunto.</li>
+    <li>Decir con claridad qué se espera: continuar el trámite, agregar un informe, devolverlo, etc.</li>
+  </ul>
+  <h3>Identificar el código de oficina</h3>
+  <ol class="steps">
+    <li>Ir a <strong>Menú → Oficinas</strong> y navegar el organigrama.</li>
+    <li>Copiar el número que aparece entre paréntesis junto al nombre.<figure><img src="img/codigo-oficina.jpg" alt="Organigrama de Oficinas con el código de la oficina"></figure></li>
+    <li>Pegarlo en el campo de oficina de destino.</li>
+  </ol>
+  <div class="box warn"><strong class="t">Pase a una oficina incorrecta</strong><p>Hay que avisarle a esa oficina para que devuelva el EE mediante un pase.</p></div>
+  <h3>Guarda temporal <span class="muted">(requiere permisos)</span></h3>
+  <p><em>Enviar expediente → Enviar a Guarda Temporal</em> → comentario opcional → <em>Continuar → Confirmar</em>. En guarda el EE <strong>solo se consulta</strong>. El video recomienda usarla cuando se espera documentación, un informe o un dictamen.</p>
+  <p><strong>Sacar de guarda</strong>: en la pestaña Guarda temporal → tres puntos → <em>Acciones / Volver a carga de documentación</em> → comentario obligatorio → confirmar. El EE vuelve a la pestaña Gestión.</p>
+  <h3>Archivo <span class="muted">(requiere permisos)</span></h3>
+  <p>Terminado el tiempo de guarda, el EE se envía al Archivo. Es el último estado, es <strong>irreversible</strong> y el EE ya no puede volver a gestionarse.</p>
+</section>
+
+<!-- 14 -->
+<section id="vincular-fusionar">
+  <h2><span class="n">14.</span>Vincular y fusionar expedientes <span class="tag c">CONFIRMADO</span></h2>
+  <div class="grid2">
+    <div class="card"><h4>Vincular</h4><p>Relaciona uno o más EE <strong>solo como consulta</strong>; no los modifica. Se ingresa el número de EE en <em>Buscar expediente</em> y se siguen las indicaciones. <strong>Se puede revertir.</strong></p><figure class="sm"><img src="img/vincular-expedientes.jpg" alt="Ventana Vincular o fusionar expedientes con la opción Vincular"></figure></div>
+    <div class="card"><h4>Fusionar <span class="muted">(requiere permisos)</span></h4><p>Agrupa varios EE en uno “cabecera”, que es el que se tramita. Hay que escribir el <strong>motivo</strong> de la fusión. <strong>No se puede revertir.</strong></p><figure class="sm"><img src="img/fusionar-expedientes.jpg" alt="Ventana con la opción Fusionar y el campo Motivo"></figure></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section id="consulta">
+  <h2><span class="n">15.</span>Consulta de expedientes <span class="tag c">CONFIRMADO</span></h2>
+  <ol class="steps">
+    <li>Menú <strong>Expedientes → Consulta</strong>.</li>
+    <li>Elegir el <strong>tipo de búsqueda</strong>: número de expediente, iniciados por mí, tramitados por mí, caratulados por mí (oficinas caratuladoras), entre otros.<figure class="sm"><img src="img/consulta-tipos.jpg" alt="Tipos de búsqueda de expedientes"></figure></li>
+    <li>Por número: escribirlo <strong>completo</strong> (desde “EE” hasta las últimas letras) → <strong>Buscar</strong>. En los demás criterios: fecha desde, fecha hasta, tema y motivo → <strong>Buscar</strong>.<figure><img src="img/consulta-numero.jpg" alt="Consulta por número de expediente"></figure></li>
+    <li>Tres puntos → <strong>Más información</strong>: se ven los datos y el <strong>historial de pases</strong>.<figure><img src="img/consulta-detalle.jpg" alt="Detalle del expediente con historial de pases"></figure></li>
+  </ol>
+  <p class="muted">En la pantalla de consulta figura una leyenda que indica dónde consultar los expedientes generados en papel (fuera de TIMBÓ).</p>
+</section>
+
+<!-- 16 -->
+<section id="docs-oficiales">
+  <h2><span class="n">16.</span>Documentos oficiales (Módulo 5) <span class="tag c">CONFIRMADO</span></h2>
+  <p>Fuente: instructivo “¿Cómo gestionar Documentos Oficiales (DDOO)?” (34 p.), PDF “Tipos y clases de Documentos Oficiales” (actualizado al 14/04/2026) y video de capacitación.</p>
+  <p>Un documento oficial (DO) respalda un trámite o gestión: por ejemplo, el formulario para una compra directa, el certificado de una capacitación o una nota de solicitud. Tiene trazabilidad, fecha, hora y firma, y se puede consultar y compartir en entornos digitales. <strong>Todos los documentos oficiales de la Administración Pública Provincial deben crearse, registrarse, firmarse y guardarse en el módulo Documentos Oficiales de TIMBÓ</strong>, incluidos los formularios digitales que use cada área.</p>
+
+  <h3>Tipos y características</h3>
+  <div class="grid2">
+    <div class="card"><h4>Tipos</h4><ul>
+      <li><strong>Importado</strong>: un PDF que se sube desde la computadora.</li>
+      <li><strong>Libre</strong>: se redacta en TIMBÓ con un editor similar a Word o Writer.</li>
+      <li><strong>Formulario o plantilla</strong>: tiene un formato fijo con campos que se completan; no se puede editar.</li></ul></div>
+    <div class="card"><h4>Características (atributos)</h4><ul>
+      <li><strong>Comunicable</strong> (interno o externo): una vez firmado, llega a la bandeja de Comunicaciones Oficiales del destinatario. El externo llega al ciudadano por su domicilio digital.</li>
+      <li><strong>Aviso de firma</strong>: avisa por correo cuando se firma.</li>
+      <li><strong>Embeber archivo</strong>: adjunta archivos dentro del PDF respetando su formato.</li>
+      <li><strong>Firma conjunta</strong>: lo firman varios usuarios.</li>
+      <li><strong>Firma con token</strong>: requiere firma digital.</li>
+      <li><strong>Reservado</strong>: solo lo elaboran y lo ven los usuarios autorizados.</li>
+      <li><strong>Especial</strong>: numeración exclusiva para la oficina que lo produce.</li></ul></div>
+  </div>
+  <div class="box key"><p>El usuario debe elegir el tipo de documento que mejor se adapte a la tarea. Hay un catálogo oficial con más de 100 tipos (ver la tabla al final de esta sección).</p></div>
+
+  <h3>Bandeja de Documentos Oficiales</h3>
+  <p>Menú <strong>Documentos oficiales → Gestión</strong>. Pestañas: <em>Pendientes</em>, <em>Iniciados por mí</em>, <em>Aprobados</em>, <em>Rechazados</em> y <em>Tramitados por mí</em>.</p>
+  <div class="grid2">
+    <figure class="sm"><img src="img/do-menu.jpg" alt="Menú Documentos oficiales: Gestión, Consulta, Visibilidad"></figure>
+    <figure><img src="img/do-bandeja.jpg" alt="Bandeja Gestión de Documentos Oficiales con sus pestañas y el botón Nuevo Documento Oficial"></figure>
+  </div>
+
+  <h3>Crear un documento oficial</h3>
+  <ol class="steps">
+    <li><strong>Nuevo documento oficial</strong> → <strong>Documentos Oficiales → Iniciar</strong>.<figure><img src="img/do-nuevo.jpg" alt="Nuevo Documento Oficial: Documentos Oficiales, Iniciar"></figure></li>
+    <li>Completar: <strong>Usuario Productor</strong> (obligatorio: uno mismo o un tercero que lo confeccione), <strong>Tipo de Documento</strong> (obligatorio), <em>Mensaje para el Productor</em> y <em>Archivos de trabajo</em> (no forman parte del documento).<figure><img src="img/do-formulario.jpg" alt="Formulario de creación del documento oficial"></figure></li>
+    <li><strong>Guardar</strong> → confirmar “¿Desea guardar el formulario?”. El documento queda en <strong>Pendientes</strong>, que reúne los documentos que todavía no se confeccionaron.</li>
+  </ol>
+
+  <h3>Producir el documento</h3>
+  <ol class="steps">
+    <li>En Pendientes: tres puntos → <strong>Documento oficial</strong>.<figure><img src="img/do-tres-puntos.jpg" alt="Tres puntos con la opción Documento oficial"></figure></li>
+    <li>Según el tipo, cambia la pantalla: en un <em>importado</em> se sube el PDF; en un <em>libre</em> se escribe en el editor; en un <em>formulario</em> se completan los campos.<div class="grid2"><figure><img src="img/do-importado.jpg" alt="Documento importado: área para subir el PDF"><figcaption>Importado</figcaption></figure><figure><img src="img/do-libre.jpg" alt="Documento libre con editor de texto"><figcaption>Libre</figcaption></figure></div></li>
+    <li>Completar el área de la derecha:
+      <ul>
+        <li><strong>Referencia</strong> (obligatoria): el título o motivo del documento.</li>
+        <li><strong>Adjuntar documentos</strong>, solo en algunos tipos (máximo 50 MB): por ejemplo, una constancia o un comprobante.</li>
+        <li><strong>Firma conjunta / cadena de firmas</strong>: definir los firmantes y su orden (se reordenan arrastrando y se quitan con la X).</li>
+      </ul>
+      <div class="grid2"><figure class="sm"><img src="img/do-adjuntar.jpg" alt="Adjuntar documentos"></figure><figure class="sm"><img src="img/do-firma-conjunta.jpg" alt="Firma conjunta: definir firmantes"></figure></div></li>
+    <li>Barra de herramientas: documentos auxiliares, datos del documento, visualizar (y descargar), guardar (guarda temporalmente y notifica) y ver firmantes y destinatarios.<figure class="sm"><img src="img/do-herramientas.jpg" alt="Barra de herramientas del documento"></figure></li>
+    <li><strong>Acciones</strong>: <em>Enviar a Firmar</em> (inicia el proceso), <em>Enviar a Revisar</em> (a un jefe o a quien corresponda) o <em>Rechazar Documento Oficial</em> (cancela). Luego comentario → <strong>Continuar → Confirmar</strong>.<figure class="sm"><img src="img/do-acciones.jpg" alt="Acciones: Enviar a Firmar, Enviar a Revisar, Rechazar Documento Oficial"></figure></li>
+  </ol>
+  <h4>Plantillas personales (documento libre)</h4>
+  <p>Si un texto se repite, se puede usar <strong>Guardar plantilla</strong> y ponerle un nombre de referencia asociado al trámite. Después se usa desde el ícono <strong>Plantillas</strong> → tilde verde. El tacho de basura la elimina (solo puede hacerlo quien la creó).</p>
+  <h4>Referencia: uso correcto</h4>
+  <p>Debe permitir encontrar el documento fácilmente. Por ejemplo, para una justificación de licencia: apellido y nombre, DNI y artículo solicitado. Si el DO se va a incorporar a un EE, conviene poner el <strong>número de expediente y el motivo</strong>.</p>
+  <figure class="sm"><img src="img/do-referencia-ee.jpg" alt="Referencia con número de expediente y motivo"></figure>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Correcto</th><th>Incorrecto</th></tr>
+    <tr><td>Circular</td><td>Circular Nº 0001 - 2025 - Horario de atención al público</td><td>Circular 1 - “Cambio en horarios de atención al público a partir del lunes…” (texto largo)</td></tr>
+    <tr><td>Acta</td><td>Rectificación parcial Dictamen 32/2025</td><td>Rectificación.</td></tr>
+  </table></div>
+  <h4>Ejemplo del instructivo: solicitud de justificación de licencia (cadena de firmas)</h4>
+  <ol><li>Primer firmante: quien confecciona la solicitud (opción “Yo mismo”).</li><li>Segundo firmante: el jefe inmediato superior.</li><li>Último: el agente que la recibe en el área o departamento de Personal (RRHH).</li></ol>
+
+  <h3>Firmar un documento</h3>
+  <ol class="steps">
+    <li>En <strong>Pendientes</strong>: tres puntos → <strong>Evaluar</strong>. Antes de cualquier acción se pueden descargar y ver las constancias adjuntas.<figure><img src="img/do-evaluar.jpg" alt="Documento pendiente con la opción Evaluar"></figure></li>
+    <li><strong>Acciones → Aprobar Firma Conjunta</strong> (o firmar), <em>Enviar a Revisar</em> o <em>Rechazar</em> → comentario opcional → <strong>Continuar</strong>.<figure><img src="img/do-aprobar-fc.jpg" alt="Acciones: Aprobar Firma Conjunta"></figure></li>
+    <li><strong>Firma electrónica → Confirmar</strong>. El documento pasa al siguiente firmante, que repite los pasos.</li>
+  </ol>
+  <p>Cuando firma el último, TIMBÓ genera el DO con <strong>fecha y número</strong> y lo notifica a quien inició el trámite. Si hay inconsistencias, el jefe o el encargado de Personal pueden rechazarlo indicando el motivo: llega un aviso por correo y el agente debe generar una nueva solicitud.</p>
+
+  <h3>Consultar un documento oficial</h3>
+  <p>Menú <strong>Documentos oficiales → Consulta</strong>. Criterios: <em>Número de Documento Oficial</em>, <em>Documentos firmados por mí</em> (rango de fechas), <em>Documentos firmados por mi repartición</em> y <em>Por referencia</em> (de ahí la importancia de redactar bien las referencias). Desde el resultado se puede previsualizar o descargar.</p>
+  <div class="grid2"><figure class="sm"><img src="img/do-consulta-tipos.jpg" alt="Criterios de búsqueda de documentos oficiales"></figure><figure><img src="img/do-consulta-numero.jpg" alt="Consulta por número de documento oficial"></figure></div>
+
+  <h3 id="comunicaciones">Comunicaciones oficiales</h3>
+  <p>Surgen cuando se genera un DO <strong>comunicable</strong>. Se pueden previsualizar, descargar, eliminar o reenviar. Menú <strong>Comunicaciones oficiales</strong>. Pestañas:</p>
+  <figure class="sm"><img src="img/do-com-menu.jpg" alt="Menú con Comunicaciones oficiales"></figure>
+  <ul>
+    <li><strong>Recibidas</strong>: remitente, fecha y referencia, con filtros <em>Todos</em> y <em>No leídos</em>. Desde los tres puntos: <strong>Responder</strong> (mediante un DO, eligiendo “Uno mismo” como productor), <strong>Reenviar</strong> (buscar al destinatario → Confirmar; queda en Enviadas), <strong>Ver detalles</strong>, <strong>Ver destinatarios</strong> (verde = leído, amarillo = enviado pero no leído), <strong>Previsualizar</strong> y <strong>Eliminar</strong>.</li>
+    <li><strong>Enviadas</strong>: con un círculo de color: <span style="color:#2e9b4a">verde</span>, leído por todos; <span style="color:#b58a00">amarillo</span>, leído por algunos; <span style="color:#d97a00">naranja</span>, no leído.</li>
+    <li><strong>Eliminadas</strong>: se pueden <strong>Restaurar</strong> y vuelven a Recibidas.</li>
+  </ul>
+  <figure class="sm"><img src="img/do-com-eliminar.jpg" alt="Confirmación para eliminar una comunicación"><figcaption>Eliminar solo la quita de tu bandeja; sigue en la de los demás destinatarios.</figcaption></figure>
+
+  <h3 id="catalogo-do">Catálogo de tipos de DO (selección útil para hospitales)</h3>
+  <p class="muted">Extracto del PDF oficial “Tipos y clases de Documentos Oficiales” (actualización 14/04/2026). La elección de cuáles sirven en un hospital es una <span class="tag r">RECOMENDACIÓN</span>; el catálogo completo tiene más de 100 tipos.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Nombre</th><th>Acrónimo</th><th>Tipo y características</th></tr>
+    <tr><td>Nota Libre</td><td>NOL</td><td>Libre. Una sola firma. Permite embeber archivos.</td></tr>
+    <tr><td>Nota Libre Firma Conjunta</td><td>NOLFC</td><td>Libre. Firma conjunta, aviso de firma, comunicable.</td></tr>
+    <tr><td>Nota Libre Comunicable</td><td>NOLC</td><td>Libre. Comunicable, aviso de firma.</td></tr>
+    <tr><td>Nota Importada</td><td>NOI</td><td>Importado. Una firma, comunicable.</td></tr>
+    <tr><td>Nota Importada Firma Conjunta</td><td>NOIFC</td><td>Importado. Firma conjunta, comunicable.</td></tr>
+    <tr><td>Nota Libre / Importada Reservada</td><td>NLR / NIR</td><td>Reservada. Firma conjunta.</td></tr>
+    <tr><td>Informe Libre</td><td>IFL</td><td>Libre. Una firma.</td></tr>
+    <tr><td>Informe Libre Firma Conjunta</td><td>INFLFC</td><td>Libre. Firma conjunta.</td></tr>
+    <tr><td>Informe Importado</td><td>INFI</td><td>Importado. Una firma.</td></tr>
+    <tr><td>Informe Especial Reservado</td><td>IER</td><td>Importado. Especial, reservado y comunicable (interno).</td></tr>
+    <tr><td>Documento Libre / Documento Importado</td><td>DL / DI</td><td>Una firma (DL embebe archivos).</td></tr>
+    <tr><td>Documento Libre / Importado Firma Conjunta</td><td>DLFC / DIFC</td><td>Firma conjunta.</td></tr>
+    <tr><td>Justificación y Licencias</td><td>SJL</td><td>Formulario para certificaciones y licencias personales. Firma conjunta.</td></tr>
+    <tr><td>Solicitud reconocimiento médico</td><td>SRM</td><td>Formulario. Firma conjunta, comunicable (interno y externo).</td></tr>
+    <tr><td>Solicitud Compras Menores</td><td>SCM</td><td>Formulario para materiales, bienes y servicios de costo acotado. Firma conjunta, comunicable.</td></tr>
+    <tr><td>Compras Menores Libre Firma Conjunta</td><td>CMLFC</td><td>Libre. Firma conjunta, comunicable.</td></tr>
+    <tr><td>CD01 a CD04 (contratación directa)</td><td>CD01–CD04</td><td>Formularios: solicitud de contratación directa, de presupuesto, evaluación y adjudicación, y orden de provisión.</td></tr>
+    <tr><td>Ficha Técnica Importada Firma Conjunta</td><td>FTFC</td><td>Fichas técnicas para autorizar compras.</td></tr>
+    <tr><td>Presupuesto Importado</td><td>PRES</td><td>Plan financiero de ingresos y gastos. Una firma.</td></tr>
+    <tr><td>Certificación de bienes y servicios</td><td>CLFC</td><td>Libre. Firma conjunta, comunicable.</td></tr>
+    <tr><td>Certificación de servicios prestados</td><td>CSERV</td><td>Importado. Comunicable.</td></tr>
+    <tr><td>Acta Importada / Acta Libre</td><td>ACTI / ACTL</td><td>Una firma (también hay versiones con firma conjunta: ACTIFC y ACTLFC).</td></tr>
+    <tr><td>Constancia Importada</td><td>CONS</td><td>Constancias de AFIP/ARCA, IIBB, etc. Una firma.</td></tr>
+    <tr><td>Comprobante Importado</td><td>COMP</td><td>Comprobantes de pagos y liquidaciones. Una firma.</td></tr>
+    <tr><td>Declaración Jurada Importada</td><td>DECJU</td><td>Comunicable, embebe archivos.</td></tr>
+    <tr><td>Recibo / Reclamo Importado</td><td>RECI / RECLA</td><td>Una firma.</td></tr>
+    <tr><td>Planilla Anexa Importada</td><td>PAI / PAIFC</td><td>Planillas en PDF.</td></tr>
+    <tr><td>Solicitud Libre / Importada</td><td>SOL / SOI</td><td>Una firma (SOLFC con firma conjunta).</td></tr>
+  </table></div>
+</section>
+
+<!-- AAR -->
+<section id="aar">
+  <h2><span class="n">17.</span>Actos Administrativos Registrables (Módulo 6) <span class="tag c">CONFIRMADO</span></h2>
+  <p>Fuente: instructivo “¿Cómo gestionar Actos Administrativos Registrables (AAR)?” (25 p.) y video “Actos Administrativos Registrables ¿Cómo lo hacemos?”.</p>
+  <p>Un <strong>acto administrativo registrable</strong> es una decisión de la administración que debe asentarse en un registro oficial para ser válida y reconocida legalmente; por ejemplo, decretos, resoluciones y disposiciones. En TIMBÓ se gestionan desde <strong>Actos administrativos registrables → Resoluciones digitales</strong>. Hay tres permisos:</p>
+  <div class="grid2">
+    <div class="card"><h4>Gestor</h4><p>Carga la información del acto que emitirá la Unidad de Organización, arma la cadena de firmas, protocoliza e ingresa el link del SIN.</p></div>
+    <div class="card"><h4>Firmante</h4><p>Firma el acto (permiso especial de firma de actos administrativos).</p></div>
+    <div class="card"><h4>Seguimiento por organismo</h4><p>Consulta el estado de los trámites del organismo. Puede darse solo o junto con los otros permisos.</p></div>
+  </div>
+  <div class="grid2"><figure class="sm"><img src="img/aar-menu.jpg" alt="Menú Actos administrativos registrables, Resoluciones Digitales"></figure><figure><img src="img/aar-bandeja.jpg" alt="Bandeja Resoluciones Digitales"></figure></div>
+  <p>La bandeja de Resoluciones Digitales tiene las pestañas <em>En curso</em>, <em>Finalizados</em> (protocolizadas, con número y link al SIN), <em>Seguimiento organismo</em> y <em>Finalizados organismo</em>. Filtros: número de expediente, resumen ejecutivo, tipo, firmante, organismo de origen, estado y fecha.</p>
+
+  <h3>A. Iniciar la resolución (gestor)</h3>
+  <ol class="steps">
+    <li><strong>Nuevo Trámite → Firma resolución → Iniciar</strong>.<figure><img src="img/aar-nuevo.jpg" alt="Nuevo Trámite, Firma Resolución, Iniciar"></figure></li>
+    <li>Completar el formulario (los campos con * son obligatorios):
+      <ul>
+        <li><strong>Iniciador*</strong>: la oficina que inicia el trámite (se obtiene de la carátula del EE). <strong>Organismo de origen*</strong>: la oficina que emite el acto, de donde se toma la numeración. <strong>Trámite urgente</strong>: sí o no.</li>
+        <li><strong>Nº de expediente*</strong>: completo, con el formato de la plataforma donde se gestiona (Timbó o SIE). <strong>Tema*</strong>, <strong>Año*</strong>.</li>
+        <li><strong>Resolución*</strong>: el PDF de la nueva resolución. <strong>No subir un archivo ya firmado</strong> (electrónicamente o encriptado): el sistema no lo permite.</li>
+        <li><strong>Resumen ejecutivo</strong>: el motivo de la resolución.</li>
+        <li><strong>Anexos</strong> (si hay): un PDF con su referencia → Agregar. Los anexos no deben tener firma electrónica previa.</li>
+      </ul>
+      <p class="muted">El instructivo ofrece plantillas modelo de resolución y de anexos (Word / LibreOffice). Se suben en PDF.</p>
+      <figure><img src="img/aar-formulario.jpg" alt="Formulario Firma de resolución"></figure></li>
+    <li><strong>Guardar</strong>. Aparece un mensaje que confirma que la cadena se inició, y el trámite queda en <em>En curso</em>.</li>
+  </ol>
+
+  <h3>B. Gestionar la cadena de firmas</h3>
+  <ol class="steps">
+    <li>En <em>En curso</em>: tres puntos → <strong>Gestor de Trámite</strong>.<figure><img src="img/aar-gestor.jpg" alt="Tres puntos con Gestor de Trámite"></figure></li>
+    <li>En <em>Documentos pendientes</em>: tres puntos → <strong>Obtener</strong>. El sistema toma la resolución y los anexos. Opciones: previsualizar (<strong>muy importante, para evitar errores u omisiones</strong>), descargar, eliminar e iniciar la cadena de firmas.<figure class="sm"><img src="img/aar-obtener.jpg" alt="Opciones Previsualizar, Descargar, Obtener, Iniciar cadena de firmas, Eliminar"></figure></li>
+    <li><strong>Iniciar cadena de firmas</strong>: buscar a los firmantes, tildarlos, elegir el <strong>sistema de firma</strong> y ordenarlos (ícono de 6 puntos) → <strong>Confirmar</strong>. Se recomienda “Firmador electrónico o digital” para no cortar la cadena. Si hay un único firmante con firma digital, se elige “Firmador digital”; si tiene firma electrónica, “Firmador electrónico”.<figure class="sm"><img src="img/aar-cadena.jpg" alt="Conformar listado de usuarios a firmar"></figure></li>
+  </ol>
+  <p>Mientras se firma, el gestor puede consultar el trámite: previsualizar, descargar, ver el estado de la cadena o eliminarla. Para corregir el documento, <strong>primero hay que eliminar la cadena de firmas</strong>, luego eliminar el documento y cargar la versión corregida.</p>
+  <h4>Modificar o rechazar antes de iniciar la cadena</h4>
+  <p>En <em>En curso</em>: tres puntos → <strong>Acciones</strong> → <strong>Modificar Resolución</strong> (la envía a revisión o corrección; después hay que volver a iniciar la cadena) o <strong>Rechazo Despacho</strong> (cancela el trámite). Aun con la cadena iniciada y al menos una firma, se puede modificar o rechazar: el primer firmante recibe un correo.</p>
+  <figure class="sm"><img src="img/aar-modificar.jpg" alt="Acciones: Modificar Resolución, Rechazar Despacho"></figure>
+
+  <h3>C. Firmar (firmante)</h3>
+  <ol class="steps">
+    <li>Menú <strong>Actos administrativos registrables → Firma de Actos Administrativos</strong>. Pestañas: <em>Firmas pendientes</em>, <em>Seguimiento</em> e <em>Historial finalizadas</em>.<figure class="sm"><img src="img/aar-firma-menu.jpg" alt="Menú Firma de Actos Administrativos"></figure></li>
+    <li>Firmas pendientes: tres puntos → <strong>Evaluar</strong>. Se ve la resolución con sus anexos.</li>
+    <li><strong>Acciones → Firmar</strong> (o <em>Rechazar</em> si hay errores; en ese caso hay que iniciar una nueva resolución) → comentario → <strong>Continuar</strong>.<figure class="sm"><img src="img/aar-firmar.jpg" alt="Acciones: Firmar o Rechazar"></figure></li>
+    <li>Firma electrónica o digital (según la que tenga habilitada) → <strong>Confirmar</strong>.</li>
+  </ol>
+  <p>Cada firmante recibe un correo cuando le toca firmar. Hasta que firman todos, el acto se ve en Firmas pendientes del firmante que corresponde.</p>
+
+  <h3>D. Protocolizar (gestor)</h3>
+  <ol class="steps">
+    <li>En <em>En curso</em>, el estado pasa a <strong>Evaluar Resolución</strong>: tres puntos → <strong>Acciones</strong>.</li>
+    <li><strong>Protocolizar Resolución</strong> → comentario opcional → <strong>Continuar → Confirmar</strong>. El sistema asigna <strong>número correlativo y fecha</strong>. También se puede elegir <em>Rechazar Resolución</em>, con comentario obligatorio; el trámite se cancela y hay que reiniciarlo.<figure class="sm"><img src="img/aar-protocolizar.jpg" alt="Acciones: Protocolizar Resolución o Rechazar Resolución"></figure></li>
+    <li>Ya numerada, la resolución puede incorporarse al expediente. El trámite queda en el estado “Ingresar link a SIN”.</li>
+  </ol>
+  <h3>E. Ingresar el link del SIN y finalizar</h3>
+  <p>Una vez protocolizada, la resolución se publica en el <strong>Sistema de Información Normativa (SIN)</strong>. La Unidad de Organización necesita un usuario del SIN, que es independiente de TIMBÓ. Después: tres puntos → <strong>Acciones</strong> → pegar el link en <strong>Link de acceso → Guardar</strong> → comentario → <strong>Continuar → Confirmar</strong>. La resolución pasa a <em>Finalizados</em> con el estado “Resolución firmada”.</p>
+  <figure><img src="img/aar-link-sin.jpg" alt="Ingresar link a SIN"></figure>
+  <p>Una vez firmada, la resolución se convierte en <strong>documento oficial</strong>: cualquier usuario de TIMBÓ puede consultarla por su número en el módulo Documentos Oficiales.</p>
+  <div class="box tip"><strong class="t">Para el hospital <span class="tag r">RECOMENDACIÓN</span></strong><p>Este módulo lo usan solo quienes tienen permiso de gestor o firmante (por ejemplo, Dirección o Despacho). Conviene capacitarlos en un grupo aparte del resto del personal.</p></div>
+</section>
+
+<!-- AV -->
+<section id="atencion-virtual">
+  <h2><span class="n">18.</span>Atención Virtual (Módulo 7) <span class="tag c">CONFIRMADO</span></h2>
+  <p>Fuente: instructivo “¿Cómo trabajar en Atención Virtual (AV)?” (18 p.) y videos “Atención Virtual ¿Cómo lo hacemos?” y “Consultar un Expediente mediante Atención Virtual”.</p>
+  <p>La Atención Virtual es un servicio en línea disponible las 24 horas para que cualquier ciudadano con <strong>ID Ciudadana</strong> haga trámites sin ir a una oficina. El ciudadano inicia el trámite con información y documentación; un <strong>agente receptor</strong> lo revisa, puede pedir correcciones y lo resuelve. La respuesta se comunica con un mensaje y, a veces, con un documento oficial o un expediente electrónico.</p>
+  <p><strong>Requisitos del agente</strong>: ID Ciudadana, permisos de atención de trámites de AV y pertenecer a la oficina de TIMBÓ a la que llega el trámite.</p>
+  <div class="grid2"><figure class="sm"><img src="img/av-menu.jpg" alt="Menú con Atención Virtual"></figure><figure><img src="img/av-pendientes.jpg" alt="Bandeja Atención Virtual: Asignadas, Pendientes de revisión, En proceso, Finalizadas"></figure></div>
+  <h3>A. Revisar solicitudes pendientes</h3>
+  <ol class="steps">
+    <li>Pestaña <strong>Pendientes de Revisión</strong>: llegan todas las atenciones que inicia la ciudadanía.</li>
+    <li>Clic en <strong>Todos → Asignar a mí mismo</strong> (o asignar a otro usuario).<figure class="sm"><img src="img/av-asignar.jpg" alt="Asignar a mí mismo"></figure></li>
+    <li>Pestaña <strong>Asignadas</strong>: tres puntos → <strong>Chat de Atención</strong> para ver los documentos enviados.<figure><img src="img/av-chat.jpg" alt="Tres puntos con Chat de atención"></figure></li>
+    <li>En cada documento: tres puntos → <strong>Revisar</strong>. Los que tienen el <strong>ícono naranja</strong> están pendientes de revisión, y no se puede generar un EE mientras haya pendientes.<figure><img src="img/av-revisar.jpg" alt="Documentos con ícono naranja y opción Revisar"></figure></li>
+    <li><strong>Aprobar</strong> si está bien, o <strong>Rechazar</strong> eligiendo el motivo: no corresponde, ilegible, información incorrecta, dañado o no aplica.<figure class="sm"><img src="img/av-rechazar-motivos.jpg" alt="Motivos de rechazo de documento"></figure></li>
+    <li>Si se rechazó algo: escribir un mensaje al final (obligatorio) → <strong>Enviar al ciudadano</strong>. El trámite pasa a <em>En proceso</em>. El ciudadano lo ve en “Necesita información” y recibe un correo. <strong>Hasta que no responda, no se le pueden enviar mensajes ni avanzar.</strong><figure><img src="img/av-enviar-ciudadano.jpg" alt="Mensaje y botón Enviar al ciudadano"></figure></li>
+  </ol>
+  <p>Cuando el ciudadano reenvía, el trámite vuelve a <em>Pendientes de revisión</em> y hay que repetir: asignarse, abrir el chat, revisar y aprobar o rechazar.</p>
+  <h3>B. Opciones para gestionar el trámite (Acciones)</h3>
+  <figure class="sm"><img src="img/av-acciones.jpg" alt="Acciones: Finalizar Trámite, Generar Expediente, Realizar Pase a otra Oficina"></figure>
+  <ul>
+    <li><strong>Finalizar trámite</strong>: cuando la solicitud no corresponde, o cuando se aprueba y termina <strong>sin</strong> generar un expediente. Comentario obligatorio y documento opcional → Continuar → Confirmar. Pasa a <em>Finalizados</em>.</li>
+    <li><strong>Realizar pase a otra oficina</strong> sin generar EE: oficina primaria (el ministerio) y secundaria → comentario obligatorio → Confirmar. Después ya no se ve en ninguna pestaña propia. Se puede hacer sin aprobar la documentación y las veces que haga falta, pero la oficina destino necesita al menos un usuario con <strong>permiso de operador de Atención Virtual</strong>; si no lo tiene, el sistema avisa que no se puede.</li>
+    <li><strong>Generar expediente</strong>: el comentario obligatorio pasa a ser el <strong>motivo del trámite</strong> (precisión: por ejemplo, el nombre del solicitante). El trámite se caratula solo y aparece en <strong>Expedientes → Gestión</strong> (pestaña Gestión): asignárselo y abrirlo con Gestor de Expediente. La carátula lleva la firma electrónica de quien generó el EE, y los documentos del ciudadano, la firma electrónica de él.</li>
+  </ul>
+  <h3>C. Trabajar el EE originado en AV</h3>
+  <ul>
+    <li>En Acciones se puede subir un archivo, agregar un documento generado en Timbó (con plantillas) o vincular un DO con su código. Luego <strong>Enviar expediente</strong> para hacer un pase.</li>
+    <li><strong>Solicitar información</strong>: cualquier agente que tenga el EE asignado puede pedirle documentos al ciudadano (elige qué documentos y deja un comentario). Abajo aparece “A la espera de que el ciudadano responda”. Lo que conteste llega como documento pendiente para incorporar.<figure class="sm"><img src="img/av-solicitar.jpg" alt="Botones Solicitar información, Enviar aviso y Enviar Expediente"></figure></li>
+    <li><strong>Enviar aviso al ciudadano</strong>: notifica que el trámite terminó, adjuntando un documento ya incorporado al EE (por ejemplo, un carnet o una declaración de interés). El mensaje es obligatorio. Solo aparece si se generó un EE.<figure class="sm"><img src="img/av-aviso.jpg" alt="Enviar aviso al ciudadano"></figure></li>
+    <li><strong>Documentación por iniciativa propia</strong>: con un EE generado, el ciudadano puede enviar documentos sin que se los pidan. Aparece un ícono en el expediente, queda registrado en el Historial y el agente evalúa si corresponde incorporarlos.</li>
+    <li><strong>Finalización</strong>: el EE termina cuando se envía a <strong>Guarda Temporal</strong> (con permiso). Si no se tiene el permiso, se hace un pase a la oficina que corresponda para que lo envíe. El ciudadano puede consultar siempre el EE desde la pestaña <em>Expedientes</em> de su Atención Virtual.<figure class="sm"><img src="img/av-guarda.jpg" alt="Acciones: Enviar a Guarda Temporal"></figure></li>
+  </ul>
+  <div class="box tip"><strong class="t">Para el hospital <span class="tag r">RECOMENDACIÓN</span></strong><p>Si el hospital recibe trámites ciudadanos por Atención Virtual (por ejemplo, pedidos de certificados), el chat queda registrado: hay que usar un lenguaje claro y respetuoso, y no pedir datos de salud que no sean necesarios.</p></div>
+</section>
+
+<!-- 17 -->
+<section id="visualizacion">
+  <h2><span class="n">19.</span>Gestión de visualización (vistas de expedientes) <span class="tag c">CONFIRMADO</span></h2>
+  <p>La vista permite consultar todos los documentos incorporados e informativos de un EE, y se actualiza según los movimientos. Se otorga por un tiempo determinado y quien la dio puede quitarla en cualquier momento.</p>
+  <ul>
+    <li><strong>Solicitar vista</strong>: un usuario interesado se la pide a la oficina donde está el EE.</li>
+    <li><strong>Compartir vista</strong>: la oficina la otorga a uno o más usuarios sin que la hayan pedido.</li>
+  </ul>
+  <figure class="sm"><img src="img/vis-menu.jpg" alt="Menú Expedientes con Gestión de visualización"></figure>
+  <figure><img src="img/vis-bandeja.jpg" alt="Bandeja Gestión de visualización con pestañas En curso, Finalizadas y Vistas Compartidas"><figcaption>Expedientes → Gestión de visualización → Nuevo trámite.</figcaption></figure>
+  <h3>A. Solicitar vista</h3>
+  <ol class="steps">
+    <li><strong>Nuevo trámite → Solicitud vista de expediente</strong>.<figure><img src="img/vis-opciones.jpg" alt="Opciones Solicitud vista de expediente y Compartir Vista de Expediente"></figure></li>
+    <li>Escribir el número de expediente y tocar la <strong>lupa</strong>. Se muestra la información del EE.<figure><img src="img/vis-buscar.jpg" alt="Búsqueda de expediente por número"></figure></li>
+    <li>Completar el <strong>Período de visibilidad</strong> (fecha sugerida) y el <strong>Motivo de la solicitud</strong>.</li>
+    <li><strong>Enviar</strong>. La solicitud queda <em>En curso</em> como “Evaluar solicitud de vista – Operador EE”. Cuando se otorga, cambia a “Visualizar Expediente”.<figure><img src="img/vis-en-curso.jpg" alt="Solicitud de vista en curso"></figure></li>
+  </ol>
+  <h3>B. Aprobar o rechazar una solicitud (oficina que tiene el EE)</h3>
+  <p>La oficina recibe un correo. Cualquier usuario de la oficina donde está el EE puede aprobarla o rechazarla.</p>
+  <ol class="steps">
+    <li>Tres puntos → <strong>Acciones</strong> → “Gestión de Visualización del Expediente” → completar el formulario.<figure class="sm"><img src="img/vis-acciones.jpg" alt="Acciones: formulario de gestión de visualización"></figure></li>
+    <li>Indicar la <strong>Fecha de visibilidad</strong> (fecha límite que se otorga) → aceptar el consentimiento de firma → <strong>Enviar</strong>.</li>
+    <li><strong>Aprobar vista</strong> o <strong>Rechazar vista</strong> → comentario → <strong>Continuar → Confirmar</strong>.<figure class="sm"><img src="img/vis-aprobar-rechazar.jpg" alt="Opciones Aprobar vista y Rechazar vista"></figure></li>
+  </ol>
+  <p>Por cada solicitud se genera una providencia: queda registrado tanto el pedido como el otorgamiento.</p>
+  <h3>C. Consultar un EE con vista otorgada</h3>
+  <p>En <em>En curso</em>, tres puntos → <strong>Gestor de Trámite</strong> → <em>Previsualizar documentos</em> (se ven en orden y se pueden descargar).</p>
+  <figure class="sm"><img src="img/vis-botonera.jpg" alt="Opciones Gestor de Trámite y Acciones"></figure>
+  <h3>D. Comentar o informar sobre la vista</h3>
+  <ol class="steps">
+    <li><strong>Enviar trámite → Generar informe</strong>.</li>
+    <li>Elegir el tipo de informe (por ejemplo, <em>Motivo</em>) y escribir la descripción, o adjuntar un DO o un archivo → <strong>Guardar</strong>.<figure><img src="img/vis-generar-informe.jpg" alt="Formulario Generar informe"></figure></li>
+    <li><strong>Informe realizado → Continuar → Confirmar</strong>. Quien otorgó la vista y quien subió el informe reciben un correo.<figure class="sm"><img src="img/vis-informe-realizado.jpg" alt="Acciones con Informe Realizado"></figure></li>
+  </ol>
+  <p><strong>Incorporar ese comentario al EE</strong> (quien otorgó la vista): pestaña <em>Finalizadas</em> → tres puntos → <em>Previsualizar</em> → descargar el documento <strong>Determinación</strong> e incorporarlo al EE como documento.</p>
+  <p><strong>Pestaña Finalizadas</strong>: vistas vencidas, accesos quitados y solicitudes rechazadas.</p>
+  <figure><img src="img/vis-finalizadas.jpg" alt="Pestaña Finalizadas"></figure>
+  <h3>E. Compartir vista</h3>
+  <ol class="steps">
+    <li><strong>Nuevo trámite → Compartir vista de expediente</strong>.<figure><img src="img/vis-compartir.jpg" alt="Opción Compartir Vista de Expediente"></figure></li>
+    <li>Buscar los expedientes con los filtros (número, tema, motivo, fechas, solicitante, oficinas) → <strong>Buscar</strong>.</li>
+    <li>Seleccionar todos (casilla de la derecha) o uno por uno (tres puntos → <em>Seleccionar expediente</em>). Se pueden eliminar o usar <em>Reiniciar selección</em>.</li>
+    <li><strong>Agregar destinatarios</strong> desde Usuarios, Lista de destinatarios u Oficina → <strong>Agregar</strong>.<figure class="sm"><img src="img/vis-destinatarios.jpg" alt="Agregar destinatarios desde Usuarios, Lista de Destinatarios u Oficina"></figure></li>
+    <li>Definir la <strong>fecha de inicio</strong> (por defecto, el día de la gestión) y la <strong>fecha de fin</strong> de visualización → <strong>Guardar</strong>.<figure><img src="img/vis-fechas.jpg" alt="Fechas de inicio y fin de visualización"></figure></li>
+  </ol>
+  <div class="box key"><strong class="t">A tener en cuenta al compartir</strong>
+  <ul>
+    <li><strong>Máximo 500 expedientes por lote.</strong> Si se seleccionan 501 o más, el botón <em>Enviar</em> desaparece: hay que dividir en sublotes o pedir el permiso especial de vistas masivas.</li>
+    <li>Procesar un lote de hasta 500 lleva <strong>aproximadamente 1 hora</strong>. No es instantáneo.</li>
+    <li>Mientras se procesa, quien comparte ve el estado <strong>Temporizador</strong>.</li>
+    <li>Si se define un rango de fechas futuro, el proceso corre desde las 00:00 del día “desde”.</li>
+    <li>Se pueden compartir expedientes de la propia oficina y de sus dependientes.</li>
+  </ul></div>
+  <p>Los destinatarios reciben una <strong>notificación por correo</strong>, con un archivo CSV que detalla los expedientes compartidos. La pestaña <strong>Vistas Compartidas</strong> muestra lo compartido, a quién y por cuánto tiempo (opciones: Ver flujo, Historial, Previsualizar).</p>
+  <figure class="sm"><img src="img/vis-notificacion.jpg" alt="Correo de notificación Vista de Expediente Compartida"></figure>
+  <p class="muted">Ver el informe de una vista (video): copiar el número de solicitud del correo, ir a Gestión de visualización, pegarlo en el buscador de <em>En curso</em>, tres puntos → Previsualizar.</p>
+</section>
+
+<!-- 18 -->
+<section id="oficinas">
+  <h2><span class="n">20.</span>Oficinas, usuarios y permisos <span class="tag c">CONFIRMADO</span></h2>
+  <p>La Sectorial de Informática de cada jurisdicción, o los administradores locales, cargan las oficinas y los usuarios. Antes se completa la <strong>planilla de relevamiento</strong> y se diseña y valida políticamente el organigrama digital.</p>
+  <h3>Criterios para oficinas</h3>
+  <ul>
+    <li>Se organizan <strong>por funciones</strong>, no por estructura orgánica formal ni por criterio geográfico.</li>
+    <li><strong>Una sola Mesa de Entradas</strong> por ministerio, secretaría de Estado u organismo descentralizado (salvo los órganos rectores).</li>
+    <li>Una oficina por cada autoridad hasta el nivel de Subdirección Provincial. El nombre debe coincidir con la norma de creación, y la oficina debe incluir como mínimo al funcionario a cargo.</li>
+    <li>Las oficinas que emiten actos administrativos registrables (resoluciones) deben incluir al firmante y tener la denominación oficial.</li>
+    <li><strong>Evitar oficinas de una sola persona.</strong></li>
+  </ul>
+  <p><strong>Modificar una oficina</strong> (cambio de denominación o de dependencia funcional de las bandejas): un funcionario político o personal de planta con jerarquía mínima de jefatura de departamento pide el cambio a la Sectorial de Informática, citando la norma que lo respalda.</p>
+  <h3>Criterios para usuarios</h3>
+  <ul>
+    <li>Solo se registran personas con <strong>vínculo jurídico vigente</strong> (trabajo o prestación de servicios) con la administración provincial.</li>
+    <li>Un usuario puede estar en <strong>más de una oficina</strong> si el organigrama lo justifica.</li>
+    <li>El <strong>permiso de carátula</strong> se da solo a Mesas de Entrada / Despacho, ministros, secretarías privadas, secretarios y subsecretarios políticos. Los demás permisos se otorgan según las tareas que realmente hace cada usuario.</li>
+    <li>La Unidad de Gestión TIMBÓ puede revisar, modificar o revocar permisos si detecta inconsistencias, desactualizaciones o riesgos.</li>
+    <li><strong>Altas y bajas</strong>: un funcionario o personal de planta con jerarquía mínima de jefatura de departamento las pide por <strong>iTop</strong>, y la Sectorial de Informática hace el cambio.</li>
+  </ul>
+  <div class="box tip"><strong class="t">Aplicación en el hospital <span class="tag r">RECOMENDACIÓN</span></strong><p>Antes de capacitar a un servicio, confirmá con Informática que cada participante ya esté dado de alta en su oficina y con los permisos correctos. Si no, no van a ver los módulos y la práctica se frustra (es una consulta frecuente en el foro del curso).</p></div>
+</section>
+
+<!-- 19 -->
+<section id="tramites">
+  <h2><span class="n">21.</span>Incorporar trámites internos y externos <span class="tag c">CONFIRMADO</span></h2>
+  <div class="grid2">
+    <div class="card"><h4>Internos</h4>
+      <ul>
+        <li>Los <strong>Promotores de Innovación</strong> piden la incorporación a la Secretaría de Gestión Pública.</li>
+        <li>Si el trámite es interjurisdiccional, hay que detallar todos los destinatarios.</li>
+        <li>Si es general (común a toda la administración), lo validan previamente los órganos rectores.</li>
+        <li>Las modificaciones las aprueba la Secretaría de Gestión Pública.</li>
+        <li>Hay un repositorio público en la pestaña <em>Biblioteca de Procedimientos Administrativos</em> de TIMBÓ.</li>
+      </ul></div>
+    <div class="card"><h4>Externos (Atención Virtual)</h4>
+      <ul>
+        <li>Los trámites para la ciudadanía se implementan y gestionan de manera íntegramente digital con el módulo <strong>Atención Virtual</strong>.</li>
+        <li>Otros canales solo se admiten si no se puede iniciar por TIMBÓ (atención presencial) o si hay una herramienta mejor aprobada.</li>
+        <li><strong>Accesibilidad</strong>: asesorar para obtener la ID Ciudadana; recibir y digitalizar documentación en papel; completar formularios; garantizar medios de atención.</li>
+        <li>Todos se publican en el Portal de Trámites con aprobación previa.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section id="firma">
+  <h2><span class="n">22.</span>Firma digital y puesto de trabajo (curso de soporte) <span class="tag c">CONFIRMADO</span></h2>
+  <p>Esto interesa a Informática del hospital y a las autoridades que firman con token. Los demás agentes firman con <strong>firma electrónica</strong> y no necesitan nada de esto.</p>
+  <h3>Requisitos del puesto para firmar digitalmente</h3>
+  <ol>
+    <li>Acceso a la plataforma (tramites.santafe.gob.ar).</li>
+    <li>Usuario en el sistema (ID Ciudadana), dado de alta con permisos y repartición.</li>
+    <li><strong>Token</strong> vigente con el certificado de firma (consultar modelos vigentes; certificados emitidos por la AC-ONTI).</li>
+    <li><strong>Drivers del token</strong> instalados.</li>
+    <li><strong>Oracle Java 11.0</strong>.</li>
+    <li>Componente <strong>Firmador</strong> instalado, actualizado y <strong>en ejecución</strong>.</li>
+  </ol>
+  <div class="tablewrap"><table>
+    <tr><th>Token</th><th>Linux</th><th>Windows</th><th>Mac</th></tr>
+    <tr><td>ePass2003</td><td><code>usr/lib/libcastle.so.1.0.0</code></td><td><code>C:/Windows/system32/eps2003csp11.dll</code></td><td><code>/usr/local/lib/libcastle.1.0.0.dylib</code></td></tr>
+    <tr><td>SafeNet 5110</td><td><code>usr/lib/libeTPkcs11.so</code></td><td><code>C:/Windows/system32/eTPKCS11.dll</code></td><td><code>/usr/local/lib/libeTPkcs11.dylib</code></td></tr>
+  </table></div>
+  <h3>Firmador (Moorea Signer)</h3>
+  <ul>
+    <li>Instaladores: <code>moorea_signer.exe</code> (Windows), <code>moorea_signer.deb</code> (Linux) y <code>moorea_signer.dmg</code> (Mac). El aula ofrece la versión 2.9 (12/07/2024) y <code>firmador2-9.jar</code>. Prueba por consola: <code>java firmador2-9.jar</code>.</li>
+    <li>En el escritorio tiene que estar el acceso directo <strong>“Moorea Signer”</strong>; si no se crea, se arma a mano (en Windows apunta a “Firma Token USB.exe”; en Linux, en /opt/mooreasigner).</li>
+    <li>Para activarlo: <strong>doble clic</strong> en el acceso directo → se ve “Firmador Activo”. Tiene que estar activo cada vez que se firma.</li>
+    <li>Para actualizarlo hay que cerrar el firmador anterior. Al firmar, la plataforma puede pedir instalar la versión nueva.</li>
+    <li>En Mac, el firmador no funciona sin <strong>Java 11</strong>.</li>
+  </ul>
+  <h3>Certificado y token (preguntas frecuentes)</h3>
+  <ul>
+    <li>Un pendrive <strong>no</strong> sirve como token. Debe cumplir FIPS 140-2 nivel 2 o superior y RSA 2048, y estar homologado.</li>
+    <li>Cada organismo compra sus tokens. Excepcionalmente, la Secretaría puede prestar uno por un tiempo limitado.</li>
+    <li>El certificado dura <strong>2 años</strong>. No se renueva: se revoca y se tramita uno nuevo.</li>
+    <li>Si el token se pierde, o se olvida o bloquea la clave, <strong>no hay blanqueo</strong>: hay que revocar el certificado y tramitar otro.</li>
+    <li>Para tramitarlo: solicitud ante la AC-ONTI (Autoridad de Registro: “Poder ejecutivo de la Provincia de Santa Fe”), turno y presentación con DNI y token ante un Oficial de Registro.</li>
+  </ul>
+  <h3>Mesa de soporte</h3>
+  <p>Los problemas de instalación, de la plataforma o de alta de usuarios y reparticiones que Informática no pueda resolver se canalizan con un ticket en <strong>iTop</strong>.</p>
+</section>
+
+<!-- 21 -->
+<section id="seguridad">
+  <h2><span class="n">23.</span>Seguridad de la información (Módulo III) <span class="tag c">CONFIRMADO</span></h2>
+  <p>La ciberseguridad es una responsabilidad compartida por cada agente. Busca garantizar la <strong>confidencialidad, integridad y disponibilidad</strong> de los datos.</p>
+  <h3>Clasificación de la información</h3>
+  <ul>
+    <li><strong>Pública</strong>: la que está en poder del Estado. Cualquier persona puede pedirla sin justificar el pedido.</li>
+    <li><strong>Personal</strong>: identifica a una persona (nombre, DNI, domicilio, teléfono, datos biométricos y <strong>datos de salud</strong>).</li>
+    <li><strong>Confidencial o clasificada</strong>: restringida a un grupo limitado de personas.</li>
+  </ul>
+  <p>Diferencias: la <em>seguridad informática</em> protege la infraestructura; la <em>seguridad de la información</em> protege los datos en cualquier soporte, digital o físico; la <em>ciberseguridad</em> protege la información en dispositivos interconectados.</p>
+  <h3>Amenazas</h3>
+  <ul>
+    <li><strong>Ingeniería social</strong>: manipulación por llamadas, visitas, mensajería, correo o redes sociales.</li>
+    <li><strong>Phishing</strong> (correo falso), <strong>vishing</strong> (llamada telefónica), <strong>ransomware</strong> (secuestro de archivos; puede paralizar hospitales, según el material), <strong>DDoS</strong>, vulnerabilidades de software o hardware desactualizado, y espionaje o amenazas persistentes avanzadas (APT).</li>
+  </ul>
+  <h3>Buenas prácticas</h3>
+  <ul>
+    <li>No dar información personal a desconocidos: bancos, empresas y organismos no la piden por esos medios.</li>
+    <li>Usar contraseñas seguras y distintas, cambiarlas cada 1 o 2 meses según la criticidad y no guardarlas en el navegador.</li>
+    <li><strong>No enviar contraseñas</strong> por correo, chat o WhatsApp.</li>
+    <li>Navegar solo en sitios con https y candado; si el sitio dice “no seguro”, salir.</li>
+    <li>No abrir enlaces ni adjuntos de remitentes no confiables.</li>
+    <li>Configurar el bloqueo automático del equipo; mantener sistema, navegador y antivirus actualizados; hacer copias de seguridad.</li>
+    <li>En equipos compartidos, usar navegación de incógnito.</li>
+    <li>Descargar programas solo de sitios oficiales.</li>
+  </ul>
+</section>
+
+<!-- 22 -->
+<section id="errores">
+  <h2><span class="n">24.</span>Errores frecuentes y soluciones</h2>
+  <div class="tablewrap"><table>
+    <tr><th style="width:28%">Situación</th><th>Causa / solución</th><th style="width:15%">Fuente</th></tr>
+    <tr><td>No aparecen los módulos del menú</td><td>El usuario no está cargado en una oficina o no tiene permisos. Pedir el alta o los permisos mediante el responsable del área (por iTop, vía Informática).</td><td><span class="tag c">CONFIRMADO</span> video</td></tr>
+    <tr><td>“Firmador digital inhabilitado”</td><td>No es un error: el usuario no tiene firma digital (token). Debe elegir <strong>Firma electrónica</strong>.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>La pestaña muestra una caja vacía</td><td>No hay solicitudes o expedientes en ese estado.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>No puedo cargar documentos en un EE que llegó a la oficina</td><td>Está asignado a “Todos”: primero hay que <strong>asignárselo a uno mismo</strong>.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Rechazaron mi carátula</td><td>Ver el motivo en Historial (tres puntos) y hacer una nueva solicitud con código y motivo coherentes.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>No se puede incorporar un archivo</td><td>Para incorporar debe ser PDF de hasta 50 MB. Otros formatos solo van como informativos.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Incorporé un documento equivocado</td><td>No se puede eliminar: hay que <strong>subsanarlo</strong> con un Documento Oficial (no aplica a carátulas ni providencias). Prevención: previsualizar antes de incorporar.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Hice el pase a otra oficina por error</td><td>Avisarle a esa oficina para que lo devuelva por pase. Prevención: verificar el código de oficina en el organigrama.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>No veo “Enviar a Guarda Temporal”, “Archivo” o “Fusionar”</td><td>Requieren permisos especiales.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Fusioné o archivé por error</td><td>Ambas acciones son <strong>irreversibles</strong>. Prevención: explicarlo con énfasis.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Desapareció el botón Enviar al compartir vistas</td><td>Hay más de 500 expedientes seleccionados: dividir en sublotes.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>La vista compartida “no llega”</td><td>Puede demorar (hasta 1 hora para 500 expedientes; estado Temporizador). Si se cargó una fecha futura, empieza ese día a las 00:00.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>No puedo buscar un expediente por número</td><td>Hay que ingresarlo completo, de “EE” hasta las últimas letras.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>El firmador digital no funciona en Mac</td><td>Falta Java 11.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Token perdido o clave olvidada o bloqueada</td><td>No hay blanqueo: revocar el certificado y tramitar uno nuevo.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Olvidé la contraseña de ID Ciudadana</td><td>Opción “¿Olvidaste tu contraseña?” en el ingreso / manual de ID Ciudadana.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Un DO no llega a la otra persona o no lo encuentro después</td><td>Verificar que el tipo sea comunicable y que tenga una referencia clara. Buscarlo en Documentos oficiales → Consulta, por número o por referencia.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>El sistema no acepta el PDF de la resolución</td><td>No hay que subir archivos ya firmados (electrónicamente o encriptados). Los anexos tampoco deben tener firma previa.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Hay que corregir una resolución con la cadena de firmas iniciada</td><td>Primero eliminar la cadena de firmas, después eliminar el documento y cargar la versión corregida. También se puede usar Acciones → Modificar Resolución.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Atención Virtual: no puedo generar el expediente</td><td>Quedan documentos con ícono naranja (pendientes de revisión): hay que revisarlos y aprobarlos o rechazarlos.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Atención Virtual: no puedo escribirle al ciudadano</td><td>Se le pidió información y todavía no respondió (no hay EE creado). Hay que esperar a que complete la documentación.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Atención Virtual: no me deja hacer el pase a otra oficina</td><td>La oficina destino no tiene ningún usuario con permiso de operador de Atención Virtual.</td><td><span class="tag c">CONFIRMADO</span></td></tr>
+    <tr><td>Hice el “autorregistro” y no tengo respuesta</td><td>Hay consultas sobre esto en el foro, pero el curso no documenta el autorregistro. El tutor deriva a los contactos de soporte.</td><td><span class="tag u">NO VERIFICADO</span></td></tr>
+    <tr><td>No me llegan notificaciones de firmas</td><td>Consulta del foro sin respuesta técnica en el curso: derivar a soporte.</td><td><span class="tag u">NO VERIFICADO</span></td></tr>
+  </table></div>
+</section>
+
+<!-- 23 -->
+<section id="ensenar">
+  <h2><span class="n">25.</span>Cómo enseñarlo: recomendaciones <span class="tag r">RECOMENDACIÓN</span></h2>
+  <h3>Antes de la capacitación</h3>
+  <ul>
+    <li>Verificar con Informática que cada participante tenga usuario, oficina y permisos. Sin eso no ven los módulos.</li>
+    <li>Confirmar cuál es la oficina caratuladora (Mesa de Entradas) del hospital y qué códigos de trámite usan con más frecuencia.</li>
+    <li>Tener a mano el código de oficina de los destinos habituales (Dirección, Compras, Personal, etc.).</li>
+    <li>Pedir que cada participante traiga su usuario y contraseña de Intranet (y que no los anote a la vista).</li>
+  </ul>
+  <h3>Secuencia sugerida (2 encuentros de 2 horas)</h3>
+  <div class="grid2">
+    <div class="card"><h4>Encuentro 1 — Bases y expediente</h4><ol>
+      <li>Por qué TIMBÓ: cambio cultural, normativa (fecha límite 1/7/2026, no regresión).</li>
+      <li>Ingreso y recorrido por el menú.</li>
+      <li>Conceptos: carátula, incorporado, informativo, pendiente, providencia.</li>
+      <li>Demo: solicitud de caratulación con buen y mal motivo.</li>
+      <li>Asignación (“Todos” → asignar a mí mismo).</li>
+      <li>Seguridad: clave personal e intransferible.</li></ol></div>
+    <div class="card"><h4>Encuentro 2 — Circuito completo</h4><ol>
+      <li>Subir, previsualizar, incorporar y ordenar.</li>
+      <li>Vincular un DO; subsanar.</li>
+      <li>Pase y redacción de la providencia; código de oficina.</li>
+      <li>Guarda temporal y archivo (permisos e irreversibilidad).</li>
+      <li>Consulta y vistas.</li>
+      <li>Errores frecuentes y canales de soporte.</li></ol></div>
+  </div>
+  <h3>Mensajes clave para repetir</h3>
+  <ul>
+    <li>“Lo que se incorpora no se borra: <strong>previsualizá antes</strong>”.</li>
+    <li>“El motivo es el buscador del futuro: claro y sin ‘varios’”.</li>
+    <li>“Tu clave es tu firma: no se presta”.</li>
+    <li>“Una vez digital, siempre digital: no imprimas ni escanees originales”.</li>
+    <li>“Firmador inhabilitado no es un error: usá firma electrónica”.</li>
+    <li>“Archivar y fusionar no tienen vuelta atrás”.</li>
+  </ul>
+  <h3>Cómo responder dudas</h3>
+  <ul>
+    <li>Si la duda es de permisos, alta o incidencias: derivar a Informática del hospital o a los canales de soporte (<a href="#contactos">sección 27</a>).</li>
+    <li>Actos Administrativos Registrables y Atención Virtual solo los usan quienes tienen esos permisos. Conviene armar grupos separados (Dirección o Despacho; quienes atienden a la ciudadanía).</li>
+    <li>Evitar mostrar en pantalla expedientes reales con datos de pacientes; usar casos ficticios.</li>
+  </ul>
+</section>
+
+<!-- 24 -->
+<section id="practicas">
+  <h2><span class="n">26.</span>Ejercicios prácticos sugeridos <span class="tag r">RECOMENDACIÓN</span></h2>
+  <p>Los datos son ficticios. El curso no ofrece un entorno de práctica: hacelos en el sistema real solo si la Unidad de Gestión o el área lo autorizan, o como ejercicio en papel o en el pizarrón.</p>
+  <ol>
+    <li><strong>Motivos</strong>: reescribir motivos mal redactados (“varios”, “compras”, “nota guardia”) en motivos claros. Ejemplo: “Solicitud de reparación de autoclave del Servicio de Esterilización — Orden de trabajo 12/2026”.</li>
+    <li><strong>Interno o externo</strong>: clasificar casos (pedido de insumos del Servicio de Clínica → interno; presentación de un proveedor → externo).</li>
+    <li><strong>Incorporado o informativo</strong>: un presupuesto en PDF, una planilla Excel de cálculo, una foto de un equipo roto, un borrador de nota.</li>
+    <li><strong>Providencias</strong>: redactar una providencia para remitir a Compras “para continuidad del trámite”, sin identificar la oficina ni incluir información de la gestión.</li>
+    <li><strong>Código de oficina</strong>: encontrar en el organigrama el código de una oficina destino.</li>
+    <li><strong>Ruta del expediente</strong>: armar en el pizarrón el circuito carátula → Mesa de Entradas → asignación → carga → pase → guarda temporal → archivo.</li>
+    <li><strong>Seguridad</strong>: detectar señales de phishing en un correo ficticio que pide la clave de Intranet.</li>
+  </ol>
+</section>
+
+<!-- 25 -->
+<section id="contactos">
+  <h2><span class="n">27.</span>Contactos de soporte <span class="tag c">CONFIRMADO</span></h2>
+  <div class="tablewrap"><table>
+    <tr><th>Tema</th><th>Canal</th></tr>
+    <tr><td>Gestión de TIMBÓ (consultas de uso)</td><td>Correo <strong>innovacionsgp@santafe.gob.ar</strong> (en el PDF de oficinas figura como <em>innovacionsgp@santafe.gov.ar</em>) · WhatsApp <strong>341 3147277</strong> (solo mensajes) · Teléfono: interno 31753-54 desde Santa Fe; 342-4506600 interno 31753-54 desde otras localidades.</td></tr>
+    <tr><td>Firma digital, certificados, tokens</td><td><strong>firmadigital@santafe.gov.ar</strong> · Unidad de Gestión Digital, San Martín 2466 (Santa Fe), tel. 342-4508700.</td></tr>
+    <tr><td>Incidencias técnicas, altas y bajas de usuarios (vía Informática)</td><td>Portal <strong>iTop</strong>: app.santafe.gob.ar/itop/portal/ · Problemas de acceso a iTop: soporte_itop@santafe.gov.ar</td></tr>
+  </table></div>
+  <p class="muted">Los dominios <code>.gob.ar</code> y <code>.gov.ar</code> aparecen en distintos documentos oficiales; se transcriben como figuran en cada uno.</p>
+</section>
+
+<!-- 26 -->
+<section id="pendientes">
+  <h2><span class="n">28.</span>Pendiente de verificar <span class="tag u">NO VERIFICADO</span></h2>
+  <ul>
+    <li>Funcionamiento de los módulos Lista de destinatarios, Administrador Local y TIMBÓ COMPRAS: solo hay descripciones generales.</li>
+    <li>Uso del Sistema de Información Normativa (SIN) para publicar resoluciones: el curso remite a un instructivo aparte que no se consultó.</li>
+    <li>Procedimiento de “autorregistro” mencionado en el foro.</li>
+    <li>Configuración de notificaciones de firma.</li>
+    <li>Contenido de los 6 videos del curso de soporte y de los manuales de instalación por sistema operativo.</li>
+    <li>Preguntas de los chequeos de lectura y de la autoevaluación (no se abrieron).</li>
+    <li>Criterio específico para datos de pacientes en el campo “Motivo” en el ámbito de Salud.</li>
+  </ul>
+  <a class="top" href="#inicio">↑ Volver al inicio</a>
+</section>
+</main>
+</div>
+<script>window.CHATBOT_CONFIG={helpId:'contactos',subtitle:'Busca en la guía de la capacitadora',welcome:'¡Hola! Soy el asistente de esta guía. Preguntame por un tema o procedimiento de TIMBÓ y te muestro qué dice el material y dónde está.',suggestions:['¿Qué diferencia hay entre documento incorporado e informativo?','¿Cómo se protocoliza una resolución?','¿Cómo se genera un expediente desde Atención Virtual?','¿Qué es la firma conjunta?','¿Cuál es el límite para compartir vistas?','No veo los módulos del menú']};</script>
+<script src="chatbot.js"></script>
+</body>
+</html>

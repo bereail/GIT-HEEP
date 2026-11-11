@@ -1,0 +1,33 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ 'Editar' if entrada else 'Nuevo' }} término — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">{{ tema.nombre }}</a><span class="sep">/</span>
+  Glosario
+</nav>
+<h1>{{ 'Editar término' if entrada else 'Nuevo término' }}</h1>
+
+<form method="post" class="admin-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field-row">
+    <div class="admin-field">
+      <label for="termino">Término</label>
+      <input class="input" style="padding-left:12px" id="termino" name="termino" value="{{ entrada.termino if entrada else '' }}" required />
+    </div>
+    <div class="admin-field">
+      <label for="modulo">Módulo / sección a la que pertenece</label>
+      <input class="input" style="padding-left:12px" id="modulo" name="modulo" value="{{ entrada.modulo if entrada else '' }}" />
+    </div>
+  </div>
+  <div class="admin-field">
+    <label for="definicion">Definición</label>
+    <textarea class="input" id="definicion" name="definicion" required>{{ entrada.definicion if entrada else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="uso">¿Dónde se usa / aparece?</label>
+    <textarea class="input" id="uso" name="uso">{{ entrada.uso if entrada else '' }}</textarea>
+  </div>
+  <div><button type="submit" class="btn btn--primary">{{ 'Guardar cambios' if entrada else 'Agregar término' }}</button></div>
+</form>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ 'Editar' if tema else 'Nuevo' }} tema — Panel de administración{% endblock %}
+{% block contenido %}
+{% set v = valores or tema %}
+<nav class="breadcrumbs"><a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>{{ 'Editar' if tema else 'Nuevo' }}</nav>
+<h1>{{ 'Editar tema' if tema else 'Nuevo tema' }}</h1>
+
+<form method="post" class="admin-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+  <div class="admin-field-row">
+    <div class="admin-field">
+      <label for="nombre">Nombre corto</label>
+      <input class="input" style="padding-left:12px" id="nombre" name="nombre" value="{{ v.nombre if v else '' }}" placeholder="Ej: miHospital" required />
+    </div>
+    {% if not tema %}
+    <div class="admin-field">
+      <label for="slug">Slug (identificador en la URL)</label>
+      <input class="input" style="padding-left:12px" id="slug" name="slug" value="{{ v.slug if v else '' }}" placeholder="Se genera del nombre si lo dejás vacío" />
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="admin-field">
+    <label for="nombre_completo">Nombre completo del sistema</label>
+    <input class="input" style="padding-left:12px" id="nombre_completo" name="nombre_completo" value="{{ v.nombre_completo if v else '' }}" />
+  </div>
+
+  <div class="admin-field-row">
+    <div class="admin-field">
+      <label for="organizacion">Organización</label>
+      <input class="input" style="padding-left:12px" id="organizacion" name="organizacion" value="{{ v.organizacion if v else '' }}" />
+    </div>
+    <div class="admin-field" style="max-width:120px">
+      <label for="icono">Ícono (emoji)</label>
+      <input class="input" style="padding-left:12px" id="icono" name="icono" value="{{ v.icono if v else '🧭' }}" />
+    </div>
+    <div class="admin-field" style="max-width:120px">
+      <label for="orden">Orden</label>
+      <input class="input" style="padding-left:12px" type="number" id="orden" name="orden" value="{{ v.orden if v else 0 }}" />
+    </div>
+  </div>
+
+  <div class="admin-field">
+    <label for="descripcion">Descripción (se muestra en la tarjeta de inicio)</label>
+    <textarea class="input" id="descripcion" name="descripcion">{{ v.descripcion if v else '' }}</textarea>
+  </div>
+
+  <div class="admin-field">
+    <label for="alcance">Alcance de la capacitación</label>
+    <textarea class="input" id="alcance" name="alcance">{{ v.alcance if v else '' }}</textarea>
+  </div>
+
+  <div class="admin-field">
+    <label for="recomendaciones">Recomendaciones antes de empezar (una por línea)</label>
+    <textarea class="input" id="recomendaciones" name="recomendaciones">{{ (v.recomendaciones | join('\n')) if v and v.recomendaciones is not string else (v.recomendaciones if v else '') }}</textarea>
+  </div>
+
+  <div class="admin-section-head"><h2 class="section__title" style="margin:0">Ruta guiada "Primeros 15 minutos"</h2></div>
+
+  <div class="admin-field">
+    <label for="quickstart_titulo">Título de la ruta</label>
+    <input class="input" style="padding-left:12px" id="quickstart_titulo" name="quickstart_titulo" value="{{ v.quickstart_titulo if v else '' }}" />
+  </div>
+  <div class="admin-field">
+    <label for="quickstart_intro">Introducción</label>
+    <textarea class="input" id="quickstart_intro" name="quickstart_intro">{{ v.quickstart_intro if v else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="quickstart_cierre">Mensaje de cierre</label>
+    <textarea class="input" id="quickstart_cierre" name="quickstart_cierre">{{ v.quickstart_cierre if v else '' }}</textarea>
+  </div>
+
+  <label class="admin-check"><input type="checkbox" name="activo" {{ 'checked' if (v.activo if v else true) else '' }} /> Tema activo (visible en el portal)</label>
+
+  <div>
+    <button type="submit" class="btn btn--primary">{{ 'Guardar cambios' if tema else 'Crear tema' }}</button>
+  </div>
+</form>
+{% endblock %}

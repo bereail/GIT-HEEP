@@ -1,0 +1,5 @@
+Desde la carpeta timbo-capacitacion:
+
+python -m http.server 8080
+
+Y después abrís http://localhost:8080/ en el navegador.

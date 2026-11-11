@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block titulo %}Tengo un problema — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+{% macro tarjeta_situacion(s) %}
+<div class="card situation-card">
+  <div class="situation-card__head">
+    <span class="situation-card__title">{{ s.situacion }}</span>
+    <span class="badge badge--{{ 'verified' if s.verificado else 'unverified' }}">{{ '✓ Verificado' if s.verificado else '🟡 No verificado' }}</span>
+  </div>
+  <div class="situation-card__desc">{{ s.descripcion }}</div>
+  {% if s.causa %}
+  <div class="situation-card__label">Por qué pasa</div>
+  <div class="situation-card__text">{{ s.causa }}</div>
+  {% endif %}
+  <div class="situation-card__label">Qué hacer</div>
+  <div class="situation-card__text">{{ s.solucion }}</div>
+  {% if s.notas_adicionales %}
+  <div class="callout callout--tip" style="margin-top:10px"><span class="callout__icon">💡</span><div>{{ s.notas_adicionales }}</div></div>
+  {% endif %}
+  {% if s.tutorial %}
+  <div style="margin-top:12px">
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=s.tutorial.categoria.slug, tutorial_slug=s.tutorial.slug) }}">Ir al procedimiento →</a>
+  </div>
+  {% endif %}
+</div>
+{% endmacro %}
+
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Tengo un problema
+</nav>
+<div class="hero"><h1>¿Tenés un problema?</h1><p class="hero__desc">Elegí la situación que te pasó. Si algo no está verificado todavía, te lo decimos con claridad.</p></div>
+
+{% if grupos|length > 1 %}
+<nav class="glossary-jump" aria-label="Ir a la categoría">
+  {% for categoria_libre, situaciones in grupos %}
+    {% if categoria_libre %}<a href="#cat-{{ loop.index }}">{{ categoria_libre }}</a>{% endif %}
+  {% endfor %}
+</nav>
+{% endif %}
+
+{% if not tema.situaciones %}
+<div class="empty-state"><div class="empty-state__icon">🩹</div>Todavía no hay situaciones cargadas para este tema.</div>
+{% endif %}
+
+{% for categoria_libre, situaciones in grupos %}
+  {% if categoria_libre %}
+  <div class="section" id="cat-{{ loop.index }}">
+    <h2 class="section__title">{{ categoria_libre }}</h2>
+    {% for s in situaciones %}{{ tarjeta_situacion(s) }}{% endfor %}
+  </div>
+  {% else %}
+  {% for s in situaciones %}{{ tarjeta_situacion(s) }}{% endfor %}
+  {% endif %}
+{% endfor %}
+{% endblock %}

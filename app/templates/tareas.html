@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block titulo %}Quiero hacer... — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+{% from "_bloques.html" import badge_dificultad %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Quiero hacer...
+</nav>
+<div class="hero"><h1>¿Qué querés hacer?</h1><p class="hero__desc">Elegí la tarea que necesitás y te llevamos directo al procedimiento.</p></div>
+<div class="input-wrap" style="margin-bottom:18px;max-width:480px">
+  <span class="input-wrap__icon">🔎</span>
+  <input class="input" id="filtro-tareas" type="text" placeholder="Filtrar tareas..." />
+</div>
+<div class="lesson-list" id="lista-tareas">
+  {% for tarea in tema.tareas %}
+  <a class="lesson-row" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=tarea.tutorial.categoria.slug, tutorial_slug=tarea.tutorial.slug) }}"
+     data-filtro="{{ (tarea.pregunta ~ ' ' ~ (tarea.keywords | join(' '))) | lower }}">
+    <span class="lesson-row__title">{{ tarea.pregunta }}</span>
+    <span class="lesson-row__meta">{{ badge_dificultad(tarea.tutorial.dificultad) }} · {{ tarea.tutorial.minutos }} min</span>
+  </a>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🔎</div>Todavía no hay tareas cargadas para este tema.</div>
+  {% endfor %}
+</div>
+<div class="empty-state" id="sin-resultados" style="display:none">
+  <div class="empty-state__icon">🔎</div>No encontramos una tarea que coincida. Probá con otras palabras.
+</div>
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    var input = document.getElementById('filtro-tareas');
+    var filas = Array.prototype.slice.call(document.querySelectorAll('#lista-tareas [data-filtro]'));
+    var sinResultados = document.getElementById('sin-resultados');
+    if (!input) return;
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var algunaVisible = false;
+      filas.forEach(function (fila) {
+        var visible = !q || fila.dataset.filtro.indexOf(q) !== -1;
+        fila.style.display = visible ? '' : 'none';
+        if (visible) algunaVisible = true;
+      });
+      sinResultados.style.display = (filas.length && !algunaVisible) ? '' : 'none';
+    });
+    input.focus();
+  })();
+</script>
+{% endblock %}

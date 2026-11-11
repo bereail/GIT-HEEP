@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}No encontrado — Centro de Aprendizaje{% endblock %}
+{% block contenido %}
+<div class="empty-state">
+  <div class="empty-state__icon">🧭</div>
+  <p>No encontramos esa página.</p>
+  <a class="btn btn--primary" href="{{ url_for('ui.portal_inicio') }}">Volver al inicio</a>
+</div>
+{% endblock %}

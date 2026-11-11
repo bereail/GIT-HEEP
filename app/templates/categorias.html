@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block titulo %}Módulos — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Módulos
+</nav>
+<div class="hero"><h1>Módulos</h1><p class="hero__desc">Todo el contenido de {{ tema.nombre }}, organizado como en el sistema real.</p></div>
+
+<div class="module-filter-bar" role="group" aria-label="Filtrar módulos por dificultad" id="barra-filtro">
+  <button type="button" class="filter-chip is-active" data-dificultad="todas">Todas</button>
+  <button type="button" class="filter-chip" data-dificultad="basico">🟢 Básico</button>
+  <button type="button" class="filter-chip" data-dificultad="intermedio">🟡 Intermedio</button>
+  <button type="button" class="filter-chip" data-dificultad="avanzado">🔴 Avanzado</button>
+</div>
+
+{% from "_bloques.html" import badge_dificultad %}
+<div class="card-grid" id="grid-categorias">
+  {% for categoria in tema.categorias %}
+  <a class="card card-link module-card" href="{{ url_for('ui.ver_categoria', tema_slug=tema.slug, categoria_slug=categoria.slug) }}" data-dificultad="{{ categoria.dificultad }}">
+    <div class="module-card__head"><span class="module-card__icon">{{ categoria.icono }}</span><span class="module-card__title">{{ categoria.titulo }}</span></div>
+    <div class="module-card__summary">{{ categoria.resumen }}</div>
+    <div class="module-card__meta">{{ badge_dificultad(categoria.dificultad) }} <span>{{ categoria.tutoriales | length }} tutoriales</span></div>
+    <div class="progress-bar progress-bar--sm" style="margin-top:12px" data-progreso-categoria='{{ {"slug": categoria.slug, "tutoriales": tutoriales_para_js(categoria)} | tojson }}'><div class="progress-bar__fill" style="width:0%"></div></div>
+  </a>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🧭</div>Todavía no hay módulos cargados en este tema.</div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    var barra = document.getElementById('barra-filtro');
+    var grid = document.getElementById('grid-categorias');
+    if (!barra || !grid) return;
+    barra.addEventListener('click', function (ev) {
+      var boton = ev.target.closest('.filter-chip');
+      if (!boton) return;
+      barra.querySelectorAll('.filter-chip').forEach(function (b) { b.classList.toggle('is-active', b === boton); });
+      var d = boton.dataset.dificultad;
+      grid.querySelectorAll('[data-dificultad]').forEach(function (card) {
+        card.style.display = (d === 'todas' || card.dataset.dificultad === d) ? '' : 'none';
+      });
+    });
+  })();
+</script>
+{% endblock %}

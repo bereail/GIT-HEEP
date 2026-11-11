@@ -1,0 +1,34 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Imágenes — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">{{ tema.nombre }}</a><span class="sep">/</span>
+  Imágenes
+</nav>
+<h1>Imágenes de {{ tema.nombre }}</h1>
+<p class="text-muted">Subí acá las capturas de pantalla. Después, en el campo "image" de un bloque tipo "step", usá solo el nombre del archivo (sin la ruta).</p>
+
+<form method="post" enctype="multipart/form-data" style="margin:18px 0;display:flex;gap:10px;align-items:center">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <input type="file" name="archivo" accept=".jpg,.jpeg,.png,.gif,.webp" required />
+  <button type="submit" class="btn btn--primary btn--sm">Subir imagen</button>
+</form>
+
+<div class="upload-grid">
+  {% for archivo in archivos %}
+  <div class="upload-grid__item">
+    <img src="{{ url_for('static', filename='img/' + tema.slug + '/' + archivo) }}" alt="{{ archivo }}" loading="lazy" />
+    <div class="upload-grid__item-body">
+      <div class="upload-grid__item-name">{{ archivo }}</div>
+      <form method="post" action="{{ url_for('admin.imagen_eliminar', tema_slug=tema.slug, nombre=archivo) }}" onsubmit="return confirm('¿Eliminar esta imagen?')">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button type="submit" class="btn btn--subtle btn--sm">Eliminar</button>
+      </form>
+    </div>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🖼</div>Todavía no hay imágenes subidas.</div>
+  {% endfor %}
+</div>
+{% endblock %}

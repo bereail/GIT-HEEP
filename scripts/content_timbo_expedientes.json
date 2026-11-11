@@ -1,0 +1,648 @@
+{
+  "tema": {
+    "slug": "timbo-expedientes",
+    "nombre": "TIMBÓ (Expedientes)",
+    "nombre_completo": "TIMBÓ — Ecosistema de Gestión Digital de la Provincia de Santa Fe",
+    "organizacion": "Gobierno de la Provincia de Santa Fe",
+    "icono": "📂",
+    "descripcion": "TIMBÓ es la plataforma digital donde la Provincia de Santa Fe hace sus trámites administrativos: expedientes, notas, resoluciones y trámites de atención al ciudadano. Reemplaza al expediente en papel.",
+    "alcance": "Esta capacitación cubre expedientes electrónicos, documentos oficiales, actos administrativos registrables, atención virtual y los conceptos de firma y seguridad, a partir de los cursos oficiales \"Timbó, paso a paso\" y \"Plataforma TIMBO\" (Capacitación a Soportes Técnicos – Firma Digital) del Aula Virtual provincial.",
+    "recomendaciones": [
+      "Tu clave es personal: no se presta. Todo lo que se hace con tu usuario queda a tu nombre.",
+      "Lo que incorporás a un expediente no se puede borrar: previsualizalo antes de confirmar.",
+      "Una vez digital, siempre digital: lo que empieza en TIMBÓ no puede volver al papel.",
+      "No compartas tu contraseña por WhatsApp, correo ni chat, ni la guardes anotada a la vista."
+    ],
+    "quickstart_titulo": "Aprendé TIMBÓ (Expedientes) en 15 minutos",
+    "quickstart_intro": "Una ruta corta para conocer lo básico del sistema. Al terminar, vas a poder abrir un expediente, trabajarlo, enviarlo a otra oficina y saber qué hacer si algo sale mal.",
+    "quickstart_cierre": "Ya conocés lo básico de TIMBÓ. Para seguir, explorá los módulos completos o usá \"Quiero hacer...\" para resolver una tarea concreta."
+  },
+  "categorias": [
+    {
+      "slug": "primeros-pasos",
+      "titulo": "Primeros pasos",
+      "icono": "🧭",
+      "resumen": "Antes de entrar a Expedientes: qué es TIMBÓ, cómo entrar, cómo es el menú y quién puede ver cada módulo.",
+      "audiencia": "Cualquier persona que vaya a usar TIMBÓ por primera vez.",
+      "dificultad": "basico",
+      "tutoriales": [
+        {
+          "slug": "que-es-timbo",
+          "titulo": "Qué es TIMBÓ",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "TIMBÓ es la plataforma digital donde la Provincia de Santa Fe hace sus trámites administrativos. Reemplaza al expediente en papel: todo se pide, se firma, se envía y se consulta desde la computadora." },
+            { "type": "text", "text": "Fue aprobado por el Decreto 191/2024 (que además discontinúa la plataforma anterior, GDE) y se enmarca en el programa Territorio 5.0, que busca digitalizar la administración pública santafesina. Desde el 1° de julio de 2026 (Decreto 2518/25) queda prohibido iniciar gestiones en papel." },
+            { "type": "concepts", "items": [
+              { "term": "Lo que vas a hacer en TIMBÓ", "def": "Pedir que se abra un expediente, cargarle documentos, enviarlo a otra oficina y buscar en qué estado está." },
+              { "term": "Principio de no regresión", "def": "Un trámite que se inició en TIMBÓ no puede volver al papel, salvo excepciones fundadas y autorizadas: \"una vez digital, siempre digital\"." }
+            ] },
+            { "type": "warning", "text": "Tres reglas de oro: 1) Tu clave es personal, no se presta — lo que se hace con tu usuario se presume hecho por vos. 2) Lo que incorporás a un expediente no se borra: revisalo antes. 3) Una vez digital, siempre digital: no lo vuelvas al papel." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "ingresar",
+          "titulo": "Entrar a TIMBÓ",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "prereq", "items": [
+              "Tu usuario de ID Ciudadana / Intranet (CUIL, IUP o email) y la contraseña que usás para ver el recibo de sueldo.",
+              "Estar cargado/a en una oficina de TIMBÓ y tener los permisos correspondientes (lo gestiona tu jefe/a con Informática)."
+            ] },
+            { "type": "text", "text": "En el navegador, escribí tramites.santafe.gob.ar (también se puede entrar desde santafe.gob.ar/ms/timbo con el botón \"Ingresar\"). Escribí tu usuario y tu contraseña de Intranet y tocá \"Iniciar sesión\"." },
+            { "type": "tip", "text": "¿No tenés cuenta? Tocá \"Crear cuenta\". ¿Olvidaste la contraseña? Tocá \"¿Olvidaste tu contraseña?\" en la misma pantalla de ingreso." },
+            { "type": "warning", "text": "Si no ves las opciones del menú después de entrar, no es un error: significa que todavía no estás cargado/a en una oficina o te faltan permisos. Avisale a tu jefe/a para que lo pida a Informática." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "conocer-la-pantalla",
+          "titulo": "Conocer el menú y sus partes",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "A la izquierda de la pantalla está el menú principal. Para verlo con los nombres completos, tocá el ícono de las tres rayitas (☰)." },
+            { "type": "concepts", "items": [
+              { "term": "Expedientes", "def": "El módulo que más vas a usar: pedir carátulas, cargar documentación y hacer pases." },
+              { "term": "Documentos oficiales", "def": "Notas, informes y formularios que se crean, firman y guardan en TIMBÓ." },
+              { "term": "Comunicaciones oficiales", "def": "Mensajes formales entre oficinas, que llegan cuando se firma un documento oficial \"comunicable\"." },
+              { "term": "Lista de destinatarios", "def": "Grupos de personas o ciudadanos a quienes enviarles algo." },
+              { "term": "Oficinas", "def": "El organigrama completo de la administración, con el código de cada oficina." }
+            ] },
+            { "type": "text", "text": "Dentro de \"Expedientes\" hay cinco opciones: Solicitud de caratulación (pedir un expediente nuevo), Gestión (trabajar los expedientes), Consulta (buscar y ver el historial), Visibilidad (si es público o reservado) y Gestión de visualización (pedir o dar permiso para ver uno de otra oficina)." },
+            { "type": "tip", "text": "Casi todo se hace desde los tres puntitos (⋮) que aparecen a la derecha de cada expediente o documento. Si no encontrás una opción, buscala ahí." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "roles-y-permisos",
+          "titulo": "Quién ve cada módulo (oficinas y permisos)",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Para ver las opciones del menú, un usuario tiene que estar cargado en una oficina de TIMBÓ y tener los permisos correspondientes. Eso lo cargan la Sectorial de Informática o los administradores locales, a partir de una planilla de relevamiento." },
+            { "type": "concepts", "items": [
+              { "term": "Permiso de carátula", "def": "Se da solo a Mesas de Entrada / Despacho, ministros, secretarías privadas, secretarios y subsecretarios políticos." },
+              { "term": "Un usuario, varias oficinas", "def": "Un mismo usuario puede estar cargado en más de una oficina si el organigrama lo justifica." },
+              { "term": "Altas y bajas", "def": "Las pide un funcionario o personal de planta con jerarquía mínima de jefatura de departamento, mediante un ticket en iTop, y las carga la Sectorial de Informática." }
+            ] },
+            { "type": "warning", "text": "Si no ves un módulo o una opción, lo más probable es que no estés cargado en la oficina correspondiente o que te falten permisos — no es necesariamente un error del sistema." }
+          ],
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "slug": "expedientes",
+      "titulo": "Expedientes",
+      "icono": "📁",
+      "resumen": "Todo el circuito de un expediente electrónico: pedir la carátula, trabajarlo, enviarlo a otra oficina y consultarlo.",
+      "audiencia": "Cualquier agente que inicie, trabaje o consulte expedientes.",
+      "dificultad": "basico",
+      "tutoriales": [
+        {
+          "slug": "abrir-expediente",
+          "titulo": "Abrir un expediente nuevo (pedir la carátula)",
+          "minutos": 5,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Todo expediente empieza con un pedido de carátula, que después aprueba la oficina caratuladora (generalmente la Mesa de Entradas)." },
+            { "type": "text", "text": "Andá a Expedientes → Solicitud de caratulación → Nuevo Trámite → Solicitud de caratulación → Iniciar." },
+            { "type": "concepts", "items": [
+              { "term": "Interno / Externo", "def": "Interno si el trámite está dentro de la administración y se inicia de oficio (es la opción más común); externo cuando lo presenta un ciudadano o alguien ajeno a la administración (esos llegan por Atención Virtual)." },
+              { "term": "Código del trámite (tema)", "def": "Clasifica el expediente. Hay más de 100 códigos habilitados: escribí una palabra y elegilo de la lista." },
+              { "term": "Oficina caratuladora", "def": "Generalmente la Mesa de Entradas de tu jurisdicción." },
+              { "term": "Motivo", "def": "Qué es el trámite, explicado con claridad: sirve para encontrar el expediente después. No uses \"varios\" ni abreviaturas." },
+              { "term": "Visibilidad", "def": "Público por defecto. \"Reservado\" solo en casos especiales, y exige agregar responsables que puedan verlo." }
+            ] },
+            { "type": "practice", "text": "Mirá este ejemplo de motivo bien escrito: \"Solicitud de compra de 200 cajas de guantes de nitrilo talle M para el Servicio de Guardia — Pedido interno 45/2026\". Compáralo con uno mal escrito: \"Varios guardia\" o \"Compras\" — un motivo así corre riesgo de que te rechacen la carátula." },
+            { "type": "warning", "text": "Si el motivo no coincide con el código del trámite elegido, la Mesa de Entradas puede rechazar la solicitud. Si el trámite involucra a un paciente, consultá con tu jefe/a qué datos corresponde poner — el material no da una regla específica para datos de salud." },
+            { "type": "text", "text": "Al guardar y confirmar, se genera un número de solicitud y el pedido queda en la pestaña \"En curso\", a la espera de que la oficina caratuladora lo revise." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "ver-estado-solicitud",
+          "titulo": "Ver si aprobaron mi pedido de carátula",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "En Expedientes → Solicitud de caratulación hay tres pestañas." },
+            { "type": "concepts", "items": [
+              { "term": "En curso", "def": "Tu pedido está esperando que la oficina caratuladora lo revise." },
+              { "term": "Caratuladas", "def": "Aprobado: el expediente ya tiene número, por ejemplo EE-2025-00000058-APPSF-PE." },
+              { "term": "Rechazadas", "def": "No fue aprobado. Mirá el motivo en ⋮ → Historial y hacé un pedido nuevo con un motivo más claro." }
+            ] },
+            { "type": "tip", "text": "Si una pestaña muestra una caja vacía, es simplemente porque no hay pedidos en ese estado — no es un error." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "evaluar-caratulas",
+          "titulo": "Aprobar o rechazar carátulas (Mesa de Entradas)",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "warning", "text": "Esta tarea es solo para usuarios de la oficina caratuladora (generalmente Mesa de Entradas) con permiso de carátula." },
+            { "type": "text", "text": "En la pestaña \"Pendientes de Evaluación\", en cada solicitud tocá ⋮ → Evaluar: ahí podés ver, descargar y analizar el pedido. Lo principal es controlar que el código de trámite y el motivo tengan coherencia entre sí." },
+            { "type": "practice", "text": "Ejemplo del material oficial: si alguien pide una \"bonificación por título\" pero en el motivo escribe \"compra de bidones de agua\", la solicitud se rechaza porque el código y el motivo no se relacionan." },
+            { "type": "text", "text": "Para aprobar: Acciones → Firmar → Continuar → Firma electrónica → Confirmar. Para rechazar: Acciones → Rechazar, explicando el motivo (así la persona puede volver a pedirla bien)." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "tomar-expediente",
+          "titulo": "Tomar un expediente (asignación)",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Solo podés trabajar un expediente si está asignado a vos. Cuando un expediente llega a tu oficina por un pase, aparece con la palabra \"Todos\" en azul en Expedientes → Gestión." },
+            { "type": "text", "text": "Tocá la palabra \"Todos\" y elegí \"Asignar a mí mismo\". El expediente pasa a tu pestaña \"Asignados\". Si tenés permiso de supervisor, también podés asignarlo a otro compañero buscándolo por nombre." },
+            { "type": "tip", "text": "¿Lo tenés vos pero lo va a seguir otra persona? Tocá tu nombre en azul → \"Desasignar expediente\". Vuelve a la pestaña Gestión para que otra persona lo tome." },
+            { "type": "concepts", "items": [
+              { "term": "Asignados", "def": "Los expedientes que tenés vos para tramitar." },
+              { "term": "Gestión", "def": "Todos los expedientes recibidos por tu oficina, asignados o no." },
+              { "term": "Guarda temporal", "def": "Los que están separados en espera de algo." },
+              { "term": "Archivo", "def": "Los terminados — solo se pueden consultar." },
+              { "term": "Gestión por jerarquía", "def": "Los expedientes en gestión en oficinas que dependen de la tuya." }
+            ] }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "subir-archivo",
+          "titulo": "Subir un archivo a un expediente",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Dentro del expediente: Acciones → Subir nuevo archivo → Agregar un archivo (o arrastrarlo) y elegilo desde tu computadora." },
+            { "type": "text", "text": "Revisá el campo \"Nombre\" y escribí una \"Referencia\" corta que diga qué es el archivo. Tocá \"Subir\": queda en \"Documentos pendientes\"." },
+            { "type": "warning", "text": "Para incorporar un documento al expediente, tiene que ser PDF de hasta 50 MB. Como documento informativo podés subir otros formatos (Word, Excel, imágenes), con el mismo límite de tamaño." },
+            { "type": "practice", "text": "Ejemplos de una buena referencia: \"Presupuesto proveedor A – autoclave\" o \"Planilla de consumo mensual de insumos – Clínica Médica\"." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "incorporar-documentos",
+          "titulo": "Incorporar y ordenar documentos",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "warning", "text": "Antes de incorporar, tocá ⋮ → Previsualizar en cada documento pendiente para confirmar que es el correcto. Una vez incorporado, el documento no se puede borrar." },
+            { "type": "text", "text": "Tildá los documentos pendientes que querés incorporar y tocá \"Incorporar Documentos\". Si son varios, podés ordenarlos arrastrándolos → Continuar." },
+            { "type": "text", "text": "Para oficializarlo, tocá \"Firma electrónica\" y confirmá. El sistema avisa que la acción no se puede deshacer." },
+            { "type": "tip", "text": "Si aparece el mensaje \"Firmador digital inhabilitado\", no es un error: simplemente usá la firma electrónica en vez de la digital." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "vincular-documento-oficial",
+          "titulo": "Agregar un documento oficial ya firmado",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Si ya tenés un documento oficial firmado (por ejemplo, una nota) y querés que forme parte de un expediente, lo vinculás por su número en vez de subirlo de nuevo." },
+            { "type": "text", "text": "Copiá el número del documento oficial. En el expediente: Acciones → Vincular Documento → pegá el número y tocá la lupa. Revisá que sea el correcto → Vincular → Confirmar → Continuar." },
+            { "type": "tip", "text": "Queda en \"Documentos pendientes\": tildalo y tocá \"Incorporar Documentos\". No te va a pedir que lo firmes de nuevo, porque ya está firmado." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "subsanar-documento",
+          "titulo": "Corregir un documento incorporado (subsanar)",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Si un documento ya incorporado tiene un error, no se borra: se corrige con un documento oficial nuevo que lo \"subsana\"." },
+            { "type": "text", "text": "Tené listo el número del documento oficial que corrige el error. En el expediente, tocá \"Subsanar Documentos\", tildá el documento con el error → Continuar, y escribí el número del documento que lo corrige → Confirmar." },
+            { "type": "text", "text": "El documento que agregaste aparece marcado \"PS\" (pendiente de subsanación) en Documentos pendientes: tildalo y tocá \"Incorporar documentos\". El original queda marcado \"SN\" (subsanado)." },
+            { "type": "warning", "text": "Las carátulas y las providencias no se pueden subsanar." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "enviar-pase",
+          "titulo": "Enviar el expediente a otra oficina (pase)",
+          "minutos": 5,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Cuando terminaste tu parte, tocá \"Enviar Expediente\" (al final de la pantalla) y elegí \"Realizar Pase\"." },
+            { "type": "text", "text": "Elegí la Oficina primaria (el ministerio u organismo) y la Oficina secundaria (la oficina exacta) — podés escribir el nombre o pegar el código → Continuar." },
+            { "type": "concepts", "items": [
+              { "term": "Providencia", "def": "El comentario obligatorio del pase. Decí con claridad qué necesitás que hagan (continuar el trámite, agregar un informe, etc.) sin repetir el nombre de la oficina, que ya elegiste antes." }
+            ] },
+            { "type": "practice", "text": "Ejemplos de buenas providencias: \"Se remite para su conocimiento y continuidad del trámite\" o \"Se solicita agregar informe técnico sobre el estado del equipo\". Si tenés que escribir mucho, hacelo en un documento aparte y agregalo al expediente." },
+            { "type": "text", "text": "Para encontrar el código de una oficina destino: menú Oficinas → buscala en el organigrama → copiá el número que aparece entre paréntesis al lado del nombre." },
+            { "type": "warning", "text": "¿Mandaste el expediente a la oficina equivocada? Avisale a esa oficina para que te lo devuelva con un pase — no hay forma de \"deshacer\" un pase desde tu lado." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "guarda-y-archivo",
+          "titulo": "Poner un expediente en espera (guarda temporal) y archivarlo",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "La guarda temporal sirve para apartar un expediente mientras esperás algo (un informe, un dictamen). No todos los usuarios tienen este permiso." },
+            { "type": "text", "text": "Enviar Expediente → Enviar a Guarda Temporal → escribí el motivo (opcional) → Continuar → Confirmar. Para retomarlo: pestaña Guarda temporal → ⋮ → Volver a carga de documentación → comentario → confirmar. Vuelve a la pestaña Gestión." },
+            { "type": "warning", "text": "Enviar un expediente al Archivo es el último paso y es irreversible: ya no se puede volver a trabajar, solo consultar." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "vincular-y-fusionar",
+          "titulo": "Vincular y fusionar expedientes",
+          "minutos": 3,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "concepts", "items": [
+              { "term": "Vincular", "def": "Relaciona dos o más expedientes solo para consulta — no los modifica. Se puede revertir." },
+              { "term": "Fusionar", "def": "Agrupa varios expedientes en uno \"cabecera\", que es el único que se sigue tramitando. Requiere escribir un motivo y permiso especial. No se puede revertir." }
+            ] },
+            { "type": "warning", "text": "Fusionar es una acción irreversible: pensala bien antes de confirmarla." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "buscar-expediente",
+          "titulo": "Buscar un expediente",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Andá a Expedientes → Consulta y elegí cómo buscar: por número de expediente, iniciados por mí, tramitados por mí, entre otros criterios." },
+            { "type": "text", "text": "Si buscás por número, escribilo completo, desde \"EE\" hasta el final → Buscar. Tocá ⋮ → Más información para ver dónde está el expediente ahora y su historial de pases." },
+            { "type": "concepts", "items": [
+              { "term": "Cómo leer el número de expediente", "def": "EE-2025-00000058-APPSF-PE = Expediente Electrónico + año + número correlativo + Administración Pública Provincial de Santa Fe + organismo (PE = Poder Ejecutivo; varía en organismos descentralizados)." }
+            ] }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "vistas-de-expediente",
+          "titulo": "Pedir o dar permiso para ver un expediente (vistas)",
+          "minutos": 6,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Si un expediente está en otra oficina y necesitás consultarlo, podés pedir una vista. Si sos de la oficina que lo tiene, podés compartirla vos." },
+            { "type": "text", "text": "Para pedir una vista: Expedientes → Gestión de visualización → Nuevo Trámite → Solicitud vista de expediente → escribí el número y buscalo con la lupa → indicá hasta qué fecha la necesitás y el motivo → Enviar." },
+            { "type": "text", "text": "Cuando te la aprueben, vas a ver \"Visualizar Expediente\" en \"En curso\". Tocá ⋮ → Gestor de Trámite para ver los documentos." },
+            { "type": "text", "text": "Para compartir una vista (si tenés el expediente): Nuevo Trámite → Compartir vista de expediente → buscá y seleccioná los expedientes → agregá destinatarios (personas, una lista o una oficina) → elegí fecha de inicio y de fin → Guardar." },
+            { "type": "warning", "text": "Compartir vistas tiene un máximo de 500 expedientes por vez, y puede tardar hasta una hora en procesarse — no es instantáneo. Los destinatarios reciben un correo cuando está listo." }
+          ],
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "slug": "documentos-oficiales",
+      "titulo": "Documentos oficiales",
+      "icono": "📄",
+      "resumen": "Notas, informes y formularios que se crean, firman y guardan en TIMBÓ — con o sin relación a un expediente.",
+      "audiencia": "Cualquier agente que necesite redactar, firmar o recibir una nota o informe oficial.",
+      "dificultad": "intermedio",
+      "tutoriales": [
+        {
+          "slug": "que-es-un-documento-oficial",
+          "titulo": "Qué es un documento oficial (DO)",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Un documento oficial respalda un trámite o una gestión — por ejemplo, el formulario de una compra directa, un certificado o una nota de solicitud. Tiene trazabilidad, fecha, hora y firma, y se puede consultar y compartir digitalmente." },
+            { "type": "concepts", "items": [
+              { "term": "Importado", "def": "Un PDF que subís desde tu computadora." },
+              { "term": "Libre", "def": "Lo escribís directamente en TIMBÓ, con un editor parecido a Word." },
+              { "term": "Formulario", "def": "Completás los campos de un modelo que ya existe (por ejemplo, \"Justificación y Licencias\"); no se puede editar el formato." }
+            ] },
+            { "type": "text", "text": "Además del tipo, un documento oficial puede tener características como ser comunicable (llega a la bandeja de Comunicaciones oficiales del destinatario al firmarse), de firma conjunta (lo firman varias personas en orden) o reservado (solo lo ven usuarios autorizados). Hay más de 100 tipos distintos en el catálogo oficial — si tenés dudas sobre cuál usar, consultá a tu referente." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "crear-documento-oficial",
+          "titulo": "Hacer una nota o documento oficial",
+          "minutos": 6,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Andá a Documentos oficiales → Gestión → Nuevo documento oficial → Documentos Oficiales → Iniciar. Elegí quién lo va a producir (vos u otra persona) y el Tipo de Documento → Guardar. Queda en \"Pendientes\"." },
+            { "type": "text", "text": "Tocá ⋮ → Documento oficial para redactarlo o subir el PDF, según el tipo. Completá la \"Referencia\" (el título) y, si corresponde, elegí los firmantes en orden." },
+            { "type": "practice", "text": "Ejemplo de referencia bien escrita: \"Circular Nº 0001 - 2025 - Horario de atención al público\". Si el documento va a un expediente, conviene incluir su número: \"EE-2025-00000027-APPSF-Cap — Ref. Adquisición de mobiliario\". Evitá referencias genéricas como \"Nota\" o \"Rectificación\"." },
+            { "type": "text", "text": "Cuando está listo, tocá Acciones → Enviar a Firmar (o \"Enviar a Revisar\" si querés que alguien lo mire antes) → comentario → Continuar → Confirmar." },
+            { "type": "tip", "text": "Si hacés siempre la misma nota, en un documento libre tocá \"Guardar plantilla\" y ponele un nombre. La próxima vez la abrís desde \"Plantillas\"." },
+            { "type": "text", "text": "Ejemplo de cadena de firmas para una licencia: primero vos (\"Yo mismo\"), después tu jefe/a inmediato/a, y por último quien la recibe en Personal (RRHH). Cuando firma la última persona, el documento recibe su número — con ese número lo podés agregar a un expediente." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "firmar-documento-oficial",
+          "titulo": "Firmar un documento que me enviaron",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Andá a Documentos oficiales → Gestión → Pendientes. En el documento, tocá ⋮ → Evaluar: leelo con atención y abrí los archivos adjuntos antes de decidir." },
+            { "type": "text", "text": "Tocá Acciones y elegí Aprobar/Firmar, Enviar a Revisar o Rechazar. Después: Continuar → Firma electrónica → Confirmar." },
+            { "type": "tip", "text": "Si hay más firmantes en la cadena, el documento pasa automáticamente al siguiente apenas vos confirmás tu firma." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "buscar-documento-oficial",
+          "titulo": "Buscar un documento oficial ya firmado",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Andá a Documentos oficiales → Consulta. Podés buscarlo por número, por \"firmados por mí\", por \"firmados en mi repartición\" o por referencia — de ahí la importancia de escribir bien la referencia al crearlo." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "comunicaciones-oficiales",
+          "titulo": "Comunicaciones oficiales",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Cuando alguien firma un documento oficial \"comunicable\" dirigido a vos, te llega a Comunicaciones oficiales." },
+            { "type": "concepts", "items": [
+              { "term": "Recibidas", "def": "Lo que te mandaron. Desde ⋮ podés Responder (con un documento oficial), Reenviar, Previsualizar o Eliminar. Usá el filtro \"No leídos\" para no perderte nada." },
+              { "term": "Enviadas", "def": "El color indica si lo leyeron: verde = todos, amarillo = algunos, naranja = nadie." },
+              { "term": "Eliminadas", "def": "Podés \"Restaurar\" lo que borraste." }
+            ] },
+            { "type": "tip", "text": "Eliminar una comunicación solo la saca de tu propia bandeja — los demás destinatarios la siguen teniendo." }
+          ],
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "slug": "actos-administrativos",
+      "titulo": "Actos Administrativos Registrables",
+      "icono": "⚖️",
+      "resumen": "Resoluciones digitales: iniciarlas, firmarlas y protocolizarlas. Solo para quien tiene permiso de gestor, firmante o seguimiento.",
+      "audiencia": "Personal con permiso de gestor o firmante de actos administrativos (por ejemplo, Dirección o Despacho).",
+      "dificultad": "avanzado",
+      "tutoriales": [
+        {
+          "slug": "que-son-los-aar",
+          "titulo": "Qué son los Actos Administrativos Registrables",
+          "minutos": 4,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "warning", "text": "Este módulo (Actos administrativos registrables → Resoluciones digitales) lo ven solo los usuarios con permiso de gestor, firmante o seguimiento. Si no administrás resoluciones, probablemente no lo necesites para tu trabajo diario." },
+            { "type": "text", "text": "Un acto administrativo registrable es una decisión de la administración que debe asentarse en un registro oficial para ser válida — por ejemplo, decretos, resoluciones y disposiciones." },
+            { "type": "concepts", "items": [
+              { "term": "Gestor", "def": "Carga la información del acto, arma la cadena de firmas, protocoliza e ingresa el link del SIN (Sistema de Información Normativa)." },
+              { "term": "Firmante", "def": "Firma el acto (requiere permiso especial de firma de actos administrativos)." },
+              { "term": "Seguimiento por organismo", "def": "Solo consulta el estado de los trámites del organismo." }
+            ] }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "iniciar-resolucion",
+          "titulo": "Iniciar una resolución (gestor)",
+          "minutos": 5,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "Nuevo Trámite → Firma resolución → Iniciar. Completá el formulario: iniciador, organismo de origen, número de expediente completo, tema, año, el PDF de la resolución sin firmar, un resumen ejecutivo y los anexos en PDF → Guardar." },
+            { "type": "warning", "text": "No subas un archivo ya firmado (electrónicamente o encriptado) como resolución ni como anexo — el sistema no lo permite." },
+            { "type": "text", "text": "El trámite queda en \"En curso\". Desde ahí, ⋮ → Gestor de Trámite → en Documentos pendientes, ⋮ → Obtener, y previsualizá siempre antes de seguir, para evitar errores u omisiones." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "cadena-de-firmas",
+          "titulo": "Gestionar la cadena de firmas de una resolución",
+          "minutos": 4,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "Desde el Gestor de Trámite: ⋮ → Iniciar cadena de firmas → buscá a los firmantes, ordenalos y elegí \"Firmador electrónico o digital\" → Confirmar." },
+            { "type": "tip", "text": "Se recomienda elegir \"Firmador electrónico o digital\" (y no uno solo de los dos) para no cortar la cadena si algún firmante no tiene token." },
+            { "type": "warning", "text": "Si hay que corregir el documento después de haber iniciado la cadena de firmas, primero hay que eliminar la cadena, después eliminar el documento, y recién ahí cargar la versión corregida. También se puede usar Acciones → Modificar Resolución mientras el trámite está en curso." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "firmar-resolucion",
+          "titulo": "Firmar una resolución (firmante)",
+          "minutos": 3,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "Menú Actos administrativos registrables → Firma de Actos Administrativos → Firmas pendientes. Tocá ⋮ → Evaluar para ver la resolución con sus anexos." },
+            { "type": "text", "text": "Acciones → Firmar (o Rechazar si hay errores) → comentario → Continuar → elegí tu tipo de firma (electrónica o digital, según la que tengas habilitada) → Confirmar." },
+            { "type": "tip", "text": "Cada firmante recibe un correo cuando le toca firmar. Si rechazás, hay que iniciar una resolución nueva desde cero." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "protocolizar-y-publicar",
+          "titulo": "Protocolizar la resolución y publicarla en el SIN",
+          "minutos": 4,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "Cuando todos firmaron, el trámite pasa a \"Evaluar Resolución\": ⋮ → Acciones → Protocolizar Resolución → comentario opcional → Continuar → Confirmar. El sistema le asigna número correlativo y fecha." },
+            { "type": "text", "text": "Después hay que publicar la resolución en el Sistema de Información Normativa (SIN, un sistema aparte de TIMBÓ) y pegar el link: ⋮ → Acciones → Link de acceso → Guardar → comentario → Continuar → Confirmar. La resolución pasa a \"Finalizados\"." },
+            { "type": "tip", "text": "Una vez firmada, la resolución se convierte en documento oficial: cualquier usuario de TIMBÓ puede consultarla por su número desde el módulo Documentos oficiales." }
+          ],
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "slug": "atencion-virtual",
+      "titulo": "Atención Virtual",
+      "icono": "🧑‍💻",
+      "resumen": "Trámites que los ciudadanos inician desde su casa con su ID Ciudadana, para que tu oficina los revise y resuelva.",
+      "audiencia": "Agentes que reciben y resuelven trámites ciudadanos por Atención Virtual.",
+      "dificultad": "intermedio",
+      "tutoriales": [
+        {
+          "slug": "revisar-solicitudes-av",
+          "titulo": "Revisar solicitudes pendientes de Atención Virtual",
+          "minutos": 5,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "La Atención Virtual es un servicio en línea para que cualquier ciudadano con ID Ciudadana haga trámites sin ir a una oficina. Un agente receptor revisa lo que envía, puede pedirle correcciones, y lo resuelve." },
+            { "type": "text", "text": "En la pestaña \"Pendientes de Revisión\", tocá \"Todos\" → \"Asignar a mí mismo\". En \"Asignadas\", tocá ⋮ → Chat de Atención para ver los documentos enviados." },
+            { "type": "text", "text": "Cada documento con ícono naranja está pendiente de revisión: tocá ⋮ → Revisar y elegí Aprobar, o Rechazar indicando el motivo (no corresponde, ilegible, información incorrecta, dañado, no aplica)." },
+            { "type": "warning", "text": "Si rechazás algo, tenés que escribirle un mensaje al ciudadano explicando qué falta (es obligatorio) y tocar \"Enviar al ciudadano\". Mientras esperás su respuesta, no se le pueden enviar más mensajes ni avanzar el trámite." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "gestionar-tramite-av",
+          "titulo": "Finalizar, generar expediente o derivar un trámite de Atención Virtual",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Con toda la documentación aprobada, tocá \"Acciones\" y elegí una de estas tres opciones:" },
+            { "type": "concepts", "items": [
+              { "term": "Finalizar trámite", "def": "Termina sin abrir un expediente — para cuando la solicitud no corresponde, o cuando se resuelve directamente sin necesitar un circuito más largo." },
+              { "term": "Generar expediente", "def": "El comentario que escribís se convierte en el motivo del expediente. Después se trabaja como cualquier expediente, en Expedientes → Gestión." },
+              { "term": "Realizar pase a otra oficina", "def": "Sin generar expediente. La oficina destino tiene que tener al menos un usuario con permiso de operador de Atención Virtual; si no, el sistema no deja hacerlo." }
+            ] }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "trabajar-expediente-av",
+          "titulo": "Trabajar el expediente que se generó desde Atención Virtual",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Un expediente generado desde Atención Virtual se trabaja igual que cualquier otro: subir archivos, agregar documentos o vincular uno existente, y enviarlo con un pase." },
+            { "type": "concepts", "items": [
+              { "term": "Solicitar información", "def": "Cualquier agente con el expediente asignado puede pedirle más documentos al ciudadano, eligiendo cuáles y dejando un comentario. Queda \"A la espera de que el ciudadano responda\"." },
+              { "term": "Enviar aviso al ciudadano", "def": "Notifica que el trámite terminó, adjuntando un documento ya incorporado (por ejemplo, un certificado). Solo está disponible si se generó un expediente." }
+            ] },
+            { "type": "text", "text": "El expediente termina cuando se envía a Guarda Temporal (si tenés el permiso) o, si no, con un pase a la oficina que corresponda. El ciudadano puede consultarlo en todo momento desde su propia pantalla de Atención Virtual." },
+            { "type": "tip", "text": "Todo lo que escribís en el chat queda registrado. Usá un lenguaje claro y amable, y pedí solo los datos necesarios — si tu oficina recibe trámites de pacientes, evitá pedir datos de salud que no sean imprescindibles." }
+          ],
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "slug": "firma-y-seguridad",
+      "titulo": "Firma y seguridad",
+      "icono": "🛡️",
+      "resumen": "Qué firma usar en cada caso y cómo cuidar tu cuenta y la información del hospital.",
+      "audiencia": "Todos los usuarios de TIMBÓ; la parte técnica de firma digital es para Informática y autoridades con token.",
+      "dificultad": "basico",
+      "tutoriales": [
+        {
+          "slug": "firma-electronica-y-digital",
+          "titulo": "Qué firma uso: electrónica o digital",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "concepts", "items": [
+              { "term": "Firma electrónica", "def": "La que vas a usar casi siempre. Se hace en TIMBÓ con tu propio usuario, sin ningún dispositivo extra." },
+              { "term": "Firma digital", "def": "Usa un token (un dispositivo USB especial con un certificado). Solo la tienen ciertas autoridades, para decretos, resoluciones de ministros y excepciones." }
+            ] },
+            { "type": "text", "text": "Las dos firmas tienen la misma validez dentro de TIMBÓ." },
+            { "type": "tip", "text": "Si te aparece el mensaje \"Firmador digital inhabilitado\", no es un error: solo significa que no tenés token. Elegí \"Firma electrónica\" y seguí adelante." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "cuidar-mi-cuenta",
+          "titulo": "Cuidar mi cuenta y la información",
+          "minutos": 5,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Tu clave es tuya: todo lo que se hace con tu usuario queda a tu nombre, y prestarla está prohibido por normativa (principio de intransferibilidad de las credenciales)." },
+            { "type": "concepts", "items": [
+              { "term": "Datos personales", "def": "Los que identifican a una persona: nombre, DNI, domicilio, teléfono, datos biométricos y datos de salud. Compartilos solo con quien corresponde." },
+              { "term": "Phishing / vishing", "def": "Correos o llamadas falsas que buscan que entregues tu clave u otros datos. Ningún organismo te la va a pedir por esos medios." }
+            ] },
+            { "type": "warning", "text": "No envíes tu contraseña por WhatsApp, correo ni chat, ni la digas en voz alta, aunque sea a alguien de confianza. No la guardes en el navegador ni anotada a la vista." },
+            { "type": "practice", "text": "Usá contraseñas largas, con letras, números y símbolos, y cambiala cada 1 o 2 meses. Cerrá sesión o bloqueá la pantalla cada vez que te levantás de la computadora, sobre todo en equipos compartidos." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "requisitos-firma-digital",
+          "titulo": "Requisitos técnicos para firmar con firma digital",
+          "minutos": 4,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "warning", "text": "Esta lección es para Informática del hospital y para las autoridades que firman con token (la mayoría de los usuarios firma con firma electrónica y no necesita nada de esto)." },
+            { "type": "concepts", "items": [
+              { "term": "Token", "def": "Dispositivo físico con el certificado de firma digital. Un pendrive común no sirve: tiene que cumplir el estándar FIPS 140-2 nivel 2 o superior y estar homologado." },
+              { "term": "Firmador (Moorea Signer)", "def": "Programa que tiene que estar instalado, actualizado y en ejecución en la computadora para poder firmar digitalmente." },
+              { "term": "Certificado", "def": "Dura 2 años y no se renueva: si vence, se pierde o se bloquea la clave, hay que revocarlo y tramitar uno nuevo ante la AC-ONTI." }
+            ] },
+            { "type": "text", "text": "Además del token, hace falta: acceso a la plataforma, usuario dado de alta con permisos, los drivers del token instalados, y Oracle Java 11." },
+            { "type": "tip", "text": "Los problemas de instalación o de la plataforma que Informática no pueda resolver se canalizan con un ticket en iTop." }
+          ],
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "glosario": [
+    { "termino": "Expediente Electrónico (EE)", "definicion": "Reemplaza al expediente en papel. Promueve la sustitución del papel por medios digitales válidos.", "modulo": "General", "uso": "Es el objeto central de TIMBÓ: todo trámite que necesita un circuito formal se tramita como un EE." },
+    { "termino": "Solicitud de caratulación", "definicion": "Primer paso para crear un expediente electrónico. La puede pedir cualquier usuario que pertenezca a una oficina.", "modulo": "Expedientes", "uso": "Se hace en Expedientes → Solicitud de caratulación → Nuevo Trámite." },
+    { "termino": "Oficina caratuladora", "definicion": "La oficina que confirma la solicitud y genera el expediente. Por lo general es la Mesa de Entradas de cada jurisdicción.", "modulo": "Expedientes", "uso": "Se elige al completar el formulario de solicitud de caratulación." },
+    { "termino": "Código de trámite (tema)", "definicion": "Clasifica el expediente. Hay más de 100 códigos habilitados y se agregan nuevos a medida que se relevan actividades.", "modulo": "Expedientes", "uso": "Se escribe o se elige de una lista al pedir la carátula." },
+    { "termino": "Motivo", "definicion": "Descripción del trámite. Tiene que ser clara y precisa porque sirve para buscarlo después. No se deben usar términos genéricos como \"varios\".", "modulo": "Expedientes", "uso": "Se completa al pedir la carátula y también al crear un documento oficial (como \"Referencia\")." },
+    { "termino": "Visibilidad (público / reservado)", "definicion": "Por defecto, un expediente es público. \"Reservado\" se usa en casos especiales y exige agregar responsables que puedan verlo.", "modulo": "Expedientes", "uso": "Se define al pedir la carátula." },
+    { "termino": "Documento incorporado", "definicion": "Documento oficial con número de orden dentro del expediente. Su orden es permanente: no se puede eliminar. Si tiene un error, se subsana.", "modulo": "Expedientes", "uso": "Se genera al tildar un documento pendiente y tocar \"Incorporar Documentos\"." },
+    { "termino": "Documento informativo", "definicion": "Papeles de trabajo, borradores o referencias que acompañan al expediente sin formar parte formal de él. No lleva número de orden y se puede eliminar.", "modulo": "Expedientes", "uso": "Es la otra opción al decidir qué hacer con un documento pendiente." },
+    { "termino": "Documento pendiente", "definicion": "Bandeja previa: el documento se subió pero todavía no se definió si va como incorporado o como informativo.", "modulo": "Expedientes", "uso": "Aparece justo después de subir un archivo a un expediente." },
+    { "termino": "Pase", "definicion": "Envío del expediente a otra oficina para que continúe el circuito.", "modulo": "Expedientes", "uso": "Se hace desde \"Enviar Expediente\" → \"Realizar Pase\"." },
+    { "termino": "Providencia", "definicion": "Comentario obligatorio del pase. Impulsa, ordena o dispone medidas. Genera un documento nuevo que se incorpora solo al expediente.", "modulo": "Expedientes", "uso": "Se escribe al confirmar un pase." },
+    { "termino": "Guarda temporal", "definicion": "Separa el expediente de la bandeja Gestión mientras se espera algo (un informe, un dictamen). Requiere permisos especiales. En guarda, el expediente solo se consulta.", "modulo": "Expedientes", "uso": "Se activa desde \"Enviar Expediente\" → \"Enviar a Guarda Temporal\"." },
+    { "termino": "Archivo", "definicion": "Estado final después de la guarda. Es irreversible: el expediente ya no se puede rehabilitar, aunque sigue disponible para consulta.", "modulo": "Expedientes", "uso": "Es el último estado posible de un expediente." },
+    { "termino": "Subsanar", "definicion": "Corregir uno o varios documentos incorporados mediante un Documento Oficial. El original queda marcado \"SN\" y la corrección se incorpora en el último orden.", "modulo": "Expedientes", "uso": "Se usa cuando un documento ya incorporado tiene un error." },
+    { "termino": "Vincular / Fusionar", "definicion": "Vincular relaciona expedientes solo como consulta (es reversible). Fusionar agrupa varios en uno \"cabecera\" que es el que se tramita (es irreversible y requiere permiso).", "modulo": "Expedientes", "uso": "Se accede desde las opciones del expediente." },
+    { "termino": "Documento Oficial (DO)", "definicion": "Documento producido en TIMBÓ con características especiales (firma conjunta, comunicable, etc.). Puede ser libre, importado o de tipo formulario. Puede vincularse a un expediente.", "modulo": "Documentos oficiales", "uso": "Se crea en el módulo Documentos oficiales y puede agregarse después a un expediente por su número." },
+    { "termino": "Firma electrónica", "definicion": "La que realizan todos los usuarios para confirmar acciones en TIMBÓ. No requiere token.", "modulo": "General", "uso": "Es la firma que se usa en casi todas las acciones del sistema." },
+    { "termino": "Firma digital", "definicion": "Firma criptográfica, con token. Reservada a ciertos usuarios (gobernador, ministros, ciertos secretarios), para decretos, resoluciones de ministros y excepciones.", "modulo": "General", "uso": "Solo la usan las autoridades que tienen un token homologado." },
+    { "termino": "Vista de expediente", "definicion": "Permiso temporal para consultar un expediente que está en otra oficina. Se solicita o se comparte.", "modulo": "Expedientes", "uso": "Se gestiona desde Expedientes → Gestión de visualización." },
+    { "termino": "Actos Administrativos Registrables (AAR)", "definicion": "Decisiones de la administración que deben asentarse en un registro oficial para ser válidas: decretos, resoluciones y disposiciones.", "modulo": "Actos administrativos", "uso": "Se gestionan desde el menú Actos administrativos registrables → Resoluciones digitales." },
+    { "termino": "Sistema de Información Normativa (SIN)", "definicion": "Sistema (independiente de TIMBÓ) donde se publican las resoluciones ya protocolizadas.", "modulo": "Actos administrativos", "uso": "Se usa al finalizar una resolución, para pegar su link en TIMBÓ." },
+    { "termino": "Token", "definicion": "Dispositivo USB especial con el certificado de firma digital. Un pendrive común no sirve: debe cumplir el estándar FIPS 140-2 nivel 2 o superior.", "modulo": "Firma digital", "uso": "Hace falta solo para firmar digitalmente (no para la firma electrónica de uso diario)." },
+    { "termino": "iTop", "definicion": "Portal de tickets donde se piden altas, bajas de usuarios y soporte técnico a Informática.", "modulo": "General", "uso": "Se usa cuando falta un permiso, un usuario o hay un problema técnico que no se resuelve dentro de TIMBÓ." },
+    { "termino": "ID Ciudadana", "definicion": "Usuario único (CUIL, IUP o email) con el que se ingresa tanto a TIMBÓ como a otros sistemas de la Provincia, por ejemplo para ver el recibo de sueldo.", "modulo": "General", "uso": "Es lo primero que se pide al entrar a TIMBÓ." }
+  ],
+  "situaciones": [
+    { "slug": "no-veo-modulos-del-menu", "situacion": "No veo las opciones del menú", "descripcion": "Entrás a TIMBÓ pero el menú lateral aparece vacío o con muy pocas opciones.", "causa": "No estás cargado/a en una oficina de TIMBÓ, o te faltan los permisos correspondientes.", "solucion": "Avisale a tu jefe/a o referente para que lo pida a la Sectorial de Informática (por iTop). No es algo que puedas resolver vos mismo/a desde la pantalla.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "roles-y-permisos", "verificado": true },
+    { "slug": "firmador-digital-inhabilitado", "situacion": "Me aparece el mensaje \"Firmador digital inhabilitado\"", "descripcion": "Al ir a firmar algo, el sistema muestra este mensaje en vez de dejarte elegir la firma digital.", "causa": "No es un error: simplemente significa que tu usuario no tiene firma digital (token) habilitada.", "solucion": "Elegí \"Firma electrónica\" y segui adelante con normalidad — es la firma que usa la gran mayoría de los usuarios.", "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "firma-electronica-y-digital", "verificado": true },
+    { "slug": "veo-una-caja-vacia", "situacion": "Una pestaña o un listado me muestra una caja vacía", "descripcion": "Entrás a una bandeja (por ejemplo, Caratuladas, Rechazadas o un resultado de búsqueda) y no aparece nada.", "causa": "Simplemente no hay elementos en ese estado o que coincidan con la búsqueda — no es un error del sistema.", "solucion": "Revisá que estés en la pestaña correcta y, si buscaste algo, probá con otro criterio.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "buscar-expediente", "verificado": true },
+    { "slug": "no-puedo-cargar-nada-en-el-expediente", "situacion": "No puedo cargar nada en un expediente que me llegó", "descripcion": "Abrís un expediente que llegó a tu oficina pero no te deja subir ni incorporar nada.", "causa": "El expediente todavía figura asignado a \"Todos\" (en azul): nadie lo tomó todavía.", "solucion": "Tocá \"Todos\" y elegí \"Asignar a mí mismo\" antes de intentar cargar algo.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "tomar-expediente", "verificado": true },
+    { "slug": "me-rechazaron-la-caratula", "situacion": "Me rechazaron el pedido de carátula", "descripcion": "Tu solicitud de caratulación aparece en la pestaña \"Rechazadas\".", "causa": "Generalmente, porque el código de trámite y el motivo no tenían relación entre sí, o el motivo era poco claro.", "solucion": "Mirá el motivo del rechazo en ⋮ → Historial y hacé una nueva solicitud con un motivo más claro y específico.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "abrir-expediente", "verificado": true },
+    { "slug": "no-puedo-incorporar-un-archivo", "situacion": "No me deja incorporar un archivo", "descripcion": "Subiste un archivo pero no aparece la opción de incorporarlo, o el sistema lo rechaza.", "causa": "Para incorporar un documento, tiene que ser un PDF de hasta 50 MB. Otros formatos solo se pueden subir como informativos.", "solucion": "Convertí el archivo a PDF (o subilo como documento informativo si no necesita estar incorporado formalmente) y respetá el límite de 50 MB.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "subir-archivo", "verificado": true },
+    { "slug": "incorpore-el-documento-equivocado", "situacion": "Incorporé un documento equivocado", "descripcion": "Ya confirmaste la incorporación de un documento y te diste cuenta de que tiene un error o no era el correcto.", "causa": "Un documento incorporado no se puede borrar ni editar: su número de orden queda fijo.", "solucion": "Hay que subsanarlo con un documento oficial que lo corrija. Pedile ayuda a tu referente si es la primera vez que lo hacés.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "subsanar-documento", "verificado": true },
+    { "slug": "pase-a-la-oficina-equivocada", "situacion": "Mandé el expediente a la oficina equivocada", "descripcion": "Hiciste un pase y te diste cuenta de que elegiste mal la oficina de destino.", "causa": "Un pase no se puede deshacer desde el lado de quien lo envió.", "solucion": "Avisale a esa oficina (por ejemplo, por teléfono o correo) para que te devuelva el expediente con un pase propio.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "enviar-pase", "verificado": true },
+    { "slug": "no-veo-guarda-archivo-o-fusionar", "situacion": "No veo las opciones \"Guarda temporal\", \"Archivo\" o \"Fusionar\"", "descripcion": "Buscás estas opciones en un expediente pero no aparecen en el menú de acciones.", "causa": "Son acciones que requieren permisos especiales, que no tiene cualquier usuario.", "solucion": "Si tu tarea realmente necesita alguna de estas acciones, pedile a tu jefe/a que gestione el permiso con Informática.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "guarda-y-archivo", "verificado": true },
+    { "slug": "no-encuentro-el-expediente-por-numero", "situacion": "No encuentro un expediente buscándolo por número", "descripcion": "Escribís el número del expediente en Consulta y no aparece ningún resultado.", "causa": "El número tiene que escribirse completo, desde \"EE\" hasta las últimas letras — un número incompleto no devuelve resultados.", "solucion": "Revisá que copiaste el número entero (por ejemplo EE-2025-00000058-APPSF-PE) y volvé a buscar.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "buscar-expediente", "verificado": true },
+    { "slug": "mi-documento-oficial-no-tiene-numero", "situacion": "Mi documento oficial no tiene número todavía", "descripcion": "Creaste un documento oficial pero no le ves un número para poder vincularlo a un expediente.", "causa": "El número se genera recién cuando firma la última persona de la cadena de firmas.", "solucion": "Esperá a que todos los firmantes confirmen su firma — ahí el documento recibe su número automáticamente.", "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "crear-documento-oficial", "verificado": true },
+    { "slug": "no-me-deja-subir-la-resolucion", "situacion": "El sistema no me deja subir el PDF de la resolución", "descripcion": "Al iniciar una resolución, el archivo PDF se rechaza o da error al subirlo.", "causa": "El PDF de la resolución (o de sus anexos) no debe estar firmado de antemano ni encriptado — el sistema no acepta un archivo ya firmado.", "solucion": "Usá la versión del PDF sin firmar electrónicamente ni encriptar, y volvé a intentar.", "tutorial_categoria_slug": "actos-administrativos", "tutorial_slug": "iniciar-resolucion", "verificado": true },
+    { "slug": "hay-que-corregir-resolucion-con-cadena-iniciada", "situacion": "Hay que corregir una resolución y ya se inició la cadena de firmas", "descripcion": "Detectaste un error en una resolución, pero la cadena de firmas ya está en marcha.", "causa": "No se puede editar un documento con la cadena de firmas activa.", "solucion": "Primero hay que eliminar la cadena de firmas, después eliminar el documento, y recién ahí cargar la versión corregida (o usar Acciones → Modificar Resolución).", "tutorial_categoria_slug": "actos-administrativos", "tutorial_slug": "cadena-de-firmas", "verificado": true },
+    { "slug": "desaparecio-boton-enviar-vistas", "situacion": "Desapareció el botón \"Enviar\" al compartir vistas de expedientes", "descripcion": "Estás compartiendo una vista de varios expedientes y, al seleccionar muchos, el botón para enviar deja de verse.", "causa": "Hay un máximo de 500 expedientes por lote. Al superarlo, el botón se oculta.", "solucion": "Dividí la selección en sublotes de hasta 500 expedientes cada uno, o pedí el permiso especial de vistas masivas si lo necesitás seguido.", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "vistas-de-expediente", "verificado": true },
+    { "slug": "av-no-puedo-generar-el-expediente", "situacion": "Atención Virtual: no puedo generar el expediente", "descripcion": "Terminaste de revisar un trámite ciudadano pero la opción \"Generar expediente\" no te deja avanzar.", "causa": "Todavía quedan documentos del ciudadano con ícono naranja, sin revisar.", "solucion": "Revisá uno por uno los documentos pendientes (⋮ → Revisar) y aprobalos o rechazalos antes de generar el expediente.", "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "gestionar-tramite-av", "verificado": true },
+    { "slug": "av-no-puedo-escribirle-al-ciudadano", "situacion": "Atención Virtual: no puedo escribirle de nuevo al ciudadano", "descripcion": "Le pediste información a un ciudadano y ahora no podés mandarle otro mensaje ni avanzar el trámite.", "causa": "El trámite quedó \"a la espera de que el ciudadano responda\": no se puede avanzar hasta que conteste.", "solucion": "Esperá la respuesta del ciudadano. Cuando conteste, el trámite vuelve a Pendientes de revisión.", "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "revisar-solicitudes-av", "verificado": true },
+    { "slug": "av-no-puedo-hacer-el-pase", "situacion": "Atención Virtual: no me deja hacer el pase a otra oficina", "descripcion": "Intentás derivar un trámite de Atención Virtual a otra oficina y el sistema no te deja confirmarlo.", "causa": "La oficina destino no tiene ningún usuario con permiso de operador de Atención Virtual.", "solucion": "Avisale a esa oficina para que gestione el permiso con Informática antes de intentar el pase de nuevo.", "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "gestionar-tramite-av", "verificado": true },
+    { "slug": "olvide-mi-contrasena", "situacion": "Olvidé mi contraseña de TIMBÓ", "descripcion": "No te acordás la contraseña de tu usuario de ID Ciudadana / Intranet.", "causa": "Es normal — pasa con cualquier contraseña que no se usa seguido.", "solucion": "En la pantalla de ingreso, tocá \"¿Olvidaste tu contraseña?\" y seguí los pasos.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar", "verificado": true },
+    { "slug": "perdi-el-token-o-se-me-bloqueo-la-clave", "situacion": "Perdí el token o se me bloqueó la clave de firma digital", "descripcion": "No podés firmar digitalmente porque perdiste el dispositivo token, o se bloqueó por intentos fallidos.", "causa": "Los certificados de firma digital no tienen un \"blanqueo\" de clave: si se pierde o se bloquea, hay que empezar de nuevo.", "solucion": "Hay que revocar el certificado y tramitar uno nuevo ante la AC-ONTI (turno y presentación con DNI y token ante un Oficial de Registro). Mientras tanto, usá la firma electrónica para lo que puedas.", "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "requisitos-firma-digital", "verificado": true },
+    { "slug": "hice-autorregistro-sin-respuesta", "situacion": "Hice un \"autorregistro\" y no tengo respuesta", "descripcion": "Consultada en el foro del curso oficial, sin que el material documente en detalle este procedimiento.", "causa": "No verificado: el curso oficial no explica el procedimiento de autorregistro con el detalle suficiente.", "solucion": "No hay una solución confirmada en el material disponible. Derivá la consulta a los contactos de soporte de TIMBÓ.", "tutorial_categoria_slug": null, "tutorial_slug": null, "verificado": false }
+  ],
+  "tareas": [
+    { "slug": "entrar-a-timbo", "pregunta": "¿Cómo entro a TIMBÓ?", "keywords": ["entrar", "ingresar", "login", "usuario", "contraseña"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar" },
+    { "slug": "conocer-el-menu", "pregunta": "¿Qué encuentro en el menú de TIMBÓ?", "keywords": ["menu", "pantalla", "expedientes", "documentos oficiales"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "conocer-la-pantalla" },
+    { "slug": "abrir-un-expediente", "pregunta": "¿Cómo abro un expediente nuevo?", "keywords": ["abrir", "expediente", "caratula", "caratulacion", "nuevo"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "abrir-expediente" },
+    { "slug": "ver-si-aprobaron-mi-pedido", "pregunta": "¿Cómo veo si aprobaron mi pedido de carátula?", "keywords": ["estado", "caratula", "aprobaron", "pedido"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "ver-estado-solicitud" },
+    { "slug": "aprobar-o-rechazar-caratulas", "pregunta": "¿Cómo apruebo o rechazo una carátula?", "keywords": ["aprobar", "rechazar", "caratula", "mesa de entradas", "evaluar"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "evaluar-caratulas" },
+    { "slug": "tomar-un-expediente", "pregunta": "¿Cómo tomo un expediente que me llegó?", "keywords": ["tomar", "asignar", "todos", "expediente"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "tomar-expediente" },
+    { "slug": "subir-un-archivo", "pregunta": "¿Cómo subo un archivo a un expediente?", "keywords": ["subir", "archivo", "pdf", "adjuntar"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "subir-archivo" },
+    { "slug": "incorporar-un-documento", "pregunta": "¿Cómo incorporo un documento al expediente?", "keywords": ["incorporar", "documento", "ordenar"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "incorporar-documentos" },
+    { "slug": "agregar-un-documento-oficial", "pregunta": "¿Cómo agrego un documento oficial que ya tengo firmado?", "keywords": ["vincular", "documento oficial", "numero", "agregar"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "vincular-documento-oficial" },
+    { "slug": "hacer-una-nota", "pregunta": "¿Cómo hago una nota o documento oficial?", "keywords": ["nota", "documento oficial", "crear", "redactar"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "crear-documento-oficial" },
+    { "slug": "firmar-un-documento", "pregunta": "¿Cómo firmo un documento que me enviaron?", "keywords": ["firmar", "documento", "evaluar", "pendiente"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "firmar-documento-oficial" },
+    { "slug": "buscar-un-documento-oficial", "pregunta": "¿Cómo busco un documento oficial ya firmado?", "keywords": ["buscar", "consultar", "documento oficial"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "buscar-documento-oficial" },
+    { "slug": "ver-comunicaciones", "pregunta": "¿Dónde veo los mensajes formales que me mandaron?", "keywords": ["comunicaciones", "mensajes", "recibidas"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "comunicaciones-oficiales" },
+    { "slug": "corregir-un-documento", "pregunta": "¿Cómo corrijo un documento que tiene un error?", "keywords": ["corregir", "subsanar", "error", "documento"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "subsanar-documento" },
+    { "slug": "enviar-expediente-a-otra-oficina", "pregunta": "¿Cómo envío un expediente a otra oficina?", "keywords": ["enviar", "pase", "otra oficina", "providencia"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "enviar-pase" },
+    { "slug": "encontrar-codigo-de-oficina", "pregunta": "¿Cómo encuentro el código de una oficina?", "keywords": ["codigo", "oficina", "organigrama"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "enviar-pase" },
+    { "slug": "poner-expediente-en-espera", "pregunta": "¿Cómo pongo un expediente en espera?", "keywords": ["guarda temporal", "espera", "archivo"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "guarda-y-archivo" },
+    { "slug": "buscar-un-expediente", "pregunta": "¿Cómo busco un expediente?", "keywords": ["buscar", "consultar", "expediente", "numero"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "buscar-expediente" },
+    { "slug": "pedir-permiso-para-ver-expediente", "pregunta": "¿Cómo pido permiso para ver un expediente de otra oficina?", "keywords": ["vista", "permiso", "ver", "otra oficina"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "vistas-de-expediente" },
+    { "slug": "iniciar-una-resolucion", "pregunta": "¿Cómo inicio una resolución?", "keywords": ["resolucion", "acto administrativo", "aar", "iniciar"], "tutorial_categoria_slug": "actos-administrativos", "tutorial_slug": "iniciar-resolucion" },
+    { "slug": "revisar-tramite-de-atencion-virtual", "pregunta": "¿Cómo reviso un trámite que inició un ciudadano?", "keywords": ["atencion virtual", "ciudadano", "revisar", "tramite"], "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "revisar-solicitudes-av" },
+    { "slug": "que-firma-uso", "pregunta": "¿Qué firma uso, electrónica o digital?", "keywords": ["firma", "electronica", "digital", "token"], "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "firma-electronica-y-digital" },
+    { "slug": "cuidar-mi-usuario", "pregunta": "¿Cómo cuido mi usuario y mi contraseña?", "keywords": ["seguridad", "contraseña", "clave", "cuidar"], "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "cuidar-mi-cuenta" },
+    { "slug": "diferencia-vincular-fusionar", "pregunta": "¿Cuál es la diferencia entre vincular y fusionar expedientes?", "keywords": ["vincular", "fusionar", "diferencia", "expedientes"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "vincular-y-fusionar" }
+  ],
+  "quickstart_steps": [
+    { "titulo": "Conocer TIMBÓ", "descripcion": "TIMBÓ es la plataforma digital donde la Provincia de Santa Fe hace sus trámites administrativos: reemplaza al expediente en papel.", "tutorial_categoria_slug": null, "tutorial_slug": null, "situacion_slug": null },
+    { "titulo": "Ingresar", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar", "situacion_slug": null },
+    { "titulo": "Conocer el menú", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "conocer-la-pantalla", "situacion_slug": null },
+    { "titulo": "Abrir un expediente", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "abrir-expediente", "situacion_slug": null },
+    { "titulo": "Tomar y trabajar un expediente", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "tomar-expediente", "situacion_slug": null },
+    { "titulo": "Enviarlo a otra oficina", "tutorial_categoria_slug": "expedientes", "tutorial_slug": "enviar-pase", "situacion_slug": null },
+    { "titulo": "Resolver un problema frecuente", "tutorial_categoria_slug": null, "tutorial_slug": null, "situacion_slug": "no-veo-modulos-del-menu" }
+  ]
+}

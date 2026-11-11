@@ -1,0 +1,20 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Temas — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">Temas</h1>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.tema_nuevo') }}">+ Nuevo tema</a>
+</div>
+
+<div class="admin-list">
+  {% for tema in temas %}
+  <a class="admin-list-item" href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">
+    <span style="font-size:20px">{{ tema.icono }}</span>
+    <span class="admin-list-item__title">{{ tema.nombre }} {% if not tema.activo %}<span class="badge badge--neutral">inactivo</span>{% endif %}</span>
+    <span class="admin-list-item__meta">{{ tema.categorias | length }} módulos</span>
+  </a>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🧭</div>Todavía no hay temas creados.</div>
+  {% endfor %}
+</div>
+{% endblock %}

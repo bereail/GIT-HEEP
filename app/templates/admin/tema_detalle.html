@@ -1,0 +1,147 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ tema.nombre }} — Panel de administración{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs"><a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>{{ tema.nombre }}</nav>
+
+<div class="admin-section-head">
+  <h1 style="margin:0">{{ tema.icono }} {{ tema.nombre }}</h1>
+  <div style="display:flex;gap:8px">
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.imagenes', tema_slug=tema.slug) }}">🖼 Imágenes</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.tema_editar', tema_slug=tema.slug) }}">Editar tema</a>
+  </div>
+</div>
+
+<div class="admin-section-head">
+  <h2 class="section__title" style="margin:0">Módulos</h2>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.categoria_nueva', tema_slug=tema.slug) }}">+ Módulo</a>
+</div>
+<div class="admin-list">
+  {% for categoria in tema.categorias %}
+  <div class="admin-list-item">
+    <span>{{ categoria.icono }}</span>
+    <a class="admin-list-item__title" href="{{ url_for('admin.categoria_detalle', tema_slug=tema.slug, categoria_slug=categoria.slug) }}">{{ categoria.titulo }}</a>
+    <span class="admin-list-item__meta">{{ categoria.tutoriales | length }} tutoriales</span>
+    <span class="admin-list-item__actions">
+      <form method="post" action="{{ url_for('admin.categoria_mover', tema_slug=tema.slug, categoria_slug=categoria.slug, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
+      <form method="post" action="{{ url_for('admin.categoria_mover', tema_slug=tema.slug, categoria_slug=categoria.slug, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
+    </span>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">📁</div>Todavía no hay módulos.</div>
+  {% endfor %}
+</div>
+
+<div class="admin-section-head">
+  <h2 class="section__title" style="margin:0">Glosario</h2>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.glosario_nueva', tema_slug=tema.slug) }}">+ Término</a>
+</div>
+<div class="admin-list">
+  {% for entrada in tema.entradas_glosario %}
+  <div class="admin-list-item">
+    <a class="admin-list-item__title" href="{{ url_for('admin.glosario_editar', tema_slug=tema.slug, entrada_id=entrada.id) }}">{{ entrada.termino }}</a>
+    <span class="admin-list-item__meta">{{ entrada.modulo }}</span>
+    <span class="admin-list-item__actions">
+      <form method="post" action="{{ url_for('admin.glosario_eliminar', tema_slug=tema.slug, entrada_id=entrada.id) }}" onsubmit="return confirm('¿Eliminar este término del glosario?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+    </span>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">📖</div>Todavía no hay términos.</div>
+  {% endfor %}
+</div>
+
+<div class="admin-section-head">
+  <h2 class="section__title" style="margin:0">Tengo un problema</h2>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.situacion_nueva', tema_slug=tema.slug) }}">+ Situación</a>
+</div>
+<div class="admin-list">
+  {% for situacion in tema.situaciones %}
+  <div class="admin-list-item">
+    <a class="admin-list-item__title" href="{{ url_for('admin.situacion_editar', tema_slug=tema.slug, situacion_slug=situacion.slug) }}">{{ situacion.situacion }}</a>
+    {% if situacion.categoria_libre %}<span class="admin-list-item__meta">{{ situacion.categoria_libre }}</span>{% endif %}
+    <span class="badge badge--{{ 'verified' if situacion.verificado else 'unverified' }}">{{ '✓' if situacion.verificado else '🟡' }}</span>
+    <span class="admin-list-item__actions">
+      <form method="post" action="{{ url_for('admin.situacion_mover', tema_slug=tema.slug, situacion_slug=situacion.slug, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
+      <form method="post" action="{{ url_for('admin.situacion_mover', tema_slug=tema.slug, situacion_slug=situacion.slug, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
+      <form method="post" action="{{ url_for('admin.situacion_eliminar', tema_slug=tema.slug, situacion_slug=situacion.slug) }}" onsubmit="return confirm('¿Eliminar esta situación?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+    </span>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🩹</div>Todavía no hay situaciones.</div>
+  {% endfor %}
+</div>
+
+<div class="admin-section-head">
+  <h2 class="section__title" style="margin:0">Quiero hacer...</h2>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.tarea_nueva', tema_slug=tema.slug) }}">+ Tarea</a>
+</div>
+<div class="admin-list">
+  {% for tarea in tema.tareas %}
+  <div class="admin-list-item">
+    <a class="admin-list-item__title" href="{{ url_for('admin.tarea_editar', tema_slug=tema.slug, tarea_slug=tarea.slug) }}">{{ tarea.pregunta }}</a>
+    <span class="admin-list-item__meta">→ {{ tarea.tutorial.titulo }}</span>
+    <span class="admin-list-item__actions">
+      <form method="post" action="{{ url_for('admin.tarea_mover', tema_slug=tema.slug, tarea_slug=tarea.slug, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
+      <form method="post" action="{{ url_for('admin.tarea_mover', tema_slug=tema.slug, tarea_slug=tarea.slug, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
+      <form method="post" action="{{ url_for('admin.tarea_eliminar', tema_slug=tema.slug, tarea_slug=tarea.slug) }}" onsubmit="return confirm('¿Eliminar esta tarea?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+    </span>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🔎</div>Todavía no hay tareas.</div>
+  {% endfor %}
+</div>
+
+<div class="admin-section-head">
+  <h2 class="section__title" style="margin:0">Ruta guiada "Primeros 15 minutos"</h2>
+</div>
+<div class="admin-list">
+  {% for paso in tema.pasos_introductorios %}
+  <div class="admin-list-item">
+    <span class="admin-list-item__title">{{ loop.index }}. {{ paso.titulo }}</span>
+    <span class="admin-list-item__meta">
+      {% if paso.tutorial %}→ {{ paso.tutorial.titulo }}{% elif paso.situacion %}→ {{ paso.situacion.situacion }}{% else %}informativo{% endif %}
+    </span>
+    <span class="admin-list-item__actions">
+      <form method="post" action="{{ url_for('admin.paso_mover', tema_slug=tema.slug, paso_id=paso.id, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
+      <form method="post" action="{{ url_for('admin.paso_mover', tema_slug=tema.slug, paso_id=paso.id, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
+      <form method="post" action="{{ url_for('admin.paso_eliminar', tema_slug=tema.slug, paso_id=paso.id) }}" onsubmit="return confirm('¿Eliminar este paso?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+    </span>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🚀</div>Todavía no hay pasos en la ruta guiada.</div>
+  {% endfor %}
+</div>
+
+<form method="post" action="{{ url_for('admin.paso_nuevo', tema_slug=tema.slug) }}" class="admin-form" style="max-width:640px">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field-row">
+    <div class="admin-field">
+      <label for="paso-titulo">Título del nuevo paso</label>
+      <input class="input" style="padding-left:12px" id="paso-titulo" name="titulo" required />
+    </div>
+    <div class="admin-field">
+      <label for="paso-tutorial">Tutorial al que apunta (opcional)</label>
+      <select class="input" id="paso-tutorial" name="tutorial">
+        <option value="">— Ninguno —</option>
+        {% for categoria in tema.categorias %}
+          {% for tutorial in categoria.tutoriales %}
+          <option value="{{ categoria.slug }}/{{ tutorial.slug }}">{{ categoria.titulo }} → {{ tutorial.titulo }}</option>
+          {% endfor %}
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="admin-field">
+    <label for="paso-descripcion">Descripción (solo si es un paso informativo, sin tutorial)</label>
+    <input class="input" style="padding-left:12px" id="paso-descripcion" name="descripcion" />
+  </div>
+  <div><button type="submit" class="btn btn--ghost btn--sm">+ Agregar paso</button></div>
+</form>
+
+<div class="admin-section-head">
+  <h2 class="section__title" style="margin:0; color:var(--danger)">Zona de riesgo</h2>
+</div>
+<form method="post" action="{{ url_for('admin.tema_eliminar', tema_slug=tema.slug) }}" onsubmit="return confirm('Esto borra el tema completo y TODO su contenido (módulos, tutoriales, glosario, situaciones, tareas). ¿Confirmás?')">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <button type="submit" class="btn btn--subtle btn--sm">Eliminar este tema completo</button>
+</form>
+{% endblock %}
