@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block titulo %}Centro de Aprendizaje{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body
+  data-tema-slug="{{ tema.slug if tema else '' }}"
+  data-tema-nombre="{{ tema.nombre if tema else '' }}"
+>
+  <div class="shell">
+    <header class="topbar">
+      <button type="button" class="topbar__menu-btn" id="btn-menu" aria-label="Abrir menú">☰</button>
+      <a class="topbar__brand" href="{{ url_for('ui.portal_inicio') }}">
+        <span class="topbar__brand-mark">C</span>
+        <span>Centro de Aprendizaje</span>
+      </a>
+      {% if tema %}
+      <div class="topbar__search">
+        <div class="input-wrap">
+          <span class="input-wrap__icon">🔎</span>
+          <input class="input" id="input-buscar-global" type="text" placeholder="Buscar en {{ tema.nombre }}..." aria-label="Buscar" readonly />
+        </div>
+      </div>
+      {% endif %}
+      <div class="topbar__spacer"></div>
+      {% if tema %}
+      <button type="button" class="topbar__search-btn" id="btn-buscar-movil" aria-label="Buscar">🔎</button>
+      {% endif %}
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      {% if tema %}
+        <div class="sidebar__section-title">{{ tema.nombre }}</div>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_tema' else '' }}" href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}"><span class="nav-link__icon">🏠</span>Inicio</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_quickstart' else '' }}" href="{{ url_for('ui.ver_quickstart', tema_slug=tema.slug) }}"><span class="nav-link__icon">🚀</span>Primeros 15 minutos</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_tareas' else '' }}" href="{{ url_for('ui.ver_tareas', tema_slug=tema.slug) }}"><span class="nav-link__icon">🔎</span>Quiero hacer...</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_problemas' else '' }}" href="{{ url_for('ui.ver_problemas', tema_slug=tema.slug) }}"><span class="nav-link__icon">🩹</span>Tengo un problema</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_glosario' else '' }}" href="{{ url_for('ui.ver_glosario', tema_slug=tema.slug) }}"><span class="nav-link__icon">📖</span>Glosario</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_progreso' else '' }}" href="{{ url_for('ui.ver_progreso', tema_slug=tema.slug) }}"><span class="nav-link__icon">📊</span>Mi progreso</a>
+
+        <div class="sidebar__section-title">Módulos</div>
+        {% for categoria in tema.categorias %}
+        {% set activa = request.view_args and request.view_args.get('categoria_slug') == categoria.slug %}
+        <a class="nav-link {{ 'is-active' if activa else '' }}" href="{{ url_for('ui.ver_categoria', tema_slug=tema.slug, categoria_slug=categoria.slug) }}"
+           data-progreso-categoria='{{ {"slug": categoria.slug, "tutoriales": tutoriales_para_js(categoria)} | tojson }}'>
+          <span class="nav-link__icon">{{ categoria.icono }}</span>{{ categoria.titulo }}
+          <span class="nav-link__progress" data-progreso-label>0%</span>
+        </a>
+        {% endfor %}
+        <div class="sidebar__section-title">Portal</div>
+        <a class="nav-link" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🧭</span>Todas las capacitaciones</a>
+      {% else %}
+        <div class="sidebar__section-title">Centro de Aprendizaje</div>
+        <a class="nav-link is-active" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🏠</span>Inicio</a>
+      {% endif %}
+    </aside>
+    <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+    <main class="content" id="main-content" tabindex="-1">
+      {% block contenido %}{% endblock %}
+    </main>
+  </div>
+
+  {% if tema %}
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-modal">
+      <div class="search-modal__input-row">
+        <div class="input-wrap">
+          <span class="input-wrap__icon">🔎</span>
+          <input class="input" id="input-buscar-modal" type="text" placeholder="¿Cómo busco...? ¿Cómo cargo...?" aria-label="Buscar" />
+        </div>
+      </div>
+      <div class="search-modal__results" id="resultados-busqueda"></div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar">×</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  {% block script_pagina %}{% endblock %}
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

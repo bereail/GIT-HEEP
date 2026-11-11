@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block titulo %}{{ tema.nombre }} — Centro de Aprendizaje{% endblock %}
+{% block contenido %}
+<div class="hero">
+  <div class="hero__eyebrow">{{ tema.nombre }} · Capacitación</div>
+  <h1>{{ tema.nombre_completo or tema.nombre }}</h1>
+  <p class="hero__desc">{{ tema.descripcion }}</p>
+</div>
+
+<div class="section" data-progreso-total='{{ categorias_para_js(tema) | tojson }}'>
+  <div class="progress-bar"><div class="progress-bar__fill" style="width:0%"></div></div>
+  <div class="progress-ring-label" data-progreso-label>Progreso general: 0%</div>
+</div>
+
+<div class="card-grid">
+  <a class="card card-link" href="{{ url_for('ui.ver_quickstart', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">🚀</span>
+    <div class="home-card__title">Empezar desde cero</div>
+    <div class="home-card__desc">Ruta guiada de 15 minutos para conocer lo básico.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for('ui.ver_categorias', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">🧭</span>
+    <div class="home-card__title">Explorar módulos</div>
+    <div class="home-card__desc">Recorré el contenido completo módulo por módulo.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for('ui.ver_tareas', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">🔎</span>
+    <div class="home-card__title">Quiero hacer algo</div>
+    <div class="home-card__desc">Buscá por tarea: "¿Cómo busco...?", "¿Cómo cargo...?".</div>
+  </a>
+  <a class="card card-link" href="{{ url_for('ui.ver_problemas', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">🩹</span>
+    <div class="home-card__title">Tengo un problema</div>
+    <div class="home-card__desc">Situaciones frecuentes y cómo resolverlas.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for('ui.ver_glosario', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">📖</span>
+    <div class="home-card__title">Glosario</div>
+    <div class="home-card__desc">Términos del sistema, explicados en simple.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for('ui.ver_progreso', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">📊</span>
+    <div class="home-card__title">Mi progreso</div>
+    <div class="home-card__desc">Tutoriales completados y resultados de quizzes.</div>
+  </a>
+</div>
+
+{% if tema.recomendaciones %}
+<div class="section">
+  <h2 class="section__title">Antes de empezar</h2>
+  {% for r in tema.recomendaciones %}
+  <div class="callout callout--warning"><span class="callout__icon">⚠️</span><div>{{ r }}</div></div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

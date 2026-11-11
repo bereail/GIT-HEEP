@@ -1,0 +1,121 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ 'Editar' if tutorial else 'Nuevo' }} tutorial — {{ categoria.titulo }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">{{ tema.nombre }}</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.categoria_detalle', tema_slug=tema.slug, categoria_slug=categoria.slug) }}">{{ categoria.titulo }}</a><span class="sep">/</span>
+  {{ 'Editar' if tutorial else 'Nuevo' }} tutorial
+</nav>
+<h1>{{ 'Editar tutorial' if tutorial else 'Nuevo tutorial' }}</h1>
+
+<details style="margin-bottom:18px">
+  <summary style="cursor:pointer;font-size:13.5px;color:var(--text-muted)">Ver tipos de bloque y de pregunta disponibles (formato JSON)</summary>
+  <div class="card" style="padding:16px 18px;margin-top:10px;font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;color:var(--text-muted)">Bloques — campo "Bloques":
+{ "type": "text", "text": "..." }
+{ "type": "step", "number": 1, "image": "captura.jpg", "alt": "...", "caption": "...", "explanation": "...", "lookFor": "...", "doThis": "..." }
+{ "type": "tip" | "warning" | "practice", "text": "..." }
+{ "type": "prereq", "items": ["...", "..."] }
+{ "type": "concepts", "items": [{ "term": "...", "def": "..." }] }
+{ "type": "diagram", "variant": "table"|"cards"|"tabs"|"list", "title": "...", ... , "note": "..." }
+  table: "columns": [...], "rows": [[...]] (usar "◼" en una celda para taparla, ej. datos de pacientes)
+  cards: "items": [{ "label": "...", "value": "..." }]
+  tabs:  "tabs": ["...", "..."], "active": 0
+  list:  "items": [{ "label": "...", "hint": "...", "tone": "basico|intermedio|avanzado|verified|unverified|neutral" }]
+
+Un "step" puede llevar "diagram": {...} en vez de "image", para una pantalla sin captura real.
+
+Preguntas de quiz — campo "Quiz":
+{ "type": "multiple-choice", "question": "...", "options": ["...","..."], "correctIndex": 0, "explanation": "..." }
+{ "type": "true-false", "question": "...", "answer": true, "explanation": "..." }
+{ "type": "order-steps", "instruction": "...", "steps": ["...", "..."] }
+{ "type": "checklist", "title": "...", "items": ["...", "..."] }</div>
+</details>
+
+<form method="post" id="form-tutorial">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-form" style="margin-bottom:20px">
+    <div class="admin-field-row">
+      <div class="admin-field">
+        <label for="titulo">Título</label>
+        <input class="input" style="padding-left:12px" id="titulo" name="titulo" value="{{ (valores.titulo if valores else tutorial.titulo) if (valores or tutorial) else '' }}" required />
+      </div>
+      {% if not tutorial %}
+      <div class="admin-field">
+        <label for="slug">Slug</label>
+        <input class="input" style="padding-left:12px" id="slug" name="slug" placeholder="Se genera del título" />
+      </div>
+      {% endif %}
+      <div class="admin-field" style="max-width:120px">
+        <label for="minutos">Minutos</label>
+        <input class="input" style="padding-left:12px" type="number" id="minutos" name="minutos" value="{{ (valores.minutos if valores else tutorial.minutos) if (valores or tutorial) else 5 }}" />
+      </div>
+      <div class="admin-field" style="max-width:200px">
+        <label for="dificultad">Dificultad</label>
+        <select class="input" id="dificultad" name="dificultad">
+          {% set actual = (valores.dificultad if valores else tutorial.dificultad) if (valores or tutorial) else 'basico' %}
+          {% for valor, etiqueta in [('basico', '🟢 Básico'), ('intermedio', '🟡 Intermedio'), ('avanzado', '🔴 Avanzado')] %}
+          <option value="{{ valor }}" {{ 'selected' if actual == valor else '' }}>{{ etiqueta }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="editor-grid">
+    <div class="admin-form">
+      <div class="admin-field">
+        <label for="bloques">Bloques (JSON)</label>
+        <textarea class="input input--code" id="bloques" name="bloques">{{ bloques_texto }}</textarea>
+        <span class="text-faint">Imagen del tema: subila primero en "🖼 Imágenes" y usá solo el nombre de archivo en "image".</span>
+      </div>
+      <div class="admin-field">
+        <label for="quiz">Quiz (JSON)</label>
+        <textarea class="input input--code" id="quiz" name="quiz">{{ quiz_texto }}</textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn btn--primary">{{ 'Guardar cambios' if tutorial else 'Crear tutorial' }}</button>
+      </div>
+    </div>
+
+    <div class="editor-grid__preview" id="vista-previa">
+      <p class="text-muted">La vista previa se actualiza sola mientras escribís.</p>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    var bloques = document.getElementById('bloques');
+    var preview = document.getElementById('vista-previa');
+    var temaSlug = {{ tema.slug | tojson }};
+    var timeout = null;
+
+    async function actualizarPreview() {
+      try {
+        const resp = await fetch("{{ url_for('admin.tutorial_previsualizar') }}", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bloques: bloques.value, tema_slug: temaSlug }),
+        });
+        const datos = await resp.json();
+        if (datos.error) {
+          preview.innerHTML = `<div class="flash flash--error">JSON inválido: ${datos.error}</div>`;
+        } else {
+          preview.innerHTML = datos.html;
+        }
+      } catch {
+        preview.innerHTML = '<p class="text-muted">No se pudo generar la vista previa.</p>';
+      }
+    }
+
+    bloques.addEventListener('input', function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(actualizarPreview, 500);
+    });
+    actualizarPreview();
+  })();
+</script>
+{% endblock %}

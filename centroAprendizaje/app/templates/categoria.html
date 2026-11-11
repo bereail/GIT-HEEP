@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block titulo %}{{ categoria.titulo }} — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+{% from "_bloques.html" import badge_dificultad %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>
+  <a href="{{ url_for('ui.ver_categorias', tema_slug=tema.slug) }}">Módulos</a><span class="sep">/</span>
+  {{ categoria.titulo }}
+</nav>
+<div class="hero">
+  <div class="hero__eyebrow">{{ categoria.icono }} Módulo</div>
+  <h1>{{ categoria.titulo }}</h1>
+  <p class="hero__desc">{{ categoria.resumen }}</p>
+  {% if categoria.audiencia %}<p class="text-muted"><b>Para quién:</b> {{ categoria.audiencia }}</p>{% endif %}
+  {{ badge_dificultad(categoria.dificultad) }}
+</div>
+
+<div class="section" data-progreso-categoria='{{ {"slug": categoria.slug, "tutoriales": tutoriales_para_js(categoria)} | tojson }}'>
+  <div class="progress-bar"><div class="progress-bar__fill" style="width:0%"></div></div>
+  <div class="progress-ring-label" data-progreso-label>0% completado</div>
+</div>
+
+<div class="section">
+  <h2 class="section__title">Tutoriales</h2>
+  <div class="lesson-list">
+    {% for tutorial in categoria.tutoriales %}
+    <a class="lesson-row" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=categoria.slug, tutorial_slug=tutorial.slug) }}" data-tutorial-check data-categoria="{{ categoria.slug }}" data-tutorial="{{ tutorial.slug }}">
+      <span class="lesson-row__check" aria-hidden="true">✓</span>
+      <span class="lesson-row__title">{{ tutorial.titulo }}</span>
+      <span class="lesson-row__meta">{{ tutorial.minutos }} min · {{ badge_dificultad(tutorial.dificultad) }}</span>
+    </a>
+    {% else %}
+    <div class="empty-state"><div class="empty-state__icon">📭</div>Todavía no hay tutoriales en este módulo.</div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

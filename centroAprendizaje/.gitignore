@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+instance/*.sqlite3
+.pytest_cache/
+scripts/server.log
+.claude/
+

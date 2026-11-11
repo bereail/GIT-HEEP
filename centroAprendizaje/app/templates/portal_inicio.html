@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Centro de Aprendizaje{% endblock %}
+{% block contenido %}
+<div class="hero">
+  <div class="hero__eyebrow">Centro de Aprendizaje</div>
+  <h1>¿Qué necesitás aprender a usar?</h1>
+  <p class="hero__desc">Elegí un sistema para ver sus tutoriales, resolver dudas con el asistente, o consultar preguntas frecuentes.</p>
+</div>
+
+{% if temas %}
+<div class="card-grid">
+  {% for tema in temas %}
+  <a class="card card-link" href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">{{ tema.icono }}</span>
+    <div class="home-card__title">{{ tema.nombre }}</div>
+    <div class="home-card__desc">{{ tema.descripcion }}</div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+  <div class="empty-state__icon">🧭</div>
+  Todavía no hay capacitaciones cargadas.
+</div>
+{% endif %}
+{% endblock %}

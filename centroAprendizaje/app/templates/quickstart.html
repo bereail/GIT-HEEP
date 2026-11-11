@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}{{ tema.quickstart_titulo or 'Primeros 15 minutos' }} — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>{{ tema.quickstart_titulo or 'Primeros 15 minutos' }}
+</nav>
+<div class="hero">
+  <div class="hero__eyebrow">Ruta guiada</div>
+  <h1>{{ tema.quickstart_titulo or 'Primeros 15 minutos' }}</h1>
+  <p class="hero__desc">{{ tema.quickstart_intro }}</p>
+</div>
+
+<div class="lesson-list">
+  {% for paso in tema.pasos_introductorios %}
+    {% if paso.tutorial %}
+      {% set href = url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=paso.tutorial.categoria.slug, tutorial_slug=paso.tutorial.slug) %}
+      <a class="lesson-row" href="{{ href }}" data-tutorial-check data-categoria="{{ paso.tutorial.categoria.slug }}" data-tutorial="{{ paso.tutorial.slug }}">
+        <span class="lesson-row__check" aria-hidden="true">✓</span>
+        <span class="lesson-row__title">{{ loop.index }}. {{ paso.titulo }}</span>
+      </a>
+    {% elif paso.situacion %}
+      <a class="lesson-row" href="{{ url_for('ui.ver_problemas', tema_slug=tema.slug) }}">
+        <span class="lesson-row__check" aria-hidden="true">✓</span>
+        <span class="lesson-row__title">{{ loop.index }}. {{ paso.titulo }}</span>
+      </a>
+    {% else %}
+      <div class="lesson-row">
+        <span class="lesson-row__check" aria-hidden="true">✓</span>
+        <span class="lesson-row__title">{{ loop.index }}. {{ paso.titulo }}</span>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% if tema.quickstart_cierre %}
+<div class="callout callout--tip"><span class="callout__icon">💡</span><div>{{ tema.quickstart_cierre }}</div></div>
+{% endif %}
+{% endblock %}

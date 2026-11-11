@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block titulo %}Panel de administración{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+  <header class="admin-topbar">
+    <span class="admin-topbar__brand">⚙️ Panel de administración</span>
+    <span class="text-muted">Centro de Aprendizaje</span>
+    <div class="admin-topbar__spacer"></div>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('ui.portal_inicio') }}" target="_blank" rel="noopener">Ver sitio público ↗</a>
+    <form method="post" action="{{ url_for('admin.logout') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <button type="submit" class="btn btn--subtle btn--sm">Cerrar sesión</button>
+    </form>
+  </header>
+
+  <div class="admin-shell">
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+      {% for categoria, mensaje in mensajes %}
+        <div class="flash flash--{{ 'error' if categoria == 'error' else 'ok' }}">{{ mensaje }}</div>
+      {% endfor %}
+    {% endwith %}
+    {% block contenido %}{% endblock %}
+  </div>
+
+  {% block script_pagina %}{% endblock %}
+</body>
+</html>

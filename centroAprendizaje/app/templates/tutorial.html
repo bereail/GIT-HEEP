@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block titulo %}{{ tutorial.titulo }} — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+{% from "_bloques.html" import badge_dificultad, bloque %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>
+  <a href="{{ url_for('ui.ver_categorias', tema_slug=tema.slug) }}">Módulos</a><span class="sep">/</span>
+  <a href="{{ url_for('ui.ver_categoria', tema_slug=tema.slug, categoria_slug=categoria.slug) }}">{{ categoria.titulo }}</a><span class="sep">/</span>
+  {{ tutorial.titulo }}
+</nav>
+<div class="hero">
+  <div class="hero__eyebrow">{{ categoria.icono }} {{ categoria.titulo }}</div>
+  <h1>{{ tutorial.titulo }}</h1>
+  <div>{{ badge_dificultad(tutorial.dificultad) }} <span class="badge badge--neutral">⏱ {{ tutorial.minutos }} min</span></div>
+</div>
+
+<div class="section" id="bloques-tutorial">
+  {% set img_base = url_for('static', filename='img/' + tema.slug) %}
+  {% for b in tutorial.bloques %}{{ bloque(b, img_base) }}{% endfor %}
+</div>
+
+{% set preguntas_evaluables = tutorial.quiz | selectattr('type', 'ne', 'checklist') | list %}
+{% if tutorial.quiz %}
+<div class="section">
+  <h2 class="section__title">✅ Comprobá lo aprendido</h2>
+  <div class="quiz-panel" id="quiz-mount"></div>
+</div>
+{% endif %}
+
+<div class="lesson-complete-bar">
+  <button type="button" class="checkbox-pill js-toggle-tutorial" id="btn-completar" data-categoria="{{ categoria.slug }}" data-tutorial="{{ tutorial.slug }}">
+    <span>○</span> Marcar como completado
+  </button>
+  <span class="text-muted" id="resultado-quiz" style="display:none"></span>
+</div>
+
+<div class="lesson-nav">
+  {% if anterior %}
+    <a class="btn btn--ghost" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=anterior[0], tutorial_slug=anterior[1]) }}">← {{ anterior[2] }}</a>
+  {% else %}<span></span>{% endif %}
+  {% if siguiente %}
+    <a class="btn btn--primary" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=siguiente[0], tutorial_slug=siguiente[1]) }}">{{ siguiente[2] }} →</a>
+  {% else %}
+    <a class="btn btn--primary" href="{{ url_for('ui.ver_categoria', tema_slug=tema.slug, categoria_slug=categoria.slug) }}">Volver al módulo</a>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block script_pagina %}
+<script type="module">
+  import { renderizarQuiz } from "{{ url_for('static', filename='js/quiz.js') }}";
+  import * as progreso from "{{ url_for('static', filename='js/progreso.js') }}";
+
+  const temaSlug = {{ tema.slug | tojson }};
+  const categoriaSlug = {{ categoria.slug | tojson }};
+  const tutorialSlug = {{ tutorial.slug | tojson }};
+  const preguntas = {{ tutorial.quiz | tojson }};
+
+  const boton = document.getElementById('btn-completar');
+  function pintarBoton() {
+    const hecho = progreso.estaTutorialCompleto(temaSlug, categoriaSlug, tutorialSlug);
+    boton.classList.toggle('is-done', hecho);
+    boton.querySelector('span').textContent = hecho ? '✓' : '○';
+    boton.lastChild.textContent = hecho ? ' Tutorial completado' : ' Marcar como completado';
+  }
+  pintarBoton(); // el estado inicial; los clics los maneja main.js (listener delegado en <body>)
+
+  const resultadoEl = document.getElementById('resultado-quiz');
+  const resultadoPrevio = progreso.obtenerResultadoQuiz(temaSlug, categoriaSlug, tutorialSlug);
+  if (resultadoPrevio) {
+    resultadoEl.style.display = '';
+    resultadoEl.textContent = `Último resultado del quiz: ${resultadoPrevio.correctas}/${resultadoPrevio.total}`;
+  }
+
+  if (preguntas && preguntas.length) {
+    const mount = document.getElementById('quiz-mount');
+    renderizarQuiz(mount, preguntas, (correctas, total) => {
+      if (total > 0) {
+        progreso.guardarResultadoQuiz(temaSlug, categoriaSlug, tutorialSlug, correctas, total);
+        resultadoEl.style.display = '';
+        resultadoEl.textContent = `Último resultado del quiz: ${correctas}/${total}`;
+      }
+    });
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía rápida de TIMBÓ</title>
+<style>
+:root{
+  --bg:#f6f6f9; --paper:#fff; --ink:#1f2330; --muted:#5d6475; --line:#e3e5ec;
+  --accent:#d6245e; --accent2:#5b3f99; --soft:#fbeef3;
+  --ok:#1f7a4d; --okbg:#e8f5ee; --warn:#9a5a00; --warnbg:#fff4e0; --tip:#3a4fb0; --tipbg:#eef1ff;
+  --grad:linear-gradient(90deg,#5b3f99,#d6245e 55%,#f07a2a); --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+a{color:var(--accent2)}
+.bar{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:980px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.logo{font-weight:800}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar a.idx,.bar button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 14px;text-decoration:none;color:var(--ink);cursor:pointer}
+.bar a.idx:hover,.bar button:hover{border-color:var(--accent);color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding:16px 16px 80px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative;overflow:hidden;margin-top:12px}
+.hero:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--grad)}
+.hero h1{margin:0 0 8px;font-size:2rem;line-height:1.2}
+.hero p{margin:6px 0;color:var(--muted)}
+h2{font-size:1.4rem;margin:0 0 12px;line-height:1.25}
+h3{font-size:1.1rem;margin:22px 0 8px;color:var(--accent2)}
+section{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 28px;margin-top:20px}
+.quick{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.quick a{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink);background:#fff;transition:.15s}
+.quick a:hover{border-color:var(--accent);box-shadow:0 4px 14px rgba(214,36,94,.12)}
+.quick b{display:block;font-size:1rem}
+.quick small{color:var(--muted)}
+.quick .ic{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--soft);margin-bottom:8px;font-size:1.1rem}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:4px 0 10px 46px}
+ol.steps>li:before{content:counter(s);position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;font-weight:700;display:grid;place-items:center}
+figure{margin:10px 0 14px;break-inside:avoid}
+figure img{max-width:min(100%,720px);height:auto;border:1px solid var(--line);border-radius:10px;display:block}
+figure.sm img{max-width:400px;width:100%}
+figcaption{font-size:.82rem;color:var(--muted);margin-top:4px}
+.box{border-radius:12px;padding:12px 16px;margin:14px 0;border-left:5px solid}
+.box p{margin:4px 0}
+.box b.t{display:block}
+.ok{background:var(--okbg);border-color:var(--ok)}
+.warn{background:var(--warnbg);border-color:var(--warn)}
+.tip{background:var(--tipbg);border-color:var(--tip)}
+.key{background:var(--soft);border-color:var(--accent)}
+.ex{background:#f7f7fb;border:1px dashed #c9cbe0;border-radius:12px;padding:10px 14px;margin:12px 0}
+.ex .good{color:var(--ok);font-weight:600}
+.ex .bad{color:#b3261e;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:#f3f3f8}
+.tw{overflow-x:auto}
+details.faq{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;background:#fff}
+details.faq summary{cursor:pointer;font-weight:600}
+details.faq p{margin:8px 0 2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.back{display:inline-block;margin-top:12px;font-size:.85rem;color:var(--muted);text-decoration:none}
+.note{font-size:.85rem;color:var(--muted)}
+kbd{background:#f1f1f6;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:.9em;font-family:inherit}
+@media (max-width:700px){
+  body{font-size:16px}
+  .hero{padding:22px 18px}.hero h1{font-size:1.55rem}
+  section{padding:18px 16px}
+  .two{grid-template-columns:1fr}
+  .bar-in .hide-sm{display:none}
+}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .bar,.back,.no-print{display:none!important}
+  section,.hero{border:none;padding:0;margin-top:16pt}
+  section{break-before:page}
+  .quick a{border:1px solid #ccc}
+  figure img{max-height:8cm;width:auto}
+  .box,figure,ol.steps>li,table,details{break-inside:avoid}
+  details.faq{display:block}
+  details.faq>*{display:block}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-in">
+  <div class="logo"><span>TIMBÓ</span> · Guía rápida</div>
+  <div>
+    <a class="idx" href="#que-hacer">¿Qué querés hacer?</a>
+    <button class="hide-sm" onclick="window.print()">Imprimir / PDF</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+<header class="hero" id="inicio">
+  <h1>Guía rápida de TIMBÓ</h1>
+  <p>Para el personal de hospitales públicos de la Provincia de Santa Fe que trabaja con expedientes electrónicos.</p>
+  <p class="note">Basada en los instructivos oficiales del curso “Timbó, paso a paso” (Aula Virtual provincial). Las capturas son de los instructivos oficiales y muestran usuarios de prueba. Los ejemplos de hospital son inventados, para practicar.</p>
+</header>
+
+<section id="intro">
+  <h2>¿Qué es TIMBÓ?</h2>
+  <p><strong>TIMBÓ</strong> es la plataforma digital donde la Provincia hace sus trámites administrativos. Reemplaza al expediente en papel: todo se pide, se firma, se envía y se consulta desde la computadora.</p>
+  <div class="two">
+    <div class="box ok"><b class="t">Lo que vas a hacer en TIMBÓ</b><p>Pedir que se abra un expediente, cargarle documentos, enviarlo a otra oficina y buscar en qué estado está.</p></div>
+    <div class="box key"><b class="t">Tres reglas de oro</b><p>1. Tu clave es personal: no se presta.<br>2. Lo que incorporás no se borra: revisalo antes.<br>3. Una vez digital, siempre digital: no lo vuelvas al papel.</p></div>
+  </div>
+</section>
+
+<section id="que-hacer">
+  <h2>¿Qué querés hacer?</h2>
+  <p class="note">Tocá una tarjeta para ir directo a los pasos.</p>
+  <div class="quick">
+    <a href="#ingresar"><span class="ic">🔑</span><b>Entrar a TIMBÓ</b><small>Usuario y contraseña</small></a>
+    <a href="#pantalla"><span class="ic">🧭</span><b>Conocer la pantalla</b><small>El menú y sus partes</small></a>
+    <a href="#caratula"><span class="ic">📝</span><b>Abrir un expediente nuevo</b><small>Pedir la carátula</small></a>
+    <a href="#estado-caratula"><span class="ic">⏳</span><b>Ver si aprobaron mi pedido</b><small>En curso, caratuladas, rechazadas</small></a>
+    <a href="#mesa"><span class="ic">✅</span><b>Aprobar o rechazar carátulas</b><small>Solo Mesa de Entradas</small></a>
+    <a href="#tomar"><span class="ic">🙋</span><b>Tomar un expediente</b><small>Asignármelo</small></a>
+    <a href="#subir"><span class="ic">📎</span><b>Subir un archivo</b><small>PDF, planillas, fotos</small></a>
+    <a href="#incorporar"><span class="ic">📥</span><b>Incorporar documentos</b><small>Que formen parte del expediente</small></a>
+    <a href="#do"><span class="ic">📄</span><b>Agregar un documento oficial</b><small>Vincular por número</small></a>
+    <a href="#docs"><span class="ic">🗒️</span><b>Hacer una nota o documento oficial</b><small>Notas, informes, formularios</small></a>
+    <a href="#firmar-do"><span class="ic">🖊️</span><b>Firmar un documento</b><small>Pendientes → Evaluar</small></a>
+    <a href="#comunicaciones"><span class="ic">✉️</span><b>Comunicaciones oficiales</b><small>Recibidas y enviadas</small></a>
+    <a href="#resoluciones"><span class="ic">⚖️</span><b>Resoluciones</b><small>Solo gestores y firmantes</small></a>
+    <a href="#atencion-virtual"><span class="ic">🧑‍💻</span><b>Atención Virtual</b><small>Trámites de ciudadanos</small></a>
+    <a href="#corregir"><span class="ic">🛠️</span><b>Corregir un documento</b><small>Subsanar</small></a>
+    <a href="#pase"><span class="ic">📤</span><b>Enviar a otra oficina</b><small>Pase y providencia</small></a>
+    <a href="#codigo"><span class="ic">🏢</span><b>Encontrar el código de una oficina</b><small>Organigrama</small></a>
+    <a href="#guarda"><span class="ic">🗄️</span><b>Guardar un expediente en espera</b><small>Guarda temporal</small></a>
+    <a href="#buscar"><span class="ic">🔍</span><b>Buscar un expediente</b><small>Consulta e historial</small></a>
+    <a href="#vista"><span class="ic">👁️</span><b>Pedir o dar permiso para ver un expediente</b><small>Vistas</small></a>
+    <a href="#firmas"><span class="ic">✍️</span><b>Firma electrónica y digital</b><small>Cuál uso</small></a>
+    <a href="#seguridad"><span class="ic">🛡️</span><b>Cuidar mi cuenta</b><small>Seguridad</small></a>
+    <a href="#errores"><span class="ic">⚠️</span><b>Algo no funciona</b><small>Errores frecuentes</small></a>
+    <a href="#faq"><span class="ic">❓</span><b>Preguntas frecuentes</b><small>Dudas comunes</small></a>
+    <a href="#ayuda"><span class="ic">📞</span><b>Pedir ayuda</b><small>Contactos</small></a>
+  </div>
+</section>
+
+<section id="antes">
+  <h2>Antes de empezar</h2>
+  <ul>
+    <li>Necesitás tu usuario de <strong>ID Ciudadana / Intranet</strong> (CUIL, IUP o email) y la contraseña que usás para ver el recibo de sueldo.</li>
+    <li>Tenés que estar <strong>cargado/a en una oficina</strong> de TIMBÓ y tener permisos. Si no, no vas a ver las opciones del menú. Eso lo gestiona tu jefe/a con Informática.</li>
+    <li>Conviene usar un navegador actualizado y una computadora con bloqueo automático de pantalla.</li>
+  </ul>
+</section>
+
+<section id="ingresar">
+  <h2>🔑 Entrar a TIMBÓ</h2>
+  <ol class="steps">
+    <li>En el navegador, escribí <strong>tramites.santafe.gob.ar</strong>.</li>
+    <li>Escribí tu usuario (CUIL, IUP o email) y tu contraseña de Intranet.</li>
+    <li>Tocá <strong>Iniciar sesión</strong>.</li>
+  </ol>
+  <figure class="sm"><img src="img/ingreso-login.jpg" alt="Pantalla de ingreso a Timbó"><figcaption>Pantalla de ingreso con ID Ciudadana.</figcaption></figure>
+  <p class="note">¿No tenés cuenta? Tocá “Crear cuenta”. ¿Olvidaste la contraseña? Tocá “¿Olvidaste tu contraseña?”. En los videos del curso también se entra desde santafe.gob.ar/ms/timbo con el botón “Ingresar”.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="pantalla">
+  <h2>🧭 Conocer la pantalla</h2>
+  <p>A la izquierda está el <strong>menú</strong>. Tocá las tres rayitas <kbd>☰</kbd> para ver los nombres.</p>
+  <div class="two">
+    <figure><img src="img/menu-principal.jpg" alt="Menú principal de Timbó"><figcaption>Menú principal.</figcaption></figure>
+    <div>
+      <ul>
+        <li><strong>Expedientes</strong>: lo que más vas a usar.</li>
+        <li><strong>Documentos oficiales</strong>: notas e informes que se firman en TIMBÓ.</li>
+        <li><strong>Comunicaciones oficiales</strong>: mensajes formales entre oficinas.</li>
+        <li><strong>Lista de destinatarios</strong>: grupos de personas a quienes enviar.</li>
+        <li><strong>Oficinas</strong>: organigrama y códigos de oficina.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Dentro de “Expedientes”</h3>
+  <figure><img src="img/menu-expedientes.jpg" alt="Submenú de Expedientes"></figure>
+  <div class="tw"><table>
+    <tr><th>Opción</th><th>Para qué</th></tr>
+    <tr><td>Solicitud de caratulación</td><td>Pedir un expediente nuevo y ver si lo aprobaron.</td></tr>
+    <tr><td>Gestión</td><td>Trabajar los expedientes: cargar documentos y enviarlos.</td></tr>
+    <tr><td>Consulta</td><td>Buscar un expediente y ver su recorrido.</td></tr>
+    <tr><td>Visibilidad</td><td>Ver si un expediente es público o reservado.</td></tr>
+    <tr><td>Gestión de visualización</td><td>Pedir o dar permiso para ver un expediente de otra oficina.</td></tr>
+  </table></div>
+  <div class="box tip"><b class="t">Los tres puntitos ⋮</b><p>Casi todo se hace desde los <strong>tres puntitos</strong> que aparecen a la derecha de cada expediente o documento. Si no encontrás una opción, buscala ahí.</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="caratula">
+  <h2>📝 Abrir un expediente nuevo (pedir la carátula)</h2>
+  <p>Todo expediente empieza con un pedido de carátula. Después lo aprueba la Mesa de Entradas.</p>
+  <ol class="steps">
+    <li>Andá a <strong>Expedientes → Solicitud de caratulación</strong> y tocá <strong>Nuevo Trámite</strong>.</li>
+    <li>Elegí <strong>Solicitud de caratulación → Iniciar</strong>.<figure><img src="img/nuevo-tramite.jpg" alt="Solicitud de Caratulación, Iniciar"></figure></li>
+    <li>Completá el formulario:<figure><img src="img/formulario-caratulacion.jpg" alt="Formulario de solicitud de caratulación"></figure>
+      <ul>
+        <li><strong>Interno</strong>: casi siempre es esta opción (trámites dentro de la administración).</li>
+        <li><strong>¿Es urgente?</strong>: marcalo solo si te lo indicaron.</li>
+        <li><strong>Código del trámite</strong>: el tema. Escribí una palabra y elegilo de la lista.</li>
+        <li><strong>Oficina caratuladora</strong>: generalmente la <strong>Mesa de Entradas</strong>.</li>
+        <li><strong>Iniciador</strong>: ya aparecen tus datos.</li>
+        <li><strong>Motivo</strong>: qué es el trámite, explicado con claridad (mirá el ejemplo).</li>
+        <li><strong>Visibilidad</strong>: dejá <em>Público</em>, salvo que te indiquen lo contrario.</li>
+      </ul></li>
+    <li>Tocá <strong>Guardar</strong> y confirmá con <strong>Guardar</strong>.</li>
+    <li>Se crea un <strong>número de solicitud</strong> y el pedido queda en la pestaña <strong>En curso</strong>.</li>
+  </ol>
+  <div class="ex">
+    <p><b>Ejemplo de motivo (inventado)</b></p>
+    <p class="good">✔ “Solicitud de compra de 200 cajas de guantes de nitrilo talle M para el Servicio de Guardia — Pedido interno 45/2026”</p>
+    <p class="bad">✘ “Varios guardia” · “Compras” · “Tramitaciones varias”</p>
+    <p class="note">Un motivo claro sirve para encontrar el expediente después. Si un motivo no coincide con el código del trámite, lo rechazan. No escribas abreviaturas. Si el trámite involucra a un paciente, consultá con tu jefe/a qué datos corresponde poner.</p>
+  </div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="estado-caratula">
+  <h2>⏳ Ver si aprobaron mi pedido</h2>
+  <p>En <strong>Expedientes → Solicitud de caratulación</strong> hay tres pestañas:</p>
+  <div class="tw"><table>
+    <tr><th>Pestaña</th><th>Qué significa</th></tr>
+    <tr><td>En curso</td><td>Tu pedido está esperando que la Mesa de Entradas lo revise.</td></tr>
+    <tr><td>Caratuladas</td><td>¡Aprobado! El expediente ya tiene número (por ejemplo, <code>EE-2025-00000058-APPSF-PE</code>).</td></tr>
+    <tr><td>Rechazadas</td><td>No fue aprobado. Mirá el motivo en <strong>⋮ → Historial</strong> y hacé un pedido nuevo.</td></tr>
+  </table></div>
+  <figure><img src="img/solicitud-en-curso.jpg" alt="Solicitud en curso"></figure>
+  <p class="note">Si ves una caja vacía, es porque no hay pedidos en esa pestaña.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="mesa">
+  <h2>✅ Aprobar o rechazar carátulas <small class="note">(solo Mesa de Entradas)</small></h2>
+  <ol class="steps">
+    <li>Andá a la pestaña <strong>Pendientes de Evaluación</strong>.<figure><img src="img/pendientes-evaluacion.jpg" alt="Pendientes de Evaluación"></figure></li>
+    <li>En el pedido, tocá <strong>⋮ → Evaluar</strong> y revisá que el código y el motivo tengan sentido.</li>
+    <li>Tocá <strong>Acciones → Firmar</strong> para aprobar o <strong>Rechazar</strong> (si rechazás, explicá por qué).<figure class="sm"><img src="img/acciones-firmar-rechazar.jpg" alt="Firmar o Rechazar"></figure></li>
+    <li>Tocá <strong>Continuar → Firma electrónica → Confirmar</strong>.</li>
+  </ol>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="tomar">
+  <h2>🙋 Tomar un expediente (asignármelo)</h2>
+  <p>Solo podés trabajar un expediente si está <strong>asignado a vos</strong>. Los que llegan a tu oficina aparecen en <strong>Expedientes → Gestión</strong> con la palabra <strong>“Todos”</strong> en azul.</p>
+  <figure><img src="img/asignado-todos.jpg" alt="Expediente asignado a Todos"></figure>
+  <ol class="steps">
+    <li>Tocá la palabra <strong>Todos</strong>.</li>
+    <li>Elegí <strong>Asignar a mí mismo</strong>.<figure class="sm"><img src="img/asignar-a-mi.jpg" alt="Asignar a mí mismo"></figure></li>
+    <li>El expediente pasa a tu pestaña <strong>Asignados</strong>.</li>
+  </ol>
+  <p class="note">¿Lo tenés vos pero lo va a seguir otra persona? Tocá tu nombre en azul → <strong>Desasignar expediente</strong>. Vuelve a la pestaña Gestión para que otra persona lo tome.</p>
+  <h3>Las pestañas de Gestión</h3>
+  <figure><img src="img/pestanas-gestion.jpg" alt="Pestañas de Gestión"></figure>
+  <ul>
+    <li><strong>Asignados</strong>: los tuyos.</li>
+    <li><strong>Gestión</strong>: todos los de tu oficina.</li>
+    <li><strong>Guarda temporal</strong>: los que están en espera.</li>
+    <li><strong>Archivo</strong>: los terminados (solo consulta).</li>
+    <li><strong>Gestión por jerarquía</strong>: los de oficinas que dependen de la tuya.</li>
+  </ul>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="abrir">
+  <h2>📂 Abrir un expediente</h2>
+  <p>En <strong>Asignados</strong>, tocá <strong>⋮</strong> en el expediente:</p>
+  <div class="two">
+    <figure><img src="img/botonera.jpg" alt="Opciones del expediente"></figure>
+    <ul>
+      <li><strong>Gestor de Expediente</strong>: abre todo el expediente.</li>
+      <li><strong>Acciones</strong>: subir archivos, vincular, enviar.</li>
+      <li><strong>Ver flujo</strong> e <strong>Historial</strong>: quién hizo qué y cuándo.</li>
+      <li><strong>Previsualizar</strong>: ver la carátula.</li>
+    </ul>
+  </div>
+  <h3>Las tres partes de un expediente</h3>
+  <div class="tw"><table>
+    <tr><th>Parte</th><th>Qué es</th><th>¿Se puede borrar?</th></tr>
+    <tr><td><strong>Documentos incorporados</strong></td><td>Los documentos oficiales del expediente, con número de orden.</td><td>❌ No. Si hay un error, se corrige (subsana).</td></tr>
+    <tr><td><strong>Documentos informativos</strong></td><td>Borradores, planillas o fotos que acompañan pero no forman parte formal.</td><td>✔ Sí</td></tr>
+    <tr><td><strong>Documentos pendientes</strong></td><td>Lo que subiste y todavía no decidiste cómo agregar.</td><td>✔ Sí</td></tr>
+  </table></div>
+</section>
+
+<section id="subir">
+  <h2>📎 Subir un archivo</h2>
+  <ol class="steps">
+    <li>Dentro del expediente, tocá <strong>Acciones → Subir nuevo archivo</strong>.</li>
+    <li>Tocá <strong>Agrega un archivo</strong> (o arrastralo) y elegilo de tu computadora.<figure class="sm"><img src="img/subir-archivo.jpg" alt="Subir archivos"></figure></li>
+    <li>Revisá el <strong>Nombre</strong> y escribí una <strong>Referencia</strong> corta que diga qué es.<figure class="sm"><img src="img/nombre-referencia.jpg" alt="Nombre y referencia"></figure></li>
+    <li>Tocá <strong>Subir</strong>. El archivo queda en <strong>Documentos pendientes</strong>.</li>
+  </ol>
+  <div class="box warn"><b class="t">Formatos</b><p>Para <strong>incorporar</strong>: solo <strong>PDF</strong>, hasta <strong>50 MB</strong>. Como <strong>informativo</strong> podés subir otros formatos (Word, Excel, imágenes).</p></div>
+  <div class="ex"><p><b>Ejemplo de referencia (inventado):</b> “Presupuesto proveedor A – autoclave” · “Planilla de consumo mensual de insumos – Clínica Médica”.</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="incorporar">
+  <h2>📥 Incorporar documentos</h2>
+  <div class="box key"><b class="t">¡Primero revisá!</b><p>Antes de incorporar, tocá <strong>⋮ → Previsualizar</strong> en cada documento pendiente. Una vez incorporado, <strong>no se puede borrar</strong>.</p></div>
+  <ol class="steps">
+    <li>Tildá los documentos pendientes que querés incorporar.</li>
+    <li>Tocá <strong>Incorporar Documentos</strong>.</li>
+    <li>Si son varios, ordenalos arrastrándolos → <strong>Continuar</strong>.<figure class="sm"><img src="img/orden-documentos.jpg" alt="Ordenar documentos"></figure></li>
+    <li>Tocá <strong>Firma electrónica</strong> y confirmá.<figure class="sm"><img src="img/firma-incorporar.jpg" alt="Firma electrónica"></figure></li>
+  </ol>
+  <p class="note">Si aparece el mensaje “Firmador digital inhabilitado”, no te preocupes: usá la firma electrónica.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="do">
+  <h2>📄 Agregar un documento oficial</h2>
+  <p>Un documento oficial (DO) es una nota o un informe que ya se firmó en TIMBÓ. Para agregarlo necesitás su <strong>número</strong>.</p>
+  <ol class="steps">
+    <li>Copiá el número del documento oficial.</li>
+    <li>En el expediente: <strong>Acciones → Vincular Documento</strong>.</li>
+    <li>Pegá el número y tocá la <strong>lupa</strong>.<figure class="sm"><img src="img/vincular-do-buscar.jpg" alt="Vincular documento"></figure></li>
+    <li>Revisá que sea el correcto → <strong>Vincular → Confirmar → Continuar</strong>.</li>
+    <li>Queda en pendientes: tildalo y tocá <strong>Incorporar Documentos</strong>. No te pide firma porque ya está firmado.</li>
+  </ol>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="corregir">
+  <h2>🛠️ Corregir un documento incorporado (subsanar)</h2>
+  <p>Si un documento incorporado tiene un error, no se borra: se <strong>subsana</strong> con un <strong>documento oficial</strong> nuevo que lo corrige.</p>
+  <ol class="steps">
+    <li>Tené listo el número del documento oficial que corrige.</li>
+    <li>En el expediente, tocá <strong>Subsanar Documentos</strong>.</li>
+    <li>Tildá el documento con error → <strong>Continuar</strong>.<figure class="sm"><img src="img/subsanar.jpg" alt="Subsanar documentos"></figure></li>
+    <li>Escribí el número del documento oficial que corrige → <strong>Confirmar</strong>.</li>
+    <li>En pendientes aparece marcado <strong>PS</strong>: tildalo → <strong>Incorporar documentos</strong>.</li>
+    <li>El documento original queda marcado <strong>SN</strong> (subsanado).</li>
+  </ol>
+  <p class="note">Las carátulas y las providencias no se pueden subsanar.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="pase">
+  <h2>📤 Enviar el expediente a otra oficina (pase)</h2>
+  <ol class="steps">
+    <li>Cuando terminaste, tocá <strong>Enviar Expediente</strong> (abajo de todo).</li>
+    <li>Elegí <strong>Realizar Pase</strong>.<figure class="sm"><img src="img/enviar-acciones.jpg" alt="Realizar pase"></figure></li>
+    <li>Elegí la <strong>Oficina primaria</strong> (ministerio u organismo) y la <strong>Oficina secundaria</strong> (la oficina exacta). Podés escribir el nombre o el <a href="#codigo">código</a> → <strong>Continuar</strong>.<figure class="sm"><img src="img/realizar-pase.jpg" alt="Oficina primaria y secundaria"></figure></li>
+    <li>Escribí la <strong>providencia</strong> (comentario obligatorio) → <strong>Continuar → Confirmar</strong>.<figure class="sm"><img src="img/providencia.jpg" alt="Providencia"></figure></li>
+  </ol>
+  <div class="ex">
+    <p><b>Cómo escribir la providencia</b></p>
+    <p>Breve y clara: decí <strong>qué querés que hagan</strong>. No pongas el nombre de la oficina (ya lo elegiste).</p>
+    <p class="good">✔ “Se remite para su conocimiento y continuidad del trámite.”</p>
+    <p class="good">✔ “Se solicita agregar informe técnico sobre el estado del equipo.”</p>
+    <p class="note">Si tenés que escribir mucho, hacelo en un documento aparte y agregalo al expediente.</p>
+  </div>
+  <div class="box warn"><b class="t">¿Lo mandaste a la oficina equivocada?</b><p>Avisale a esa oficina para que te lo devuelva con un pase.</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="codigo">
+  <h2>🏢 Encontrar el código de una oficina</h2>
+  <ol class="steps">
+    <li>En el menú, tocá <strong>Oficinas</strong>.</li>
+    <li>Buscá la oficina en el organigrama.</li>
+    <li>Copiá el número que aparece <strong>entre paréntesis</strong> al lado del nombre y pegalo al hacer el pase.</li>
+  </ol>
+  <figure><img src="img/codigo-oficina.jpg" alt="Organigrama con código de oficina"></figure>
+  <div class="box tip"><p>Tené anotados los códigos de las oficinas a las que enviás seguido (Dirección, Compras, Personal…).</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="guarda">
+  <h2>🗄️ Poner un expediente en espera (guarda temporal)</h2>
+  <p>Sirve para apartar un expediente mientras esperás algo (un informe, un dictamen). <strong>No todos los usuarios tienen este permiso.</strong></p>
+  <ol class="steps">
+    <li><strong>Enviar Expediente → Enviar a Guarda Temporal</strong>.</li>
+    <li>Escribí el motivo (opcional) → <strong>Continuar → Confirmar</strong>.</li>
+  </ol>
+  <p><strong>Para retomarlo</strong>: pestaña <em>Guarda temporal</em> → ⋮ → <em>Acciones / Volver a carga de documentación</em> → comentario → confirmar. Vuelve a la pestaña Gestión.</p>
+  <div class="box warn"><b class="t">Archivo = final</b><p>Enviar un expediente al <strong>Archivo</strong> es definitivo: no se puede volver a trabajar (solo consultar).</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="buscar">
+  <h2>🔍 Buscar un expediente</h2>
+  <ol class="steps">
+    <li>Andá a <strong>Expedientes → Consulta</strong>.</li>
+    <li>Elegí cómo buscar: <em>Número de expediente</em>, <em>Iniciados por mí</em>, <em>Tramitados por mí</em>…<figure class="sm"><img src="img/consulta-tipos.jpg" alt="Tipos de búsqueda"></figure></li>
+    <li>Si buscás por número, escribilo <strong>completo</strong> (desde “EE” hasta el final) → <strong>Buscar</strong>.<figure><img src="img/consulta-numero.jpg" alt="Búsqueda por número"></figure></li>
+    <li>Tocá <strong>⋮ → Más información</strong> para ver dónde está y el <strong>historial de pases</strong>.</li>
+  </ol>
+  <div class="box tip"><b class="t">Cómo leer el número</b><p><code>EE-2025-00000058-APPSF-PE</code> = Expediente Electrónico · año · número · Administración Pública Provincial de Santa Fe · organismo.</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="vista">
+  <h2>👁️ Pedir o dar permiso para ver un expediente (vistas)</h2>
+  <p>Si un expediente está en otra oficina y necesitás consultarlo, podés <strong>pedir una vista</strong>. Si sos de la oficina que lo tiene, podés <strong>compartir la vista</strong>.</p>
+  <h3>Pedir una vista</h3>
+  <ol class="steps">
+    <li><strong>Expedientes → Gestión de visualización → Nuevo Trámite</strong>.<figure><img src="img/vis-bandeja.jpg" alt="Gestión de visualización"></figure></li>
+    <li>Elegí <strong>Solicitud vista de expediente</strong>.<figure><img src="img/vis-opciones.jpg" alt="Opciones de vista"></figure></li>
+    <li>Escribí el número de expediente y tocá la <strong>lupa</strong>.</li>
+    <li>Indicá hasta qué fecha la necesitás y el <strong>motivo</strong> → <strong>Enviar</strong>.</li>
+    <li>Cuando te la aprueben, en <em>En curso</em> vas a ver “Visualizar Expediente”. Tocá <strong>⋮ → Gestor de Trámite</strong> para ver los documentos.</li>
+  </ol>
+  <h3>Aprobar una vista que te piden</h3>
+  <ol class="steps">
+    <li>Te llega un correo. En la solicitud, tocá <strong>⋮ → Acciones</strong> y completá el formulario (hasta qué fecha) → aceptá → <strong>Enviar</strong>.</li>
+    <li>Elegí <strong>Aprobar vista</strong> o <strong>Rechazar vista</strong> → comentario → <strong>Continuar → Confirmar</strong>.<figure class="sm"><img src="img/vis-aprobar-rechazar.jpg" alt="Aprobar o rechazar vista"></figure></li>
+  </ol>
+  <h3>Compartir una vista</h3>
+  <ol class="steps">
+    <li><strong>Nuevo Trámite → Compartir vista de expediente</strong>.</li>
+    <li>Buscá y seleccioná los expedientes.</li>
+    <li>Agregá destinatarios: personas, una lista o una oficina.<figure class="sm"><img src="img/vis-destinatarios.jpg" alt="Agregar destinatarios"></figure></li>
+    <li>Elegí la fecha de inicio y de fin → <strong>Guardar</strong>.<figure><img src="img/vis-fechas.jpg" alt="Fechas de visualización"></figure></li>
+  </ol>
+  <p class="note">Puede tardar en procesarse (hasta 1 hora si son muchos). Máximo 500 expedientes por vez. Los destinatarios reciben un correo.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="docs">
+  <h2>📄 Hacer una nota o documento oficial</h2>
+  <p>Las notas, informes, solicitudes y formularios se hacen en <strong>Documentos oficiales</strong>. Todos los documentos oficiales se crean, firman y guardan ahí.</p>
+  <h3>Tipos de documento</h3>
+  <ul>
+    <li><strong>Importado</strong>: subís un PDF que ya tenés en la computadora.</li>
+    <li><strong>Libre</strong>: lo escribís directamente en TIMBÓ, como en Word.</li>
+    <li><strong>Formulario</strong>: completás los campos de un modelo que ya existe (por ejemplo, Justificación y Licencias).</li>
+  </ul>
+  <h3>Paso a paso</h3>
+  <ol class="steps">
+    <li>Andá a <strong>Documentos oficiales → Gestión</strong> y tocá <strong>Nuevo documento oficial</strong> → <strong>Documentos Oficiales → Iniciar</strong>.<figure><img src="img/do-bandeja.jpg" alt="Bandeja de Documentos Oficiales"></figure></li>
+    <li>Elegí quién lo va a hacer (<strong>Usuario Productor</strong>: vos u otra persona) y el <strong>Tipo de Documento</strong> → <strong>Guardar</strong> → <strong>Guardar</strong>.<figure><img src="img/do-formulario.jpg" alt="Formulario para crear el documento"></figure></li>
+    <li>El documento queda en <strong>Pendientes</strong>. Tocá <strong>⋮ → Documento oficial</strong>.</li>
+    <li>Escribilo o subí el PDF, según el tipo.<figure><img src="img/do-libre.jpg" alt="Documento libre con editor"></figure></li>
+    <li>Completá la <strong>Referencia</strong> (el título) a la derecha. Si corresponde, adjuntá documentos (hasta 50 MB) y elegí los <strong>firmantes</strong> en orden.<figure class="sm"><img src="img/do-firma-conjunta.jpg" alt="Definir firmantes"></figure></li>
+    <li>Tocá <strong>Acciones → Enviar a Firmar</strong> (o <em>Enviar a Revisar</em> si querés que alguien lo mire antes) → comentario → <strong>Continuar → Confirmar</strong>.<figure class="sm"><img src="img/do-acciones.jpg" alt="Acciones del documento"></figure></li>
+  </ol>
+  <div class="ex">
+    <p><b>Cómo escribir la referencia</b></p>
+    <p class="good">✔ “Circular Nº 0001 - 2025 - Horario de atención al público”</p>
+    <p class="good">✔ Si va a un expediente: “EE-2025-00000027-APPSF-Cap — Ref. Adquisición de mobiliario”</p>
+    <p class="bad">✘ “Rectificación” · “Nota” · textos larguísimos</p>
+  </div>
+  <div class="ex"><p><b>Ejemplo del curso: pedir una justificación de licencia</b> (formulario “Justificación y Licencias”)</p><p>Firmantes: 1) vos (“Yo mismo”) → 2) tu jefe/a inmediato/a → 3) quien la recibe en Personal (RRHH). Si hay algo mal, te la rechazan con un motivo y te llega un correo para que hagas una nueva.</p></div>
+  <div class="box tip"><b class="t">¿Hacés siempre la misma nota?</b><p>En un documento libre tocá <strong>Guardar plantilla</strong> y ponele un nombre. La próxima vez la abrís desde <strong>Plantillas</strong>.</p></div>
+  <p>Cuando firma la última persona, el documento recibe su <strong>número</strong>. Con ese número lo podés <a href="#do">agregar a un expediente</a>.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="firmar-do">
+  <h2>🖊️ Firmar un documento que me enviaron</h2>
+  <ol class="steps">
+    <li>Andá a <strong>Documentos oficiales → Gestión → Pendientes</strong>.</li>
+    <li>En el documento, tocá <strong>⋮ → Evaluar</strong>. Leelo con atención y abrí los archivos adjuntos.<figure><img src="img/do-evaluar.jpg" alt="Evaluar documento pendiente"></figure></li>
+    <li>Tocá <strong>Acciones</strong> y elegí <strong>Aprobar o firmar</strong>, <em>Enviar a Revisar</em> o <em>Rechazar</em>.<figure><img src="img/do-aprobar-fc.jpg" alt="Aprobar firma conjunta"></figure></li>
+    <li><strong>Continuar → Firma electrónica → Confirmar</strong>. Si hay más firmantes, el documento le llega al siguiente.</li>
+  </ol>
+  <h3>Buscar un documento oficial</h3>
+  <p><strong>Documentos oficiales → Consulta</strong>: buscalo por número, por “firmados por mí”, por “firmados en mi repartición” o por referencia.</p>
+  <figure class="sm"><img src="img/do-consulta-tipos.jpg" alt="Formas de buscar un documento oficial"></figure>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="comunicaciones">
+  <h2>✉️ Comunicaciones oficiales (mensajes formales)</h2>
+  <p>Cuando alguien firma un documento “comunicable” dirigido a vos, te llega a <strong>Comunicaciones oficiales</strong>.</p>
+  <ul>
+    <li><strong>Recibidas</strong>: lo que te mandaron. Usá el filtro <em>No leídos</em>. En ⋮ podés <strong>Responder</strong> (con un documento oficial), <strong>Reenviar</strong>, <strong>Ver detalles</strong>, <strong>Ver destinatarios</strong>, <strong>Previsualizar</strong> o <strong>Eliminar</strong>.</li>
+    <li><strong>Enviadas</strong>: el color indica si lo leyeron: 🟢 todos, 🟡 algunos, 🟠 nadie.</li>
+    <li><strong>Eliminadas</strong>: podés <strong>Restaurar</strong> lo que borraste.</li>
+  </ul>
+  <p class="note">Eliminar una comunicación la saca solo de tu bandeja; los demás destinatarios la siguen teniendo.</p>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="resoluciones">
+  <h2>⚖️ Resoluciones <small class="note">(solo si tenés permiso de gestor o firmante)</small></h2>
+  <p>Las resoluciones se hacen en <strong>Actos administrativos registrables → Resoluciones digitales</strong>. Este módulo lo ven solo quienes tienen permiso (por ejemplo, Dirección o Despacho).</p>
+  <h3>Si cargás resoluciones (gestor)</h3>
+  <ol class="steps">
+    <li><strong>Nuevo Trámite → Firma resolución → Iniciar</strong>.</li>
+    <li>Completá el formulario: iniciador, organismo de origen, número de expediente completo, tema, año, el <strong>PDF de la resolución sin firmar</strong>, un resumen y los anexos (en PDF) → <strong>Guardar</strong>.<figure><img src="img/aar-formulario.jpg" alt="Formulario de resolución"></figure></li>
+    <li>En <em>En curso</em>: ⋮ → <strong>Gestor de Trámite</strong> → en Documentos pendientes, ⋮ → <strong>Obtener</strong>. <strong>Previsualizá</strong> para controlar que esté todo bien.</li>
+    <li>⋮ → <strong>Iniciar cadena de firmas</strong>: buscá a los firmantes, ordenalos y elegí “Firmador electrónico o digital” → <strong>Confirmar</strong>.<figure class="sm"><img src="img/aar-cadena.jpg" alt="Elegir firmantes de la resolución"></figure></li>
+    <li>Cuando todos firman, aparece “Evaluar Resolución”: ⋮ → <strong>Acciones → Protocolizar Resolución</strong>. TIMBÓ le pone número y fecha.</li>
+    <li>Publicala en el SIN y pegá el link en ⋮ → <strong>Acciones → Link de acceso → Guardar</strong>. Queda en <em>Finalizados</em>.</li>
+  </ol>
+  <h3>Si firmás resoluciones (firmante)</h3>
+  <ol class="steps">
+    <li><strong>Actos administrativos registrables → Firma de Actos Administrativos → Firmas pendientes</strong>.</li>
+    <li>⋮ → <strong>Evaluar</strong> → <strong>Acciones → Firmar</strong> (o <em>Rechazar</em> si hay un error) → comentario → <strong>Continuar</strong> → elegí tu tipo de firma → <strong>Confirmar</strong>.</li>
+  </ol>
+  <div class="box warn"><b class="t">¿Hay que corregir una resolución?</b><p>Si ya empezó la cadena de firmas, primero hay que <strong>eliminar la cadena de firmas</strong> y después cargar el documento corregido.</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="atencion-virtual">
+  <h2>🧑‍💻 Atención Virtual <small class="note">(si atendés trámites de ciudadanos)</small></h2>
+  <p>Por Atención Virtual los ciudadanos inician trámites desde su casa con su ID Ciudadana. Si tu oficina los recibe y tenés el permiso, los ves en el menú <strong>Atención Virtual</strong>.</p>
+  <ol class="steps">
+    <li>Pestaña <strong>Pendientes de Revisión</strong>: tocá <strong>Todos → Asignar a mí mismo</strong>.<figure><img src="img/av-pendientes.jpg" alt="Pendientes de revisión"></figure></li>
+    <li>En <strong>Asignadas</strong>: ⋮ → <strong>Chat de Atención</strong>.</li>
+    <li>Revisá cada documento con <strong>ícono naranja</strong>: ⋮ → <strong>Revisar</strong> → <strong>Aprobar</strong> o <strong>Rechazar</strong> (con el motivo).<figure><img src="img/av-revisar.jpg" alt="Revisar documentos del ciudadano"></figure></li>
+    <li>Si rechazaste algo, escribile al ciudadano qué falta (mensaje obligatorio) → <strong>Enviar al ciudadano</strong>. Esperá su respuesta: mientras tanto el trámite está <em>En proceso</em>.</li>
+    <li>Con todo aprobado, tocá <strong>Acciones</strong> y elegí:
+      <ul>
+        <li><strong>Finalizar trámite</strong>: termina sin abrir un expediente (comentario obligatorio).</li>
+        <li><strong>Generar expediente</strong>: el comentario será el motivo del expediente. Después lo trabajás en Expedientes → Gestión.</li>
+        <li><strong>Realizar pase a otra oficina</strong>: la oficina destino tiene que tener un operador de Atención Virtual.</li>
+      </ul><figure class="sm"><img src="img/av-acciones.jpg" alt="Acciones de Atención Virtual"></figure></li>
+    <li>Para enviarle el resultado al ciudadano (por ejemplo, un certificado): incorporá el documento al expediente → <strong>Enviar aviso</strong> → elegí el documento y escribí un mensaje. Al terminar, enviá el expediente a <strong>Guarda Temporal</strong>.</li>
+  </ol>
+  <div class="box tip"><p>Todo lo que escribís en el chat queda registrado. Usá un lenguaje claro y amable, y pedí solo los datos necesarios.</p></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="firmas">
+  <h2>✍️ Firma electrónica y firma digital</h2>
+  <div class="two">
+    <div class="box ok"><b class="t">Firma electrónica</b><p>La que vas a usar casi siempre. Se hace en TIMBÓ con tu usuario, sin dispositivos.</p></div>
+    <div class="box tip"><b class="t">Firma digital</b><p>Usa un <strong>token</strong> (un dispositivo USB especial). Solo la tienen ciertas autoridades.</p></div>
+  </div>
+  <p>Las dos tienen la misma validez dentro de TIMBÓ. Si te aparece “<strong>Firmador digital inhabilitado</strong>”, es porque no tenés token: elegí <strong>Firma electrónica</strong>.</p>
+  <figure class="sm"><img src="img/firmador-inhabilitado.jpg" alt="Mensaje Firmador digital inhabilitado"></figure>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="seguridad">
+  <h2>🛡️ Cuidar mi cuenta y la información</h2>
+  <ul>
+    <li><strong>Tu clave es tuya.</strong> Todo lo que se haga con tu usuario queda a tu nombre. Prestarla está prohibido.</li>
+    <li><strong>Cerrá sesión</strong> o bloqueá la pantalla cuando te levantás de la computadora.</li>
+    <li>No envíes tu contraseña por WhatsApp, correo ni chat, ni la digas, aunque sea a alguien de confianza.</li>
+    <li>No guardes la contraseña en el navegador ni anotada a la vista.</li>
+    <li>Usá contraseñas largas con letras, números y símbolos, y cambiala cada 1 o 2 meses.</li>
+    <li>Desconfiá de correos o llamadas que te piden datos o claves: ningún organismo los pide así.</li>
+    <li>No abras enlaces ni archivos de remitentes desconocidos.</li>
+    <li>Los datos de salud son información personal: compartilos solo con quien corresponde.</li>
+  </ul>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="errores">
+  <h2>⚠️ Algo no funciona: errores frecuentes</h2>
+  <div class="tw"><table>
+    <tr><th>Me pasa que…</th><th>Qué hacer</th></tr>
+    <tr><td>No veo las opciones del menú</td><td>No estás cargado/a en una oficina o te faltan permisos. Avisale a tu jefe/a para que lo pida a Informática.</td></tr>
+    <tr><td>Dice “Firmador digital inhabilitado”</td><td>No es un error. Elegí <strong>Firma electrónica</strong>.</td></tr>
+    <tr><td>Veo una caja vacía</td><td>No hay nada en esa pestaña.</td></tr>
+    <tr><td>No puedo cargar nada en un expediente</td><td>Seguramente dice “Todos”: primero <a href="#tomar">asignátelo</a>.</td></tr>
+    <tr><td>Me rechazaron la carátula</td><td>Mirá el motivo en ⋮ → Historial y pedila de nuevo con un motivo claro.</td></tr>
+    <tr><td>No me deja incorporar un archivo</td><td>Tiene que ser PDF y pesar menos de 50 MB.</td></tr>
+    <tr><td>Incorporé el documento equivocado</td><td>No se borra: hay que <a href="#corregir">subsanarlo</a>. Pedí ayuda a tu referente.</td></tr>
+    <tr><td>Mandé el expediente a otra oficina por error</td><td>Avisale a esa oficina para que te lo devuelva.</td></tr>
+    <tr><td>No encuentro el expediente por número</td><td>Escribilo completo: <code>EE-año-número-APPSF-PE</code>.</td></tr>
+    <tr><td>No veo “Guarda temporal”, “Archivo” o “Fusionar”</td><td>Esas opciones necesitan permisos especiales.</td></tr>
+    <tr><td>Mi documento oficial no tiene número</td><td>Recibe el número cuando firma la última persona de la cadena.</td></tr>
+    <tr><td>No me deja subir la resolución</td><td>El PDF no tiene que estar firmado de antemano. Los anexos tampoco.</td></tr>
+    <tr><td>Atención Virtual: no puedo generar el expediente</td><td>Te quedan documentos con ícono naranja sin revisar.</td></tr>
+    <tr><td>Atención Virtual: no puedo escribirle al ciudadano</td><td>Le pediste información y todavía no respondió: esperá su respuesta.</td></tr>
+    <tr><td>Olvidé mi contraseña</td><td>En la pantalla de ingreso, tocá “¿Olvidaste tu contraseña?”.</td></tr>
+  </table></div>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="faq">
+  <h2>❓ Preguntas frecuentes</h2>
+  <details class="faq"><summary>¿Puedo imprimir el expediente y seguir en papel?</summary><p>No. Lo que empieza en TIMBÓ sigue en TIMBÓ (“una vez digital, siempre digital”). Los documentos firmados digital o electrónicamente valen en formato digital.</p></details>
+  <details class="faq"><summary>¿Puedo escanear un documento en papel y subirlo?</summary><p>Para gestiones internas, la documentación debe ser “nativa digital”: hacela directamente en la computadora. Si tenés dudas sobre un caso puntual, consultá a tu referente.</p></details>
+  <details class="faq"><summary>¿Quién aprueba mi pedido de carátula?</summary><p>La oficina caratuladora, que generalmente es la Mesa de Entradas.</p></details>
+  <details class="faq"><summary>¿Qué diferencia hay entre “incorporar” y dejar “informativo”?</summary><p>El incorporado forma parte del expediente, lleva número de orden y no se borra. El informativo acompaña al expediente pero no forma parte formal y se puede borrar.</p></details>
+  <details class="faq"><summary>¿Cuánto puede pesar un archivo?</summary><p>Hasta 50 MB. Para incorporarlo tiene que ser PDF.</p></details>
+  <details class="faq"><summary>¿Puedo borrar un documento ya incorporado?</summary><p>No. Si tiene un error, se subsana con un documento oficial.</p></details>
+  <details class="faq"><summary>¿Necesito un token para firmar?</summary><p>No. Casi todos los usuarios firman con firma electrónica. El token es solo para ciertas autoridades.</p></details>
+  <details class="faq"><summary>¿Le puedo dar mi usuario a un compañero para que termine algo?</summary><p>No. Las credenciales son personales e intransferibles, y todo lo que se haga queda a tu nombre.</p></details>
+  <details class="faq"><summary>¿Cómo sé por dónde pasó un expediente?</summary><p>En Expedientes → Consulta → ⋮ → Más información vas a ver el historial de pases.</p></details>
+  <details class="faq"><summary>¿Qué tipo de documento oficial uso?</summary><p>El que mejor se adapte a la tarea: por ejemplo, Nota Libre (NOL) para una nota simple, Nota Libre Firma Conjunta (NOLFC) si la firman varias personas, o Justificación y Licencias (SJL) para licencias. Si dudás, consultá a tu referente: hay más de 100 tipos.</p></details>
+  <details class="faq"><summary>¿Puedo borrar una comunicación oficial?</summary><p>Sí, pero solo de tu bandeja, y la podés restaurar desde la pestaña Eliminadas.</p></details>
+  <details class="faq"><summary>¿Por qué no veo “Actos administrativos registrables” o “Atención Virtual”?</summary><p>Porque esos módulos necesitan permisos especiales. Si te corresponden por tu tarea, pedilos a tu jefe/a.</p></details>
+  <details class="faq"><summary>¿Hay una versión de prueba para practicar?</summary><p>El curso no ofrece un entorno de práctica. Consultá con tu capacitadora.</p></details>
+  <a class="back" href="#que-hacer">↑ Volver a “¿Qué querés hacer?”</a>
+</section>
+
+<section id="ayuda">
+  <h2>📞 Pedir ayuda</h2>
+  <ol>
+    <li>Primero consultá con tu <strong>referente o capacitadora</strong> del hospital.</li>
+    <li>Problemas de usuario, permisos o acceso: <strong>Informática</strong> del hospital (lo canaliza por iTop).</li>
+    <li>Dudas de uso de TIMBÓ: <strong>innovacionsgp@santafe.gob.ar</strong> · WhatsApp <strong>341 3147277</strong> (solo mensajes) · Tel. interno 31753-54 (desde Santa Fe) o 342-4506600 int. 31753-54.</li>
+  </ol>
+  <p class="note">Contactos tomados del foro y de los instructivos del curso oficial.</p>
+  <a class="back" href="#inicio">↑ Volver al inicio</a>
+</section>
+</div>
+<script>window.CHATBOT_CONFIG={helpId:'ayuda',subtitle:'Te ayudo a encontrar cómo hacer algo',welcome:'¡Hola! 👋 Contame qué querés hacer en TIMBÓ y te muestro los pasos.',suggestions:['¿Cómo entro a TIMBÓ?','¿Cómo envío un expediente a otra oficina?','¿Cómo subo un archivo?','¿Cómo hago una nota?','No veo las opciones del menú','Me equivoqué de documento']};</script>
+<script src="chatbot.js"></script>
+</body>
+</html>

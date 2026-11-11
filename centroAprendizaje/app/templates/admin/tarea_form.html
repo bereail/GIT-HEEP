@@ -1,0 +1,33 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ 'Editar' if tarea else 'Nueva' }} tarea — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">{{ tema.nombre }}</a><span class="sep">/</span>
+  Quiero hacer...
+</nav>
+<h1>{{ 'Editar tarea' if tarea else 'Nueva tarea' }}</h1>
+
+<form method="post" class="admin-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field">
+    <label for="pregunta">Pregunta (como la escribiría el usuario)</label>
+    <input class="input" style="padding-left:12px" id="pregunta" name="pregunta" value="{{ tarea.pregunta if tarea else '' }}" placeholder="¿Cómo busco un paciente?" required />
+  </div>
+  <div class="admin-field">
+    <label for="tutorial">Tutorial al que apunta</label>
+    <select class="input" id="tutorial" name="tutorial" required>
+      <option value="">— Elegir —</option>
+      {% for valor, etiqueta in opciones_tutoriales if valor %}
+      <option value="{{ valor }}" {{ 'selected' if valor == (valor_actual if valor_actual is defined else '') else '' }}>{{ etiqueta }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="admin-field">
+    <label for="keywords">Palabras clave extra (una por línea, opcional)</label>
+    <textarea class="input" id="keywords" name="keywords">{{ (tarea.keywords | join('\n')) if tarea else '' }}</textarea>
+    <span class="text-faint">Ayudan al buscador y al asistente a encontrar esta tarea con otras palabras.</span>
+  </div>
+  <div><button type="submit" class="btn btn--primary">{{ 'Guardar cambios' if tarea else 'Agregar tarea' }}</button></div>
+</form>
+{% endblock %}

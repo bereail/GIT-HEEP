@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block titulo %}Mi progreso — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Mi progreso
+</nav>
+<div class="hero"><h1>Mi progreso</h1><p class="hero__desc">Guardado en este navegador — no se comparte con nadie más.</p></div>
+
+<div class="section">
+  <div class="progress-bar"><div class="progress-bar__fill" id="barra-total" style="width:0%"></div></div>
+  <div class="progress-ring-label" id="label-total">0% del contenido completado</div>
+</div>
+
+<div class="section">
+  <h2 class="section__title">Por módulo</h2>
+  <div id="progreso-por-categoria"></div>
+</div>
+
+<div class="section">
+  <h2 class="section__title">Tutoriales completados</h2>
+  <div id="lista-completados"></div>
+</div>
+
+<div class="section">
+  <button type="button" class="btn btn--subtle" id="btn-reiniciar-progreso">Reiniciar todo mi progreso</button>
+</div>
+{% endblock %}
+
+{% block script_pagina %}
+<script type="module">
+  import * as progreso from "{{ url_for('static', filename='js/progreso.js') }}";
+
+  const temaSlug = {{ tema.slug | tojson }};
+  const categorias = {{ categorias_para_js(tema) | tojson }};
+  const categoriasInfo = {
+    {% for c in tema.categorias %}{{ c.slug | tojson }}: { titulo: {{ c.titulo | tojson }}, icono: {{ c.icono | tojson }} },{% endfor %}
+  };
+  const tutorialesInfo = {
+    {% for c in tema.categorias %}{% for t in c.tutoriales %}{{ (c.slug ~ '/' ~ t.slug) | tojson }}: {{ t.titulo | tojson }},{% endfor %}{% endfor %}
+  };
+
+  function render() {
+    const total = progreso.progresoTotal(temaSlug, categorias);
+    document.getElementById('barra-total').style.width = total + '%';
+    document.getElementById('label-total').textContent = total + '% del contenido completado';
+
+    const porCategoria = document.getElementById('progreso-por-categoria');
+    porCategoria.innerHTML = categorias.map((c) => {
+      const pct = progreso.progresoDeCategoria(temaSlug, c);
+      const info = categoriasInfo[c.slug] || { titulo: c.slug, icono: '📁' };
+      return `<div style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:4px">
+          <span>${info.icono} ${info.titulo}</span><span class="text-muted">${pct}%</span>
+        </div>
+        <div class="progress-bar progress-bar--sm"><div class="progress-bar__fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join('') || '<p class="text-muted">Todavía no hay módulos cargados.</p>';
+
+    const completados = progreso.tutorialesCompletados(temaSlug, categorias);
+    const lista = document.getElementById('lista-completados');
+    if (!completados.length) {
+      lista.innerHTML = '<div class="empty-state"><div class="empty-state__icon">📭</div>Todavía no completaste ningún tutorial.</div>';
+    } else {
+      lista.innerHTML = `<div class="lesson-list">${completados.map((c) => {
+        const titulo = tutorialesInfo[`${c.categoriaSlug}/${c.tutorialSlug}`] || c.tutorialSlug;
+        return `<a class="lesson-row is-done" href="/temas/${temaSlug}/categorias/${c.categoriaSlug}/tutoriales/${c.tutorialSlug}">
+          <span class="lesson-row__check" aria-hidden="true">✓</span>
+          <span class="lesson-row__title">${titulo}</span>
+          <span class="lesson-row__meta">${(categoriasInfo[c.categoriaSlug] || {}).titulo || c.categoriaSlug}</span>
+        </a>`;
+      }).join('')}</div>`;
+    }
+  }
+  render();
+
+  document.getElementById('btn-reiniciar-progreso').addEventListener('click', () => {
+    progreso.reiniciarProgreso();
+    render();
+  });
+</script>
+{% endblock %}

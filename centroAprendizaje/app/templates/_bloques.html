@@ -1,0 +1,113 @@
+{# _bloques.html — macros que renderizan los bloques de un tutorial y los
+   esquemas ilustrativos ("diagram"). Es el equivalente en Jinja de
+   renderBloque()/renderDiagrama() en timbo-capacitacion/assets/js/views.js —
+   misma estructura de datos, mismas clases CSS. #}
+
+{% macro badge_dificultad(dificultad) %}
+  {% set mapa = {'basico': ('🟢', 'Básico'), 'intermedio': ('🟡', 'Intermedio'), 'avanzado': ('🔴', 'Avanzado')} %}
+  {% set par = mapa.get(dificultad, ('⚪', dificultad)) %}
+  <span class="badge badge--{{ dificultad }}">{{ par[0] }} {{ par[1] }}</span>
+{% endmacro %}
+
+{% macro celda_diagrama(valor) %}
+  {%- if valor == '◼' -%}
+    <span class="redacted-bar" aria-hidden="true"></span>
+  {%- else -%}
+    {{ valor }}
+  {%- endif -%}
+{% endmacro %}
+
+{% macro diagrama(d) %}
+<div class="diagram">
+  <div class="diagram__badge">🖼 Esquema ilustrativo — no es una captura real</div>
+  {% if d.title %}<div class="diagram__title">{{ d.title }}</div>{% endif %}
+
+  {% if d.variant == 'cards' %}
+    <div class="diagram-cards">
+      {% for it in d['items'] %}
+        <div class="diagram-card">
+          <div class="diagram-card__value">{{ it.value }}</div>
+          <div class="diagram-card__label">{{ it.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% elif d.variant == 'tabs' %}
+    <div class="diagram-tabs">
+      {% for t in d.tabs %}
+        <span class="diagram-tab {{ 'is-active' if loop.index0 == d.active else '' }}">{{ t }}</span>
+      {% endfor %}
+    </div>
+  {% elif d.variant == 'list' %}
+    <div class="diagram-list">
+      {% for it in d['items'] %}
+        <div class="diagram-list-item">
+          <span class="diagram-list-item__label">{{ it.label }}</span>
+          {% if it.hint %}<span class="badge badge--{{ it.tone or 'neutral' }}">{{ it.hint }}</span>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% elif d.variant == 'table' %}
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr>{% for c in d.columns %}<th>{{ c }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for fila in d.rows %}
+            <tr>{% for celda in fila %}<td>{{ celda_diagrama(celda) }}</td>{% endfor %}</tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+
+  {% if d.note %}<div class="diagram__note">{{ d.note }}</div>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro bloque(b, img_base) %}
+  {% if b.type == 'text' %}
+    <p>{{ b.text }}</p>
+
+  {% elif b.type == 'prereq' %}
+    <p class="step__meta-row"><b>Antes de empezar, necesitás:</b></p>
+    <ul class="prereq-list">{% for it in b['items'] %}<li>{{ it }}</li>{% endfor %}</ul>
+
+  {% elif b.type == 'concepts' %}
+    <div class="concepts-list">
+      {% for it in b['items'] %}
+        <div class="concepts-list__item"><span class="concepts-list__term">{{ it.term }}:</span> {{ it.def }}</div>
+      {% endfor %}
+    </div>
+
+  {% elif b.type == 'tip' %}
+    <div class="callout callout--tip"><span class="callout__icon">💡</span><div>{{ b.text }}</div></div>
+
+  {% elif b.type == 'warning' %}
+    <div class="callout callout--warning"><span class="callout__icon">⚠️</span><div>{{ b.text }}</div></div>
+
+  {% elif b.type == 'practice' %}
+    <div class="callout callout--practice"><span class="callout__icon">🧪</span><div><b>Probá vos mismo:</b> {{ b.text }}</div></div>
+
+  {% elif b.type == 'diagram' %}
+    {{ diagrama(b) }}
+
+  {% elif b.type == 'step' %}
+    <div class="step">
+      <div class="step__number">{{ b.number }}</div>
+      <div class="step__body">
+        <p class="step__explanation">{{ b.explanation }}</p>
+        {% if b.image %}
+          <button type="button" class="step__image lightbox-trigger" data-src="{{ img_base }}/{{ b.image }}" data-alt="{{ b.alt }}">
+            <img src="{{ img_base }}/{{ b.image }}" alt="{{ b.alt }}" loading="lazy" />
+          </button>
+          <div class="step__caption">{{ b.caption }} — clic para ampliar</div>
+        {% elif b.diagram %}
+          {{ diagrama(b.diagram) }}
+        {% endif %}
+        <div class="step__meta">
+          {% if b.lookFor %}<div class="step__meta-row"><b>Qué mirar:</b> {{ b.lookFor }}</div>{% endif %}
+          {% if b.doThis %}<div class="step__meta-row"><b>Qué hacer:</b> {{ b.doThis }}</div>{% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}

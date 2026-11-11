@@ -1,0 +1,49 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ 'Editar' if situacion else 'Nueva' }} situación — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">{{ tema.nombre }}</a><span class="sep">/</span>
+  Tengo un problema
+</nav>
+<h1>{{ 'Editar situación' if situacion else 'Nueva situación' }}</h1>
+
+<form method="post" class="admin-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field">
+    <label for="situacion">Situación (en palabras del usuario)</label>
+    <input class="input" style="padding-left:12px" id="situacion" name="situacion" value="{{ situacion.situacion if situacion else '' }}" required />
+  </div>
+  <div class="admin-field">
+    <label for="descripcion">Descripción</label>
+    <textarea class="input" id="descripcion" name="descripcion">{{ situacion.descripcion if situacion else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="causa">Causa</label>
+    <textarea class="input" id="causa" name="causa">{{ situacion.causa if situacion else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="solucion">Qué hacer</label>
+    <textarea class="input" id="solucion" name="solucion">{{ situacion.solucion if situacion else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="notas_adicionales">Aclaraciones o recomendaciones adicionales (opcional)</label>
+    <textarea class="input" id="notas_adicionales" name="notas_adicionales">{{ situacion.notas_adicionales if situacion else '' }}</textarea>
+  </div>
+  <div class="admin-field">
+    <label for="categoria_libre">Categoría para agrupar (opcional)</label>
+    <input class="input" style="padding-left:12px" id="categoria_libre" name="categoria_libre" value="{{ situacion.categoria_libre if situacion else '' }}" placeholder="Ej: Documentos oficiales, Accesos y permisos..." />
+    <span class="text-faint">Si la dejás vacía, esta situación aparece sin agrupar, como hasta ahora.</span>
+  </div>
+  <div class="admin-field">
+    <label for="tutorial">Tutorial relacionado (opcional)</label>
+    <select class="input" id="tutorial" name="tutorial">
+      {% for valor, etiqueta in opciones_tutoriales %}
+      <option value="{{ valor }}" {{ 'selected' if valor == (valor_actual if valor_actual is defined else '') else '' }}>{{ etiqueta }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <label class="admin-check"><input type="checkbox" name="verificado" {{ 'checked' if (situacion.verificado if situacion else true) else '' }} /> Esta solución está verificada</label>
+  <div><button type="submit" class="btn btn--primary">{{ 'Guardar cambios' if situacion else 'Agregar situación' }}</button></div>
+</form>
+{% endblock %}
