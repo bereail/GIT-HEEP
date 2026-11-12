@@ -12,3 +12,7 @@ scripts/server.log
 timboDocumentacion/historialWp/
 instance/*.bak
 
+# Secretos de producción (SECRET_KEY, ADMIN_PASSWORD). El ejemplo sin
+# valores reales sí se versiona: deploy/.env.example
+.env
+

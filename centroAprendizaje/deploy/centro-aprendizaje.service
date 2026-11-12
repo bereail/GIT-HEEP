@@ -1,0 +1,33 @@
+# Unidad de systemd para correr el Centro de Aprendizaje con gunicorn en un
+# VPS Linux. Ajustar las rutas y el usuario a tu servidor antes de instalarla.
+#
+# Instalación:
+#   sudo cp deploy/centro-aprendizaje.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now centro-aprendizaje
+
+[Unit]
+Description=Centro de Aprendizaje (Flask + gunicorn)
+After=network.target
+
+[Service]
+# Usuario del sistema dedicado a la app (no root). Crearlo si no existe:
+#   sudo useradd --system --home /opt/centro-aprendizaje --shell /usr/sbin/nologin centroaprendizaje
+User=centroaprendizaje
+Group=centroaprendizaje
+
+WorkingDirectory=/opt/centro-aprendizaje/centroAprendizaje
+EnvironmentFile=/opt/centro-aprendizaje/centroAprendizaje/.env
+
+ExecStart=/opt/centro-aprendizaje/centroAprendizaje/.venv/bin/gunicorn \
+    --workers 3 \
+    --bind 127.0.0.1:8000 \
+    --access-logfile - \
+    --error-logfile - \
+    run:app
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

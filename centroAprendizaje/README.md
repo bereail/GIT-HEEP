@@ -116,6 +116,94 @@ defecto en desarrollo: `admin123` (variable de entorno `ADMIN_PASSWORD`).
 entorno `SECRET_KEY` y `ADMIN_PASSWORD` con valores propios — los que trae
 el código son solo para desarrollo local.
 
+## Deploy en un VPS Linux
+
+`python run.py` es solo para desarrollo local (corre con `debug=True`, sin
+TLS ni supervisión). En el servidor real se usa **gunicorn** detrás de
+**nginx**, supervisado por **systemd**. Los archivos de referencia están en
+`deploy/`:
+
+```
+deploy/
+├── .env.example                      # variables de entorno (copiar como .env, con valores propios)
+├── centro-aprendizaje.service        # unidad de systemd (gunicorn)
+└── nginx-centro-aprendizaje.conf     # sitio de nginx (proxy + estáticos)
+```
+
+Pasos (asumiendo que el repo se clona en `/opt/centro-aprendizaje`):
+
+```bash
+# 1. Usuario de sistema dedicado (no root)
+sudo useradd --system --home /opt/centro-aprendizaje --shell /usr/sbin/nologin centroaprendizaje
+
+# 2. Entorno virtual y dependencias
+cd /opt/centro-aprendizaje/centroAprendizaje
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+
+# 3. Variables de entorno propias (nunca committear este archivo)
+cp deploy/.env.example .env
+python3 -c "import secrets; print(secrets.token_hex(32))"   # pegar como SECRET_KEY en .env
+# completar también ADMIN_PASSWORD en .env
+
+# 4. Base de datos: migraciones + contenido inicial
+#
+# OJO: la migración baseline (migrations/versions/*_baseline_*.py) tiene
+# upgrade() vacío a propósito — asume que el esquema ya existe, porque se
+# creó para "sellar" una base de desarrollo que ya tenía las tablas de
+# antes de sumar Alembic. En un servidor NUEVO con una base vacía, `flask
+# db upgrade` no crea ninguna tabla. Para una base nueva, primero:
+export FLASK_APP=run.py
+.venv/bin/python -c "
+from app import create_app
+from app.extensions import db
+app = create_app()
+with app.app_context():
+    db.create_all()
+"
+.venv/bin/flask db stamp head
+# A partir de acá sí, `flask db upgrade` funciona para migraciones futuras.
+.venv/bin/python scripts/importar_mihospital.py
+.venv/bin/python scripts/importar_timbo_expedientes.py
+.venv/bin/python scripts/importar_timbo_compras.py
+.venv/bin/python scripts/importar_faq_chats.py
+
+# 5. Permisos (el usuario de systemd necesita escribir instance/)
+sudo chown -R centroaprendizaje:centroaprendizaje /opt/centro-aprendizaje
+
+# 6. Servicio systemd
+sudo cp deploy/centro-aprendizaje.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now centro-aprendizaje
+sudo systemctl status centro-aprendizaje   # debería decir "active (running)"
+
+# 7. nginx (editar server_name antes de copiarlo)
+sudo cp deploy/nginx-centro-aprendizaje.conf /etc/nginx/sites-available/centro-aprendizaje
+sudo ln -s /etc/nginx/sites-available/centro-aprendizaje /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+
+# 8. (opcional) HTTPS, una vez que el sitio ya responde por HTTP
+sudo certbot --nginx -d tu-dominio.gob.ar
+```
+
+**Para actualizar** una vez deployado (nuevo contenido o código):
+
+```bash
+cd /opt/centro-aprendizaje
+git pull
+cd centroAprendizaje
+.venv/bin/pip install -r requirements.txt   # solo si cambiaron dependencias
+.venv/bin/flask db upgrade                  # solo si hay migraciones nuevas (base ya existente)
+sudo systemctl restart centro-aprendizaje
+```
+
+La base (`instance/centro_aprendizaje.sqlite3`) vive solo en el servidor y
+no está en git — conviene respaldarla periódicamente (por ejemplo, copiando
+el archivo a otro lado con un cron). Si en algún momento crece el tráfico o
+hace falta escribir desde varios procesos a la vez, migrar de SQLite a
+PostgreSQL es solo cambiar `SQLALCHEMY_DATABASE_URI` gracias a SQLAlchemy —
+no hace falta hoy para este volumen de uso.
+
 ## Agregar un tema nuevo
 
 Desde el panel (`/admin` → "+ Nuevo tema") se crea el tema y, desde ahí, sus
