@@ -90,6 +90,15 @@
   {% elif b.type == 'diagram' %}
     {{ diagrama(b) }}
 
+  {% elif b.type == 'video' %}
+    <a class="video-link" href="{{ b.url }}" target="_blank" rel="noopener">
+      <span class="video-link__icon" aria-hidden="true">▶️</span>
+      <span>
+        <span class="video-link__title">Mirá el video: {{ b.title }}</span>
+        <span class="video-link__meta">{% if b.minutos %}{{ b.minutos }} min · {% endif %}Se abre en YouTube. ¿Está bloqueado en tu red? Mirá "Tengo un problema".</span>
+      </span>
+    </a>
+
   {% elif b.type == 'step' %}
     <div class="step">
       <div class="step__number">{{ b.number }}</div>

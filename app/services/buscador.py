@@ -30,6 +30,7 @@ PALABRAS_VACIAS = {
 }
 
 _PUNTUACION = re.compile(r"[¿?¡!.,;:\"'()]")
+_PIDE_DEFINICION = re.compile(r"^(que es|que son|que significa|que quiere decir)(?: |$)")
 
 
 def normalizar(texto):
@@ -117,7 +118,17 @@ def construir_indice(tema):
     return entradas
 
 
-def buscar(indice, consulta, limite=12):
+def _raiz(palabra):
+    """Raíz aproximada para que "impugnar" encuentre "impugnación" o
+    "subsanar" encuentre "subsanación", sin depender de un stemmer real."""
+    if len(palabra) < 6:
+        return None
+    return palabra[: max(5, len(palabra) - 3)]
+
+
+def buscar_con_puntaje(indice, consulta, limite=12):
+    """Igual que `buscar`, pero devuelve pares (puntaje, entrada) para que el
+    chatbot pueda distinguir una coincidencia clara de una adivinanza."""
     q = normalizar(consulta).strip()
     if not q:
         return []
@@ -126,24 +137,66 @@ def buscar(indice, consulta, limite=12):
     # Si la consulta es solo palabras vacías ("qué es"), mejor buscar con
     # todo antes que no encontrar nada.
     palabras = palabras_especificas if palabras_especificas else todas_las_palabras
+    # "¿Qué es X?" / "¿Qué significa X?" pide una definición: el glosario
+    # tiene que ganarle a la lección que menciona el término.
+    pide_definicion = bool(_PIDE_DEFINICION.match(q))
 
     resultados = []
     for entrada in indice:
+        texto = entrada["texto"]
+        titulo = normalizar(entrada["title"])
         score = 0
         for palabra in palabras:
-            if palabra in entrada["texto"]:
-                score += 2 if entrada["texto"].startswith(palabra) else 1
+            if palabra in texto:
+                score += 2 if texto.startswith(palabra) else 1
+                if palabra in titulo:
+                    score += 1
+            else:
+                raiz = _raiz(palabra)
+                if raiz and raiz in texto:
+                    score += 0.5
         if score > 0:
-            resultados.append((score * entrada["peso"], entrada))
+            # Una sugerencia del chatbot manda el título exacto: tiene que
+            # ganar siempre, aunque otra entrada comparta más palabras.
+            if titulo == q:
+                score += 100
+            peso = entrada["peso"]
+            if pide_definicion and entrada["kind"] == "Glosario":
+                peso *= 4
+            resultados.append((score * peso, entrada))
 
     resultados.sort(key=lambda par: par[0], reverse=True)
-    return [entrada for _, entrada in resultados[:limite]]
+    return resultados[:limite]
+
+
+def buscar(indice, consulta, limite=12):
+    return [entrada for _, entrada in buscar_con_puntaje(indice, consulta, limite)]
+
+
+def sugerencias_iniciales(tema, cantidad=4):
+    """Preguntas para mostrar como botones al abrir el chatbot: mitad
+    "Quiero hacer..." y mitad "Tengo un problema", en el orden del tema
+    (las más frecuentes se cargan primero)."""
+    tareas = [t.pregunta for t in tema.tareas]
+    situaciones = [s.situacion for s in tema.situaciones if s.verificado]
+    mitad = cantidad // 2
+    elegidas = tareas[:mitad] + situaciones[: cantidad - mitad]
+    if len(elegidas) < cantidad:
+        resto = [p for p in tareas[mitad:] + situaciones[cantidad - mitad:] if p not in elegidas]
+        elegidas += resto[: cantidad - len(elegidas)]
+    return elegidas
 
 
 def primer_bloque_de_texto(tutorial: Tutorial):
-    for bloque in tutorial.bloques or []:
+    bloques = tutorial.bloques or []
+    for bloque in bloques:
         if bloque.get("type") == "text":
             return bloque.get("text", "")
+    # Lecciones que arrancan directo con pasos: el primer paso ya sirve de
+    # resumen de por dónde empezar.
+    for bloque in bloques:
+        if bloque.get("type") == "step":
+            return bloque.get("explanation", "")
     return ""
 
 
@@ -158,6 +211,16 @@ def armar_respuesta_chatbot(entrada):
     if kind == "Problema":
         situacion: Situacion = ref
         html = f"<b>{escape(situacion.situacion)}</b><br>{escape(situacion.solucion)}"
+        if situacion.notas_adicionales:
+            html += (
+                '<details class="chatbot-msg__mas"><summary>Ver más</summary>'
+                f"{escape(situacion.notas_adicionales)}</details>"
+            )
+        if not situacion.verificado:
+            html = (
+                '<span class="chatbot-msg__aviso">⚠️ Respuesta sin confirmar: '
+                "consultá con tu referente</span>" + html
+            )
         if situacion.tutorial_id:
             return {
                 "html": html,
@@ -180,10 +243,14 @@ def armar_respuesta_chatbot(entrada):
 
     if kind == "Tarea":
         tarea: Tarea = ref
+        resumen = primer_bloque_de_texto(tarea.tutorial)
+        html = f"<b>{escape(tarea.tutorial.titulo)}</b>"
+        if resumen:
+            html += f"<br>{escape(resumen)}"
         return {
-            "html": f"Para eso, mirá la lección <b>{escape(tarea.tutorial.titulo)}</b> ({tarea.tutorial.minutos} min).",
+            "html": html,
             "url": _url_tutorial(tarea.tutorial),
-            "link_texto": "Ir a la lección →",
+            "link_texto": f"Ver el paso a paso ({tarea.tutorial.minutos} min) →",
         }
 
     if kind == "Leccion":
@@ -195,7 +262,7 @@ def armar_respuesta_chatbot(entrada):
         return {
             "html": html,
             "url": _url_tutorial(tutorial),
-            "link_texto": "Ir a la lección →",
+            "link_texto": f"Ver el paso a paso ({tutorial.minutos} min) →",
         }
 
     # Módulo u otro tipo genérico

@@ -7,3 +7,8 @@ instance/*.sqlite3
 scripts/server.log
 .claude/
 
+
+# Exportaciones de chats de soporte: tienen teléfonos, nombres y CUIL.
+# Lo útil ya está volcado sin datos personales en FAQ_SOPORTE_TIMBO.md.
+timboDocumentacion/historialWp/
+instance/*.bak

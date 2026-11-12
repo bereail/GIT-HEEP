@@ -11,6 +11,11 @@ from app.services import buscador
 
 _PRIMERA_LETRA = re.compile(r"[A-ZÁÉÍÓÚÑ]", re.IGNORECASE)
 
+# Por debajo de este puntaje (ver buscador.buscar_con_puntaje) el chatbot no
+# responde directo: ofrece opciones "¿Te referís a...?". Equivale a una sola
+# palabra que coincide apenas por su raíz.
+CHATBOT_PUNTAJE_MINIMO = 2
+
 
 def _letra_de_termino(termino):
     m = _PRIMERA_LETRA.search(termino)
@@ -178,11 +183,49 @@ def chatbot_responder(tema_slug):
     tema = _tema_o_404(tema_slug)
     consulta = (request.get_json(silent=True) or {}).get("mensaje", "")
     indice = buscador.construir_indice(tema)
-    resultados = buscador.buscar(indice, consulta, limite=1)
+    resultados = buscador.buscar_con_puntaje(indice, consulta, limite=8)
     if not resultados:
-        return jsonify({"encontrado": False})
-    respuesta = buscador.armar_respuesta_chatbot(resultados[0])
-    return jsonify({"encontrado": True, **respuesta})
+        return jsonify({"encontrado": False, "sugerencias": buscador.sugerencias_iniciales(tema)})
+
+    puntaje, mejor = resultados[0]
+    if puntaje < CHATBOT_PUNTAJE_MINIMO:
+        # Coincidencia floja: mejor preguntar que adivinar mal.
+        return jsonify({"encontrado": False, "quiso_decir": _titulos_distintos(resultados)[:3]})
+
+    # Para "También te puede servir": solo lo que también coincide bastante
+    # (si no, son botones de relleno) y que no lleve a la misma lección que
+    # la respuesta principal.
+    relevantes = [par for par in resultados if par[0] >= puntaje * 0.5]
+    relacionadas = _titulos_distintos(relevantes, excluir=mejor)[:3]
+
+    respuesta = buscador.armar_respuesta_chatbot(mejor)
+    return jsonify({"encontrado": True, **respuesta, "relacionadas": relacionadas})
+
+
+def _destino(entrada):
+    # Las tareas y lecciones que apuntan a la misma lección son lo mismo para
+    # quien pregunta; problemas y glosario comparten página pero no contenido.
+    if entrada["kind"] in ("Tarea", "Leccion", "Modulo"):
+        return entrada["url"]
+    return entrada["title"]
+
+
+def _titulos_distintos(resultados, excluir=None):
+    vistos = {_destino(excluir)} if excluir else set()
+    titulos = []
+    for _, entrada in resultados:
+        destino = _destino(entrada)
+        if destino in vistos or entrada["title"] in titulos:
+            continue
+        vistos.add(destino)
+        titulos.append(entrada["title"])
+    return titulos
+
+
+@ui_bp.route("/temas/<tema_slug>/chatbot/sugerencias")
+def chatbot_sugerencias(tema_slug):
+    tema = _tema_o_404(tema_slug)
+    return jsonify(buscador.sugerencias_iniciales(tema))
 
 
 # --------------------------------------------------------- consultas ---

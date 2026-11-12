@@ -11,6 +11,12 @@ Etapas completadas:
 3. Segundo tema, **TIMBÓ (Expedientes)**, cargado de punta a punta (valida
    que el modelo multi-tema funciona con contenido real) + sección "Tengo un
    problema" ampliada con dudas reales de soporte, agrupadas por categoría.
+4. Tercer tema, **TIMBÓ Compras** (lado proveedor desde la lista oficial de
+   videos + circuito interno de Compras desde los chats de soporte),
+   relevamiento de preguntas frecuentes en
+   `timboDocumentacion/FAQ_SOPORTE_TIMBO.md` y chatbot más guiado
+   (sugerencias para tocar, "¿Te referís a...?", preguntas relacionadas,
+   aviso en respuestas sin confirmar y "¿Te sirvió?").
 
 Lo que falta queda listado al final.
 
@@ -52,6 +58,8 @@ scripts/
 ├── importar_mihospital.py          # JSON → base de datos (tema completo)
 ├── content_timbo_expedientes.json  # contenido ya extraído de las guías HTML
 ├── importar_timbo_expedientes.py   # JSON → base de datos (tema completo)
+├── content_timbo_compras.json      # tema TIMBÓ Compras (videos + chats)
+├── importar_timbo_compras.py       # JSON → base de datos (reusa el de expedientes)
 └── importar_faq_chats.py           # situaciones de soporte reales → Situacion
 ```
 
@@ -71,7 +79,8 @@ La primera vez (o para resetear un tema completo a su contenido de origen):
 node scripts/exportar_content_js.mjs > scripts/content_mihospital.json
 python scripts/importar_mihospital.py
 python scripts/importar_timbo_expedientes.py
-python scripts/importar_faq_chats.py
+python scripts/importar_timbo_compras.py
+python scripts/importar_faq_chats.py      # siempre al final: completa los tres temas
 ```
 
 `importar_mihospital.py` e `importar_timbo_expedientes.py` son

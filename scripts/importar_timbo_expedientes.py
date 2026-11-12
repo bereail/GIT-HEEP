@@ -26,8 +26,11 @@ from app.models import Categoria, EntradaGlosario, PasoIntroductorio, Situacion,
 RUTA_JSON = os.path.join(os.path.dirname(__file__), "content_timbo_expedientes.json")
 
 
-def importar():
-    with open(RUTA_JSON, encoding="utf-8") as f:
+def importar(ruta_json=RUTA_JSON, orden_tema=1):
+    """Vuelca un JSON de contenido (mismo schema que
+    content_timbo_expedientes.json) a la base. Lo reutiliza
+    `importar_timbo_compras.py` para su propio JSON."""
+    with open(ruta_json, encoding="utf-8") as f:
         datos = json.load(f)
 
     info_tema = datos["tema"]
@@ -49,7 +52,7 @@ def importar():
         quickstart_titulo=info_tema.get("quickstart_titulo"),
         quickstart_intro=info_tema.get("quickstart_intro"),
         quickstart_cierre=info_tema.get("quickstart_cierre"),
-        orden=1,
+        orden=orden_tema,
     )
     db.session.add(tema)
     db.session.flush()
@@ -105,6 +108,8 @@ def importar():
             descripcion=situacion_datos.get("descripcion"),
             causa=situacion_datos.get("causa"),
             solucion=situacion_datos.get("solucion"),
+            notas_adicionales=situacion_datos.get("notas_adicionales"),
+            categoria_libre=situacion_datos.get("categoria_libre"),
             tutorial_id=tutorial_id,
             verificado=situacion_datos.get("verificado", True),
             orden=orden,
@@ -144,7 +149,7 @@ def importar():
     db.session.commit()
 
     total_tutoriales = sum(len(c["tutoriales"]) for c in datos["categorias"])
-    print(f"Tema '{tema.nombre}' (TIMBÓ-expedientes) importado: "
+    print(f"Tema '{tema.nombre}' importado: "
           f"{len(datos['categorias'])} categorías, "
           f"{total_tutoriales} tutoriales, "
           f"{len(datos.get('glosario', []))} términos de glosario, "
