@@ -670,6 +670,11 @@
               { "term": "Procesos públicos", "def": "Se difunden en diarios y en el Boletín Oficial según la normativa vigente, además de la cartelera del Portal de Compras de la Provincia y la nómina de oferentes confeccionada para el proceso." },
               { "term": "Procesos privados", "def": "Se difunden solo en el Portal de Compras de la Provincia, con la nómina de oferentes confeccionada para ese proceso." }
             ] },
+            { "type": "text", "text": "Para publicar la gestión en el Portal de Compras hay que completar el Anexo I (ficha de la gestión) en el portal web, además de lo que ya carga Timbó Compras." },
+            { "type": "concepts", "items": [
+              { "term": "Descripción de la gestión", "def": "Escribí \"PROCEDIMIENTO ELECTRÓNICO\" seguido del número de la gestión de Timbó Compras (por ejemplo: PROCEDIMIENTO ELECTRÓNICO – LPR-2026-00000001-APPSF-PE#MC#)." },
+              { "term": "Lugar de presentación de las ofertas", "def": "Colocá la leyenda que indica que el proveedor, para presentar su oferta, tiene que ingresar al link de Timbó Compras." }
+            ] },
             { "type": "tip", "text": "Al enviar a publicar, el proceso queda \"Pendiente de publicación\" — ahí podés previsualizar el pliego, el acto administrativo, la nómina y el cronograma, ya firmados y anexados automáticamente al expediente." }
           ],
           "quiz": []
