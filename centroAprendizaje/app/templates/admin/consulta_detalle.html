@@ -3,9 +3,11 @@
 {% block contenido %}
 <div class="admin-section-head">
   <h1 style="margin:0">{{ consulta.tipo_label }} · {{ consulta.tema.nombre }}</h1>
-  <span class="badge badge--{{ 'unverified' if consulta.estado == 'abierta' else ('verified' if consulta.estado == 'respondida' else 'neutral') }}">{{ consulta.estado_label }}</span>
+  <span class="badge badge--{{ 'verified' if consulta.estado == 'respondida' else ('neutral' if consulta.estado == 'cerrada' else 'unverified') }}">{{ consulta.estado_label }}</span>
 </div>
-<p class="text-muted" style="margin-top:-6px">De: {{ consulta.nombre_contacto or 'Anónimo' }}</p>
+<p class="text-muted" style="margin-top:-6px">
+  De: {{ consulta.nombre_contacto or 'Anónimo' }}{% if consulta.email %} · {{ consulta.email }}{% else %} · sin email (no se le puede avisar por mail){% endif %}
+</p>
 
 <div class="card chatbot-panel__messages" style="margin:16px 0 20px">
   {% for m in consulta.mensajes %}
@@ -27,8 +29,15 @@
 </form>
 {% endif %}
 
-<div style="display:flex;gap:8px">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
   <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.consultas') }}">← Volver al listado</a>
+  {% if consulta.estado == 'abierta' %}
+  <form method="post" action="{{ url_for('admin.consulta_cambiar_estado', token=consulta.token) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="estado" value="en_revision" />
+    <button type="submit" class="btn btn--ghost btn--sm">Marcar en revisión</button>
+  </form>
+  {% endif %}
   {% if consulta.estado != 'cerrada' %}
   <form method="post" action="{{ url_for('admin.consulta_cerrar', token=consulta.token) }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />

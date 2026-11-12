@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block titulo %}Dejá tu opinión — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Dejá tu opinión
+</nav>
+<div class="hero">
+  <h1>¿Qué te pareció {{ tema.nombre }}?</h1>
+  <p class="hero__desc">Tu valoración nos ayuda a mejorar. No hace falta completar todo — puntuar ya es útil.</p>
+</div>
+
+<form method="post" class="card" style="max-width:560px">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <input type="hidden" name="puntuacion" id="puntuacion-valor" value="{{ valores.get('puntuacion', '') if valores else '' }}" />
+
+  <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Puntuación de 1 a 5 estrellas" style="margin-bottom:20px">
+    {% for n in range(1, 6) %}
+    <button type="button" class="star-rating__star" data-valor="{{ n }}" role="radio" aria-checked="false" aria-label="{{ n }} estrella{{ 's' if n != 1 }}">★</button>
+    {% endfor %}
+  </div>
+
+  <label for="categoria" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">¿Qué tipo de comentario es? (opcional)</label>
+  <select class="input" id="categoria" name="categoria" style="width:100%;margin-bottom:16px">
+    <option value="">— No especificar —</option>
+    {% for valor, etiqueta in categorias.items() %}
+    <option value="{{ valor }}" {{ 'selected' if valores and valores.get('categoria') == valor }}>{{ etiqueta }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="tutorial" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">¿Sobre qué lección? (opcional)</label>
+  <select class="input" id="tutorial" name="tutorial" style="width:100%;margin-bottom:16px">
+    {% for valor, etiqueta in opciones_tutoriales %}
+    <option value="{{ valor }}" {{ 'selected' if valores and valores.get('tutorial') == valor }}>{{ etiqueta }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="comentario" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu comentario (opcional)</label>
+  <textarea class="input" id="comentario" name="comentario" rows="4" style="width:100%;resize:vertical;margin-bottom:20px" placeholder="Una sugerencia, algo que te gustó, un problema que encontraste...">{% if valores %}{{ valores.get('comentario', '') }}{% endif %}</textarea>
+
+  <button type="submit" class="btn btn--primary">Enviar</button>
+</form>
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    const estrellas = document.querySelectorAll('#star-rating .star-rating__star');
+    const input = document.getElementById('puntuacion-valor');
+
+    function pintar(valor) {
+      estrellas.forEach((el) => {
+        const activa = Number(el.dataset.valor) <= valor;
+        el.classList.toggle('is-active', activa);
+        el.setAttribute('aria-checked', activa ? 'true' : 'false');
+      });
+    }
+
+    estrellas.forEach((el) => {
+      el.addEventListener('click', () => {
+        const valor = Number(el.dataset.valor);
+        input.value = input.value == valor ? '' : valor;  // click de nuevo = deseleccionar
+        pintar(Number(input.value) || 0);
+      });
+      el.addEventListener('mouseenter', () => pintar(Number(el.dataset.valor)));
+    });
+    document.getElementById('star-rating').addEventListener('mouseleave', () => pintar(Number(input.value) || 0));
+
+    pintar(Number(input.value) || 0);
+  })();
+</script>
+{% endblock %}

@@ -3,9 +3,11 @@
 {% block contenido %}
 <div class="admin-section-head">
   <h1 style="margin:0">Consultas</h1>
+  {% if cantidad_no_leidas %}<span class="badge badge--unverified">{{ cantidad_no_leidas }} sin leer</span>{% endif %}
 </div>
 
 <div class="diagram-tabs" style="margin-bottom:18px">
+  <a class="diagram-tab {{ 'is-active' if not estado_filtro else '' }}" href="{{ url_for('admin.consultas', estado='') }}">Todas</a>
   {% for valor, etiqueta in estados.items() %}
   <a class="diagram-tab {{ 'is-active' if estado_filtro == valor else '' }}" href="{{ url_for('admin.consultas', estado=valor) }}">
     {{ etiqueta }}{% if valor == 'abierta' and cantidad_abiertas %} ({{ cantidad_abiertas }}){% endif %}
@@ -16,7 +18,8 @@
 <div class="admin-list">
   {% for c in consultas %}
   <a class="admin-list-item" href="{{ url_for('admin.consulta_detalle', token=c.token) }}">
-    <span class="badge badge--{{ 'unverified' if c.estado == 'abierta' else ('verified' if c.estado == 'respondida' else 'neutral') }}">{{ c.estado_label }}</span>
+    <span class="badge badge--{{ 'verified' if c.estado == 'respondida' else ('neutral' if c.estado == 'cerrada' else 'unverified') }}">{{ c.estado_label }}</span>
+    {% if c.no_leida_por_admin %}<span class="badge badge--unverified">● nuevo</span>{% endif %}
     <span class="admin-list-item__title">{{ c.tipo_label }} · {{ c.tema.nombre }}</span>
     <span class="admin-list-item__meta">{{ c.nombre_contacto or 'Anónimo' }} · {{ c.actualizada_en.strftime('%d/%m %H:%M') }}</span>
   </a>

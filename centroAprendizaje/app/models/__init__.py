@@ -7,6 +7,7 @@ from app.models.tarea import Tarea
 from app.models.paso_introductorio import PasoIntroductorio
 from app.models.consulta import Consulta, MensajeConsulta, TIPOS_CONSULTA, ESTADOS_CONSULTA
 from app.models.evento_uso import EventoUso
+from app.models.feedback import Feedback, CATEGORIAS_FEEDBACK
 
 __all__ = [
     "Tema",
@@ -21,4 +22,6 @@ __all__ = [
     "TIPOS_CONSULTA",
     "ESTADOS_CONSULTA",
     "EventoUso",
+    "Feedback",
+    "CATEGORIAS_FEEDBACK",
 ]

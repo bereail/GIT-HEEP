@@ -6,7 +6,7 @@
 </nav>
 <div class="hero">
   <h1>{{ consulta.tipo_label }}</h1>
-  <span class="badge badge--{{ 'unverified' if consulta.estado == 'abierta' else ('verified' if consulta.estado == 'respondida' else 'neutral') }}">{{ consulta.estado_label }}</span>
+  <span class="badge badge--{{ 'verified' if consulta.estado == 'respondida' else ('neutral' if consulta.estado == 'cerrada' else 'unverified') }}">{{ consulta.estado_label }}</span>
 </div>
 
 {% if es_nueva %}
@@ -35,9 +35,26 @@
   <button type="submit" class="btn btn--primary btn--sm">Enviar</button>
 </form>
 {% endif %}
+
+<p style="max-width:560px"><a href="{{ url_for('ui.mis_consultas') }}">← Ver todas mis consultas</a></p>
 {% endblock %}
 
 {% block script_pagina %}
+<script>
+  // Guarda este token en "Mis consultas" (localStorage del navegador) y
+  // marca el momento en que se vio, para el indicador de "nuevo" allá.
+  (function () {
+    const token = {{ consulta.token | tojson }};
+    try {
+      const guardadas = JSON.parse(localStorage.getItem('timbo_mis_consultas') || '[]');
+      if (!guardadas.includes(token)) {
+        guardadas.push(token);
+        localStorage.setItem('timbo_mis_consultas', JSON.stringify(guardadas));
+      }
+      localStorage.setItem('timbo_consulta_vista_' + token, new Date().toISOString());
+    } catch (e) { /* localStorage no disponible: sigue funcionando por el link */ }
+  })();
+</script>
 {% if es_nueva %}
 <script>
   document.getElementById('btn-copiar-link').addEventListener('click', () => {

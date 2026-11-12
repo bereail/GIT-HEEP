@@ -5,8 +5,9 @@ from flask import Blueprint, abort, flash, jsonify, redirect, render_template, r
 
 from app import csrf
 from app.extensions import db
-from app.models import Categoria, Consulta, MensajeConsulta, Tema, Tutorial
+from app.models import Categoria, Consulta, Feedback, MensajeConsulta, Tema, Tutorial
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
+from app.models.feedback import CATEGORIAS_FEEDBACK
 from app.services import buscador, estadisticas, notificaciones
 
 _PRIMERA_LETRA = re.compile(r"[A-ZÁÉÍÓÚÑ]", re.IGNORECASE)
@@ -247,6 +248,7 @@ def consulta_nueva(tema_slug):
             tema_id=tema.id,
             tipo=tipo,
             nombre_contacto=(request.form.get("nombre_contacto") or "").strip() or None,
+            email=(request.form.get("email") or "").strip() or None,
         )
         db.session.add(consulta)
         db.session.flush()
@@ -281,3 +283,92 @@ def consulta_responder(token):
         consulta.estado = "abierta"
         db.session.commit()
     return redirect(url_for("ui.consulta_ver", token=token))
+
+
+# ------------------------------------------------------------- mis consultas --
+
+@ui_bp.route("/mis-consultas")
+def mis_consultas():
+    """Página que lee del localStorage (con JS) los tokens de las consultas
+    que el usuario inició en este navegador, y pide sus datos acá abajo."""
+    return render_template("mis_consultas.html")
+
+
+@ui_bp.route("/mis-consultas.json", methods=["POST"])
+@csrf.exempt
+def mis_consultas_json():
+    tokens = (request.get_json(silent=True) or {}).get("tokens", [])
+    if not isinstance(tokens, list) or not tokens:
+        return jsonify([])
+    tokens = [t for t in tokens if isinstance(t, str)][:100]  # tope defensivo
+    consultas = Consulta.query.filter(Consulta.token.in_(tokens)).order_by(Consulta.actualizada_en.desc()).all()
+    return jsonify([
+        {
+            "token": c.token,
+            "tema_nombre": c.tema.nombre,
+            "tema_icono": c.tema.icono,
+            "tipo_label": c.tipo_label,
+            "estado": c.estado,
+            "estado_label": c.estado_label,
+            "actualizada_en": c.actualizada_en.isoformat() if c.actualizada_en else None,
+            "ultimo_autor": c.ultimo_mensaje.autor if c.ultimo_mensaje else None,
+            "url": url_for("ui.consulta_ver", token=c.token),
+        }
+        for c in consultas
+    ])
+
+
+# ------------------------------------------------------------------ feedback --
+
+def _opciones_tutoriales_tema(tema):
+    opciones = [("", "— General, no es sobre una lección puntual —")]
+    for categoria in tema.categorias:
+        for tutorial in categoria.tutoriales:
+            opciones.append((f"{categoria.slug}/{tutorial.slug}", f"{categoria.titulo} → {tutorial.titulo}"))
+    return opciones
+
+
+def _tutorial_desde_valor(tema, valor):
+    if not valor:
+        return None
+    categoria_slug, _, tutorial_slug = valor.partition("/")
+    categoria = Categoria.query.filter_by(tema_id=tema.id, slug=categoria_slug).first()
+    if not categoria:
+        return None
+    return Tutorial.query.filter_by(categoria_id=categoria.id, slug=tutorial_slug).first()
+
+
+@ui_bp.route("/temas/<tema_slug>/feedback", methods=["GET", "POST"])
+def feedback_nuevo(tema_slug):
+    tema = _tema_o_404(tema_slug)
+    if request.method == "POST":
+        puntuacion_raw = request.form.get("puntuacion")
+        puntuacion = int(puntuacion_raw) if puntuacion_raw in {"1", "2", "3", "4", "5"} else None
+        comentario = (request.form.get("comentario") or "").strip() or None
+        categoria = request.form.get("categoria") or None
+        if categoria not in CATEGORIAS_FEEDBACK:
+            categoria = None
+
+        if puntuacion is None and not comentario:
+            flash("Dejá una puntuación o un comentario antes de enviar.", "error")
+            return render_template(
+                "feedback_nuevo.html", tema=tema, categorias=CATEGORIAS_FEEDBACK,
+                opciones_tutoriales=_opciones_tutoriales_tema(tema), valores=request.form,
+            )
+
+        tutorial = _tutorial_desde_valor(tema, request.form.get("tutorial"))
+        db.session.add(Feedback(
+            tema_id=tema.id,
+            tutorial_id=tutorial.id if tutorial else None,
+            puntuacion=puntuacion,
+            comentario=comentario,
+            categoria=categoria,
+        ))
+        db.session.commit()
+        flash("¡Gracias por tu feedback!", "ok")
+        return redirect(url_for("ui.ver_tema", tema_slug=tema.slug))
+
+    return render_template(
+        "feedback_nuevo.html", tema=tema, categorias=CATEGORIAS_FEEDBACK,
+        opciones_tutoriales=_opciones_tutoriales_tema(tema), valores=None,
+    )

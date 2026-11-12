@@ -1,0 +1,75 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Feedback — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">Feedback y sugerencias</h1>
+</div>
+
+<div class="card" style="margin-bottom:18px;max-width:480px">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+    <span style="font-size:32px;font-weight:700">{{ datos.promedio or '—' }}</span>
+    <span class="text-muted">promedio · {{ datos.total_valoraciones }} valoraciones · {{ datos.total_comentarios }} comentarios</span>
+  </div>
+  {% for n in [5, 4, 3, 2, 1] %}
+  {% set cantidad = datos.distribucion.get(n, 0) %}
+  {% set porcentaje = (cantidad / datos.total_valoraciones * 100) if datos.total_valoraciones else 0 %}
+  <div class="feedback-bar">
+    <span class="feedback-bar__label">{{ n }} ★</span>
+    <span class="feedback-bar__track"><span class="feedback-bar__fill" style="width:{{ porcentaje }}%"></span></span>
+    <span class="feedback-bar__count">{{ cantidad }}</span>
+  </div>
+  {% endfor %}
+</div>
+
+<form method="get" class="card" style="margin-bottom:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
+  <div>
+    <label for="tema" style="font-size:12.5px;font-weight:600;display:block;margin-bottom:4px">Tema</label>
+    <select class="input" id="tema" name="tema" onchange="this.form.submit()">
+      <option value="">Todos</option>
+      {% for t in temas %}
+      <option value="{{ t.slug }}" {{ 'selected' if tema_actual and tema_actual.slug == t.slug }}>{{ t.nombre }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="categoria" style="font-size:12.5px;font-weight:600;display:block;margin-bottom:4px">Tipo</label>
+    <select class="input" id="categoria" name="categoria" onchange="this.form.submit()">
+      <option value="">Todos</option>
+      {% for valor, etiqueta in categorias.items() %}
+      <option value="{{ valor }}" {{ 'selected' if categoria_filtro == valor }}>{{ etiqueta }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="puntuacion" style="font-size:12.5px;font-weight:600;display:block;margin-bottom:4px">Puntuación</label>
+    <select class="input" id="puntuacion" name="puntuacion" onchange="this.form.submit()">
+      <option value="">Todas</option>
+      {% for n in [5, 4, 3, 2, 1] %}
+      <option value="{{ n }}" {{ 'selected' if puntuacion_filtro == n }}>{{ n }} ★</option>
+      {% endfor %}
+    </select>
+  </div>
+</form>
+
+<div class="admin-list">
+  {% for f in items %}
+  <div class="admin-list-item" style="cursor:default">
+    {% if f.puntuacion %}<span class="badge badge--neutral">{{ f.puntuacion }} ★</span>{% endif %}
+    {% if f.categoria %}<span class="badge badge--neutral">{{ f.categoria_label }}</span>{% endif %}
+    {% if f.revisado %}<span class="badge badge--verified">Revisado</span>{% endif %}
+    <span class="admin-list-item__title">
+      {{ f.comentario or '(sin comentario, solo puntuación)' }}
+    </span>
+    <span class="admin-list-item__meta">
+      {{ f.tema.nombre }}{% if f.tutorial %} · {{ f.tutorial.titulo }}{% endif %} · {{ f.creado_en.strftime('%d/%m %H:%M') }}
+    </span>
+    <form method="post" action="{{ url_for('admin.feedback_revisar', feedback_id=f.id) }}" style="margin-top:8px">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <button type="submit" class="btn btn--ghost btn--sm">{{ 'Desmarcar revisado' if f.revisado else 'Marcar revisado' }}</button>
+    </form>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">⭐</div>Todavía no hay feedback con estos filtros.</div>
+  {% endfor %}
+</div>
+{% endblock %}

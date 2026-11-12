@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime, timezone
 
 from flask import (
     Blueprint,
@@ -18,9 +19,21 @@ from werkzeug.utils import secure_filename
 from app import csrf
 from app.admin.auth import contrasena_correcta, requiere_admin, sesion_admin_activa
 from app.extensions import db
-from app.models import Categoria, Consulta, EntradaGlosario, MensajeConsulta, PasoIntroductorio, Situacion, Tarea, Tema, Tutorial
+from app.models import (
+    Categoria,
+    Consulta,
+    EntradaGlosario,
+    Feedback,
+    MensajeConsulta,
+    PasoIntroductorio,
+    Situacion,
+    Tarea,
+    Tema,
+    Tutorial,
+)
 from app.models.consulta import ESTADOS_CONSULTA
-from app.services import estadisticas
+from app.models.feedback import CATEGORIAS_FEEDBACK
+from app.services import estadisticas, feedback_stats, notificaciones
 from app.services.textutil import lineas_a_lista, slugify
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin", template_folder="../templates/admin")
@@ -142,12 +155,14 @@ def consultas():
     query = Consulta.query.order_by(Consulta.actualizada_en.desc())
     if estado_filtro in ESTADOS_CONSULTA:
         query = query.filter_by(estado=estado_filtro)
+    todas = query.all()
     return render_template(
         "admin/consultas.html",
-        consultas=query.all(),
+        consultas=todas,
         estado_filtro=estado_filtro,
         estados=ESTADOS_CONSULTA,
         cantidad_abiertas=Consulta.query.filter_by(estado="abierta").count(),
+        cantidad_no_leidas=sum(1 for c in Consulta.query.all() if c.no_leida_por_admin),
     )
 
 
@@ -155,6 +170,8 @@ def consultas():
 @requiere_admin
 def consulta_detalle(token):
     consulta = Consulta.query.filter_by(token=token).first_or_404()
+    consulta.vista_por_admin_en = datetime.now(timezone.utc)
+    db.session.commit()
     return render_template("admin/consulta_detalle.html", consulta=consulta)
 
 
@@ -166,9 +183,64 @@ def consulta_responder(token):
     if mensaje:
         db.session.add(MensajeConsulta(consulta_id=consulta.id, autor="admin", cuerpo=mensaje))
         consulta.estado = "respondida"
+        consulta.vista_por_admin_en = datetime.now(timezone.utc)
         db.session.commit()
-        flash("Respuesta enviada.", "ok")
+        if notificaciones.notificar_respuesta_consulta(consulta, mensaje):
+            flash("Respuesta enviada y notificada por mail.", "ok")
+        else:
+            flash("Respuesta enviada.", "ok")
     return redirect(url_for("admin.consulta_detalle", token=token))
+
+
+@admin_bp.route("/consultas/<token>/estado", methods=["POST"])
+@requiere_admin
+def consulta_cambiar_estado(token):
+    consulta = Consulta.query.filter_by(token=token).first_or_404()
+    nuevo_estado = request.form.get("estado")
+    if nuevo_estado in ESTADOS_CONSULTA:
+        consulta.estado = nuevo_estado
+        db.session.commit()
+        flash(f"Consulta marcada como \"{ESTADOS_CONSULTA[nuevo_estado]}\".", "ok")
+    return redirect(request.referrer or url_for("admin.consultas"))
+
+
+# ------------------------------------------------------------------ feedback --
+
+@admin_bp.route("/feedback")
+@requiere_admin
+def feedback():
+    temas = Tema.query.order_by(Tema.orden).all()
+    tema_actual = _tema_o_404(request.args["tema"]) if request.args.get("tema") else None
+    categoria_filtro = request.args.get("categoria") or None
+    if categoria_filtro not in CATEGORIAS_FEEDBACK:
+        categoria_filtro = None
+    puntuacion_filtro = request.args.get("puntuacion")
+    puntuacion_filtro = int(puntuacion_filtro) if puntuacion_filtro in {"1", "2", "3", "4", "5"} else None
+
+    datos = feedback_stats.resumen(tema_id=tema_actual.id if tema_actual else None, categoria=categoria_filtro)
+    items = datos["items"]
+    if puntuacion_filtro:
+        items = [f for f in items if f.puntuacion == puntuacion_filtro]
+
+    return render_template(
+        "admin/feedback.html",
+        temas=temas,
+        tema_actual=tema_actual,
+        categorias=CATEGORIAS_FEEDBACK,
+        categoria_filtro=categoria_filtro,
+        puntuacion_filtro=puntuacion_filtro,
+        datos=datos,
+        items=items,
+    )
+
+
+@admin_bp.route("/feedback/<int:feedback_id>/revisar", methods=["POST"])
+@requiere_admin
+def feedback_revisar(feedback_id):
+    item = Feedback.query.get_or_404(feedback_id)
+    item.revisado = not item.revisado
+    db.session.commit()
+    return redirect(request.referrer or url_for("admin.feedback"))
 
 
 @admin_bp.route("/consultas/<token>/cerrar", methods=["POST"])

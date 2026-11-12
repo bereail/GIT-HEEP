@@ -10,7 +10,8 @@ TIPOS_CONSULTA = {
 }
 
 ESTADOS_CONSULTA = {
-    "abierta": "Abierta",
+    "abierta": "Pendiente",
+    "en_revision": "En revisión",
     "respondida": "Respondida",
     "cerrada": "Cerrada",
 }
@@ -34,8 +35,10 @@ class Consulta(db.Model):
     tipo = db.Column(db.String(30), nullable=False, default="consulta")
     estado = db.Column(db.String(20), nullable=False, default="abierta")
     nombre_contacto = db.Column(db.String(150))
+    email = db.Column(db.String(200))
     creada_en = db.Column(db.DateTime, default=_ahora)
     actualizada_en = db.Column(db.DateTime, default=_ahora, onupdate=_ahora)
+    vista_por_admin_en = db.Column(db.DateTime, nullable=True)
 
     tema = db.relationship("Tema")
     mensajes = db.relationship(
@@ -49,6 +52,21 @@ class Consulta(db.Model):
     @property
     def estado_label(self):
         return ESTADOS_CONSULTA.get(self.estado, self.estado)
+
+    @property
+    def ultimo_mensaje(self):
+        return self.mensajes[-1] if self.mensajes else None
+
+    @property
+    def no_leida_por_admin(self):
+        """True si el último mensaje es del usuario y el admin todavía no
+        abrió esta consulta desde que se escribió (o nunca la abrió)."""
+        ultimo = self.ultimo_mensaje
+        if not ultimo or ultimo.autor != "usuario":
+            return False
+        if self.vista_por_admin_en is None:
+            return True
+        return ultimo.creado_en > self.vista_por_admin_en
 
 
 class MensajeConsulta(db.Model):

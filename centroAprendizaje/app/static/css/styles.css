@@ -979,6 +979,29 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .video-link__title { display: block; font-weight: 650; font-size: 14px; }
 .video-link__meta { display: block; font-size: 12.5px; color: var(--text-muted); }
 
+/* Widget de estrellas del formulario de Feedback. */
+.star-rating { display: flex; gap: 4px; }
+.star-rating__star {
+  background: none;
+  border: none;
+  padding: 2px;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--border-strong);
+  transition: color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.star-rating__star:hover { transform: scale(1.1); }
+.star-rating__star.is-active { color: var(--warning); }
+.star-rating__star:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* Distribución de estrellas del panel de Feedback (admin). */
+.feedback-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 13px; }
+.feedback-bar__label { width: 54px; flex-shrink: 0; color: var(--text-muted); }
+.feedback-bar__track { flex: 1; height: 10px; background: var(--surface-sunken); border-radius: 6px; overflow: hidden; }
+.feedback-bar__fill { height: 100%; background: var(--warning); border-radius: 6px; transition: width var(--dur-fast) var(--ease); }
+.feedback-bar__count { width: 34px; flex-shrink: 0; text-align: right; color: var(--text-muted); }
+
 /* ------------------------------------------------------------ Mobile nav --- */
 
 .sidebar-scrim {

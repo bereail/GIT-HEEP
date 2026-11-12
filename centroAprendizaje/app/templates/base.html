@@ -34,7 +34,8 @@
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_quickstart' else '' }}" href="{{ url_for('ui.ver_quickstart', tema_slug=tema.slug) }}"><span class="nav-link__icon">🚀</span>Primeros 15 minutos</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_tareas' else '' }}" href="{{ url_for('ui.ver_tareas', tema_slug=tema.slug) }}"><span class="nav-link__icon">🔎</span>Quiero hacer...</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_problemas' else '' }}" href="{{ url_for('ui.ver_problemas', tema_slug=tema.slug) }}"><span class="nav-link__icon">🩹</span>Tengo un problema</a>
-        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.consulta_nueva' else '' }}" href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug, tipo='sugerencia') }}"><span class="nav-link__icon">✨</span>Sugerencias</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.feedback_nuevo' else '' }}" href="{{ url_for('ui.feedback_nuevo', tema_slug=tema.slug) }}"><span class="nav-link__icon">⭐</span>Dejá tu opinión</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.consulta_nueva' else '' }}" href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug) }}"><span class="nav-link__icon">✉️</span>Hacer una consulta</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_glosario' else '' }}" href="{{ url_for('ui.ver_glosario', tema_slug=tema.slug) }}"><span class="nav-link__icon">📖</span>Glosario</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_progreso' else '' }}" href="{{ url_for('ui.ver_progreso', tema_slug=tema.slug) }}"><span class="nav-link__icon">📊</span>Mi progreso</a>
 
@@ -48,6 +49,7 @@
         </a>
         {% endfor %}
         <div class="sidebar__section-title">Portal</div>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.mis_consultas' else '' }}" href="{{ url_for('ui.mis_consultas') }}"><span class="nav-link__icon">💬</span>Mis consultas</a>
         <a class="nav-link" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🧭</span>Todas las capacitaciones</a>
       {% else %}
         <div class="sidebar__section-title">Centro de Aprendizaje</div>

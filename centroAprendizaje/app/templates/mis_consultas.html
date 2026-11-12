@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block titulo %}Mis consultas{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.portal_inicio') }}">Inicio</a><span class="sep">/</span>Mis consultas
+</nav>
+<div class="hero">
+  <h1>Mis consultas</h1>
+  <p class="hero__desc">Las consultas que hiciste desde este navegador. Si entrás desde otro dispositivo, usá el link que te dimos al enviar cada una.</p>
+</div>
+
+<div id="mis-consultas-lista" class="admin-list" style="max-width:640px">
+  <div class="empty-state" id="mis-consultas-cargando"><div class="empty-state__icon">⏳</div>Buscando tus consultas...</div>
+</div>
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    const contenedor = document.getElementById('mis-consultas-lista');
+
+    function formatearFecha(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' }) + ' ' +
+             d.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function esNueva(c) {
+      if (c.ultimo_autor !== 'admin') return false;
+      try {
+        const vista = localStorage.getItem('timbo_consulta_vista_' + c.token);
+        if (!vista) return true;
+        return new Date(c.actualizada_en) > new Date(vista);
+      } catch (e) { return false; }
+    }
+
+    let tokens = [];
+    try {
+      tokens = JSON.parse(localStorage.getItem('timbo_mis_consultas') || '[]');
+    } catch (e) { tokens = []; }
+
+    if (!tokens.length) {
+      contenedor.innerHTML = '<div class="empty-state"><div class="empty-state__icon">💬</div>Todavía no hiciste ninguna consulta desde este navegador.</div>';
+      return;
+    }
+
+    fetch('{{ url_for("ui.mis_consultas_json") }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tokens: tokens }),
+    })
+      .then((r) => r.json())
+      .then((consultas) => {
+        if (!consultas.length) {
+          contenedor.innerHTML = '<div class="empty-state"><div class="empty-state__icon">💬</div>No encontramos esas consultas — puede que ya no existan.</div>';
+          return;
+        }
+        contenedor.innerHTML = consultas.map((c) => {
+          const nueva = esNueva(c);
+          const badgeClase = c.estado === 'respondida' ? 'verified' : (c.estado === 'cerrada' ? 'neutral' : 'unverified');
+          return (
+            '<a class="admin-list-item" href="' + c.url + '">' +
+              '<span class="badge badge--' + badgeClase + '">' + c.estado_label + '</span>' +
+              (nueva ? '<span class="badge badge--unverified">● Respuesta nueva</span>' : '') +
+              '<span class="admin-list-item__title">' + c.tema_icono + ' ' + c.tipo_label + ' · ' + c.tema_nombre + '</span>' +
+              '<span class="admin-list-item__meta">' + formatearFecha(c.actualizada_en) + '</span>' +
+            '</a>'
+          );
+        }).join('');
+      })
+      .catch(() => {
+        contenedor.innerHTML = '<div class="empty-state"><div class="empty-state__icon">⚠️</div>No pudimos cargar tus consultas. Probá de nuevo más tarde.</div>';
+      });
+  })();
+</script>
+{% endblock %}
