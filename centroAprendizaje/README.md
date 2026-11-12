@@ -11,6 +11,18 @@ Etapas completadas:
 3. Segundo tema, **TIMBÓ (Expedientes)**, cargado de punta a punta (valida
    que el modelo multi-tema funciona con contenido real) + sección "Tengo un
    problema" ampliada con dudas reales de soporte, agrupadas por categoría.
+4. Tercer tema, **TIMBÓ Compras** (lado proveedor desde la lista oficial de
+   videos + circuito interno de Compras desde los chats de soporte),
+   relevamiento de preguntas frecuentes en
+   `timboDocumentacion/FAQ_SOPORTE_TIMBO.md` y bloque de tutorial de tipo
+   video.
+5. Cuarto tema (categoría), **Licitaciones y Compras** dentro de TIMBÓ
+   (Expedientes): circuito interno completo, desde iniciar la contratación
+   hasta preadjudicar, con capturas reales del sistema.
+6. Consultas/dudas con estado (tipo mensajería, con feedback).
+7. Estadísticas de uso.
+8. Buscador global cruzando todos los temas.
+9. Sistema de migraciones (Alembic).
 
 Lo que falta queda listado al final.
 
@@ -51,7 +63,9 @@ scripts/
 ├── exportar_content_js.mjs         # content.js (JS) → JSON (miHospital)
 ├── importar_mihospital.py          # JSON → base de datos (tema completo)
 ├── content_timbo_expedientes.json  # contenido ya extraído de las guías HTML
-├── importar_timbo_expedientes.py   # JSON → base de datos (tema completo)
+├── importar_timbo_expedientes.py   # JSON → base de datos (reutilizable, orden_tema configurable)
+├── content_timbo_compras.json      # tema TIMBÓ Compras (videos + chats)
+├── importar_timbo_compras.py       # JSON → base de datos (reusa el de expedientes)
 └── importar_faq_chats.py           # situaciones de soporte reales → Situacion
 ```
 
@@ -71,7 +85,8 @@ La primera vez (o para resetear un tema completo a su contenido de origen):
 node scripts/exportar_content_js.mjs > scripts/content_mihospital.json
 python scripts/importar_mihospital.py
 python scripts/importar_timbo_expedientes.py
-python scripts/importar_faq_chats.py
+python scripts/importar_timbo_compras.py
+python scripts/importar_faq_chats.py      # siempre al final: completa los tres temas
 ```
 
 `importar_mihospital.py` e `importar_timbo_expedientes.py` son
@@ -82,12 +97,10 @@ intencional, no para correr en cada deploy. `importar_faq_chats.py` es
 idempotente a nivel de cada situación (por slug) y no toca el resto del
 contenido del tema.
 
-Si le agregás columnas nuevas a algún modelo (como pasó con `Situacion` en
-la Etapa 3), `db.create_all()` no altera tablas ya creadas — hay que borrar
-`instance/centro_aprendizaje.sqlite3` y volver a correr los scripts de
-importación. No hay un sistema de migraciones todavía (Alembic) porque el
-esquema no está estabilizado; conviene sumarlo antes de tener datos de
-producción que no se puedan recrear desde cero.
+Las migraciones de esquema se manejan con **Flask-Migrate / Alembic**
+(carpeta `migrations/`): para un cambio de modelo, `flask db migrate -m "..."`
+y `flask db upgrade` — ya no se usa `db.create_all()` ni hace falta borrar la
+base para aplicar un cambio de columnas.
 
 ## Correr el servidor
 
@@ -126,8 +139,13 @@ admin uno por uno. **Nunca** incluir datos personales del material fuente
 
 ## Qué falta (próximas etapas)
 
-1. Consultas/dudas con estado (tipo mensajería) — para preguntas que no
-   tienen todavía una situación cargada en "Tengo un problema".
-2. Estadísticas de uso.
-3. Buscador global cruzando todos los temas + pulido final de UI/UX.
-4. Sistema de migraciones (Alembic) antes de tener datos de producción.
+1. Pulido final de UI/UX.
+2. Revisar 3 videos de TIMBÓ Compras que YouTube no dejó procesar
+   automáticamente y completar ese tutorial a mano (detalle en
+   `timboDocumentacion/FAQ_SOPORTE_TIMBO.md`).
+3. Resolver las consultas que quedaron abiertas en los chats de soporte
+   (SIN sin "comenzar una carga", numeración de decisorios, documentos
+   HTML→PDF) y pasar esas situaciones a `verificado: True` en
+   `scripts/importar_faq_chats.py` cuando haya respuesta.
+4. Conseguir y cargar las guías PDF de artículos / nomenclador SIPAF que
+   se compartieron en el chat de soporte pero todavía no están en el portal.

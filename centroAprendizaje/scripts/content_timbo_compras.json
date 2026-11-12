@@ -1,0 +1,335 @@
+{
+  "tema": {
+    "slug": "timbo-compras",
+    "nombre": "TIMBÓ Compras",
+    "nombre_completo": "TIMBÓ Compras — Módulo de contrataciones del Ecosistema TIMBÓ",
+    "organizacion": "Gobierno de la Provincia de Santa Fe",
+    "icono": "🛒",
+    "descripcion": "TIMBÓ Compras es el módulo donde la Provincia publica sus licitaciones y donde los proveedores presentan sus ofertas, todo en línea. El área de Compras del hospital lo usa para llevar el proceso hasta la adjudicación.",
+    "alcance": "Cubre las dos puntas del proceso: lo que hace un proveedor para ofertar (a partir de la lista oficial de videos \"Timbó Compras\") y lo que hace el área de Compras del hospital con decisorios, vista al Tribunal de Cuentas y publicación (a partir de consultas reales de soporte).",
+    "recomendaciones": [
+      "Solo se abren las ofertas que están en estado \"Presentada\". Si quedó a medio completar, no participa.",
+      "Mirá siempre la fecha y hora límite de cada trámite: pasado ese momento, el formulario se cierra.",
+      "Una circular modificatoria suspende el proceso: revisá los cambios antes de volver a ofertar.",
+      "Para correr vista al Tribunal de Cuentas no esperes el alta de usuarios nuevos en el SIN: usá los que ya están habilitados."
+    ],
+    "quickstart_titulo": "Aprendé TIMBÓ Compras en 15 minutos",
+    "quickstart_intro": "Una ruta corta con lo esencial: quién puede participar, cómo se entra, cómo se presenta una oferta y qué hacer después.",
+    "quickstart_cierre": "Ya conocés el recorrido completo de una oferta. Si trabajás en Compras del hospital, seguí con el módulo \"Gestión interna\"."
+  },
+  "categorias": [
+    {
+      "slug": "primeros-pasos",
+      "titulo": "Primeros pasos",
+      "icono": "🧭",
+      "resumen": "Quién puede usar TIMBÓ Compras, qué necesitás tener antes y cómo entrar a un proceso.",
+      "audiencia": "Proveedores y cualquier persona que use TIMBÓ Compras por primera vez.",
+      "dificultad": "basico",
+      "tutoriales": [
+        {
+          "slug": "requisitos",
+          "titulo": "Quién puede participar y qué necesita",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Pueden participar personas humanas, personas jurídicas y uniones transitorias, siempre a través de sus representantes autorizados." },
+            { "type": "prereq", "items": [
+              "ID Ciudadana — se crea en santafe.gob.ar/idciudadana/registro/",
+              "Domicilio digital — se adhiere desde Atención Virtual (sf.gob.ar/IngresarAV)"
+            ] },
+            { "type": "tip", "text": "Con esas dos cosas ya podés entrar. No hace falta ningún otro alta especial para ofertar." },
+            { "type": "video", "url": "https://youtu.be/bLSixoqJheg", "title": "Requisitos para acceder a Timbó Compras", "minutos": 1 }
+          ],
+          "quiz": [
+            { "type": "multiple-choice", "question": "¿Qué necesitás para entrar a TIMBÓ Compras como proveedor?", "options": ["ID Ciudadana y domicilio digital", "Un usuario de Intranet provincial", "Un certificado de firma digital"], "correctIndex": 0, "explanation": "Son los dos únicos requisitos: ID Ciudadana y adhesión al domicilio digital." }
+          ]
+        },
+        {
+          "slug": "ingresar-y-participar",
+          "titulo": "Entrar y sumarte a un proceso",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Entrá a santafe.gov.ar/ms/compras. Buscá el proceso que te interesa (los que están \"En apertura\") y tocá \"Ofertar\". Vas a ingresar con tu ID Ciudadana." },
+            { "type": "step", "number": 1, "explanation": "Abrí la bandeja \"Participar de un proceso\". Ahí están todos los procesos electrónicos publicados.", "lookFor": "La fila del proceso que te interesa.", "doThis": "Tocá los tres puntitos (⋮) para previsualizar y descargar el pliego, el acto que aprobó el proceso, la nómina de proveedores y el cronograma." },
+            { "type": "step", "number": 2, "explanation": "Tocá \"Participar del proceso\".", "doThis": "Completá los datos del proveedor que representás, su CUIT y un correo electrónico. Después, \"Enviar\"." },
+            { "type": "step", "number": 3, "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\".", "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial." },
+            { "type": "video", "url": "https://youtu.be/5qcZGh3euOU", "title": "Cómo ingresar a Timbó Compras y participar de un proceso", "minutos": 2 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Después de \"Participar del proceso\", el formulario de oferta aparece en \"Mis ofertas\" → \"Asignados\".", "answer": true, "explanation": "Es la bandeja donde vas a trabajar toda tu oferta." }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ofertar",
+      "titulo": "Ofertar",
+      "icono": "📝",
+      "resumen": "Completar y presentar la oferta, hacer consultas, responder subsanaciones y, si hace falta, impugnar.",
+      "audiencia": "Proveedores que participan de una licitación.",
+      "dificultad": "basico",
+      "tutoriales": [
+        {
+          "slug": "completar-y-presentar",
+          "titulo": "Completar y presentar la oferta",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "En \"Mis ofertas\", tocá los tres puntitos del formulario de oferta y elegí \"Acciones\". Vas a ver dos formularios obligatorios." },
+            { "type": "step", "number": 1, "explanation": "Formulario \"Oferta técnica y económica\": aparecen todos los renglones del proceso.", "doThis": "En cada renglón que quieras ofertar: \"Editar\" → cargá ficha técnica, cantidad y precio unitario → \"Guardar\". Al terminar los renglones, \"Enviar\"." },
+            { "type": "step", "number": 2, "explanation": "Formulario \"Requisitos mínimos\": la documentación que pide el pliego.", "doThis": "En cada fila: ⋮ → \"Editar\" → \"Examinar\" para adjuntar → breve descripción → \"Guardar\". Si querés, sumá un anexo adicional. Después, \"Enviar\"." },
+            { "type": "step", "number": 3, "explanation": "Con los dos formularios enviados, tocá \"Presentar\" (o \"Anular\" si te arrepentiste).", "lookFor": "Que la oferta quede en estado \"Presentada\"." },
+            { "type": "warning", "text": "Solo las ofertas en estado \"Presentada\" se abren automáticamente en el acto de apertura." },
+            { "type": "tip", "text": "Aunque ya esté presentada, podés editar cualquier dato hasta la fecha y hora de apertura." },
+            { "type": "video", "url": "https://youtu.be/fcEjp7lJGUE", "title": "Cómo completar y presentar una oferta", "minutos": 3 }
+          ],
+          "quiz": [
+            { "type": "order-steps", "instruction": "Ordená los pasos para presentar una oferta:", "steps": ["Abrir \"Acciones\" en el formulario de oferta", "Completar y enviar \"Oferta técnica y económica\"", "Completar y enviar \"Requisitos mínimos\"", "Tocar \"Presentar\""] },
+            { "type": "true-false", "question": "Una oferta completa pero sin presentar igual se abre en el acto de apertura.", "answer": false, "explanation": "Solo se abren las que están en estado \"Presentada\"." }
+          ]
+        },
+        {
+          "slug": "consultas-y-circulares",
+          "titulo": "Hacer una consulta y leer circulares",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "prereq", "items": [
+              "Estar participando del proceso.",
+              "Que tu formulario de oferta esté en estado \"Completar formulario\".",
+              "Estar dentro de las fechas de consulta del proceso."
+            ] },
+            { "type": "step", "number": 1, "explanation": "En \"Mis ofertas\", tocá ⋮ → \"Iniciar consulta del proceso\".", "doThis": "Escribí tu consulta (podés sumar un anexo) y tocá \"Guardar y enviar\"." },
+            { "type": "step", "number": 2, "explanation": "La consulta queda en la pestaña \"Pendientes\" hasta que la respondan.", "lookFor": "La respuesta llega como circular aclaratoria en la pestaña \"Asignados\"." },
+            { "type": "concepts", "items": [
+              { "term": "Circular aclaratoria", "def": "Responde una consulta o aclara el pliego. El proceso sigue igual." },
+              { "term": "Circular modificatoria", "def": "Cambia el pliego. Suspende el proceso automáticamente hasta que se publique el pliego nuevo." }
+            ] },
+            { "type": "warning", "text": "Si llega una circular modificatoria, tu oferta pasa a \"Pendientes\" (\"proceso de publicación en edición\"). Cuando se publique el pliego nuevo vuelve a \"Asignados\": revisá los cambios desde ⋮ → \"Previsualizar\" antes de seguir." },
+            { "type": "video", "url": "https://youtu.be/W-_htQe-JdA", "title": "Cómo realizar consultas y ver circulares", "minutos": 3 }
+          ],
+          "quiz": [
+            { "type": "multiple-choice", "question": "¿Qué pasa con el proceso cuando sale una circular modificatoria?", "options": ["Se suspende automáticamente", "Sigue igual", "Se cancela y hay que empezar de cero"], "correctIndex": 0, "explanation": "Queda suspendido hasta que se publica el pliego modificado." }
+          ]
+        },
+        {
+          "slug": "subsanar-mejorar-aclarar",
+          "titulo": "Subsanar, mejorar precio o aclarar",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Después de la apertura, Compras puede pedirte tres cosas. Las tres se responden igual: \"Mis ofertas\" → pestaña \"Asignados\" → ⋮ → \"Acciones\"." },
+            { "type": "diagram", "variant": "table", "title": "Qué te pueden pedir", "columns": ["Pedido", "Qué hacés", "Para cerrar"], "rows": [
+              ["Subsanación", "En cada fila: Editar → Examinar → adjuntar el documento corregido → Guardar", "Enviar → Enviar subsanación → Confirmar"],
+              ["Mejora de precio", "En el renglón: Editar → \"Mejorar precio: Sí\" → precio nuevo", "Enviar → Enviar mejora → Confirmar"],
+              ["Aclaración", "Escribí la respuesta y, si hace falta, adjuntá un anexo", "Enviar → Enviar aclaración → Confirmar"]
+            ], "note": "Si no querés mejorar algún renglón, dejalo como está y enviá igual." },
+            { "type": "warning", "text": "Cada pedido trae fecha y hora límite. Pasado ese momento ya no se puede responder." },
+            { "type": "tip", "text": "Cuando termines, el trámite aparece en \"Finalizados\": desde ahí lo podés previsualizar." },
+            { "type": "video", "url": "https://youtu.be/u0UNen9iQnA", "title": "Cómo subsanar o mejorar una oferta", "minutos": 3 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Si me piden mejorar varios renglones, estoy obligado a mejorarlos todos.", "answer": false, "explanation": "Podés mejorar solo los que quieras y enviar el formulario igual." }
+          ]
+        },
+        {
+          "slug": "impugnaciones",
+          "titulo": "Presentar una impugnación",
+          "minutos": 4,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "Una impugnación es un planteo formal contra una oferta o contra el informe de preadjudicación. Sirve para cuidar la igualdad entre oferentes." },
+            { "type": "prereq", "items": [
+              "Que sea fundada y por escrito.",
+              "La garantía de impugnación (art. 134 de la Ley 12.510 y Decreto 1104/2016).",
+              "Estar dentro del plazo de impugnación."
+            ] },
+            { "type": "diagram", "variant": "table", "title": "Dos tipos de impugnación", "columns": ["Contra…", "Cuándo", "Cómo"], "rows": [
+              ["Una oferta", "Oferta en estado \"Espera de evaluación\"", "Acciones → Iniciar impugnación a la oferta → Acciones → completar → Enviar"],
+              ["La preadjudicación", "Evaluación en estado \"Preadjudicado\"", "Previsualizar el informe → Iniciar impugnación a la preadjudicación → Acciones → completar → Enviar y confirmar"]
+            ] },
+            { "type": "tip", "text": "En el formulario podés descargar todas las ofertas presentadas para analizarlas antes de escribir." },
+            { "type": "text", "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación." },
+            { "type": "video", "url": "https://youtu.be/0ExXUT8-M14", "title": "Cómo realizar impugnaciones", "minutos": 3 }
+          ],
+          "quiz": [
+            { "type": "multiple-choice", "question": "¿Qué es obligatorio adjuntar en una impugnación?", "options": ["La garantía de impugnación", "Una nota del hospital", "La oferta del competidor firmada"], "correctIndex": 0, "explanation": "La garantía es un campo obligatorio del formulario." }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gestion-interna",
+      "titulo": "Gestión interna (Compras del hospital)",
+      "icono": "🏥",
+      "resumen": "Decisorio preventivo y definitivo, vista al Tribunal de Cuentas, carga en el SIN y publicación en el portal.",
+      "audiencia": "Personal del área de Compras y Mesa de Entradas del hospital.",
+      "dificultad": "intermedio",
+      "tutoriales": [
+        {
+          "slug": "circuito-decisorio",
+          "titulo": "Decisorio preventivo y definitivo",
+          "minutos": 3,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "El decisorio pasa dos veces por el circuito: uno antes del Tribunal de Cuentas (preventivo) y otro después (definitivo)." },
+            { "type": "diagram", "variant": "list", "title": "El circuito, en orden", "items": [
+              { "label": "1. Firmar el decisorio preventivo (con la afectación presupuestaria)", "hint": "Antes del TCP", "tone": "intermedio" },
+              { "label": "2. Correr vista al Tribunal de Cuentas: pliego + expediente + pedido + notas + decisorio preventivo", "hint": "Vista TCP", "tone": "intermedio" },
+              { "label": "3. En TIMBÓ Compras, vincular el Documento Oficial que aprueba el pliego", "hint": "Habilita la etapa siguiente", "tone": "verified" },
+              { "label": "4. Subir el decisorio definitivo al expediente y a TIMBÓ Compras", "hint": "Después del TCP", "tone": "verified" }
+            ] },
+            { "type": "warning", "text": "Un documento oficial firmado no se edita: si se toca, se rompe la firma. Revisá número y fecha antes de mandarlo a firmar." },
+            { "type": "tip", "text": "Si un documento oficial quedó mal, no hace falta archivarlo ni desestimarlo: simplemente no lo vincules ni lo uses." }
+          ],
+          "quiz": [
+            { "type": "order-steps", "instruction": "Ordená el circuito del decisorio:", "steps": ["Firmar el decisorio preventivo", "Correr vista al Tribunal de Cuentas", "Vincular el DO que aprueba el pliego en TIMBÓ Compras", "Subir el decisorio definitivo"] }
+          ]
+        },
+        {
+          "slug": "vista-tribunal-de-cuentas",
+          "titulo": "Correr vista al Tribunal de Cuentas (SIN)",
+          "minutos": 3,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "prereq", "items": [
+              "Un usuario habilitado para cargar en el SIN.",
+              "Una computadora conectada a la red institucional (no funciona desde el celular ni desde otra red)."
+            ] },
+            { "type": "text", "text": "La carga se hace en el sistema SIN (app.santafe.gov.ar/normativa). Hay un instructivo oficial: \"Carga y Edición SIN\"." },
+            { "type": "tip", "text": "¿Quién corre la vista? Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas." },
+            { "type": "warning", "text": "Si tu usuario todavía no está habilitado, que lo cargue alguien que ya lo esté. El alta de usuarios nuevos tarda varios días y se puede vencer el plazo." }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Puedo cargar en el SIN desde mi celular si tengo usuario habilitado.", "answer": false, "explanation": "Hay que entrar desde una computadora conectada a la red institucional." }
+          ]
+        },
+        {
+          "slug": "alta-usuarios-sin",
+          "titulo": "Pedir usuarios nuevos para el SIN",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "step", "number": 1, "explanation": "Pedile a tu referente de Contrataciones la \"Planilla de datos\" para alta de usuarios SIN.", "doThis": "Completala con las personas responsables de cargar actos administrativos. Si alguien no tiene correo oficial, indicalo en la planilla." },
+            { "type": "step", "number": 2, "explanation": "Enviala por correo a la Subsecretaría de Contrataciones y Gestión de Bienes.", "lookFor": "Ellos abren un ticket en iTop a la Secretaría de Tecnologías para la Gestión (STG), que crea los usuarios." },
+            { "type": "warning", "text": "Tarda algunos días. Mientras tanto, seguí usando los usuarios que ya están habilitados." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "publicar-en-portal",
+          "titulo": "Publicar la gestión en el portal de compras",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Una vez cargadas la nómina de oferentes y la fecha de publicación, la gestión se publica según la Circular N° 04/2026 de la Subsecretaría de Contrataciones y Gestión de Bienes." },
+            { "type": "concepts", "items": [
+              { "term": "Por dónde", "def": "A través de TIMBÓ, por correo electrónico y con la carga en el SIN." },
+              { "term": "Qué link usar", "def": "El mismo link que lleva a la gestión en TIMBÓ. No hay que buscar otro." }
+            ] },
+            { "type": "tip", "text": "Circular 04/2026: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf" }
+          ],
+          "quiz": []
+        }
+      ]
+    }
+  ],
+  "glosario": [
+    { "termino": "ID Ciudadana", "definicion": "Tu cuenta personal para entrar a los servicios digitales de la Provincia. Es requisito para usar TIMBÓ Compras.", "modulo": "Primeros pasos" },
+    { "termino": "Domicilio digital", "definicion": "Dirección electrónica donde la Provincia te notifica formalmente. Se adhiere desde Atención Virtual.", "modulo": "Primeros pasos" },
+    { "termino": "Pliego de bases y condiciones particulares", "definicion": "El documento que dice qué se compra, cómo y con qué requisitos.", "modulo": "Ofertar" },
+    { "termino": "Mis ofertas", "definicion": "La bandeja donde el proveedor trabaja su oferta. Tiene pestañas Asignados (para hacer), Pendientes (esperando) y Finalizados.", "modulo": "Ofertar" },
+    { "termino": "Requisitos mínimos", "definicion": "Formulario de la oferta donde se adjunta la documentación que exige el pliego.", "modulo": "Ofertar" },
+    { "termino": "Acto de apertura", "definicion": "Momento en que se abren automáticamente las ofertas en estado \"Presentada\".", "modulo": "Ofertar" },
+    { "termino": "Circular aclaratoria", "definicion": "Respuesta oficial a una consulta o aclaración del pliego. No frena el proceso.", "modulo": "Ofertar" },
+    { "termino": "Circular modificatoria", "definicion": "Cambio en el pliego. Suspende el proceso hasta que se publica el pliego nuevo.", "modulo": "Ofertar" },
+    { "termino": "Subsanación", "definicion": "Pedido para corregir o completar documentación de una oferta ya abierta.", "modulo": "Ofertar" },
+    { "termino": "Mejora de precio", "definicion": "Pedido para bajar el precio de uno o más renglones. Es opcional por renglón.", "modulo": "Ofertar" },
+    { "termino": "Preadjudicación", "definicion": "Informe que recomienda a quién adjudicar, antes de la decisión final.", "modulo": "Ofertar" },
+    { "termino": "Impugnación", "definicion": "Planteo formal y fundado contra una oferta o contra la preadjudicación. Requiere garantía.", "modulo": "Ofertar" },
+    { "termino": "Garantía de impugnación", "definicion": "Garantía obligatoria para impugnar (art. 134, Ley 12.510).", "modulo": "Ofertar" },
+    { "termino": "Decisorio preventivo", "definicion": "Decisorio con la afectación presupuestaria que se manda al Tribunal de Cuentas antes de seguir.", "modulo": "Gestión interna" },
+    { "termino": "Decisorio definitivo", "definicion": "El decisorio que se sube al expediente y a TIMBÓ Compras después de la vista del Tribunal de Cuentas.", "modulo": "Gestión interna" },
+    { "termino": "TCP", "definicion": "Tribunal de Cuentas de la Provincia. Se le \"corre vista\" del decisorio preventivo.", "modulo": "Gestión interna" },
+    { "termino": "SIN", "definicion": "Sistema provincial de normativa donde se cargan los actos administrativos (app.santafe.gov.ar/normativa). Solo para usuarios habilitados y desde la red institucional.", "modulo": "Gestión interna" },
+    { "termino": "SIPAF", "definicion": "Sistema provincial del que depende el nomenclador de artículos. Si se cae, TIMBÓ Compras no deja cargar artículos.", "modulo": "Gestión interna" },
+    { "termino": "Nómina de oferentes", "definicion": "Listado de proveedores que participan del proceso.", "modulo": "Gestión interna" },
+    { "termino": "iTop", "definicion": "Sistema de tickets para pedir permisos y altas a las áreas técnicas.", "modulo": "General" }
+  ],
+  "situaciones": [
+    {
+      "slug": "mi-oferta-no-se-abrio",
+      "situacion": "Mi oferta no se abrió en la apertura",
+      "descripcion": "Completaste la oferta pero no apareció en el acto de apertura.",
+      "causa": "Solo se abren las ofertas en estado \"Presentada\". Si quedó en borrador o se anuló, no participa.",
+      "solucion": "Antes de la fecha de apertura, revisá que los dos formularios estén enviados y que hayas tocado \"Presentar\".",
+      "categoria_libre": "Ofertas",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "completar-y-presentar",
+      "verificado": true
+    },
+    {
+      "slug": "cambiar-oferta-presentada",
+      "situacion": "Ya presenté la oferta y me equivoqué en un dato",
+      "descripcion": "Querés corregir un precio o un adjunto de una oferta ya presentada.",
+      "solucion": "Podés editarla hasta la fecha y hora de apertura. Después de la apertura, solo se corrige si Compras te pide una subsanación.",
+      "categoria_libre": "Ofertas",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "completar-y-presentar",
+      "verificado": true
+    },
+    {
+      "slug": "no-puedo-hacer-consulta",
+      "situacion": "No me aparece la opción para hacer una consulta",
+      "descripcion": "Buscás \"Iniciar consulta del proceso\" y no está.",
+      "causa": "Solo se puede consultar si estás participando, tu oferta está en \"Completar formulario\" y estás dentro de las fechas de consulta.",
+      "solucion": "Revisá las fechas de consulta en el cronograma del proceso. Si ya pasaron, no se pueden hacer consultas nuevas.",
+      "categoria_libre": "Ofertas",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "consultas-y-circulares",
+      "verificado": true
+    },
+    {
+      "slug": "proceso-suspendido",
+      "situacion": "Mi oferta pasó a \"Pendientes\" y el proceso está suspendido",
+      "descripcion": "La oferta figura como \"proceso de publicación en edición\".",
+      "causa": "Salió una circular modificatoria: el pliego se está cambiando.",
+      "solucion": "Esperá a que se publique el pliego nuevo. La oferta vuelve a \"Asignados\"; revisá los cambios desde ⋮ → Previsualizar antes de seguir.",
+      "categoria_libre": "Ofertas",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "consultas-y-circulares",
+      "verificado": true
+    },
+    {
+      "slug": "no-puedo-impugnar",
+      "situacion": "No me aparece la opción para impugnar",
+      "descripcion": "Querés impugnar pero no ves \"Iniciar impugnación\".",
+      "causa": "Depende del estado: para impugnar una oferta, la tuya tiene que estar en \"Espera de evaluación\"; para impugnar la preadjudicación, la evaluación tiene que estar en \"Preadjudicado\". Además tiene que estar abierto el plazo.",
+      "solucion": "Revisá el estado de tu oferta en \"Mis ofertas\" y las fechas de impugnación.",
+      "categoria_libre": "Ofertas",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "impugnaciones",
+      "verificado": true
+    }
+  ],
+  "tareas": [
+    { "slug": "que-necesito", "pregunta": "¿Qué necesito para ofertar?", "keywords": ["requisitos", "id ciudadana", "domicilio digital", "registrarme", "proveedor"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },
+    { "slug": "entrar-a-compras", "pregunta": "¿Cómo entro y me sumo a una licitación?", "keywords": ["entrar", "ingresar", "participar", "proceso", "licitacion", "ofertar"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar-y-participar" },
+    { "slug": "presentar-oferta", "pregunta": "Quiero presentar una oferta", "keywords": ["presentar", "cotizar", "precio", "renglones", "requisitos minimos", "oferta"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "completar-y-presentar" },
+    { "slug": "hacer-consulta", "pregunta": "Quiero hacer una consulta sobre el pliego", "keywords": ["consulta", "pregunta", "circular", "aclaratoria", "modificatoria", "pliego"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "consultas-y-circulares" },
+    { "slug": "responder-subsanacion", "pregunta": "Me pidieron subsanar, mejorar el precio o aclarar", "keywords": ["subsanar", "subsanacion", "corregir", "mejorar", "mejora", "precio", "aclaracion"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
+    { "slug": "impugnar", "pregunta": "Quiero impugnar una oferta o la preadjudicación", "keywords": ["impugnar", "impugnacion", "preadjudicacion", "garantia", "queja"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "impugnaciones" },
+    { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },
+    { "slug": "correr-vista-tcp", "pregunta": "Tengo que correr vista al Tribunal de Cuentas", "keywords": ["vista", "tribunal", "tcp", "sin", "cargar", "normativa", "mesa de entradas"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "vista-tribunal-de-cuentas" },
+    { "slug": "usuarios-sin", "pregunta": "Necesito usuarios nuevos para cargar en el SIN", "keywords": ["usuario", "alta", "sin", "planilla", "habilitar", "acceso"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "alta-usuarios-sin" },
+    { "slug": "publicar-portal", "pregunta": "Quiero publicar la gestión en el portal de compras", "keywords": ["publicar", "publicacion", "portal", "link", "circular", "nomina", "oferentes"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "publicar-en-portal" }
+  ],
+  "quickstart_steps": [
+    { "titulo": "Qué necesitás", "descripcion": "ID Ciudadana y domicilio digital. Nada más.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },
+    { "titulo": "Entrar y sumarte a un proceso", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar-y-participar" },
+    { "titulo": "Presentar la oferta", "tutorial_categoria_slug": "ofertar", "tutorial_slug": "completar-y-presentar" },
+    { "titulo": "Responder lo que te pidan", "descripcion": "Subsanaciones, mejoras de precio y aclaraciones.", "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
+    { "titulo": "Si algo no anda", "situacion_slug": "mi-oferta-no-se-abrio" }
+  ]
+}

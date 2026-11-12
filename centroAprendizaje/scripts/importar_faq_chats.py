@@ -1,6 +1,9 @@
-"""Carga las situaciones de "Tengo un problema" extraídas de dos chats reales
-de soporte (grupos de WhatsApp de Sectorial/Contrataciones), una para el
-tema mihospital y otra para timbo-expedientes.
+"""Carga las situaciones de "Tengo un problema" extraídas de chats reales
+de soporte (grupos de WhatsApp de Sectorial/Contrataciones), repartidas
+entre los temas mihospital, timbo-expedientes y timbo-compras. Las de
+timbo-compras se agregan también acá aunque varias ya existan (con otra
+redacción) en timbo-expedientes: son públicos distintos (gestión interna
+vs. proveedor) y no se borra nada del tema existente.
 
 Los chats originales tenían números de teléfono y nombres de personas
 reales — ninguno de esos datos entra acá, solo la duda y la solución ya
@@ -157,6 +160,103 @@ SITUACIONES_TIMBO_EXPEDIENTES = [
     },
 ]
 
+SITUACIONES_TIMBO_COMPRAS = [
+    {
+        "slug": "decisorio-preventivo-vs-definitivo",
+        "situacion": "¿Qué decisorio corresponde: preventivo o definitivo, y qué hay que vincular en Timbó Compras?",
+        "descripcion": "No queda claro cuándo usar el decisorio preventivo y cuándo el definitivo, ni qué hay que vincular en Timbó Compras.",
+        "causa": "El circuito de aprobación de compras pasa dos veces por un decisorio: uno antes de la intervención del Tribunal de Cuentas y otro después.",
+        "solucion": (
+            "Antes del Tribunal de Cuentas va el preventivo (con la afectación), junto con el pliego, el expediente, el pedido y las notas. "
+            "En Timbó Compras se vincula el Documento Oficial que aprueba el pliego para pasar a la etapa siguiente. "
+            "Después de la vista, se sube el decisorio definitivo al expediente y a Timbó Compras."
+        ),
+        "categoria_libre": "Decisorios y Tribunal de Cuentas",
+        "verificado": True,
+        "tutorial": ("gestion-interna", "circuito-decisorio"),
+    },
+    {
+        "slug": "quien-corre-vista-tcp",
+        "situacion": "¿La vista al Tribunal de Cuentas la corremos desde Compras o la hace Mesa de Entradas?",
+        "descripcion": "No está claro qué área tiene que correr la vista del expediente.",
+        "solucion": "Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas.",
+        "categoria_libre": "Decisorios y Tribunal de Cuentas",
+        "verificado": True,
+        "tutorial": ("gestion-interna", "vista-tribunal-de-cuentas"),
+    },
+    {
+        "slug": "no-aparece-pestana-comenzar-carga-sin",
+        "situacion": 'Quiero cargar algo en el SIN para dar vista al Tribunal de Cuentas, pero no aparece la pestaña "comenzar una carga"',
+        "descripcion": "Al entrar al sistema SIN para iniciar la carga que corre vista al Tribunal de Cuentas, no se encuentra la opción esperada.",
+        "causa": "Lo más probable es que el usuario no esté habilitado para cargar en el SIN (la opción solo la ven los usuarios habilitados).",
+        "solucion": "Confirmá que tu usuario esté habilitado para el SIN y que entres desde una computadora de la red institucional. Si igual no aparece, consultá con tu referente de Contrataciones.",
+        "notas_adicionales": 'Sin confirmar: en el chat se compartió el instructivo "Carga y Edición SIN" y el link app.santafe.gov.ar/normativa, pero la pantalla no coincidía con el instructivo y no quedó resuelto.',
+        "categoria_libre": "Sistema SIN",
+        "verificado": False,
+        "tutorial": ("gestion-interna", "vista-tribunal-de-cuentas"),
+    },
+    {
+        "slug": "no-abre-link-sin",
+        "situacion": "No nos abre el link del sistema SIN",
+        "descripcion": "Al hacer clic en el link de acceso al SIN, la página no carga.",
+        "causa": "El SIN solo funciona para usuarios habilitados y desde una computadora conectada a la red institucional.",
+        "solucion": "Confirmá que tu usuario esté habilitado y que estés en una computadora de la red del hospital (no desde el celular ni desde otra red).",
+        "categoria_libre": "Sistema SIN",
+        "verificado": True,
+        "tutorial": ("gestion-interna", "vista-tribunal-de-cuentas"),
+    },
+    {
+        "slug": "alta-usuarios-sin",
+        "situacion": "¿Cómo damos de alta a más usuarios para cargar en el SIN?",
+        "descripcion": "Pocas personas están habilitadas para cargar en el SIN y hace falta sumar más usuarios.",
+        "solucion": (
+            "Completá la planilla de datos con las personas que van a cargar actos administrativos (indicá si alguien no tiene correo oficial) "
+            "y enviala por correo a la Subsecretaría de Contrataciones y Gestión de Bienes. Ellos piden el alta por iTop a la STG."
+        ),
+        "notas_adicionales": "Tarda varios días. Mientras tanto, usá los usuarios ya habilitados para no perder el plazo de la vista al Tribunal de Cuentas.",
+        "categoria_libre": "Sistema SIN",
+        "verificado": True,
+        "tutorial": ("gestion-interna", "alta-usuarios-sin"),
+    },
+    {
+        "slug": "link-publicacion-portal-compras",
+        "situacion": "¿Dónde consigo el link para publicar la gestión en el portal de compras?",
+        "descripcion": "Ya cargaste la nómina de oferentes y la fecha de publicación, y no sabés qué link poner en el portal.",
+        "solucion": "Es el mismo link que lleva a la gestión en Timbó. La publicación se hace por Timbó, por correo electrónico y con la carga en el SIN (Circular N° 04/2026).",
+        "notas_adicionales": "Circular N° 04/2026: https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf",
+        "categoria_libre": "Publicación en el portal",
+        "verificado": True,
+        "tutorial": ("gestion-interna", "publicar-en-portal"),
+    },
+    {
+        "slug": "timbo-compras-caido-por-sipaf",
+        "situacion": "No puedo cargar artículos en Timbó Compras",
+        "descripcion": "El módulo de Compras no deja cargar artículos nuevos.",
+        "causa": "Suele ser una caída de SIPAF, el sistema provincial del que depende el nomenclador de artículos. No es un problema de tu usuario.",
+        "solucion": "Preguntá a tu referente si hay aviso de caída de SIPAF. Si la hay, solo queda esperar a que vuelva el servicio.",
+        "categoria_libre": "Artículos y disponibilidad",
+        "verificado": True,
+    },
+    {
+        "slug": "articulo-no-esta-en-nomenclador",
+        "situacion": "El artículo que necesito no aparece en el nomenclador",
+        "descripcion": "Buscás un artículo para el pedido y no lo encontrás.",
+        "solucion": 'Hay una guía oficial para buscar en el nomenclador SIPAF y pedir los artículos que faltan ("Guía de Uso – Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes"), y otra con los 4 pasos para solicitar artículos. Pedíselas a tu referente.',
+        "notas_adicionales": "Las guías se compartieron como PDF en el grupo de soporte; todavía no están cargadas en este portal.",
+        "categoria_libre": "Artículos y disponibilidad",
+        "verificado": True,
+    },
+    {
+        "slug": "documentos-salen-en-html",
+        "situacion": "Los documentos de Timbó Compras salen en HTML y hay que pasarlos a PDF",
+        "descripcion": "Para subirlos a otro lado hay que convertirlos, con varios pasos extra.",
+        "solucion": "Por ahora no hay otra opción: hay que convertirlos. Se pidió a Sistemas que el módulo los genere directamente en PDF.",
+        "notas_adicionales": "Pedido abierto, sin respuesta todavía.",
+        "categoria_libre": "Artículos y disponibilidad",
+        "verificado": False,
+    },
+]
+
 
 def _tutorial_id(tema, clave):
     if not clave:
@@ -207,7 +307,8 @@ def _cargar_situaciones(tema_slug, situaciones_datos):
 def importar():
     n1 = _cargar_situaciones("mihospital", SITUACIONES_MIHOSPITAL)
     n2 = _cargar_situaciones("timbo-expedientes", SITUACIONES_TIMBO_EXPEDIENTES)
-    print(f"Cargadas {n1} situaciones nuevas en miHospital y {n2} en TIMBÓ (Expedientes).")
+    n3 = _cargar_situaciones("timbo-compras", SITUACIONES_TIMBO_COMPRAS)
+    print(f"Cargadas {n1} situaciones en miHospital, {n2} en TIMBÓ (Expedientes) y {n3} en TIMBÓ Compras.")
 
 
 if __name__ == "__main__":
