@@ -588,7 +588,7 @@
         {
           "slug": "que-es-timbo-compras",
           "titulo": "Qué es Timbó Compras",
-          "minutos": 4,
+          "minutos": 6,
           "dificultad": "basico",
           "bloques": [
             { "type": "text", "text": "Timbó Compras es el módulo donde se arman y gestionan licitaciones y concursos. Es la etapa intermedia de un circuito más largo que empieza y termina en el expediente electrónico (Timbó - EE)." },
@@ -605,7 +605,16 @@
               { "term": "Supervisor", "def": "Aprueba el PByCP y la contratación (con respaldo del Acto Administrativo), y gestiona la nómina y el cronograma de fechas." },
               { "term": "Evaluador/es", "def": "Evalúa las ofertas, organiza la comisión, recibe impugnaciones, y genera y firma el informe de preadjudicación." }
             ] },
-            { "type": "tip", "text": "PByCP = Pliego de Bases y Condiciones Particulares. AA = Acto Administrativo. Vas a ver estas siglas seguido en el módulo." }
+            { "type": "step", "number": 3, "explanation": "Dentro de la etapa Timbó Compras, el proceso avanza en cinco sub-pasos, en este orden.", "image": "compras-que-es-etapa2.jpg", "alt": "2° Etapa: Ofertas, Apertura de ofertas, Evaluación de ofertas, Preadjudicación, Notificaciones", "caption": "Los 5 pasos dentro de Timbó Compras" },
+            { "type": "concepts", "items": [
+              { "term": "Ofertas", "def": "El proveedor presenta su oferta técnica y económica, cumpliendo los requisitos mínimos del pliego." },
+              { "term": "Apertura de ofertas", "def": "Es automática: el sistema genera el acta de apertura y el cuadro comparativo de precios." },
+              { "term": "Evaluación de ofertas", "def": "Evaluación económica, técnica y administrativa de cada oferta, con posibilidad de subsanación, mejora y aclaraciones." },
+              { "term": "Preadjudicación", "def": "La comisión de evaluadores confecciona y publica el informe de preadjudicación." },
+              { "term": "Notificaciones", "def": "Se notifica de forma fehaciente al domicilio digital de cada oferente." }
+            ] },
+            { "type": "tip", "text": "PByCP = Pliego de Bases y Condiciones Particulares. AA = Acto Administrativo. Vas a ver estas siglas seguido en el módulo." },
+            { "type": "step", "number": 4, "explanation": "¿Tenés dudas sobre Timbó Compras? Podés escribir o llamar directamente a soporte del módulo.", "image": "compras-contactos.jpg", "alt": "Consultas: timbocompras@santafe.gob.ar, (0342) 4506799/4506800, internos 39480 o 39479", "caption": "Contacto de soporte de Timbó Compras" }
           ],
           "quiz": []
         },
@@ -649,13 +658,18 @@
         {
           "slug": "aprobar-cronograma-nomina",
           "titulo": "Aprobar el pliego, cronograma y nómina de oferentes",
-          "minutos": 5,
+          "minutos": 6,
           "dificultad": "intermedio",
           "bloques": [
             { "type": "step", "number": 1, "explanation": "Para aprobar el pliego necesitás ingresar con rol Supervisor. En la pestaña Pendientes de Licitaciones y Concursos → Gestión de Compras y Contrataciones vas a encontrar el proceso en estado \"Evaluar Contratación (Supervisor)\".", "image": "compras-pendientes-supervisor.jpg", "alt": "Bandeja Pendientes con procesos en estado Evaluar Contratación (Supervisor) y Evaluar Ofertas", "caption": "Bandeja Pendientes del supervisor" },
             { "type": "text", "text": "Desde Acciones podés aprobar o rechazar cada formulario. Si rechazás, dejá un breve motivo y podés adjuntar un archivo. Si tenés rol Gestor y vos mismo confeccionaste el pliego, podés aprobar todos los formularios juntos." },
             { "type": "text", "text": "Aprobado el pliego, completá el documento oficial \"aprueba pliego\": Acciones → Seleccionar documento oficial, poné el número, verificá con la lupa que sea el correcto y Guardar." },
             { "type": "text", "text": "Seguí con \"Completar cronograma y nómina\": cargá la nómina de proveedores (filtrando por razón social o CUIT, o a mano si el oferente no está registrado) y el cronograma de fechas (publicación, consultas, recepción de documentación física, apertura e impugnaciones)." },
+            { "type": "step", "number": 2, "explanation": "La forma de difundir el llamado depende de si el proceso es público o privado.", "image": "compras-publicidad.jpg", "alt": "Publicidad y Difusión: procesos públicos (diarios y boletín oficial, cartelera del Portal de Compras, nómina de oferentes) y procesos privados (Portal de Compras, nómina de oferentes)", "caption": "Publicidad y difusión del llamado" },
+            { "type": "concepts", "items": [
+              { "term": "Procesos públicos", "def": "Se difunden en diarios y en el Boletín Oficial según la normativa vigente, además de la cartelera del Portal de Compras de la Provincia y la nómina de oferentes confeccionada para el proceso." },
+              { "term": "Procesos privados", "def": "Se difunden solo en el Portal de Compras de la Provincia, con la nómina de oferentes confeccionada para ese proceso." }
+            ] },
             { "type": "tip", "text": "Al enviar a publicar, el proceso queda \"Pendiente de publicación\" — ahí podés previsualizar el pliego, el acto administrativo, la nómina y el cronograma, ya firmados y anexados automáticamente al expediente." }
           ],
           "quiz": []
