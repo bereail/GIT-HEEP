@@ -34,6 +34,14 @@
   <span class="text-muted" id="resultado-quiz" style="display:none"></span>
 </div>
 
+<div class="lesson-complete-bar feedback-bar" data-titulo="{{ tutorial.titulo }}">
+  <span class="text-muted">¿Te sirvió esta lección?</span>
+  <button type="button" class="btn btn--ghost btn--sm js-feedback-tutorial" data-voto="si">👍 Sí</button>
+  <button type="button" class="btn btn--ghost btn--sm js-feedback-tutorial" data-voto="no">👎 No</button>
+  <div class="topbar__spacer"></div>
+  <a class="btn btn--subtle btn--sm" href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug, contexto=tutorial.titulo) }}">✉️ No resolvió mi duda</a>
+</div>
+
 <div class="lesson-nav">
   {% if anterior %}
     <a class="btn btn--ghost" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=anterior[0], tutorial_slug=anterior[1]) }}">← {{ anterior[2] }}</a>

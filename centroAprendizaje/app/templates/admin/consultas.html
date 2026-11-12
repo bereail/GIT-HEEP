@@ -1,0 +1,27 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Consultas — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">Consultas</h1>
+</div>
+
+<div class="diagram-tabs" style="margin-bottom:18px">
+  {% for valor, etiqueta in estados.items() %}
+  <a class="diagram-tab {{ 'is-active' if estado_filtro == valor else '' }}" href="{{ url_for('admin.consultas', estado=valor) }}">
+    {{ etiqueta }}{% if valor == 'abierta' and cantidad_abiertas %} ({{ cantidad_abiertas }}){% endif %}
+  </a>
+  {% endfor %}
+</div>
+
+<div class="admin-list">
+  {% for c in consultas %}
+  <a class="admin-list-item" href="{{ url_for('admin.consulta_detalle', token=c.token) }}">
+    <span class="badge badge--{{ 'unverified' if c.estado == 'abierta' else ('verified' if c.estado == 'respondida' else 'neutral') }}">{{ c.estado_label }}</span>
+    <span class="admin-list-item__title">{{ c.tipo_label }} · {{ c.tema.nombre }}</span>
+    <span class="admin-list-item__meta">{{ c.nombre_contacto or 'Anónimo' }} · {{ c.actualizada_en.strftime('%d/%m %H:%M') }}</span>
+  </a>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">💬</div>No hay consultas en este estado.</div>
+  {% endfor %}
+</div>
+{% endblock %}

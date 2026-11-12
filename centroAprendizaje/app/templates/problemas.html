@@ -52,4 +52,9 @@
   {% for s in situaciones %}{{ tarjeta_situacion(s) }}{% endfor %}
   {% endif %}
 {% endfor %}
+
+<div class="callout callout--tip" style="margin-top:24px">
+  <span class="callout__icon">✉️</span>
+  <div>¿No encontraste tu problema acá? <a href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug, contexto='Tengo un problema') }}">Contanos qué te pasó →</a></div>
+</div>
 {% endblock %}

@@ -18,7 +18,9 @@ from werkzeug.utils import secure_filename
 from app import csrf
 from app.admin.auth import contrasena_correcta, requiere_admin, sesion_admin_activa
 from app.extensions import db
-from app.models import Categoria, EntradaGlosario, PasoIntroductorio, Situacion, Tarea, Tema, Tutorial
+from app.models import Categoria, Consulta, EntradaGlosario, MensajeConsulta, PasoIntroductorio, Situacion, Tarea, Tema, Tutorial
+from app.models.consulta import ESTADOS_CONSULTA
+from app.services import estadisticas
 from app.services.textutil import lineas_a_lista, slugify
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin", template_folder="../templates/admin")
@@ -118,6 +120,65 @@ def _mover(items_ordenados, item, delta):
 def dashboard():
     temas = Tema.query.order_by(Tema.orden).all()
     return render_template("admin/dashboard.html", temas=temas)
+
+
+# ------------------------------------------------------------ estadísticas --
+
+@admin_bp.route("/estadisticas")
+@requiere_admin
+def estadisticas_vista():
+    temas = Tema.query.order_by(Tema.orden).all()
+    tema_actual = _tema_o_404(request.args["tema"]) if request.args.get("tema") else None
+    datos = estadisticas.resumen(tema_id=tema_actual.id if tema_actual else None)
+    return render_template("admin/estadisticas.html", temas=temas, tema_actual=tema_actual, datos=datos)
+
+
+# ---------------------------------------------------------------- consultas --
+
+@admin_bp.route("/consultas")
+@requiere_admin
+def consultas():
+    estado_filtro = request.args.get("estado", "abierta")
+    query = Consulta.query.order_by(Consulta.actualizada_en.desc())
+    if estado_filtro in ESTADOS_CONSULTA:
+        query = query.filter_by(estado=estado_filtro)
+    return render_template(
+        "admin/consultas.html",
+        consultas=query.all(),
+        estado_filtro=estado_filtro,
+        estados=ESTADOS_CONSULTA,
+        cantidad_abiertas=Consulta.query.filter_by(estado="abierta").count(),
+    )
+
+
+@admin_bp.route("/consultas/<token>")
+@requiere_admin
+def consulta_detalle(token):
+    consulta = Consulta.query.filter_by(token=token).first_or_404()
+    return render_template("admin/consulta_detalle.html", consulta=consulta)
+
+
+@admin_bp.route("/consultas/<token>/responder", methods=["POST"])
+@requiere_admin
+def consulta_responder(token):
+    consulta = Consulta.query.filter_by(token=token).first_or_404()
+    mensaje = (request.form.get("mensaje") or "").strip()
+    if mensaje:
+        db.session.add(MensajeConsulta(consulta_id=consulta.id, autor="admin", cuerpo=mensaje))
+        consulta.estado = "respondida"
+        db.session.commit()
+        flash("Respuesta enviada.", "ok")
+    return redirect(url_for("admin.consulta_detalle", token=token))
+
+
+@admin_bp.route("/consultas/<token>/cerrar", methods=["POST"])
+@requiere_admin
+def consulta_cerrar(token):
+    consulta = Consulta.query.filter_by(token=token).first_or_404()
+    consulta.estado = "cerrada"
+    db.session.commit()
+    flash("Consulta cerrada.", "ok")
+    return redirect(url_for("admin.consultas"))
 
 
 # ------------------------------------------------------------------ temas --

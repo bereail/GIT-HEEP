@@ -17,18 +17,14 @@
         <span class="topbar__brand-mark">C</span>
         <span>Centro de Aprendizaje</span>
       </a>
-      {% if tema %}
       <div class="topbar__search">
         <div class="input-wrap">
           <span class="input-wrap__icon">🔎</span>
-          <input class="input" id="input-buscar-global" type="text" placeholder="Buscar en {{ tema.nombre }}..." aria-label="Buscar" readonly />
+          <input class="input" id="input-buscar-global" type="text" placeholder="Buscar en {{ tema.nombre if tema else 'todas las capacitaciones' }}..." aria-label="Buscar" readonly />
         </div>
       </div>
-      {% endif %}
       <div class="topbar__spacer"></div>
-      {% if tema %}
       <button type="button" class="topbar__search-btn" id="btn-buscar-movil" aria-label="Buscar">🔎</button>
-      {% endif %}
     </header>
 
     <aside class="sidebar" id="sidebar">
@@ -60,11 +56,15 @@
     <div class="sidebar-scrim" id="sidebar-scrim"></div>
 
     <main class="content" id="main-content" tabindex="-1">
+      {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensaje in mensajes %}
+          <div class="flash flash--{{ 'error' if categoria == 'error' else 'ok' }}">{{ mensaje }}</div>
+        {% endfor %}
+      {% endwith %}
       {% block contenido %}{% endblock %}
     </main>
   </div>
 
-  {% if tema %}
   <div class="search-overlay" id="search-overlay">
     <div class="search-modal">
       <div class="search-modal__input-row">
@@ -76,7 +76,6 @@
       <div class="search-modal__results" id="resultados-busqueda"></div>
     </div>
   </div>
-  {% endif %}
 
   <div class="lightbox-overlay" id="lightbox-overlay">
     <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar">×</button>

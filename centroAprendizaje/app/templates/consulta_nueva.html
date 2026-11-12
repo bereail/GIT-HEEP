@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titulo %}Contanos qué te pasó — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Contanos qué te pasó
+</nav>
+<div class="hero">
+  <h1>Contanos qué te pasó</h1>
+  <p class="hero__desc">Te respondemos por este mismo medio. Guardá el link que te damos al final para ver la respuesta.</p>
+</div>
+
+<form method="post" class="card" style="max-width:560px">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+  <label for="tipo" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tipo</label>
+  <select class="input" id="tipo" name="tipo" style="width:100%;margin-bottom:16px">
+    {% for valor, etiqueta in tipos.items() %}
+    <option value="{{ valor }}" {{ 'selected' if valores and valores.get('tipo') == valor }}>{{ etiqueta }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="mensaje" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu mensaje</label>
+  <textarea class="input" id="mensaje" name="mensaje" rows="5" required style="width:100%;resize:vertical;margin-bottom:16px" placeholder="Contanos con el mayor detalle posible qué necesitás.">{% if valores %}{{ valores.get('mensaje', '') }}{% elif contexto %}Sobre: {{ contexto }}
+{% endif %}</textarea>
+
+  <label for="nombre_contacto" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu nombre (opcional)</label>
+  <input class="input" id="nombre_contacto" name="nombre_contacto" type="text" style="width:100%;margin-bottom:20px" value="{{ valores.get('nombre_contacto', '') if valores else '' }}" placeholder="Para saber a quién responderte" />
+
+  <button type="submit" class="btn btn--primary">Enviar</button>
+</form>
+{% endblock %}

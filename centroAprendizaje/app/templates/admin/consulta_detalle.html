@@ -1,0 +1,39 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ consulta.tipo_label }} — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">{{ consulta.tipo_label }} · {{ consulta.tema.nombre }}</h1>
+  <span class="badge badge--{{ 'unverified' if consulta.estado == 'abierta' else ('verified' if consulta.estado == 'respondida' else 'neutral') }}">{{ consulta.estado_label }}</span>
+</div>
+<p class="text-muted" style="margin-top:-6px">De: {{ consulta.nombre_contacto or 'Anónimo' }}</p>
+
+<div class="card chatbot-panel__messages" style="margin:16px 0 20px">
+  {% for m in consulta.mensajes %}
+  <div class="chatbot-msg chatbot-msg--{{ 'usuario' if m.autor == 'usuario' else 'bot' }}">
+    {{ m.cuerpo }}
+    <div style="opacity:.7;font-size:11px;margin-top:4px">{{ 'Usuario' if m.autor == 'usuario' else 'Vos' }} · {{ m.creado_en.strftime('%d/%m %H:%M') }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+{% if consulta.estado != 'cerrada' %}
+<form method="post" action="{{ url_for('admin.consulta_responder', token=consulta.token) }}" class="card" style="margin-bottom:16px">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <label for="mensaje" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:8px">Responder</label>
+  <textarea class="input" id="mensaje" name="mensaje" rows="3" required style="width:100%;resize:vertical"></textarea>
+  <div style="display:flex;justify-content:flex-end;margin-top:10px">
+    <button type="submit" class="btn btn--primary btn--sm">Enviar respuesta</button>
+  </div>
+</form>
+{% endif %}
+
+<div style="display:flex;gap:8px">
+  <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.consultas') }}">← Volver al listado</a>
+  {% if consulta.estado != 'cerrada' %}
+  <form method="post" action="{{ url_for('admin.consulta_cerrar', token=consulta.token) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <button type="submit" class="btn btn--subtle btn--sm">Cerrar consulta</button>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}

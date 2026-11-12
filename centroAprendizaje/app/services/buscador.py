@@ -117,6 +117,18 @@ def construir_indice(tema):
     return entradas
 
 
+def construir_indice_global(temas):
+    """Índice combinado de varios temas para el buscador global del portal
+    (fuera de un tema puntual). Cada entrada conserva el nombre e ícono de
+    su tema de origen para mostrarlo junto al resultado."""
+    indice = []
+    for tema in temas:
+        for entrada in construir_indice(tema):
+            entrada = dict(entrada, tema_nombre=tema.nombre, tema_icono=tema.icono)
+            indice.append(entrada)
+    return indice
+
+
 def buscar(indice, consulta, limite=12):
     q = normalizar(consulta).strip()
     if not q:

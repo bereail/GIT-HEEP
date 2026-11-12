@@ -1,0 +1,67 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Estadísticas — Panel de administración{% endblock %}
+{% block contenido %}
+{% macro tabla(filas, columnas) %}
+  {% if filas %}
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>{{ columnas[0] }}</th><th>{{ columnas[1] }}</th></tr></thead>
+      <tbody>
+      {% for nombre, veces in filas %}
+        <tr><td>{{ nombre }}</td><td>{{ veces }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">📊</div>Todavía no hay datos para mostrar acá.</div>
+  {% endif %}
+{% endmacro %}
+
+<div class="admin-section-head">
+  <h1 style="margin:0">Estadísticas de uso</h1>
+</div>
+
+<div class="diagram-tabs" style="margin-bottom:20px">
+  <a class="diagram-tab {{ 'is-active' if not tema_actual else '' }}" href="{{ url_for('admin.estadisticas_vista') }}">Todos los temas</a>
+  {% for t in temas %}
+  <a class="diagram-tab {{ 'is-active' if tema_actual and tema_actual.id == t.id else '' }}" href="{{ url_for('admin.estadisticas_vista', tema=t.slug) }}">{{ t.icono }} {{ t.nombre }}</a>
+  {% endfor %}
+</div>
+
+<div class="diagram-cards" style="margin-bottom:32px">
+  <div class="diagram-card"><div class="diagram-card__value">{{ datos.total_vistas_tutorial }}</div><div class="diagram-card__label">Vistas de lecciones</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">{{ datos.total_vistas_modulo }}</div><div class="diagram-card__label">Vistas de módulos</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">{{ datos.total_busquedas }}</div><div class="diagram-card__label">Búsquedas</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">{{ datos.total_busquedas_sin_resultado }}</div><div class="diagram-card__label">Búsquedas sin resultado</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">{{ datos.total_chatbot }}</div><div class="diagram-card__label">Preguntas al asistente</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">{{ datos.total_chatbot_sin_resultado }}</div><div class="diagram-card__label">Sin respuesta</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">👍 {{ datos.total_feedback_positivo }}</div><div class="diagram-card__label">Feedback positivo</div></div>
+  <div class="diagram-card"><div class="diagram-card__value">👎 {{ datos.total_feedback_negativo }}</div><div class="diagram-card__label">Feedback negativo</div></div>
+</div>
+
+<div class="section">
+  <h2 class="section__title">Lecciones más vistas</h2>
+  {{ tabla(datos.top_tutoriales, ["Lección", "Vistas"]) }}
+</div>
+
+<div class="section">
+  <h2 class="section__title">Módulos más vistos</h2>
+  {{ tabla(datos.top_modulos, ["Módulo", "Vistas"]) }}
+</div>
+
+<div class="section">
+  <h2 class="section__title">Búsquedas sin resultado <span class="text-muted" style="font-weight:400;font-size:13px">— contenido que falta cargar</span></h2>
+  {{ tabla(datos.busquedas_sin_resultado, ["Búsqueda", "Veces"]) }}
+</div>
+
+<div class="section">
+  <h2 class="section__title">Preguntas al asistente sin respuesta</h2>
+  {{ tabla(datos.chatbot_sin_resultado, ["Pregunta", "Veces"]) }}
+</div>
+
+<div class="section">
+  <h2 class="section__title">Lecciones con feedback negativo <span class="text-muted" style="font-weight:400;font-size:13px">— revisar si hay que mejorarlas</span></h2>
+  {{ tabla(datos.lecciones_con_feedback_negativo, ["Lección", "👎 Veces"]) }}
+</div>
+{% endblock %}

@@ -7,7 +7,7 @@ from app import csrf
 from app.extensions import db
 from app.models import Categoria, Consulta, MensajeConsulta, Tema, Tutorial
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
-from app.services import buscador
+from app.services import buscador, estadisticas, notificaciones
 
 _PRIMERA_LETRA = re.compile(r"[A-ZÁÉÍÓÚÑ]", re.IGNORECASE)
 
@@ -74,6 +74,7 @@ def ver_categorias(tema_slug):
 def ver_categoria(tema_slug, categoria_slug):
     tema = _tema_o_404(tema_slug)
     categoria = _categoria_o_404(tema, categoria_slug)
+    estadisticas.registrar("vista_modulo", tema=tema, titulo=categoria.titulo)
     return render_template("categoria.html", tema=tema, categoria=categoria)
 
 
@@ -98,6 +99,8 @@ def ver_tutorial(tema_slug, categoria_slug, tutorial_slug):
         if 0 <= indice_actual < len(tutoriales_planos) - 1
         else None
     )
+
+    estadisticas.registrar("vista_tutorial", tema=tema, titulo=tutorial.titulo)
 
     return render_template(
         "tutorial.html",
@@ -161,12 +164,31 @@ def ver_progreso(tema_slug):
 
 # ------------------------------------------------------- buscador / chatbot --
 
+@ui_bp.route("/buscar.json")
+def buscar_global_json():
+    consulta = request.args.get("q", "")
+    temas = Tema.query.filter_by(activo=True).order_by(Tema.orden).all()
+    indice = buscador.construir_indice_global(temas)
+    resultados = buscador.buscar(indice, consulta, limite=15)
+    if consulta.strip():
+        estadisticas.registrar("busqueda_global", consulta=consulta, hubo_resultado=bool(resultados))
+    return jsonify([
+        {
+            "kind": r["kind"], "title": r["title"], "url": r["url"],
+            "tema_nombre": r["tema_nombre"], "tema_icono": r["tema_icono"],
+        }
+        for r in resultados
+    ])
+
+
 @ui_bp.route("/temas/<tema_slug>/buscar.json")
 def buscar_json(tema_slug):
     tema = _tema_o_404(tema_slug)
     consulta = request.args.get("q", "")
     indice = buscador.construir_indice(tema)
     resultados = buscador.buscar(indice, consulta)
+    if consulta.strip():
+        estadisticas.registrar("busqueda", tema=tema, consulta=consulta, hubo_resultado=bool(resultados))
     return jsonify([
         {"kind": r["kind"], "title": r["title"], "url": r["url"]} for r in resultados
     ])
@@ -179,10 +201,24 @@ def chatbot_responder(tema_slug):
     consulta = (request.get_json(silent=True) or {}).get("mensaje", "")
     indice = buscador.construir_indice(tema)
     resultados = buscador.buscar(indice, consulta, limite=1)
+    if consulta.strip():
+        estadisticas.registrar("chatbot", tema=tema, consulta=consulta, hubo_resultado=bool(resultados))
     if not resultados:
         return jsonify({"encontrado": False})
     respuesta = buscador.armar_respuesta_chatbot(resultados[0])
     return jsonify({"encontrado": True, **respuesta})
+
+
+@ui_bp.route("/temas/<tema_slug>/feedback-tutorial", methods=["POST"])
+@csrf.exempt
+def feedback_tutorial(tema_slug):
+    tema = _tema_o_404(tema_slug)
+    datos = request.get_json(silent=True) or {}
+    titulo = (datos.get("titulo") or "").strip()
+    voto = datos.get("voto")
+    if titulo and voto in ("si", "no"):
+        estadisticas.registrar("feedback_tutorial", tema=tema, titulo=titulo, hubo_resultado=(voto == "si"))
+    return jsonify({"ok": True})
 
 
 # --------------------------------------------------------- consultas ---
@@ -197,12 +233,13 @@ def _generar_token():
 @ui_bp.route("/temas/<tema_slug>/consultas/nueva", methods=["GET", "POST"])
 def consulta_nueva(tema_slug):
     tema = _tema_o_404(tema_slug)
+    contexto = request.args.get("contexto", "")
     if request.method == "POST":
         mensaje = (request.form.get("mensaje") or "").strip()
         tipo = request.form.get("tipo", "consulta")
         if not mensaje or tipo not in TIPOS_CONSULTA:
             flash("Contanos tu consulta antes de enviarla.", "error")
-            return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=request.form)
+            return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=request.form, contexto=contexto)
 
         consulta = Consulta(
             token=_generar_token(),
@@ -214,9 +251,10 @@ def consulta_nueva(tema_slug):
         db.session.flush()
         db.session.add(MensajeConsulta(consulta_id=consulta.id, autor="usuario", cuerpo=mensaje))
         db.session.commit()
+        notificaciones.notificar_nueva_consulta(consulta, mensaje)
         return redirect(url_for("ui.consulta_ver", token=consulta.token, nueva="1"))
 
-    return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=None)
+    return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=None, contexto=contexto)
 
 
 @ui_bp.route("/consultas/<token>")

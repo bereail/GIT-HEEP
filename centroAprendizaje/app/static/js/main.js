@@ -63,13 +63,17 @@ function cerrarBusqueda() {
 
 async function renderResultadosBusqueda(consulta) {
   if (!consulta.trim()) {
-    resultadosBusqueda.innerHTML = '<div class="search-empty">Escribí para buscar tutoriales, tareas, glosario o problemas frecuentes.</div>';
+    resultadosBusqueda.innerHTML = temaSlug
+      ? '<div class="search-empty">Escribí para buscar tutoriales, tareas, glosario o problemas frecuentes.</div>'
+      : '<div class="search-empty">Escribí para buscar en todas las capacitaciones.</div>';
     return;
   }
-  if (!temaSlug) return;
+  const url = temaSlug
+    ? `/temas/${temaSlug}/buscar.json?q=${encodeURIComponent(consulta)}`
+    : `/buscar.json?q=${encodeURIComponent(consulta)}`;
   let resultados = [];
   try {
-    const resp = await fetch(`/temas/${temaSlug}/buscar.json?q=${encodeURIComponent(consulta)}`);
+    const resp = await fetch(url);
     resultados = await resp.json();
   } catch {
     resultadosBusqueda.innerHTML = '<div class="search-empty">No se pudo buscar en este momento.</div>';
@@ -82,11 +86,17 @@ async function renderResultadosBusqueda(consulta) {
   resultadosBusqueda.innerHTML = resultados
     .map(
       (r) => `<a class="search-result" href="${r.url}">
-        <div class="search-result__kind">${r.kind}</div>
+        <div class="search-result__kind">${r.kind}${r.tema_nombre ? ` · ${r.tema_icono} ${r.tema_nombre}` : ''}</div>
         <div class="search-result__title">${r.title}</div>
       </a>`
     )
     .join('');
+}
+
+let temporizadorBusqueda = null;
+function buscarConDebounce(consulta) {
+  clearTimeout(temporizadorBusqueda);
+  temporizadorBusqueda = setTimeout(() => renderResultadosBusqueda(consulta), 300);
 }
 
 if (inputBuscarGlobal) {
@@ -95,7 +105,7 @@ if (inputBuscarGlobal) {
 }
 const btnBuscarMovil = document.getElementById('btn-buscar-movil');
 if (btnBuscarMovil) btnBuscarMovil.addEventListener('click', abrirBusqueda);
-if (inputBuscarModal) inputBuscarModal.addEventListener('input', () => renderResultadosBusqueda(inputBuscarModal.value));
+if (inputBuscarModal) inputBuscarModal.addEventListener('input', () => buscarConDebounce(inputBuscarModal.value));
 if (searchOverlay) {
   searchOverlay.addEventListener('click', (ev) => {
     if (ev.target === searchOverlay) cerrarBusqueda();
@@ -144,6 +154,20 @@ document.body.addEventListener('click', (ev) => {
 
   const imagen = ev.target.closest('.lightbox-trigger');
   if (imagen) abrirLightbox(imagen.dataset.src, imagen.dataset.alt);
+
+  const votoFeedback = ev.target.closest('.js-feedback-tutorial');
+  if (votoFeedback) {
+    const barra = votoFeedback.closest('.feedback-bar');
+    const { voto } = votoFeedback.dataset;
+    const { titulo } = barra.dataset;
+    fetch(`/temas/${temaSlug}/feedback-tutorial`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ titulo, voto }),
+    }).catch(() => {});
+    barra.querySelectorAll('.js-feedback-tutorial').forEach((b) => (b.disabled = true));
+    mostrarToast(voto === 'si' ? '¡Gracias por tu feedback!' : 'Gracias, lo vamos a revisar.');
+  }
 });
 
 // ---------------------------------------------------------- barras de progreso --

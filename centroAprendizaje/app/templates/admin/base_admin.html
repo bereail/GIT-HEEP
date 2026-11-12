@@ -11,6 +11,9 @@
     <span class="admin-topbar__brand">⚙️ Panel de administración</span>
     <span class="text-muted">Centro de Aprendizaje</span>
     <div class="admin-topbar__spacer"></div>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.dashboard') }}">Temas</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.estadisticas_vista') }}">📊 Estadísticas</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.consultas') }}">💬 Consultas</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('ui.portal_inicio') }}" target="_blank" rel="noopener">Ver sitio público ↗</a>
     <form method="post" action="{{ url_for('admin.logout') }}">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
