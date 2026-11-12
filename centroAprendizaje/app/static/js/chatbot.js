@@ -12,7 +12,7 @@ function e(texto) {
 
 export function initChatbot({ temaSlug, nombreTema }) {
   const SALUDO = `Hola, soy el asistente de ${nombreTema}. Preguntame algo como "¿cómo busco un paciente?" y te muestro la respuesta.`;
-  const SIN_RESULTADOS = 'No tengo una respuesta exacta para eso todavía. Probá con otras palabras, o mirá directamente "Quiero hacer..." o el Glosario. Si no encontrás lo que necesitás, dejanos tu consulta.';
+  const SIN_RESULTADOS = 'No tengo una respuesta exacta para eso todavía. Probá con otras palabras o';
 
   document.body.insertAdjacentHTML(
     'beforeend',
@@ -66,7 +66,11 @@ export function initChatbot({ temaSlug, nombreTema }) {
       return;
     }
     if (!datos.encontrado) {
-      agregarMensaje({ quien: 'bot', html: e(SIN_RESULTADOS) });
+      const urlConsulta = `/temas/${temaSlug}/consultas/nueva?contexto=${encodeURIComponent(consulta)}`;
+      agregarMensaje({
+        quien: 'bot',
+        html: `${e(SIN_RESULTADOS)} <a class="chatbot-msg__link" href="${urlConsulta}">dejanos tu consulta →</a>`,
+      });
       return;
     }
     agregarMensaje({

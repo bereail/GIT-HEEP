@@ -372,6 +372,22 @@
             { "type": "tip", "text": "Eliminar una comunicación solo la saca de tu propia bandeja — los demás destinatarios la siguen teniendo." }
           ],
           "quiz": []
+        },
+        {
+          "slug": "comunicable-externo",
+          "titulo": "Enviar un documento comunicable a un ciudadano",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Sirve para notificar formalmente a una persona fuera de TIMBÓ (no a otro agente). Andá a Documentos oficiales → Gestión → Nuevo documento oficial. Completá usuario productor y, en Tipo de Documento, elegí \"Nota libre comunicable externa\" o \"Nota importada comunicable externa\" según corresponda → Guardar." },
+            { "type": "warning", "text": "El destinatario tiene que estar registrado en ID Ciudadana. Si no lo está, no vas a poder notificarlo por este medio." },
+            { "type": "text", "text": "El documento queda en \"Pendientes\". Tocá ⋮ → Documento oficial y completá el formulario: Referencia, y adjuntá documentos si hace falta." },
+            { "type": "text", "text": "Seleccioná quién va a aprobar el documento y completá sus características. Elegí el tipo de notificación (Aviso o Notificación), escribí el mensaje y definí la fecha y el horario en que el destinatario se va a considerar notificado." },
+            { "type": "text", "text": "Seleccioná el usuario externo (con ID Ciudadana) que va a recibir la notificación → Acciones → Enviar a Firmar." },
+            { "type": "text", "text": "El documento pasa a tu bandeja de Pendientes para que lo evalúes y firmes — igual que cualquier documento oficial. Una vez firmado, queda en Aprobados." },
+            { "type": "tip", "text": "El ciudadano lo ve entrando a Atención Virtual → pestaña \"Domicilio digital\", donde puede descargar la notificación." }
+          ],
+          "quiz": []
         }
       ]
     },
@@ -560,6 +576,126 @@
           "quiz": []
         }
       ]
+    },
+    {
+      "slug": "licitaciones-compras",
+      "titulo": "Licitaciones y Compras",
+      "icono": "🛒",
+      "resumen": "Cómo armar, aprobar y adjudicar una licitación o concurso en Timbó Compras — desde el pliego hasta la preadjudicación.",
+      "audiencia": "Gestores, supervisores y evaluadores del área de Compras y Contrataciones.",
+      "dificultad": "avanzado",
+      "tutoriales": [
+        {
+          "slug": "que-es-timbo-compras",
+          "titulo": "Qué es Timbó Compras",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Timbó Compras es el módulo donde se arman y gestionan licitaciones y concursos. Es la etapa intermedia de un circuito más largo que empieza y termina en el expediente electrónico (Timbó - EE)." },
+            { "type": "step", "number": 1, "explanation": "El circuito completo de una contratación tiene tres etapas.", "image": "compras-que-es-etapas.jpg", "alt": "Etapas: Timbó EE (preparatoria), Timbó Compras (bases y condiciones, publicidad, recepción y apertura de ofertas, evaluación, preadjudicación), Timbó EE (adjudicación, ejecución contractual, pago)", "caption": "Las tres etapas del circuito" },
+            { "type": "concepts", "items": [
+              { "term": "Etapa preparatoria (Timbó - EE)", "def": "Se arma el expediente electrónico que va a respaldar toda la contratación." },
+              { "term": "Timbó Compras", "def": "Bases y condiciones, publicidad, recepción y apertura de ofertas, evaluación y preadjudicación." },
+              { "term": "Adjudicación y cierre (Timbó - EE)", "def": "Adjudicación, ejecución contractual y pago — se resuelven de nuevo en el expediente electrónico." }
+            ] },
+            { "type": "step", "number": 2, "explanation": "Cada rol tiene permisos y tareas distintas dentro de Timbó Compras.", "image": "compras-que-es-roles.jpg", "alt": "Roles: Gestor, Jurisdicción comitente, Supervisor, Evaluador/es, con sus tareas", "caption": "Roles del módulo" },
+            { "type": "concepts", "items": [
+              { "term": "Gestor", "def": "Crea el proceso de contratación, completa los formularios del pliego (PByCP) y gestiona las circulares aclaratorias y modificatorias." },
+              { "term": "Jurisdicción comitente", "def": "Revisa los proyectos de pliego de bases y condiciones particulares (PByCP)." },
+              { "term": "Supervisor", "def": "Aprueba el PByCP y la contratación (con respaldo del Acto Administrativo), y gestiona la nómina y el cronograma de fechas." },
+              { "term": "Evaluador/es", "def": "Evalúa las ofertas, organiza la comisión, recibe impugnaciones, y genera y firma el informe de preadjudicación." }
+            ] },
+            { "type": "tip", "text": "PByCP = Pliego de Bases y Condiciones Particulares. AA = Acto Administrativo. Vas a ver estas siglas seguido en el módulo." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "iniciar-proceso-contratacion",
+          "titulo": "Iniciar un proceso de contratación",
+          "minutos": 5,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "step", "number": 1, "explanation": "Para iniciar un proceso de contratación necesitás tu ID Ciudadana y tener el rol Gestor asignado.", "image": "compras-login.jpg", "alt": "Pantalla de acceso a Timbó con usuario (CUIL, Email o IUP) y contraseña", "caption": "Ingreso con ID Ciudadana" },
+            { "type": "step", "number": 2, "explanation": "Andá a la bandeja Licitaciones y Concursos → Gestión de Compras y Contrataciones → Nuevo Trámite → Proceso de Contratación.", "image": "compras-bandeja-tramites.jpg", "alt": "Bandeja de Gestión de Compras y Contrataciones con la lista de procesos y el botón Nuevo Trámite", "caption": "Bandeja de Gestión de Compras y Contrataciones" },
+            { "type": "step", "number": 3, "explanation": "Completá una breve descripción (motivo) del proceso, elegí la Jurisdicción Comitente Superior y la Jurisdicción Comitente, y seleccioná el expediente electrónico que dio inicio a la gestión. Elegí el procedimiento de selección (licitación pública, privada o concurso) → Enviar.", "image": "compras-formulario-proceso.jpg", "alt": "Formulario de Proceso de Contratación con los campos Usuario, Oficina, Motivo, Trámite y Procedimiento de Selección", "caption": "Formulario Proceso de Contratación" },
+            { "type": "tip", "text": "El proceso recibe un número de instancia provisorio — recién cuando el supervisor apruebe todos los formularios del pliego, la herramienta le asigna el número de proceso definitivo." },
+            { "type": "warning", "text": "El expediente relacionado tiene que tener ya toda la documentación necesaria para iniciar la contratación — revisalo antes de arrancar." },
+            { "type": "text", "text": "Para completar el pliego de bases y condiciones particulares, andá a Acciones y completá los ocho formularios obligatorios (los vemos en detalle en la próxima lección). Guardá, y después podés enviarlo a la jurisdicción comitente para su revisión, al supervisor para aprobar o rechazar, o anular la instancia." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "confeccionar-pliego",
+          "titulo": "Confeccionar el pliego (los 8 formularios)",
+          "minutos": 8,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "El pliego de bases y condiciones particulares se arma completando 8 formularios estandarizados, desde Acciones del proceso de contratación." },
+            { "type": "concepts", "items": [
+              { "term": "1 · Aspectos Generales", "def": "Objeto de la contratación, moneda y mantenimiento de oferta." },
+              { "term": "2 · Detalle de Producto y Servicio", "def": "Los renglones e ítems a comprar, usando el catálogo/nomenclador de bienes y servicios." },
+              { "term": "3 · Requisitos de Participación", "def": "La documentación económica, técnica y administrativa que le vas a exigir al proveedor." },
+              { "term": "4 · Garantías", "def": "Configuración de la garantía de mantenimiento de oferta y de fiel cumplimiento." },
+              { "term": "5 · Condiciones del Contrato", "def": "Plazos, lugares de entrega y cronogramas." },
+              { "term": "6 · Facturación y Pago", "def": "Forma de pago y conversión de moneda, si corresponde." },
+              { "term": "7 · Anexos", "def": "Documentación complementaria y especificaciones técnicas." },
+              { "term": "8 · Evaluadores", "def": "Los miembros de la comisión que va a evaluar las ofertas." }
+            ] },
+            { "type": "text", "text": "Completados los 8 formularios, el supervisor los revisa (Acciones → Aprobar o Rechazar, formulario por formulario; si tenés rol Gestor y vos mismo confeccionaste el pliego, podés aprobarlos todos juntos). Al aprobarse, el sistema asigna el número de proceso definitivo." },
+            { "type": "tip", "text": "Desde \"Previsualizar\" podés descargar el PDF del pliego definitivo para adjuntarlo al expediente electrónico e iniciar el acto administrativo que lo apruebe." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "aprobar-cronograma-nomina",
+          "titulo": "Aprobar el pliego, cronograma y nómina de oferentes",
+          "minutos": 5,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "step", "number": 1, "explanation": "Para aprobar el pliego necesitás ingresar con rol Supervisor. En la pestaña Pendientes de Licitaciones y Concursos → Gestión de Compras y Contrataciones vas a encontrar el proceso en estado \"Evaluar Contratación (Supervisor)\".", "image": "compras-pendientes-supervisor.jpg", "alt": "Bandeja Pendientes con procesos en estado Evaluar Contratación (Supervisor) y Evaluar Ofertas", "caption": "Bandeja Pendientes del supervisor" },
+            { "type": "text", "text": "Desde Acciones podés aprobar o rechazar cada formulario. Si rechazás, dejá un breve motivo y podés adjuntar un archivo. Si tenés rol Gestor y vos mismo confeccionaste el pliego, podés aprobar todos los formularios juntos." },
+            { "type": "text", "text": "Aprobado el pliego, completá el documento oficial \"aprueba pliego\": Acciones → Seleccionar documento oficial, poné el número, verificá con la lupa que sea el correcto y Guardar." },
+            { "type": "text", "text": "Seguí con \"Completar cronograma y nómina\": cargá la nómina de proveedores (filtrando por razón social o CUIT, o a mano si el oferente no está registrado) y el cronograma de fechas (publicación, consultas, recepción de documentación física, apertura e impugnaciones)." },
+            { "type": "tip", "text": "Al enviar a publicar, el proceso queda \"Pendiente de publicación\" — ahí podés previsualizar el pliego, el acto administrativo, la nómina y el cronograma, ya firmados y anexados automáticamente al expediente." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "evaluar-oferta",
+          "titulo": "Evaluar una oferta",
+          "minutos": 6,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "Para evaluar ofertas necesitás tu ID Ciudadana y rol Evaluador, y estar asignado al proceso. Lo vas a encontrar en la bandeja Licitaciones y Concursos en estado \"Evaluar Ofertas\"." },
+            { "type": "text", "text": "Desde Acciones podés ver el acta de apertura, todas las ofertas presentadas y el cuadro comparativo de precios (de menor a mayor), descargable en Excel." },
+            { "type": "concepts", "items": [
+              { "term": "Evaluación económica", "def": "Revisa la garantía de oferta y si el precio ofertado es conveniente o inconveniente." },
+              { "term": "Evaluación administrativa", "def": "Verifica que la documentación exigida esté vigente en los registros públicos correspondientes." },
+              { "term": "Evaluación técnica", "def": "Compara la ficha técnica pedida contra lo que ofreció el proveedor." }
+            ] },
+            { "type": "text", "text": "En cada formulario, por cada fila tocá Editar y elegí Cumple, No cumple o Pendiente de subsanación (para errores menores que el proveedor puede corregir). En precios, elegís Conveniente, Inconveniente o Pendiente de mejora de precios." },
+            { "type": "warning", "text": "Si un requisito mínimo no cumple, toda la oferta queda desestimada. Si lo que no cumple es un renglón puntual (precio o técnica), solo ese renglón queda desestimado — el resto de la oferta sigue en carrera." },
+            { "type": "tip", "text": "Si necesitás el informe de un área técnica externa (por ejemplo STG), podés incorporarlo como anexo del evaluador, de respaldo de tu decisión." },
+            { "type": "text", "text": "Terminadas las tres evaluaciones, enviás y la oferta pasa a \"Evaluada\". Cuando todas las ofertas del proceso están evaluadas, el proceso pasa a \"Selección de Renglones y Oferentes\"." }
+          ],
+          "quiz": []
+        },
+        {
+          "slug": "preadjudicar",
+          "titulo": "Preadjudicar una licitación o concurso",
+          "minutos": 7,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "En \"Selección de Renglones y Oferentes\" vas a ver un resumen de toda la evaluación anterior, ordenado por precio — es el control previo a la preadjudicación. Marcá qué oferentes y renglones siguen en carrera y Enviá." },
+            { "type": "text", "text": "En \"Organizar Evaluadores\" elegí el orden de los evaluadores que van a firmar el informe de preadjudicación (mínimo 3, para cumplir con la normativa de comisión). El primero que designes va a ser el único que puede confeccionar y editar el informe; los demás solo pueden aprobarlo o rechazarlo." },
+            { "type": "text", "text": "El primer evaluador completa el informe de preadjudicación: elige la cantidad a adjudicar por renglón (se puede usar la variable de adjudicación de hasta ±20%) y carga los fundamentos." },
+            { "type": "tip", "text": "Las ofertas y renglones desestimados, con su motivo, quedan documentados automáticamente — no hace falta repetirlos a mano en los fundamentos." },
+            { "type": "text", "text": "Cada evaluador siguiente revisa el informe (no puede editarlo) y lo Aprueba o Rechaza. Si lo rechaza, vuelve al primer evaluador con el motivo. El último evaluador que aprueba completa el cronograma de impugnaciones (fecha de publicación y ventana para que el proveedor pueda impugnar)." },
+            { "type": "warning", "text": "Pasar de \"Preadjudicado\" a \"Adjudicado\" es el cierre final del proceso: hace falta el acto administrativo definitivo (decreto o resolución) para esa instancia." }
+          ],
+          "quiz": []
+        }
+      ]
     }
   ],
   "glosario": [
@@ -624,6 +760,13 @@
     { "slug": "firmar-un-documento", "pregunta": "¿Cómo firmo un documento que me enviaron?", "keywords": ["firmar", "documento", "evaluar", "pendiente"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "firmar-documento-oficial" },
     { "slug": "buscar-un-documento-oficial", "pregunta": "¿Cómo busco un documento oficial ya firmado?", "keywords": ["buscar", "consultar", "documento oficial"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "buscar-documento-oficial" },
     { "slug": "ver-comunicaciones", "pregunta": "¿Dónde veo los mensajes formales que me mandaron?", "keywords": ["comunicaciones", "mensajes", "recibidas"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "comunicaciones-oficiales" },
+    { "slug": "notificar-a-un-ciudadano", "pregunta": "¿Cómo notifico formalmente a un ciudadano externo?", "keywords": ["comunicable", "externo", "ciudadano", "notificar", "id ciudadana"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "comunicable-externo" },
+    { "slug": "que-es-timbo-compras", "pregunta": "¿Qué es Timbó Compras?", "keywords": ["compras", "licitacion", "roles", "gestor", "supervisor", "evaluador"], "tutorial_categoria_slug": "licitaciones-compras", "tutorial_slug": "que-es-timbo-compras" },
+    { "slug": "iniciar-una-licitacion", "pregunta": "¿Cómo inicio un proceso de contratación o licitación?", "keywords": ["licitacion", "concurso", "compras", "contratacion", "iniciar"], "tutorial_categoria_slug": "licitaciones-compras", "tutorial_slug": "iniciar-proceso-contratacion" },
+    { "slug": "completar-el-pliego", "pregunta": "¿Cómo completo el pliego de bases y condiciones?", "keywords": ["pliego", "formularios", "bases y condiciones", "compras"], "tutorial_categoria_slug": "licitaciones-compras", "tutorial_slug": "confeccionar-pliego" },
+    { "slug": "aprobar-el-pliego", "pregunta": "¿Cómo apruebo el pliego y cargo el cronograma?", "keywords": ["aprobar", "pliego", "cronograma", "nomina", "supervisor"], "tutorial_categoria_slug": "licitaciones-compras", "tutorial_slug": "aprobar-cronograma-nomina" },
+    { "slug": "evaluar-una-oferta", "pregunta": "¿Cómo evalúo una oferta?", "keywords": ["evaluar", "oferta", "evaluador", "compras"], "tutorial_categoria_slug": "licitaciones-compras", "tutorial_slug": "evaluar-oferta" },
+    { "slug": "preadjudicar-una-licitacion", "pregunta": "¿Cómo preadjudico una licitación o concurso?", "keywords": ["preadjudicar", "adjudicar", "licitacion", "compras"], "tutorial_categoria_slug": "licitaciones-compras", "tutorial_slug": "preadjudicar" },
     { "slug": "corregir-un-documento", "pregunta": "¿Cómo corrijo un documento que tiene un error?", "keywords": ["corregir", "subsanar", "error", "documento"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "subsanar-documento" },
     { "slug": "enviar-expediente-a-otra-oficina", "pregunta": "¿Cómo envío un expediente a otra oficina?", "keywords": ["enviar", "pase", "otra oficina", "providencia"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "enviar-pase" },
     { "slug": "encontrar-codigo-de-oficina", "pregunta": "¿Cómo encuentro el código de una oficina?", "keywords": ["codigo", "oficina", "organigrama"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "enviar-pase" },

@@ -20,6 +20,12 @@ const lightboxOverlay = document.getElementById('lightbox-overlay');
 const lightboxImg = document.getElementById('lightbox-img');
 const toastEl = document.getElementById('toast');
 
+function escaparHtml(texto) {
+  const div = document.createElement('div');
+  div.textContent = texto == null ? '' : String(texto);
+  return div.innerHTML;
+}
+
 // ---------------------------------------------------------------- toast ----
 
 let toastTimeout = null;
@@ -80,14 +86,17 @@ async function renderResultadosBusqueda(consulta) {
     return;
   }
   if (!resultados.length) {
-    resultadosBusqueda.innerHTML = `<div class="search-empty">Sin resultados para "${consulta}".</div>`;
+    const sugerencia = temaSlug
+      ? ` <a href="/temas/${temaSlug}/consultas/nueva?contexto=${encodeURIComponent(consulta)}">Contanos qué necesitás →</a>`
+      : '';
+    resultadosBusqueda.innerHTML = `<div class="search-empty">Sin resultados para "${escaparHtml(consulta)}".${sugerencia}</div>`;
     return;
   }
   resultadosBusqueda.innerHTML = resultados
     .map(
       (r) => `<a class="search-result" href="${r.url}">
-        <div class="search-result__kind">${r.kind}${r.tema_nombre ? ` · ${r.tema_icono} ${r.tema_nombre}` : ''}</div>
-        <div class="search-result__title">${r.title}</div>
+        <div class="search-result__kind">${escaparHtml(r.kind)}${r.tema_nombre ? ` · ${r.tema_icono} ${escaparHtml(r.tema_nombre)}` : ''}</div>
+        <div class="search-result__title">${escaparHtml(r.title)}</div>
       </a>`
     )
     .join('');

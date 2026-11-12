@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template
 from flask_wtf import CSRFProtect
 
-from app.extensions import db
+from app.extensions import db, migrate
 
 csrf = CSRFProtect()
 
@@ -27,12 +27,10 @@ def create_app():
     app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8 MB por archivo subido
 
     db.init_app(app)
+    migrate.init_app(app, db)
     csrf.init_app(app)
 
     from app import models  # noqa: F401 — registra los modelos en SQLAlchemy
-
-    with app.app_context():
-        db.create_all()
 
     from app.ui.routes import ui_bp
 

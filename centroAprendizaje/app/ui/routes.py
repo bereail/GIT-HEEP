@@ -234,6 +234,7 @@ def _generar_token():
 def consulta_nueva(tema_slug):
     tema = _tema_o_404(tema_slug)
     contexto = request.args.get("contexto", "")
+    tipo_preseleccionado = request.args.get("tipo") if request.args.get("tipo") in TIPOS_CONSULTA else "consulta"
     if request.method == "POST":
         mensaje = (request.form.get("mensaje") or "").strip()
         tipo = request.form.get("tipo", "consulta")
@@ -254,7 +255,10 @@ def consulta_nueva(tema_slug):
         notificaciones.notificar_nueva_consulta(consulta, mensaje)
         return redirect(url_for("ui.consulta_ver", token=consulta.token, nueva="1"))
 
-    return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=None, contexto=contexto)
+    return render_template(
+        "consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=None, contexto=contexto,
+        tipo_preseleccionado=tipo_preseleccionado,
+    )
 
 
 @ui_bp.route("/consultas/<token>")

@@ -15,7 +15,7 @@
   <label for="tipo" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tipo</label>
   <select class="input" id="tipo" name="tipo" style="width:100%;margin-bottom:16px">
     {% for valor, etiqueta in tipos.items() %}
-    <option value="{{ valor }}" {{ 'selected' if valores and valores.get('tipo') == valor }}>{{ etiqueta }}</option>
+    <option value="{{ valor }}" {{ 'selected' if (valores.get('tipo') if valores else tipo_preseleccionado) == valor }}>{{ etiqueta }}</option>
     {% endfor %}
   </select>
 

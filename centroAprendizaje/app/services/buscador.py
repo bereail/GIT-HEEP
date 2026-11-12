@@ -129,6 +129,19 @@ def construir_indice_global(temas):
     return indice
 
 
+def _variantes(palabra):
+    """La palabra tal cual, más su forma singular aproximada — para que
+    "expedientes" encuentre contenido escrito solo en singular
+    ("expediente") y viceversa no haga falta, porque la búsqueda ya es por
+    substring."""
+    variantes = {palabra}
+    if palabra.endswith("es") and len(palabra) > 4:
+        variantes.add(palabra[:-2])
+    elif palabra.endswith("s") and len(palabra) > 3:
+        variantes.add(palabra[:-1])
+    return variantes
+
+
 def buscar(indice, consulta, limite=12):
     q = normalizar(consulta).strip()
     if not q:
@@ -143,7 +156,7 @@ def buscar(indice, consulta, limite=12):
     for entrada in indice:
         score = 0
         for palabra in palabras:
-            if palabra in entrada["texto"]:
+            if any(variante in entrada["texto"] for variante in _variantes(palabra)):
                 score += 2 if entrada["texto"].startswith(palabra) else 1
         if score > 0:
             resultados.append((score * entrada["peso"], entrada))
