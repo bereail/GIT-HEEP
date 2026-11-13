@@ -195,6 +195,10 @@ def buscar_con_puntaje(indice, consulta, limite=12):
                 score += 2 if texto.startswith(palabra) else 1
                 if palabra in titulo:
                     score += 1
+                # Desempata a favor de la palabra entera: "adjudico" tiene
+                # que preferir "adjudico" antes que "preadjudico".
+                if re.search(r"\b" + re.escape(palabra) + r"\b", texto):
+                    score += 0.5
             else:
                 raiz = _raiz(palabra)
                 if raiz and raiz in texto:
