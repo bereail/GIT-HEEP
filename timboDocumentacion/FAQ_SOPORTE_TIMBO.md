@@ -135,3 +135,30 @@ que hacer del lado del usuario, solo esperar.
 | 05 – Impugnaciones | Ofertar → Presentar una impugnación |
 
 Lista: https://www.youtube.com/playlist?list=PLJKcMr5XTsSc5jJV-Uszw7OXCzG3LwG76
+
+---
+
+## 5. Fuentes oficiales (relevadas el 13/11/2026)
+
+Lo que el portal toma de cada documento oficial. Ante una duda, manda la
+fuente oficial por sobre lo que se dijo en los chats.
+
+| Documento | Qué dice (resumen) | Dónde se usa |
+|---|---|---|
+| [Circular SCyGB 04/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf) | Publicación: campos del portal web, marcar "generar enlace con TIMBO" + expediente principal (si no, no aparece OFERTAR), mail a avisosoficiales@santafe.gob.ar con 3 días de anticipación, 10 días corridos hasta la apertura | Publicar en el portal · Hacer una compra |
+| [Circular SCyGB 03/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf) | Mandar el EE a la URC en "Aprobar contratación" (control del pliego) y antes del "Cronograma de impugnación" (control de la preadjudicación). Datos de la mesa de ayuda de TIMBÓ Compras | Hacer una compra |
+| [Circular SCyGB 05/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/CIRCULAR_005-26.pdf___.pdf) | Textos para completar los formularios del PBCP de bienes y de servicios (los anexos son imágenes: hay que leerlos a mano) | Pendiente de cargar |
+| [Res. SCyGB 292/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf) | Alta de artículos y lugares de entrega con el formulario CAByS, paso a paso. Hospitales: código externo obligatorio | Pedir el alta de un artículo |
+| [Circular UG TIMBÓ 9/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-9-2026-UNIDAD-DE-GESTION-TIMBO.pdf) | La vista al TCP se da con "Gestión de Visualización" del módulo Expedientes; el expediente sigue su trámite | Correr vista al TCP |
+| [Circular UG TIMBÓ 11/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/08/Circular-11_2026-TCP-2.pdf) | Todo acto se carga en el SIN y se envía por correo al TCP; los pedidos del TCP llegan por Atención Virtual a Mesa de Entradas y se responden con el DO "Respuesta al Tribunal de Cuentas" | Correr vista al TCP |
+| [Circular UG TIMBÓ 1/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/01/Circular-01-2026-Implementacion-TIMBO-COMPRAS.pdf) y 3/2026 | TIMBÓ Compras obligatorio (licitaciones y concursos de simple sobre); usuarios y roles los da el Administrador Local | Hacer una compra |
+| [Circular UG TIMBÓ 8/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-8-26_TIMBO-COMPRAS.pdf) | Contrataciones directas por urgencia o desierto van por TIMBÓ Compras (mínimo 3 proveedores invitados); las de etapa múltiple, por Expedientes + DO con sobres en papel | Pendiente de cargar |
+| [Tutoriales para proveedores](https://compras.santafe.gob.ar/tutoriales/) | Videos y PDF del lado proveedor; RUPC como requisito indispensable | Primeros pasos · Ofertar |
+| [Normativa de compras](https://compras.santafe.gob.ar/normativas/) y [normativa TIMBÓ](https://www.santafe.gob.ar/ms/timbo/normativas/) | Índices con todas las leyes, decretos, resoluciones y circulares | Referencia |
+
+Correcciones que salieron de esta revisión:
+- La vista al TCP **no** es solo "cargar en el SIN": primero se comparte el
+  expediente con "Gestión de Visualización", y el SIN se suma después.
+- La publicación **no** se hace "por Timbó, por correo y por SIN": se carga en
+  el portal web y se pide el aviso oficial por mail (Circular 04/2026).
+- Para ofertar **sí** hace falta otro alta: la inscripción en el RUPC.

@@ -42,7 +42,7 @@ La base (`instance/*.sqlite3`) no está en git: se recrea con los scripts.
 
 Hecho:
 - Tema TIMBÓ Compras (`scripts/content_timbo_compras.json`), con 3
-  módulos y 11 lecciones. El lado proveedor sale de la lista de videos
+  módulos y 12 lecciones. El lado proveedor sale de la lista de videos
   oficial. La gestión interna del hospital (decisorios, Tribunal de Cuentas,
   SIN, publicación) sale de los chats.
 - Relevamiento de preguntas frecuentes de los chats:
@@ -59,6 +59,12 @@ Hecho:
 - "Dejar una consulta": formulario público sin usuario (se sigue por un
   link con token), bandeja en /admin/consultas para responder y cerrar, y
   el "No me sirvió" del chatbot lleva ahí con la pregunta precargada.
+- Revisión contra fuentes oficiales (sección 5 de FAQ_SOPORTE_TIMBO.md):
+  publicación según Circular 04/2026, vista al TCP con "Gestión de
+  Visualización" + SIN (Circ. UG 9 y 11/2026), control de la URC (Circ.
+  03/2026), lección nueva de alta de artículos CAByS (Res. 292/2026) y RUPC
+  como requisito del proveedor. **Si un chat contradice una circular, manda
+  la circular.**
 
 Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
 1. Ver a mano 3 videos que YouTube no dejó procesar y completar el
@@ -70,5 +76,10 @@ Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
    numeración de decisorios, documentos HTML→PDF y servidor propio para
    los videos. Cuando haya respuesta, pasar a `verificado: True` en
    `scripts/importar_faq_chats.py`.
-3. Conseguir y cargar las guías PDF de artículos o nomenclador SIPAF.
-4. Siguientes etapas del README: estadísticas, buscador global y Alembic.
+3. Confirmar con Compras del hospital si la Circular SCyGB 03/2026 (control
+   de la URC) les aplica: está dirigida a la Administración Central.
+4. Leer a mano los anexos de la Circular SCyGB 05/2026 (textos para los
+   formularios del PBCP, que son imágenes) y armar una lección.
+5. Lección de contrataciones directas por urgencia o desierto (Circular UG
+   TIMBÓ 8/2026).
+6. Siguientes etapas del README: estadísticas, buscador global y Alembic.

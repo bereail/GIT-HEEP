@@ -34,14 +34,19 @@
           "bloques": [
             { "type": "text", "text": "Pueden participar personas humanas, personas jurídicas y uniones transitorias, siempre a través de sus representantes autorizados." },
             { "type": "prereq", "items": [
-              "ID Ciudadana — se crea en santafe.gob.ar/idciudadana/registro/",
-              "Domicilio digital — se adhiere desde Atención Virtual (sf.gob.ar/IngresarAV)"
+              "ID Ciudadana — se crea en santafe.gov.ar/idciudadana",
+              "Domicilio digital — se adhiere desde Atención Virtual (atencionvirtual.santafe.gob.ar). Ahí te llegan las notificaciones.",
+              "Inscripción en el RUPC (Registro Único de Proveedores y Contratistas), con los datos de contacto y la situación jurídica al día."
             ] },
-            { "type": "tip", "text": "Con esas dos cosas ya podés entrar. No hace falta ningún otro alta especial para ofertar." },
-            { "type": "video", "url": "https://youtu.be/bLSixoqJheg", "title": "Requisitos para acceder a Timbó Compras", "minutos": 1 }
+            { "type": "warning", "text": "Estar inscripto en el RUPC es requisito indispensable para presentar ofertas. Paso a paso para inscribirse: santafe.gov.ar/proveedores/site/index.php?a=documentacion.guiadetramites" },
+            { "type": "tip", "text": "Si Atención Virtual te pide subir el nivel de autenticación, hacelo antes de la fecha de apertura para no quedarte afuera." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/PasoAPasoParaOfertar.docx.pdf" },
+            { "type": "video", "url": "https://youtu.be/bLSixoqJheg", "title": "Requisitos para acceder a Timbó Compras", "minutos": 1 },
+            { "type": "video", "url": "https://youtu.be/8ba14toewQ8", "title": "Cómo crear tu ID Ciudadana" },
+            { "type": "video", "url": "https://youtu.be/gV_qoxpmAjE", "title": "Cómo adherirte al Domicilio Digital" }
           ],
           "quiz": [
-            { "type": "multiple-choice", "question": "¿Qué necesitás para entrar a TIMBÓ Compras como proveedor?", "options": ["ID Ciudadana y domicilio digital", "Un usuario de Intranet provincial", "Un certificado de firma digital"], "correctIndex": 0, "explanation": "Son los dos únicos requisitos: ID Ciudadana y adhesión al domicilio digital." }
+            { "type": "multiple-choice", "question": "¿Qué necesitás para ofertar en TIMBÓ Compras?", "options": ["ID Ciudadana, domicilio digital e inscripción en el RUPC", "Solo la ID Ciudadana", "Un usuario de Intranet provincial"], "correctIndex": 0, "explanation": "Son tres requisitos: ID Ciudadana, adhesión al domicilio digital e inscripción vigente en el RUPC." }
           ]
         },
         {
@@ -50,10 +55,11 @@
           "minutos": 3,
           "dificultad": "basico",
           "bloques": [
-            { "type": "text", "text": "Entrá a santafe.gov.ar/ms/compras. Buscá el proceso que te interesa (los que están \"En apertura\") y tocá \"Ofertar\". Vas a ingresar con tu ID Ciudadana." },
+            { "type": "text", "text": "Buscá el proceso en el portal de compras (santafe.gov.ar/gestionesdecompras) y tocá \"Ofertar\", o entrá directo a gestionvirtual.santafe.gob.ar. Vas a ingresar con tu ID Ciudadana." },
             { "type": "step", "number": 1, "explanation": "Abrí la bandeja \"Participar de un proceso\". Ahí están todos los procesos electrónicos publicados.", "lookFor": "La fila del proceso que te interesa.", "doThis": "Tocá los tres puntitos (⋮) para previsualizar y descargar el pliego, el acto que aprobó el proceso, la nómina de proveedores y el cronograma." },
             { "type": "step", "number": 2, "explanation": "Tocá \"Participar del proceso\".", "doThis": "Completá los datos del proveedor que representás, su CUIT y un correo electrónico. Después, \"Enviar\"." },
             { "type": "step", "number": 3, "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\".", "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoAcceder-yParticiparDeOferta.pdf" },
             { "type": "video", "url": "https://youtu.be/5qcZGh3euOU", "title": "Cómo ingresar a Timbó Compras y participar de un proceso", "minutos": 2 }
           ],
           "quiz": [
@@ -82,6 +88,7 @@
             { "type": "step", "number": 3, "explanation": "Con los dos formularios enviados, tocá \"Presentar\" (o \"Anular\" si te arrepentiste).", "lookFor": "Que la oferta quede en estado \"Presentada\"." },
             { "type": "warning", "text": "Solo las ofertas en estado \"Presentada\" se abren automáticamente en el acto de apertura." },
             { "type": "tip", "text": "Aunque ya esté presentada, podés editar cualquier dato hasta la fecha y hora de apertura." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoCompletarFormulario.pdf" },
             { "type": "video", "url": "https://youtu.be/fcEjp7lJGUE", "title": "Cómo completar y presentar una oferta", "minutos": 3 }
           ],
           "quiz": [
@@ -107,6 +114,7 @@
               { "term": "Circular modificatoria", "def": "Cambia el pliego. Suspende el proceso automáticamente hasta que se publique el pliego nuevo." }
             ] },
             { "type": "warning", "text": "Si llega una circular modificatoria, tu oferta pasa a \"Pendientes\" (\"proceso de publicación en edición\"). Cuando se publique el pliego nuevo vuelve a \"Asignados\": revisá los cambios desde ⋮ → \"Previsualizar\" antes de seguir." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarConsultas.pdf" },
             { "type": "video", "url": "https://youtu.be/W-_htQe-JdA", "title": "Cómo realizar consultas y ver circulares", "minutos": 3 }
           ],
           "quiz": [
@@ -127,6 +135,7 @@
             ], "note": "Si no querés mejorar algún renglón, dejalo como está y enviá igual." },
             { "type": "warning", "text": "Cada pedido trae fecha y hora límite. Pasado ese momento ya no se puede responder." },
             { "type": "tip", "text": "Cuando termines, el trámite aparece en \"Finalizados\": desde ahí lo podés previsualizar." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoSubsanar.pdf" },
             { "type": "video", "url": "https://youtu.be/u0UNen9iQnA", "title": "Cómo subsanar o mejorar una oferta", "minutos": 3 }
           ],
           "quiz": [
@@ -151,6 +160,7 @@
             ] },
             { "type": "tip", "text": "En el formulario podés descargar todas las ofertas presentadas para analizarlas antes de escribir." },
             { "type": "text", "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarImpugnaciones.pdf" },
             { "type": "video", "url": "https://youtu.be/0ExXUT8-M14", "title": "Cómo realizar impugnaciones", "minutos": 3 }
           ],
           "quiz": [
@@ -170,40 +180,62 @@
         {
           "slug": "hacer-una-compra",
           "titulo": "Hacer una compra, paso a paso",
-          "minutos": 6,
+          "minutos": 7,
           "dificultad": "basico",
           "bloques": [
             { "type": "text", "text": "Este es el recorrido completo de una compra en el hospital, desde el pedido hasta la adjudicación. Son 4 etapas. Cada paso dice qué hacer y dónde ver más detalle." },
             { "type": "diagram", "variant": "list", "title": "El mapa de la compra", "items": [
-              { "label": "1. Preparar: pedido, expediente y pliego con sus renglones", "hint": "Pasos 1 y 2", "tone": "neutral" },
-              { "label": "2. Aprobar: decisorio preventivo, vista al Tribunal de Cuentas y decisorio definitivo", "hint": "Pasos 3 a 5", "tone": "intermedio" },
-              { "label": "3. Publicar: nómina de oferentes, fecha y publicación", "hint": "Pasos 6 y 7", "tone": "intermedio" },
-              { "label": "4. Recibir ofertas, evaluar y adjudicar", "hint": "Pasos 8 a 10", "tone": "verified" }
+              { "label": "1. Preparar: pedido, expediente y pliego con sus renglones", "hint": "Pasos 1 a 3", "tone": "neutral" },
+              { "label": "2. Aprobar: decisorio, vista al Tribunal de Cuentas y vinculación en TIMBÓ Compras", "hint": "Pasos 4 a 6", "tone": "intermedio" },
+              { "label": "3. Publicar: nómina, fecha, portal web y aviso oficial", "hint": "Pasos 7 y 8", "tone": "intermedio" },
+              { "label": "4. Recibir ofertas, evaluar y adjudicar", "hint": "Pasos 9 a 11", "tone": "verified" }
             ] },
             { "type": "prereq", "items": [
               "El pedido del servicio que necesita la compra.",
-              "Usuario de TIMBÓ Compras con permiso para gestionar procesos del hospital.",
-              "Alguien con usuario habilitado en el SIN (para el paso 4)."
+              "Usuario de TIMBÓ Compras con el perfil y el rol que corresponde (lo da el Administrador Local de tu jurisdicción).",
+              "Alguien con usuario habilitado en el SIN (para el paso 5)."
             ] },
 
-            { "type": "step", "number": 1, "explanation": "Juntá el pedido y abrí el expediente.", "doThis": "Sumá al expediente el pedido del servicio y las notas que lo acompañan. Todo eso después va al Tribunal de Cuentas.", "lookFor": "Que el pedido diga qué se compra, cuánto y para qué servicio." },
-            { "type": "step", "number": 2, "explanation": "Armá el proceso y el pliego en TIMBÓ Compras.", "doThis": "Cargá cada artículo como un renglón, buscándolo en el nomenclador. Completá el pliego y el cronograma (fechas de consulta, apertura, etc.).", "lookFor": "Si un artículo no está en el nomenclador, hay que pedir el alta (ver aviso abajo). Si no te deja cargar ninguno, puede estar caído SIPAF: esperá y probá más tarde." },
-            { "type": "step", "number": 3, "explanation": "Firmá el decisorio preventivo.", "doThis": "Generá el Documento Oficial del decisorio preventivo, con la afectación presupuestaria, y mandalo a firmar.", "lookFor": "Revisá número y fecha antes de mandarlo: una vez firmado no se puede editar." },
-            { "type": "step", "number": 4, "explanation": "Corré vista al Tribunal de Cuentas (en el SIN).", "doThis": "Cargá en el SIN el pliego, el expediente, el pedido, las notas y el decisorio preventivo. Lo puede hacer Compras o Mesa de Entradas.", "lookFor": "Tiene que ser desde una PC de la red del hospital y con usuario habilitado. Si tu usuario todavía no está, que lo cargue alguien que ya lo tenga." },
-            { "type": "step", "number": 5, "explanation": "Vinculá el decisorio en TIMBÓ Compras.", "doThis": "En el proceso, vinculá el Documento Oficial que aprueba el pliego. Después de la vista, subí el decisorio definitivo al expediente y a TIMBÓ Compras.", "lookFor": "Al vincular el DO, el proceso te deja pasar a la etapa siguiente." },
-            { "type": "step", "number": 6, "explanation": "Cargá la nómina de oferentes y la fecha de publicación.", "doThis": "Completá en TIMBÓ Compras el listado de proveedores (la nómina) y desde qué fecha se publica." },
-            { "type": "step", "number": 7, "explanation": "Publicá la compra.", "doThis": "Seguí la Circular N° 04/2026: se publica por TIMBÓ, por correo electrónico y con la carga en el SIN.", "lookFor": "El link que se publica es el mismo link de la gestión en TIMBÓ." },
-            { "type": "step", "number": 8, "explanation": "Mientras está publicada, respondé las consultas.", "doThis": "Cada consulta de un proveedor se responde con una circular aclaratoria. Si hay que cambiar el pliego, va una circular modificatoria.", "lookFor": "La circular modificatoria suspende el proceso hasta que se publica el pliego nuevo." },
-            { "type": "step", "number": 9, "explanation": "Apertura de ofertas.", "doThis": "No hay que hacer nada: en la fecha y hora fijadas, TIMBÓ abre solo las ofertas.", "lookFor": "Solo se abren las ofertas en estado \"Presentada\". Si un proveedor dice que ofertó y no aparece, es que no la presentó." },
-            { "type": "step", "number": 10, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Si falta algo, pedile al proveedor una subsanación, una mejora de precio o una aclaración (con fecha límite). Después armá el informe de preadjudicación.", "lookFor": "Abierto el plazo, los proveedores pueden impugnar. La autoridad que aprueba la contratación resuelve las impugnaciones junto con la adjudicación." },
+            { "type": "step", "number": 1, "explanation": "Juntá el pedido y abrí el expediente electrónico.", "doThis": "Sumá al expediente el pedido del servicio y las notas que lo acompañan.", "lookFor": "Que el pedido diga qué se compra, cuánto y para qué servicio." },
+            { "type": "step", "number": 2, "explanation": "Armá el proceso y el pliego en TIMBÓ Compras.", "doThis": "Cargá cada artículo como un renglón, buscándolo en el catálogo. Completá los formularios del pliego (PBCP) y el cronograma (consultas, apertura, etc.).", "lookFor": "Si un artículo no está en el catálogo, pedí el alta con el formulario CAByS (lección \"Pedir el alta de un artículo\"). Si no te deja cargar ninguno, puede estar caído SIPAF: esperá y probá más tarde." },
+            { "type": "step", "number": 3, "explanation": "Control del pliego (Unidad Rectora Central).", "doThis": "Con el pliego aprobado por el rol Supervisor (estado \"Aprobar contratación\"), mandá el expediente con el pliego en PDF a la Dirección General de Contrataciones y Gestión de Bienes.", "lookFor": "Sin el informe de control de la URC en el expediente, el proceso no se puede aprobar ni publicar (Circular SCyGB 03/2026, para la Administración Central). Consultá con tu referente si aplica a tu hospital." },
+            { "type": "step", "number": 4, "explanation": "Firmá el decisorio.", "doThis": "Generá el Documento Oficial del decisorio (con la afectación presupuestaria) que aprueba la contratación, y mandalo a firmar.", "lookFor": "Revisá número y fecha antes de mandarlo: una vez firmado no se puede editar." },
+            { "type": "step", "number": 5, "explanation": "Corré vista al Tribunal de Cuentas.", "doThis": "En TIMBÓ Expedientes, compartí el expediente con el TCP desde \"Gestión de Visualización\". Además, el acto firmado se carga en el SIN, que lo manda por correo al TCP.", "lookFor": "Para el SIN necesitás usuario habilitado y una PC de la red del hospital. Ver lección \"Correr vista al Tribunal de Cuentas\"." },
+            { "type": "step", "number": 6, "explanation": "Vinculá el decisorio en TIMBÓ Compras.", "doThis": "En el proceso, vinculá el Documento Oficial que aprueba el pliego. Después de la vista, subí el decisorio definitivo al expediente y a TIMBÓ Compras.", "lookFor": "Al vincular el DO, el proceso te deja pasar a la etapa siguiente." },
+            { "type": "step", "number": 7, "explanation": "Cargá la nómina de oferentes y la fecha de publicación.", "doThis": "Completá en TIMBÓ Compras el listado de proveedores (la nómina) y desde qué fecha se publica." },
+            { "type": "step", "number": 8, "explanation": "Publicá la compra.", "doThis": "Cargá la gestión en el portal web de compras y pedí el aviso oficial por mail a avisosoficiales@santafe.gob.ar, con 3 días de anticipación como mínimo (Circular 04/2026).", "lookFor": "En el portal, marcá \"Marcar para que se genere enlace con TIMBO\" y el expediente como principal. Si no, al proveedor no le aparece el botón OFERTAR." },
+            { "type": "step", "number": 9, "explanation": "Mientras está publicada, respondé las consultas.", "doThis": "Cada consulta de un proveedor se responde con una circular aclaratoria. Si hay que cambiar el pliego, va una circular modificatoria.", "lookFor": "La circular modificatoria suspende el proceso hasta que se publica el pliego nuevo." },
+            { "type": "step", "number": 10, "explanation": "Apertura de ofertas.", "doThis": "No hay que hacer nada: en la fecha y hora fijadas, TIMBÓ abre solo las ofertas.", "lookFor": "Solo se abren las ofertas en estado \"Presentada\". Si un proveedor dice que ofertó y no aparece, es que no la presentó." },
+            { "type": "step", "number": 11, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Si falta algo, pedile al proveedor una subsanación, una mejora de precio o una aclaración (con fecha límite). La comisión arma la preadjudicación.", "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación. Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación." },
 
-            { "type": "warning", "text": "Los nombres exactos de los botones del lado del hospital todavía no están relevados en este portal. Si algo no coincide con tu pantalla, avisá a tu referente de Contrataciones." },
-            { "type": "tip", "text": "¿El artículo no está en el nomenclador? Hay dos guías oficiales: \"Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes\" y \"Guía en cuatro pasos para solicitar artículos\". Pedíselas a tu referente de Contrataciones." },
+            { "type": "warning", "text": "Los estados (\"Aprobar contratación\", \"Cronograma de impugnación\", \"Preadjudicado\") salen de las circulares oficiales. Algunos nombres de botones del lado del hospital todavía no están relevados: si algo no coincide con tu pantalla, avisá." },
+            { "type": "tip", "text": "Mesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · Tel. 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 6400792, de 8 a 13 h." },
             { "type": "tip", "text": "Para ver cómo lo vive el proveedor (cómo oferta, consulta o subsana), mirá el módulo \"Ofertar\"." }
           ],
           "quiz": [
-            { "type": "order-steps", "instruction": "Ordená las etapas de una compra:", "steps": ["Armar el pliego con los renglones", "Firmar el decisorio preventivo", "Correr vista al Tribunal de Cuentas", "Publicar la compra", "Apertura de ofertas", "Adjudicar"] },
-            { "type": "true-false", "question": "En la apertura, el hospital tiene que abrir las ofertas una por una.", "answer": false, "explanation": "La apertura es automática, y solo se abren las ofertas en estado \"Presentada\"." }
+            { "type": "order-steps", "instruction": "Ordená las etapas de una compra:", "steps": ["Armar el pliego con los renglones", "Control del pliego por la URC", "Firmar el decisorio", "Correr vista al Tribunal de Cuentas", "Publicar la compra", "Apertura de ofertas", "Adjudicar"] },
+            { "type": "true-false", "question": "En la apertura, el hospital tiene que abrir las ofertas una por una.", "answer": false, "explanation": "La apertura es automática, y solo se abren las ofertas en estado \"Presentada\"." },
+            { "type": "multiple-choice", "question": "Publicaste la compra en el portal y el proveedor no ve el botón OFERTAR. ¿Qué faltó?", "options": ["Marcar \"generar enlace con TIMBO\" y el expediente como principal", "Mandar el mail a avisos oficiales", "Cargar el decisorio en el SIN"], "correctIndex": 0, "explanation": "Sin esas dos marcas en la pestaña Expedientes del portal, no se genera el botón OFERTAR (Circular 04/2026)." }
+          ]
+        },
+        {
+          "slug": "pedir-alta-articulo",
+          "titulo": "Pedir el alta de un artículo (formulario CAByS)",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Si el bien o el servicio que necesitás no está en el catálogo, se pide el alta con un Documento Oficial: el formulario \"Timbó Compras: Alta de bienes y servicios CAByS\". Lo mismo sirve para dar de alta un lugar de entrega." },
+            { "type": "step", "number": 1, "explanation": "Primero, buscalo bien.", "doThis": "Buscá en el catálogo web del Portal de Compras con palabras clave y sinónimos.", "lookFor": "Solo si no aparece, seguí con el formulario." },
+            { "type": "step", "number": 2, "explanation": "Creá el formulario.", "doThis": "En TIMBÓ: Documentos oficiales → Gestión → \"Nuevo Documento Oficial\". En Tipo de Documento elegí \"Timbó Compras: Alta de bienes y servicios CAByS\" y tocá Guardar.", "lookFor": "Queda en tu bandeja de pendientes como \"Producir Documento Oficial\": tocá ⋮ → Documento oficial." },
+            { "type": "step", "number": 3, "explanation": "Completá el encabezado.", "doThis": "Fecha, Jurisdicción (el nombre completo de tu hospital), Solicitante y Email de contacto institucional. Ahí te llega la respuesta." },
+            { "type": "step", "number": 4, "explanation": "Cargá cada bien o servicio.", "doThis": "En \"Bienes y servicios\", tocá \"+ Nueva línea\" y completá rubro, subrubro, elemento (con los códigos del catálogo), la descripción, el objeto del gasto y la unidad de medida. Después, \"Agregar\".", "lookFor": "Para hospitales es obligatorio poner el código externo en el campo \"Nombre o descripción\"." },
+            { "type": "step", "number": 5, "explanation": "Si hace falta, cargá el lugar de entrega.", "doThis": "En \"Lugares de entrega\": \"+ Nueva línea\" → nombre, dirección, departamento, localidad y teléfono.", "lookFor": "Si solo pedís artículos, dejá esta parte vacía (y al revés)." },
+            { "type": "step", "number": 6, "explanation": "Mandalo a firmar.", "doThis": "Completá la referencia, el destinatario que indica la resolución y los adjuntos (fichas técnicas, fotos). Después: Acciones → \"Enviar a Firmar\" → Continuar → Confirmar.", "lookFor": "Lo firma el responsable del área desde su bandeja de pendientes (\"Evaluar\")." },
+            { "type": "tip", "text": "La Unidad Rectora Central revisa el pedido y, si lo aprueba, le asigna el código en el catálogo y te avisa por correo." },
+            { "type": "tip", "text": "Fuente: Resolución SCyGB 292/2026 — compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf" }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Antes de pedir el alta de un artículo, hay que buscarlo en el catálogo web con palabras clave y sinónimos.", "answer": true, "explanation": "La resolución pide verificar primero que no esté catalogado." }
           ]
         },
         {
@@ -215,7 +247,7 @@
             { "type": "text", "text": "El decisorio pasa dos veces por el circuito: uno antes del Tribunal de Cuentas (preventivo) y otro después (definitivo)." },
             { "type": "diagram", "variant": "list", "title": "El circuito, en orden", "items": [
               { "label": "1. Firmar el decisorio preventivo (con la afectación presupuestaria)", "hint": "Antes del TCP", "tone": "intermedio" },
-              { "label": "2. Correr vista al Tribunal de Cuentas: pliego + expediente + pedido + notas + decisorio preventivo", "hint": "Vista TCP", "tone": "intermedio" },
+              { "label": "2. Correr vista al Tribunal de Cuentas con el expediente completo: pliego, pedido, notas y decisorio preventivo", "hint": "Vista TCP", "tone": "intermedio" },
               { "label": "3. En TIMBÓ Compras, vincular el Documento Oficial que aprueba el pliego", "hint": "Habilita la etapa siguiente", "tone": "verified" },
               { "label": "4. Subir el decisorio definitivo al expediente y a TIMBÓ Compras", "hint": "Después del TCP", "tone": "verified" }
             ] },
@@ -228,20 +260,29 @@
         },
         {
           "slug": "vista-tribunal-de-cuentas",
-          "titulo": "Correr vista al Tribunal de Cuentas (SIN)",
-          "minutos": 3,
+          "titulo": "Correr vista al Tribunal de Cuentas",
+          "minutos": 4,
           "dificultad": "intermedio",
           "bloques": [
+            { "type": "text", "text": "La vista tiene dos partes: compartir el expediente con el TCP en TIMBÓ y cargar el acto firmado en el SIN." },
+            { "type": "step", "number": 1, "explanation": "Compartí el expediente con el TCP.", "doThis": "En TIMBÓ Expedientes, usá \"Gestión de Visualización\" para darle acceso al TCP al expediente completo.", "lookFor": "El expediente sigue su trámite normal mientras el TCP lo ve: no hace falta esperar quieto (Circular UG TIMBÓ 9/2026)." },
+            { "type": "step", "number": 2, "explanation": "Cargá el acto firmado en el SIN.", "doThis": "Cargalo en el SIN (app.santafe.gov.ar/normativa). Desde ahí se manda por correo al TCP.", "lookFor": "Hay un instructivo oficial: \"Carga y Edición SIN\" (Circular UG TIMBÓ 11/2026)." },
             { "type": "prereq", "items": [
-              "Un usuario habilitado para cargar en el SIN.",
+              "Para el SIN: un usuario habilitado.",
               "Una computadora conectada a la red institucional (no funciona desde el celular ni desde otra red)."
             ] },
-            { "type": "text", "text": "La carga se hace en el sistema SIN (app.santafe.gov.ar/normativa). Hay un instructivo oficial: \"Carga y Edición SIN\"." },
             { "type": "tip", "text": "¿Quién corre la vista? Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas." },
-            { "type": "warning", "text": "Si tu usuario todavía no está habilitado, que lo cargue alguien que ya lo esté. El alta de usuarios nuevos tarda varios días y se puede vencer el plazo." }
+            { "type": "warning", "text": "Si tu usuario del SIN todavía no está habilitado, que lo cargue alguien que ya lo esté. El alta de usuarios nuevos tarda varios días y se puede vencer el plazo." },
+            { "type": "diagram", "variant": "list", "title": "Si el TCP pide algo", "items": [
+              { "label": "1. El pedido llega por Atención Virtual a Mesa de Entradas", "hint": "Mesa de Entradas", "tone": "neutral" },
+              { "label": "2. Mesa de Entradas pide el expediente, suma el pedido como nueva orden, lo deriva y cierra la Atención Virtual", "hint": "Mesa de Entradas", "tone": "intermedio" },
+              { "label": "3. Se responde en el mismo expediente con el DO \"Respuesta al Tribunal de Cuentas – Importado\" o \"– Libre\", con el usuario del TCP como destinatario", "hint": "Área que responde", "tone": "verified" },
+              { "label": "4. El expediente vuelve a la oficina que lo tenía", "hint": "Al terminar", "tone": "verified" }
+            ], "note": "Quien tenga el expediente tiene que mandarlo enseguida a la oficina que indique el pedido, sin pases intermedios." }
           ],
           "quiz": [
-            { "type": "true-false", "question": "Puedo cargar en el SIN desde mi celular si tengo usuario habilitado.", "answer": false, "explanation": "Hay que entrar desde una computadora conectada a la red institucional." }
+            { "type": "true-false", "question": "Puedo cargar en el SIN desde mi celular si tengo usuario habilitado.", "answer": false, "explanation": "Hay que entrar desde una computadora conectada a la red institucional." },
+            { "type": "multiple-choice", "question": "¿Cómo se le da acceso al Tribunal de Cuentas al expediente?", "options": ["Con \"Gestión de Visualización\" en TIMBÓ Expedientes", "Mandándole el PDF por WhatsApp", "Imprimiendo el expediente"], "correctIndex": 0, "explanation": "Es la herramienta oficial (Circular UG TIMBÓ 9/2026). Además, el acto se carga en el SIN." }
           ]
         },
         {
@@ -259,17 +300,28 @@
         {
           "slug": "publicar-en-portal",
           "titulo": "Publicar la gestión en el portal de compras",
-          "minutos": 2,
-          "dificultad": "basico",
+          "minutos": 4,
+          "dificultad": "intermedio",
           "bloques": [
-            { "type": "text", "text": "Una vez cargadas la nómina de oferentes y la fecha de publicación, la gestión se publica según la Circular N° 04/2026 de la Subsecretaría de Contrataciones y Gestión de Bienes." },
-            { "type": "concepts", "items": [
-              { "term": "Por dónde", "def": "A través de TIMBÓ, por correo electrónico y con la carga en el SIN." },
-              { "term": "Qué link usar", "def": "El mismo link que lleva a la gestión en TIMBÓ. No hay que buscar otro." }
+            { "type": "text", "text": "Una vez aprobado el pliego en TIMBÓ, la publicación tiene dos partes: cargar la gestión en el portal web y pedir el aviso oficial. Así lo indica la Circular SCyGB 04/2026." },
+            { "type": "step", "number": 1, "explanation": "En el portal web, pestaña \"Datos básicos\".", "doThis": "Completá los campos de la tabla de abajo. Los demás, como siempre." },
+            { "type": "diagram", "variant": "table", "title": "Pestaña \"Datos básicos\"", "columns": ["Campo", "Qué poner"], "rows": [
+              ["Descripción de la gestión", "PROCEDIMIENTO ELECTRÓNICO – y el número de la gestión de TIMBÓ Compras"],
+              ["Lugar de presentación de las ofertas", "La leyenda con el link https://gestionvirtual.santafe.gob.ar (está en la circular)"],
+              ["Fecha y hora límite de presentación", "Dejalo vacío"],
+              ["Lugar de apertura", "Dejalo vacío"],
+              ["Lugar y fecha de entrega", "Los de la documentación física, si el pliego la pide"],
+              ["Fecha de gestión", "La fecha de la resolución que aprueba la gestión"],
+              ["Valor del pliego", "No corresponde"]
             ] },
+            { "type": "step", "number": 2, "explanation": "Pestaña \"Expedientes\": agregá el expediente.", "doThis": "Poné el número de expediente de TIMBÓ, marcá \"Marcar para que se genere enlace con TIMBO\" y marcalo como expediente principal.", "lookFor": "Si no marcás las dos cosas, al proveedor no le aparece el botón OFERTAR." },
+            { "type": "step", "number": 3, "explanation": "Pedí el aviso oficial.", "doThis": "Mandá un mail a avisosoficiales@santafe.gob.ar con la nota de pedido de publicación en dos formatos: editable (.doc, .docx u .odt) y PDF firmado electrónicamente.", "lookFor": "Mandalo con 3 días de anticipación como mínimo. La circular trae una nota modelo." },
+            { "type": "warning", "text": "Entre la última publicación y la apertura tienen que pasar al menos 10 días corridos (20 si la licitación es internacional). Artículo 132 de la Ley 12.510." },
             { "type": "tip", "text": "Circular 04/2026: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf" }
           ],
-          "quiz": []
+          "quiz": [
+            { "type": "true-false", "question": "En el portal hay que completar la fecha y hora límite de presentación de ofertas.", "answer": false, "explanation": "La Circular 04/2026 indica dejarla vacía, igual que el lugar de apertura." }
+          ]
         }
       ]
     }
@@ -291,8 +343,14 @@
     { "termino": "Decisorio preventivo", "definicion": "Decisorio con la afectación presupuestaria que se manda al Tribunal de Cuentas antes de seguir.", "modulo": "Gestión interna" },
     { "termino": "Decisorio definitivo", "definicion": "El decisorio que se sube al expediente y a TIMBÓ Compras después de la vista del Tribunal de Cuentas.", "modulo": "Gestión interna" },
     { "termino": "TCP", "definicion": "Tribunal de Cuentas de la Provincia. Se le \"corre vista\" del decisorio preventivo.", "modulo": "Gestión interna" },
-    { "termino": "SIN", "definicion": "Sistema provincial de normativa donde se cargan los actos administrativos (app.santafe.gov.ar/normativa). Solo para usuarios habilitados y desde la red institucional.", "modulo": "Gestión interna" },
-    { "termino": "SIPAF", "definicion": "Sistema provincial del que depende el nomenclador de artículos. Si se cae, TIMBÓ Compras no deja cargar artículos.", "modulo": "Gestión interna" },
+    { "termino": "SIN", "definicion": "Sistema de Información Normativa: ahí se carga cada acto administrativo firmado y desde ahí se envía por correo al Tribunal de Cuentas (app.santafe.gov.ar/normativa). Solo para usuarios habilitados y desde la red institucional.", "modulo": "Gestión interna" },
+    { "termino": "Gestión de Visualización", "definicion": "Herramienta de TIMBÓ Expedientes para compartir un expediente con el Tribunal de Cuentas. Es la forma oficial de darle vista (Circular UG TIMBÓ 9/2026).", "modulo": "Gestión interna" },
+    { "termino": "URC", "definicion": "Unidad Rectora Central: la Dirección General de Contrataciones y Gestión de Bienes. Controla el pliego y la preadjudicación.", "modulo": "Gestión interna" },
+    { "termino": "UOC", "definicion": "Unidad Operativa de Contratación: el área que lleva adelante la compra en cada organismo.", "modulo": "Gestión interna" },
+    { "termino": "PBCP", "definicion": "Pliego de Bases y Condiciones Particulares. En TIMBÓ Compras se arma completando formularios (Circular SCyGB 05/2026).", "modulo": "Gestión interna" },
+    { "termino": "CAByS", "definicion": "Formulario \"Timbó Compras: Alta de bienes y servicios CAByS\" para pedir que se agregue un artículo o un lugar de entrega al catálogo (Res. 292/2026).", "modulo": "Gestión interna" },
+    { "termino": "RUPC", "definicion": "Registro Único de Proveedores y Contratistas de la Provincia. Estar inscripto es requisito indispensable para ofertar.", "modulo": "Primeros pasos" },
+    { "termino": "SIPAF", "definicion": "Sistema Informático Provincial de Administración Financiera. De él depende el catálogo (nomenclador) de artículos: si se cae, TIMBÓ Compras no deja cargar artículos.", "modulo": "Gestión interna" },
     { "termino": "Nómina de oferentes", "definicion": "Listado de proveedores que participan del proceso.", "modulo": "Gestión interna" },
     { "termino": "Documento Oficial (DO)", "definicion": "Documento firmado en TIMBÓ, como un decisorio. Una vez firmado no se edita: si quedó mal, no se usa y se hace otro.", "modulo": "Gestión interna" },
     { "termino": "Afectación presupuestaria", "definicion": "Reserva del dinero para la compra. Va dentro del decisorio preventivo.", "modulo": "Gestión interna" },
@@ -353,20 +411,33 @@
       "tutorial_categoria_slug": "ofertar",
       "tutorial_slug": "impugnaciones",
       "verificado": true
+    },
+    {
+      "slug": "no-aparece-boton-ofertar",
+      "situacion": "Publicamos la compra y al proveedor no le aparece el botón OFERTAR",
+      "descripcion": "La gestión ya está en el portal web de compras, pero los proveedores no pueden entrar a ofertar.",
+      "causa": "Al cargar el expediente en el portal no se marcó \"Marcar para que se genere enlace con TIMBO\" o no se lo marcó como expediente principal.",
+      "solucion": "En el portal web, pestaña \"Expedientes\": editá el expediente de TIMBÓ y marcá las dos opciones.",
+      "notas_adicionales": "Circular SCyGB 04/2026, Anexo I.",
+      "categoria_libre": "Publicación en el portal",
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "publicar-en-portal",
+      "verificado": true
     }
   ],
   "tareas": [
-    { "slug": "que-necesito", "pregunta": "¿Qué necesito para ofertar?", "keywords": ["requisitos", "id ciudadana", "domicilio digital", "registrarme", "proveedor"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },
+    { "slug": "que-necesito", "pregunta": "¿Qué necesito para ofertar?", "keywords": ["requisitos", "id ciudadana", "domicilio digital", "registrarme", "proveedor", "rupc", "inscripcion", "registro"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },
     { "slug": "entrar-a-compras", "pregunta": "¿Cómo entro y me sumo a una licitación?", "keywords": ["entrar", "ingresar", "participar", "proceso", "licitacion", "ofertar"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar-y-participar" },
     { "slug": "presentar-oferta", "pregunta": "Quiero presentar una oferta", "keywords": ["presentar", "cotizar", "precio", "renglones", "requisitos minimos", "oferta"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "completar-y-presentar" },
     { "slug": "hacer-consulta", "pregunta": "Quiero hacer una consulta sobre el pliego", "keywords": ["consulta", "pregunta", "circular", "aclaratoria", "modificatoria", "pliego"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "consultas-y-circulares" },
     { "slug": "responder-subsanacion", "pregunta": "Me pidieron subsanar, mejorar el precio o aclarar", "keywords": ["subsanar", "subsanacion", "corregir", "mejorar", "mejora", "precio", "aclaracion"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
     { "slug": "impugnar", "pregunta": "Quiero impugnar una oferta o la preadjudicación", "keywords": ["impugnar", "impugnacion", "preadjudicacion", "garantia", "queja"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "impugnaciones" },
     { "slug": "hacer-una-compra", "pregunta": "¿Cómo hago una compra de punta a punta?", "keywords": ["compra", "comprar", "hacer una compra", "paso a paso", "circuito", "proceso de compra", "licitacion", "contratacion", "adjudicar", "adjudicacion"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "hacer-una-compra" },
+    { "slug": "alta-articulo", "pregunta": "El artículo no está en el catálogo: ¿cómo pido el alta?", "keywords": ["articulo", "alta", "catalogo", "nomenclador", "cabys", "falta", "no esta", "bien", "servicio", "lugar de entrega", "codigo"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "pedir-alta-articulo" },
     { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },
-    { "slug": "correr-vista-tcp", "pregunta": "Tengo que correr vista al Tribunal de Cuentas", "keywords": ["vista", "tribunal", "tcp", "sin", "cargar", "normativa", "mesa de entradas"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "vista-tribunal-de-cuentas" },
+    { "slug": "correr-vista-tcp", "pregunta": "Tengo que correr vista al Tribunal de Cuentas", "keywords": ["vista", "tribunal", "tcp", "sin", "cargar", "normativa", "mesa de entradas", "visualizacion", "compartir", "requerimiento"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "vista-tribunal-de-cuentas" },
     { "slug": "usuarios-sin", "pregunta": "Necesito usuarios nuevos para cargar en el SIN", "keywords": ["usuario", "alta", "sin", "planilla", "habilitar", "acceso"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "alta-usuarios-sin" },
-    { "slug": "publicar-portal", "pregunta": "Quiero publicar la gestión en el portal de compras", "keywords": ["publicar", "publicacion", "portal", "link", "circular", "nomina", "oferentes"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "publicar-en-portal" }
+    { "slug": "publicar-portal", "pregunta": "Quiero publicar la gestión en el portal de compras", "keywords": ["publicar", "publicacion", "portal", "link", "circular", "nomina", "oferentes", "aviso", "boletin", "avisos oficiales", "ofertar", "publico", "publicamos"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "publicar-en-portal" }
   ],
   "quickstart_steps": [
     { "titulo": "Qué necesitás", "descripcion": "ID Ciudadana y domicilio digital. Nada más.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },

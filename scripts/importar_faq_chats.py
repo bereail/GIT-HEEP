@@ -128,8 +128,8 @@ SITUACIONES_TIMBO_COMPRAS = [
     },
     {
         "slug": "no-aparece-pestana-comenzar-carga-sin",
-        "situacion": 'Quiero cargar algo en el SIN para dar vista al Tribunal de Cuentas, pero no aparece la pestaña "comenzar una carga"',
-        "descripcion": "Al entrar al sistema SIN para iniciar la carga que corre vista al Tribunal de Cuentas, no se encuentra la opción esperada.",
+        "situacion": 'Quiero cargar un acto en el SIN para el Tribunal de Cuentas, pero no aparece la pestaña "comenzar una carga"',
+        "descripcion": "Al entrar al sistema SIN para cargar el acto firmado, no se encuentra la opción esperada.",
         "causa": "Lo más probable es que el usuario no esté habilitado para cargar en el SIN (la opción solo la ven los usuarios habilitados).",
         "solucion": "Confirmá que tu usuario esté habilitado para el SIN y que entres desde una computadora de la red institucional. Si igual no aparece, consultá con tu referente de Contrataciones.",
         "notas_adicionales": 'Sin confirmar: en el chat se compartió el instructivo "Carga y Edición SIN" y el link app.santafe.gov.ar/normativa, pero la pantalla no coincidía con el instructivo y no quedó resuelto.',
@@ -164,8 +164,15 @@ SITUACIONES_TIMBO_COMPRAS = [
         "slug": "link-publicacion-portal-compras",
         "situacion": "¿Dónde consigo el link para publicar la gestión en el portal de compras?",
         "descripcion": "Ya cargaste la nómina de oferentes y la fecha de publicación, y no sabés qué link poner en el portal.",
-        "solucion": "Es el mismo link que lleva a la gestión en Timbó. La publicación se hace por Timbó, por correo electrónico y con la carga en el SIN (Circular N° 04/2026).",
-        "notas_adicionales": "Circular N° 04/2026: https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf",
+        "solucion": (
+            "No hay que copiar ningún link a mano. En el portal web, pestaña \"Expedientes\", cargá el número de expediente de Timbó "
+            "y marcá \"Marcar para que se genere enlace con TIMBO\" y \"expediente principal\": así se genera el botón OFERTAR. "
+            "En \"Lugar de presentación de las ofertas\" va la leyenda con https://gestionvirtual.santafe.gob.ar."
+        ),
+        "notas_adicionales": (
+            "Además se pide el aviso oficial por mail a avisosoficiales@santafe.gob.ar con 3 días de anticipación. "
+            "Circular N° 04/2026: https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf"
+        ),
         "categoria_libre": "Publicación en el portal",
         "verificado": True,
         "tutorial": ("gestion-interna", "publicar-en-portal"),
@@ -183,10 +190,14 @@ SITUACIONES_TIMBO_COMPRAS = [
         "slug": "articulo-no-esta-en-nomenclador",
         "situacion": "El artículo que necesito no aparece en el nomenclador",
         "descripcion": "Buscás un artículo para el pedido y no lo encontrás.",
-        "solucion": 'Hay una guía oficial para buscar en el nomenclador SIPAF y pedir los artículos que faltan ("Guía de Uso – Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes"), y otra con los 4 pasos para solicitar artículos. Pedíselas a tu referente.',
-        "notas_adicionales": "Las guías se compartieron como PDF en el grupo de soporte; todavía no están cargadas en este portal.",
+        "solucion": (
+            "Primero buscalo en el catálogo web con palabras clave y sinónimos. Si no está, pedí el alta con el Documento Oficial "
+            "\"Timbó Compras: Alta de bienes y servicios CAByS\" (Res. SCyGB 292/2026)."
+        ),
+        "notas_adicionales": 'También existen las guías "Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes" y "Guía en cuatro pasos para solicitar artículos" (compartidas como PDF en el grupo de soporte).',
         "categoria_libre": "Artículos y disponibilidad",
         "verificado": True,
+        "tutorial": ("gestion-interna", "pedir-alta-articulo"),
     },
     {
         "slug": "documentos-salen-en-html",
