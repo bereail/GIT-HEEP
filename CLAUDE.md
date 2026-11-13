@@ -38,11 +38,11 @@ La base (`instance/*.sqlite3`) no está en git: se recrea con los scripts.
 - Las respuestas que no quedaron confirmadas van con `verificado: False`
   (el chatbot les muestra un aviso "sin confirmar").
 
-## Estado (2026-11-11)
+## Estado (2026-11-13)
 
 Hecho:
 - Tema TIMBÓ Compras (`scripts/content_timbo_compras.json`), con 3
-  módulos y 10 lecciones. El lado proveedor sale de la lista de videos
+  módulos y 11 lecciones. El lado proveedor sale de la lista de videos
   oficial. La gestión interna del hospital (decisorios, Tribunal de Cuentas,
   SIN, publicación) sale de los chats.
 - Relevamiento de preguntas frecuentes de los chats:
@@ -50,6 +50,12 @@ Hecho:
 - Chatbot con sugerencias para tocar, "¿Te referís a...?", preguntas
   relacionadas, "¿Te sirvió?", reinicio y aviso de "sin confirmar".
 - Bloque de tutorial nuevo `{"type": "video", "url", "title", "minutos"}`.
+- Lección "Hacer una compra, paso a paso" (Gestión interna): el circuito
+  completo del hospital en 10 pasos. Los nombres exactos de los botones del
+  lado del hospital NO están relevados (la lección lo avisa): confirmarlos
+  con una persona de Compras y ajustar.
+- Buscador: "quiero", "necesito", "tengo", etc. son palabras vacías, para
+  que no le ganen a la palabra importante de la pregunta.
 
 Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
 1. Ver a mano 3 videos que YouTube no dejó procesar y completar el

@@ -168,6 +168,45 @@
       "dificultad": "intermedio",
       "tutoriales": [
         {
+          "slug": "hacer-una-compra",
+          "titulo": "Hacer una compra, paso a paso",
+          "minutos": 6,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Este es el recorrido completo de una compra en el hospital, desde el pedido hasta la adjudicación. Son 4 etapas. Cada paso dice qué hacer y dónde ver más detalle." },
+            { "type": "diagram", "variant": "list", "title": "El mapa de la compra", "items": [
+              { "label": "1. Preparar: pedido, expediente y pliego con sus renglones", "hint": "Pasos 1 y 2", "tone": "neutral" },
+              { "label": "2. Aprobar: decisorio preventivo, vista al Tribunal de Cuentas y decisorio definitivo", "hint": "Pasos 3 a 5", "tone": "intermedio" },
+              { "label": "3. Publicar: nómina de oferentes, fecha y publicación", "hint": "Pasos 6 y 7", "tone": "intermedio" },
+              { "label": "4. Recibir ofertas, evaluar y adjudicar", "hint": "Pasos 8 a 10", "tone": "verified" }
+            ] },
+            { "type": "prereq", "items": [
+              "El pedido del servicio que necesita la compra.",
+              "Usuario de TIMBÓ Compras con permiso para gestionar procesos del hospital.",
+              "Alguien con usuario habilitado en el SIN (para el paso 4)."
+            ] },
+
+            { "type": "step", "number": 1, "explanation": "Juntá el pedido y abrí el expediente.", "doThis": "Sumá al expediente el pedido del servicio y las notas que lo acompañan. Todo eso después va al Tribunal de Cuentas.", "lookFor": "Que el pedido diga qué se compra, cuánto y para qué servicio." },
+            { "type": "step", "number": 2, "explanation": "Armá el proceso y el pliego en TIMBÓ Compras.", "doThis": "Cargá cada artículo como un renglón, buscándolo en el nomenclador. Completá el pliego y el cronograma (fechas de consulta, apertura, etc.).", "lookFor": "Si un artículo no está en el nomenclador, hay que pedir el alta (ver aviso abajo). Si no te deja cargar ninguno, puede estar caído SIPAF: esperá y probá más tarde." },
+            { "type": "step", "number": 3, "explanation": "Firmá el decisorio preventivo.", "doThis": "Generá el Documento Oficial del decisorio preventivo, con la afectación presupuestaria, y mandalo a firmar.", "lookFor": "Revisá número y fecha antes de mandarlo: una vez firmado no se puede editar." },
+            { "type": "step", "number": 4, "explanation": "Corré vista al Tribunal de Cuentas (en el SIN).", "doThis": "Cargá en el SIN el pliego, el expediente, el pedido, las notas y el decisorio preventivo. Lo puede hacer Compras o Mesa de Entradas.", "lookFor": "Tiene que ser desde una PC de la red del hospital y con usuario habilitado. Si tu usuario todavía no está, que lo cargue alguien que ya lo tenga." },
+            { "type": "step", "number": 5, "explanation": "Vinculá el decisorio en TIMBÓ Compras.", "doThis": "En el proceso, vinculá el Documento Oficial que aprueba el pliego. Después de la vista, subí el decisorio definitivo al expediente y a TIMBÓ Compras.", "lookFor": "Al vincular el DO, el proceso te deja pasar a la etapa siguiente." },
+            { "type": "step", "number": 6, "explanation": "Cargá la nómina de oferentes y la fecha de publicación.", "doThis": "Completá en TIMBÓ Compras el listado de proveedores (la nómina) y desde qué fecha se publica." },
+            { "type": "step", "number": 7, "explanation": "Publicá la compra.", "doThis": "Seguí la Circular N° 04/2026: se publica por TIMBÓ, por correo electrónico y con la carga en el SIN.", "lookFor": "El link que se publica es el mismo link de la gestión en TIMBÓ." },
+            { "type": "step", "number": 8, "explanation": "Mientras está publicada, respondé las consultas.", "doThis": "Cada consulta de un proveedor se responde con una circular aclaratoria. Si hay que cambiar el pliego, va una circular modificatoria.", "lookFor": "La circular modificatoria suspende el proceso hasta que se publica el pliego nuevo." },
+            { "type": "step", "number": 9, "explanation": "Apertura de ofertas.", "doThis": "No hay que hacer nada: en la fecha y hora fijadas, TIMBÓ abre solo las ofertas.", "lookFor": "Solo se abren las ofertas en estado \"Presentada\". Si un proveedor dice que ofertó y no aparece, es que no la presentó." },
+            { "type": "step", "number": 10, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Si falta algo, pedile al proveedor una subsanación, una mejora de precio o una aclaración (con fecha límite). Después armá el informe de preadjudicación.", "lookFor": "Abierto el plazo, los proveedores pueden impugnar. La autoridad que aprueba la contratación resuelve las impugnaciones junto con la adjudicación." },
+
+            { "type": "warning", "text": "Los nombres exactos de los botones del lado del hospital todavía no están relevados en este portal. Si algo no coincide con tu pantalla, avisá a tu referente de Contrataciones." },
+            { "type": "tip", "text": "¿El artículo no está en el nomenclador? Hay dos guías oficiales: \"Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes\" y \"Guía en cuatro pasos para solicitar artículos\". Pedíselas a tu referente de Contrataciones." },
+            { "type": "tip", "text": "Para ver cómo lo vive el proveedor (cómo oferta, consulta o subsana), mirá el módulo \"Ofertar\"." }
+          ],
+          "quiz": [
+            { "type": "order-steps", "instruction": "Ordená las etapas de una compra:", "steps": ["Armar el pliego con los renglones", "Firmar el decisorio preventivo", "Correr vista al Tribunal de Cuentas", "Publicar la compra", "Apertura de ofertas", "Adjudicar"] },
+            { "type": "true-false", "question": "En la apertura, el hospital tiene que abrir las ofertas una por una.", "answer": false, "explanation": "La apertura es automática, y solo se abren las ofertas en estado \"Presentada\"." }
+          ]
+        },
+        {
           "slug": "circuito-decisorio",
           "titulo": "Decisorio preventivo y definitivo",
           "minutos": 3,
@@ -255,6 +294,9 @@
     { "termino": "SIN", "definicion": "Sistema provincial de normativa donde se cargan los actos administrativos (app.santafe.gov.ar/normativa). Solo para usuarios habilitados y desde la red institucional.", "modulo": "Gestión interna" },
     { "termino": "SIPAF", "definicion": "Sistema provincial del que depende el nomenclador de artículos. Si se cae, TIMBÓ Compras no deja cargar artículos.", "modulo": "Gestión interna" },
     { "termino": "Nómina de oferentes", "definicion": "Listado de proveedores que participan del proceso.", "modulo": "Gestión interna" },
+    { "termino": "Documento Oficial (DO)", "definicion": "Documento firmado en TIMBÓ, como un decisorio. Una vez firmado no se edita: si quedó mal, no se usa y se hace otro.", "modulo": "Gestión interna" },
+    { "termino": "Afectación presupuestaria", "definicion": "Reserva del dinero para la compra. Va dentro del decisorio preventivo.", "modulo": "Gestión interna" },
+    { "termino": "Renglón", "definicion": "Cada artículo que se compra dentro de un proceso, con su cantidad. El proveedor oferta precio por renglón.", "modulo": "Gestión interna" },
     { "termino": "iTop", "definicion": "Sistema de tickets para pedir permisos y altas a las áreas técnicas.", "modulo": "General" }
   ],
   "situaciones": [
@@ -320,6 +362,7 @@
     { "slug": "hacer-consulta", "pregunta": "Quiero hacer una consulta sobre el pliego", "keywords": ["consulta", "pregunta", "circular", "aclaratoria", "modificatoria", "pliego"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "consultas-y-circulares" },
     { "slug": "responder-subsanacion", "pregunta": "Me pidieron subsanar, mejorar el precio o aclarar", "keywords": ["subsanar", "subsanacion", "corregir", "mejorar", "mejora", "precio", "aclaracion"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
     { "slug": "impugnar", "pregunta": "Quiero impugnar una oferta o la preadjudicación", "keywords": ["impugnar", "impugnacion", "preadjudicacion", "garantia", "queja"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "impugnaciones" },
+    { "slug": "hacer-una-compra", "pregunta": "¿Cómo hago una compra de punta a punta?", "keywords": ["compra", "comprar", "hacer una compra", "paso a paso", "circuito", "proceso de compra", "licitacion", "contratacion", "adjudicar", "adjudicacion"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "hacer-una-compra" },
     { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },
     { "slug": "correr-vista-tcp", "pregunta": "Tengo que correr vista al Tribunal de Cuentas", "keywords": ["vista", "tribunal", "tcp", "sin", "cargar", "normativa", "mesa de entradas"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "vista-tribunal-de-cuentas" },
     { "slug": "usuarios-sin", "pregunta": "Necesito usuarios nuevos para cargar en el SIN", "keywords": ["usuario", "alta", "sin", "planilla", "habilitar", "acceso"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "alta-usuarios-sin" },

@@ -27,6 +27,9 @@ PALABRAS_VACIAS = {
     "cual", "cuál", "cuales", "cuáles", "y", "o", "a", "se", "mi", "tu", "su",
     "al", "lo", "le", "les", "me", "te", "nos", "sobre", "hay",
     "sin", "mas", "más", "ya", "pero", "si", "no", "ni", "muy", "esta", "está",
+    # Arranques típicos de pregunta: muchas tareas empiezan con "Quiero..." o
+    # "Necesito...", así que le ganaban a la palabra que importa ("comprar").
+    "quiero", "quisiera", "necesito", "puedo", "hago", "tengo", "algo",
 }
 
 _PUNTUACION = re.compile(r"[¿?¡!.,;:\"'()]")
