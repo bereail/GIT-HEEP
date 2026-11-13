@@ -38,6 +38,7 @@
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_quickstart' else '' }}" href="{{ url_for('ui.ver_quickstart', tema_slug=tema.slug) }}"><span class="nav-link__icon">🚀</span>Primeros 15 minutos</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_tareas' else '' }}" href="{{ url_for('ui.ver_tareas', tema_slug=tema.slug) }}"><span class="nav-link__icon">🔎</span>Quiero hacer...</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_problemas' else '' }}" href="{{ url_for('ui.ver_problemas', tema_slug=tema.slug) }}"><span class="nav-link__icon">🩹</span>Tengo un problema</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint in ('ui.consulta_nueva', 'ui.consulta_ver') else '' }}" href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug) }}"><span class="nav-link__icon">✉️</span>Dejar una consulta</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_glosario' else '' }}" href="{{ url_for('ui.ver_glosario', tema_slug=tema.slug) }}"><span class="nav-link__icon">📖</span>Glosario</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_progreso' else '' }}" href="{{ url_for('ui.ver_progreso', tema_slug=tema.slug) }}"><span class="nav-link__icon">📊</span>Mi progreso</a>
 

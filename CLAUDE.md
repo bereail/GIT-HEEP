@@ -56,6 +56,9 @@ Hecho:
   con una persona de Compras y ajustar.
 - Buscador: "quiero", "necesito", "tengo", etc. son palabras vacías, para
   que no le ganen a la palabra importante de la pregunta.
+- "Dejar una consulta": formulario público sin usuario (se sigue por un
+  link con token), bandeja en /admin/consultas para responder y cerrar, y
+  el "No me sirvió" del chatbot lleva ahí con la pregunta precargada.
 
 Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
 1. Ver a mano 3 videos que YouTube no dejó procesar y completar el
@@ -68,8 +71,4 @@ Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
    los videos. Cuando haya respuesta, pasar a `verificado: True` en
    `scripts/importar_faq_chats.py`.
 3. Conseguir y cargar las guías PDF de artículos o nomenclador SIPAF.
-4. `app/ui/routes.py` tiene rutas de "consultas" que usan los templates
-   `consulta_nueva.html` y `consulta_ver.html`, y esos templates todavía no
-   existen. Por eso el chatbot, cuando algo no sirve, manda a "Tengo un
-   problema" y no a "dejar consulta".
-5. Siguientes etapas del README: estadísticas, buscador global y Alembic.
+4. Siguientes etapas del README: estadísticas, buscador global y Alembic.

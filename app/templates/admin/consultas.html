@@ -1,0 +1,30 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Consultas — Panel de administración{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>Consultas
+</nav>
+<h1>Consultas de los usuarios</h1>
+
+<nav class="glossary-jump" aria-label="Filtrar por estado">
+  {% for valor, etiqueta in estados.items() %}
+  <a href="{{ url_for('admin.consultas', estado=valor) }}" {% if estado == valor %}aria-current="page" style="font-weight:700"{% endif %}>{{ etiqueta }}s</a>
+  {% endfor %}
+  <a href="{{ url_for('admin.consultas', estado='todas') }}" {% if estado == 'todas' %}aria-current="page" style="font-weight:700"{% endif %}>Todas</a>
+</nav>
+
+<div class="admin-list">
+  {% for c in consultas %}
+  <a class="admin-list-item" href="{{ url_for('admin.consulta_detalle', consulta_id=c.id) }}">
+    <span style="font-size:20px">{{ c.tema.icono }}</span>
+    <span class="admin-list-item__title">
+      {{ (c.mensajes[0].cuerpo if c.mensajes else '(sin mensaje)') | truncate(90) }}
+      <span class="badge badge--neutral">{{ c.tipo_label }}</span>
+    </span>
+    <span class="admin-list-item__meta">{{ c.tema.nombre }} · {{ c.actualizada_en.strftime('%d/%m/%Y') }}</span>
+  </a>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">📭</div>No hay consultas en este estado.</div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -18,7 +18,18 @@ from werkzeug.utils import secure_filename
 from app import csrf
 from app.admin.auth import contrasena_correcta, requiere_admin, sesion_admin_activa
 from app.extensions import db
-from app.models import Categoria, EntradaGlosario, PasoIntroductorio, Situacion, Tarea, Tema, Tutorial
+from app.models import (
+    Categoria,
+    Consulta,
+    EntradaGlosario,
+    MensajeConsulta,
+    PasoIntroductorio,
+    Situacion,
+    Tarea,
+    Tema,
+    Tutorial,
+)
+from app.models.consulta import ESTADOS_CONSULTA
 from app.services.textutil import lineas_a_lista, slugify
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin", template_folder="../templates/admin")
@@ -117,7 +128,46 @@ def _mover(items_ordenados, item, delta):
 @requiere_admin
 def dashboard():
     temas = Tema.query.order_by(Tema.orden).all()
-    return render_template("admin/dashboard.html", temas=temas)
+    consultas_abiertas = Consulta.query.filter_by(estado="abierta").count()
+    return render_template("admin/dashboard.html", temas=temas, consultas_abiertas=consultas_abiertas)
+
+
+# -------------------------------------------------------------- consultas --
+
+@admin_bp.route("/consultas")
+@requiere_admin
+def consultas():
+    estado = request.args.get("estado", "abierta")
+    consulta = Consulta.query.order_by(Consulta.actualizada_en.desc())
+    if estado in ESTADOS_CONSULTA:
+        consulta = consulta.filter_by(estado=estado)
+    else:
+        estado = "todas"
+    return render_template(
+        "admin/consultas.html",
+        consultas=consulta.all(),
+        estado=estado,
+        estados=ESTADOS_CONSULTA,
+    )
+
+
+@admin_bp.route("/consultas/<int:consulta_id>", methods=["GET", "POST"])
+@requiere_admin
+def consulta_detalle(consulta_id):
+    consulta = db.session.get(Consulta, consulta_id) or abort(404)
+    if request.method == "POST":
+        respuesta = (request.form.get("respuesta") or "").strip()
+        nuevo_estado = request.form.get("estado")
+        if respuesta:
+            db.session.add(MensajeConsulta(consulta_id=consulta.id, autor="admin", cuerpo=respuesta))
+            consulta.estado = "respondida"
+        if nuevo_estado in ESTADOS_CONSULTA:
+            consulta.estado = nuevo_estado
+        if respuesta or nuevo_estado in ESTADOS_CONSULTA:
+            db.session.commit()
+            flash("Consulta actualizada.", "ok")
+        return redirect(url_for("admin.consulta_detalle", consulta_id=consulta.id))
+    return render_template("admin/consulta_detalle.html", consulta=consulta, estados=ESTADOS_CONSULTA)
 
 
 # ------------------------------------------------------------------ temas --

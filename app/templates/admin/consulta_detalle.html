@@ -1,0 +1,43 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Consulta — Panel de administración{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>
+  <a href="{{ url_for('admin.consultas') }}">Consultas</a><span class="sep">/</span>
+  Consulta
+</nav>
+<h1 style="margin-bottom:6px">{{ consulta.tipo_label }} · {{ consulta.tema.nombre }}</h1>
+<p class="text-muted" style="margin-top:0">
+  <span class="badge badge--neutral">{{ consulta.estado_label }}</span>
+  {% if consulta.nombre_contacto %}· De: {{ consulta.nombre_contacto }}{% endif %}
+  · <a href="{{ url_for('ui.consulta_ver', token=consulta.token) }}" target="_blank" rel="noopener">Ver como la ve el usuario ↗</a>
+</p>
+
+<div class="hilo">
+  {% for m in consulta.mensajes %}
+  <div class="hilo-msg hilo-msg--{{ m.autor }}">
+    <div class="hilo-msg__autor">{{ 'Usuario' if m.autor == 'usuario' else 'Equipo' }} · {{ m.creado_en.strftime('%d/%m/%Y %H:%M') }}</div>
+    <div class="hilo-msg__cuerpo">{{ m.cuerpo }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<form method="post" class="admin-form" style="margin-top:20px">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field">
+    <label for="respuesta">Responder</label>
+    <textarea class="input" id="respuesta" name="respuesta" required placeholder="Respuesta corta y práctica. El usuario la ve en su link."></textarea>
+    <span class="text-faint">Al responder, la consulta pasa a "Respondida". Si la respuesta sirve para otros, sumala como situación en "Tengo un problema".</span>
+  </div>
+  <div><button type="submit" class="btn btn--primary">Enviar respuesta</button></div>
+</form>
+
+<form method="post" style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  {% if consulta.estado != 'cerrada' %}
+  <button type="submit" name="estado" value="cerrada" class="btn btn--ghost btn--sm">Cerrar consulta</button>
+  {% else %}
+  <button type="submit" name="estado" value="abierta" class="btn btn--ghost btn--sm">Reabrir</button>
+  {% endif %}
+</form>
+{% endblock %}

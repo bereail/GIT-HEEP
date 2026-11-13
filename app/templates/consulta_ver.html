@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block titulo %}Tu consulta — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Tu consulta
+</nav>
+<div class="hero">
+  <h1>Tu consulta</h1>
+  <p class="hero__desc">
+    <span class="badge badge--neutral">{{ consulta.tipo_label }}</span>
+    <span class="badge badge--{{ 'verified' if consulta.estado == 'respondida' else ('neutral' if consulta.estado == 'cerrada' else 'unverified') }}">{{ consulta.estado_label }}</span>
+  </p>
+</div>
+
+{% if es_nueva %}
+<div class="callout callout--tip">
+  <span class="callout__icon">🔖</span>
+  <div>
+    <b>¡Listo, la recibimos!</b> Guardá este link para ver la respuesta (no hace falta usuario):
+    <div class="link-consulta">
+      <input class="input" style="padding-left:12px" id="link-consulta" type="text" readonly value="{{ url_for('ui.consulta_ver', token=consulta.token, _external=True) }}" aria-label="Link de tu consulta" />
+      <button type="button" class="btn btn--ghost btn--sm" id="btn-copiar-link">Copiar</button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="hilo">
+  {% for m in consulta.mensajes %}
+  <div class="hilo-msg hilo-msg--{{ m.autor }}">
+    <div class="hilo-msg__autor">{{ 'Vos' if m.autor == 'usuario' else 'Respuesta del equipo' }} · {{ m.creado_en.strftime('%d/%m/%Y %H:%M') }}</div>
+    <div class="hilo-msg__cuerpo">{{ m.cuerpo }}</div>
+  </div>
+  {% endfor %}
+  {% if consulta.estado == 'abierta' %}
+  <p class="text-faint">Todavía no hay respuesta. Volvé a este link más tarde.</p>
+  {% endif %}
+</div>
+
+{% if consulta.estado != 'cerrada' %}
+<form method="post" action="{{ url_for('ui.consulta_responder', token=consulta.token) }}" class="admin-form" style="margin-top:20px">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field">
+    <label for="mensaje">¿Querés agregar algo?</label>
+    <textarea class="input" id="mensaje" name="mensaje" required></textarea>
+  </div>
+  <div><button type="submit" class="btn btn--ghost">Agregar</button></div>
+</form>
+{% else %}
+<p class="text-faint" style="margin-top:20px">Esta consulta está cerrada. Si tenés otra duda, <a href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug) }}">dejá una consulta nueva</a>.</p>
+{% endif %}
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    var btn = document.getElementById('btn-copiar-link');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var input = document.getElementById('link-consulta');
+      input.select();
+      var listo = function () { btn.textContent = '¡Copiado!'; };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(input.value).then(listo, function () { document.execCommand('copy'); listo(); });
+      } else {
+        document.execCommand('copy');
+        listo();
+      }
+    });
+  })();
+</script>
+{% endblock %}

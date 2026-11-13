@@ -1166,3 +1166,16 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .upload-grid__item img { display: block; width: 100%; height: 90px; object-fit: cover; }
 .upload-grid__item-body { padding: 8px 10px; }
 .upload-grid__item-name { font-size: 11px; color: var(--text-muted); word-break: break-all; margin-bottom: 6px; }
+
+/* -------------------------------------------------------------- Consultas -- */
+
+.opciones-tipo { display: flex; flex-wrap: wrap; gap: 8px; }
+.opcion-tipo { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 13.5px; cursor: pointer; background: var(--surface); }
+.opcion-tipo:has(input:checked) { border-color: var(--accent); background: var(--surface-sunken); }
+.link-consulta { display: flex; gap: 8px; margin-top: 8px; }
+.link-consulta .input { flex: 1; min-width: 0; }
+.hilo { display: grid; gap: 10px; margin-top: 16px; }
+.hilo-msg { padding: 12px 14px; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--surface); }
+.hilo-msg--admin { background: var(--success-soft); border-color: transparent; }
+.hilo-msg__autor { font-size: 12px; font-weight: 650; color: var(--text-faint); margin-bottom: 4px; }
+.hilo-msg__cuerpo { font-size: 14px; white-space: pre-line; }

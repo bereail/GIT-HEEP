@@ -3,7 +3,10 @@
 {% block contenido %}
 <div class="admin-section-head">
   <h1 style="margin:0">Temas</h1>
-  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.tema_nuevo') }}">+ Nuevo tema</a>
+  <span style="display:flex; gap:8px">
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.consultas') }}">📬 Consultas{% if consultas_abiertas %} <span class="badge badge--unverified">{{ consultas_abiertas }} sin responder</span>{% endif %}</a>
+    <a class="btn btn--primary btn--sm" href="{{ url_for('admin.tema_nuevo') }}">+ Nuevo tema</a>
+  </span>
 </div>
 
 <div class="admin-list">

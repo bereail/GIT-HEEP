@@ -19,6 +19,8 @@ export function initChatbot({ temaSlug, nombreTema }) {
   const SIN_RESULTADOS = 'No encontré una respuesta para eso. Probá con otras palabras, o elegí una de estas:';
   const QUISO_DECIR = 'No estoy seguro de haber entendido. ¿Te referís a alguna de estas?';
   const urlProblemas = `/temas/${temaSlug}/problemas`;
+  const urlConsulta = `/temas/${temaSlug}/consultas/nueva`;
+  let ultimaPregunta = '';
 
   document.body.insertAdjacentHTML(
     'beforeend',
@@ -157,6 +159,7 @@ export function initChatbot({ temaSlug, nombreTema }) {
   }
 
   function preguntar(consulta) {
+    ultimaPregunta = consulta;
     agregarMensaje({ quien: 'usuario', html: e(consulta) });
     responder(consulta);
   }
@@ -218,7 +221,7 @@ export function initChatbot({ temaSlug, nombreTema }) {
       } else {
         agregarMensaje({
           quien: 'bot',
-          html: `Perdón. Probá contarlo con otras palabras, o mirá la lista completa de problemas frecuentes.<a class="chatbot-msg__link" href="${urlProblemas}">Ver "Tengo un problema" →</a>`,
+          html: `Perdón. Probá contarlo con otras palabras, o dejanos la consulta y te respondemos.<a class="chatbot-msg__link" href="${urlConsulta}?mensaje=${encodeURIComponent(ultimaPregunta)}">Dejar una consulta →</a><a class="chatbot-msg__link" href="${urlProblemas}">Ver "Tengo un problema" →</a>`,
         });
       }
     }

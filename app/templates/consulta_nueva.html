@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Dejar una consulta — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Dejar una consulta
+</nav>
+<div class="hero">
+  <h1>Dejar una consulta</h1>
+  <p class="hero__desc">¿No encontraste la respuesta? Contanos qué te pasa y te respondemos acá. No hace falta usuario.</p>
+</div>
+
+{% with mensajes = get_flashed_messages(with_categories=true) %}
+  {% for categoria, mensaje in mensajes %}
+    <div class="flash flash--{{ 'error' if categoria == 'error' else 'ok' }}">{{ mensaje }}</div>
+  {% endfor %}
+{% endwith %}
+
+<form method="post" class="admin-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="admin-field">
+    <label>¿Qué querés dejar?</label>
+    <div class="opciones-tipo">
+      {% set tipo_actual = (valores.tipo if valores and valores.tipo else 'consulta') %}
+      {% for valor, etiqueta in tipos.items() %}
+      <label class="opcion-tipo">
+        <input type="radio" name="tipo" value="{{ valor }}" {{ 'checked' if valor == tipo_actual else '' }} />
+        <span>{{ etiqueta }}</span>
+      </label>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="admin-field">
+    <label for="mensaje">Contanos qué pasa</label>
+    <textarea class="input" id="mensaje" name="mensaje" required placeholder="Ej: Quiero vincular el decisorio en TIMBÓ Compras y no me aparece la opción.">{{ valores.mensaje if valores and valores.mensaje else '' }}</textarea>
+    <span class="text-faint">Contá qué estabas haciendo y qué te apareció. No pongas DNI, CUIL, teléfonos ni datos de pacientes.</span>
+  </div>
+  <div class="admin-field">
+    <label for="nombre_contacto">Tu nombre o tu sector (opcional)</label>
+    <input class="input" style="padding-left:12px" id="nombre_contacto" name="nombre_contacto" maxlength="150" value="{{ valores.nombre_contacto if valores and valores.nombre_contacto else '' }}" placeholder="Ej: Compras" />
+  </div>
+  <div><button type="submit" class="btn btn--primary">Enviar consulta</button></div>
+</form>
+{% endblock %}

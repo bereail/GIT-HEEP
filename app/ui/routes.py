@@ -230,6 +230,10 @@ def chatbot_sugerencias(tema_slug):
 
 # --------------------------------------------------------- consultas ---
 
+# Tope para que un mensaje pegado por error (o a propósito) no llene la base.
+LARGO_MAXIMO_MENSAJE = 4000
+
+
 def _generar_token():
     while True:
         token = secrets.token_urlsafe(12)
@@ -246,12 +250,15 @@ def consulta_nueva(tema_slug):
         if not mensaje or tipo not in TIPOS_CONSULTA:
             flash("Contanos tu consulta antes de enviarla.", "error")
             return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=request.form)
+        if len(mensaje) > LARGO_MAXIMO_MENSAJE:
+            flash(f"El mensaje es muy largo: acortalo a {LARGO_MAXIMO_MENSAJE} caracteres.", "error")
+            return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=request.form)
 
         consulta = Consulta(
             token=_generar_token(),
             tema_id=tema.id,
             tipo=tipo,
-            nombre_contacto=(request.form.get("nombre_contacto") or "").strip() or None,
+            nombre_contacto=(request.form.get("nombre_contacto") or "").strip()[:150] or None,
         )
         db.session.add(consulta)
         db.session.flush()
@@ -259,7 +266,9 @@ def consulta_nueva(tema_slug):
         db.session.commit()
         return redirect(url_for("ui.consulta_ver", token=consulta.token, nueva="1"))
 
-    return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=None)
+    # El chatbot manda la última pregunta en ?mensaje= para no tener que
+    # escribirla de nuevo.
+    return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=request.args)
 
 
 @ui_bp.route("/consultas/<token>")
@@ -276,8 +285,8 @@ def consulta_ver(token):
 @ui_bp.route("/consultas/<token>/responder", methods=["POST"])
 def consulta_responder(token):
     consulta = Consulta.query.filter_by(token=token).first_or_404()
-    mensaje = (request.form.get("mensaje") or "").strip()
-    if mensaje:
+    mensaje = (request.form.get("mensaje") or "").strip()[:LARGO_MAXIMO_MENSAJE]
+    if mensaje and consulta.estado != "cerrada":
         db.session.add(MensajeConsulta(consulta_id=consulta.id, autor="usuario", cuerpo=mensaje))
         consulta.estado = "abierta"
         db.session.commit()
