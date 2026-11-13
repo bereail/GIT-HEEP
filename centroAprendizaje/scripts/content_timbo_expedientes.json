@@ -166,6 +166,10 @@
             {
               "type": "warning",
               "text": "Si no ves las opciones del menú después de entrar, no es un error: significa que todavía no estás cargado/a en una oficina o te faltan permisos. Avisale a tu jefe/a para que lo pida a Informática."
+            },
+            {
+              "type": "tip",
+              "text": "TIMBÓ no te avisa siempre: el correo de cortesía cuando te llega algo es temporal. Abrí TIMBÓ todos los días como tu escritorio de trabajo y revisá las bandejas."
             }
           ],
           "quiz": []
@@ -322,6 +326,10 @@
             {
               "type": "tip",
               "text": "Marcá el trámite como urgente solo si te lo indicaron. Y en el motivo, evitá abreviaturas: poné nombre completo, DNI o CUIL, o el número de un expediente anterior, para que después se pueda encontrar."
+            },
+            {
+              "type": "tip",
+              "text": "El motivo es obligatorio y admite hasta 200 caracteres. Lo escribe quien pide la carátula, no la Mesa de Entradas: un resumen del tema con los datos que lo identifican (detalle, beneficiario, monto)."
             }
           ],
           "quiz": []
@@ -456,6 +464,18 @@
             {
               "type": "practice",
               "text": "Ejemplos de una buena referencia: \"Presupuesto proveedor A – autoclave\" o \"Planilla de consumo mensual de insumos – Clínica Médica\"."
+            },
+            {
+              "type": "tip",
+              "text": "Nombre: el título del archivo. Referencia: qué es o para qué sirve, en pocas palabras. Los archivos quedan en el orden en que se cargan y después no se pueden reordenar: subilos en el orden correcto."
+            },
+            {
+              "type": "tip",
+              "text": "Los campos con asterisco rojo son obligatorios: sin completarlos no te deja seguir. Cada archivo puede pesar hasta 50 MB; si es más grande, dividilo y subilo en más de un orden."
+            },
+            {
+              "type": "tip",
+              "text": "Fijate que el archivo termine en \".pdf\". Algunos sistemas exportan con la extensión en mayúsculas (\".PDF\") y eso puede dar problemas al subirlo: si pasa, renombralo."
             }
           ],
           "quiz": []
@@ -481,6 +501,10 @@
             {
               "type": "tip",
               "text": "Si aparece el mensaje \"Firmador digital inhabilitado\", no es un error: simplemente usá la firma electrónica en vez de la digital."
+            },
+            {
+              "type": "tip",
+              "text": "Un documento informativo se puede incorporar más adelante, pero entra en el último orden (no en el lugar donde estaba) y queda firmado por quien lo incorpora."
             }
           ],
           "quiz": []
@@ -502,6 +526,10 @@
             {
               "type": "tip",
               "text": "Queda en \"Documentos pendientes\": tildalo y tocá \"Incorporar Documentos\". No te va a pedir que lo firmes de nuevo, porque ya está firmado."
+            },
+            {
+              "type": "tip",
+              "text": "Una resolución firmada en TIMBÓ también es un documento oficial: se vincula igual, pegando su número completo."
             }
           ],
           "quiz": []
@@ -569,6 +597,10 @@
             {
               "type": "warning",
               "text": "En la providencia no pongas informes, cuadros ni gráficos: está prohibido. Cada providencia queda como una orden del expediente que no se puede borrar (Circular UG TIMBÓ 3/2025)."
+            },
+            {
+              "type": "tip",
+              "text": "Ojo al elegir la oficina: hay muchas con el mismo nombre (por ejemplo, \"Dirección General de Administración\" hay una por ministerio). Revisá el nombre completo para elegir la del organismo correcto. Y en la providencia no hacen falta formalismos: alcanza con decir para qué lo mandás."
             }
           ],
           "quiz": []
@@ -598,6 +630,10 @@
             {
               "type": "tip",
               "text": "Para sacar un expediente de la guarda temporal, primero asignátelo a vos mismo. Después: ⋮ → Acciones → \"Volver a carga de documentación\" → comentario → confirmar."
+            },
+            {
+              "type": "tip",
+              "text": "Mientras está en guarda temporal, cualquiera de la oficina puede consultar el expediente, pero nadie le puede agregar documentos. Para enviar a guarda se necesita un permiso especial: pedíselo a los administradores de TIMBÓ."
             }
           ],
           "quiz": []
@@ -654,6 +690,10 @@
             {
               "type": "tip",
               "text": "Además del número, podés buscar los expedientes iniciados por vos, tramitados por vos, caratulados en tu oficina o en tu jerarquía (tu oficina y las de arriba y abajo), filtrando por fechas, tema o motivo. En \"Más información\" ves en qué oficina está y quién lo tiene."
+            },
+            {
+              "type": "tip",
+              "text": "Para buscar necesitás el número completo. Si el expediente no está en tu oficina, la consulta solo muestra dónde se inició y por dónde pasó, no su contenido: para leerlo, pedí una vista."
             }
           ],
           "quiz": []
@@ -735,6 +775,58 @@
             {
               "type": "text",
               "text": "Además del tipo, un documento oficial puede tener características como ser comunicable (llega a la bandeja de Comunicaciones oficiales del destinatario al firmarse), de firma conjunta (lo firman varias personas en orden) o reservado (solo lo ven usuarios autorizados). Hay más de 100 tipos distintos en el catálogo oficial — si tenés dudas sobre cuál usar, consultá a tu referente."
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "Elegí el tipo por sus propiedades, no por el nombre",
+              "columns": [
+                "Ícono / propiedad",
+                "Qué significa"
+              ],
+              "rows": [
+                [
+                  "Importado",
+                  "Se sube un PDF desde la computadora"
+                ],
+                [
+                  "Libre",
+                  "Se escribe en TIMBÓ, como en un procesador de texto"
+                ],
+                [
+                  "Formulario",
+                  "Formato predefinido: solo se completan los campos"
+                ],
+                [
+                  "Firma conjunta",
+                  "Lo tienen que firmar varias personas"
+                ],
+                [
+                  "Aviso de firma",
+                  "A quienes intervienen les llega un correo cuando se firma"
+                ],
+                [
+                  "Comunicable",
+                  "Una vez firmado, el destinatario lo ve en Comunicaciones oficiales"
+                ],
+                [
+                  "Embeber archivo",
+                  "Lleva archivos adentro del PDF (se ven al descargarlo)"
+                ],
+                [
+                  "Reservado",
+                  "Solo lo elaboran y lo ven los usuarios autorizados"
+                ],
+                [
+                  "Firma con token",
+                  "Requiere firma digital con dispositivo criptográfico"
+                ]
+              ],
+              "note": "Ejemplo: \"Nota libre firma conjunta\" sirve para cualquier nota que firmen varios, aunque no sea una \"nota\". Una vez firmado, el documento no se puede modificar ni eliminar."
+            },
+            {
+              "type": "tip",
+              "text": "La referencia es obligatoria (hasta 100 caracteres): tipo de documento y lo que lo diferencia. Bien: \"Rectificación parcial Dictamen 32/2025\". Mal: \"Rectificación\". Si va a un expediente, sumale el número de expediente."
             }
           ],
           "quiz": []

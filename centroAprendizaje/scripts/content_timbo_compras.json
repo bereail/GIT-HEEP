@@ -29,7 +29,7 @@
         {
           "slug": "inscribirse-como-proveedor-rupc",
           "titulo": "Inscribirte como proveedor (RUPC)",
-          "minutos": 3,
+          "minutos": 4,
           "dificultad": "basico",
           "bloques": [
             {
@@ -39,21 +39,48 @@
             {
               "type": "prereq",
               "items": [
-                "Clave Fiscal de AFIP nivel 3",
-                "El servicio \"ECON SANTA FE - Registro Único de Proveedores y Contratistas\" incorporado a tu Clave Fiscal"
+                "Usuario de ID Ciudadana y domicilio digital constituido",
+                "Clave Fiscal de ARCA (ex AFIP) nivel 3",
+                "El servicio \"API_ECON SANTA FE REGISTRO ÚNICO DE PROVEEDORES Y CONTRATISTAS\" dado de alta en tu Clave Fiscal"
               ]
             },
             {
               "type": "step",
               "number": 1,
-              "explanation": "Incorporá el servicio en AFIP (solo la primera vez).",
-              "doThis": "Entrá a www.afip.gob.ar → \"Administrador de relaciones de Clave Fiscal\" → agregá el servicio \"ECON SANTA FE - Registro Único de Proveedores y Contratistas\"."
+              "explanation": "Dá de alta el servicio en ARCA (solo la primera vez).",
+              "doThis": "Entrá a la página de ARCA (ex AFIP) → \"Administrador de relaciones de Clave Fiscal\" → agregá el servicio \"API_ECON SANTA FE REGISTRO ÚNICO DE PROVEEDORES Y CONTRATISTAS\"."
             },
             {
               "type": "step",
               "number": 2,
               "explanation": "Entrá al sitio del Registro.",
-              "doThis": "Andá a www.santafe.gov.ar/proveedores → pestaña \"Acceso Proveedor\" → \"Ingreso con Clave Fiscal\". Te redirige solo al sitio de autenticación de AFIP."
+              "doThis": "Andá a www.santafe.gov.ar/proveedores → \"Acceso Proveedor\" → ingresá con tu CUIT y Clave Fiscal en la pantalla de ARCA."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Adjuntá la documentación obligatoria.",
+              "doThis": "Subí cada documento en PDF en su lugar de la lista (por ejemplo, el poder del representante o el certificado del Registro de Deudores Alimentarios Morosos)."
+            },
+            {
+              "type": "step",
+              "number": 5,
+              "explanation": "Presentá la solicitud.",
+              "doThis": "Aceptá los términos y condiciones y confirmá. Después, en el menú \"Estado del trámite\", podés imprimir la constancia de inicio del trámite.",
+              "lookFor": "La constancia de inicio sirve mientras tanto: el pliego acepta \"constancia del RUPC o del inicio del trámite\"."
+            },
+            {
+              "type": "step",
+              "number": 6,
+              "explanation": "Esperá la validación.",
+              "doThis": "La Subsecretaría de Contrataciones y Gestión de Bienes revisa los datos. Si falta algo, te lo reclama por correo electrónico: respondé lo que pidan.",
+              "lookFor": "Cuando termina, la Subsecretaría emite el acto administrativo que concluye el trámite y te lo notifica."
+            },
+            {
+              "type": "step",
+              "number": 7,
+              "explanation": "Imprimí tu constancia de inscripción.",
+              "doThis": "Ya notificado, entrá a www.santafe.gov.ar/proveedores y descargala desde \"Impresión de constancia\"."
             },
             {
               "type": "step",
@@ -64,20 +91,14 @@
             {
               "type": "tip",
               "text": "Desde el panel de bienvenida del RUPC también podés hacer una Actualización o Modificación de Datos, ver tu Legajo Digital, imprimir la Constancia de Inscripción y consultar el Estado del Trámite."
-            },
-            {
-              "type": "video",
-              "url": "https://youtu.be/Wb4ZRvB3YSo",
-              "title": "Instructivo para registrarse como proveedor de bienes y servicios del Gobierno de Santa Fe",
-              "minutos": 1
             }
           ],
           "quiz": [
             {
               "type": "multiple-choice",
-              "question": "¿Qué necesitás en AFIP para inscribirte en el RUPC?",
+              "question": "¿Qué necesitás en ARCA (ex AFIP) para inscribirte en el RUPC?",
               "options": [
-                "Clave Fiscal nivel 3 con el servicio ECON SANTA FE incorporado",
+                "Clave Fiscal nivel 3 con el servicio API_ECON SANTA FE dado de alta",
                 "Solo tu CUIT, sin Clave Fiscal",
                 "Una Clave Fiscal nivel 1"
               ],
@@ -1362,6 +1383,34 @@
             {
               "type": "tip",
               "text": "Los nombres de bandejas, botones y estados salen de los videos oficiales \"Paso 01\" a \"Paso 04\" y de las circulares. Si algo no coincide con tu pantalla, avisá desde \"Dejar una consulta\"."
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "¿Dónde pedir asistencia?",
+              "columns": [
+                "Para",
+                "A quién"
+              ],
+              "rows": [
+                [
+                  "Crear o modificar oficinas en TIMBÓ",
+                  "Secretaría de Gestión Pública (Ministerio de Gobierno e Innovación Pública)"
+                ],
+                [
+                  "Permisos y roles (Gestor, Supervisor, Evaluador)",
+                  "Sectorial de Informática de tu jurisdicción"
+                ],
+                [
+                  "Dudas sobre el proceso de compra",
+                  "Subsecretaría de Contrataciones y Gestión de Bienes (Ministerio de Economía)"
+                ],
+                [
+                  "Problemas técnicos del sistema",
+                  "Secretaría de Tecnologías para la Gestión"
+                ]
+              ],
+              "note": "Fuente: Clase 01 de la capacitación oficial \"¿Qué es Timbó Compras?\"."
             },
             {
               "type": "tip",
