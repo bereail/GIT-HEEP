@@ -99,17 +99,53 @@ importar_faq_chats → importar_equivalencias, y después
 `systemctl restart timbo-capacitaciones`. Antes, backup de
 `instance/centro_aprendizaje.sqlite3`.
 
-Pendiente de esta etapa:
-- 10 videos oficiales sin subtítulos (compras directas 70 min, Clase 01 de
-  Compras, 4 capacitaciones largas de Expedientes, CD-01, registro de
-  proveedor, "Expediente/Documentos oficiales ¿Cómo lo hacemos?"): se
-  transcriben localmente con whisper.cpp y falta volcar lo útil al portal.
-  6 videos de las listas son privados. "Edición MS-Compras" y "Del papel a
-  la IA" no aplican al hospital.
-- El test `test_mensaje_nuevo_del_usuario_se_marca_no_leido_por_admin` falla
-  a veces por la resolución de las marcas de tiempo.
-- Confirmar con Compras si aplica el control de la URC (Circular SCyGB
-  03/2026) y con RRHH si ya rige el domicilio digital para el personal.
+Hecho después (13/11, commit `2108bcb`, deployado): se revisaron los 10
+videos oficiales sin subtítulos. Los que tienen voz se transcribieron en esta
+PC con whisper.cpp; los mudos (y la Clase 01, que whisper leyó como
+"música") se miraron cuadro por cuadro con mosaicos de ffmpeg. Lo útil quedó
+en el portal: tips en subir archivo, pase, vincular, buscar, documentos
+oficiales; tabla "¿Dónde pedir asistencia?" en "Hacer una compra"; y la
+lección del RUPC con los 7 pasos del instructivo oficial (servicio
+"API_ECON SANTA FE REGISTRO ÚNICO DE PROVEEDORES Y CONTRATISTAS" en ARCA).
+6 videos de las listas son privados y no se pueden ver. "Edición
+MS-Compras" y "Del papel a la IA" no aplican al hospital.
+
+Cómo transcribir (por si aparecen videos nuevos): yt-dlp
+`--js-runtimes node` para bajar el audio; whisper.cpp b5130 para Windows,
+variante `ggml-cpu-sse42` (esta PC es un Celeron sin AVX:
+faster-whisper/ctranslate2 se cuelga), modelo `ggml-base.bin`, con
+`-l es -t 2 -mc 0 -sns` (sin `-mc 0 -sns` entra en un bucle de "(Música)").
+Necesita el Visual C++ Redistributable (VCOMP140.DLL). El clasificador de
+permisos no deja que Claude ejecute `whisper-cli.exe`: lo corre la usuaria
+con un `.bat`.
+
+## Pendientes (actualizado 2026-11-13)
+
+Contenido:
+1. Lección propia de contrataciones directas por urgencia o por proceso
+   desierto (Circular UG TIMBÓ 8/2026): hoy es solo un tip en Compras.
+2. Montos de "¿Qué procedimiento corresponde según el monto?": actualizarlos
+   cada año con la circular nueva de la SCyGB.
+3. "Atención Virtual ¿Cómo lo hacemos?" (8:45, lado agente) sigue sin
+   profundizar.
+4. Opcional: el texto completo de la Clase 01 de Compras (7rIDyLtWlHM) no
+   está transcripto; lo importante ya salió de las diapositivas.
+
+Para confirmar con personas del hospital:
+5. Compras: los nombres exactos de botones del lado del hospital en "Hacer
+   una compra" (salen de los videos y circulares; la lección lo avisa), y si
+   les aplica el control de la URC (Circular SCyGB 03/2026, dirigida a la
+   Administración Central).
+6. RRHH: si ya rige el domicilio digital para el personal.
+7. Consultas abiertas de los chats: SIN sin "comenzar una carga",
+   numeración de decisorios, documentos HTML→PDF y servidor propio para los
+   videos. Cuando haya respuesta, pasar a `verificado: True` en
+   `scripts/importar_faq_chats.py`.
+
+Técnico:
+8. El test `test_mensaje_nuevo_del_usuario_se_marca_no_leido_por_admin`
+   falla a veces por la resolución de las marcas de tiempo.
+9. Pulido final de UI/UX.
 
 ## Estado (2026-11-12)
 
@@ -305,12 +341,12 @@ Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md y el README):
      tutoriales, 27 términos, 21 situaciones, 35 tareas.
      `content_timbo_compras.json` → 16 tutoriales, 27 términos, 8
      situaciones, 17 tareas (solo cambió la URL, no el conteo).
-2. Consultas abiertas en los chats: SIN sin "comenzar una carga",
-   numeración de decisorios, documentos HTML→PDF y servidor propio para
-   los videos. Cuando haya respuesta, pasar a `verificado: True` en
-   `scripts/importar_faq_chats.py`.
-3. Conseguir y cargar las guías PDF de artículos o nomenclador SIPAF.
-4. Pulido final de UI/UX.
+2. ~~Consultas abiertas en los chats~~ — pasó a "Pendientes (actualizado
+   2026-11-13)", más arriba.
+3. ~~Conseguir y cargar las guías PDF de artículos o nomenclador SIPAF~~ —
+   hecho: `app/static/docs/timbo-compras/guia-busqueda-nomenclador-y-solicitud-sipaf.pdf`,
+   enlazada desde el nomenclador y la lección de alta de artículos.
+4. Pulido final de UI/UX — pasó a la lista de arriba.
 
 ## Equivalencia de artículos (cerrado 2026-11-13)
 
