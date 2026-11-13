@@ -39,7 +39,11 @@
               "Inscripción en el RUPC (Registro Único de Proveedores y Contratistas), con los datos de contacto y la situación jurídica al día."
             ] },
             { "type": "warning", "text": "Estar inscripto en el RUPC es requisito indispensable para presentar ofertas. Paso a paso para inscribirse: santafe.gov.ar/proveedores/site/index.php?a=documentacion.guiadetramites" },
-            { "type": "tip", "text": "Si Atención Virtual te pide subir el nivel de autenticación, hacelo antes de la fecha de apertura para no quedarte afuera." },
+            { "type": "tip", "text": "Necesitás la ID Ciudadana de nivel 2 o más. Se sube con fotos del DNI, con ARCA o con Mi Argentina. Hacelo antes de la fecha de apertura para no quedarte afuera." },
+            { "type": "concepts", "items": [
+              { "term": "¿Quién tiene que tener la ID Ciudadana?", "def": "La persona física que oferta en nombre del proveedor, y tiene que tener facultades para hacerlo (por ejemplo, ser del directorio o tener un poder)." },
+              { "term": "Invitaciones", "def": "TIMBÓ invita por correo a los proveedores de la nómina y a los inscriptos en el RUPC en el rubro del proceso." }
+            ] },
             { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/PasoAPasoParaOfertar.docx.pdf" },
             { "type": "video", "url": "https://youtu.be/bLSixoqJheg", "title": "Requisitos para acceder a Timbó Compras", "minutos": 1 },
             { "type": "video", "url": "https://youtu.be/8ba14toewQ8", "title": "Cómo crear tu ID Ciudadana" },
@@ -58,7 +62,7 @@
             { "type": "text", "text": "Buscá el proceso en el portal de compras (santafe.gov.ar/gestionesdecompras) y tocá \"Ofertar\", o entrá directo a gestionvirtual.santafe.gob.ar. Vas a ingresar con tu ID Ciudadana." },
             { "type": "step", "number": 1, "explanation": "Abrí la bandeja \"Participar de un proceso\". Ahí están todos los procesos electrónicos publicados.", "lookFor": "La fila del proceso que te interesa.", "doThis": "Tocá los tres puntitos (⋮) para previsualizar y descargar el pliego, el acto que aprobó el proceso, la nómina de proveedores y el cronograma." },
             { "type": "step", "number": 2, "explanation": "Tocá \"Participar del proceso\".", "doThis": "Completá los datos del proveedor que representás, su CUIT y un correo electrónico. Después, \"Enviar\"." },
-            { "type": "step", "number": 3, "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\".", "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial." },
+            { "type": "step", "number": 3, "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\". Ojo: esto es solo tu intención de participar (como antes, comprar el pliego). Todavía no ofertaste.", "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial." },
             { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoAcceder-yParticiparDeOferta.pdf" },
             { "type": "video", "url": "https://youtu.be/5qcZGh3euOU", "title": "Cómo ingresar a Timbó Compras y participar de un proceso", "minutos": 2 }
           ],
@@ -87,7 +91,13 @@
             { "type": "step", "number": 2, "explanation": "Formulario \"Requisitos mínimos\": la documentación que pide el pliego.", "doThis": "En cada fila: ⋮ → \"Editar\" → \"Examinar\" para adjuntar → breve descripción → \"Guardar\". Si querés, sumá un anexo adicional. Después, \"Enviar\"." },
             { "type": "step", "number": 3, "explanation": "Con los dos formularios enviados, tocá \"Presentar\" (o \"Anular\" si te arrepentiste).", "lookFor": "Que la oferta quede en estado \"Presentada\"." },
             { "type": "warning", "text": "Solo las ofertas en estado \"Presentada\" se abren automáticamente en el acto de apertura." },
-            { "type": "tip", "text": "Aunque ya esté presentada, podés editar cualquier dato hasta la fecha y hora de apertura." },
+            { "type": "warning", "text": "Podés editar la oferta hasta un segundo antes de la apertura, pero al editarla deja de estar presentada: tenés que volver a enviar los dos formularios y tocar \"Presentar\" otra vez. Si no, no se abre." },
+            { "type": "concepts", "items": [
+              { "term": "Adjuntos", "def": "Solo PDF: no se aceptan ZIP ni imágenes (JPG). Puede ser documentación escaneada: la oferta la firmás vos con tu ID Ciudadana." },
+              { "term": "Documentación vigente en el RUPC", "def": "Si un requisito ya está vigente en el registro, marcalo así y la comisión lo verifica ahí, sin que tengas que adjuntarlo." },
+              { "term": "Alternativas y cotización parcial", "def": "Si el pliego lo permite, en el renglón tocá \"Añadir alternativa\" o cotizá una cantidad menor." },
+              { "term": "Anexos adicionales", "def": "Al final de \"Requisitos mínimos\" podés sumar documentos de más (por ejemplo, certificados de varias personas)." }
+            ] },
             { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoCompletarFormulario.pdf" },
             { "type": "video", "url": "https://youtu.be/fcEjp7lJGUE", "title": "Cómo completar y presentar una oferta", "minutos": 3 }
           ],
@@ -176,7 +186,7 @@
               ["Una oferta", "Oferta en estado \"Espera de evaluación\"", "Acciones → Iniciar impugnación a la oferta → Acciones → completar → Enviar"],
               ["La preadjudicación", "Evaluación en estado \"Preadjudicado\"", "Previsualizar el informe → Iniciar impugnación a la preadjudicación → Acciones → completar → Enviar y confirmar"]
             ] },
-            { "type": "tip", "text": "En el formulario podés descargar todas las ofertas presentadas para analizarlas antes de escribir." },
+            { "type": "tip", "text": "Después de la apertura, durante la ventana de impugnación (2 días hábiles más el día de gracia), en \"Acciones\" podés ver el acta de apertura y descargar las ofertas de los demás para analizarlas." },
             { "type": "text", "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación." },
             { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarImpugnaciones.pdf" },
             { "type": "video", "url": "https://youtu.be/0ExXUT8-M14", "title": "Cómo realizar impugnaciones", "minutos": 3 }
@@ -597,7 +607,7 @@
       "slug": "mi-oferta-no-se-abrio",
       "situacion": "Mi oferta no se abrió en la apertura",
       "descripcion": "Completaste la oferta pero no apareció en el acto de apertura.",
-      "causa": "Solo se abren las ofertas en estado \"Presentada\". Si quedó en borrador o se anuló, no participa.",
+      "causa": "Solo se abren las ofertas en estado \"Presentada\". Si quedó en borrador, se anuló o se editó y no se volvió a presentar, no participa.",
       "solucion": "Antes de la fecha de apertura, revisá que los dos formularios estén enviados y que hayas tocado \"Presentar\".",
       "categoria_libre": "Ofertas",
       "tutorial_categoria_slug": "ofertar",
@@ -608,7 +618,7 @@
       "slug": "cambiar-oferta-presentada",
       "situacion": "Ya presenté la oferta y me equivoqué en un dato",
       "descripcion": "Querés corregir un precio o un adjunto de una oferta ya presentada.",
-      "solucion": "Podés editarla hasta la fecha y hora de apertura. Después de la apertura, solo se corrige si Compras te pide una subsanación.",
+      "solucion": "Podés editarla hasta un segundo antes de la apertura, pero después de editar tenés que volver a enviar los dos formularios y tocar \"Presentar\" otra vez. Después de la apertura, solo se corrige si Compras te pide una subsanación.",
       "categoria_libre": "Ofertas",
       "tutorial_categoria_slug": "ofertar",
       "tutorial_slug": "completar-y-presentar",
