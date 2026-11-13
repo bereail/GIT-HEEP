@@ -75,7 +75,7 @@
             },
             {
               "type": "text",
-              "text": "¿Olvidaste tu contraseña? Desde la pantalla de ingreso, con tu CUIL podés recuperarla por email, por llamado telefónico al número registrado, o con ARCA/Mi Argentina si creaste la cuenta así. Si ninguno funciona, llamá al 0800-770-801 (lunes a viernes de 8 a 18 h)."
+              "text": "¿Olvidaste tu contraseña? Desde la pantalla de ingreso, con tu CUIL podés recuperarla por email, por llamado telefónico al número registrado, o con ARCA/Mi Argentina si creaste la cuenta así. Si ninguno funciona, llamá al 0800 777 0801 (lunes a viernes de 8 a 18 h)."
             },
             {
               "type": "tip",
@@ -310,6 +310,10 @@
             {
               "type": "text",
               "text": "Al guardar y confirmar, se genera un número de solicitud y el pedido queda en la pestaña \"En curso\", a la espera de que la oficina caratuladora lo revise."
+            },
+            {
+              "type": "tip",
+              "text": "La carátula sigue el Nomenclador de Trámites. Evitá nombres genéricos como \"Varios\" o \"Tramitaciones varias\": la normativa lo prohíbe expresamente (Circular UG TIMBÓ 3/2025)."
             }
           ],
           "quiz": []
@@ -549,6 +553,10 @@
             {
               "type": "warning",
               "text": "¿Mandaste el expediente a la oficina equivocada? Avisale a esa oficina para que te lo devuelva con un pase — no hay forma de \"deshacer\" un pase desde tu lado."
+            },
+            {
+              "type": "warning",
+              "text": "En la providencia no pongas informes, cuadros ni gráficos: está prohibido. Cada providencia queda como una orden del expediente que no se puede borrar (Circular UG TIMBÓ 3/2025)."
             }
           ],
           "quiz": []
@@ -570,6 +578,10 @@
             {
               "type": "warning",
               "text": "Enviar un expediente al Archivo es el último paso y es irreversible: ya no se puede volver a trabajar, solo consultar."
+            },
+            {
+              "type": "tip",
+              "text": "Cuando un expediente terminó y no tiene nada pendiente, se lo devuelve al área de origen. La guarda y el archivo los hacen solo los usuarios habilitados (Circular UG TIMBÓ 3/2025)."
             }
           ],
           "quiz": []
@@ -651,6 +663,10 @@
             {
               "type": "warning",
               "text": "Compartir vistas tiene un máximo de 500 expedientes por vez, y puede tardar hasta una hora en procesarse — no es instantáneo. Los destinatarios reciben un correo cuando está listo."
+            },
+            {
+              "type": "tip",
+              "text": "Así también se le da vista al Tribunal de Cuentas: compartiendo el expediente desde \"Gestión de visualización\". El expediente sigue su trámite mientras el TCP lo ve (Circular UG TIMBÓ 9/2026)."
             }
           ],
           "quiz": []
@@ -796,9 +812,86 @@
             {
               "type": "tip",
               "text": "Eliminar una comunicación solo la saca de tu propia bandeja — los demás destinatarios la siguen teniendo."
+            },
+            {
+              "type": "warning",
+              "text": "Una comunicación oficial vale como notificación desde que llega a tu bandeja, y los plazos corren desde el día hábil siguiente. No vale decir que no entraste o que no tenías conexión: revisá la bandeja seguido (Circular UG TIMBÓ 3/2025)."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Comunicación oficial",
+                  "def": "Información o instrucciones dentro de la administración. Se manda con el documento oficial \"Comunicaciones oficiales\"."
+                },
+                {
+                  "term": "Notificación",
+                  "def": "Aviso formal a una persona (por ejemplo, un ciudadano o un proveedor). Va a su domicilio digital con el documento oficial \"Notificaciones\" (Circular UG TIMBÓ 6/2026)."
+                }
+              ]
             }
           ],
           "quiz": []
+        },
+        {
+          "slug": "pedir-licencia-sjl",
+          "titulo": "Pedir una licencia o justificación (SJL)",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Las licencias y justificaciones se piden con un documento oficial: \"Justificaciones y licencias\" (SJL). Lo firman vos, tu jefe o jefa y, al final, Recursos Humanos."
+            },
+            {
+              "type": "warning",
+              "text": "Esto no reemplaza el aviso previo a tu superior directo (en persona, por teléfono o por correo)."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Creá el documento.",
+              "doThis": "Documentos oficiales → Gestión → \"Nuevo documento oficial\" → Iniciar. Usuario productor: \"Yo mismo\". Tipo de documento: \"Justificaciones y licencias\" (SJL). Guardar."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Completalo.",
+              "doThis": "En \"Pendientes\", ⋮ → Documento oficial. Completá DNI, fecha de inicio y de fin, cantidad de días y el artículo que corresponde (del desplegable). En Referencia repetí tus datos.",
+              "lookFor": "Si el artículo lo pide, adjuntá la documentación respaldatoria (por ejemplo, el certificado)."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Armá la cadena de firmas.",
+              "doThis": "En \"Firma conjunta\": primero vos, después tu jefe o jefa directo, luego los niveles superiores que correspondan, y al final alguien de Recursos Humanos."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Mandalo y firmalo.",
+              "doThis": "\"Acciones\" → \"Enviar a firmar\" → Continuar → Confirmar. En \"Pendientes\": ⋮ → Evaluar → \"Acciones\" → \"Aprobar firma conjunta\" → firma electrónica → Confirmar.",
+              "lookFor": "Lo seguís desde \"Iniciados por mí\". Cuando firma el último, pasa a \"Aprobados\" (o a \"Rechazados\", si no lo aprueban)."
+            },
+            {
+              "type": "tip",
+              "text": "¿Te toca firmar la licencia de otra persona? Está en tus \"Pendientes\" con estado \"Firmar documento oficial\": ⋮ → Evaluar → \"Acciones\" → \"Aprobar firma conjunta\" → firma electrónica."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/OmPfwB6Quek",
+              "title": "Solicitud de justificaciones y licencias",
+              "minutos": 5
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Si pido la licencia por TIMBÓ, ya no hace falta avisarle a mi jefe.",
+              "answer": false,
+              "explanation": "El documento SJL no reemplaza el aviso previo a tu superior directo."
+            }
+          ]
         },
         {
           "slug": "comunicable-externo",
@@ -961,6 +1054,10 @@
             {
               "type": "tip",
               "text": "Una vez firmada, la resolución se convierte en documento oficial: cualquier usuario de TIMBÓ puede consultarla por su número desde el módulo Documentos oficiales."
+            },
+            {
+              "type": "warning",
+              "text": "Todo acto administrativo registrable firmado se carga en el SIN, y desde el SIN se le manda por correo al Tribunal de Cuentas. Lo gestionan las Direcciones Generales de Despacho (Circular UG TIMBÓ 11/2026)."
             }
           ],
           "quiz": []
@@ -1242,6 +1339,61 @@
             }
           ],
           "quiz": []
+        },
+        {
+          "slug": "firmador-digital-web",
+          "titulo": "Firmar un PDF con el Firmador Digital Web",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Para firmar electrónicamente un PDF que no está en TIMBÓ (o pedirle la firma a otras personas), usá el Firmador Digital Web de la Provincia. Es gratis y solo necesitás tu ID Ciudadana."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Subí el documento.",
+              "doThis": "Entrá a santafe.gob.ar/firma con tu ID Ciudadana → \"Bandeja de documentos\" → \"Nuevo\" → adjuntá el PDF, elegí el tipo y escribí una descripción → Guardar."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Firmalo.",
+              "doThis": "Menú de acciones → \"Firma electrónica\"."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Si firman otras personas, compartilo.",
+              "doThis": "\"Compartir\" → buscá por nombre, apellido o CUIL → seleccioná a la persona y tocá la flecha → Guardar.",
+              "lookFor": "Les llega un aviso al correo de su ID Ciudadana. Tienen que tener ID Ciudadana."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Descargalo y validalo.",
+              "doThis": "Acciones → \"Ver\" → descargá el PDF firmado. Para comprobar que nadie lo modificó después, en Inicio usá \"Validación de firmas\"."
+            },
+            {
+              "type": "tip",
+              "text": "La firma electrónica tiene validez en el entorno digital, y para la administración provincial tiene el mismo valor que la firma manuscrita."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/ETjXfXTyaBg",
+              "title": "Cómo firmar electrónicamente desde el Firmador Digital Web",
+              "minutos": 3
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Para que otra persona firme en el Firmador Digital Web, tiene que tener ID Ciudadana.",
+              "answer": true,
+              "explanation": "La búsqueda y la firma se hacen con la ID Ciudadana."
+            }
+          ]
         }
       ]
     },
@@ -1785,6 +1937,31 @@
       "termino": "SIPREC",
       "definicion": "Sistema Provincial de Capturas, Secuestros y Paraderos. Uno de los trámites que se gestionan por Atención Virtual.",
       "modulo": "Atención Virtual"
+    },
+    {
+      "termino": "Expediente reservado",
+      "definicion": "Expediente con acceso restringido. Solo lo pueden marcar usuarios habilitados, de forma excepcional y con una providencia fundada (Circular UG TIMBÓ 3/2025).",
+      "modulo": "Expedientes"
+    },
+    {
+      "termino": "Notificación (DO)",
+      "definicion": "Documento oficial para notificar formalmente a una persona en su domicilio digital. No es lo mismo que una comunicación oficial interna (Circular UG TIMBÓ 6/2026).",
+      "modulo": "Documentos oficiales"
+    },
+    {
+      "termino": "PMI",
+      "definicion": "Promotor Ministerial de Innovación: el nexo de cada jurisdicción con la Secretaría de Gestión Pública para pedir trámites nuevos en TIMBÓ.",
+      "modulo": "General"
+    },
+    {
+      "termino": "SJL",
+      "definicion": "Documento oficial \"Justificaciones y licencias\": con él se piden licencias y justificaciones. Lo firman el agente, su jefe y Recursos Humanos.",
+      "modulo": "Documentos oficiales"
+    },
+    {
+      "termino": "Firmador Digital Web",
+      "definicion": "Herramienta gratuita de la Provincia (santafe.gob.ar/firma) para firmar PDF con la ID Ciudadana y validar firmas.",
+      "modulo": "Firma y seguridad"
     }
   ],
   "situaciones": [
@@ -1963,7 +2140,7 @@
       "situacion": "Olvidé mi contraseña de TIMBÓ",
       "descripcion": "No te acordás la contraseña de tu usuario de ID Ciudadana / Intranet.",
       "causa": "Es normal — pasa con cualquier contraseña que no se usa seguido.",
-      "solucion": "En la pantalla de ingreso, tocá \"¿Olvidaste tu contraseña?\", ingresá tu CUIL y elegí cómo recuperarla: por email, por llamado telefónico al número registrado, o con ARCA/Mi Argentina si creaste la cuenta así. Si ninguna opción funciona, llamá al 0800-770-801 (lunes a viernes de 8 a 18 h).",
+      "solucion": "En la pantalla de ingreso, tocá \"¿Olvidaste tu contraseña?\", ingresá tu CUIL y elegí cómo recuperarla: por email, por llamado telefónico al número registrado, o con ARCA/Mi Argentina si creaste la cuenta así. Si ninguna opción funciona, llamá al 0800 777 0801 (lunes a viernes de 8 a 18 h).",
       "tutorial_categoria_slug": "primeros-pasos",
       "tutorial_slug": "crear-id-ciudadana",
       "verificado": true
@@ -1997,6 +2174,42 @@
       "categoria_libre": "Atención Virtual",
       "tutorial_categoria_slug": "atencion-virtual",
       "tutorial_slug": "hacer-tramite-como-ciudadano",
+      "verificado": true
+    },
+    {
+      "slug": "tcp-pide-algo-por-av",
+      "situacion": "Llegó un pedido del Tribunal de Cuentas por Atención Virtual",
+      "descripcion": "El TCP pide información o documentación sobre un expediente que tiene en vista.",
+      "solucion": "Mesa de Entradas pide el expediente a quien lo tenga, suma el pedido como nueva orden, lo deriva a la Secretaría de Administración (o la que corresponda), responde la Atención Virtual avisando la recepción y la cierra. La respuesta se hace en el mismo expediente con el documento oficial \"Respuesta al Tribunal de Cuentas – Importado\" o \"– Libre\", con el usuario del TCP como destinatario.",
+      "notas_adicionales": "Quien tenga el expediente tiene que mandarlo enseguida, sin pases intermedios. Circular UG TIMBÓ 11/2026, Anexo I.",
+      "categoria_libre": "Tribunal de Cuentas",
+      "verificado": true
+    },
+    {
+      "slug": "notificaciones-personal-domicilio-digital",
+      "situacion": "¿Me van a notificar al domicilio digital? ¿Y el recibo de sueldo?",
+      "descripcion": "Dudas sobre cómo le llegan las notificaciones al personal.",
+      "solucion": "Desde el 1 de junio de 2026, las notificaciones al personal van al domicilio digital, y el recibo de sueldo también se baja desde ahí. Hay que adherirse al domicilio digital en Atención Virtual con ID Ciudadana de nivel 2 o más.",
+      "notas_adicionales": "La Circular UG TIMBÓ 6/2026 está dirigida al Ministerio de Gobierno e Innovación Pública: confirmá con Recursos Humanos si ya aplica en tu hospital.",
+      "categoria_libre": "Notificaciones",
+      "verificado": false
+    },
+    {
+      "slug": "digitalizar-un-tramite",
+      "situacion": "Queremos que un trámite nuestro se haga por TIMBÓ o por Atención Virtual",
+      "descripcion": "Un procedimiento del hospital todavía no está en TIMBÓ.",
+      "solucion": "Para trámites internos: mandale al PMI de tu jurisdicción el nombre del trámite, las oficinas que intervienen y un resumen del circuito; el PMI lo autoriza y lo reenvía a procesosdigitales@santafe.gov.ar. Para trámites de Atención Virtual: el funcionario responsable lo pide en atencionvirtual.santafe.gob.ar con la gestión \"Solicitud para Digitalización de Trámites para Atención Virtual\".",
+      "notas_adicionales": "Circulares UG TIMBÓ 3/2025 (Anexo II) y 4/2026.",
+      "categoria_libre": "Trámites nuevos",
+      "verificado": true
+    },
+    {
+      "slug": "no-pedir-documentacion-rpjec",
+      "situacion": "¿Le puedo pedir al ciudadano el estatuto o el certificado de subsistencia de su asociación?",
+      "descripcion": "Un trámite de Atención Virtual pide documentación de una persona jurídica.",
+      "solucion": "No. Desde el 13/11/2025 no se le puede pedir al ciudadano documentación que ya tiene el Registro de Personas Jurídicas (RPJEC). El certificado de subsistencia y el estatuto se sacan en santafe.gov.ar/cert-igpj con tu ID Ciudadana. Lo registrado después del 25/08/2025 está en el SIN. Lo anterior se pide a rpjec-institucional@santafe.gov.ar.",
+      "notas_adicionales": "Circular conjunta UG TIMBÓ 7/2025.",
+      "categoria_libre": "Atención Virtual",
       "verificado": true
     }
   ],
@@ -2428,6 +2641,38 @@
       ],
       "tutorial_categoria_slug": "atencion-virtual",
       "tutorial_slug": "hacer-tramite-como-ciudadano"
+    },
+    {
+      "slug": "pedir-licencia",
+      "pregunta": "¿Cómo pido una licencia o justificación?",
+      "keywords": [
+        "licencia",
+        "justificacion",
+        "sjl",
+        "ausencia",
+        "falta",
+        "enfermedad",
+        "articulo",
+        "recursos humanos",
+        "vacaciones"
+      ],
+      "tutorial_categoria_slug": "documentos-oficiales",
+      "tutorial_slug": "pedir-licencia-sjl"
+    },
+    {
+      "slug": "firmar-pdf",
+      "pregunta": "¿Cómo firmo un PDF que no está en TIMBÓ?",
+      "keywords": [
+        "firmar pdf",
+        "firmador",
+        "firmador web",
+        "firma",
+        "validar firma",
+        "pdf",
+        "compartir firma"
+      ],
+      "tutorial_categoria_slug": "firma-y-seguridad",
+      "tutorial_slug": "firmador-digital-web"
     }
   ],
   "quickstart_steps": [
