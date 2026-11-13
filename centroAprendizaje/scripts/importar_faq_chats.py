@@ -249,7 +249,8 @@ SITUACIONES_TIMBO_COMPRAS = [
         "situacion": "El artículo que necesito no aparece en el nomenclador",
         "descripcion": "Buscás un artículo para el pedido y no lo encontrás.",
         "solucion": (
-            "Primero buscalo en el catálogo web con palabras clave y sinónimos. Si no está, pedí el alta con el Documento Oficial "
+            "Primero buscalo en el catálogo web con palabras clave y sinónimos. Si no está: los medicamentos y descartables "
+            "se le piden a la Dirección Provincial de Farmacia (los crea en SUFYD); el resto, con el Documento Oficial "
             "\"Timbó Compras: Alta de bienes y servicios CAByS\" (Res. SCyGB 292/2026)."
         ),
         "notas_adicionales": 'También existen las guías "Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes" y "Guía en cuatro pasos para solicitar artículos".',

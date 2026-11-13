@@ -161,6 +161,11 @@
               "type": "video",
               "url": "https://youtu.be/gV_qoxpmAjE",
               "title": "Cómo adherirte al Domicilio Digital"
+            },
+            {
+              "type": "pdf",
+              "file": "quienes-y-como-acceder.pdf",
+              "title": "¿Quiénes pueden ingresar a Timbó Compras?"
             }
           ],
           "quiz": [
@@ -217,8 +222,9 @@
               "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial."
             },
             {
-              "type": "tip",
-              "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoAcceder-yParticiparDeOferta.pdf"
+              "type": "pdf",
+              "file": "como-acceder-y-participar-de-oferta.pdf",
+              "title": "Cómo ingresar y participar de un proceso"
             },
             {
               "type": "video",
@@ -320,8 +326,9 @@
               ]
             },
             {
-              "type": "tip",
-              "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoCompletarFormulario.pdf"
+              "type": "pdf",
+              "file": "como-completar-formulario.pdf",
+              "title": "Cómo completar y presentar la oferta"
             },
             {
               "type": "warning",
@@ -414,8 +421,9 @@
               "text": "Si llega una circular modificatoria, tu oferta pasa a \"Pendientes\" (\"proceso de publicación en edición\"). Cuando se publique el pliego nuevo vuelve a \"Asignados\": revisá los cambios desde ⋮ → \"Previsualizar\" antes de seguir."
             },
             {
-              "type": "tip",
-              "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarConsultas.pdf"
+              "type": "pdf",
+              "file": "como-realizar-consultas.pdf",
+              "title": "Consultas y circulares"
             },
             {
               "type": "video",
@@ -485,8 +493,9 @@
               "text": "Cuando termines, el trámite aparece en \"Finalizados\": desde ahí lo podés previsualizar."
             },
             {
-              "type": "tip",
-              "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoSubsanar.pdf"
+              "type": "pdf",
+              "file": "como-subsanar.pdf",
+              "title": "Subsanación, mejora de precios y aclaración"
             },
             {
               "type": "video",
@@ -557,8 +566,9 @@
               "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación."
             },
             {
-              "type": "tip",
-              "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarImpugnaciones.pdf"
+              "type": "pdf",
+              "file": "como-realizar-impugnaciones.pdf",
+              "title": "Cómo presentar impugnaciones"
             },
             {
               "type": "video",
@@ -888,6 +898,19 @@
               "url": "https://youtu.be/BzxCGnsajmw",
               "title": "Gestión de pago para compras directas",
               "minutos": 1
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Formularios de compra directa",
+                  "def": "CD-01 solicitud de contratación directa, CD-02 solicitud de presupuesto, CD-03 evaluación de propuestas y adjudicación, CD-04 orden de provisión. Se crean desde Documentos oficiales y se vinculan al expediente."
+                },
+                {
+                  "term": "Pago",
+                  "def": "Después de adjudicar, el pago también se gestiona en TIMBÓ. El paso a paso de cada tipo de compra directa está en la biblioteca de procedimientos administrativos (Timboteca)."
+                }
+              ]
             }
           ],
           "quiz": [
@@ -2249,19 +2272,38 @@
         },
         {
           "slug": "pedir-alta-articulo",
-          "titulo": "Pedir el alta de un artículo (formulario CAByS)",
+          "titulo": "Pedir el alta de un artículo que falta en el catálogo",
           "minutos": 4,
           "dificultad": "intermedio",
           "bloques": [
             {
               "type": "text",
-              "text": "Si el bien o el servicio que necesitás no está en el catálogo, se pide el alta con un Documento Oficial: el formulario \"Timbó Compras: Alta de bienes y servicios CAByS\". Lo mismo sirve para dar de alta un lugar de entrega."
+              "text": "Si el bien o el servicio que necesitás no está en el catálogo, se pide el alta. El camino depende de qué sea: los medicamentos y descartables van por Farmacia; todo lo demás, con el formulario CAByS."
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "¿Por dónde lo pido?",
+              "columns": [
+                "Qué falta",
+                "Cómo se pide"
+              ],
+              "rows": [
+                [
+                  "Medicamentos y productos descartables (área Farmacia)",
+                  "Pedido formal a la Dirección Provincial de Farmacia, que crea el artículo en el sistema SUFYD. De ahí pasa solo a TIMBÓ."
+                ],
+                [
+                  "Artículos generales y lugares de entrega",
+                  "Formulario \"Timbó Compras: Alta de bienes y servicios CAByS\" (los pasos de abajo)."
+                ]
+              ]
             },
             {
               "type": "step",
               "number": 1,
               "explanation": "Primero, buscalo bien.",
-              "doThis": "Buscá en el catálogo web del Portal de Compras con palabras clave y sinónimos.",
+              "doThis": "Buscá en el catálogo web del Portal de Compras (santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index) con palabras clave y sinónimos.",
               "lookFor": "Solo si no aparece, seguí con el formulario."
             },
             {
@@ -2305,6 +2347,11 @@
             {
               "type": "tip",
               "text": "Fuente: Resolución SCyGB 292/2026 — compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf"
+            },
+            {
+              "type": "pdf",
+              "file": "guia-busqueda-nomenclador-y-solicitud-sipaf.pdf",
+              "title": "Búsqueda en el nomenclador y solicitud de artículos faltantes"
             }
           ],
           "quiz": [
@@ -2313,6 +2360,17 @@
               "question": "Antes de pedir el alta de un artículo, hay que buscarlo en el catálogo web con palabras clave y sinónimos.",
               "answer": true,
               "explanation": "La resolución pide verificar primero que no esté catalogado."
+            },
+            {
+              "type": "multiple-choice",
+              "question": "Falta un medicamento en el catálogo. ¿Cómo se pide?",
+              "options": [
+                "A la Dirección Provincial de Farmacia",
+                "Con el formulario CAByS",
+                "Por mail a la mesa de ayuda"
+              ],
+              "correctIndex": 0,
+              "explanation": "Medicamentos y descartables los da de alta Farmacia (en SUFYD). El CAByS es para artículos generales."
             }
           ]
         }

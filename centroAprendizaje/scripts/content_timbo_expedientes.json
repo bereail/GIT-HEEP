@@ -314,6 +314,14 @@
             {
               "type": "tip",
               "text": "La carátula sigue el Nomenclador de Trámites. Evitá nombres genéricos como \"Varios\" o \"Tramitaciones varias\": la normativa lo prohíbe expresamente (Circular UG TIMBÓ 3/2025)."
+            },
+            {
+              "type": "tip",
+              "text": "En \"Solicitud de caratulación\" ya hay más de 150 trámites digitales, agrupados en Recursos Humanos, Presupuesto, Compras y Contrataciones, Convenios, Programas y Proyectos, y Normativa. Buscá el tuyo antes de usar uno genérico."
+            },
+            {
+              "type": "tip",
+              "text": "Marcá el trámite como urgente solo si te lo indicaron. Y en el motivo, evitá abreviaturas: poné nombre completo, DNI o CUIL, o el número de un expediente anterior, para que después se pueda encontrar."
             }
           ],
           "quiz": []
@@ -419,6 +427,10 @@
                   "def": "Los expedientes en gestión en oficinas que dependen de la tuya."
                 }
               ]
+            },
+            {
+              "type": "tip",
+              "text": "Para leer el expediente de corrido: ⋮ → vista de la documentación → \"Previsualización de documentos\". Pasás de un documento a otro con las flechas del teclado."
             }
           ],
           "quiz": []
@@ -582,6 +594,10 @@
             {
               "type": "tip",
               "text": "Cuando un expediente terminó y no tiene nada pendiente, se lo devuelve al área de origen. La guarda y el archivo los hacen solo los usuarios habilitados (Circular UG TIMBÓ 3/2025)."
+            },
+            {
+              "type": "tip",
+              "text": "Para sacar un expediente de la guarda temporal, primero asignátelo a vos mismo. Después: ⋮ → Acciones → \"Volver a carga de documentación\" → comentario → confirmar."
             }
           ],
           "quiz": []
@@ -634,6 +650,10 @@
                   "def": "EE-2025-00000058-APPSF-PE = Expediente Electrónico + año + número correlativo + Administración Pública Provincial de Santa Fe + organismo (PE = Poder Ejecutivo; varía en organismos descentralizados)."
                 }
               ]
+            },
+            {
+              "type": "tip",
+              "text": "Además del número, podés buscar los expedientes iniciados por vos, tramitados por vos, caratulados en tu oficina o en tu jerarquía (tu oficina y las de arriba y abajo), filtrando por fechas, tema o motivo. En \"Más información\" ves en qué oficina está y quién lo tiene."
             }
           ],
           "quiz": []
@@ -667,6 +687,10 @@
             {
               "type": "tip",
               "text": "Así también se le da vista al Tribunal de Cuentas: compartiendo el expediente desde \"Gestión de visualización\". El expediente sigue su trámite mientras el TCP lo ve (Circular UG TIMBÓ 9/2026)."
+            },
+            {
+              "type": "tip",
+              "text": "¿Te dieron vista y querés responder? En \"Gestión de visualización\" → \"En curso\": ⋮ → \"Gestor de trámite\" → \"Enviar trámite\" → \"Generar informe\". Escribilo o adjuntalo (documento oficial o PDF) y guardá: le llega a quien te compartió la vista."
             }
           ],
           "quiz": []
@@ -716,6 +740,68 @@
           "quiz": []
         },
         {
+          "slug": "documento-importado-y-embebidos",
+          "titulo": "Subir un PDF como documento oficial (importado) y con embebidos",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Si el documento ya lo tenés en PDF (por ejemplo, una nota escaneada o un certificado), se sube como documento oficial \"importado\". Si además necesitás adjuntarle otros archivos que no se pueden tocar (por ejemplo, algo ya firmado digitalmente), van como embebidos."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Creá el documento.",
+              "doThis": "Documentos oficiales → Gestión → \"Nuevo documento oficial\" → Iniciar. Usuario productor: \"Yo mismo\". Tipo: \"Doc importado\" (o, para embebidos, uno que tenga el ícono de la flecha hacia arriba). Guardar."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Subí el PDF y completá la referencia.",
+              "doThis": "En \"Pendientes\": ⋮ → Documento oficial → agregá el PDF. En Referencia, escribí qué es y de qué gestión (es obligatoria).",
+              "lookFor": "Para embebidos: \"Adjuntar documentos\" y subí los archivos que van adentro."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Firmalo.",
+              "doThis": "Acciones → \"Firmar yo mismo\" → Continuar → Confirmar. Después, en \"Pendientes\": ⋮ → Evaluar → Acciones → \"Aprobar y firmar\" → firma electrónica → Confirmar.",
+              "lookFor": "Queda en \"Aprobados\"."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Para ver los embebidos.",
+              "doThis": "En \"Aprobados\": ⋮ → Previsualizar → descargalo y abrilo con Acrobat Reader → Ver → Paneles de navegación → Archivos adjuntos."
+            },
+            {
+              "type": "tip",
+              "text": "Si tienen que firmar varias personas o hay que mandarlo a alguien, elegí un tipo importado con firma conjunta y comunicable: ahí cargás la cadena de firmas y los destinatarios."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/WfMIejZNniU",
+              "title": "Documento oficial importado",
+              "minutos": 2
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/hZvrxPtLjYQ",
+              "title": "¿Cómo hacer un documento embebido?",
+              "minutos": 4
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Para ver los archivos embebidos hay que descargar el PDF y abrir los adjuntos en Acrobat Reader.",
+              "answer": true,
+              "explanation": "En el visor de TIMBÓ no se ven: hay que descargarlo."
+            }
+          ]
+        },
+        {
           "slug": "crear-documento-oficial",
           "titulo": "Hacer una nota o documento oficial",
           "minutos": 6,
@@ -744,6 +830,14 @@
             {
               "type": "text",
               "text": "Ejemplo de cadena de firmas para una licencia: primero vos (\"Yo mismo\"), después tu jefe/a inmediato/a, y por último quien la recibe en Personal (RRHH). Cuando firma la última persona, el documento recibe su número — con ese número lo podés agregar a un expediente."
+            },
+            {
+              "type": "tip",
+              "text": "Cuando todos firman, el documento aprobado (ya con número) vuelve a la bandeja \"Aprobados\" de quien lo pidió, no de quien lo hizo. Si lo produjiste para otra persona, buscalo en Consulta por su número."
+            },
+            {
+              "type": "tip",
+              "text": "La referencia es el título con el que después se busca el documento: escribila clara y concreta (hasta 100 caracteres). Si le pedís el documento a otra persona, podés mandarle un \"archivo de trabajo\" (por ejemplo, un modelo de nota) como ayuda."
             }
           ],
           "quiz": []
@@ -1775,6 +1869,121 @@
           "quiz": []
         }
       ]
+    },
+    {
+      "slug": "rendiciones",
+      "titulo": "Rendiciones de subsidios",
+      "icono": "🧾",
+      "resumen": "Rendir un subsidio o programa provincial en Timbó Rendiciones, y pedir prórrogas, cambios de destino, ampliaciones o registrar devoluciones.",
+      "audiencia": "Quien recibió un subsidio, aporte o programa del Estado provincial y tiene que rendirlo.",
+      "dificultad": "intermedio",
+      "tutoriales": [
+        {
+          "slug": "rendir-un-subsidio",
+          "titulo": "Rendir un subsidio en Timbó Rendiciones",
+          "minutos": 5,
+          "dificultad": "intermedio",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Las rendiciones de subsidios y programas provinciales se hacen 100 % en digital, aunque el trámite haya empezado en papel. Hay una rendición por cada pago recibido."
+            },
+            {
+              "type": "prereq",
+              "items": [
+                "Entrar a santafe.gob.ar/rendiciones con tu ID Ciudadana.",
+                "Tener el beneficiario asignado a tu usuario. Si no ves el botón para crear una rendición, pedile al administrador del sistema que haga la asociación."
+              ]
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Creá la rendición.",
+              "doThis": "\"Mis subsidios\" → el subsidio → \"Ver trámites\" → en el pago, \"Nueva rendición\". Beneficiario, subsidio y pago se completan solos."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Cargá las facturas (comprobantes de ARCA).",
+              "doThis": "Subí el PDF de la factura: se completan solos CUIT, tipo, punto de venta, número e importe. Tocá \"Validar\" y, si ARCA la valida, \"Agregar\".",
+              "lookFor": "Si ARCA no la valida, revisá que los datos sean exactos. Si la factura es muy reciente, probá de nuevo en unas horas."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Cargá lo que no tiene factura electrónica.",
+              "doThis": "En \"Comprobantes internos\" (recibos manuales, tickets, horas extras): tipo, descripción, fecha, importe y el PDF de respaldo.",
+              "lookFor": "Cada archivo, de 3 MB como máximo."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Sumá los respaldos.",
+              "doThis": "En \"Archivos respaldatorios\" (transferencias, certificados, fotos del trabajo): archivo, una justificación breve y, si querés, a qué factura corresponde. \"Guardar cambios\"."
+            },
+            {
+              "type": "step",
+              "number": 5,
+              "explanation": "Guardala y enviala.",
+              "doThis": "\"Finalizar y guardar rendición\" la deja en borrador (la podés editar las veces que quieras). Cuando esté todo, \"Enviar rendición\" → confirmar.",
+              "lookFor": "Enviada, ya no se puede editar. Vuelve como aprobada, rechazada u observada; si te la observan o rechazan, podés corregirla una vez. Aprobada, firmás los comprobantes, la relación de gastos y el balance de inversión."
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "Otros trámites del subsidio",
+              "columns": [
+                "Trámite",
+                "Dónde",
+                "Qué adjuntar"
+              ],
+              "rows": [
+                [
+                  "Prórroga (pedila antes de que venza)",
+                  "Mis trámites → Prórrogas → Nueva solicitud",
+                  "PDF de la solicitud y, si corresponde, extracto bancario"
+                ],
+                [
+                  "Devolución de fondos",
+                  "Mis trámites → Devolución → Nueva devolución",
+                  "Comprobante de la transferencia"
+                ],
+                [
+                  "Cambio de destino",
+                  "Mis subsidios → Ver trámites → Cambio de destino",
+                  "Nota de pedido y extracto bancario"
+                ],
+                [
+                  "Ampliación de monto",
+                  "Mis subsidios → Ver trámites → Ampliación de monto",
+                  "PDF de la solicitud"
+                ]
+              ],
+              "note": "En todos: revisás, enviás, firman todos los firmantes autorizados (\"Registrar tu firma\") y se habilita \"Sellar y enviar\". Después ya no se puede modificar."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/DRz21VWXtEQ",
+              "title": "¿Cómo hacer una rendición de cuentas?",
+              "minutos": 7
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/FbNpaAiAlnU",
+              "title": "¿Cómo solicitar una prórroga?",
+              "minutos": 2
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Una rendición enviada a auditoría se puede seguir editando.",
+              "answer": false,
+              "explanation": "Se edita solo en borrador o si te la devuelven para corregir."
+            }
+          ]
+        }
+      ]
     }
   ],
   "glosario": [
@@ -2673,6 +2882,39 @@
       ],
       "tutorial_categoria_slug": "firma-y-seguridad",
       "tutorial_slug": "firmador-digital-web"
+    },
+    {
+      "slug": "documento-importado",
+      "pregunta": "¿Cómo subo un PDF como documento oficial?",
+      "keywords": [
+        "importado",
+        "doc importado",
+        "subir pdf",
+        "escaneado",
+        "embebido",
+        "adjuntar",
+        "firmar yo mismo"
+      ],
+      "tutorial_categoria_slug": "documentos-oficiales",
+      "tutorial_slug": "documento-importado-y-embebidos"
+    },
+    {
+      "slug": "rendir-subsidio",
+      "pregunta": "¿Cómo rindo un subsidio?",
+      "keywords": [
+        "rendicion",
+        "rendir",
+        "subsidio",
+        "comprobantes",
+        "facturas",
+        "prorroga",
+        "devolucion",
+        "cambio de destino",
+        "ampliacion de monto",
+        "rendiciones"
+      ],
+      "tutorial_categoria_slug": "rendiciones",
+      "tutorial_slug": "rendir-un-subsidio"
     }
   ],
   "quickstart_steps": [
