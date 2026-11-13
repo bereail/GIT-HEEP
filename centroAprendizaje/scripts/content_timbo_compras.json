@@ -1504,7 +1504,7 @@
             },
             {
               "type": "tip",
-              "text": "Las contrataciones directas por urgencia o porque un proceso quedó desierto también van por TIMBÓ Compras, con un mínimo de 3 proveedores invitados (Circular UG TIMBÓ 8/2026)."
+              "text": "Las contrataciones directas por urgencia o porque un proceso quedó desierto también van por TIMBÓ Compras, con pasos simplificados. Mirá la lección \"Contratación directa por urgencia o porque el proceso quedó desierto\"."
             }
           ],
           "quiz": [
@@ -1518,6 +1518,140 @@
               ],
               "correctIndex": 0,
               "explanation": "Hasta $58.500.000 corresponde licitación o concurso privado."
+            }
+          ]
+        },
+        {
+          "slug": "directa-urgencia-o-desierto",
+          "titulo": "Contratación directa por urgencia o porque el proceso quedó desierto",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Son compras directas de excepción (Ley 12.510, art. 116, inc. c, ap. 2 y 3). Se hacen enteras en TIMBÓ Compras, como cualquier proceso, pero con algunos pasos simplificados."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Por urgencia o emergencia",
+                  "def": "No se puede esperar los plazos de una licitación. También se usa cuando se rescindió un contrato y hacen falta ya los bienes o servicios (Pliego Único, punto 9.2)."
+                },
+                {
+                  "term": "Por proceso desierto o fracasado",
+                  "def": "Se hizo el llamado y no hubo ofertas, o ninguna sirvió. Se vuelve a comprar en forma directa."
+                }
+              ]
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "Qué cambia respecto de un proceso común",
+              "columns": [
+                "Punto",
+                "Urgencia",
+                "Desierto o fracasado"
+              ],
+              "rows": [
+                [
+                  "Autorización",
+                  "Alcanza con que la autoridad competente intervenga en el sistema o con vincular el documento que la autoriza. No hace falta un acto administrativo formal.",
+                  "Igual que en urgencia."
+                ],
+                [
+                  "Consultas e impugnaciones",
+                  "Esos plazos se pueden acortar o saltear, y hacerlos coincidir con la apertura.",
+                  "Igual que en urgencia."
+                ],
+                [
+                  "Requisitos al proveedor",
+                  "Garantías y plazo de mantenimiento de oferta son optativos. Como mínimo, tiene que acreditar personería o representación.",
+                  "Rigen las mismas condiciones del llamado original, sin cambios."
+                ],
+                [
+                  "Invitados",
+                  "Mínimo 3 proveedores cargados en el sistema.",
+                  "Mínimo 3 proveedores cargados en el sistema."
+                ]
+              ],
+              "note": "Circular UG TIMBÓ 8/2026, art. 4."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Dejá justificado por qué es urgente o que el proceso anterior quedó desierto.",
+              "doThis": "Sumalo al expediente electrónico de la compra (por ejemplo, el informe del servicio que explica la urgencia, o el acta del proceso desierto)."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Conseguí la autorización.",
+              "doThis": "Que la autoridad competente intervenga en TIMBÓ, o vinculá al expediente el documento oficial firmado que la autoriza."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Creá el proceso en TIMBÓ Compras como siempre.",
+              "doThis": "Seguí la lección \"Gestor: crear el proceso y armar el pliego\", con los cambios de la tabla: plazos cortos y, si es urgencia, sin exigir garantías."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Invitá al menos a 3 proveedores.",
+              "doThis": "Cargalos en el sistema al armar el proceso. Si es por desierto, podés volver a invitar a los del llamado original y sumar otros."
+            },
+            {
+              "type": "step",
+              "number": 5,
+              "explanation": "Seguí el circuito normal.",
+              "doThis": "Apertura, evaluación, adjudicación y orden de compra van igual que en cualquier proceso de TIMBÓ Compras."
+            },
+            {
+              "type": "warning",
+              "text": "Si el proceso quedó desierto, no cambies las condiciones del llamado original (cantidades, especificaciones, requisitos). Si hay que cambiarlas, es un proceso nuevo."
+            },
+            {
+              "type": "tip",
+              "text": "Esto vale para los procesos iniciados desde que salió la circular. Si tenés uno anterior en curso, podés aplicarla si el estado del trámite lo permite."
+            },
+            {
+              "type": "tip",
+              "text": "Los procesos de etapa múltiple (sobre técnico y sobre económico) todavía no van por TIMBÓ Compras: se hacen por expediente electrónico y documentos oficiales, y las ofertas se presentan en sobres de papel (Circular UG TIMBÓ 8/2026, arts. 5 a 8)."
+            },
+            {
+              "type": "tip",
+              "text": "Los nombres exactos de las opciones en pantalla para estos casos no están relevados. Si algo no coincide con tu sistema, avisá desde \"Dejar una consulta\" y lo corregimos."
+            }
+          ],
+          "quiz": [
+            {
+              "type": "multiple-choice",
+              "question": "En una contratación por urgencia, ¿qué es lo mínimo que tiene que acreditar el proveedor?",
+              "options": [
+                "Su personería o representación",
+                "La garantía de oferta",
+                "Lo mismo que en una licitación pública"
+              ],
+              "correctIndex": 0,
+              "explanation": "En urgencia, garantías y plazos de mantenimiento son optativos; lo mínimo es la personería o representación."
+            },
+            {
+              "type": "true-false",
+              "question": "Si un proceso quedó desierto, en la contratación directa podés cambiar las especificaciones del llamado.",
+              "answer": false,
+              "explanation": "En los procesos desiertos rigen estrictamente las condiciones del llamado original."
+            },
+            {
+              "type": "multiple-choice",
+              "question": "¿A cuántos proveedores como mínimo tenés que invitar?",
+              "options": [
+                "1",
+                "3",
+                "5"
+              ],
+              "correctIndex": 1,
+              "explanation": "La carga mínima es de 3 proveedores en el sistema."
             }
           ]
         },
@@ -3381,6 +3515,29 @@
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "pedir-alta-articulo"
+    },
+    {
+      "slug": "compra-urgente-o-desierta",
+      "pregunta": "¿Cómo hago una compra urgente o una que quedó desierta?",
+      "keywords": [
+        "urgencia",
+        "urgente",
+        "emergencia",
+        "desierto",
+        "desierta",
+        "fracasado",
+        "fracaso",
+        "excepcion",
+        "directa por urgencia",
+        "sin ofertas",
+        "rescindido",
+        "fracasada",
+        "licitacion fracasada",
+        "licitacion desierta",
+        "quedo desierta"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "directa-urgencia-o-desierto"
     }
   ],
   "quickstart_steps": [

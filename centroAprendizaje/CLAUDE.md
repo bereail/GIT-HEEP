@@ -122,8 +122,11 @@ con un `.bat`.
 ## Pendientes (actualizado 2026-11-13)
 
 Contenido:
-1. Lección propia de contrataciones directas por urgencia o por proceso
-   desierto (Circular UG TIMBÓ 8/2026): hoy es solo un tip en Compras.
+1. ~~Lección de contrataciones directas por urgencia o por proceso
+   desierto~~ — hecha: `directa-urgencia-o-desierto` (Gestión interna),
+   armada con el texto completo de la Circular UG TIMBÓ 8/2026. Los nombres
+   de las opciones en pantalla para estos casos no están relevados (la
+   lección lo avisa): confirmarlos con Compras.
 2. Montos de "¿Qué procedimiento corresponde según el monto?": actualizarlos
    cada año con la circular nueva de la SCyGB.
 3. "Atención Virtual ¿Cómo lo hacemos?" (8:45, lado agente) sigue sin
