@@ -30,6 +30,7 @@ class Feedback(db.Model):
     tutorial_id = db.Column(db.Integer, db.ForeignKey("tutoriales.id"), nullable=True)
     puntuacion = db.Column(db.Integer, nullable=True)  # 1-5, independiente del comentario
     comentario = db.Column(db.Text, nullable=True)
+    nombre = db.Column(db.String(120), nullable=True)  # quien deja el feedback, si quiere identificarse
     categoria = db.Column(db.String(20), nullable=True)  # ver CATEGORIAS_FEEDBACK
     revisado = db.Column(db.Boolean, default=False, nullable=False)
     creado_en = db.Column(db.DateTime, default=_ahora, index=True)

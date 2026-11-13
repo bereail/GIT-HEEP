@@ -16,7 +16,8 @@
 
 <div class="section" id="bloques-tutorial">
   {% set img_base = url_for('static', filename='img/' + tema.slug) %}
-  {% for b in tutorial.bloques %}{{ bloque(b, img_base) }}{% endfor %}
+  {% set pdf_base = url_for('static', filename='docs/' + tema.slug) %}
+  {% for b in tutorial.bloques %}{{ bloque(b, img_base, pdf_base) }}{% endfor %}
 </div>
 
 {% set preguntas_evaluables = tutorial.quiz | selectattr('type', 'ne', 'checklist') | list %}

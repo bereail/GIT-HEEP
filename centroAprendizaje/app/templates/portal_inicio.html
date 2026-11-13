@@ -17,6 +17,18 @@
   </a>
   {% endfor %}
 </div>
+
+{% if tema_nomenclador %}
+<div class="section">
+  <a class="card card-link" style="display:flex;align-items:center;gap:14px;padding:16px 20px" href="{{ url_for('ui.ver_equivalencias', tema_slug=tema_nomenclador.slug) }}">
+    <span class="home-card__icon" style="margin:0;font-size:28px">🔄</span>
+    <div>
+      <div class="home-card__title">Nomenclador de artículos</div>
+      <div class="home-card__desc">¿Con qué nombre pido un artículo en TIMBÓ? Buscalo acá.</div>
+    </div>
+  </a>
+</div>
+{% endif %}
 {% else %}
 <div class="empty-state">
   <div class="empty-state__icon">🧭</div>

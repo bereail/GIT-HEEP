@@ -35,7 +35,10 @@
   </select>
 
   <label for="comentario" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu comentario (opcional)</label>
-  <textarea class="input" id="comentario" name="comentario" rows="4" style="width:100%;resize:vertical;margin-bottom:20px" placeholder="Una sugerencia, algo que te gustó, un problema que encontraste...">{% if valores %}{{ valores.get('comentario', '') }}{% endif %}</textarea>
+  <textarea class="input" id="comentario" name="comentario" rows="4" style="width:100%;resize:vertical;margin-bottom:16px" placeholder="Una sugerencia, algo que te gustó, un problema que encontraste...">{% if valores %}{{ valores.get('comentario', '') }}{% endif %}</textarea>
+
+  <label for="nombre" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu nombre (opcional)</label>
+  <input class="input" id="nombre" name="nombre" type="text" style="width:100%;margin-bottom:20px" placeholder="Así sabemos quién lo sugiere. Podés dejarlo en blanco." value="{% if valores %}{{ valores.get('nombre', '') }}{% endif %}" />
 
   <button type="submit" class="btn btn--primary">Enviar</button>
 </form>

@@ -39,8 +39,11 @@
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_glosario' else '' }}" href="{{ url_for('ui.ver_glosario', tema_slug=tema.slug) }}"><span class="nav-link__icon">📖</span>Glosario</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_progreso' else '' }}" href="{{ url_for('ui.ver_progreso', tema_slug=tema.slug) }}"><span class="nav-link__icon">📊</span>Mi progreso</a>
 
+        {% set categorias_modulo = tema.categorias | rejectattr('slug', 'equalto', 'documentacion-oficial') | list %}
+        {% set categoria_recursos = tema.categorias | selectattr('slug', 'equalto', 'documentacion-oficial') | first %}
+
         <div class="sidebar__section-title">Módulos</div>
-        {% for categoria in tema.categorias %}
+        {% for categoria in categorias_modulo %}
         {% set activa = request.view_args and request.view_args.get('categoria_slug') == categoria.slug %}
         <a class="nav-link {{ 'is-active' if activa else '' }}" href="{{ url_for('ui.ver_categoria', tema_slug=tema.slug, categoria_slug=categoria.slug) }}"
            data-progreso-categoria='{{ {"slug": categoria.slug, "tutoriales": tutoriales_para_js(categoria)} | tojson }}'>
@@ -51,6 +54,21 @@
         <div class="sidebar__section-title">Portal</div>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.mis_consultas' else '' }}" href="{{ url_for('ui.mis_consultas') }}"><span class="nav-link__icon">💬</span>Mis consultas</a>
         <a class="nav-link" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🧭</span>Todas las capacitaciones</a>
+
+        {% if categoria_recursos or tema.equivalencias_articulos %}
+        <div class="sidebar__section-title">Recursos</div>
+        {% if categoria_recursos %}
+        {% set activa_recursos = request.view_args and request.view_args.get('categoria_slug') == categoria_recursos.slug %}
+        <a class="nav-link {{ 'is-active' if activa_recursos else '' }}" href="{{ url_for('ui.ver_categoria', tema_slug=tema.slug, categoria_slug=categoria_recursos.slug) }}">
+          <span class="nav-link__icon">{{ categoria_recursos.icono }}</span>{{ categoria_recursos.titulo }}
+        </a>
+        {% endif %}
+        {% if tema.equivalencias_articulos %}
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.ver_equivalencias' else '' }}" href="{{ url_for('ui.ver_equivalencias', tema_slug=tema.slug) }}">
+          <span class="nav-link__icon">🔄</span>Nomenclador de artículos
+        </a>
+        {% endif %}
+        {% endif %}
       {% else %}
         <div class="sidebar__section-title">Centro de Aprendizaje</div>
         <a class="nav-link is-active" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🏠</span>Inicio</a>

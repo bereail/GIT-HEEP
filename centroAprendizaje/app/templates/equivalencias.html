@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% block titulo %}Nomenclador de artículos — {{ tema.nombre }}{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs" aria-label="Ruta de navegación">
+  <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Nomenclador de artículos
+</nav>
+<div class="hero">
+  <h1>Nomenclador de artículos</h1>
+  <p class="hero__desc">¿Con qué nombre pido esto en TIMBÓ? Acá traducimos el nombre libre de cada artículo (como se pide en el sistema interno del hospital) al código del Catálogo WEB oficial de la Provincia.</p>
+  {% if actualizado_en %}
+  <p class="equiv-actualizado">Última actualización: {{ actualizado_en.strftime('%d/%m/%Y') }}</p>
+  {% endif %}
+</div>
+
+<div class="equiv-summary" id="equiv-summary">
+  <button type="button" class="equiv-tile equiv-tile--ok" data-filtro="alta">
+    <span class="equiv-tile__num" id="num-alta">—</span>
+    <span class="equiv-tile__label">Listos para cargar</span>
+  </button>
+  <button type="button" class="equiv-tile equiv-tile--warn" data-filtro="dudosa">
+    <span class="equiv-tile__num" id="num-dudosa">—</span>
+    <span class="equiv-tile__label">Confirmar antes de usar</span>
+  </button>
+  <button type="button" class="equiv-tile equiv-tile--pend" data-filtro="sin_match">
+    <span class="equiv-tile__num" id="num-sinmatch">—</span>
+    <span class="equiv-tile__label">Hay que pedir que se agreguen</span>
+  </button>
+</div>
+
+<div class="equiv-controls">
+  <div class="input-wrap" style="flex:1;min-width:200px">
+    <span class="input-wrap__icon">🔎</span>
+    <input class="input" type="search" id="equiv-buscar" placeholder="Buscar artículo..." autocomplete="off">
+  </div>
+  {% if origenes|length > 1 %}
+  <select class="input" id="equiv-origen" style="max-width:220px">
+    <option value="">Todos los pedidos</option>
+    {% for o in origenes %}
+    <option value="{{ o }}">{{ o }}</option>
+    {% endfor %}
+  </select>
+  {% endif %}
+  <button type="button" class="btn btn--ghost" id="equiv-limpiar">Ver todos</button>
+</div>
+
+<div class="callout callout--warning" id="equiv-aclaracion-dudosa" hidden>
+  <span class="callout__icon">❓</span>
+  <span>Es lo más parecido que encontramos, no un match exacto. Confirmá en el <a href="https://www.santafe.gob.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a> antes de cargar.</span>
+</div>
+
+<div class="callout callout--warning" id="equiv-aclaracion-sinmatch" hidden>
+  <span class="callout__icon">❓</span>
+  <span>Todavía no está en el catálogo oficial. Mirá la <a href="{{ url_for('static', filename='docs/timbo-compras/como-solicitar-alta-de-articulos.pdf') }}" target="_blank" rel="noopener">guía para pedir que lo agreguen</a>.</span>
+</div>
+
+<div class="card equiv-howto" id="equiv-howto" hidden>
+  <p class="equiv-howto__title">📄 ¿No está en el catálogo? Así se pide que lo agreguen</p>
+  <div class="equiv-steps">
+    <div class="equiv-step"><span class="equiv-step__num">1</span><div>Volvé a buscarlo en el <a href="https://www.santafe.gob.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a> con sinónimos o términos más generales.</div></div>
+    <div class="equiv-step"><span class="equiv-step__num">2</span><div>Si es <b>medicamento o descartable de Farmacia</b>: pedilo a través del Servicio de Farmacia del efector. Si es <b>otro bien o servicio</b>: pedilo directo en TIMBÓ.</div></div>
+    <div class="equiv-step"><span class="equiv-step__num">3</span><div><b>Farmacia:</b> Servicio de Farmacia → Dirección Provincial de Farmacia → SUFYD → TIMBÓ.<br><b>Otros bienes:</b> en TIMBÓ, Documentos Oficiales → Gestión → Nuevo Documento Oficial → formulario "Timbó Compras: Alta de bienes y servicios CAByS".</div></div>
+  </div>
+  <p class="equiv-howto__link">
+    📎 PDF oficial: <a href="{{ url_for('static', filename='docs/timbo-compras/como-solicitar-alta-de-articulos.pdf') }}" target="_blank" rel="noopener">Guía en 4 pasos</a>
+    · <a href="{{ url_for('static', filename='docs/timbo-compras/guia-busqueda-nomenclador-y-solicitud-sipaf.pdf') }}" target="_blank" rel="noopener">Guía completa del formulario CAByS</a>
+  </p>
+</div>
+
+<div class="equiv-count" id="equiv-count"></div>
+<div class="equiv-rows" id="equiv-rows"></div>
+<div class="empty-state" id="equiv-empty" hidden><div class="empty-state__icon">🔎</div>No encontramos ningún artículo con ese filtro.</div>
+<div class="equiv-more" id="equiv-more" hidden></div>
+
+<a class="equiv-fab-ayuda" href="{{ url_for('static', filename='docs/timbo-compras/como-solicitar-alta-de-articulos.pdf') }}" target="_blank" rel="noopener">
+  <span class="equiv-fab-ayuda__icon">❓</span>
+  <span class="equiv-fab-ayuda__text">¿No encontrás lo que buscás?</span>
+</a>
+
+<style>
+#equiv-aclaracion-dudosa[hidden],#equiv-aclaracion-sinmatch[hidden]{display:none;}
+.equiv-actualizado{font-size:12.5px;color:var(--text-faint);margin:10px 0 0;}
+.equiv-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 18px;}
+.equiv-tile{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:16px 14px;text-align:center;cursor:pointer;font-family:inherit;
+  transition:border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.equiv-tile:hover{box-shadow:var(--shadow-sm);border-color:var(--border-strong);}
+.equiv-tile.is-active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
+.equiv-tile__num{display:block;font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;}
+.equiv-tile__label{display:block;font-size:12px;color:var(--text-muted);margin-top:6px;font-weight:500;}
+.equiv-tile--ok .equiv-tile__num{color:var(--success);}
+.equiv-tile--warn .equiv-tile__num{color:var(--warning);}
+.equiv-tile--pend .equiv-tile__num{color:var(--text-muted);}
+
+.equiv-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+.equiv-count{font-size:12.5px;color:var(--text-faint);margin-bottom:10px;}
+
+.equiv-rows{display:flex;flex-direction:column;gap:8px;}
+.equiv-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:13px 16px;
+}
+.equiv-row--pend{grid-template-columns:1fr;}
+.equiv-row__label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);margin-bottom:4px;}
+.equiv-row__nombre{font-weight:600;font-size:14px;line-height:1.35;}
+.equiv-row__buscar{font-size:14px;color:var(--text);line-height:1.35;}
+.equiv-row__buscar.is-empty{color:var(--text-faint);font-style:italic;font-weight:400;}
+.equiv-row__codigo{
+  display:inline-block;margin-top:5px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;font-weight:600;
+  color:var(--accent-hover);background:var(--accent-soft);padding:2px 8px;border-radius:5px;
+}
+.equiv-row__nota{
+  grid-column:1/-1;font-size:12.5px;color:var(--text-faint);margin-top:2px;line-height:1.45;
+  border-top:1px solid var(--border);padding-top:8px;
+}
+.equiv-row--pend .equiv-row__nota{border-top:none;padding-top:0;margin-top:4px;}
+
+.equiv-more{text-align:center;padding:16px;font-size:13px;color:var(--text-faint);}
+.equiv-more button{
+  background:transparent;border:1px solid var(--border);border-radius:999px;
+  padding:7px 16px;font-size:12.5px;font-weight:600;color:var(--accent-hover);
+  margin-top:8px;cursor:pointer;
+}
+.equiv-more button:hover{background:var(--accent-soft);}
+
+.equiv-howto{padding:20px;margin-top:24px;}
+.equiv-howto__title{font-weight:700;font-size:15px;margin:0 0 14px;}
+.equiv-steps{display:flex;flex-direction:column;gap:12px;}
+.equiv-step{display:flex;gap:12px;font-size:13.5px;line-height:1.5;color:var(--text-muted);}
+.equiv-step b{color:var(--text);}
+.equiv-step__num{
+  flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent-hover);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;
+}
+.equiv-howto__link{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-size:13px;}
+
+.equiv-fab-ayuda{
+  position:fixed;left:20px;bottom:20px;z-index:260;
+  display:flex;align-items:center;gap:8px;
+  padding:12px 18px 12px 14px;
+  background:var(--warning-soft, var(--surface));color:var(--warning-hover, var(--text));
+  border:1px solid var(--border-strong);border-radius:999px;
+  box-shadow:var(--shadow-md);font-weight:650;font-size:13.5px;text-decoration:none;
+  transition:transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.equiv-fab-ayuda:hover{box-shadow:var(--shadow-lg, var(--shadow-md));transform:translateY(-1px);}
+.equiv-fab-ayuda:active{transform:translateY(1px);}
+.equiv-fab-ayuda__icon{font-size:16px;line-height:1;}
+
+@media (max-width:620px){
+  .equiv-summary{grid-template-columns:1fr;}
+  .equiv-row{grid-template-columns:1fr;gap:4px;}
+  .equiv-row__nota{grid-column:1;}
+  .equiv-fab-ayuda__text{display:none;}
+  .equiv-fab-ayuda{padding:13px;left:16px;bottom:16px;}
+}
+</style>
+
+<script>
+(function () {
+  const DATOS = {{ datos | tojson }};
+  const LIMITE = 100;
+  let limiteActual = LIMITE;
+  let filtroConfianza = '';
+  let filtroOrigen = '';
+  let busqueda = '';
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function textoBuscar(d) {
+    return [d.bien, d.item].filter(Boolean).join(' — ');
+  }
+
+  function fila(d) {
+    if (d.confianza === 'sin_match') {
+      return `
+        <div class="equiv-row equiv-row--pend">
+          <div class="equiv-row__nombre">${escapeHtml(d.nombre)}</div>
+          ${d.notas ? `<div class="equiv-row__nota">${escapeHtml(d.notas)}</div>` : ''}
+        </div>`;
+    }
+    const txt = textoBuscar(d);
+    return `
+      <div class="equiv-row">
+        <div>
+          <div class="equiv-row__label">Como figura en el pedido</div>
+          <div class="equiv-row__nombre">${escapeHtml(d.nombre)}</div>
+        </div>
+        <div>
+          <div class="equiv-row__label">Buscar en TIMBÓ como</div>
+          <div class="equiv-row__buscar">${escapeHtml(txt)}</div>
+          ${d.codigo ? `<span class="equiv-row__codigo">${escapeHtml(d.codigo)}</span>` : ''}
+        </div>
+        ${d.notas ? `<div class="equiv-row__nota">${escapeHtml(d.notas)}</div>` : ''}
+      </div>`;
+  }
+
+  function aplicar() {
+    let items = DATOS;
+    if (filtroOrigen) items = items.filter(d => d.origen === filtroOrigen);
+    if (filtroConfianza) items = items.filter(d => d.confianza === filtroConfianza);
+    if (busqueda) {
+      const q = busqueda.toLowerCase();
+      items = items.filter(d =>
+        d.nombre.toLowerCase().includes(q) ||
+        (d.bien && d.bien.toLowerCase().includes(q)) ||
+        (d.item && d.item.toLowerCase().includes(q))
+      );
+    }
+
+    const rows = document.getElementById('equiv-rows');
+    const empty = document.getElementById('equiv-empty');
+    const more = document.getElementById('equiv-more');
+    const howto = document.getElementById('equiv-howto');
+
+    if (!items.length) {
+      rows.innerHTML = '';
+      empty.hidden = false;
+      more.hidden = true;
+    } else {
+      empty.hidden = true;
+      const visibles = items.slice(0, limiteActual);
+      rows.innerHTML = visibles.map(fila).join('');
+      const restantes = items.length - visibles.length;
+      if (restantes > 0) {
+        more.hidden = false;
+        more.innerHTML = `Mostrando ${visibles.length} de ${items.length}.<br><button type="button" id="equiv-ver-mas">Ver ${Math.min(restantes, LIMITE)} más</button>`;
+        document.getElementById('equiv-ver-mas').addEventListener('click', () => {
+          limiteActual += LIMITE;
+          aplicar();
+        });
+      } else {
+        more.hidden = true;
+      }
+    }
+
+    howto.hidden = filtroConfianza !== 'sin_match';
+    document.getElementById('equiv-aclaracion-dudosa').hidden = filtroConfianza !== 'dudosa';
+    document.getElementById('equiv-aclaracion-sinmatch').hidden = filtroConfianza !== 'sin_match';
+    document.getElementById('equiv-count').textContent =
+      items.length + ' de ' + DATOS.length + ' artículos.';
+  }
+
+  function contarYPintar() {
+    const porEstado = { alta: 0, dudosa: 0, sin_match: 0 };
+    DATOS.forEach(d => { if (porEstado[d.confianza] !== undefined) porEstado[d.confianza]++; });
+    document.getElementById('num-alta').textContent = porEstado.alta;
+    document.getElementById('num-dudosa').textContent = porEstado.dudosa;
+    document.getElementById('num-sinmatch').textContent = porEstado.sin_match;
+  }
+
+  document.getElementById('equiv-summary').addEventListener('click', (e) => {
+    const btn = e.target.closest('.equiv-tile');
+    if (!btn) return;
+    const nuevo = btn.dataset.filtro;
+    const yaActivo = btn.classList.contains('is-active');
+    document.querySelectorAll('.equiv-tile').forEach(t => t.classList.remove('is-active'));
+    filtroConfianza = yaActivo ? '' : nuevo;
+    if (!yaActivo) btn.classList.add('is-active');
+    limiteActual = LIMITE;
+    aplicar();
+  });
+
+  const selOrigen = document.getElementById('equiv-origen');
+  if (selOrigen) {
+    selOrigen.addEventListener('change', (e) => {
+      filtroOrigen = e.target.value;
+      limiteActual = LIMITE;
+      aplicar();
+    });
+  }
+
+  document.getElementById('equiv-buscar').addEventListener('input', (e) => {
+    busqueda = e.target.value.trim();
+    limiteActual = LIMITE;
+    aplicar();
+  });
+
+  document.getElementById('equiv-limpiar').addEventListener('click', () => {
+    filtroConfianza = '';
+    filtroOrigen = '';
+    busqueda = '';
+    limiteActual = LIMITE;
+    document.querySelectorAll('.equiv-tile').forEach(t => t.classList.remove('is-active'));
+    document.getElementById('equiv-buscar').value = '';
+    if (selOrigen) selOrigen.value = '';
+    aplicar();
+  });
+
+  contarYPintar();
+  aplicar();
+})();
+</script>
+{% endblock %}

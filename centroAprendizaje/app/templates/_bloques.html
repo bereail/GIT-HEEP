@@ -63,8 +63,11 @@
 </div>
 {% endmacro %}
 
-{% macro bloque(b, img_base) %}
-  {% if b.type == 'text' %}
+{% macro bloque(b, img_base, pdf_base='') %}
+  {% if b.type == 'heading' %}
+    <h3 class="bloque-heading">{{ b.text }}</h3>
+
+  {% elif b.type == 'text' %}
     <p>{{ b.text }}</p>
 
   {% elif b.type == 'prereq' %}
@@ -96,6 +99,15 @@
       <span>
         <span class="video-link__title">Mirá el video: {{ b.title }}</span>
         <span class="video-link__meta">{% if b.minutos %}{{ b.minutos }} min · {% endif %}Se abre en YouTube. ¿Está bloqueado en tu red? Mirá "Tengo un problema".</span>
+      </span>
+    </a>
+
+  {% elif b.type == 'pdf' %}
+    <a class="video-link" href="{{ pdf_base }}/{{ b.file }}" target="_blank" rel="noopener">
+      <span class="video-link__icon" aria-hidden="true">📄</span>
+      <span>
+        <span class="video-link__title">Instructivo oficial (PDF): {{ b.title }}</span>
+        <span class="video-link__meta">Documento oficial de la Provincia de Santa Fe · se abre o descarga aparte.</span>
       </span>
     </a>
 

@@ -43,6 +43,13 @@
     <div class="home-card__title">Mi progreso</div>
     <div class="home-card__desc">Tutoriales completados y resultados de quizzes.</div>
   </a>
+  {% if tema.equivalencias_articulos %}
+  <a class="card card-link" href="{{ url_for('ui.ver_equivalencias', tema_slug=tema.slug) }}">
+    <span class="home-card__icon">🔄</span>
+    <div class="home-card__title">Nomenclador de artículos</div>
+    <div class="home-card__desc">¿Qué código uso en TIMBÓ para este artículo? Buscalo acá.</div>
+  </a>
+  {% endif %}
 </div>
 
 {% if tema.recomendaciones %}

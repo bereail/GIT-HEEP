@@ -5,7 +5,7 @@ from flask import Blueprint, abort, flash, jsonify, redirect, render_template, r
 
 from app import csrf
 from app.extensions import db
-from app.models import Categoria, Consulta, Feedback, MensajeConsulta, Tema, Tutorial
+from app.models import Categoria, Consulta, EquivalenciaArticulo, Feedback, MensajeConsulta, Tema, Tutorial
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
 from app.models.feedback import CATEGORIAS_FEEDBACK
 from app.services import buscador, estadisticas, notificaciones
@@ -46,7 +46,8 @@ def _tutorial_o_404(categoria, tutorial_slug):
 @ui_bp.route("/")
 def portal_inicio():
     temas = Tema.query.filter_by(activo=True).order_by(Tema.orden).all()
-    return render_template("portal_inicio.html", temas=temas)
+    tema_nomenclador = next((t for t in temas if t.equivalencias_articulos), None)
+    return render_template("portal_inicio.html", temas=temas, tema_nomenclador=tema_nomenclador)
 
 
 # ------------------------------------------------------------------ tema ----
@@ -154,6 +155,31 @@ def ver_glosario(tema_slug):
         letras=letras,
         primera_de_letra=primera_de_letra,
         letra_de_termino=_letra_de_termino,
+    )
+
+
+@ui_bp.route("/temas/<tema_slug>/equivalencias")
+def ver_equivalencias(tema_slug):
+    tema = _tema_o_404(tema_slug)
+    items = EquivalenciaArticulo.query.filter_by(tema_id=tema.id).order_by(
+        EquivalenciaArticulo.nombre_interno
+    ).all()
+    datos = [
+        {
+            "nombre": e.nombre_interno,
+            "codigo": e.codigo_catalogo or "",
+            "bien": e.bien_o_servicio or "",
+            "item": e.item_especifico or "",
+            "confianza": e.confianza,
+            "origen": e.origen or "",
+            "notas": e.notas or "",
+        }
+        for e in items
+    ]
+    origenes = sorted({e.origen for e in items if e.origen})
+    actualizado_en = max((e.creado_en for e in items if e.creado_en), default=None)
+    return render_template(
+        "equivalencias.html", tema=tema, datos=datos, origenes=origenes, actualizado_en=actualizado_en
     )
 
 
@@ -345,6 +371,7 @@ def feedback_nuevo(tema_slug):
         puntuacion_raw = request.form.get("puntuacion")
         puntuacion = int(puntuacion_raw) if puntuacion_raw in {"1", "2", "3", "4", "5"} else None
         comentario = (request.form.get("comentario") or "").strip() or None
+        nombre = (request.form.get("nombre") or "").strip() or None
         categoria = request.form.get("categoria") or None
         if categoria not in CATEGORIAS_FEEDBACK:
             categoria = None
@@ -362,6 +389,7 @@ def feedback_nuevo(tema_slug):
             tutorial_id=tutorial.id if tutorial else None,
             puntuacion=puntuacion,
             comentario=comentario,
+            nombre=nombre,
             categoria=categoria,
         ))
         db.session.commit()

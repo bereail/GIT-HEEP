@@ -15,7 +15,7 @@ import unicodedata
 from flask import url_for
 from markupsafe import escape
 
-from app.models import Categoria, EntradaGlosario, Situacion, Tarea, Tutorial
+from app.models import Categoria, EntradaGlosario, EquivalenciaArticulo, Situacion, Tarea, Tutorial
 
 # Palabras muy frecuentes en preguntas en lenguaje natural ("¿Qué es el
 # CIE-10?") que no aportan nada para encontrar el resultado correcto, pero
@@ -114,6 +114,44 @@ def construir_indice(tema):
             "ref": termino,
         })
 
+    if tema.equivalencias_articulos:
+        # Entrada sintetica con peso alto para preguntas en lenguaje natural
+        # sobre el Nomenclador en si ("no encuentro el articulo", "como pido
+        # un articulo nuevo"). Sin esto, esas consultas no matchean ningun
+        # nombre de articulo puntual y terminan ganando por una entrada de
+        # Glosario sin relacion (ej. SIPAF, que menciona "articulos" de paso).
+        entradas.append({
+            "kind": "NomencladorAyuda",
+            "title": "No encuentro un artículo / ¿qué nombre usa TIMBÓ?",
+            "subtitle": "Nomenclador de artículos",
+            "url": url_for("ui.ver_equivalencias", tema_slug=tema.slug),
+            "texto": normalizar(
+                "no encuentro el articulo no aparece no esta el articulo en el catalogo "
+                "como se llama como busco como pido un articulo en timbo "
+                "nombre correcto del articulo nomenclador equivalencia codigo "
+                "pedir alta de un articulo articulo nuevo falta un articulo que no esta"
+            ),
+            "peso": 4,
+            "ref": tema,
+        })
+
+    for equivalencia in tema.equivalencias_articulos:
+        # Solo nombre/bien/item especifico: las notas son texto libre largo
+        # y meterlas ensuciaria el ranking con coincidencias de palabras
+        # sueltas sin relacion real con lo que se busca.
+        texto = " ".join(filter(None, [
+            equivalencia.nombre_interno, equivalencia.bien_o_servicio, equivalencia.item_especifico,
+        ]))
+        entradas.append({
+            "kind": "Nomenclador",
+            "title": equivalencia.nombre_interno,
+            "subtitle": equivalencia.bien_o_servicio or "Todavía no se encontró en el catálogo oficial",
+            "url": url_for("ui.ver_equivalencias", tema_slug=tema.slug),
+            "texto": normalizar(texto),
+            "peso": 1.5,
+            "ref": equivalencia,
+        })
+
     return entradas
 
 
@@ -209,6 +247,35 @@ def armar_respuesta_chatbot(entrada):
             "html": f"Para eso, mirá la lección <b>{escape(tarea.tutorial.titulo)}</b> ({tarea.tutorial.minutos} min).",
             "url": _url_tutorial(tarea.tutorial),
             "link_texto": "Ir a la lección →",
+        }
+
+    if kind == "NomencladorAyuda":
+        return {
+            "html": (
+                "<b>¿No encontrás un artículo?</b><br>"
+                "Buscalo en el Nomenclador: te decimos con qué nombre pedirlo en TIMBÓ "
+                "o, si todavía no está en el catálogo, cómo solicitar que lo agreguen."
+            ),
+            "url": entrada["url"],
+            "link_texto": "Ir al Nomenclador de artículos →",
+        }
+
+    if kind == "Nomenclador":
+        equivalencia: EquivalenciaArticulo = ref
+        html = f"<b>{escape(equivalencia.nombre_interno)}</b>"
+        if equivalencia.confianza == "sin_match":
+            html += "<br>Todavía no está en el catálogo oficial — hay que pedir que lo agreguen."
+        else:
+            partes = " — ".join(filter(None, [equivalencia.bien_o_servicio, equivalencia.item_especifico]))
+            html += f"<br>Buscalo en TIMBÓ como: {escape(partes)}"
+            if equivalencia.codigo_catalogo:
+                html += f" <code>{escape(equivalencia.codigo_catalogo)}</code>"
+            if equivalencia.confianza == "dudosa":
+                html += "<br><small>Es lo más parecido que encontramos, confirmá antes de usarlo.</small>"
+        return {
+            "html": html,
+            "url": url_for("ui.ver_equivalencias", tema_slug=equivalencia.tema.slug),
+            "link_texto": "Ver en el Nomenclador de artículos →",
         }
 
     if kind == "Leccion":

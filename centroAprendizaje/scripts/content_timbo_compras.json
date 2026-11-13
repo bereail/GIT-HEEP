@@ -27,21 +27,128 @@
       "dificultad": "basico",
       "tutoriales": [
         {
+          "slug": "inscribirse-como-proveedor-rupc",
+          "titulo": "Inscribirte como proveedor (RUPC)",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Antes de ofertar necesitás estar inscripto en el Registro Único de Proveedores y Contratistas (RUPC) de la Provincia. Es un trámite aparte de la ID Ciudadana: la ID Ciudadana sirve para operar en TIMBÓ Compras: el RUPC es lo que te habilita como proveedor."
+            },
+            {
+              "type": "prereq",
+              "items": [
+                "Clave Fiscal de AFIP nivel 3",
+                "El servicio \"ECON SANTA FE - Registro Único de Proveedores y Contratistas\" incorporado a tu Clave Fiscal"
+              ]
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Incorporá el servicio en AFIP (solo la primera vez).",
+              "doThis": "Entrá a www.afip.gob.ar → \"Administrador de relaciones de Clave Fiscal\" → agregá el servicio \"ECON SANTA FE - Registro Único de Proveedores y Contratistas\"."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Entrá al sitio del Registro.",
+              "doThis": "Andá a www.santafe.gov.ar/proveedores → pestaña \"Acceso Proveedor\" → \"Ingreso con Clave Fiscal\". Te redirige solo al sitio de autenticación de AFIP."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Elegí el trámite que necesitás (por ejemplo, Inscripción) y completá el formulario con los datos que pide el sistema.",
+              "doThis": "Al terminar, tocá \"Finalizar formulario\" y adjuntá la documentación requerida."
+            },
+            {
+              "type": "tip",
+              "text": "Desde el panel de bienvenida del RUPC también podés hacer una Actualización o Modificación de Datos, ver tu Legajo Digital, imprimir la Constancia de Inscripción y consultar el Estado del Trámite."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/Wb4ZRvB3YSo",
+              "title": "Instructivo para registrarse como proveedor de bienes y servicios del Gobierno de Santa Fe",
+              "minutos": 1
+            }
+          ],
+          "quiz": [
+            {
+              "type": "multiple-choice",
+              "question": "¿Qué necesitás en AFIP para inscribirte en el RUPC?",
+              "options": [
+                "Clave Fiscal nivel 3 con el servicio ECON SANTA FE incorporado",
+                "Solo tu CUIT, sin Clave Fiscal",
+                "Una Clave Fiscal nivel 1"
+              ],
+              "correctIndex": 0,
+              "explanation": "Sin ese servicio incorporado a tu Clave Fiscal nivel 3, el acceso con Clave Fiscal no te deja entrar."
+            }
+          ]
+        },
+        {
           "slug": "requisitos",
           "titulo": "Quién puede participar y qué necesita",
           "minutos": 2,
           "dificultad": "basico",
           "bloques": [
-            { "type": "text", "text": "Pueden participar personas humanas, personas jurídicas y uniones transitorias, siempre a través de sus representantes autorizados." },
-            { "type": "prereq", "items": [
-              "ID Ciudadana — se crea en santafe.gob.ar/idciudadana/registro/",
-              "Domicilio digital — se adhiere desde Atención Virtual (sf.gob.ar/IngresarAV)"
-            ] },
-            { "type": "tip", "text": "Con esas dos cosas ya podés entrar. No hace falta ningún otro alta especial para ofertar." },
-            { "type": "video", "url": "https://youtu.be/bLSixoqJheg", "title": "Requisitos para acceder a Timbó Compras", "minutos": 1 }
+            {
+              "type": "text",
+              "text": "Pueden participar personas humanas, personas jurídicas y uniones transitorias, siempre a través de sus representantes autorizados."
+            },
+            {
+              "type": "prereq",
+              "items": [
+                "ID Ciudadana en nivel 2 — se crea en www.santafe.gob.ar/portalciudadano (\"Crear cuenta\")",
+                "Domicilio digital — se adhiere desde Atención Virtual (atencionvirtual.santafe.gob.ar)"
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "El nivel 2 de la ID Ciudadana se consigue subiendo una foto del DNI, o validándote con ARCA o con la app Mi Argentina. Con eso y el domicilio digital ya podés entrar: no hace falta ningún otro alta especial para ofertar."
+            },
+            {
+              "type": "warning",
+              "text": "Santa Fe todavía no tiene identificación digital para personas jurídicas ni UTE. Por eso, quien presenta la oferta es siempre una persona física, que después tiene que acreditar que tiene facultades para representar al proveedor: ser parte del directorio, o tener un poder especial con facultades suficientes. Esa acreditación se adjunta en el formulario de \"Requisitos mínimos\" al ofertar."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Domicilio digital",
+                  "def": "Tiene la misma validez legal que tu domicilio físico: ahí te llegan todas las notificaciones oficiales del proceso (circulares, invitaciones, aperturas). Además te avisan por mail de cortesía, pero lo que vale legalmente es lo que esté en el domicilio digital."
+                }
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "¿Dudas? Escribí a timbocompras@santafe.gob.ar."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/bLSixoqJheg",
+              "title": "Requisitos para acceder a Timbó Compras",
+              "minutos": 1
+            }
           ],
           "quiz": [
-            { "type": "multiple-choice", "question": "¿Qué necesitás para entrar a TIMBÓ Compras como proveedor?", "options": ["ID Ciudadana y domicilio digital", "Un usuario de Intranet provincial", "Un certificado de firma digital"], "correctIndex": 0, "explanation": "Son los dos únicos requisitos: ID Ciudadana y adhesión al domicilio digital." }
+            {
+              "type": "multiple-choice",
+              "question": "¿Qué necesitás para entrar a TIMBÓ Compras como proveedor?",
+              "options": [
+                "ID Ciudadana en nivel 2 y domicilio digital",
+                "Un usuario de Intranet provincial",
+                "Un certificado de firma digital"
+              ],
+              "correctIndex": 0,
+              "explanation": "Son los dos únicos requisitos: ID Ciudadana en nivel 2 y adhesión al domicilio digital."
+            },
+            {
+              "type": "true-false",
+              "question": "Si represento a una SA o SRL, puedo crear la ID Ciudadana a nombre de la empresa.",
+              "answer": false,
+              "explanation": "La ID Ciudadana es siempre de una persona física, que después acredita que tiene facultades para representar a la empresa."
+            }
           ]
         },
         {
@@ -50,14 +157,47 @@
           "minutos": 3,
           "dificultad": "basico",
           "bloques": [
-            { "type": "text", "text": "Entrá a santafe.gov.ar/ms/compras. Buscá el proceso que te interesa (los que están \"En apertura\") y tocá \"Ofertar\". Vas a ingresar con tu ID Ciudadana." },
-            { "type": "step", "number": 1, "explanation": "Abrí la bandeja \"Participar de un proceso\". Ahí están todos los procesos electrónicos publicados.", "lookFor": "La fila del proceso que te interesa.", "doThis": "Tocá los tres puntitos (⋮) para previsualizar y descargar el pliego, el acto que aprobó el proceso, la nómina de proveedores y el cronograma." },
-            { "type": "step", "number": 2, "explanation": "Tocá \"Participar del proceso\".", "doThis": "Completá los datos del proveedor que representás, su CUIT y un correo electrónico. Después, \"Enviar\"." },
-            { "type": "step", "number": 3, "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\".", "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial." },
-            { "type": "video", "url": "https://youtu.be/5qcZGh3euOU", "title": "Cómo ingresar a Timbó Compras y participar de un proceso", "minutos": 2 }
+            {
+              "type": "text",
+              "text": "Entrá a santafe.gov.ar/ms/compras. Buscá el proceso que te interesa (los que están \"En apertura\") y tocá \"Ofertar\". Vas a ingresar con tu ID Ciudadana."
+            },
+            {
+              "type": "tip",
+              "text": "Hay dos caminos para llegar al mismo lugar: desde el ícono \"Procesos de Compra\" entrás a la cartelera de ofertas, donde cada licitación digital tiene un botón naranja \"Ofertar\"; o podés ir directo al ícono \"Ofertar\" del portal, que te lleva igual a Timbó Compras con tu ID Ciudadana."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Abrí la bandeja \"Participar de un proceso\". Ahí están todos los procesos electrónicos publicados.",
+              "lookFor": "La fila del proceso que te interesa.",
+              "doThis": "Tocá los tres puntitos (⋮) para previsualizar y descargar el pliego, el acto que aprobó el proceso, la nómina de proveedores y el cronograma."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Tocá \"Participar del proceso\".",
+              "doThis": "Completá los datos del proveedor que representás, su CUIT y un correo electrónico. Después, \"Enviar\"."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\".",
+              "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/5qcZGh3euOU",
+              "title": "Cómo ingresar a Timbó Compras y participar de un proceso",
+              "minutos": 2
+            }
           ],
           "quiz": [
-            { "type": "true-false", "question": "Después de \"Participar del proceso\", el formulario de oferta aparece en \"Mis ofertas\" → \"Asignados\".", "answer": true, "explanation": "Es la bandeja donde vas a trabajar toda tu oferta." }
+            {
+              "type": "true-false",
+              "question": "Después de \"Participar del proceso\", el formulario de oferta aparece en \"Mis ofertas\" → \"Asignados\".",
+              "answer": true,
+              "explanation": "Es la bandeja donde vas a trabajar toda tu oferta."
+            }
           ]
         }
       ]
@@ -76,17 +216,97 @@
           "minutos": 4,
           "dificultad": "basico",
           "bloques": [
-            { "type": "text", "text": "En \"Mis ofertas\", tocá los tres puntitos del formulario de oferta y elegí \"Acciones\". Vas a ver dos formularios obligatorios." },
-            { "type": "step", "number": 1, "explanation": "Formulario \"Oferta técnica y económica\": aparecen todos los renglones del proceso.", "doThis": "En cada renglón que quieras ofertar: \"Editar\" → cargá ficha técnica, cantidad y precio unitario → \"Guardar\". Al terminar los renglones, \"Enviar\"." },
-            { "type": "step", "number": 2, "explanation": "Formulario \"Requisitos mínimos\": la documentación que pide el pliego.", "doThis": "En cada fila: ⋮ → \"Editar\" → \"Examinar\" para adjuntar → breve descripción → \"Guardar\". Si querés, sumá un anexo adicional. Después, \"Enviar\"." },
-            { "type": "step", "number": 3, "explanation": "Con los dos formularios enviados, tocá \"Presentar\" (o \"Anular\" si te arrepentiste).", "lookFor": "Que la oferta quede en estado \"Presentada\"." },
-            { "type": "warning", "text": "Solo las ofertas en estado \"Presentada\" se abren automáticamente en el acto de apertura." },
-            { "type": "tip", "text": "Aunque ya esté presentada, podés editar cualquier dato hasta la fecha y hora de apertura." },
-            { "type": "video", "url": "https://youtu.be/fcEjp7lJGUE", "title": "Cómo completar y presentar una oferta", "minutos": 3 }
+            {
+              "type": "text",
+              "text": "En \"Mis ofertas\", tocá los tres puntitos del formulario de oferta y elegí \"Acciones\". Vas a ver dos formularios obligatorios."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Formulario \"Oferta técnica y económica\": aparecen todos los renglones del proceso.",
+              "doThis": "En cada renglón que quieras ofertar: \"Editar\" → cargá ficha técnica, cantidad y precio unitario → \"Guardar\". Al terminar los renglones, \"Enviar\"."
+            },
+            {
+              "type": "warning",
+              "text": "Los precios se cargan con coma para los decimales, no con punto. Si ponés un punto, el sistema lo toma como separador de miles y te carga el número entero, sin el decimal."
+            },
+            {
+              "type": "tip",
+              "text": "Si el pliego lo permite, podés cotizar en dólares además de pesos, ofertar cantidad parcial (menos de lo solicitado) y sumar una oferta alternativa al mismo renglón con \"Editar\" → \"Añadir alternativa\"."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Formulario \"Requisitos mínimos\": la documentación que pide el pliego.",
+              "doThis": "En cada fila: ⋮ → \"Editar\" → \"Examinar\" para adjuntar → breve descripción → \"Guardar\". Si querés, sumá un anexo adicional. Después, \"Enviar\"."
+            },
+            {
+              "type": "tip",
+              "text": "Los adjuntos tienen que ser PDF (no se aceptan ZIP ni imágenes JPG). No hace falta que estén firmados digitalmente: alcanza con el escaneo, porque la firma de tu oferta completa valida toda la documentación."
+            },
+            {
+              "type": "tip",
+              "text": "Si el documento que piden ya está vigente en el Registro Único de Proveedores y Contratistas, podés marcar esa opción en vez de adjuntarlo — la Comisión Evaluadora lo verifica directo en el registro. Ojo: si en realidad no está vigente ahí, te lo van a pedir como subsanación."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Con los dos formularios enviados, tocá \"Presentar\" (o \"Anular\" si te arrepentiste).",
+              "lookFor": "Que la oferta quede en estado \"Presentada\"."
+            },
+            {
+              "type": "warning",
+              "text": "Solo las ofertas en estado \"Presentada\" se abren automáticamente en el acto de apertura."
+            },
+            {
+              "type": "tip",
+              "text": "Aunque ya esté presentada, podés editar cualquier dato hasta la fecha y hora de apertura."
+            },
+            {
+              "type": "warning",
+              "text": "Al editar una oferta presentada, no perdés lo que ya cargaste, pero el formulario vuelve a estado \"Completar\". Tenés que volver a enviar los dos formularios y presentarla de nuevo antes de la apertura — si se te pasa la fecha y quedó en \"Completar\", se descarta automáticamente y no participa."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/fcEjp7lJGUE",
+              "title": "Cómo completar y presentar una oferta",
+              "minutos": 3
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/Yp3TIlDxpms",
+              "title": "Timbó Compras - Cómo hacer una oferta online en Santa Fe (capacitación completa)",
+              "minutos": 49
+            }
           ],
           "quiz": [
-            { "type": "order-steps", "instruction": "Ordená los pasos para presentar una oferta:", "steps": ["Abrir \"Acciones\" en el formulario de oferta", "Completar y enviar \"Oferta técnica y económica\"", "Completar y enviar \"Requisitos mínimos\"", "Tocar \"Presentar\""] },
-            { "type": "true-false", "question": "Una oferta completa pero sin presentar igual se abre en el acto de apertura.", "answer": false, "explanation": "Solo se abren las que están en estado \"Presentada\"." }
+            {
+              "type": "order-steps",
+              "instruction": "Ordená los pasos para presentar una oferta:",
+              "steps": [
+                "Abrir \"Acciones\" en el formulario de oferta",
+                "Completar y enviar \"Oferta técnica y económica\"",
+                "Completar y enviar \"Requisitos mínimos\"",
+                "Tocar \"Presentar\""
+              ]
+            },
+            {
+              "type": "true-false",
+              "question": "Una oferta completa pero sin presentar igual se abre en el acto de apertura.",
+              "answer": false,
+              "explanation": "Solo se abren las que están en estado \"Presentada\"."
+            },
+            {
+              "type": "multiple-choice",
+              "question": "¿Cómo cargás un precio con decimales, por ejemplo 1250,50?",
+              "options": [
+                "Con coma: 1250,50",
+                "Con punto: 1250.50",
+                "Da lo mismo coma o punto"
+              ],
+              "correctIndex": 0,
+              "explanation": "Con punto el sistema toma el número como entero y pierde el decimal."
+            }
           ]
         },
         {
@@ -95,22 +315,62 @@
           "minutos": 3,
           "dificultad": "basico",
           "bloques": [
-            { "type": "prereq", "items": [
-              "Estar participando del proceso.",
-              "Que tu formulario de oferta esté en estado \"Completar formulario\".",
-              "Estar dentro de las fechas de consulta del proceso."
-            ] },
-            { "type": "step", "number": 1, "explanation": "En \"Mis ofertas\", tocá ⋮ → \"Iniciar consulta del proceso\".", "doThis": "Escribí tu consulta (podés sumar un anexo) y tocá \"Guardar y enviar\"." },
-            { "type": "step", "number": 2, "explanation": "La consulta queda en la pestaña \"Pendientes\" hasta que la respondan.", "lookFor": "La respuesta llega como circular aclaratoria en la pestaña \"Asignados\"." },
-            { "type": "concepts", "items": [
-              { "term": "Circular aclaratoria", "def": "Responde una consulta o aclara el pliego. El proceso sigue igual." },
-              { "term": "Circular modificatoria", "def": "Cambia el pliego. Suspende el proceso automáticamente hasta que se publique el pliego nuevo." }
-            ] },
-            { "type": "warning", "text": "Si llega una circular modificatoria, tu oferta pasa a \"Pendientes\" (\"proceso de publicación en edición\"). Cuando se publique el pliego nuevo vuelve a \"Asignados\": revisá los cambios desde ⋮ → \"Previsualizar\" antes de seguir." },
-            { "type": "video", "url": "https://youtu.be/W-_htQe-JdA", "title": "Cómo realizar consultas y ver circulares", "minutos": 3 }
+            {
+              "type": "prereq",
+              "items": [
+                "Estar participando del proceso.",
+                "Que tu formulario de oferta esté en estado \"Completar formulario\".",
+                "Estar dentro de las fechas de consulta del proceso."
+              ]
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "En \"Mis ofertas\", tocá ⋮ → \"Iniciar consulta del proceso\".",
+              "doThis": "Escribí tu consulta (podés sumar un anexo) y tocá \"Guardar y enviar\"."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "La consulta queda en la pestaña \"Pendientes\" hasta que la respondan.",
+              "lookFor": "La respuesta llega como circular aclaratoria en la pestaña \"Asignados\"."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Circular aclaratoria",
+                  "def": "Responde una consulta o aclara el pliego. El proceso sigue igual."
+                },
+                {
+                  "term": "Circular modificatoria",
+                  "def": "Cambia el pliego. Suspende el proceso automáticamente hasta que se publique el pliego nuevo."
+                }
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Si llega una circular modificatoria, tu oferta pasa a \"Pendientes\" (\"proceso de publicación en edición\"). Cuando se publique el pliego nuevo vuelve a \"Asignados\": revisá los cambios desde ⋮ → \"Previsualizar\" antes de seguir."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/W-_htQe-JdA",
+              "title": "Cómo realizar consultas y ver circulares",
+              "minutos": 3
+            }
           ],
           "quiz": [
-            { "type": "multiple-choice", "question": "¿Qué pasa con el proceso cuando sale una circular modificatoria?", "options": ["Se suspende automáticamente", "Sigue igual", "Se cancela y hay que empezar de cero"], "correctIndex": 0, "explanation": "Queda suspendido hasta que se publica el pliego modificado." }
+            {
+              "type": "multiple-choice",
+              "question": "¿Qué pasa con el proceso cuando sale una circular modificatoria?",
+              "options": [
+                "Se suspende automáticamente",
+                "Sigue igual",
+                "Se cancela y hay que empezar de cero"
+              ],
+              "correctIndex": 0,
+              "explanation": "Queda suspendido hasta que se publica el pliego modificado."
+            }
           ]
         },
         {
@@ -119,18 +379,60 @@
           "minutos": 4,
           "dificultad": "intermedio",
           "bloques": [
-            { "type": "text", "text": "Después de la apertura, Compras puede pedirte tres cosas. Las tres se responden igual: \"Mis ofertas\" → pestaña \"Asignados\" → ⋮ → \"Acciones\"." },
-            { "type": "diagram", "variant": "table", "title": "Qué te pueden pedir", "columns": ["Pedido", "Qué hacés", "Para cerrar"], "rows": [
-              ["Subsanación", "En cada fila: Editar → Examinar → adjuntar el documento corregido → Guardar", "Enviar → Enviar subsanación → Confirmar"],
-              ["Mejora de precio", "En el renglón: Editar → \"Mejorar precio: Sí\" → precio nuevo", "Enviar → Enviar mejora → Confirmar"],
-              ["Aclaración", "Escribí la respuesta y, si hace falta, adjuntá un anexo", "Enviar → Enviar aclaración → Confirmar"]
-            ], "note": "Si no querés mejorar algún renglón, dejalo como está y enviá igual." },
-            { "type": "warning", "text": "Cada pedido trae fecha y hora límite. Pasado ese momento ya no se puede responder." },
-            { "type": "tip", "text": "Cuando termines, el trámite aparece en \"Finalizados\": desde ahí lo podés previsualizar." },
-            { "type": "video", "url": "https://youtu.be/u0UNen9iQnA", "title": "Cómo subsanar o mejorar una oferta", "minutos": 3 }
+            {
+              "type": "text",
+              "text": "Después de la apertura, Compras puede pedirte tres cosas. Las tres se responden igual: \"Mis ofertas\" → pestaña \"Asignados\" → ⋮ → \"Acciones\"."
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "Qué te pueden pedir",
+              "columns": [
+                "Pedido",
+                "Qué hacés",
+                "Para cerrar"
+              ],
+              "rows": [
+                [
+                  "Subsanación",
+                  "En cada fila: Editar → Examinar → adjuntar el documento corregido → Guardar",
+                  "Enviar → Enviar subsanación → Confirmar"
+                ],
+                [
+                  "Mejora de precio",
+                  "En el renglón: Editar → \"Mejorar precio: Sí\" → precio nuevo",
+                  "Enviar → Enviar mejora → Confirmar"
+                ],
+                [
+                  "Aclaración",
+                  "Escribí la respuesta y, si hace falta, adjuntá un anexo",
+                  "Enviar → Enviar aclaración → Confirmar"
+                ]
+              ],
+              "note": "Si no querés mejorar algún renglón, dejalo como está y enviá igual."
+            },
+            {
+              "type": "warning",
+              "text": "Cada pedido trae fecha y hora límite. Pasado ese momento ya no se puede responder."
+            },
+            {
+              "type": "tip",
+              "text": "Cuando termines, el trámite aparece en \"Finalizados\": desde ahí lo podés previsualizar."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/u0UNen9iQnA",
+              "title": "Cómo subsanar o mejorar una oferta",
+              "minutos": 3
+            }
           ],
           "quiz": [
-            { "type": "true-false", "question": "Si me piden mejorar varios renglones, estoy obligado a mejorarlos todos.", "answer": false, "explanation": "Podés mejorar solo los que quieras y enviar el formulario igual." }
+            {
+              "type": "true-false",
+              "question": "Si me piden mejorar varios renglones, estoy obligado a mejorarlos todos.",
+              "answer": false,
+              "explanation": "Podés mejorar solo los que quieras y enviar el formulario igual."
+            }
           ]
         },
         {
@@ -139,22 +441,400 @@
           "minutos": 4,
           "dificultad": "avanzado",
           "bloques": [
-            { "type": "text", "text": "Una impugnación es un planteo formal contra una oferta o contra el informe de preadjudicación. Sirve para cuidar la igualdad entre oferentes." },
-            { "type": "prereq", "items": [
-              "Que sea fundada y por escrito.",
-              "La garantía de impugnación (art. 134 de la Ley 12.510 y Decreto 1104/2016).",
-              "Estar dentro del plazo de impugnación."
-            ] },
-            { "type": "diagram", "variant": "table", "title": "Dos tipos de impugnación", "columns": ["Contra…", "Cuándo", "Cómo"], "rows": [
-              ["Una oferta", "Oferta en estado \"Espera de evaluación\"", "Acciones → Iniciar impugnación a la oferta → Acciones → completar → Enviar"],
-              ["La preadjudicación", "Evaluación en estado \"Preadjudicado\"", "Previsualizar el informe → Iniciar impugnación a la preadjudicación → Acciones → completar → Enviar y confirmar"]
-            ] },
-            { "type": "tip", "text": "En el formulario podés descargar todas las ofertas presentadas para analizarlas antes de escribir." },
-            { "type": "text", "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación." },
-            { "type": "video", "url": "https://youtu.be/0ExXUT8-M14", "title": "Cómo realizar impugnaciones", "minutos": 3 }
+            {
+              "type": "text",
+              "text": "Una impugnación es un planteo formal contra una oferta o contra el informe de preadjudicación. Sirve para cuidar la igualdad entre oferentes."
+            },
+            {
+              "type": "prereq",
+              "items": [
+                "Que sea fundada y por escrito.",
+                "La garantía de impugnación (art. 134 de la Ley 12.510 y Decreto 1104/2016).",
+                "Estar dentro del plazo de impugnación."
+              ]
+            },
+            {
+              "type": "diagram",
+              "variant": "table",
+              "title": "Dos tipos de impugnación",
+              "columns": [
+                "Contra…",
+                "Cuándo",
+                "Cómo"
+              ],
+              "rows": [
+                [
+                  "Una oferta",
+                  "Oferta en estado \"Espera de evaluación\"",
+                  "Acciones → Iniciar impugnación a la oferta → Acciones → completar → Enviar"
+                ],
+                [
+                  "La preadjudicación",
+                  "Evaluación en estado \"Preadjudicado\"",
+                  "Previsualizar el informe → Iniciar impugnación a la preadjudicación → Acciones → completar → Enviar y confirmar"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "En el formulario podés descargar todas las ofertas presentadas para analizarlas antes de escribir."
+            },
+            {
+              "type": "tip",
+              "text": "La garantía de impugnación habitualmente equivale al 150% del valor de tu oferta. La ventana para revisar la documentación y decidir si impugnás es la misma que antes se manejaba en papel: dos días hábiles administrativos más un día de gracia desde la apertura."
+            },
+            {
+              "type": "text",
+              "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/0ExXUT8-M14",
+              "title": "Cómo realizar impugnaciones",
+              "minutos": 3
+            }
           ],
           "quiz": [
-            { "type": "multiple-choice", "question": "¿Qué es obligatorio adjuntar en una impugnación?", "options": ["La garantía de impugnación", "Una nota del hospital", "La oferta del competidor firmada"], "correctIndex": 0, "explanation": "La garantía es un campo obligatorio del formulario." }
+            {
+              "type": "multiple-choice",
+              "question": "¿Qué es obligatorio adjuntar en una impugnación?",
+              "options": [
+                "La garantía de impugnación",
+                "Una nota del hospital",
+                "La oferta del competidor firmada"
+              ],
+              "correctIndex": 0,
+              "explanation": "La garantía es un campo obligatorio del formulario."
+            },
+            {
+              "type": "multiple-choice",
+              "question": "¿A cuánto equivale habitualmente la garantía de impugnación?",
+              "options": [
+                "150% del valor de tu oferta",
+                "10% del valor de tu oferta",
+                "Un monto fijo igual para todos los procesos"
+              ],
+              "correctIndex": 0,
+              "explanation": "Es un porcentaje sobre el valor de la oferta que estás impugnando, no un monto fijo."
+            }
+          ]
+        },
+        {
+          "slug": "ver-documentos-embebidos",
+          "titulo": "Ver los documentos embebidos del pliego",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "El pliego de un proceso suele traer documentos \"embebidos\" dentro del PDF: fichas técnicas, condiciones de contrato y otros anexos que vas a tener que presentar."
+            },
+            {
+              "type": "prereq",
+              "items": [
+                "Tener el lector de PDF actualizado a la última versión"
+              ]
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Entrá a gestivirtual.gov.ar con tu ID Ciudadana.",
+              "doThis": "Andá a la pestaña \"Proveedor\" → \"Participar de un proceso\" para ver los procesos de compra activos."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "En la fila del proceso que te interesa, tocá los tres puntitos (⋮) → \"Previsualizar\".",
+              "lookFor": "El pliego único de bases y condiciones, el cronograma de fechas, la nómina de proveedores y el pliego con los anexos. Este último se identifica con una sigla según el tipo de contratación: LPR, LPU, CPU, CPR o CD."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "LPR",
+                  "def": "Licitación Privada."
+                },
+                {
+                  "term": "LPU",
+                  "def": "Licitación Pública."
+                },
+                {
+                  "term": "CPU",
+                  "def": "Concurso Público."
+                },
+                {
+                  "term": "CPR",
+                  "def": "Concurso Privado."
+                },
+                {
+                  "term": "CD",
+                  "def": "Contrataciones Directas."
+                }
+              ]
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Para ver todos los anexos, tocá el ícono de descargar.",
+              "doThis": "Se descarga el archivo y se abre en tu lector de PDF."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Dentro del PDF ya abierto, tocá el ícono de clip (📎).",
+              "lookFor": "Ahí están los documentos embebidos: fichas técnicas, condiciones del contrato y los anexos que tenés que presentar."
+            },
+            {
+              "type": "warning",
+              "text": "Si tu lector de PDF no está actualizado, puede que no te deje abrir los documentos embebidos."
+            },
+            {
+              "type": "tip",
+              "text": "Los anexos que subís en tu oferta solo pueden ser PDF (no se aceptan ZIP ni imágenes), y entre todos no pueden superar los 45 MB por oferta."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/tSYfZ3yVE58",
+              "title": "¿Cómo ver un documento embebido?",
+              "minutos": 1
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/JJExl9hnYbo",
+              "title": "¿Cómo ofertar en Timbó Compras? - Capacitación para proveedores",
+              "minutos": 35
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Para ver los documentos embebidos de un pliego alcanza con cualquier visor de PDF, sin importar la versión.",
+              "answer": false,
+              "explanation": "Hace falta una versión actualizada del lector de PDF; si no, los embebidos no se abren."
+            },
+            {
+              "type": "true-false",
+              "question": "Puedo adjuntar los anexos de mi oferta en formato ZIP si tengo varios archivos.",
+              "answer": false,
+              "explanation": "Solo se aceptan archivos PDF, ni ZIP ni imágenes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "compras-directas",
+      "titulo": "Compras Directas (CD-01)",
+      "icono": "📋",
+      "resumen": "El circuito de compras y contrataciones por gestión directa, para montos menores al tope: no pasa por licitación, se gestiona dentro del expediente electrónico con el documento oficial CD-01.",
+      "audiencia": "Personal de Compras, Mesa de Entradas y áreas solicitantes del hospital.",
+      "dificultad": "intermedio",
+      "tutoriales": [
+        {
+          "slug": "que-es-compra-directa",
+          "titulo": "Qué es una compra directa y cuándo se usa",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "La gestión directa por monto menor al tope es el circuito para comprar bienes o contratar servicios sin pasar por una licitación. A diferencia de TIMBÓ Compras (licitaciones), acá todo se tramita dentro del expediente electrónico, con un documento oficial especial: el CD-01."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope",
+                  "def": "El nombre exacto del tipo de trámite que elegís al pedir la carátula en TIMBÓ para iniciar una compra directa."
+                },
+                {
+                  "term": "Marco normativo",
+                  "def": "Inciso 1 del artículo 116 de la Ley 12.510 y su Decreto reglamentario 1104."
+                }
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Por el decreto de Territorio 5.0, una vez que un trámite se hace en digital tiene que seguir siendo digital siempre: no se puede volver a tramitarlo en papel."
+            },
+            {
+              "type": "tip",
+              "text": "Otro principio de Territorio 5.0: no le pidas al proveedor documentación que el Estado ya tiene en su poder."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/QH7zvgZ7sbQ",
+              "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
+              "minutos": 70
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Una compra directa se gestiona dentro de TIMBÓ Compras, igual que una licitación.",
+              "answer": false,
+              "explanation": "La compra directa no pasa por licitación: se tramita en el expediente electrónico con el documento oficial CD-01."
+            }
+          ]
+        },
+        {
+          "slug": "generar-formulario-cd01",
+          "titulo": "Generar el formulario CD-01",
+          "minutos": 5,
+          "dificultad": "intermedio",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "El CD-01 no es un PDF que subís: es un Documento Oficial que generás desde ese módulo de TIMBÓ."
+            },
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Documentos Oficiales → Nuevo documento oficial.",
+              "doThis": "Elegí el usuario productor (puede ser otra persona, no necesariamente vos) y en tipo de documento buscá \"CD01\"."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Completá los datos generales.",
+              "doThis": "Fecha, destinatario (la oficina a la que se lo pedís) y área solicitante."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "El formulario tiene dos secciones: Compra de bienes y Contratación de servicios.",
+              "doThis": "Completá renglón por renglón (ítem, cantidad, descripción, precio) la sección que corresponda. Si solo usás una, poné costo total = 0 en la otra y no le cargues renglones."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Sumá el resto de los datos.",
+              "doThis": "Fundamentación de la compra y, si ya los tenés, proveedores propuestos (no hay interoperabilidad con el Registro de Proveedores: se cargan a mano)."
+            },
+            {
+              "type": "step",
+              "number": 5,
+              "explanation": "El CD-01 es un documento con firma conjunta.",
+              "doThis": "Elegí al menos dos firmantes. Pueden ser de cualquier oficina de TIMBÓ: se buscan por nombre y apellido, no hace falta que sean de tu área."
+            },
+            {
+              "type": "tip",
+              "text": "Existen formularios CD-01 a CD-04 para las distintas etapas de la compra directa, y un CD-05 que es una nota de rechazo (no un formulario)."
+            },
+            {
+              "type": "tip",
+              "text": "El presupuesto de referencia para cargar los montos tentativos es el que te mandó el proveedor por correo electrónico."
+            },
+            {
+              "type": "warning",
+              "text": "Si ya veías usando un CD-01 armado fuera de TIMBÓ (digital, no escaneado) y firmado digitalmente, lo podés subir igual como archivo PDF al expediente: no es obligatorio generarlo desde Documentos Oficiales."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/QH7zvgZ7sbQ",
+              "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
+              "minutos": 70
+            }
+          ],
+          "quiz": [
+            {
+              "type": "true-false",
+              "question": "Los firmantes de un CD-01 tienen que ser de la misma oficina que lo generó.",
+              "answer": false,
+              "explanation": "Pueden ser de cualquier oficina de TIMBÓ: se buscan por nombre y apellido."
+            }
+          ]
+        },
+        {
+          "slug": "armar-expediente-y-pase",
+          "titulo": "Armar el expediente y pasarlo para su aprobación",
+          "minutos": 5,
+          "dificultad": "intermedio",
+          "bloques": [
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Pedí la carátula a Mesa de Entradas, con el trámite \"Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope\".",
+              "lookFor": "Una vez que Mesa de Entradas la aprueba, el expediente queda asignado a vos automáticamente."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Desde el Gestor de expediente, subí la nota de solicitud y, si corresponde, la ficha técnica.",
+              "doThis": "\"Subir nuevo archivo\" → solo PDF, hasta 50 MB por archivo, nunca escaneados (ocupan demasiado espacio). La ficha técnica es obligatoria si comprás un bien tecnológico; si no existe, se la pedís a STG."
+            },
+            {
+              "type": "tip",
+              "text": "El presupuesto de referencia se agrega como \"documento informativo\" (opción de los tres puntitos), no como documento incorporado: viaja con el expediente pero no lleva firma y se puede eliminar en cualquier momento."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Para sumar el CD-01 ya generado en Documentos Oficiales, no lo subas como archivo.",
+              "doThis": "Usá \"Vincular documento\" y pegá su número. Como ya está firmado, se incorpora directo, sin pedirte firmarlo de nuevo."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Con todo cargado, mandá el expediente a la oficina que corresponda.",
+              "doThis": "\"Enviar expediente\" → \"Realizar un pase\" → elegí la oficina (puede ser cualquiera de toda la Provincia) y escribí el motivo en la Providencia del pase (por ejemplo, \"Pase para su aprobación\")."
+            },
+            {
+              "type": "warning",
+              "text": "Al confirmar el pase, el expediente desaparece de tu bandeja y pasa directo a la bandeja de la oficina que elegiste."
+            },
+            {
+              "type": "tip",
+              "text": "La oficina que recibe el pase puede autorizar la compra aprovechando ese mismo pase (en la Providencia), sin necesidad de generar un documento nuevo."
+            },
+            {
+              "type": "warning",
+              "text": "Un documento ya incorporado al expediente no se puede eliminar, aunque tenga un error. Para corregirlo usá \"Subsanar documento\" y pegá el número del documento correcto — el original queda en el expediente, pero subsanado."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Firma electrónica",
+                  "def": "La usan todos los agentes en los módulos de Expedientes y Documentos Oficiales. Tiene la misma validez legal que la firma digital."
+                },
+                {
+                  "term": "Firma digital",
+                  "def": "La usan el gobernador, ministros y secretarios, con token, desde otro sistema."
+                }
+              ]
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/QH7zvgZ7sbQ",
+              "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
+              "minutos": 70
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/BzxCGnsajmw",
+              "title": "Gestión de pago para compras directas",
+              "minutos": 1
+            }
+          ],
+          "quiz": [
+            {
+              "type": "multiple-choice",
+              "question": "¿Cómo se incorpora al expediente un CD-01 ya generado en Documentos Oficiales?",
+              "options": [
+                "Con \"Vincular documento\", pegando su número",
+                "Subiéndolo como archivo PDF nuevo",
+                "No se puede incorporar, queda aparte"
+              ],
+              "correctIndex": 0,
+              "explanation": "Al vincularlo, como ya está firmado, se incorpora directo sin pedir una firma nueva."
+            },
+            {
+              "type": "true-false",
+              "question": "Si un documento incorporado al expediente tiene un error, se puede eliminar y listo.",
+              "answer": false,
+              "explanation": "No se puede eliminar un documento ya incorporado: hay que subsanarlo con el número del documento correcto."
+            }
           ]
         }
       ]
@@ -173,18 +853,57 @@
           "minutos": 3,
           "dificultad": "intermedio",
           "bloques": [
-            { "type": "text", "text": "El decisorio pasa dos veces por el circuito: uno antes del Tribunal de Cuentas (preventivo) y otro después (definitivo)." },
-            { "type": "diagram", "variant": "list", "title": "El circuito, en orden", "items": [
-              { "label": "1. Firmar el decisorio preventivo (con la afectación presupuestaria)", "hint": "Antes del TCP", "tone": "intermedio" },
-              { "label": "2. Correr vista al Tribunal de Cuentas: pliego + expediente + pedido + notas + decisorio preventivo", "hint": "Vista TCP", "tone": "intermedio" },
-              { "label": "3. En TIMBÓ Compras, vincular el Documento Oficial que aprueba el pliego", "hint": "Habilita la etapa siguiente", "tone": "verified" },
-              { "label": "4. Subir el decisorio definitivo al expediente y a TIMBÓ Compras", "hint": "Después del TCP", "tone": "verified" }
-            ] },
-            { "type": "warning", "text": "Un documento oficial firmado no se edita: si se toca, se rompe la firma. Revisá número y fecha antes de mandarlo a firmar." },
-            { "type": "tip", "text": "Si un documento oficial quedó mal, no hace falta archivarlo ni desestimarlo: simplemente no lo vincules ni lo uses." }
+            {
+              "type": "text",
+              "text": "El decisorio pasa dos veces por el circuito: uno antes del Tribunal de Cuentas (preventivo) y otro después (definitivo)."
+            },
+            {
+              "type": "diagram",
+              "variant": "list",
+              "title": "El circuito, en orden",
+              "items": [
+                {
+                  "label": "1. Firmar el decisorio preventivo (con la afectación presupuestaria)",
+                  "hint": "Antes del TCP",
+                  "tone": "intermedio"
+                },
+                {
+                  "label": "2. Correr vista al Tribunal de Cuentas: pliego + expediente + pedido + notas + decisorio preventivo",
+                  "hint": "Vista TCP",
+                  "tone": "intermedio"
+                },
+                {
+                  "label": "3. En TIMBÓ Compras, vincular el Documento Oficial que aprueba el pliego",
+                  "hint": "Habilita la etapa siguiente",
+                  "tone": "verified"
+                },
+                {
+                  "label": "4. Subir el decisorio definitivo al expediente y a TIMBÓ Compras",
+                  "hint": "Después del TCP",
+                  "tone": "verified"
+                }
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un documento oficial firmado no se edita: si se toca, se rompe la firma. Revisá número y fecha antes de mandarlo a firmar."
+            },
+            {
+              "type": "tip",
+              "text": "Si un documento oficial quedó mal, no hace falta archivarlo ni desestimarlo: simplemente no lo vincules ni lo uses."
+            }
           ],
           "quiz": [
-            { "type": "order-steps", "instruction": "Ordená el circuito del decisorio:", "steps": ["Firmar el decisorio preventivo", "Correr vista al Tribunal de Cuentas", "Vincular el DO que aprueba el pliego en TIMBÓ Compras", "Subir el decisorio definitivo"] }
+            {
+              "type": "order-steps",
+              "instruction": "Ordená el circuito del decisorio:",
+              "steps": [
+                "Firmar el decisorio preventivo",
+                "Correr vista al Tribunal de Cuentas",
+                "Vincular el DO que aprueba el pliego en TIMBÓ Compras",
+                "Subir el decisorio definitivo"
+              ]
+            }
           ]
         },
         {
@@ -193,16 +912,33 @@
           "minutos": 3,
           "dificultad": "intermedio",
           "bloques": [
-            { "type": "prereq", "items": [
-              "Un usuario habilitado para cargar en el SIN.",
-              "Una computadora conectada a la red institucional (no funciona desde el celular ni desde otra red)."
-            ] },
-            { "type": "text", "text": "La carga se hace en el sistema SIN (app.santafe.gov.ar/normativa). Hay un instructivo oficial: \"Carga y Edición SIN\"." },
-            { "type": "tip", "text": "¿Quién corre la vista? Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas." },
-            { "type": "warning", "text": "Si tu usuario todavía no está habilitado, que lo cargue alguien que ya lo esté. El alta de usuarios nuevos tarda varios días y se puede vencer el plazo." }
+            {
+              "type": "prereq",
+              "items": [
+                "Un usuario habilitado para cargar en el SIN.",
+                "Una computadora conectada a la red institucional (no funciona desde el celular ni desde otra red)."
+              ]
+            },
+            {
+              "type": "text",
+              "text": "La carga se hace en el sistema SIN (app.santafe.gov.ar/normativa). Hay un instructivo oficial: \"Carga y Edición SIN\"."
+            },
+            {
+              "type": "tip",
+              "text": "¿Quién corre la vista? Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas."
+            },
+            {
+              "type": "warning",
+              "text": "Si tu usuario todavía no está habilitado, que lo cargue alguien que ya lo esté. El alta de usuarios nuevos tarda varios días y se puede vencer el plazo."
+            }
           ],
           "quiz": [
-            { "type": "true-false", "question": "Puedo cargar en el SIN desde mi celular si tengo usuario habilitado.", "answer": false, "explanation": "Hay que entrar desde una computadora conectada a la red institucional." }
+            {
+              "type": "true-false",
+              "question": "Puedo cargar en el SIN desde mi celular si tengo usuario habilitado.",
+              "answer": false,
+              "explanation": "Hay que entrar desde una computadora conectada a la red institucional."
+            }
           ]
         },
         {
@@ -211,9 +947,22 @@
           "minutos": 2,
           "dificultad": "basico",
           "bloques": [
-            { "type": "step", "number": 1, "explanation": "Pedile a tu referente de Contrataciones la \"Planilla de datos\" para alta de usuarios SIN.", "doThis": "Completala con las personas responsables de cargar actos administrativos. Si alguien no tiene correo oficial, indicalo en la planilla." },
-            { "type": "step", "number": 2, "explanation": "Enviala por correo a la Subsecretaría de Contrataciones y Gestión de Bienes.", "lookFor": "Ellos abren un ticket en iTop a la Secretaría de Tecnologías para la Gestión (STG), que crea los usuarios." },
-            { "type": "warning", "text": "Tarda algunos días. Mientras tanto, seguí usando los usuarios que ya están habilitados." }
+            {
+              "type": "step",
+              "number": 1,
+              "explanation": "Pedile a tu referente de Contrataciones la \"Planilla de datos\" para alta de usuarios SIN.",
+              "doThis": "Completala con las personas responsables de cargar actos administrativos. Si alguien no tiene correo oficial, indicalo en la planilla."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Enviala por correo a la Subsecretaría de Contrataciones y Gestión de Bienes.",
+              "lookFor": "Ellos abren un ticket en iTop a la Secretaría de Tecnologías para la Gestión (STG), que crea los usuarios."
+            },
+            {
+              "type": "warning",
+              "text": "Tarda algunos días. Mientras tanto, seguí usando los usuarios que ya están habilitados."
+            }
           ],
           "quiz": []
         },
@@ -223,12 +972,179 @@
           "minutos": 2,
           "dificultad": "basico",
           "bloques": [
-            { "type": "text", "text": "Una vez cargadas la nómina de oferentes y la fecha de publicación, la gestión se publica según la Circular N° 04/2026 de la Subsecretaría de Contrataciones y Gestión de Bienes." },
-            { "type": "concepts", "items": [
-              { "term": "Por dónde", "def": "A través de TIMBÓ, por correo electrónico y con la carga en el SIN." },
-              { "term": "Qué link usar", "def": "El mismo link que lleva a la gestión en TIMBÓ. No hay que buscar otro." }
-            ] },
-            { "type": "tip", "text": "Circular 04/2026: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf" }
+            {
+              "type": "text",
+              "text": "Una vez cargadas la nómina de oferentes y la fecha de publicación, la gestión se publica según la Circular N° 04/2026 de la Subsecretaría de Contrataciones y Gestión de Bienes."
+            },
+            {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Por dónde",
+                  "def": "A través de TIMBÓ, por correo electrónico y con la carga en el SIN."
+                },
+                {
+                  "term": "Qué link usar",
+                  "def": "El mismo link que lleva a la gestión en TIMBÓ. No hay que buscar otro."
+                }
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Circular 04/2026: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf"
+            }
+          ],
+          "quiz": []
+        }
+      ]
+    },
+    {
+      "slug": "documentacion-oficial",
+      "titulo": "Documentación oficial",
+      "icono": "📚",
+      "resumen": "Todos los instructivos en PDF y los videos oficiales de la Provincia de Santa Fe usados para armar este tutorial.",
+      "audiencia": "Cualquier persona que quiera ir a la fuente original.",
+      "dificultad": "basico",
+      "tutoriales": [
+        {
+          "slug": "fuentes-oficiales",
+          "titulo": "Instructivos y videos oficiales",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            {
+              "type": "text",
+              "text": "Esta sección reúne, en un solo lugar, todas las fuentes oficiales de la Secretaría de Gestión Pública de Santa Fe que se usaron para armar este tutorial: los instructivos escritos en PDF y los videos de capacitación. Si algo de lo que leíste acá no te cierra, siempre podés ir a la fuente original."
+            },
+            {
+              "type": "heading",
+              "text": "📄 Instructivos oficiales (PDF)"
+            },
+            {
+              "type": "pdf",
+              "file": "quienes-y-como-acceder.pdf",
+              "title": "¿Quiénes pueden ingresar a Timbó Compras?"
+            },
+            {
+              "type": "pdf",
+              "file": "como-acceder-y-participar-de-oferta.pdf",
+              "title": "Ingreso en Timbó Compras y cómo realizar una oferta"
+            },
+            {
+              "type": "pdf",
+              "file": "como-completar-formulario.pdf",
+              "title": "Cómo completar y presentar el formulario de oferta"
+            },
+            {
+              "type": "pdf",
+              "file": "como-realizar-consultas.pdf",
+              "title": "Consultas y circulares"
+            },
+            {
+              "type": "pdf",
+              "file": "como-subsanar.pdf",
+              "title": "Subsanación, mejora de precios y aclaración de oferta"
+            },
+            {
+              "type": "pdf",
+              "file": "como-realizar-impugnaciones.pdf",
+              "title": "Presentación de impugnaciones en Timbó Compras"
+            },
+            {
+              "type": "pdf",
+              "file": "como-visualizar-documentos-embebidos.pdf",
+              "title": "Cómo visualizar documentos embebidos"
+            },
+            {
+              "type": "pdf",
+              "file": "como-solicitar-alta-de-articulos.pdf",
+              "title": "Guía en 4 pasos para solicitar un artículo que no está en el Catálogo WEB"
+            },
+            {
+              "type": "pdf",
+              "file": "guia-busqueda-nomenclador-y-solicitud-sipaf.pdf",
+              "title": "Guía completa: búsqueda en el Nomenclador TIMBÓ y solicitud de artículos faltantes (paso a paso del formulario CAByS)"
+            },
+            {
+              "type": "heading",
+              "text": "▶️ Videos oficiales"
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/bLSixoqJheg",
+              "title": "00- Requisitos para ingresar a Timbó Compras",
+              "minutos": 1
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/Wb4ZRvB3YSo",
+              "title": "Instructivo para registrarse como proveedor de bienes y servicios del Gobierno de Santa Fe",
+              "minutos": 1
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/5qcZGh3euOU",
+              "title": "01- Cómo ingresar a Timbó Compras y participar de un proceso",
+              "minutos": 2
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/fcEjp7lJGUE",
+              "title": "02- Cómo completar y presentar oferta",
+              "minutos": 3
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/W-_htQe-JdA",
+              "title": "03- Cómo realizar consultas sobre una licitación",
+              "minutos": 3
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/u0UNen9iQnA",
+              "title": "04- Cómo Subsanar o mejorar una oferta",
+              "minutos": 3
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/0ExXUT8-M14",
+              "title": "05- Cómo realizar Impugnaciones",
+              "minutos": 3
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/tSYfZ3yVE58",
+              "title": "06- ¿Cómo ver un documento embebido?",
+              "minutos": 1
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/Yp3TIlDxpms",
+              "title": "Timbó Compras - Cómo hacer una oferta online en Santa Fe (capacitación completa)",
+              "minutos": 49
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/JJExl9hnYbo",
+              "title": "¿Cómo ofertar en Timbó Compras? - Capacitación para proveedores de bienes y servicios",
+              "minutos": 35
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/QH7zvgZ7sbQ",
+              "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
+              "minutos": 70
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/BzxCGnsajmw",
+              "title": "Gestión de pago para compras directas",
+              "minutos": 2
+            },
+            {
+              "type": "tip",
+              "text": "Todos estos videos pertenecen al canal de YouTube \"Secretaría de Gestión Pública\" de la Provincia de Santa Fe, principalmente a la playlist \"Timbó Compras\"."
+            }
           ],
           "quiz": []
         }
@@ -236,26 +1152,141 @@
     }
   ],
   "glosario": [
-    { "termino": "ID Ciudadana", "definicion": "Tu cuenta personal para entrar a los servicios digitales de la Provincia. Es requisito para usar TIMBÓ Compras.", "modulo": "Primeros pasos" },
-    { "termino": "Domicilio digital", "definicion": "Dirección electrónica donde la Provincia te notifica formalmente. Se adhiere desde Atención Virtual.", "modulo": "Primeros pasos" },
-    { "termino": "Pliego de bases y condiciones particulares", "definicion": "El documento que dice qué se compra, cómo y con qué requisitos.", "modulo": "Ofertar" },
-    { "termino": "Mis ofertas", "definicion": "La bandeja donde el proveedor trabaja su oferta. Tiene pestañas Asignados (para hacer), Pendientes (esperando) y Finalizados.", "modulo": "Ofertar" },
-    { "termino": "Requisitos mínimos", "definicion": "Formulario de la oferta donde se adjunta la documentación que exige el pliego.", "modulo": "Ofertar" },
-    { "termino": "Acto de apertura", "definicion": "Momento en que se abren automáticamente las ofertas en estado \"Presentada\".", "modulo": "Ofertar" },
-    { "termino": "Circular aclaratoria", "definicion": "Respuesta oficial a una consulta o aclaración del pliego. No frena el proceso.", "modulo": "Ofertar" },
-    { "termino": "Circular modificatoria", "definicion": "Cambio en el pliego. Suspende el proceso hasta que se publica el pliego nuevo.", "modulo": "Ofertar" },
-    { "termino": "Subsanación", "definicion": "Pedido para corregir o completar documentación de una oferta ya abierta.", "modulo": "Ofertar" },
-    { "termino": "Mejora de precio", "definicion": "Pedido para bajar el precio de uno o más renglones. Es opcional por renglón.", "modulo": "Ofertar" },
-    { "termino": "Preadjudicación", "definicion": "Informe que recomienda a quién adjudicar, antes de la decisión final.", "modulo": "Ofertar" },
-    { "termino": "Impugnación", "definicion": "Planteo formal y fundado contra una oferta o contra la preadjudicación. Requiere garantía.", "modulo": "Ofertar" },
-    { "termino": "Garantía de impugnación", "definicion": "Garantía obligatoria para impugnar (art. 134, Ley 12.510).", "modulo": "Ofertar" },
-    { "termino": "Decisorio preventivo", "definicion": "Decisorio con la afectación presupuestaria que se manda al Tribunal de Cuentas antes de seguir.", "modulo": "Gestión interna" },
-    { "termino": "Decisorio definitivo", "definicion": "El decisorio que se sube al expediente y a TIMBÓ Compras después de la vista del Tribunal de Cuentas.", "modulo": "Gestión interna" },
-    { "termino": "TCP", "definicion": "Tribunal de Cuentas de la Provincia. Se le \"corre vista\" del decisorio preventivo.", "modulo": "Gestión interna" },
-    { "termino": "SIN", "definicion": "Sistema provincial de normativa donde se cargan los actos administrativos (app.santafe.gov.ar/normativa). Solo para usuarios habilitados y desde la red institucional.", "modulo": "Gestión interna" },
-    { "termino": "SIPAF", "definicion": "Sistema provincial del que depende el nomenclador de artículos. Si se cae, TIMBÓ Compras no deja cargar artículos.", "modulo": "Gestión interna" },
-    { "termino": "Nómina de oferentes", "definicion": "Listado de proveedores que participan del proceso.", "modulo": "Gestión interna" },
-    { "termino": "iTop", "definicion": "Sistema de tickets para pedir permisos y altas a las áreas técnicas.", "modulo": "General" }
+    {
+      "termino": "RUPC",
+      "definicion": "Registro Único de Proveedores y Contratistas de la Provincia. Hay que estar inscripto ahí para poder ofertar; se tramita con Clave Fiscal de AFIP nivel 3.",
+      "modulo": "Primeros pasos"
+    },
+    {
+      "termino": "ID Ciudadana",
+      "definicion": "Tu cuenta personal para entrar a los servicios digitales de la Provincia. Para ofertar en TIMBÓ Compras necesitás tenerla en nivel 2 (validada con foto de DNI, ARCA o la app Mi Argentina).",
+      "modulo": "Primeros pasos"
+    },
+    {
+      "termino": "Domicilio digital",
+      "definicion": "Dirección electrónica donde la Provincia te notifica formalmente. Tiene la misma validez legal que tu domicilio físico. Se adhiere desde Atención Virtual.",
+      "modulo": "Primeros pasos"
+    },
+    {
+      "termino": "Acreditación de representación",
+      "definicion": "Documento que prueba que la persona física que oferta tiene facultades para representar a la empresa: contrato social (si es parte del directorio) o un poder especial. Obligatorio porque Santa Fe no tiene identificación digital de personas jurídicas.",
+      "modulo": "Primeros pasos"
+    },
+    {
+      "termino": "Documento embebido",
+      "definicion": "Archivo adjunto dentro del PDF del pliego (fichas técnicas, condiciones de contrato, anexos). Se ve con el ícono de clip, abriendo el PDF con un lector actualizado.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Siglas del tipo de contratación",
+      "definicion": "LPR = Licitación Privada, LPU = Licitación Pública, CPU = Concurso Público, CPR = Concurso Privado, CD = Contrataciones Directas. Aparecen en el nombre del pliego con anexos.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Pliego de bases y condiciones particulares",
+      "definicion": "El documento que dice qué se compra, cómo y con qué requisitos.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Mis ofertas",
+      "definicion": "La bandeja donde el proveedor trabaja su oferta. Tiene pestañas Asignados (para hacer), Pendientes (esperando) y Finalizados.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Requisitos mínimos",
+      "definicion": "Formulario de la oferta donde se adjunta la documentación que exige el pliego.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Acto de apertura",
+      "definicion": "Momento en que se abren automáticamente las ofertas en estado \"Presentada\".",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Circular aclaratoria",
+      "definicion": "Respuesta oficial a una consulta o aclaración del pliego. No frena el proceso.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Circular modificatoria",
+      "definicion": "Cambio en el pliego. Suspende el proceso hasta que se publica el pliego nuevo.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Subsanación",
+      "definicion": "Pedido para corregir o completar documentación de una oferta ya abierta.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Mejora de precio",
+      "definicion": "Pedido para bajar el precio de uno o más renglones. Es opcional por renglón.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Preadjudicación",
+      "definicion": "Informe que recomienda a quién adjudicar, antes de la decisión final.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Impugnación",
+      "definicion": "Planteo formal y fundado contra una oferta o contra la preadjudicación. Requiere garantía.",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Garantía de impugnación",
+      "definicion": "Garantía obligatoria para impugnar (art. 134, Ley 12.510).",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Decisorio preventivo",
+      "definicion": "Decisorio con la afectación presupuestaria que se manda al Tribunal de Cuentas antes de seguir.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Decisorio definitivo",
+      "definicion": "El decisorio que se sube al expediente y a TIMBÓ Compras después de la vista del Tribunal de Cuentas.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "TCP",
+      "definicion": "Tribunal de Cuentas de la Provincia. Se le \"corre vista\" del decisorio preventivo.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "SIN",
+      "definicion": "Sistema provincial de normativa donde se cargan los actos administrativos (app.santafe.gov.ar/normativa). Solo para usuarios habilitados y desde la red institucional.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "SIPAF",
+      "definicion": "Sistema provincial del que depende el nomenclador de artículos. Si se cae, TIMBÓ Compras no deja cargar artículos.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Nómina de oferentes",
+      "definicion": "Listado de proveedores que participan del proceso.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "iTop",
+      "definicion": "Sistema de tickets para pedir permisos y altas a las áreas técnicas.",
+      "modulo": "General"
+    },
+    {
+      "termino": "CD-01",
+      "definicion": "Documento Oficial que arma el pedido de una compra directa (bienes y/o servicios), con firma conjunta. Hay formularios CD-01 a CD-04 para las distintas etapas, y un CD-05 que es una nota de rechazo.",
+      "modulo": "Compras Directas"
+    },
+    {
+      "termino": "Gestión Directa por Monto Menor al Tope",
+      "definicion": "El circuito para comprar o contratar sin licitación, por montos menores al tope (inciso 1, art. 116, Ley 12.510 y Decreto 1104). Se tramita en el expediente electrónico, no en TIMBÓ Compras.",
+      "modulo": "Compras Directas"
+    },
+    {
+      "termino": "Documento informativo",
+      "definicion": "Documento que viaja con el expediente pero no forma parte de él: no lleva firma y se puede eliminar en cualquier momento (por ejemplo, el presupuesto de referencia de un proveedor).",
+      "modulo": "Compras Directas"
+    }
   ],
   "situaciones": [
     {
@@ -302,6 +1333,28 @@
       "verificado": true
     },
     {
+      "slug": "precio-cargado-mal",
+      "situacion": "Cargué un precio con decimales y me quedó un número gigante",
+      "descripcion": "Pusiste el precio con punto para los decimales (ej. 1250.50) y el sistema lo tomó como 125050.",
+      "causa": "TIMBÓ Compras usa la coma para separar los decimales, no el punto.",
+      "solucion": "Editá el renglón y volvé a cargar el precio con coma (ej. 1250,50).",
+      "categoria_libre": "Ofertas",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "completar-y-presentar",
+      "verificado": true
+    },
+    {
+      "slug": "represento-una-empresa",
+      "situacion": "Voy a ofertar en nombre de una empresa, no como persona física",
+      "descripcion": "Sos apoderado, director o representante de una SA, SRL o UTE y querés presentar una oferta.",
+      "causa": "Santa Fe todavía no tiene identificación digital para personas jurídicas ni UTE.",
+      "solucion": "Creá tu ID Ciudadana como persona física (nivel 2) y presentá la oferta vos. En \"Requisitos mínimos\" vas a tener que adjuntar la acreditación de tus facultades: contrato social si sos parte del directorio, o un poder especial con facultades suficientes.",
+      "categoria_libre": "Primeros pasos",
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "requisitos",
+      "verificado": true
+    },
+    {
       "slug": "no-puedo-impugnar",
       "situacion": "No me aparece la opción para impugnar",
       "descripcion": "Querés impugnar pero no ves \"Iniciar impugnación\".",
@@ -311,25 +1364,291 @@
       "tutorial_categoria_slug": "ofertar",
       "tutorial_slug": "impugnaciones",
       "verificado": true
+    },
+    {
+      "slug": "cd01-con-error-ya-incorporado",
+      "situacion": "Cargué el CD-01 al expediente y tenía un error",
+      "descripcion": "El documento oficial ya está incorporado al expediente y detectaste un dato mal cargado.",
+      "causa": "Un documento ya incorporado al expediente no se puede eliminar ni editar.",
+      "solucion": "Generá el CD-01 correcto y usá \"Subsanar documento\" en el expediente, pegando el número del documento nuevo. El original queda en el expediente, pero subsanado.",
+      "categoria_libre": "Compras Directas",
+      "tutorial_categoria_slug": "compras-directas",
+      "tutorial_slug": "armar-expediente-y-pase",
+      "verificado": true
     }
   ],
   "tareas": [
-    { "slug": "que-necesito", "pregunta": "¿Qué necesito para ofertar?", "keywords": ["requisitos", "id ciudadana", "domicilio digital", "registrarme", "proveedor"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },
-    { "slug": "entrar-a-compras", "pregunta": "¿Cómo entro y me sumo a una licitación?", "keywords": ["entrar", "ingresar", "participar", "proceso", "licitacion", "ofertar"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar-y-participar" },
-    { "slug": "presentar-oferta", "pregunta": "Quiero presentar una oferta", "keywords": ["presentar", "cotizar", "precio", "renglones", "requisitos minimos", "oferta"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "completar-y-presentar" },
-    { "slug": "hacer-consulta", "pregunta": "Quiero hacer una consulta sobre el pliego", "keywords": ["consulta", "pregunta", "circular", "aclaratoria", "modificatoria", "pliego"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "consultas-y-circulares" },
-    { "slug": "responder-subsanacion", "pregunta": "Me pidieron subsanar, mejorar el precio o aclarar", "keywords": ["subsanar", "subsanacion", "corregir", "mejorar", "mejora", "precio", "aclaracion"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
-    { "slug": "impugnar", "pregunta": "Quiero impugnar una oferta o la preadjudicación", "keywords": ["impugnar", "impugnacion", "preadjudicacion", "garantia", "queja"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "impugnaciones" },
-    { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },
-    { "slug": "correr-vista-tcp", "pregunta": "Tengo que correr vista al Tribunal de Cuentas", "keywords": ["vista", "tribunal", "tcp", "sin", "cargar", "normativa", "mesa de entradas"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "vista-tribunal-de-cuentas" },
-    { "slug": "usuarios-sin", "pregunta": "Necesito usuarios nuevos para cargar en el SIN", "keywords": ["usuario", "alta", "sin", "planilla", "habilitar", "acceso"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "alta-usuarios-sin" },
-    { "slug": "publicar-portal", "pregunta": "Quiero publicar la gestión en el portal de compras", "keywords": ["publicar", "publicacion", "portal", "link", "circular", "nomina", "oferentes"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "publicar-en-portal" }
+    {
+      "slug": "inscribirme-rupc",
+      "pregunta": "¿Cómo me inscribo como proveedor?",
+      "keywords": [
+        "inscribirme",
+        "inscripcion",
+        "rupc",
+        "registro de proveedores",
+        "clave fiscal",
+        "afip",
+        "registrarme"
+      ],
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "inscribirse-como-proveedor-rupc"
+    },
+    {
+      "slug": "que-necesito",
+      "pregunta": "¿Qué necesito para ofertar?",
+      "keywords": [
+        "requisitos",
+        "id ciudadana",
+        "nivel 2",
+        "domicilio digital",
+        "registrarme",
+        "proveedor"
+      ],
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "requisitos"
+    },
+    {
+      "slug": "ofertar-en-nombre-de-empresa",
+      "pregunta": "¿Cómo ofertó si represento a una empresa o UTE?",
+      "keywords": [
+        "persona juridica",
+        "ute",
+        "representar",
+        "apoderado",
+        "poder",
+        "contrato social",
+        "acreditar"
+      ],
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "requisitos"
+    },
+    {
+      "slug": "entrar-a-compras",
+      "pregunta": "¿Cómo entro y me sumo a una licitación?",
+      "keywords": [
+        "entrar",
+        "ingresar",
+        "participar",
+        "proceso",
+        "licitacion",
+        "ofertar"
+      ],
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "ingresar-y-participar"
+    },
+    {
+      "slug": "presentar-oferta",
+      "pregunta": "Quiero presentar una oferta",
+      "keywords": [
+        "presentar",
+        "cotizar",
+        "precio",
+        "renglones",
+        "requisitos minimos",
+        "oferta"
+      ],
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "completar-y-presentar"
+    },
+    {
+      "slug": "precio-mal-cargado",
+      "pregunta": "Cargué un precio con decimales y quedó mal",
+      "keywords": [
+        "precio",
+        "decimal",
+        "coma",
+        "punto",
+        "numero",
+        "mal cargado"
+      ],
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "completar-y-presentar"
+    },
+    {
+      "slug": "hacer-consulta",
+      "pregunta": "Quiero hacer una consulta sobre el pliego",
+      "keywords": [
+        "consulta",
+        "pregunta",
+        "circular",
+        "aclaratoria",
+        "modificatoria",
+        "pliego"
+      ],
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "consultas-y-circulares"
+    },
+    {
+      "slug": "responder-subsanacion",
+      "pregunta": "Me pidieron subsanar, mejorar el precio o aclarar",
+      "keywords": [
+        "subsanar",
+        "subsanacion",
+        "corregir",
+        "mejorar",
+        "mejora",
+        "precio",
+        "aclaracion"
+      ],
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "subsanar-mejorar-aclarar"
+    },
+    {
+      "slug": "impugnar",
+      "pregunta": "Quiero impugnar una oferta o la preadjudicación",
+      "keywords": [
+        "impugnar",
+        "impugnacion",
+        "preadjudicacion",
+        "garantia",
+        "queja"
+      ],
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "impugnaciones"
+    },
+    {
+      "slug": "ver-embebidos",
+      "pregunta": "No puedo ver un documento embebido del pliego",
+      "keywords": [
+        "documento embebido",
+        "embebido",
+        "pdf",
+        "clip",
+        "anexo",
+        "ficha tecnica",
+        "lector pdf"
+      ],
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "ver-documentos-embebidos"
+    },
+    {
+      "slug": "que-es-compra-directa",
+      "pregunta": "¿Qué es una compra directa y cuándo se usa?",
+      "keywords": [
+        "compra directa",
+        "gestion directa",
+        "monto menor al tope",
+        "cd01",
+        "cd-01",
+        "sin licitacion"
+      ],
+      "tutorial_categoria_slug": "compras-directas",
+      "tutorial_slug": "que-es-compra-directa"
+    },
+    {
+      "slug": "generar-cd01",
+      "pregunta": "¿Cómo genero el formulario CD-01?",
+      "keywords": [
+        "cd01",
+        "cd-01",
+        "documento oficial",
+        "firma conjunta",
+        "renglones",
+        "compra directa"
+      ],
+      "tutorial_categoria_slug": "compras-directas",
+      "tutorial_slug": "generar-formulario-cd01"
+    },
+    {
+      "slug": "armar-expediente-compra-directa",
+      "pregunta": "¿Cómo armo el expediente de una compra directa y lo mando a aprobar?",
+      "keywords": [
+        "expediente",
+        "pase",
+        "vincular documento",
+        "nota de solicitud",
+        "ficha tecnica",
+        "compra directa"
+      ],
+      "tutorial_categoria_slug": "compras-directas",
+      "tutorial_slug": "armar-expediente-y-pase"
+    },
+    {
+      "slug": "circuito-decisorio",
+      "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?",
+      "keywords": [
+        "decisorio",
+        "preventivo",
+        "definitivo",
+        "tribunal",
+        "tcp",
+        "pliego",
+        "vincular"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "circuito-decisorio"
+    },
+    {
+      "slug": "correr-vista-tcp",
+      "pregunta": "Tengo que correr vista al Tribunal de Cuentas",
+      "keywords": [
+        "vista",
+        "tribunal",
+        "tcp",
+        "sin",
+        "cargar",
+        "normativa",
+        "mesa de entradas"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "vista-tribunal-de-cuentas"
+    },
+    {
+      "slug": "usuarios-sin",
+      "pregunta": "Necesito usuarios nuevos para cargar en el SIN",
+      "keywords": [
+        "usuario",
+        "alta",
+        "sin",
+        "planilla",
+        "habilitar",
+        "acceso"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "alta-usuarios-sin"
+    },
+    {
+      "slug": "publicar-portal",
+      "pregunta": "Quiero publicar la gestión en el portal de compras",
+      "keywords": [
+        "publicar",
+        "publicacion",
+        "portal",
+        "link",
+        "circular",
+        "nomina",
+        "oferentes"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "publicar-en-portal"
+    }
   ],
   "quickstart_steps": [
-    { "titulo": "Qué necesitás", "descripcion": "ID Ciudadana y domicilio digital. Nada más.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "requisitos" },
-    { "titulo": "Entrar y sumarte a un proceso", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar-y-participar" },
-    { "titulo": "Presentar la oferta", "tutorial_categoria_slug": "ofertar", "tutorial_slug": "completar-y-presentar" },
-    { "titulo": "Responder lo que te pidan", "descripcion": "Subsanaciones, mejoras de precio y aclaraciones.", "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
-    { "titulo": "Si algo no anda", "situacion_slug": "mi-oferta-no-se-abrio" }
+    {
+      "titulo": "Qué necesitás",
+      "descripcion": "ID Ciudadana y domicilio digital. Nada más.",
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "requisitos"
+    },
+    {
+      "titulo": "Entrar y sumarte a un proceso",
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "ingresar-y-participar"
+    },
+    {
+      "titulo": "Presentar la oferta",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "completar-y-presentar"
+    },
+    {
+      "titulo": "Responder lo que te pidan",
+      "descripcion": "Subsanaciones, mejoras de precio y aclaraciones.",
+      "tutorial_categoria_slug": "ofertar",
+      "tutorial_slug": "subsanar-mejorar-aclarar"
+    },
+    {
+      "titulo": "Si algo no anda",
+      "situacion_slug": "mi-oferta-no-se-abrio"
+    }
   ]
 }

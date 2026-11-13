@@ -57,6 +57,7 @@
     {% if f.puntuacion %}<span class="badge badge--neutral">{{ f.puntuacion }} ★</span>{% endif %}
     {% if f.categoria %}<span class="badge badge--neutral">{{ f.categoria_label }}</span>{% endif %}
     {% if f.revisado %}<span class="badge badge--verified">Revisado</span>{% endif %}
+    {% if f.nombre %}<span class="badge badge--neutral">👤 {{ f.nombre }}</span>{% else %}<span class="badge badge--neutral" style="opacity:.6">👤 Anónimo</span>{% endif %}
     <span class="admin-list-item__title">
       {{ f.comentario or '(sin comentario, solo puntuación)' }}
     </span>

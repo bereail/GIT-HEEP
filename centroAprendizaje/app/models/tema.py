@@ -42,3 +42,9 @@ class Tema(db.Model):
         order_by="PasoIntroductorio.orden",
         cascade="all, delete-orphan",
     )
+    equivalencias_articulos = db.relationship(
+        "EquivalenciaArticulo",
+        backref="tema",
+        order_by="EquivalenciaArticulo.nombre_interno",
+        cascade="all, delete-orphan",
+    )

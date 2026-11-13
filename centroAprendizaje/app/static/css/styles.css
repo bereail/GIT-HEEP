@@ -961,6 +961,11 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 }
 .chatbot-panel__send:hover { background: var(--accent-hover); }
 
+/* Bloque "heading": subtítulo dentro de un tutorial (ej. para separar
+   secciones en "Documentación oficial"). */
+.bloque-heading { margin: 28px 0 8px; font-size: 16px; font-weight: 700; }
+.bloque-heading:first-child { margin-top: 0; }
+
 /* Bloque "video" de un tutorial: link a YouTube con aviso por si está
    bloqueado en la red del hospital. */
 .video-link {
