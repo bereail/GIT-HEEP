@@ -9,6 +9,7 @@ externa, sin costo y sin conexión a internet. La única diferencia es que el
 las respuestas nunca se mezclan entre sistemas distintos.
 """
 
+import difflib
 import re
 import unicodedata
 
@@ -27,7 +28,22 @@ PALABRAS_VACIAS = {
     "cual", "cuál", "cuales", "cuáles", "y", "o", "a", "se", "mi", "tu", "su",
     "al", "lo", "le", "les", "me", "te", "nos", "sobre", "hay",
     "sin", "mas", "más", "ya", "pero", "si", "no", "ni", "muy", "esta", "está",
+    # Arranques típicos de pregunta: muchas tareas empiezan con "Quiero..." o
+    # "Necesito...", así que le ganaban a la palabra que importa ("comprar").
+    "quiero", "quisiera", "necesito", "puedo", "hago", "tengo", "algo",
 }
+
+# Cómo dice la gente las cosas → cómo están escritas en el contenido. Solo
+# se usan si la palabra original no aparece en ningún lado.
+SINONIMOS = {
+    "licitacion": "proceso", "licitaciones": "proceso", "licitar": "proceso",
+    "insumo": "articulo", "insumos": "articulo", "producto": "articulo", "productos": "articulo",
+    "tcp": "tribunal", "contrasena": "clave", "password": "clave",
+    "ayuda": "mesa de ayuda", "telefono": "mesa de ayuda", "contacto": "mesa de ayuda",
+    "comprar": "compra", "compramos": "compra",
+}
+
+_PIDE_DEFINICION = re.compile(r"^(que es|que son|que significa|que quiere decir)(?: |$)")
 
 _PUNTUACION = re.compile(r"[¿?¡!.,;:\"'()]")
 
@@ -180,7 +196,38 @@ def _variantes(palabra):
     return variantes
 
 
-def buscar(indice, consulta, limite=12):
+def _vocabulario(indice):
+    return {p for entrada in indice for p in entrada["texto"].split() if len(p) >= 4}
+
+
+def _corregir_palabras(indice, palabras):
+    """Para cada palabra que no aparece en ningún lado: primero prueba un
+    sinónimo y, si no, la palabra del contenido más parecida (errores de
+    tipeo como "ofetar" o "inpugnar")."""
+    textos = [entrada["texto"] for entrada in indice]
+    vocabulario = None
+    corregidas = []
+    for palabra in palabras:
+        if any(v in t for t in textos for v in _variantes(palabra)):
+            corregidas.append(palabra)
+            continue
+        if palabra in SINONIMOS:
+            corregidas.append(SINONIMOS[palabra])
+            continue
+        if len(palabra) >= 4:
+            if vocabulario is None:
+                vocabulario = _vocabulario(indice)
+            parecidas = difflib.get_close_matches(palabra, vocabulario, n=1, cutoff=0.8)
+            if parecidas:
+                corregidas.append(parecidas[0])
+                continue
+        corregidas.append(palabra)
+    return corregidas
+
+
+def buscar_con_puntaje(indice, consulta, limite=12):
+    """Devuelve pares (puntaje, entrada), para que el chatbot pueda
+    distinguir una coincidencia clara de una adivinanza."""
     q = normalizar(consulta).strip()
     if not q:
         return []
@@ -189,25 +236,80 @@ def buscar(indice, consulta, limite=12):
     # Si la consulta es solo palabras vacías ("qué es"), mejor buscar con
     # todo antes que no encontrar nada.
     palabras = palabras_especificas if palabras_especificas else todas_las_palabras
+    palabras = _corregir_palabras(indice, palabras)
+    # "¿Qué es X?" pide una definición: el glosario tiene que ganarle a la
+    # lección que menciona el término.
+    pide_definicion = bool(_PIDE_DEFINICION.match(q))
 
     resultados = []
     for entrada in indice:
+        texto = entrada["texto"]
+        titulo = normalizar(entrada["title"])
         score = 0
         for palabra in palabras:
-            if any(variante in entrada["texto"] for variante in _variantes(palabra)):
-                score += 2 if entrada["texto"].startswith(palabra) else 1
+            if any(variante in texto for variante in _variantes(palabra)):
+                score += 2 if texto.startswith(palabra) else 1
+                if palabra in titulo:
+                    score += 1
+                # Desempata a favor de la palabra entera: "adjudico" tiene
+                # que preferir "adjudico" antes que "preadjudico".
+                if re.search(r"\b" + re.escape(palabra) + r"\b", texto):
+                    score += 0.5
         if score > 0:
-            resultados.append((score * entrada["peso"], entrada))
+            # Una sugerencia del chatbot manda el título exacto: tiene que
+            # ganar siempre, aunque otra entrada comparta más palabras.
+            if titulo == q:
+                score += 100
+            peso = entrada["peso"]
+            if pide_definicion and entrada["kind"] == "Glosario":
+                peso *= 4
+            resultados.append((score * peso, entrada))
 
     resultados.sort(key=lambda par: par[0], reverse=True)
-    return [entrada for _, entrada in resultados[:limite]]
+    return resultados[:limite]
+
+
+def buscar(indice, consulta, limite=12):
+    return [entrada for _, entrada in buscar_con_puntaje(indice, consulta, limite)]
+
+
+def sugerencias_iniciales(tema, cantidad=4):
+    """Preguntas para mostrar como botones al abrir el chatbot: mitad
+    "Quiero hacer..." y mitad "Tengo un problema"."""
+    tareas = [t.pregunta for t in tema.tareas]
+    situaciones = [s.situacion for s in tema.situaciones if s.verificado]
+    mitad = cantidad // 2
+    elegidas = tareas[:mitad] + situaciones[: cantidad - mitad]
+    if len(elegidas) < cantidad:
+        resto = [p for p in tareas[mitad:] + situaciones[cantidad - mitad:] if p not in elegidas]
+        elegidas += resto[: cantidad - len(elegidas)]
+    return elegidas
 
 
 def primer_bloque_de_texto(tutorial: Tutorial):
-    for bloque in tutorial.bloques or []:
+    bloques = tutorial.bloques or []
+    for bloque in bloques:
         if bloque.get("type") == "text":
             return bloque.get("text", "")
+    # Lecciones que arrancan directo con pasos: el primer paso ya sirve de
+    # resumen de por dónde empezar.
+    for bloque in bloques:
+        if bloque.get("type") == "step":
+            return bloque.get("explanation", "")
     return ""
+
+
+def _pasos_html(tutorial: Tutorial):
+    """Los pasos de la lección, plegados, para resolver sin salir del chat."""
+    pasos = [b.get("explanation", "") for b in (tutorial.bloques or []) if b.get("type") == "step"]
+    pasos = [p for p in pasos if p]
+    if len(pasos) < 2:
+        return ""
+    items = "".join(f"<li>{escape(p)}</li>" for p in pasos)
+    return (
+        f'<details class="chatbot-msg__mas"><summary>Ver los {len(pasos)} pasos</summary>'
+        f'<ol class="chatbot-msg__pasos">{items}</ol></details>'
+    )
 
 
 def armar_respuesta_chatbot(entrada):
@@ -221,6 +323,16 @@ def armar_respuesta_chatbot(entrada):
     if kind == "Problema":
         situacion: Situacion = ref
         html = f"<b>{escape(situacion.situacion)}</b><br>{escape(situacion.solucion)}"
+        if situacion.notas_adicionales:
+            html += (
+                '<details class="chatbot-msg__mas"><summary>Ver más</summary>'
+                f"{escape(situacion.notas_adicionales)}</details>"
+            )
+        if not situacion.verificado:
+            html = (
+                '<span class="chatbot-msg__aviso">⚠️ Respuesta sin confirmar: '
+                "consultá con tu referente</span>" + html
+            )
         if situacion.tutorial_id:
             return {
                 "html": html,
@@ -243,10 +355,15 @@ def armar_respuesta_chatbot(entrada):
 
     if kind == "Tarea":
         tarea: Tarea = ref
+        resumen = primer_bloque_de_texto(tarea.tutorial)
+        html = f"<b>{escape(tarea.tutorial.titulo)}</b>"
+        if resumen:
+            html += f"<br>{escape(resumen)}"
+        html += _pasos_html(tarea.tutorial)
         return {
-            "html": f"Para eso, mirá la lección <b>{escape(tarea.tutorial.titulo)}</b> ({tarea.tutorial.minutos} min).",
+            "html": html,
             "url": _url_tutorial(tarea.tutorial),
-            "link_texto": "Ir a la lección →",
+            "link_texto": f"Ver el paso a paso ({tarea.tutorial.minutos} min) →",
         }
 
     if kind == "NomencladorAyuda":
@@ -284,10 +401,11 @@ def armar_respuesta_chatbot(entrada):
         html = f"<b>{escape(tutorial.titulo)}</b>"
         if resumen:
             html += f"<br>{escape(resumen)}"
+        html += _pasos_html(tutorial)
         return {
             "html": html,
             "url": _url_tutorial(tutorial),
-            "link_texto": "Ir a la lección →",
+            "link_texto": f"Ver el paso a paso ({tutorial.minutos} min) →",
         }
 
     # Módulo u otro tipo genérico

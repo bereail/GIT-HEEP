@@ -2804,6 +2804,24 @@
   ],
   "tareas": [
     {
+      "slug": "hacer-una-compra",
+      "pregunta": "¿Cómo hago una compra de punta a punta?",
+      "keywords": [
+        "compra",
+        "comprar",
+        "hacer una compra",
+        "paso a paso",
+        "circuito",
+        "proceso de compra",
+        "licitacion",
+        "contratacion",
+        "adjudicar",
+        "adjudicacion"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "hacer-una-compra"
+    },
+    {
       "slug": "inscribirme-rupc",
       "pregunta": "¿Cómo me inscribo como proveedor?",
       "keywords": [
@@ -3073,24 +3091,6 @@
       ],
       "tutorial_categoria_slug": "ofertar",
       "tutorial_slug": "ver-documentos-embebidos"
-    },
-    {
-      "slug": "hacer-una-compra",
-      "pregunta": "¿Cómo hago una compra de punta a punta?",
-      "keywords": [
-        "compra",
-        "comprar",
-        "hacer una compra",
-        "paso a paso",
-        "circuito",
-        "proceso de compra",
-        "licitacion",
-        "contratacion",
-        "adjudicar",
-        "adjudicacion"
-      ],
-      "tutorial_categoria_slug": "gestion-interna",
-      "tutorial_slug": "hacer-una-compra"
     },
     {
       "slug": "crear-proceso",
