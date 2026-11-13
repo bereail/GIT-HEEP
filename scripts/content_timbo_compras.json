@@ -206,7 +206,7 @@
               { "label": "1. Preparar: pedido, expediente y pliego con sus renglones", "hint": "Pasos 1 a 3", "tone": "neutral" },
               { "label": "2. Aprobar: decisorio, vista al Tribunal de Cuentas y vinculación en TIMBÓ Compras", "hint": "Pasos 4 a 6", "tone": "intermedio" },
               { "label": "3. Publicar: nómina, fecha, portal web y aviso oficial", "hint": "Pasos 7 y 8", "tone": "intermedio" },
-              { "label": "4. Recibir ofertas, evaluar y adjudicar", "hint": "Pasos 9 a 11", "tone": "verified" }
+              { "label": "4. Recibir ofertas, evaluar, adjudicar y cerrar", "hint": "Pasos 9 a 12", "tone": "verified" }
             ] },
             { "type": "prereq", "items": [
               "El pedido del servicio que necesita la compra.",
@@ -229,14 +229,15 @@
             { "type": "step", "number": 8, "explanation": "Publicá la compra.", "doThis": "Cargá la gestión en el portal web de compras y pedí el aviso oficial por mail a avisosoficiales@santafe.gob.ar, con 3 días de anticipación como mínimo (Circular 04/2026).", "lookFor": "En el portal, marcá \"Marcar para que se genere enlace con TIMBO\" y el expediente como principal. Si no, al proveedor no le aparece el botón OFERTAR." },
             { "type": "step", "number": 9, "explanation": "Mientras está publicada, respondé las consultas.", "doThis": "Cada consulta de un proveedor se responde con una circular aclaratoria. Si hay que cambiar el pliego, va una circular modificatoria.", "lookFor": "La circular modificatoria suspende el proceso hasta que se publica el pliego nuevo." },
             { "type": "step", "number": 10, "explanation": "Apertura de ofertas.", "doThis": "No hay que hacer nada: en la fecha y hora fijadas, TIMBÓ abre solo las ofertas y genera el acta de apertura y el cuadro comparativo de precios.", "lookFor": "Solo se abren las ofertas en estado \"Presentada\". Si un proveedor dice que ofertó y no aparece, es que no la presentó." },
-            { "type": "step", "number": 11, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Rol Evaluador: evaluación económica, administrativa y técnica de cada oferta; si falta algo, pedí subsanación, mejora de precio o aclaración. Después, selección de renglones, orden de evaluadores e informe de preadjudicación. Ver lecciones \"Evaluador\".", "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación. Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación, que (igual que el contrato) se tramita por expediente electrónico." },
+            { "type": "step", "number": 11, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Rol Evaluador: evaluación económica, administrativa y técnica de cada oferta; si falta algo, pedí subsanación, mejora de precio o aclaración. Después, selección de renglones, orden de evaluadores e informe de preadjudicación. Ver lecciones \"Evaluador\".", "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación. Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación, por expediente electrónico." },
+            { "type": "step", "number": 12, "explanation": "Cerrá el proceso.", "doThis": "Con el acto de adjudicación firmado, el Gestor va a \"Acciones\" → \"Adjudicar\" y carga el documento oficial. El proceso pasa a \"Finalizados\".", "lookFor": "Ver lección \"Adjudicar y cerrar el proceso\". El contrato sigue por expediente." },
 
             { "type": "tip", "text": "Los nombres de bandejas, botones y estados salen de los videos oficiales \"Paso 01\" a \"Paso 04\" y de las circulares. Si algo no coincide con tu pantalla, avisá desde \"Dejar una consulta\"." },
             { "type": "tip", "text": "Mesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · Tel. 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 6400792, de 8 a 13 h." },
             { "type": "tip", "text": "Para ver cómo lo vive el proveedor (cómo oferta, consulta o subsana), mirá el módulo \"Ofertar\"." }
           ],
           "quiz": [
-            { "type": "order-steps", "instruction": "Ordená las etapas de una compra:", "steps": ["Armar el pliego con los renglones", "Control del pliego por la URC", "Firmar el decisorio", "Correr vista al Tribunal de Cuentas", "Publicar la compra", "Apertura de ofertas", "Adjudicar"] },
+            { "type": "order-steps", "instruction": "Ordená las etapas de una compra:", "steps": ["Armar el pliego con los renglones", "Control del pliego por la URC", "Firmar el decisorio", "Correr vista al Tribunal de Cuentas", "Publicar la compra", "Apertura de ofertas", "Preadjudicar", "Adjudicar y cerrar el proceso"] },
             { "type": "true-false", "question": "En la apertura, el hospital tiene que abrir las ofertas una por una.", "answer": false, "explanation": "La apertura es automática, y solo se abren las ofertas en estado \"Presentada\"." },
             { "type": "multiple-choice", "question": "Publicaste la compra en el portal y el proveedor no ve el botón OFERTAR. ¿Qué faltó?", "options": ["Marcar \"generar enlace con TIMBO\" y el expediente como principal", "Mandar el mail a avisos oficiales", "Cargar el decisorio en el SIN"], "correctIndex": 0, "explanation": "Sin esas dos marcas en la pestaña Expedientes del portal, no se genera el botón OFERTAR (Circular 04/2026)." }
           ]
@@ -244,90 +245,191 @@
         {
           "slug": "gestor-iniciar-proceso",
           "titulo": "Gestor: crear el proceso y armar el pliego",
-          "minutos": 4,
+          "minutos": 6,
           "dificultad": "intermedio",
           "bloques": [
             { "type": "prereq", "items": [
-              "Entrar con tu ID Ciudadana y tener rol Gestor.",
-              "El número de expediente electrónico que dio inicio a la gestión, con toda la documentación necesaria."
+              "Entrar con tu ID Ciudadana y tener rol Gestor (lo asigna el Administrador Local).",
+              "El número de expediente electrónico con el pedido y la documentación de inicio. No hace falta que el expediente esté en tu oficina."
             ] },
-            { "type": "step", "number": 1, "explanation": "Creá el proceso.", "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\" → \"Nuevo trámite\" → \"Proceso de contratación\". Completá una breve descripción, la jurisdicción comitente superior, la jurisdicción comitente, el expediente y el procedimiento de selección. Después, \"Enviar\".", "lookFor": "El proceso tiene un número de instancia provisorio. El número definitivo lo da TIMBÓ cuando el Supervisor aprueba el pliego." },
-            { "type": "step", "number": 2, "explanation": "Completá los 8 formularios del pliego.", "doThis": "En el proceso, \"Acciones\". Completá cada formulario y tocá \"Guardar\" (lo que guardás no se pierde si salís).", "lookFor": "Ver la tabla de abajo." },
+            { "type": "step", "number": 1, "explanation": "Creá el proceso.", "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\" → \"Nuevo trámite\" → \"Proceso de contratación\". Completá una breve descripción, la jurisdicción comitente superior, la jurisdicción comitente, el expediente y el procedimiento de selección. Después, \"Enviar\".", "lookFor": "Queda en \"Asignados\", estado \"Gestionar contratación\", con un número de instancia provisorio. El número definitivo lo da TIMBÓ cuando el Supervisor aprueba el pliego." },
+            { "type": "step", "number": 2, "explanation": "Completá los 8 formularios del pliego.", "doThis": "En el proceso, \"Acciones\". Completá cada formulario y tocá \"Guardar\" (lo que guardás no se pierde si salís).", "lookFor": "Ver la tabla de abajo. Recién con los 8 completos te deja avanzar." },
             { "type": "diagram", "variant": "table", "title": "Los 8 formularios del pliego", "columns": ["Formulario", "Qué va"], "rows": [
-              ["Aspectos generales", "El objeto de la contratación"],
-              ["Detalle de productos o servicios", "Los renglones (\"Añadir ítem\"), con su ficha técnica. Acá se indican también las muestras"],
-              ["Requisitos de participación", "Toda la documentación que el proveedor tiene que presentar con la oferta"],
-              ["Garantías", "Informativo"],
-              ["Condiciones del contrato", "Cambia según sea compra de bienes o contratación de servicios"],
-              ["Facturación y pago", "Lo que el proveedor necesita para facturar y cobrar"],
-              ["Anexos", "Anexos generales (las fichas por renglón van en el detalle)"],
-              ["Evaluadores", "Al menos 3 (\"Añadir evaluador\"). Conviene sumar suplentes por vacaciones o ausencias"]
+              ["1. Aspectos generales", "Objeto, valor del pliego, alcance, tipo y forma de cotización, moneda, mantenimiento de oferta, si se aceptan ofertas alternativas, y la metodología y el criterio de evaluación"],
+              ["2. Detalle de productos o servicios", "Los renglones (\"Añadir ítem\"): buscá en el catálogo por descripción o código, y cargá ficha técnica, unidad de medida, cantidad y precio unitario estimado. Acá también van las muestras"],
+              ["3. Requisitos de participación", "Toda la documentación que el proveedor tiene que presentar (económica, financiera, técnica y administrativa)"],
+              ["4. Garantías", "Informativo: porcentajes y tipos aceptados (impugnación, mantenimiento, fiel cumplimiento) y datos bancarios"],
+              ["5. Condiciones del contrato", "Bienes: forma, lugar y plazo de entrega (o un cronograma por renglón). Servicios: lugar, duración y si se aceptan prórrogas"],
+              ["6. Facturación y pago", "Forma y plazo de pago, a quién facturar, anticipo y plazo de recepción definitiva"],
+              ["7. Anexos", "Anexos generales: especificaciones, modelos de nota, declaraciones juradas, penalidades"],
+              ["8. Evaluadores", "Al menos 3 (\"Añadir evaluador\"). Conviene sumar suplentes"]
             ] },
-            { "type": "step", "number": 3, "explanation": "Mandalo a revisar.", "doThis": "Con todo guardado, elegí: enviar a la jurisdicción comitente (para que lo revise), enviar al Supervisor (para aprobar o rechazar) o anular la instancia.", "lookFor": "Enviado al Supervisor, queda en la pestaña \"Pendientes\", en estado \"Evaluar contratación supervisor\"." },
-            { "type": "tip", "text": "Si el Supervisor rechaza un formulario, vuelve a vos con el motivo: corregilo y volvé a enviarlo." },
+            { "type": "step", "number": 3, "explanation": "Mandalo a revisar.", "doThis": "Con todo guardado, elegí: enviar a la jurisdicción comitente (para que lo revise), enviar al Supervisor (para aprobar o rechazar) o anular la instancia.", "lookFor": "Enviado al Supervisor, queda en tu pestaña \"Pendientes\" (estado \"Evaluar contratación supervisor\") y no podés tocarlo hasta que vuelva." },
+            { "type": "warning", "text": "Si no marcás que se aceptan ofertas alternativas, el proveedor no va a poder cotizarlas. Y lo que no esté en \"Requisitos de participación\" no se le puede exigir al proveedor." },
+            { "type": "concepts", "items": [
+              { "term": "Ficha técnica", "def": "Va en cada renglón, no en Anexos. No es obligatoria: para medicamentos alcanza con la descripción." },
+              { "term": "Moneda", "def": "Se puede pedir cotización en pesos, en dólares o en las dos. Si aceptás dólares, informá el tipo de cambio. La imputación presupuestaria siempre va en pesos y TIMBÓ no convierte solo." },
+              { "term": "Papel o electrónico", "def": "La Unidad Rectora recomienda pedir toda la documentación en forma electrónica." },
+              { "term": "Foja cero", "def": "Ya no es obligatoria con el nuevo pliego único." },
+              { "term": "Observaciones al proyecto de pliego", "def": "Procedimiento alternativo para poner el proyecto de pliego en consulta de los proveedores antes del llamado." }
+            ] },
+            { "type": "tip", "text": "Si el Supervisor rechaza o pide modificar un formulario, vuelve a vos con el motivo: corregilo y volvé a enviarlo." },
             { "type": "video", "url": "https://youtu.be/Tt2_Z8fOAt8", "title": "Paso 01 – Cómo iniciar un proceso de licitación o concurso", "minutos": 2 },
             { "type": "video", "url": "https://youtu.be/Kkt7GxVnIHA", "title": "Clase 02 – Confección del pliego y formularios técnicos", "minutos": 66 }
           ],
           "quiz": [
             { "type": "true-false", "question": "Las fichas técnicas de cada renglón van en el formulario Anexos.", "answer": false, "explanation": "Van con cada renglón, en \"Detalle de productos o servicios\". En Anexos van los generales." },
-            { "type": "multiple-choice", "question": "¿Cuántos evaluadores hay que cargar como mínimo?", "options": ["3", "1", "5"], "correctIndex": 0, "explanation": "Al menos 3, según la Circular UG TIMBÓ 7/2026." }
+            { "type": "multiple-choice", "question": "¿Cuántos evaluadores hay que cargar como mínimo?", "options": ["3", "1", "5"], "correctIndex": 0, "explanation": "Al menos 3, según la Circular UG TIMBÓ 7/2026. Se pueden sumar suplentes." },
+            { "type": "true-false", "question": "Si no marco que acepto ofertas alternativas, el proveedor igual puede cotizarlas.", "answer": false, "explanation": "Sin esa marca, TIMBÓ no le da la opción al proveedor." }
+          ]
+        },
+        {
+          "slug": "pliego-modelo",
+          "titulo": "Pliego modelo: qué poner en cada formulario",
+          "minutos": 5,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "text", "text": "La Circular SCyGB 05/2026 trae los textos y valores modelo para completar el pliego en TIMBÓ Compras. Podés sumar cláusulas si el objeto lo necesita, siempre dentro de la normativa. Usá esta lección como guía rápida." },
+            { "type": "diagram", "variant": "table", "title": "Aspectos generales", "columns": ["Campo", "Valor modelo"], "rows": [
+              ["Etapa y alcance", "Etapa única · Nacional"],
+              ["Tipo de cotización", "Se puede cotizar una cantidad menor al total del renglón, y algunos o todos los renglones"],
+              ["Tipo de adjudicación", "Por renglón, pudiendo adjudicar una cantidad menor al total"],
+              ["Forma de cotización", "Precio final por todo concepto"],
+              ["Mantenimiento de oferta", "30 días corridos desde el día hábil siguiente a la apertura, con 2 renovaciones de 30 días"],
+              ["Oferta alternativa", "Sí: alternativas técnicas o económicas superadoras, con relación razonable con el fin buscado"],
+              ["Metodología de evaluación", "La comisión del formulario Evaluadores analiza admisibilidad y conveniencia según el pliego"]
+            ] },
+            { "type": "diagram", "variant": "table", "title": "Garantías", "columns": ["Garantía", "Modelo", "Tipos aceptados"], "rows": [
+              ["Impugnación", "3 % del valor de la oferta del impugnante", "Efectivo por depósito o transferencia bancaria"],
+              ["Mantenimiento de oferta", "1 % del valor de la oferta", "Seguro de caución o pagaré a la vista (con el sellado del 0,50 %)"],
+              ["Fiel cumplimiento", "7 % de lo adjudicado, dentro de los 5 días hábiles de notificada la orden de compra", "Seguro de caución, o pagaré si el monto es chico (hasta el 10 % del tope de licitación privada)"]
+            ], "note": "Las garantías van en pesos. Una impugnación sin garantía se desestima automáticamente." },
+            { "type": "diagram", "variant": "table", "title": "Requisitos de participación", "columns": ["Tipo", "Requisitos modelo"], "rows": [
+              ["Económicos", "Garantía de mantenimiento de oferta (electrónica). La evaluación económico-financiera (Anexo A) la puede pedir la comisión después"],
+              ["Técnicos (bienes)", "Antecedentes técnicos y certificados o habilitaciones de cada bien (seguridad eléctrica, ASSAL, ANMAT) según el Anexo C, y declaración jurada de garantía y servicio técnico"],
+              ["Administrativos", "Declaración jurada (Anexo D), constancia del RUPC o del inicio del trámite, declaración jurada con el Formulario 522/A de ARCA y certificado negativo RDAM (Anexo E), y poder de quien firma"]
+            ] },
+            { "type": "diagram", "variant": "table", "title": "Contrato, facturación y pago", "columns": ["Tema", "Modelo"], "rows": [
+              ["Entrega de bienes", "Parcial, con cronograma por renglón. Los plazos corren desde la notificación de la orden de compra"],
+              ["Servicios", "Inicio dentro de los 10 días de notificada la adjudicación. Prórroga: 1 período de 12 meses (punto 8.2 del Pliego Único)"],
+              ["Pago", "Parcial, en pesos, a los 20 días corridos de la recepción definitiva"],
+              ["Recepción definitiva", "7 días hábiles administrativos (máximo 30)"],
+              ["Si se cotiza en dólares", "Se convierte al tipo de cambio vendedor (billete) del Banco Nación del día de la factura"]
+            ] },
+            { "type": "concepts", "items": [
+              { "term": "Anexo A", "def": "Documentación para la evaluación económico-financiera." },
+              { "term": "Anexo B", "def": "Calidad jurídica del proveedor." },
+              { "term": "Anexo C", "def": "Requisitos técnicos a cumplir." },
+              { "term": "Anexo D", "def": "Nota en carácter de declaración jurada." },
+              { "term": "Anexo E", "def": "Declaración jurada con el Formulario 522/A de ARCA y el certificado libre de deuda RDAM." },
+              { "term": "Anexo F", "def": "Penalidades por incumplimiento." }
+            ] },
+            { "type": "tip", "text": "No le pidas al proveedor documentación que ya está vigente en registros del Estado (RUPC, RPJEC): la comisión la consulta ahí (Circular UG TIMBÓ 7/2025)." },
+            { "type": "tip", "text": "Circular 05/2026, con los modelos de bienes, servicios y anexos: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/CIRCULAR_005-26.pdf___.pdf" }
+          ],
+          "quiz": [
+            { "type": "multiple-choice", "question": "¿Qué porcentaje tiene, en el modelo, la garantía de fiel cumplimiento?", "options": ["7 %", "1 %", "3 %"], "correctIndex": 0, "explanation": "7 % de lo adjudicado. La de mantenimiento es 1 % y la de impugnación, 3 %." }
           ]
         },
         {
           "slug": "supervisor-aprobar-y-publicar",
           "titulo": "Supervisor: aprobar el pliego, cargar cronograma y nómina",
-          "minutos": 4,
+          "minutos": 5,
           "dificultad": "intermedio",
           "bloques": [
-            { "type": "prereq", "items": ["Entrar con rol Supervisor."] },
-            { "type": "step", "number": 1, "explanation": "Revisá el pliego.", "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\". El proceso está en \"Evaluar contratación supervisor\". En \"Acciones\", aprobá o rechazá formulario por formulario.", "lookFor": "Si rechazás, dejá el motivo (y un archivo, si sirve). Si vos mismo armaste el pliego, podés aprobar todos juntos." },
-            { "type": "step", "number": 2, "explanation": "Descargá el pliego y armá el acto.", "doThis": "Aprobado todo, TIMBÓ le da el número de proceso definitivo. En \"Previsualizar\" descargá el pliego definitivo, sumalo al expediente y generá el acto que aprueba el pliego y autoriza el llamado.", "lookFor": "El número lleva tipo de procedimiento, año, número y jurisdicción." },
-            { "type": "step", "number": 3, "explanation": "Vinculá el acto.", "doThis": "\"Acciones\" → formulario \"Seleccionar documento oficial aprueba pliego\". Escribí el número del documento oficial, tocá la lupa, verificá que sea el correcto y \"Guardar\". Después, \"Completar cronograma y nómina\"." },
-            { "type": "step", "number": 4, "explanation": "Cargá la nómina de proveedores.", "doThis": "\"Acciones\" → \"Nómina de proveedores\" → \"Carga de proveedor\". Buscalos por razón social o CUIT, o cargalos a mano si no están registrados. Después, \"Enviar\"." },
-            { "type": "step", "number": 5, "explanation": "Cargá el cronograma de fechas.", "doThis": "Completá fecha y hora de: publicación, inicio y fin de consultas, inicio y fin de recepción de documentación física, apertura, e inicio y fin de impugnaciones. \"Guardar\" → \"Enviar a publicar\".", "lookFor": "Queda en \"Pendientes\", estado \"Pendiente de publicación\". Ahí podés previsualizar el pliego, el acto, la nómina y el cronograma." },
-            { "type": "warning", "text": "Respetá los plazos: entre la última publicación y la apertura tienen que pasar al menos 10 días corridos. Y no te olvides de publicar en el portal web (lección \"Publicar la gestión en el portal de compras\")." },
-            { "type": "tip", "text": "TIMBÓ suma automáticamente al expediente toda la documentación que firma el Supervisor." },
+            { "type": "prereq", "items": ["Entrar con rol Supervisor. Puede ser la misma persona que el Gestor."] },
+            { "type": "step", "number": 1, "explanation": "Revisá el pliego.", "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\". El proceso está en \"Evaluar contratación supervisor\". En \"Acciones\", aprobá, rechazá o pedí modificar formulario por formulario.", "lookFor": "Si rechazás, dejá el motivo (y un archivo, si sirve): queda en el historial. Si vos mismo armaste el pliego, podés aprobar todos juntos." },
+            { "type": "step", "number": 2, "explanation": "Descargá el pliego y armá el acto por expediente.", "doThis": "Aprobado todo, TIMBÓ da el número de proceso definitivo (estado \"Aprobar contratación\"). En \"Previsualizar\" descargá el pliego, sumalo al expediente y seguí el trámite del acto que aprueba el pliego y autoriza el llamado (dictamen, decisorio, etc.).", "lookFor": "El acto se tramita por expediente, fuera de TIMBÓ Compras. El número de proceso lleva tipo de procedimiento, año, número y oficina." },
+            { "type": "step", "number": 3, "explanation": "Vinculá el acto.", "doThis": "Cuando te avisen del acto: \"Acciones\" → \"Seleccionar documento oficial aprueba pliego\". Escribí el número, tocá la lupa, verificá que sea el correcto y \"Guardar\". Después, \"Completar cronograma y nómina\".", "lookFor": "Sin un acto válido no se puede avanzar." },
+            { "type": "step", "number": 4, "explanation": "Cargá la nómina de proveedores.", "doThis": "\"Acciones\" → \"Nómina de proveedores\" → \"Carga de proveedor\". Buscalos por razón social o CUIT, o cargalos a mano si no están registrados. Después, \"Enviar\".", "lookFor": "Mínimo: 1 proveedor en licitación pública y 5 en licitación privada. TIMBÓ les manda la invitación al correo cargado." },
+            { "type": "step", "number": 5, "explanation": "Cargá el cronograma de fechas.", "doThis": "Fecha y hora de: publicación, inicio y fin de consultas, inicio y fin de recepción de documentación física, apertura, e inicio y fin de impugnaciones. \"Guardar\" → \"Enviar a publicar\".", "lookFor": "Queda en \"Pendientes\", estado \"Pendiente de publicación\", hasta la hora fijada. La \"fecha de publicación\" es cuando lo ven los proveedores en TIMBÓ, no la del portal web." },
+            { "type": "warning", "text": "La ventana de impugnación es de 2 días hábiles administrativos después de la apertura, más el día de gracia. Y entre la última publicación y la apertura tienen que pasar al menos 10 días corridos." },
+            { "type": "warning", "text": "La nómina no reemplaza la publicidad: igual hay que publicar en el portal web y, en los procedimientos públicos, en el Boletín Oficial y en diarios (lección \"Publicar la gestión en el portal de compras\")." },
+            { "type": "tip", "text": "Al publicarse, TIMBÓ suma solo al expediente (con una providencia automática) el pliego, el acto, el cronograma y la nómina, firmados." },
             { "type": "video", "url": "https://youtu.be/Yq1RArIxk2I", "title": "Paso 02 – Cómo aprobar la contratación, el cronograma y la nómina", "minutos": 3 }
           ],
           "quiz": [
-            { "type": "order-steps", "instruction": "Ordená lo que hace el Supervisor:", "steps": ["Aprobar los formularios del pliego", "Descargar el pliego y generar el acto", "Vincular el documento oficial que aprueba el pliego", "Cargar nómina y cronograma", "Enviar a publicar"] }
+            { "type": "order-steps", "instruction": "Ordená lo que hace el Supervisor:", "steps": ["Aprobar los formularios del pliego", "Descargar el pliego y tramitar el acto por expediente", "Vincular el documento oficial que aprueba el pliego", "Cargar nómina y cronograma", "Enviar a publicar"] },
+            { "type": "multiple-choice", "question": "¿Cuántos proveedores hay que cargar como mínimo en la nómina de una licitación privada?", "options": ["5", "1", "3"], "correctIndex": 0, "explanation": "5 en licitación privada y 1 en licitación pública." }
+          ]
+        },
+        {
+          "slug": "gestor-mientras-esta-publicado",
+          "titulo": "Gestor: mientras la compra está publicada",
+          "minutos": 3,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Entre la publicación y la apertura, el proceso está en estado \"Publicado\" en tu pestaña \"Asignados\". Esto es lo que podés hacer." },
+            { "type": "diagram", "variant": "table", "title": "En estado \"Publicado\"", "columns": ["Qué", "Cómo"], "rows": [
+              ["Ver quién se interesó", "La grilla de ofertas muestra qué proveedores participan y si ya presentaron (no muestra el contenido). Se puede descargar"],
+              ["Responder consultas", "Cuando un proveedor consulta, les llega un aviso al Gestor y al Supervisor. El Gestor responde con una circular desde \"Iniciar circulares\""],
+              ["Cambiar el pliego", "Circular modificatoria: vuelve a una etapa anterior y suspende el proceso (por ejemplo, para mover la fecha de apertura)"],
+              ["Dejar sin efecto", "Desde \"Acciones\", vinculando el documento oficial que lo deja sin efecto"]
+            ] },
+            { "type": "step", "number": 1, "explanation": "Completá el expediente.", "doThis": "Quien tenga el expediente suma lo que no es automático: la nota de prensa, la constancia de publicación en el Boletín Oficial y en diarios, y la vista al Tribunal de Cuentas.", "lookFor": "El expediente se puede mover de oficina: eso no frena el proceso en TIMBÓ Compras." },
+            { "type": "step", "number": 2, "explanation": "Esperá la apertura.", "doThis": "A la hora fijada, TIMBÓ abre las ofertas y suma al expediente el acta de apertura, el cuadro comparativo y todas las ofertas.", "lookFor": "El proceso pasa a \"Evaluar ofertas\", a cargo de los Evaluadores." },
+            { "type": "tip", "text": "\"Ver flujo\" te muestra en qué parte del proceso estás, y \"Historial\", quién hizo qué. Sirven mucho cuando algo volvió para atrás." }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Si el expediente está en otra oficina, el proceso en TIMBÓ Compras se frena.", "answer": false, "explanation": "El expediente tiene vida propia: puede moverse sin bloquear el proceso." }
           ]
         },
         {
           "slug": "evaluador-evaluar-ofertas",
           "titulo": "Evaluador: evaluar las ofertas",
-          "minutos": 4,
+          "minutos": 5,
           "dificultad": "intermedio",
           "bloques": [
-            { "type": "prereq", "items": ["Entrar con tu ID Ciudadana y tener rol Evaluador en ese proceso."] },
-            { "type": "step", "number": 1, "explanation": "Mirá lo que llegó.", "doThis": "Bandeja \"Licitaciones y concursos\", pestaña \"Asignados\": el proceso está en \"Evaluar ofertas\". En \"Acciones\" ves el acta de apertura, todas las ofertas con sus documentos embebidos y el cuadro comparativo.", "lookFor": "El cuadro comparativo se puede descargar en Excel." },
-            { "type": "step", "number": 2, "explanation": "Abrí cada oferta.", "doThis": "Andá a \"Ofertas presentadas\" (podés buscar por número de proceso). Están en \"Esperar evaluación\". En cada una, \"Acciones\"." },
-            { "type": "step", "number": 3, "explanation": "Completá las 3 evaluaciones.", "doThis": "Económica (requisitos mínimos y precios), administrativa y técnica. En cada fila: \"Editar\" → elegí el resultado → \"Enviar\" al terminar cada formulario.", "lookFor": "Si rechazás o declarás inconveniente una oferta, tenés que poner el motivo. En la técnica podés adjuntar el informe técnico." },
-            { "type": "step", "number": 4, "explanation": "Cerrá la oferta.", "doThis": "Con los 3 formularios listos, tocá \"Oferta evaluada\".", "lookFor": "Evaluadas todas, el proceso pasa a \"Selección de renglones y oferentes\"." },
-            { "type": "tip", "text": "Si falta algo, desde acá se pide subsanación, mejora de precio o aclaración. El proveedor lo responde desde \"Mis ofertas\" (lección \"Subsanar, mejorar precio o aclarar\")." },
+            { "type": "prereq", "items": ["Entrar con tu ID Ciudadana, tener rol Evaluador y estar cargado en el formulario \"Evaluadores\" de ese proceso. No hace falta tener el expediente."] },
+            { "type": "step", "number": 1, "explanation": "Mirá lo que llegó.", "doThis": "Bandeja \"Licitaciones y concursos\": el proceso está en \"Evaluar ofertas\". En \"Acciones\" ves el acta de apertura, todas las ofertas con sus documentos embebidos y el cuadro comparativo (de menor a mayor precio por renglón).", "lookFor": "El cuadro comparativo se puede descargar en Excel." },
+            { "type": "step", "number": 2, "explanation": "Abrí cada oferta.", "doThis": "Andá a \"Ofertas presentadas\" (filtrá por número de proceso). Están en \"Esperar evaluación\". En cada una, \"Acciones\"." },
+            { "type": "step", "number": 3, "explanation": "Completá las 3 evaluaciones.", "doThis": "Económica (requisitos y precios), administrativa y técnica. En cada fila: \"Editar\" → elegí el resultado → al terminar cada formulario, \"Enviar\".", "lookFor": "Ver la tabla de abajo. Si algo no cumple o es inconveniente, poné el motivo." },
+            { "type": "diagram", "variant": "table", "title": "Qué podés poner", "columns": ["En", "Opciones", "Qué pasa si es negativo"], "rows": [
+              ["Requisitos (documentación)", "Cumple · No cumple · Pendiente de subsanación · Pendiente", "\"No cumple\" desestima la oferta entera"],
+              ["Precios", "Conveniente · Inconveniente · Pendiente de mejora de precios · Pendiente", "Se desestima solo ese renglón"],
+              ["Técnica del renglón", "Cumple · No cumple", "Se desestima solo ese renglón"]
+            ], "note": "\"Pendiente de subsanación\" y \"Pendiente de mejora\" habilitan después a pedirle eso al proveedor." },
+            { "type": "step", "number": 4, "explanation": "Cerrá la oferta.", "doThis": "Con los 3 formularios listos, tocá \"Oferta evaluada\".", "lookFor": "Pasa a tu pestaña \"Pendientes\" (no a \"Finalizados\": eso ocurre recién con la adjudicación). Evaluadas todas, y cerradas las subsanaciones, el proceso pasa a \"Selección de renglones y oferentes\"." },
+            { "type": "warning", "text": "La evaluación la firma quien pasa la oferta a \"evaluada\". Si interviene un área técnica (por ejemplo, Sistemas o Movilidad), pedile un informe por expediente o por correo y adjuntalo como anexo del evaluador: así queda constancia. No conviene sumarla como evaluadora todavía." },
+            { "type": "tip", "text": "El proveedor nunca ve el precio estimado: solo lo ven los evaluadores, para comparar fila por fila." },
             { "type": "video", "url": "https://youtu.be/7najG5QuTHY", "title": "Paso 03 – Cómo evaluar una oferta", "minutos": 3 },
             { "type": "video", "url": "https://youtu.be/Lnd2-_XiOXI", "title": "Clase 03 – Evaluación y preadjudicación", "minutos": 56 }
           ],
           "quiz": [
-            { "type": "multiple-choice", "question": "¿Qué tres evaluaciones tiene cada oferta?", "options": ["Económica, administrativa y técnica", "Legal, contable y médica", "Solo la de precios"], "correctIndex": 0, "explanation": "Se completan las tres y después se toca \"Oferta evaluada\"." }
+            { "type": "multiple-choice", "question": "Marcás \"No cumple\" en un requisito de documentación. ¿Qué pasa?", "options": ["Se desestima toda la oferta", "Se desestima solo un renglón", "No pasa nada hasta la preadjudicación"], "correctIndex": 0, "explanation": "Los requisitos mínimos son de toda la oferta. En cambio, un precio inconveniente desestima solo ese renglón." }
           ]
         },
         {
           "slug": "evaluador-preadjudicar",
           "titulo": "Evaluador: preadjudicar y abrir impugnaciones",
-          "minutos": 4,
+          "minutos": 5,
           "dificultad": "avanzado",
           "bloques": [
-            { "type": "step", "number": 1, "explanation": "Elegí qué sigue en carrera.", "doThis": "Proceso en \"Selección de renglones y oferentes\": \"Acciones\" → \"Formulario selección de renglones y oferentes\" → marcá los que pasaron la evaluación → \"Enviar\"." },
-            { "type": "step", "number": 2, "explanation": "Ordená a los evaluadores.", "doThis": "\"Organizar evaluadores\" → \"Añadir evaluador\", en orden → \"Enviar\".", "lookFor": "El primero arma el informe de preadjudicación. Los demás, en ese orden, lo aprueban o lo rechazan." },
-            { "type": "step", "number": 3, "explanation": "El evaluador n.º 1 arma el informe.", "doThis": "Estado \"Preadjudicar\": \"Acciones\" → \"Formulario informe de preadjudicación\". En cada renglón, \"Editar\" → cantidad a preadjudicar → \"Guardar\". Completá los fundamentos y tu intervención → \"Siguiente evaluador\".", "lookFor": "Se puede usar la variable de adjudicación de ±20 % en la cantidad." },
-            { "type": "step", "number": 4, "explanation": "Los demás evaluadores revisan.", "doThis": "Cada uno lo encuentra en \"Asignados\" (estado \"Preadjudicado\"), abre el informe y lo aprueba o lo rechaza → \"Guardar y siguiente evaluador\".", "lookFor": "Si alguien lo rechaza, vuelve al n.º 1, que es el único que puede modificarlo." },
-            { "type": "step", "number": 5, "explanation": "El n.º 1 carga el cronograma de impugnaciones.", "doThis": "Cuando aprueba el último, el proceso pasa a \"Completar cronograma de impugnaciones\". Cargá fecha y hora de publicación de la preadjudicación, e inicio y fin de impugnación → \"Enviar\".", "lookFor": "Antes de este paso, el expediente va a la URC para controlar la preadjudicación (Circular SCyGB 03/2026)." },
-            { "type": "tip", "text": "Al quedar preadjudicado, los oferentes reciben el informe en su domicilio digital. La adjudicación sigue por expediente electrónico." },
+            { "type": "step", "number": 1, "explanation": "Elegí qué sigue en carrera.", "doThis": "Proceso en \"Selección de renglones y oferentes\": \"Acciones\" → \"Formulario selección de renglones y oferentes\". Marcá quiénes pasan → \"Enviar\".", "lookFor": "Es el orden de prelación con el resumen de la evaluación. Lo que está en gris ya quedó afuera. En un renglón podés elegir más de un oferente para repartir la cantidad. Si ves un error, podés volver a evaluar." },
+            { "type": "step", "number": 2, "explanation": "Ordená a los evaluadores.", "doThis": "\"Organizar evaluadores\" → \"Añadir evaluador\", en orden (mínimo 3) → \"Enviar\".", "lookFor": "El n.º 1 arma y edita el informe. Los demás, en ese orden, solo lo aprueban o lo rechazan. Puede firmar alguien que no evaluó (por ejemplo, un funcionario), si está en el formulario Evaluadores." },
+            { "type": "step", "number": 3, "explanation": "El evaluador n.º 1 arma el informe.", "doThis": "Estado \"Preadjudicar\": \"Acciones\" → \"Informe de preadjudicación\". En cada renglón, \"Editar\" → cantidad a preadjudicar → \"Guardar\". Completá los fundamentos y tu intervención → \"Siguiente evaluador\".", "lookFor": "Podés usar la variable de adjudicación (±20 %). Las ofertas y los renglones desestimados aparecen solos, con el motivo." },
+            { "type": "step", "number": 4, "explanation": "Los demás evaluadores revisan.", "doThis": "Les llega un correo. Lo encuentran en \"Asignados\", abren el informe y lo aprueban o lo rechazan → \"Guardar\" → \"Siguiente evaluador\".", "lookFor": "Si alguien lo rechaza, vuelve al n.º 1." },
+            { "type": "step", "number": 5, "explanation": "El n.º 1 carga el cronograma de impugnaciones.", "doThis": "Cuando aprueba el último, cargá fecha y hora de publicación de la preadjudicación, e inicio y fin de impugnación → \"Confirmar\".", "lookFor": "Pasa a \"Espera incorporaciones\" (TIMBÓ genera y firma los documentos) y después a \"Preadjudicado\". Antes de este paso, el expediente va a la URC para controlar la preadjudicación (Circular SCyGB 03/2026)." },
+            { "type": "tip", "text": "Al quedar preadjudicado, los oferentes reciben el informe en su domicilio digital, y al expediente se suman las evaluaciones y el informe. Sigue la lección \"Adjudicar y cerrar el proceso\"." },
             { "type": "video", "url": "https://youtu.be/yUbSYwLQ0aU", "title": "Paso 04 – Cómo preadjudicar una licitación o concurso", "minutos": 4 }
           ],
           "quiz": [
             { "type": "true-false", "question": "Cualquier evaluador puede modificar el informe de preadjudicación.", "answer": false, "explanation": "Solo el evaluador n.º 1. Los demás lo aprueban o lo rechazan." }
+          ]
+        },
+        {
+          "slug": "gestor-adjudicar",
+          "titulo": "Adjudicar y cerrar el proceso",
+          "minutos": 2,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Con el proceso en \"Preadjudicado\", el expediente sigue su propio camino hasta el acto de adjudicación (dictamen, decreto o resolución, según el monto). TIMBÓ Compras espera ese acto para cerrar." },
+            { "type": "step", "number": 1, "explanation": "Esperá el acto de adjudicación.", "doThis": "El expediente ya tiene toda la documentación del proceso. Las áreas de despacho y jurídicas trabajan sobre él.", "lookFor": "Mientras tanto, el proceso sigue abierto: si una oferta preadjudicada se cae (por ejemplo, por mantenimiento de oferta), el Gestor puede volver a \"Organizar evaluadores\" y repetir la preadjudicación." },
+            { "type": "step", "number": 2, "explanation": "Cargá el acto.", "doThis": "Rol Gestor: \"Acciones\" → \"Adjudicar\". Cargá el número del documento oficial del acto (decreto, resolución o resolución conjunta), verificá que sea el final y \"Guardar\".", "lookFor": "El proceso pasa a la pestaña \"Finalizados\", y las ofertas también." },
+            { "type": "tip", "text": "La etapa del contrato (orden de compra, entrega, recepción) se sigue por expediente electrónico." }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Una oferta evaluada pasa a \"Finalizados\" apenas se evalúa.", "answer": false, "explanation": "Pasa a \"Finalizados\" recién con la adjudicación (o si el proceso queda sin efecto)." }
           ]
         },
         {
@@ -587,9 +689,12 @@
     { "slug": "impugnar", "pregunta": "Quiero impugnar una oferta o la preadjudicación", "keywords": ["impugnar", "impugnacion", "preadjudicacion", "garantia", "queja"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "impugnaciones" },
     { "slug": "hacer-una-compra", "pregunta": "¿Cómo hago una compra de punta a punta?", "keywords": ["compra", "comprar", "hacer una compra", "paso a paso", "circuito", "proceso de compra", "licitacion", "contratacion", "adjudicar", "adjudicacion"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "hacer-una-compra" },
     { "slug": "crear-proceso", "pregunta": "¿Cómo creo un proceso de contratación y armo el pliego?", "keywords": ["crear", "nuevo", "iniciar", "proceso", "pliego", "gestor", "formularios", "renglones", "nuevo tramite"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "gestor-iniciar-proceso" },
+    { "slug": "pliego-modelo", "pregunta": "¿Qué pongo en cada formulario del pliego? (valores modelo)", "keywords": ["modelo", "garantia", "porcentaje", "mantenimiento de oferta", "fiel cumplimiento", "plazo de pago", "recepcion definitiva", "anexo", "requisitos", "que pongo"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "pliego-modelo" },
     { "slug": "aprobar-pliego", "pregunta": "¿Cómo apruebo el pliego y cargo el cronograma y la nómina?", "keywords": ["aprobar", "supervisor", "cronograma", "nomina", "fechas", "enviar a publicar", "rechazar formulario"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "supervisor-aprobar-y-publicar" },
     { "slug": "evaluar-ofertas", "pregunta": "¿Cómo evalúo las ofertas?", "keywords": ["evaluar", "evaluador", "evaluacion", "cuadro comparativo", "acta de apertura", "tecnica", "administrativa", "economica"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "evaluador-evaluar-ofertas" },
     { "slug": "preadjudicar", "pregunta": "¿Cómo preadjudico?", "keywords": ["preadjudicar", "preadjudicacion", "informe", "organizar evaluadores", "cronograma de impugnaciones", "seleccion de renglones"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "evaluador-preadjudicar" },
+    { "slug": "adjudicar", "pregunta": "¿Cómo adjudico y cierro el proceso?", "keywords": ["adjudicar", "adjudicacion", "cerrar", "finalizar", "acto", "finalizados", "orden de compra"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "gestor-adjudicar" },
+    { "slug": "publicado", "pregunta": "La compra está publicada: ¿qué hago hasta la apertura?", "keywords": ["publicado", "interesados", "quien participa", "circular", "dejar sin efecto", "boletin oficial", "diario", "nota de prensa"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "gestor-mientras-esta-publicado" },
     { "slug": "notificar-proveedor", "pregunta": "¿Cómo le mando una notificación a un proveedor?", "keywords": ["notificar", "notificacion", "aviso", "comunicable externa", "proveedor", "domicilio digital", "nota"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "notificar-proveedor" },
     { "slug": "alta-articulo", "pregunta": "El artículo no está en el catálogo: ¿cómo pido el alta?", "keywords": ["articulo", "alta", "catalogo", "nomenclador", "cabys", "falta", "no esta", "bien", "servicio", "lugar de entrega", "codigo"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "pedir-alta-articulo" },
     { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },
