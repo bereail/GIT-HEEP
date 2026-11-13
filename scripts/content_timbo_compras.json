@@ -39,10 +39,11 @@
               "Inscripción en el RUPC (Registro Único de Proveedores y Contratistas), con los datos de contacto y la situación jurídica al día."
             ] },
             { "type": "warning", "text": "Estar inscripto en el RUPC es requisito indispensable para presentar ofertas. Paso a paso para inscribirse: santafe.gov.ar/proveedores/site/index.php?a=documentacion.guiadetramites" },
-            { "type": "tip", "text": "Necesitás la ID Ciudadana de nivel 2 o más. Se sube con fotos del DNI, con ARCA o con Mi Argentina. Hacelo antes de la fecha de apertura para no quedarte afuera." },
+            { "type": "tip", "text": "Para ofertar necesitás la ID Ciudadana de nivel 2 o más (se sube con fotos del DNI, con ARCA o con Mi Argentina). Para inscribirte en el RUPC piden nivel 3, validado con ARCA (Circular UG TIMBÓ 2/2026). Hacelo con tiempo." },
             { "type": "concepts", "items": [
               { "term": "¿Quién tiene que tener la ID Ciudadana?", "def": "La persona física que oferta en nombre del proveedor, y tiene que tener facultades para hacerlo (por ejemplo, ser del directorio o tener un poder)." },
-              { "term": "Invitaciones", "def": "TIMBÓ invita por correo a los proveedores de la nómina y a los inscriptos en el RUPC en el rubro del proceso." }
+              { "term": "Invitaciones", "def": "TIMBÓ invita por correo a los proveedores de la nómina y a los inscriptos en el RUPC en el rubro del proceso." },
+              { "term": "Concordancia del objeto", "def": "Lo que hace tu empresa (objeto social o actividad declarada) tiene que tener relación con lo que se compra. Si no, no te pueden adjudicar (Circular UG TIMBÓ 2/2026)." }
             ] },
             { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/PasoAPasoParaOfertar.docx.pdf" },
             { "type": "video", "url": "https://youtu.be/bLSixoqJheg", "title": "Requisitos para acceder a Timbó Compras", "minutos": 1 },
@@ -212,6 +213,7 @@
           "dificultad": "basico",
           "bloques": [
             { "type": "text", "text": "Este es el recorrido completo de una compra en el hospital, desde el pedido hasta la adjudicación. Son 4 etapas. Cada paso dice qué hacer y dónde ver más detalle." },
+            { "type": "tip", "text": "Desde el 1 de abril de 2026, TIMBÓ Compras es obligatorio para toda la administración provincial, incluido el Ministerio de Salud, en licitaciones y concursos de simple sobre (Circular UG TIMBÓ 3/2026). Lo que empezó en papel antes, sigue en papel." },
             { "type": "diagram", "variant": "list", "title": "El mapa de la compra", "items": [
               { "label": "1. Preparar: pedido, expediente y pliego con sus renglones", "hint": "Pasos 1 a 3", "tone": "neutral" },
               { "label": "2. Aprobar: decisorio, vista al Tribunal de Cuentas y vinculación en TIMBÓ Compras", "hint": "Pasos 4 a 6", "tone": "intermedio" },
@@ -250,6 +252,26 @@
             { "type": "order-steps", "instruction": "Ordená las etapas de una compra:", "steps": ["Armar el pliego con los renglones", "Control del pliego por la URC", "Firmar el decisorio", "Correr vista al Tribunal de Cuentas", "Publicar la compra", "Apertura de ofertas", "Preadjudicar", "Adjudicar y cerrar el proceso"] },
             { "type": "true-false", "question": "En la apertura, el hospital tiene que abrir las ofertas una por una.", "answer": false, "explanation": "La apertura es automática, y solo se abren las ofertas en estado \"Presentada\"." },
             { "type": "multiple-choice", "question": "Publicaste la compra en el portal y el proveedor no ve el botón OFERTAR. ¿Qué faltó?", "options": ["Marcar \"generar enlace con TIMBO\" y el expediente como principal", "Mandar el mail a avisos oficiales", "Cargar el decisorio en el SIN"], "correctIndex": 0, "explanation": "Sin esas dos marcas en la pestaña Expedientes del portal, no se genera el botón OFERTAR (Circular 04/2026)." }
+          ]
+        },
+        {
+          "slug": "montos-y-procedimientos",
+          "titulo": "¿Qué procedimiento corresponde según el monto? (2026)",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "El tipo de procedimiento y quién lo aprueba dependen del monto estimado de la compra. Los topes los fija cada año la Ley de Presupuesto." },
+            { "type": "diagram", "variant": "table", "title": "Topes 2026 (Ley de Presupuesto 14.424)", "columns": ["Monto estimado", "Procedimiento", "Quién lo aprueba"], "rows": [
+              ["Hasta $5.850.000", "Contratación directa por monto", "Resolución del Subsecretario de Administración o equivalente"],
+              ["Hasta $29.250.000", "Concurso de precios (solo locación de inmuebles)", "Resolución"],
+              ["Hasta $58.500.000", "Licitación o concurso privado", "Hasta $29.250.000: resolución. Más: resolución conjunta con el Ministerio de Economía"],
+              ["Más de $58.500.000", "Licitación o concurso público", "Decreto"]
+            ], "note": "Circular SCyGB 01/2026. Los montos cambian cada año: revisá la circular vigente." },
+            { "type": "tip", "text": "Desde 2026 ya no se cobra la tasa retributiva de servicios en licitaciones públicas y privadas. El sellado del pagaré sigue siendo del 0,50 % (código 11086)." },
+            { "type": "tip", "text": "Las contrataciones directas por urgencia o porque un proceso quedó desierto también van por TIMBÓ Compras, con un mínimo de 3 proveedores invitados (Circular UG TIMBÓ 8/2026)." }
+          ],
+          "quiz": [
+            { "type": "multiple-choice", "question": "Una compra estimada en $40.000.000, ¿qué procedimiento lleva en 2026?", "options": ["Licitación privada", "Contratación directa", "Licitación pública"], "correctIndex": 0, "explanation": "Hasta $58.500.000 corresponde licitación o concurso privado." }
           ]
         },
         {
@@ -374,7 +396,8 @@
               ["Ver quién se interesó", "La grilla de ofertas muestra qué proveedores participan y si ya presentaron (no muestra el contenido). Se puede descargar"],
               ["Responder consultas", "Cuando un proveedor consulta, les llega un aviso al Gestor y al Supervisor. El Gestor responde con una circular desde \"Iniciar circulares\""],
               ["Cambiar el pliego", "Circular modificatoria: vuelve a una etapa anterior y suspende el proceso (por ejemplo, para mover la fecha de apertura)"],
-              ["Dejar sin efecto", "Desde \"Acciones\", vinculando el documento oficial que lo deja sin efecto"]
+              ["Dejar sin efecto", "Desde \"Acciones\", vinculando el documento oficial que lo deja sin efecto"],
+              ["Enmiendas menores", "Si no son sustanciales, se pueden comunicar hasta 3 días antes de la apertura sin mover la fecha (punto 2.3 del Pliego Único)"]
             ] },
             { "type": "step", "number": 1, "explanation": "Completá el expediente.", "doThis": "Quien tenga el expediente suma lo que no es automático: la nota de prensa, la constancia de publicación en el Boletín Oficial y en diarios, y la vista al Tribunal de Cuentas.", "lookFor": "El expediente se puede mover de oficina: eso no frena el proceso en TIMBÓ Compras." },
             { "type": "step", "number": 2, "explanation": "Esperá la apertura.", "doThis": "A la hora fijada, TIMBÓ abre las ofertas y suma al expediente el acta de apertura, el cuadro comparativo y todas las ofertas.", "lookFor": "El proceso pasa a \"Evaluar ofertas\", a cargo de los Evaluadores." },
@@ -436,10 +459,29 @@
             { "type": "text", "text": "Con el proceso en \"Preadjudicado\", el expediente sigue su propio camino hasta el acto de adjudicación (dictamen, decreto o resolución, según el monto). TIMBÓ Compras espera ese acto para cerrar." },
             { "type": "step", "number": 1, "explanation": "Esperá el acto de adjudicación.", "doThis": "El expediente ya tiene toda la documentación del proceso. Las áreas de despacho y jurídicas trabajan sobre él.", "lookFor": "Mientras tanto, el proceso sigue abierto: si una oferta preadjudicada se cae (por ejemplo, por mantenimiento de oferta), el Gestor puede volver a \"Organizar evaluadores\" y repetir la preadjudicación." },
             { "type": "step", "number": 2, "explanation": "Cargá el acto.", "doThis": "Rol Gestor: \"Acciones\" → \"Adjudicar\". Cargá el número del documento oficial del acto (decreto, resolución o resolución conjunta), verificá que sea el final y \"Guardar\".", "lookFor": "El proceso pasa a la pestaña \"Finalizados\", y las ofertas también." },
-            { "type": "tip", "text": "La etapa del contrato (orden de compra, entrega, recepción) se sigue por expediente electrónico." }
+            { "type": "tip", "text": "La etapa del contrato (orden de compra, entrega, recepción) se sigue por expediente electrónico. Y tenés 2 días hábiles para pasar la gestión a \"Concluida\" en el portal: ver lección \"Después de adjudicar\"." }
           ],
           "quiz": [
             { "type": "true-false", "question": "Una oferta evaluada pasa a \"Finalizados\" apenas se evalúa.", "answer": false, "explanation": "Pasa a \"Finalizados\" recién con la adjudicación (o si el proceso queda sin efecto)." }
+          ]
+        },
+        {
+          "slug": "despues-de-adjudicar",
+          "titulo": "Después de adjudicar: portal, recepción y pago",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Con la adjudicación firmada, el proceso en TIMBÓ Compras termina, pero el trabajo sigue por expediente: actualizar el portal, recibir lo comprado y pagar." },
+            { "type": "step", "number": 1, "explanation": "Actualizá el portal de compras.", "doThis": "Publicá los documentos del proceso (pliegos, circulares, acta de apertura, informe de preadjudicación y acto de adjudicación) y pasá la gestión a estado \"Concluida\".", "lookFor": "Tenés 2 días hábiles desde el acto de adjudicación (o de dejarlo sin efecto). Si quedan gestiones sin actualizar, el hospital no puede publicar compras nuevas (Resolución 081/25 y Circular SCyGB 04/2025)." },
+            { "type": "step", "number": 2, "explanation": "Pedí la garantía de fiel cumplimiento.", "doThis": "El adjudicatario la tiene que presentar dentro del plazo del pliego (en el modelo, 5 días hábiles desde que se le notifica la orden de compra)." },
+            { "type": "step", "number": 3, "explanation": "Recibí lo comprado (recepción provisoria).", "doThis": "Al entregar, se firman remitos o recibos. Esa recepción es provisoria: queda sujeta a la definitiva." },
+            { "type": "step", "number": 4, "explanation": "Certificá la recepción definitiva.", "doThis": "Compará lo entregado con las especificaciones técnicas (o con la muestra) y emití la certificación con el modelo de la Unidad Rectora.", "lookFor": "Plazo: 7 días hábiles (en el modelo, hasta 30 como máximo). La certifican los responsables que designe el hospital (si es una comisión, hasta 3 personas), en lo posible no quienes intervinieron en la adjudicación." },
+            { "type": "step", "number": 5, "explanation": "Pagá.", "doThis": "En el modelo de pliego, el pago es a los 20 días corridos desde el día siguiente a la recepción definitiva." },
+            { "type": "warning", "text": "Si el proveedor entrega tarde, corresponde una multa por mora del 0,1 % por día sobre lo entregado fuera de término, salvo que el pliego particular diga otra cosa (punto 8.2 del Pliego Único)." },
+            { "type": "tip", "text": "Pliego Único de Bases y Condiciones Generales (Decreto 287/2026): compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf" }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Después de adjudicar, tengo un mes para pasar la gestión a \"Concluida\" en el portal.", "answer": false, "explanation": "Son 2 días hábiles. Si no, el hospital no puede publicar compras nuevas." }
           ]
         },
         {
@@ -658,6 +700,15 @@
       "verificado": true
     },
     {
+      "slug": "es-obligatorio-timbo-compras",
+      "situacion": "¿Es obligatorio usar TIMBÓ Compras en mi hospital?",
+      "descripcion": "Dudas sobre si las compras se pueden seguir haciendo en papel.",
+      "solucion": "Sí. Desde el 1 de abril de 2026 es obligatorio para toda la administración provincial, incluido el Ministerio de Salud, en licitaciones y concursos públicos y privados de simple sobre. Las contrataciones directas por urgencia o por proceso desierto también van por TIMBÓ Compras. Lo que se inició en papel antes sigue en papel.",
+      "notas_adicionales": "Circulares UG TIMBÓ 1/2026, 3/2026 y 8/2026. Los procedimientos de etapa múltiple, por ahora, van por expediente electrónico y documentos oficiales.",
+      "categoria_libre": "Ayuda",
+      "verificado": true
+    },
+    {
       "slug": "mesa-de-ayuda",
       "situacion": "¿Dónde pido ayuda con TIMBÓ Compras?",
       "descripcion": "No encontrás la respuesta acá y necesitás hablar con alguien.",
@@ -705,6 +756,8 @@
     { "slug": "preadjudicar", "pregunta": "¿Cómo preadjudico?", "keywords": ["preadjudicar", "preadjudicacion", "informe", "organizar evaluadores", "cronograma de impugnaciones", "seleccion de renglones"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "evaluador-preadjudicar" },
     { "slug": "adjudicar", "pregunta": "¿Cómo adjudico y cierro el proceso?", "keywords": ["adjudicar", "adjudicacion", "cerrar", "finalizar", "acto", "finalizados", "orden de compra"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "gestor-adjudicar" },
     { "slug": "publicado", "pregunta": "La compra está publicada: ¿qué hago hasta la apertura?", "keywords": ["publicado", "interesados", "quien participa", "circular", "dejar sin efecto", "boletin oficial", "diario", "nota de prensa"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "gestor-mientras-esta-publicado" },
+    { "slug": "montos", "pregunta": "¿Qué procedimiento corresponde según el monto?", "keywords": ["monto", "montos", "tope", "contratacion directa", "licitacion privada", "licitacion publica", "concurso", "presupuesto", "cuanto", "pesos", "encuadre"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "montos-y-procedimientos" },
+    { "slug": "despues-adjudicar", "pregunta": "Ya adjudicamos: ¿qué sigue? (portal, recepción, pago)", "keywords": ["recepcion", "recepcion definitiva", "remito", "pago", "pagar", "concluida", "concluido", "multa", "mora", "fiel cumplimiento", "entrega"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "despues-de-adjudicar" },
     { "slug": "notificar-proveedor", "pregunta": "¿Cómo le mando una notificación a un proveedor?", "keywords": ["notificar", "notificacion", "aviso", "comunicable externa", "proveedor", "domicilio digital", "nota"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "notificar-proveedor" },
     { "slug": "alta-articulo", "pregunta": "El artículo no está en el catálogo: ¿cómo pido el alta?", "keywords": ["articulo", "alta", "catalogo", "nomenclador", "cabys", "falta", "no esta", "bien", "servicio", "lugar de entrega", "codigo"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "pedir-alta-articulo" },
     { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },

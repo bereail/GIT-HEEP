@@ -183,6 +183,24 @@ fuente oficial por sobre lo que se dijo en los chats.
 | [Tutoriales para proveedores](https://compras.santafe.gob.ar/tutoriales/) | Videos y PDF del lado proveedor; RUPC como requisito indispensable | Primeros pasos · Ofertar |
 | [Normativa de compras](https://compras.santafe.gob.ar/normativas/) y [normativa TIMBÓ](https://www.santafe.gob.ar/ms/timbo/normativas/) | Índices con todas las leyes, decretos, resoluciones y circulares | Referencia |
 
+| [Circular SCyGB 01/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/01/Circular-001-26.pdf) | Topes 2026 por procedimiento y quién aprueba; ya no hay tasa retributiva | ¿Qué procedimiento corresponde según el monto? |
+| [Circular SCyGB 04/2025](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-4-2025-S.C.-y-G.B.-.-1.pdf) | Pasar la gestión a "Concluida" en 2 días hábiles; si no, no se puede publicar más | Después de adjudicar |
+| [Pliego Único (Dec. 287/2026)](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf) | Impugnación de la preadjudicación (2 días), recepción definitiva, multa por mora 0,1 %/día, enmiendas | Después de adjudicar · Mientras está publicado |
+| Circular SCyGB 05/2026, anexos (imágenes) | Pliego modelo de bienes y servicios, y anexos A a F | Pliego modelo |
+| [Circular UG TIMBÓ 3/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-03-26.pdf) | TIMBÓ Compras obligatorio desde el 1/4/2026, incluido Salud | Hacer una compra · ¿Es obligatorio? |
+| [Circular UG TIMBÓ 2/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-02-26.pdf) | RUPC: ID nivel 3, concordancia del objeto, requisitos | Quién puede participar |
+| [Circular UG TIMBÓ 3/2025](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/3_2025-Circular-Pautas-Generales-para-la-Gestion-Digital-TIMBO.pdf) | Reglamento de gestión digital: carátulas, providencias, comunicaciones, archivo | TIMBÓ (Expedientes) |
+| [Circular UG TIMBÓ 4/2025](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/4_2025-Circular-Actos-administrativos.pdf) | Tipos de actos y firma electrónica vs. digital | Glosario |
+| [Circular UG TIMBÓ 6/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/04/Circular-6-2026.pdf) | Notificación vs. comunicación oficial; personal al domicilio digital (dirigida a MGeIP) | Comunicaciones oficiales (Expedientes) |
+| [Circular UG TIMBÓ 4/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-4-Nueva-gestion-digital.pdf) y 7/2025 | Digitalizar trámites por Atención Virtual; no pedir documentación del RPJEC | Situaciones de Expedientes |
+| Videos de la Secretaría de Gestión Pública (canal oficial) | Licencias (SJL), Firmador Digital Web, Atención Virtual, ¿Qué es Timbó?, Kit digital | Expedientes: lecciones SJL y Firmador |
+| Clases 02 y 03 de "APP-TimboCompras" y capacitaciones a proveedores | Detalle de formularios, evaluación, adjudicación y oferta | Lecciones por rol y del proveedor |
+
+No se cargaron (están superadas o no aplican): Manual de Licitaciones
+(Disp. 227/2016) y modelos de PBCP (Res. 519/2018), reemplazados por el Pliego
+Único 2026 y la Circular 05/2026; Circular UG 6/2025 (TCP), reemplazada por las
+9 y 11/2026.
+
 Correcciones que salieron de esta revisión:
 - La vista al TCP **no** es solo "cargar en el SIN": primero se comparte el
   expediente con "Gestión de Visualización", y el SIN se suma después.

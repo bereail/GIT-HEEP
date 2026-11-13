@@ -42,7 +42,7 @@ La base (`instance/*.sqlite3`) no está en git: se recrea con los scripts.
 
 Hecho:
 - Tema TIMBÓ Compras (`scripts/content_timbo_compras.json`), con 3
-  módulos y 18 lecciones. El lado proveedor sale de la lista de videos
+  módulos y 23 lecciones. El lado proveedor sale de la lista de videos
   oficial. La gestión interna del hospital (decisorios, Tribunal de Cuentas,
   SIN, publicación) sale de los chats.
 - Relevamiento de preguntas frecuentes de los chats:
@@ -73,21 +73,29 @@ Hecho:
   manda al tema correcto si la pregunta es de otro sistema, y guarda lo que no
   supo responder (y los 👎) en /admin/chatbot.
 - El tema miHospital se llamaba "TIMBÓ" en su JSON: corregido.
+- Revisión completa contra fuentes oficiales (13/11/2026): clases 02 y 03
+  del hospital, pliego modelo (anexos de la Circular 05/2026), montos 2026,
+  después de adjudicar (portal, recepción, pago), capacitaciones a
+  proveedores y TIMBÓ (Expedientes) contra las circulares 3/2025, 6/2026,
+  9/2026, 11/2026 y los videos oficiales (lecciones nuevas: licencias SJL y
+  Firmador Digital Web). Fuentes en la sección 5 de FAQ_SOPORTE_TIMBO.md.
 - Al reimportar un tema, las consultas y las preguntas del chatbot pasan al
   tema nuevo (`app/services/importacion.py`).
 
 Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
-1. Leer a fondo las capacitaciones largas (Yp3TIlDxpms, JJExl9hnYbo, y las
-   clases 02 y 03 de "APP-TimboCompras") y ver sin subtítulos la Clase 01
-   (7rIDyLtWlHM) y Wb4ZRvB3YSo (registro de proveedor).
-2. Consultas abiertas en los chats: SIN sin "comenzar una carga",
+1. Videos sin subtítulos (no se pueden leer): Clase 01 de "APP-TimboCompras"
+   (7rIDyLtWlHM), registro de proveedor (Wb4ZRvB3YSo) y "Expediente" y
+   "Documentos oficiales ¿Cómo lo hacemos?" (e3rhyEJ4g0U, aslFJaruz68). Las
+   capacitaciones largas de Expedientes (30 a 90 min) no se leyeron: el tema
+   ya sale del curso oficial del Aula Virtual.
+2. Montos de la lección "¿Qué procedimiento corresponde según el monto?":
+   actualizarlos cada año con la nueva circular de la SCyGB.
+3. Consultas abiertas en los chats: SIN sin "comenzar una carga",
    numeración de decisorios, documentos HTML→PDF y servidor propio para
    los videos. Cuando haya respuesta, pasar a `verificado: True` en
    `scripts/importar_faq_chats.py`.
-3. Confirmar con Compras del hospital si la Circular SCyGB 03/2026 (control
+4. Confirmar con Compras del hospital si la Circular SCyGB 03/2026 (control
    de la URC) les aplica: está dirigida a la Administración Central.
-4. Leer a mano los anexos de la Circular SCyGB 05/2026 (textos para los
-   formularios del PBCP, que son imágenes) y armar una lección.
 5. Lección de contrataciones directas por urgencia o desierto (Circular UG
-   TIMBÓ 8/2026).
+   TIMBÓ 8/2026): por ahora solo está mencionada.
 6. Siguientes etapas del README: estadísticas, buscador global y Alembic.
