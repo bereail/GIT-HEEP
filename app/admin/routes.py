@@ -24,6 +24,7 @@ from app.models import (
     EntradaGlosario,
     MensajeConsulta,
     PasoIntroductorio,
+    PreguntaChatbot,
     Situacion,
     Tarea,
     Tema,
@@ -129,7 +130,36 @@ def _mover(items_ordenados, item, delta):
 def dashboard():
     temas = Tema.query.order_by(Tema.orden).all()
     consultas_abiertas = Consulta.query.filter_by(estado="abierta").count()
-    return render_template("admin/dashboard.html", temas=temas, consultas_abiertas=consultas_abiertas)
+    preguntas_pendientes = PreguntaChatbot.query.filter_by(resuelta=False).count()
+    return render_template(
+        "admin/dashboard.html",
+        temas=temas,
+        consultas_abiertas=consultas_abiertas,
+        preguntas_pendientes=preguntas_pendientes,
+    )
+
+
+# ------------------------------------------------- preguntas del chatbot --
+
+@admin_bp.route("/chatbot")
+@requiere_admin
+def preguntas_chatbot():
+    ver_resueltas = request.args.get("resueltas") == "1"
+    preguntas = (
+        PreguntaChatbot.query.filter_by(resuelta=ver_resueltas)
+        .order_by(PreguntaChatbot.veces.desc(), PreguntaChatbot.ultima_vez.desc())
+        .all()
+    )
+    return render_template("admin/preguntas_chatbot.html", preguntas=preguntas, ver_resueltas=ver_resueltas)
+
+
+@admin_bp.route("/chatbot/<int:pregunta_id>/resolver", methods=["POST"])
+@requiere_admin
+def pregunta_chatbot_resolver(pregunta_id):
+    pregunta = db.session.get(PreguntaChatbot, pregunta_id) or abort(404)
+    pregunta.resuelta = not pregunta.resuelta
+    db.session.commit()
+    return redirect(url_for("admin.preguntas_chatbot", resueltas="0" if pregunta.resuelta else "1"))
 
 
 # -------------------------------------------------------------- consultas --

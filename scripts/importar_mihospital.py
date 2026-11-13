@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app import create_app
 from app.extensions import db
 from app.models import Categoria, EntradaGlosario, PasoIntroductorio, Situacion, Tarea, Tema, Tutorial
+from app.services.importacion import reasignar_datos_de_usuarios
 
 RUTA_JSON = os.path.join(os.path.dirname(__file__), "content_mihospital.json")
 
@@ -33,6 +34,7 @@ def importar():
     sistema = datos["SYSTEM_INFO"]
 
     existente = Tema.query.filter_by(slug="mihospital").first()
+    tema_id_viejo = existente.id if existente else None
     if existente:
         db.session.delete(existente)
         db.session.commit()
@@ -53,6 +55,7 @@ def importar():
     )
     db.session.add(tema)
     db.session.flush()  # para tener tema.id disponible
+    reasignar_datos_de_usuarios(tema_id_viejo, tema.id)
 
     categoria_id_por_module_id = {}
     tutorial_id_por_clave = {}  # (moduleId, lessonId) -> tutorial.id

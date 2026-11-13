@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app import create_app
 from app.extensions import db
 from app.models import Categoria, EntradaGlosario, PasoIntroductorio, Situacion, Tarea, Tema, Tutorial
+from app.services.importacion import reasignar_datos_de_usuarios
 
 RUTA_JSON = os.path.join(os.path.dirname(__file__), "content_timbo_expedientes.json")
 
@@ -36,6 +37,7 @@ def importar(ruta_json=RUTA_JSON, orden_tema=1):
     info_tema = datos["tema"]
 
     existente = Tema.query.filter_by(slug=info_tema["slug"]).first()
+    tema_id_viejo = existente.id if existente else None
     if existente:
         db.session.delete(existente)
         db.session.commit()
@@ -56,6 +58,7 @@ def importar(ruta_json=RUTA_JSON, orden_tema=1):
     )
     db.session.add(tema)
     db.session.flush()
+    reasignar_datos_de_usuarios(tema_id_viejo, tema.id)
 
     tutorial_id_por_clave = {}  # (categoria_slug, tutorial_slug) -> tutorial.id
 

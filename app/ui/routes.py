@@ -5,7 +5,7 @@ from flask import Blueprint, abort, flash, jsonify, redirect, render_template, r
 
 from app import csrf
 from app.extensions import db
-from app.models import Categoria, Consulta, MensajeConsulta, Tema, Tutorial
+from app.models import Categoria, Consulta, MensajeConsulta, PreguntaChatbot, Tema, Tutorial
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
 from app.services import buscador
 
@@ -181,16 +181,26 @@ def buscar_json(tema_slug):
 @csrf.exempt
 def chatbot_responder(tema_slug):
     tema = _tema_o_404(tema_slug)
-    consulta = (request.get_json(silent=True) or {}).get("mensaje", "")
+    consulta = str((request.get_json(silent=True) or {}).get("mensaje", ""))[:300]
     indice = buscador.construir_indice(tema)
     resultados = buscador.buscar_con_puntaje(indice, consulta, limite=8)
-    if not resultados:
+    puntaje = resultados[0][0] if resultados else 0
+
+    # ¿La pregunta es claramente de otro sistema? (ej.: "cargar una cirugía"
+    # preguntado en TIMBÓ Compras). Solo si allá coincide el doble que acá,
+    # para no mandar a otro tema algo que este también responde.
+    otro = _buscar_en_otros_temas(tema, consulta, minimo=max(puntaje * 2, CHATBOT_PUNTAJE_MINIMO * 2))
+    if otro:
+        return jsonify({"encontrado": False, "otro_tema": otro})
+
+    if puntaje < CHATBOT_PUNTAJE_MINIMO:
+        _registrar_pregunta(tema, consulta, "dudosa" if resultados else "sin_respuesta")
+        if resultados:
+            # Coincidencia floja: mejor preguntar que adivinar mal.
+            return jsonify({"encontrado": False, "quiso_decir": _titulos_distintos(resultados)[:3]})
         return jsonify({"encontrado": False, "sugerencias": buscador.sugerencias_iniciales(tema)})
 
-    puntaje, mejor = resultados[0]
-    if puntaje < CHATBOT_PUNTAJE_MINIMO:
-        # Coincidencia floja: mejor preguntar que adivinar mal.
-        return jsonify({"encontrado": False, "quiso_decir": _titulos_distintos(resultados)[:3]})
+    mejor = resultados[0][1]
 
     # Para "También te puede servir": solo lo que también coincide bastante
     # (si no, son botones de relleno) y que no lleve a la misma lección que
@@ -200,6 +210,25 @@ def chatbot_responder(tema_slug):
 
     respuesta = buscador.armar_respuesta_chatbot(mejor)
     return jsonify({"encontrado": True, **respuesta, "relacionadas": relacionadas})
+
+
+def _registrar_pregunta(tema, consulta, motivo):
+    if consulta.strip():
+        PreguntaChatbot.registrar(tema, consulta, buscador.normalizar(consulta), motivo)
+
+
+def _buscar_en_otros_temas(tema, consulta, minimo):
+    """Si la pregunta coincide claramente con otro sistema, lo dice en vez
+    de contestar "no sé" (ej.: algo de miHospital preguntado en TIMBÓ)."""
+    mejor = None
+    for otro in Tema.query.filter(Tema.activo.is_(True), Tema.id != tema.id).all():
+        resultados = buscador.buscar_con_puntaje(buscador.construir_indice(otro), consulta, limite=1)
+        if resultados and resultados[0][0] >= minimo and (not mejor or resultados[0][0] > mejor[0]):
+            mejor = (resultados[0][0], otro, resultados[0][1])
+    if not mejor:
+        return None
+    _, otro, entrada = mejor
+    return {"tema": otro.nombre, "titulo": entrada["title"], "url": entrada["url"]}
 
 
 def _destino(entrada):
@@ -220,6 +249,16 @@ def _titulos_distintos(resultados, excluir=None):
         vistos.add(destino)
         titulos.append(entrada["title"])
     return titulos
+
+
+@ui_bp.route("/temas/<tema_slug>/chatbot/feedback", methods=["POST"])
+@csrf.exempt
+def chatbot_feedback(tema_slug):
+    tema = _tema_o_404(tema_slug)
+    datos = request.get_json(silent=True) or {}
+    if datos.get("util") is False:
+        _registrar_pregunta(tema, str(datos.get("pregunta", ""))[:300], "no_sirvio")
+    return jsonify({"ok": True})
 
 
 @ui_bp.route("/temas/<tema_slug>/chatbot/sugerencias")

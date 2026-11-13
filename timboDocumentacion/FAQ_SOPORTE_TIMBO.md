@@ -111,7 +111,7 @@ que hacer del lado del usuario, solo esperar.
    Laboral.
 5. **Guías de artículos (PDF).** Hay que conseguirlas y cargarlas como
    lecciones del tema TIMBÓ Compras.
-6. **Tres videos de la lista que no se pudieron procesar.** YouTube los marcó
+6. ~~**Tres videos de la lista que no se pudieron procesar.**~~ Resuelto: ver 4.1. YouTube los marcó
    como no disponibles en la descarga automática, así que hay que verlos a
    mano y completar el tutorial:
    - "Timbó Compras – Cómo presentar una oferta en línea" (49 min)
@@ -135,6 +135,33 @@ que hacer del lado del usuario, solo esperar.
 | 05 – Impugnaciones | Ofertar → Presentar una impugnación |
 
 Lista: https://www.youtube.com/playlist?list=PLJKcMr5XTsSc5jJV-Uszw7OXCzG3LwG76
+
+### 4.1 Lista "APP-TimboCompras" (lado del hospital)
+
+Se compartió en el grupo de soporte. Es la que explica TIMBÓ Compras desde el
+organismo: https://www.youtube.com/playlist?list=PLJKcMr5XTsSe33vph6nNpxnZpu8D3RsBE
+
+| Video | Lección del portal |
+|---|---|
+| Paso 01 – Iniciar un proceso (Tt2_Z8fOAt8) | Gestión interna → Gestor: crear el proceso y armar el pliego |
+| Paso 02 – Aprobar contratación, cronograma y nómina (Yq1RArIxk2I) | Gestión interna → Supervisor |
+| Paso 03 – Evaluar una oferta (7najG5QuTHY) | Gestión interna → Evaluador: evaluar las ofertas |
+| Paso 04 – Preadjudicar (yUbSYwLQ0aU) | Gestión interna → Evaluador: preadjudicar |
+| Documento comunicable externo (6BtJX1bhwbg) | Gestión interna → Mandarle una notificación a un proveedor |
+| Clase 02 – Pliego y formularios (66 min, Kkt7GxVnIHA) | Los 8 formularios de la lección del Gestor |
+| Clase 03 – Evaluación y preadjudicación (56 min, Lnd2-_XiOXI) | Enlazada en la lección del Evaluador |
+| Clase 01 – ¿Qué es Timbó Compras? (7rIDyLtWlHM) | Sin subtítulos: falta verla |
+
+**Cómo se bajan los subtítulos** (YouTube bloquea la descarga común):
+
+```bash
+yt-dlp --skip-download --ignore-no-formats-error --write-auto-subs   --sub-langs "es-orig,es" --sub-format vtt   --extractor-args "youtube:player_client=web_embedded" URL_DEL_VIDEO
+```
+
+Con eso también salieron los subtítulos de los videos que estaban pendientes
+(Yp3TIlDxpms, JJExl9hnYbo y tSYfZ3yVE58). El de documentos embebidos ya es una
+lección. Las dos capacitaciones largas para proveedores todavía no se leyeron a
+fondo.
 
 ---
 

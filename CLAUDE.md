@@ -42,7 +42,7 @@ La base (`instance/*.sqlite3`) no está en git: se recrea con los scripts.
 
 Hecho:
 - Tema TIMBÓ Compras (`scripts/content_timbo_compras.json`), con 3
-  módulos y 12 lecciones. El lado proveedor sale de la lista de videos
+  módulos y 18 lecciones. El lado proveedor sale de la lista de videos
   oficial. La gestión interna del hospital (decisorios, Tribunal de Cuentas,
   SIN, publicación) sale de los chats.
 - Relevamiento de preguntas frecuentes de los chats:
@@ -65,13 +65,21 @@ Hecho:
   03/2026), lección nueva de alta de artículos CAByS (Res. 292/2026) y RUPC
   como requisito del proveedor. **Si un chat contradice una circular, manda
   la circular.**
+- Lecciones por rol del hospital (Gestor, Supervisor, Evaluador) y de
+  notificación a proveedores, armadas con los subtítulos de la lista oficial
+  "APP-TimboCompras" (sección 4.1 de FAQ_SOPORTE_TIMBO.md, que también explica
+  cómo bajar subtítulos cuando YouTube bloquea la descarga).
+- Chatbot: muestra los pasos plegados, tolera errores de tipeo y sinónimos,
+  manda al tema correcto si la pregunta es de otro sistema, y guarda lo que no
+  supo responder (y los 👎) en /admin/chatbot.
+- El tema miHospital se llamaba "TIMBÓ" en su JSON: corregido.
+- Al reimportar un tema, las consultas y las preguntas del chatbot pasan al
+  tema nuevo (`app/services/importacion.py`).
 
 Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md):
-1. Ver a mano 3 videos que YouTube no dejó procesar y completar el
-   tutorial: Yp3TIlDxpms (49 min), JJExl9hnYbo (35 min) y tSYfZ3yVE58
-   (documento embebido). También Wb4ZRvB3YSo (registro de proveedor, sin
-   subtítulos).
-   Lista: https://www.youtube.com/playlist?list=PLJKcMr5XTsSc5jJV-Uszw7OXCzG3LwG76
+1. Leer a fondo las capacitaciones largas (Yp3TIlDxpms, JJExl9hnYbo, y las
+   clases 02 y 03 de "APP-TimboCompras") y ver sin subtítulos la Clase 01
+   (7rIDyLtWlHM) y Wb4ZRvB3YSo (registro de proveedor).
 2. Consultas abiertas en los chats: SIN sin "comenzar una carga",
    numeración de decisorios, documentos HTML→PDF y servidor propio para
    los videos. Cuando haya respuesta, pasar a `verificado: True` en

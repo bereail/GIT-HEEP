@@ -9,6 +9,7 @@ externa, sin costo y sin conexión a internet. La única diferencia es que el
 las respuestas nunca se mezclan entre sistemas distintos.
 """
 
+import difflib
 import re
 import unicodedata
 
@@ -30,6 +31,16 @@ PALABRAS_VACIAS = {
     # Arranques típicos de pregunta: muchas tareas empiezan con "Quiero..." o
     # "Necesito...", así que le ganaban a la palabra que importa ("comprar").
     "quiero", "quisiera", "necesito", "puedo", "hago", "tengo", "algo",
+}
+
+# Cómo dice la gente las cosas → cómo están escritas en el contenido. Solo
+# se usan si la palabra original no aparece en ningún lado.
+SINONIMOS = {
+    "licitacion": "proceso", "licitaciones": "proceso", "licitar": "proceso",
+    "insumo": "articulo", "insumos": "articulo", "producto": "articulo", "productos": "articulo",
+    "tcp": "tribunal", "contrasena": "clave", "password": "clave",
+    "ayuda": "mesa de ayuda", "telefono": "mesa de ayuda", "contacto": "mesa de ayuda",
+    "comprar": "compra", "compramos": "compra",
 }
 
 _PUNTUACION = re.compile(r"[¿?¡!.,;:\"'()]")
@@ -129,6 +140,35 @@ def _raiz(palabra):
     return palabra[: max(5, len(palabra) - 3)]
 
 
+def _vocabulario(indice):
+    return {p for entrada in indice for p in entrada["texto"].split() if len(p) >= 4}
+
+
+def _corregir_palabras(indice, palabras):
+    """Para cada palabra que no aparece en ningún lado: primero prueba un
+    sinónimo y, si no, la palabra del contenido más parecida (errores de
+    tipeo como "ofetar" o "inpugnar")."""
+    textos = [entrada["texto"] for entrada in indice]
+    vocabulario = None
+    corregidas = []
+    for palabra in palabras:
+        if any(palabra in t for t in textos):
+            corregidas.append(palabra)
+            continue
+        if palabra in SINONIMOS:
+            corregidas.append(SINONIMOS[palabra])
+            continue
+        if len(palabra) >= 4:
+            if vocabulario is None:
+                vocabulario = _vocabulario(indice)
+            parecidas = difflib.get_close_matches(palabra, vocabulario, n=1, cutoff=0.8)
+            if parecidas:
+                corregidas.append(parecidas[0])
+                continue
+        corregidas.append(palabra)
+    return corregidas
+
+
 def buscar_con_puntaje(indice, consulta, limite=12):
     """Igual que `buscar`, pero devuelve pares (puntaje, entrada) para que el
     chatbot pueda distinguir una coincidencia clara de una adivinanza."""
@@ -140,6 +180,7 @@ def buscar_con_puntaje(indice, consulta, limite=12):
     # Si la consulta es solo palabras vacías ("qué es"), mejor buscar con
     # todo antes que no encontrar nada.
     palabras = palabras_especificas if palabras_especificas else todas_las_palabras
+    palabras = _corregir_palabras(indice, palabras)
     # "¿Qué es X?" / "¿Qué significa X?" pide una definición: el glosario
     # tiene que ganarle a la lección que menciona el término.
     pide_definicion = bool(_PIDE_DEFINICION.match(q))
@@ -203,6 +244,19 @@ def primer_bloque_de_texto(tutorial: Tutorial):
     return ""
 
 
+def _pasos_html(tutorial: Tutorial):
+    """Los pasos de la lección, plegados, para resolver sin salir del chat."""
+    pasos = [b.get("explanation", "") for b in (tutorial.bloques or []) if b.get("type") == "step"]
+    pasos = [p for p in pasos if p]
+    if len(pasos) < 2:
+        return ""
+    items = "".join(f"<li>{escape(p)}</li>" for p in pasos)
+    return (
+        f'<details class="chatbot-msg__mas"><summary>Ver los {len(pasos)} pasos</summary>'
+        f'<ol class="chatbot-msg__pasos">{items}</ol></details>'
+    )
+
+
 def armar_respuesta_chatbot(entrada):
     """Misma lógica que `armarRespuesta` en chatbot.js, pero con las
     entidades reales en `entrada['ref']` en vez de volver a buscarlas por
@@ -250,6 +304,7 @@ def armar_respuesta_chatbot(entrada):
         html = f"<b>{escape(tarea.tutorial.titulo)}</b>"
         if resumen:
             html += f"<br>{escape(resumen)}"
+        html += _pasos_html(tarea.tutorial)
         return {
             "html": html,
             "url": _url_tutorial(tarea.tutorial),
@@ -262,6 +317,7 @@ def armar_respuesta_chatbot(entrada):
         html = f"<b>{escape(tutorial.titulo)}</b>"
         if resumen:
             html += f"<br>{escape(resumen)}"
+        html += _pasos_html(tutorial)
         return {
             "html": html,
             "url": _url_tutorial(tutorial),

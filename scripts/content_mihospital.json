@@ -1,12 +1,12 @@
 {
   "SYSTEM_INFO": {
-    "name": "TIMBÓ",
+    "name": "miHospital",
     "fullName": "Sistema de Salud Hospitalario miHospital",
     "org": "Gobierno de Santa Fe — Ministerio de Salud",
-    "description": "TIMBÓ es el sistema que usa el hospital para buscar pacientes, gestionar camas e internaciones, coordinar turnos de consultorio, organizar el circuito de quirófano y administrar la configuración del efector.",
+    "description": "miHospital es el sistema que usa el hospital para buscar pacientes, gestionar camas e internaciones, coordinar turnos de consultorio, organizar el circuito de quirófano y administrar la configuración del efector.",
     "scope": "Esta capacitación cubre los 5 módulos habilitados en el efector relevado (Pacientes, Consultorios, Internaciones, Quirófano y Administración) más el enlace a Red Salud. Todo el contenido está basado en un relevamiento real hecho con un usuario de perfil Administrador — donde algo no se pudo comprobar, se indica claramente.",
     "recommendations": [
-      "TIMBÓ maneja información de salud de pacientes reales. No dejes pantallas con datos de pacientes abiertas o visibles a personas sin autorización.",
+      "miHospital maneja información de salud de pacientes reales. No dejes pantallas con datos de pacientes abiertas o visibles a personas sin autorización.",
       "Cada persona debería trabajar con su propio usuario, nunca con una cuenta administrativa compartida.",
       "Hay acciones que modifican configuración crítica del sistema (desactivar un módulo, crear el esquema de permisos). Estas acciones están marcadas con 🔴 en toda la capacitación — no se deben usar sin saber exactamente qué hacen."
     ]
@@ -92,7 +92,7 @@
     },
     {
       "term": "Oviyam",
-      "definition": "Visor de imágenes médicas al que se conecta TIMBÓ mediante un parámetro de configuración.",
+      "definition": "Visor de imágenes médicas al que se conecta miHospital mediante un parámetro de configuración.",
       "module": "Administración",
       "usage": "Se configura en Administración → Compatibilidad Informes/PACS."
     },
@@ -104,7 +104,7 @@
     },
     {
       "term": "Sectorial Informática",
-      "definition": "El área de sistemas del Ministerio de Salud de Santa Fe que administra y da soporte técnico a TIMBÓ.",
+      "definition": "El área de sistemas del Ministerio de Salud de Santa Fe que administra y da soporte técnico a miHospital.",
       "module": "General",
       "usage": "Es a quién se reportan los errores del sistema."
     },
@@ -139,7 +139,7 @@
       "title": "Primeros pasos",
       "icon": "🧭",
       "summary": "Antes de entrar a un módulo: cómo ingresar al sistema, cómo está organizada la pantalla y los conceptos que vas a ver en todos lados.",
-      "audience": "Cualquier persona que va a usar TIMBÓ por primera vez.",
+      "audience": "Cualquier persona que va a usar miHospital por primera vez.",
       "difficulty": "basico",
       "lessons": [
         {
@@ -150,7 +150,7 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Para empezar a usar TIMBÓ necesitás un usuario y una contraseña propios, que te da el área de Sectorial Informática de tu hospital. Nunca compartas tu usuario con otra persona."
+              "text": "Para empezar a usar miHospital necesitás un usuario y una contraseña propios, que te da el área de Sectorial Informática de tu hospital. Nunca compartas tu usuario con otra persona."
             },
             {
               "type": "step",
@@ -172,7 +172,7 @@
             },
             {
               "type": "practice",
-              "text": "Abrí TIMBÓ en tu navegador e iniciá sesión con tu propio usuario. Fijate qué efector aparece arriba a la derecha."
+              "text": "Abrí miHospital en tu navegador e iniciá sesión con tu propio usuario. Fijate qué efector aparece arriba a la derecha."
             }
           ],
           "quiz": [
@@ -254,7 +254,7 @@
             },
             {
               "type": "practice",
-              "text": "Dentro de TIMBÓ, recorré el menú lateral expandido y contraído, y fijate qué dice la ruta de navegación cuando entrás a un módulo cualquiera."
+              "text": "Dentro de miHospital, recorré el menú lateral expandido y contraído, y fijate qué dice la ruta de navegación cuando entrás a un módulo cualquiera."
             }
           ],
           "quiz": [
@@ -348,7 +348,7 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Esta lección es distinta a las demás: en vez de enseñarte a usar una pantalla, te cuenta con honestidad qué se sabe (y qué no) sobre los distintos roles de usuario en TIMBÓ."
+              "text": "Esta lección es distinta a las demás: en vez de enseñarte a usar una pantalla, te cuenta con honestidad qué se sabe (y qué no) sobre los distintos roles de usuario en miHospital."
             },
             {
               "type": "warning",
@@ -392,12 +392,12 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Buscar un paciente es probablemente la tarea que más vas a repetir en TIMBÓ. El buscador está pensado para encontrar a alguien con muy poca información."
+              "text": "Buscar un paciente es probablemente la tarea que más vas a repetir en miHospital. El buscador está pensado para encontrar a alguien con muy poca información."
             },
             {
               "type": "prereq",
               "items": [
-                "Haber iniciado sesión en TIMBÓ."
+                "Haber iniciado sesión en miHospital."
               ]
             },
             {
@@ -678,7 +678,7 @@
           "blocks": [
             {
               "type": "text",
-              "text": "TIMBÓ tiene un listado completo del personal profesional del efector, y una pantalla separada para ver en qué consultorio y horario atiende cada uno."
+              "text": "miHospital tiene un listado completo del personal profesional del efector, y una pantalla separada para ver en qué consultorio y horario atiende cada uno."
             },
             {
               "type": "step",
@@ -1087,7 +1087,7 @@
           "blocks": [
             {
               "type": "text",
-              "text": "TIMBÓ separa la gestión de cirugías en dos circuitos: Quirófanos Centrales y Quirófanos Hosp Día. Vas a ver esta división en varias pantallas del módulo."
+              "text": "miHospital separa la gestión de cirugías en dos circuitos: Quirófanos Centrales y Quirófanos Hosp Día. Vas a ver esta división en varias pantallas del módulo."
             },
             {
               "type": "step",
@@ -1608,13 +1608,13 @@
     }
   ],
   "QUICKSTART": {
-    "title": "Aprendé TIMBÓ en 15 minutos",
+    "title": "Aprendé miHospital en 15 minutos",
     "intro": "Una ruta corta para conocer lo básico del sistema. Al terminar, vas a poder buscar un paciente, revisar información y saber qué hacer si algo sale mal.",
     "steps": [
       {
         "step": 1,
-        "title": "Conocer TIMBÓ",
-        "description": "TIMBÓ es el sistema que usa el hospital para buscar pacientes, gestionar camas e internaciones, coordinar turnos de consultorio, organizar el circuito de quirófano y administrar la configuración del efector."
+        "title": "Conocer miHospital",
+        "description": "miHospital es el sistema que usa el hospital para buscar pacientes, gestionar camas e internaciones, coordinar turnos de consultorio, organizar el circuito de quirófano y administrar la configuración del efector."
       },
       {
         "step": 2,
@@ -1652,7 +1652,7 @@
         "situationId": "error-laboratorios"
       }
     ],
-    "outro": "Ya conocés lo básico de TIMBÓ. Para seguir, explorá los módulos completos o usá \"Quiero hacer...\" para resolver una tarea concreta."
+    "outro": "Ya conocés lo básico de miHospital. Para seguir, explorá los módulos completos o usá \"Quiero hacer...\" para resolver una tarea concreta."
   },
   "SITUATIONS": [
     {
@@ -1671,7 +1671,7 @@
       "id": "no-deja-guardar",
       "situation": "El sistema no me deja guardar",
       "description": "Completás un formulario, presionás Confirmar o Guardar, y no pasa nada (o aparece un aviso).",
-      "cause": "Casi siempre es un campo obligatorio sin completar. TIMBÓ marca en letra naranja, debajo de cada campo, cuál falta.",
+      "cause": "Casi siempre es un campo obligatorio sin completar. miHospital marca en letra naranja, debajo de cada campo, cuál falta.",
       "solution": "Revisá si hay algún aviso naranja debajo de un campo. Completalo y volvé a intentar.",
       "goesTo": {
         "moduleId": "quirofano",

@@ -143,6 +143,24 @@
           ]
         },
         {
+          "slug": "documentos-embebidos",
+          "titulo": "Ver los anexos del pliego (documentos embebidos)",
+          "minutos": 2,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Las fichas técnicas, las condiciones del contrato y otros anexos vienen adentro del PDF del pliego, como archivos adjuntos. Si no los abrís, te los perdés." },
+            { "type": "step", "number": 1, "explanation": "Buscá el proceso.", "doThis": "Entrá con tu ID Ciudadana, pestaña \"Proveedor\" → \"Participar de un proceso\". En el proceso: ⋮ → \"Previsualizar\"." },
+            { "type": "step", "number": 2, "explanation": "Descargá el pliego.", "doThis": "Identificá el pliego (lleva la sigla del tipo de contratación) y tocá el ícono \"Descargar\".", "lookFor": "LPU: Licitación Pública · LPR: Licitación Privada · CPU: Concurso Público · CPR: Concurso Privado · CD: Contratación Directa." },
+            { "type": "step", "number": 3, "explanation": "Abrí los adjuntos.", "doThis": "Abrí el PDF con un lector actualizado y tocá el ícono del clip 📎. Ahí aparecen todos los documentos embebidos.", "lookFor": "Fichas técnicas, condiciones del contrato y anexos que vas a tener que presentar." },
+            { "type": "tip", "text": "¿No ves el clip? La guía pide un lector de PDF actualizado: probá abrirlo con otro lector, por ejemplo Adobe Acrobat Reader." },
+            { "type": "tip", "text": "Guía oficial en PDF: compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoVIsualizarDocumentosEmbebidos.pdf" },
+            { "type": "video", "url": "https://youtu.be/tSYfZ3yVE58", "title": "Cómo visualizar un documento embebido", "minutos": 1 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Las fichas técnicas pueden venir adentro del PDF del pliego, como adjuntos.", "answer": true, "explanation": "Se ven tocando el ícono del clip en el lector de PDF." }
+          ]
+        },
+        {
           "slug": "impugnaciones",
           "titulo": "Presentar una impugnación",
           "minutos": 4,
@@ -195,20 +213,25 @@
               "Usuario de TIMBÓ Compras con el perfil y el rol que corresponde (lo da el Administrador Local de tu jurisdicción).",
               "Alguien con usuario habilitado en el SIN (para el paso 5)."
             ] },
+            { "type": "diagram", "variant": "table", "title": "Quién hace qué en TIMBÓ Compras", "columns": ["Rol", "Qué hace"], "rows": [
+              ["Gestor", "Crea el proceso, completa los formularios del pliego y genera las circulares"],
+              ["Supervisor", "Aprueba o rechaza el pliego, arma el cronograma y la nómina, y carga los actos (aprobación, sin efecto, adjudicación)"],
+              ["Evaluador", "Evalúa ofertas, pide subsanaciones, mejoras y aclaraciones, preadjudica y carga el cronograma de impugnaciones"]
+            ], "note": "Circular UG TIMBÓ 7/2026. Los roles los asigna el Administrador Local." },
 
             { "type": "step", "number": 1, "explanation": "Juntá el pedido y abrí el expediente electrónico.", "doThis": "Sumá al expediente el pedido del servicio y las notas que lo acompañan.", "lookFor": "Que el pedido diga qué se compra, cuánto y para qué servicio." },
-            { "type": "step", "number": 2, "explanation": "Armá el proceso y el pliego en TIMBÓ Compras.", "doThis": "Cargá cada artículo como un renglón, buscándolo en el catálogo. Completá los formularios del pliego (PBCP) y el cronograma (consultas, apertura, etc.).", "lookFor": "Si un artículo no está en el catálogo, pedí el alta con el formulario CAByS (lección \"Pedir el alta de un artículo\"). Si no te deja cargar ninguno, puede estar caído SIPAF: esperá y probá más tarde." },
-            { "type": "step", "number": 3, "explanation": "Control del pliego (Unidad Rectora Central).", "doThis": "Con el pliego aprobado por el rol Supervisor (estado \"Aprobar contratación\"), mandá el expediente con el pliego en PDF a la Dirección General de Contrataciones y Gestión de Bienes.", "lookFor": "Sin el informe de control de la URC en el expediente, el proceso no se puede aprobar ni publicar (Circular SCyGB 03/2026, para la Administración Central). Consultá con tu referente si aplica a tu hospital." },
+            { "type": "step", "number": 2, "explanation": "Armá el proceso y el pliego en TIMBÓ Compras.", "doThis": "Rol Gestor: \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\" → \"Nuevo trámite\" → \"Proceso de contratación\", con el número de expediente. Completá los 8 formularios del pliego (con al menos 3 evaluadores) y envialo al Supervisor. Ver lección \"Gestor\".", "lookFor": "Si un artículo no está en el catálogo, pedí el alta con el formulario CAByS (lección \"Pedir el alta de un artículo\"). Si no te deja cargar ninguno, puede estar caído SIPAF: esperá y probá más tarde." },
+            { "type": "step", "number": 3, "explanation": "Control del pliego (Unidad Rectora Central).", "doThis": "El Supervisor aprueba los formularios y TIMBÓ da el número de proceso definitivo. Descargá el pliego desde \"Previsualizar\" y mandá el expediente con el pliego en PDF a la Dirección General de Contrataciones y Gestión de Bienes.", "lookFor": "Sin el informe de control de la URC en el expediente, el proceso no se puede aprobar ni publicar (Circular SCyGB 03/2026, para la Administración Central). Consultá con tu referente si aplica a tu hospital." },
             { "type": "step", "number": 4, "explanation": "Firmá el decisorio.", "doThis": "Generá el Documento Oficial del decisorio (con la afectación presupuestaria) que aprueba la contratación, y mandalo a firmar.", "lookFor": "Revisá número y fecha antes de mandarlo: una vez firmado no se puede editar." },
             { "type": "step", "number": 5, "explanation": "Corré vista al Tribunal de Cuentas.", "doThis": "En TIMBÓ Expedientes, compartí el expediente con el TCP desde \"Gestión de Visualización\". Además, el acto firmado se carga en el SIN, que lo manda por correo al TCP.", "lookFor": "Para el SIN necesitás usuario habilitado y una PC de la red del hospital. Ver lección \"Correr vista al Tribunal de Cuentas\"." },
-            { "type": "step", "number": 6, "explanation": "Vinculá el decisorio en TIMBÓ Compras.", "doThis": "En el proceso, vinculá el Documento Oficial que aprueba el pliego. Después de la vista, subí el decisorio definitivo al expediente y a TIMBÓ Compras.", "lookFor": "Al vincular el DO, el proceso te deja pasar a la etapa siguiente." },
-            { "type": "step", "number": 7, "explanation": "Cargá la nómina de oferentes y la fecha de publicación.", "doThis": "Completá en TIMBÓ Compras el listado de proveedores (la nómina) y desde qué fecha se publica." },
+            { "type": "step", "number": 6, "explanation": "Vinculá el decisorio en TIMBÓ Compras.", "doThis": "Rol Supervisor: \"Acciones\" → \"Seleccionar documento oficial aprueba pliego\" → número del DO → lupa → \"Guardar\". Después de la vista, subí el decisorio definitivo al expediente.", "lookFor": "Al vincular el DO, se habilita \"Completar cronograma y nómina\"." },
+            { "type": "step", "number": 7, "explanation": "Cargá la nómina de oferentes y la fecha de publicación.", "doThis": "Rol Supervisor: formularios \"Nómina de proveedores\" y \"Cronograma de fechas\" → \"Enviar a publicar\". Ver lección \"Supervisor\".", "lookFor": "TIMBÓ manda invitaciones por correo a los proveedores de la nómina. Los plazos se cuentan con la hora del servidor de TIMBÓ." },
             { "type": "step", "number": 8, "explanation": "Publicá la compra.", "doThis": "Cargá la gestión en el portal web de compras y pedí el aviso oficial por mail a avisosoficiales@santafe.gob.ar, con 3 días de anticipación como mínimo (Circular 04/2026).", "lookFor": "En el portal, marcá \"Marcar para que se genere enlace con TIMBO\" y el expediente como principal. Si no, al proveedor no le aparece el botón OFERTAR." },
             { "type": "step", "number": 9, "explanation": "Mientras está publicada, respondé las consultas.", "doThis": "Cada consulta de un proveedor se responde con una circular aclaratoria. Si hay que cambiar el pliego, va una circular modificatoria.", "lookFor": "La circular modificatoria suspende el proceso hasta que se publica el pliego nuevo." },
-            { "type": "step", "number": 10, "explanation": "Apertura de ofertas.", "doThis": "No hay que hacer nada: en la fecha y hora fijadas, TIMBÓ abre solo las ofertas.", "lookFor": "Solo se abren las ofertas en estado \"Presentada\". Si un proveedor dice que ofertó y no aparece, es que no la presentó." },
-            { "type": "step", "number": 11, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Si falta algo, pedile al proveedor una subsanación, una mejora de precio o una aclaración (con fecha límite). La comisión arma la preadjudicación.", "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación. Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación." },
+            { "type": "step", "number": 10, "explanation": "Apertura de ofertas.", "doThis": "No hay que hacer nada: en la fecha y hora fijadas, TIMBÓ abre solo las ofertas y genera el acta de apertura y el cuadro comparativo de precios.", "lookFor": "Solo se abren las ofertas en estado \"Presentada\". Si un proveedor dice que ofertó y no aparece, es que no la presentó." },
+            { "type": "step", "number": 11, "explanation": "Evaluá, preadjudicá y adjudicá.", "doThis": "Rol Evaluador: evaluación económica, administrativa y técnica de cada oferta; si falta algo, pedí subsanación, mejora de precio o aclaración. Después, selección de renglones, orden de evaluadores e informe de preadjudicación. Ver lecciones \"Evaluador\".", "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación. Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación, que (igual que el contrato) se tramita por expediente electrónico." },
 
-            { "type": "warning", "text": "Los estados (\"Aprobar contratación\", \"Cronograma de impugnación\", \"Preadjudicado\") salen de las circulares oficiales. Algunos nombres de botones del lado del hospital todavía no están relevados: si algo no coincide con tu pantalla, avisá." },
+            { "type": "tip", "text": "Los nombres de bandejas, botones y estados salen de los videos oficiales \"Paso 01\" a \"Paso 04\" y de las circulares. Si algo no coincide con tu pantalla, avisá desde \"Dejar una consulta\"." },
             { "type": "tip", "text": "Mesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · Tel. 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 6400792, de 8 a 13 h." },
             { "type": "tip", "text": "Para ver cómo lo vive el proveedor (cómo oferta, consulta o subsana), mirá el módulo \"Ofertar\"." }
           ],
@@ -217,6 +240,110 @@
             { "type": "true-false", "question": "En la apertura, el hospital tiene que abrir las ofertas una por una.", "answer": false, "explanation": "La apertura es automática, y solo se abren las ofertas en estado \"Presentada\"." },
             { "type": "multiple-choice", "question": "Publicaste la compra en el portal y el proveedor no ve el botón OFERTAR. ¿Qué faltó?", "options": ["Marcar \"generar enlace con TIMBO\" y el expediente como principal", "Mandar el mail a avisos oficiales", "Cargar el decisorio en el SIN"], "correctIndex": 0, "explanation": "Sin esas dos marcas en la pestaña Expedientes del portal, no se genera el botón OFERTAR (Circular 04/2026)." }
           ]
+        },
+        {
+          "slug": "gestor-iniciar-proceso",
+          "titulo": "Gestor: crear el proceso y armar el pliego",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "prereq", "items": [
+              "Entrar con tu ID Ciudadana y tener rol Gestor.",
+              "El número de expediente electrónico que dio inicio a la gestión, con toda la documentación necesaria."
+            ] },
+            { "type": "step", "number": 1, "explanation": "Creá el proceso.", "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\" → \"Nuevo trámite\" → \"Proceso de contratación\". Completá una breve descripción, la jurisdicción comitente superior, la jurisdicción comitente, el expediente y el procedimiento de selección. Después, \"Enviar\".", "lookFor": "El proceso tiene un número de instancia provisorio. El número definitivo lo da TIMBÓ cuando el Supervisor aprueba el pliego." },
+            { "type": "step", "number": 2, "explanation": "Completá los 8 formularios del pliego.", "doThis": "En el proceso, \"Acciones\". Completá cada formulario y tocá \"Guardar\" (lo que guardás no se pierde si salís).", "lookFor": "Ver la tabla de abajo." },
+            { "type": "diagram", "variant": "table", "title": "Los 8 formularios del pliego", "columns": ["Formulario", "Qué va"], "rows": [
+              ["Aspectos generales", "El objeto de la contratación"],
+              ["Detalle de productos o servicios", "Los renglones (\"Añadir ítem\"), con su ficha técnica. Acá se indican también las muestras"],
+              ["Requisitos de participación", "Toda la documentación que el proveedor tiene que presentar con la oferta"],
+              ["Garantías", "Informativo"],
+              ["Condiciones del contrato", "Cambia según sea compra de bienes o contratación de servicios"],
+              ["Facturación y pago", "Lo que el proveedor necesita para facturar y cobrar"],
+              ["Anexos", "Anexos generales (las fichas por renglón van en el detalle)"],
+              ["Evaluadores", "Al menos 3 (\"Añadir evaluador\"). Conviene sumar suplentes por vacaciones o ausencias"]
+            ] },
+            { "type": "step", "number": 3, "explanation": "Mandalo a revisar.", "doThis": "Con todo guardado, elegí: enviar a la jurisdicción comitente (para que lo revise), enviar al Supervisor (para aprobar o rechazar) o anular la instancia.", "lookFor": "Enviado al Supervisor, queda en la pestaña \"Pendientes\", en estado \"Evaluar contratación supervisor\"." },
+            { "type": "tip", "text": "Si el Supervisor rechaza un formulario, vuelve a vos con el motivo: corregilo y volvé a enviarlo." },
+            { "type": "video", "url": "https://youtu.be/Tt2_Z8fOAt8", "title": "Paso 01 – Cómo iniciar un proceso de licitación o concurso", "minutos": 2 },
+            { "type": "video", "url": "https://youtu.be/Kkt7GxVnIHA", "title": "Clase 02 – Confección del pliego y formularios técnicos", "minutos": 66 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Las fichas técnicas de cada renglón van en el formulario Anexos.", "answer": false, "explanation": "Van con cada renglón, en \"Detalle de productos o servicios\". En Anexos van los generales." },
+            { "type": "multiple-choice", "question": "¿Cuántos evaluadores hay que cargar como mínimo?", "options": ["3", "1", "5"], "correctIndex": 0, "explanation": "Al menos 3, según la Circular UG TIMBÓ 7/2026." }
+          ]
+        },
+        {
+          "slug": "supervisor-aprobar-y-publicar",
+          "titulo": "Supervisor: aprobar el pliego, cargar cronograma y nómina",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "prereq", "items": ["Entrar con rol Supervisor."] },
+            { "type": "step", "number": 1, "explanation": "Revisá el pliego.", "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\". El proceso está en \"Evaluar contratación supervisor\". En \"Acciones\", aprobá o rechazá formulario por formulario.", "lookFor": "Si rechazás, dejá el motivo (y un archivo, si sirve). Si vos mismo armaste el pliego, podés aprobar todos juntos." },
+            { "type": "step", "number": 2, "explanation": "Descargá el pliego y armá el acto.", "doThis": "Aprobado todo, TIMBÓ le da el número de proceso definitivo. En \"Previsualizar\" descargá el pliego definitivo, sumalo al expediente y generá el acto que aprueba el pliego y autoriza el llamado.", "lookFor": "El número lleva tipo de procedimiento, año, número y jurisdicción." },
+            { "type": "step", "number": 3, "explanation": "Vinculá el acto.", "doThis": "\"Acciones\" → formulario \"Seleccionar documento oficial aprueba pliego\". Escribí el número del documento oficial, tocá la lupa, verificá que sea el correcto y \"Guardar\". Después, \"Completar cronograma y nómina\"." },
+            { "type": "step", "number": 4, "explanation": "Cargá la nómina de proveedores.", "doThis": "\"Acciones\" → \"Nómina de proveedores\" → \"Carga de proveedor\". Buscalos por razón social o CUIT, o cargalos a mano si no están registrados. Después, \"Enviar\"." },
+            { "type": "step", "number": 5, "explanation": "Cargá el cronograma de fechas.", "doThis": "Completá fecha y hora de: publicación, inicio y fin de consultas, inicio y fin de recepción de documentación física, apertura, e inicio y fin de impugnaciones. \"Guardar\" → \"Enviar a publicar\".", "lookFor": "Queda en \"Pendientes\", estado \"Pendiente de publicación\". Ahí podés previsualizar el pliego, el acto, la nómina y el cronograma." },
+            { "type": "warning", "text": "Respetá los plazos: entre la última publicación y la apertura tienen que pasar al menos 10 días corridos. Y no te olvides de publicar en el portal web (lección \"Publicar la gestión en el portal de compras\")." },
+            { "type": "tip", "text": "TIMBÓ suma automáticamente al expediente toda la documentación que firma el Supervisor." },
+            { "type": "video", "url": "https://youtu.be/Yq1RArIxk2I", "title": "Paso 02 – Cómo aprobar la contratación, el cronograma y la nómina", "minutos": 3 }
+          ],
+          "quiz": [
+            { "type": "order-steps", "instruction": "Ordená lo que hace el Supervisor:", "steps": ["Aprobar los formularios del pliego", "Descargar el pliego y generar el acto", "Vincular el documento oficial que aprueba el pliego", "Cargar nómina y cronograma", "Enviar a publicar"] }
+          ]
+        },
+        {
+          "slug": "evaluador-evaluar-ofertas",
+          "titulo": "Evaluador: evaluar las ofertas",
+          "minutos": 4,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "prereq", "items": ["Entrar con tu ID Ciudadana y tener rol Evaluador en ese proceso."] },
+            { "type": "step", "number": 1, "explanation": "Mirá lo que llegó.", "doThis": "Bandeja \"Licitaciones y concursos\", pestaña \"Asignados\": el proceso está en \"Evaluar ofertas\". En \"Acciones\" ves el acta de apertura, todas las ofertas con sus documentos embebidos y el cuadro comparativo.", "lookFor": "El cuadro comparativo se puede descargar en Excel." },
+            { "type": "step", "number": 2, "explanation": "Abrí cada oferta.", "doThis": "Andá a \"Ofertas presentadas\" (podés buscar por número de proceso). Están en \"Esperar evaluación\". En cada una, \"Acciones\"." },
+            { "type": "step", "number": 3, "explanation": "Completá las 3 evaluaciones.", "doThis": "Económica (requisitos mínimos y precios), administrativa y técnica. En cada fila: \"Editar\" → elegí el resultado → \"Enviar\" al terminar cada formulario.", "lookFor": "Si rechazás o declarás inconveniente una oferta, tenés que poner el motivo. En la técnica podés adjuntar el informe técnico." },
+            { "type": "step", "number": 4, "explanation": "Cerrá la oferta.", "doThis": "Con los 3 formularios listos, tocá \"Oferta evaluada\".", "lookFor": "Evaluadas todas, el proceso pasa a \"Selección de renglones y oferentes\"." },
+            { "type": "tip", "text": "Si falta algo, desde acá se pide subsanación, mejora de precio o aclaración. El proveedor lo responde desde \"Mis ofertas\" (lección \"Subsanar, mejorar precio o aclarar\")." },
+            { "type": "video", "url": "https://youtu.be/7najG5QuTHY", "title": "Paso 03 – Cómo evaluar una oferta", "minutos": 3 },
+            { "type": "video", "url": "https://youtu.be/Lnd2-_XiOXI", "title": "Clase 03 – Evaluación y preadjudicación", "minutos": 56 }
+          ],
+          "quiz": [
+            { "type": "multiple-choice", "question": "¿Qué tres evaluaciones tiene cada oferta?", "options": ["Económica, administrativa y técnica", "Legal, contable y médica", "Solo la de precios"], "correctIndex": 0, "explanation": "Se completan las tres y después se toca \"Oferta evaluada\"." }
+          ]
+        },
+        {
+          "slug": "evaluador-preadjudicar",
+          "titulo": "Evaluador: preadjudicar y abrir impugnaciones",
+          "minutos": 4,
+          "dificultad": "avanzado",
+          "bloques": [
+            { "type": "step", "number": 1, "explanation": "Elegí qué sigue en carrera.", "doThis": "Proceso en \"Selección de renglones y oferentes\": \"Acciones\" → \"Formulario selección de renglones y oferentes\" → marcá los que pasaron la evaluación → \"Enviar\"." },
+            { "type": "step", "number": 2, "explanation": "Ordená a los evaluadores.", "doThis": "\"Organizar evaluadores\" → \"Añadir evaluador\", en orden → \"Enviar\".", "lookFor": "El primero arma el informe de preadjudicación. Los demás, en ese orden, lo aprueban o lo rechazan." },
+            { "type": "step", "number": 3, "explanation": "El evaluador n.º 1 arma el informe.", "doThis": "Estado \"Preadjudicar\": \"Acciones\" → \"Formulario informe de preadjudicación\". En cada renglón, \"Editar\" → cantidad a preadjudicar → \"Guardar\". Completá los fundamentos y tu intervención → \"Siguiente evaluador\".", "lookFor": "Se puede usar la variable de adjudicación de ±20 % en la cantidad." },
+            { "type": "step", "number": 4, "explanation": "Los demás evaluadores revisan.", "doThis": "Cada uno lo encuentra en \"Asignados\" (estado \"Preadjudicado\"), abre el informe y lo aprueba o lo rechaza → \"Guardar y siguiente evaluador\".", "lookFor": "Si alguien lo rechaza, vuelve al n.º 1, que es el único que puede modificarlo." },
+            { "type": "step", "number": 5, "explanation": "El n.º 1 carga el cronograma de impugnaciones.", "doThis": "Cuando aprueba el último, el proceso pasa a \"Completar cronograma de impugnaciones\". Cargá fecha y hora de publicación de la preadjudicación, e inicio y fin de impugnación → \"Enviar\".", "lookFor": "Antes de este paso, el expediente va a la URC para controlar la preadjudicación (Circular SCyGB 03/2026)." },
+            { "type": "tip", "text": "Al quedar preadjudicado, los oferentes reciben el informe en su domicilio digital. La adjudicación sigue por expediente electrónico." },
+            { "type": "video", "url": "https://youtu.be/yUbSYwLQ0aU", "title": "Paso 04 – Cómo preadjudicar una licitación o concurso", "minutos": 4 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Cualquier evaluador puede modificar el informe de preadjudicación.", "answer": false, "explanation": "Solo el evaluador n.º 1. Los demás lo aprueban o lo rechazan." }
+          ]
+        },
+        {
+          "slug": "notificar-proveedor",
+          "titulo": "Mandarle una notificación a un proveedor",
+          "minutos": 3,
+          "dificultad": "intermedio",
+          "bloques": [
+            { "type": "text", "text": "Para avisar o notificar formalmente a alguien de afuera (por ejemplo, un proveedor), se usa un documento oficial \"comunicable externo\". Le llega a su domicilio digital." },
+            { "type": "step", "number": 1, "explanation": "Creá el documento.", "doThis": "En tramites.santafe.gob.ar: Documentos oficiales → Gestión → \"Nuevo documento oficial\". Tipo: \"Nota libre comunicable externa\" o \"Nota importada comunicable externa\". Guardar." },
+            { "type": "step", "number": 2, "explanation": "Completalo.", "doThis": "En \"Pendientes\", ⋮ → Documento oficial. Completá referencia, adjuntos, quién lo aprueba y las características." },
+            { "type": "step", "number": 3, "explanation": "Elegí cómo notificar.", "doThis": "Tipo \"Aviso\" o \"Notificación\", el mensaje, la fecha y hora en que se lo considera notificado, y los destinatarios.", "lookFor": "Los destinatarios tienen que estar registrados en ID Ciudadana." },
+            { "type": "step", "number": 4, "explanation": "Firmalo.", "doThis": "\"Acciones\" → enviar a la firma. En \"Pendientes\", \"Evaluar\" → firmar. Queda en \"Aprobados\".", "lookFor": "El destinatario lo ve en Atención Virtual → pestaña \"Domicilio digital\"." },
+            { "type": "video", "url": "https://youtu.be/6BtJX1bhwbg", "title": "Cómo generar un documento comunicable externo", "minutos": 3 }
+          ],
+          "quiz": []
         },
         {
           "slug": "pedir-alta-articulo",
@@ -355,6 +482,12 @@
     { "termino": "Documento Oficial (DO)", "definicion": "Documento firmado en TIMBÓ, como un decisorio. Una vez firmado no se edita: si quedó mal, no se usa y se hace otro.", "modulo": "Gestión interna" },
     { "termino": "Afectación presupuestaria", "definicion": "Reserva del dinero para la compra. Va dentro del decisorio preventivo.", "modulo": "Gestión interna" },
     { "termino": "Renglón", "definicion": "Cada artículo que se compra dentro de un proceso, con su cantidad. El proveedor oferta precio por renglón.", "modulo": "Gestión interna" },
+    { "termino": "Roles de TIMBÓ Compras", "definicion": "Gestor (arma el proceso y el pliego), Supervisor (aprueba el pliego, arma cronograma y nómina, carga los actos) y Evaluador (evalúa, preadjudica, gestiona impugnaciones). Circular UG TIMBÓ 7/2026.", "modulo": "Gestión interna" },
+    { "termino": "Cuadro comparativo de precios", "definicion": "Lo genera TIMBÓ Compras solo, junto con el acta de apertura, en el momento de la apertura automática.", "modulo": "Gestión interna" },
+    { "termino": "Firma electrónica", "definicion": "Firma dentro de TIMBÓ, sin token. Alcanza para notas, informes, disposiciones y resoluciones del personal. La firma digital (con token) queda para decretos y resoluciones de ministros (Circular UG TIMBÓ 4/2025).", "modulo": "General" },
+    { "termino": "Documento embebido", "definicion": "Archivo adjunto adentro del PDF del pliego (fichas técnicas, anexos). Se ve tocando el clip en el lector de PDF.", "modulo": "Ofertar" },
+    { "termino": "Número de instancia", "definicion": "Número provisorio del proceso mientras se arma el pliego. Cuando el Supervisor aprueba los formularios, TIMBÓ le da el número de proceso definitivo.", "modulo": "Gestión interna" },
+    { "termino": "Variable de adjudicación", "definicion": "Margen de ±20 % que se puede aplicar a la cantidad al preadjudicar un renglón.", "modulo": "Gestión interna" },
     { "termino": "iTop", "definicion": "Sistema de tickets para pedir permisos y altas a las áreas técnicas.", "modulo": "General" }
   ],
   "situaciones": [
@@ -413,6 +546,25 @@
       "verificado": true
     },
     {
+      "slug": "mesa-de-ayuda",
+      "situacion": "¿Dónde pido ayuda con TIMBÓ Compras?",
+      "descripcion": "No encontrás la respuesta acá y necesitás hablar con alguien.",
+      "solucion": "Mesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · Tel. 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 6400792, de 8 a 13 h.",
+      "notas_adicionales": "Datos publicados en la Circular SCyGB 03/2026. También podés dejar tu consulta en este portal desde \"Dejar una consulta\".",
+      "categoria_libre": "Ayuda",
+      "verificado": true
+    },
+    {
+      "slug": "pago-no-proveedor-rupc",
+      "situacion": "Tenemos que pagarle a alguien que no es proveedor: ¿lo inscribimos en el RUPC?",
+      "descripcion": "Un pago que no sale de una compra (subsidio, plan, aporte no reintegrable, etc.).",
+      "causa": "Desde el Decreto 287/2026 ya no existe el registro de beneficiarios para compras menores: solo queda el RUPC, que es para proveedores y contratistas.",
+      "solucion": "Si no está alcanzado por el art. 142 de la Ley 12.510, no va al RUPC: se gestiona el alta de beneficiario de pago en el SIPAF, a través de tu jurisdicción.",
+      "notas_adicionales": "Circular SCyGB 06/2026.",
+      "categoria_libre": "Proveedores y RUPC",
+      "verificado": true
+    },
+    {
       "slug": "no-aparece-boton-ofertar",
       "situacion": "Publicamos la compra y al proveedor no le aparece el botón OFERTAR",
       "descripcion": "La gestión ya está en el portal web de compras, pero los proveedores no pueden entrar a ofertar.",
@@ -431,8 +583,14 @@
     { "slug": "presentar-oferta", "pregunta": "Quiero presentar una oferta", "keywords": ["presentar", "cotizar", "precio", "renglones", "requisitos minimos", "oferta"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "completar-y-presentar" },
     { "slug": "hacer-consulta", "pregunta": "Quiero hacer una consulta sobre el pliego", "keywords": ["consulta", "pregunta", "circular", "aclaratoria", "modificatoria", "pliego"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "consultas-y-circulares" },
     { "slug": "responder-subsanacion", "pregunta": "Me pidieron subsanar, mejorar el precio o aclarar", "keywords": ["subsanar", "subsanacion", "corregir", "mejorar", "mejora", "precio", "aclaracion"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "subsanar-mejorar-aclarar" },
+    { "slug": "ver-anexos", "pregunta": "No encuentro las fichas técnicas o los anexos del pliego", "keywords": ["anexo", "anexos", "ficha tecnica", "embebido", "clip", "adjunto", "pliego", "pdf"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "documentos-embebidos" },
     { "slug": "impugnar", "pregunta": "Quiero impugnar una oferta o la preadjudicación", "keywords": ["impugnar", "impugnacion", "preadjudicacion", "garantia", "queja"], "tutorial_categoria_slug": "ofertar", "tutorial_slug": "impugnaciones" },
     { "slug": "hacer-una-compra", "pregunta": "¿Cómo hago una compra de punta a punta?", "keywords": ["compra", "comprar", "hacer una compra", "paso a paso", "circuito", "proceso de compra", "licitacion", "contratacion", "adjudicar", "adjudicacion"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "hacer-una-compra" },
+    { "slug": "crear-proceso", "pregunta": "¿Cómo creo un proceso de contratación y armo el pliego?", "keywords": ["crear", "nuevo", "iniciar", "proceso", "pliego", "gestor", "formularios", "renglones", "nuevo tramite"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "gestor-iniciar-proceso" },
+    { "slug": "aprobar-pliego", "pregunta": "¿Cómo apruebo el pliego y cargo el cronograma y la nómina?", "keywords": ["aprobar", "supervisor", "cronograma", "nomina", "fechas", "enviar a publicar", "rechazar formulario"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "supervisor-aprobar-y-publicar" },
+    { "slug": "evaluar-ofertas", "pregunta": "¿Cómo evalúo las ofertas?", "keywords": ["evaluar", "evaluador", "evaluacion", "cuadro comparativo", "acta de apertura", "tecnica", "administrativa", "economica"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "evaluador-evaluar-ofertas" },
+    { "slug": "preadjudicar", "pregunta": "¿Cómo preadjudico?", "keywords": ["preadjudicar", "preadjudicacion", "informe", "organizar evaluadores", "cronograma de impugnaciones", "seleccion de renglones"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "evaluador-preadjudicar" },
+    { "slug": "notificar-proveedor", "pregunta": "¿Cómo le mando una notificación a un proveedor?", "keywords": ["notificar", "notificacion", "aviso", "comunicable externa", "proveedor", "domicilio digital", "nota"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "notificar-proveedor" },
     { "slug": "alta-articulo", "pregunta": "El artículo no está en el catálogo: ¿cómo pido el alta?", "keywords": ["articulo", "alta", "catalogo", "nomenclador", "cabys", "falta", "no esta", "bien", "servicio", "lugar de entrega", "codigo"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "pedir-alta-articulo" },
     { "slug": "circuito-decisorio", "pregunta": "¿Qué decisorio va antes y cuál después del Tribunal de Cuentas?", "keywords": ["decisorio", "preventivo", "definitivo", "tribunal", "tcp", "pliego", "vincular"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "circuito-decisorio" },
     { "slug": "correr-vista-tcp", "pregunta": "Tengo que correr vista al Tribunal de Cuentas", "keywords": ["vista", "tribunal", "tcp", "sin", "cargar", "normativa", "mesa de entradas", "visualizacion", "compartir", "requerimiento"], "tutorial_categoria_slug": "gestion-interna", "tutorial_slug": "vista-tribunal-de-cuentas" },

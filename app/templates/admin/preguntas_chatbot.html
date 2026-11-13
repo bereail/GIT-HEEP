@@ -1,0 +1,39 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Lo que el chatbot no supo — Panel de administración{% endblock %}
+{% block contenido %}
+<nav class="breadcrumbs">
+  <a href="{{ url_for('admin.dashboard') }}">Temas</a><span class="sep">/</span>Lo que el chatbot no supo
+</nav>
+<h1 style="margin-bottom:6px">Lo que el chatbot no supo</h1>
+<p class="text-muted" style="margin-top:0">
+  Preguntas sin respuesta, con respuesta dudosa o marcadas con 👎. Las más repetidas van primero:
+  son las que más conviene sumar como tarea, situación o término del glosario.
+  Se guarda solo el texto, no quién preguntó.
+</p>
+
+<nav class="glossary-jump" aria-label="Filtrar">
+  <a href="{{ url_for('admin.preguntas_chatbot') }}" {% if not ver_resueltas %}style="font-weight:700"{% endif %}>Pendientes</a>
+  <a href="{{ url_for('admin.preguntas_chatbot', resueltas='1') }}" {% if ver_resueltas %}style="font-weight:700"{% endif %}>Ya resueltas</a>
+</nav>
+
+<div class="admin-list">
+  {% for p in preguntas %}
+  <div class="admin-list-item">
+    <span class="badge badge--neutral" title="Veces que se preguntó">×{{ p.veces }}</span>
+    <span class="admin-list-item__title">
+      {{ p.texto }}
+      <span class="admin-list-item__meta">· {{ p.tema.nombre }} · {{ p.motivo_label }} · última vez {{ p.ultima_vez.strftime('%d/%m/%Y') }}</span>
+    </span>
+    <span class="admin-list-item__actions">
+      <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.tarea_nueva', tema_slug=p.tema.slug) }}" title="Crear una tarea para esta pregunta">+ Tarea</a>
+      <form method="post" action="{{ url_for('admin.pregunta_chatbot_resolver', pregunta_id=p.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button type="submit" class="btn btn--subtle btn--sm">{{ 'Reabrir' if p.resuelta else '✓ Resuelta' }}</button>
+      </form>
+    </span>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="empty-state__icon">🤖</div>{{ 'Nada resuelto todavía.' if ver_resueltas else '¡Nada pendiente! El chatbot viene respondiendo todo.' }}</div>
+  {% endfor %}
+</div>
+{% endblock %}

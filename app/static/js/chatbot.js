@@ -136,6 +136,15 @@ export function initChatbot({ temaSlug, nombreTema }) {
     escribiendo.remove();
 
     if (!datos.encontrado) {
+      if (datos.otro_tema) {
+        // La pregunta es de otro sistema: mejor llevarlo ahí que decir "no sé".
+        const o = datos.otro_tema;
+        agregarMensaje({
+          quien: 'bot',
+          html: `Eso parece ser de <b>${e(o.tema)}</b>, no de ${e(nombreTema)}.<span class="chatbot-msg__otro-tema">${e(o.titulo)}</span><a class="chatbot-msg__link" href="${e(o.url)}">Ir a ${e(o.tema)} →</a>`,
+        });
+        return;
+      }
       if (datos.quiso_decir && datos.quiso_decir.length) {
         agregarMensaje({ quien: 'bot', html: e(QUISO_DECIR) });
         agregarOpciones(datos.quiso_decir);
@@ -216,6 +225,14 @@ export function initChatbot({ temaSlug, nombreTema }) {
     const fb = ev.target.closest('.chatbot-feedback__btn');
     if (fb) {
       fb.closest('.chatbot-feedback').remove();
+      // Se avisa al servidor solo cuando no sirvió: así el admin ve qué falta.
+      if (fb.dataset.feedback === 'no') {
+        fetch(`/temas/${temaSlug}/chatbot/feedback`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pregunta: ultimaPregunta, util: false }),
+        }).catch(() => {});
+      }
       if (fb.dataset.feedback === 'si') {
         agregarMensaje({ quien: 'bot', html: '¡Genial! Si tenés otra duda, escribila acá abajo.' });
       } else {
