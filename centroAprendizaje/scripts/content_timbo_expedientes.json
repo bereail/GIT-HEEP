@@ -2512,6 +2512,18 @@
       "notas_adicionales": "Circular conjunta UG TIMBÓ 7/2025.",
       "categoria_libre": "Atención Virtual",
       "verificado": true
+    },
+    {
+      "slug": "a-quien-pido-ayuda",
+      "situacion": "¿A quién le pido ayuda con TIMBÓ?",
+      "descripcion": "Tenés una duda o un problema con TIMBÓ. Necesitás hablar con alguien: a qué teléfono llamar, a qué correo escribir o quién te da soporte.",
+      "causa": "Según el problema, lo resuelve una persona distinta.",
+      "solucion": "Para dudas de uso, primero tu referente de TIMBÓ. Si no podés entrar o no recordás la contraseña: 0800 777 0801 (lunes a viernes de 8 a 18 h). Si te faltan oficinas o permisos: tu jefe/a lo pide a la Sectorial de Informática por iTop.",
+      "notas_adicionales": "Para repasar cualquier tema, los cursos oficiales están en el Aula Virtual provincial. Si no encontrás la respuesta acá, usá \"Dejar una consulta\".",
+      "categoria_libre": "Ayuda y soporte",
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "ingresar",
+      "verificado": true
     }
   ],
   "tareas": [
@@ -2575,7 +2587,14 @@
         "expediente",
         "caratula",
         "caratulacion",
-        "nuevo"
+        "nuevo",
+        "crear",
+        "creo",
+        "crear expediente",
+        "iniciar",
+        "inicio",
+        "generar",
+        "expediente nuevo"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "abrir-expediente"
@@ -2624,7 +2643,13 @@
         "subir",
         "archivo",
         "pdf",
-        "adjuntar"
+        "adjuntar",
+        "pesa",
+        "pesado",
+        "muy grande",
+        "50 mb",
+        "tamaño",
+        "adjunto"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "subir-archivo"
@@ -2647,7 +2672,10 @@
         "vincular",
         "documento oficial",
         "numero",
-        "agregar"
+        "agregar",
+        "vinculo",
+        "vincular documento",
+        "resolucion"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "vincular-documento-oficial"
@@ -2659,7 +2687,10 @@
         "nota",
         "documento oficial",
         "crear",
-        "redactar"
+        "redactar",
+        "firma conjunta",
+        "varios firmantes",
+        "que firmen varios"
       ],
       "tutorial_categoria_slug": "documentos-oficiales",
       "tutorial_slug": "crear-documento-oficial"
@@ -2806,7 +2837,11 @@
         "enviar",
         "pase",
         "otra oficina",
-        "providencia"
+        "providencia",
+        "hacer un pase",
+        "mandar",
+        "derivar",
+        "remitir"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "enviar-pase"
@@ -2828,7 +2863,11 @@
       "keywords": [
         "guarda temporal",
         "espera",
-        "archivo"
+        "archivo",
+        "archivar",
+        "archivo un expediente",
+        "guardar",
+        "guarda"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "guarda-y-archivo"

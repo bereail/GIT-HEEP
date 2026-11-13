@@ -3014,7 +3014,7 @@
     {
       "slug": "mesa-de-ayuda",
       "situacion": "¿Dónde pido ayuda con TIMBÓ Compras?",
-      "descripcion": "No encontrás la respuesta acá y necesitás hablar con alguien.",
+      "descripcion": "No encontrás la respuesta acá. Necesitás hablar con alguien: a qué teléfono llamar, a qué correo escribir o quién te da soporte.",
       "solucion": "Mesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · Tel. 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 6400792, de 8 a 13 h.",
       "notas_adicionales": "Datos publicados en la Circular SCyGB 03/2026. También podés dejar tu consulta en este portal desde \"Dejar una consulta\".",
       "categoria_libre": "Ayuda",
@@ -3117,7 +3117,9 @@
         "participar",
         "proceso",
         "licitacion",
-        "ofertar"
+        "ofertar",
+        "no puedo entrar",
+        "no me deja entrar"
       ],
       "tutorial_categoria_slug": "primeros-pasos",
       "tutorial_slug": "ingresar-y-participar"

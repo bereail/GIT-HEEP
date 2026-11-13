@@ -21,6 +21,9 @@ export function initChatbot({ temaSlug, nombreTema }) {
   const urlProblemas = `/temas/${temaSlug}/problemas`;
   const urlConsulta = `/temas/${temaSlug}/consultas/nueva`;
   let ultimaPregunta = '';
+  // La conversación se guarda por pestaña y por tema: si tocás un link a una
+  // lección y volvés, sigue ahí. Si el navegador no deja guardar, no pasa nada.
+  const CLAVE_HISTORIAL = `chatbot:${temaSlug}`;
 
   document.body.insertAdjacentHTML(
     'beforeend',
@@ -39,9 +42,10 @@ export function initChatbot({ temaSlug, nombreTema }) {
       </header>
       <div class="chatbot-panel__messages" id="chatbot-messages" aria-live="polite"></div>
       <form class="chatbot-panel__form" id="chatbot-form">
-        <input class="input" id="chatbot-input" type="text" placeholder="Escribí tu pregunta..." aria-label="Escribí tu pregunta" autocomplete="off" />
+        <input class="input" id="chatbot-input" type="text" placeholder="Escribí tu pregunta..." aria-label="Escribí tu pregunta" autocomplete="off" maxlength="300" enterkeyhint="send" />
         <button type="submit" class="chatbot-panel__send" aria-label="Enviar pregunta">➤</button>
       </form>
+      <p class="chatbot-panel__pie">¿Preferís que te responda una persona? <a href="${urlConsulta}" id="chatbot-consulta">Dejá tu consulta</a></p>
     </section>
   `
   );
@@ -59,6 +63,37 @@ export function initChatbot({ temaSlug, nombreTema }) {
 
   function bajar() {
     mensajes.scrollTop = mensajes.scrollHeight;
+    guardar();
+  }
+
+  function guardar() {
+    try {
+      sessionStorage.setItem(CLAVE_HISTORIAL, JSON.stringify({ html: mensajes.innerHTML, ultimaPregunta }));
+    } catch {
+      /* sin almacenamiento: la conversación se pierde al cambiar de página */
+    }
+  }
+
+  function restaurar() {
+    try {
+      const guardado = JSON.parse(sessionStorage.getItem(CLAVE_HISTORIAL) || 'null');
+      if (!guardado || !guardado.html) return false;
+      mensajes.innerHTML = guardado.html;
+      // Si quedó a medio responder, se saca el "escribiendo".
+      mensajes.querySelectorAll('.chatbot-escribiendo').forEach((el) => el.closest('.chatbot-msg').remove());
+      ultimaPregunta = guardado.ultimaPregunta || '';
+      return mensajes.children.length > 0;
+    } catch {
+      return false;
+    }
+  }
+
+  function olvidar() {
+    try {
+      sessionStorage.removeItem(CLAVE_HISTORIAL);
+    } catch {
+      /* nada que borrar */
+    }
   }
 
   function agregarMensaje({ quien, html }) {
@@ -108,9 +143,15 @@ export function initChatbot({ temaSlug, nombreTema }) {
     return sugerenciasIniciales;
   }
 
+  async function ponerEjemplo() {
+    const sugerencias = await cargarSugerencias();
+    if (sugerencias.length) input.placeholder = `Ej.: ${sugerencias[0]}`;
+  }
+
   async function saludar() {
     agregarMensaje({ quien: 'bot', html: e(SALUDO) });
     agregarOpciones(await cargarSugerencias());
+    ponerEjemplo();
   }
 
   async function responder(consulta) {
@@ -136,6 +177,12 @@ export function initChatbot({ temaSlug, nombreTema }) {
     escribiendo.remove();
 
     if (!datos.encontrado) {
+      if (datos.charla) {
+        // "Hola", "gracias": respuesta corta y las opciones para seguir.
+        agregarMensaje({ quien: 'bot', html: e(datos.charla) });
+        agregarOpciones(datos.sugerencias);
+        return;
+      }
       if (datos.otro_tema) {
         // La pregunta es de otro sistema: mejor llevarlo ahí que decir "no sé".
         const o = datos.otro_tema;
@@ -181,8 +228,10 @@ export function initChatbot({ temaSlug, nombreTema }) {
     panel.setAttribute('aria-hidden', 'false');
     fab.setAttribute('aria-expanded', 'true');
     if (!saludado) {
-      saludar();
+      if (restaurar()) ponerEjemplo();
+      else saludar();
       saludado = true;
+      bajar();
     }
     setTimeout(() => input.focus(), 60);
   }
@@ -200,6 +249,8 @@ export function initChatbot({ temaSlug, nombreTema }) {
   closeBtn.addEventListener('click', cerrar);
   resetBtn.addEventListener('click', () => {
     mensajes.innerHTML = '';
+    ultimaPregunta = '';
+    olvidar();
     saludar();
     input.focus();
   });
@@ -213,6 +264,10 @@ export function initChatbot({ temaSlug, nombreTema }) {
     if (!consulta) return;
     input.value = '';
     preguntar(consulta);
+  });
+
+  document.getElementById('chatbot-consulta').addEventListener('click', (ev) => {
+    if (ultimaPregunta) ev.currentTarget.href = `${urlConsulta}?contexto=${encodeURIComponent(ultimaPregunta)}`;
   });
 
   mensajes.addEventListener('click', (ev) => {

@@ -31,6 +31,7 @@ PALABRAS_VACIAS = {
     # Arranques típicos de pregunta: muchas tareas empiezan con "Quiero..." o
     # "Necesito...", así que le ganaban a la palabra que importa ("comprar").
     "quiero", "quisiera", "necesito", "puedo", "hago", "tengo", "algo",
+    "quien", "quién",
 }
 
 # Cómo dice la gente las cosas → cómo están escritas en el contenido. Solo
@@ -41,9 +42,25 @@ SINONIMOS = {
     "tcp": "tribunal", "contrasena": "clave", "password": "clave",
     "ayuda": "mesa de ayuda", "telefono": "mesa de ayuda", "contacto": "mesa de ayuda",
     "comprar": "compra", "compramos": "compra",
+    "hablo": "hablar", "llamo": "llamar", "escribo": "escribir", "archivar": "archivo",
 }
 
 _PIDE_DEFINICION = re.compile(r"^(que es|que son|que significa|que quiere decir)(?: |$)")
+_ARTICULOS = re.compile(r"^(?:(?:el|la|los|las|un|una|lo)\s+)*")
+
+# Palabras de "pedir un artículo" que no son el artículo en sí: no cuentan
+# para decidir si la pregunta es por un artículo del Nomenclador.
+_PALABRAS_DE_PEDIDO = {
+    "compra", "comprar", "pedir", "pido", "busco", "buscar", "conseguir", "encuentro",
+    "encontrar", "articulo", "articulos", "nombre", "codigo", "catalogo", "timbo",
+}
+
+# Cuánto vale cada palabra según cómo aparece: entera ("pase" en "hacer un
+# pase") vale más que al principio de otra ("expediente" en "expedientes"),
+# y mucho más que perdida adentro de otra ("sin" en "sistema").
+_VALOR_ENTERA = 1.5
+_VALOR_PREFIJO = 1
+_VALOR_ADENTRO = 0.3
 
 _PUNTUACION = re.compile(r"[¿?¡!.,;:\"'()]")
 
@@ -79,6 +96,9 @@ def construir_indice(tema):
             "subtitle": tarea.tutorial.titulo,
             "url": _url_tutorial(tarea.tutorial),
             "texto": normalizar(f"{tarea.pregunta} {tarea.tutorial.titulo} {' '.join(tarea.keywords or [])}"),
+            # Las palabras clave están elegidas a mano: cuentan como título.
+            "claves": normalizar(f"{tarea.pregunta} {' '.join(tarea.keywords or [])}"),
+            "frases": [normalizar(k) for k in (tarea.keywords or []) if " " in k.strip()],
             "peso": 3,
             "ref": tarea,
         })
@@ -143,7 +163,7 @@ def construir_indice(tema):
             "url": url_for("ui.ver_equivalencias", tema_slug=tema.slug),
             "texto": normalizar(
                 "no encuentro el articulo no aparece no esta el articulo en el catalogo "
-                "como se llama como busco como pido un articulo en timbo "
+                "como se llama como busco como pido un articulo "
                 "nombre correcto del articulo nomenclador equivalencia codigo "
                 "pedir alta de un articulo articulo nuevo falta un articulo que no esta"
             ),
@@ -225,36 +245,85 @@ def _corregir_palabras(indice, palabras):
     return corregidas
 
 
-def buscar_con_puntaje(indice, consulta, limite=12):
+def _valor_en(texto, palabra):
+    """Cuánto vale `palabra` (o su singular) en `texto`: entera, al principio
+    de otra palabra, adentro de otra, o nada."""
+    mejor = 0
+    for variante in _variantes(palabra):
+        if variante not in texto:
+            continue
+        if re.search(r"\b" + re.escape(variante) + r"\b", texto):
+            return _VALOR_ENTERA
+        if re.search(r"\b" + re.escape(variante), texto):
+            mejor = max(mejor, _VALOR_PREFIJO)
+        else:
+            mejor = max(mejor, _VALOR_ADENTRO)
+    return mejor
+
+
+def buscar_con_puntaje(indice, consulta, limite=12, ignorar=()):
     """Devuelve pares (puntaje, entrada), para que el chatbot pueda
-    distinguir una coincidencia clara de una adivinanza."""
+    distinguir una coincidencia clara de una adivinanza. `ignorar`: palabras
+    que no aportan en este índice (el nombre del propio sistema: "timbo"
+    aparece en todo el contenido de TIMBÓ)."""
     q = normalizar(consulta).strip()
     if not q:
         return []
     todas_las_palabras = [p for p in q.split() if p]
     palabras_especificas = [p for p in todas_las_palabras if p not in PALABRAS_VACIAS]
+    if any(p not in ignorar for p in palabras_especificas):
+        palabras_especificas = [p for p in palabras_especificas if p not in ignorar]
     # Si la consulta es solo palabras vacías ("qué es"), mejor buscar con
     # todo antes que no encontrar nada.
     palabras = palabras_especificas if palabras_especificas else todas_las_palabras
+    originales = set(palabras)
     palabras = _corregir_palabras(indice, palabras)
     # "¿Qué es X?" pide una definición: el glosario tiene que ganarle a la
     # lección que menciona el término.
-    pide_definicion = bool(_PIDE_DEFINICION.match(q))
+    definicion = _PIDE_DEFINICION.match(q)
+    pide_definicion = bool(definicion)
+    termino_pedido = _ARTICULOS.sub("", q[definicion.end():].strip()) if definicion else ""
+    if termino_pedido and not palabras_especificas:
+        # "¿Qué es el SIN?": "sin" es palabra vacía, pero acá es lo que se pregunta.
+        palabras = termino_pedido.split()
+    palabras_de_articulo = [p for p in palabras if p not in _PALABRAS_DE_PEDIDO]
 
     resultados = []
     for entrada in indice:
         texto = entrada["texto"]
         titulo = normalizar(entrada["title"])
+        claves = entrada.get("claves", titulo)
         score = 0
+        encontradas = set()
         for palabra in palabras:
-            if any(variante in texto for variante in _variantes(palabra)):
-                score += 2 if texto.startswith(palabra) else 1
-                if palabra in titulo:
-                    score += 1
-                # Desempata a favor de la palabra entera: "adjudico" tiene
-                # que preferir "adjudico" antes que "preadjudico".
-                if re.search(r"\b" + re.escape(palabra) + r"\b", texto):
-                    score += 0.5
+            valor = _valor_en(texto, palabra)
+            if not valor:
+                continue
+            encontradas.add(palabra)
+            score += valor
+            if texto.startswith(palabra):
+                score += 1
+            if _valor_en(claves, palabra) >= _VALOR_PREFIJO:
+                score += 1
+        # Una palabra clave de varias palabras ("archivo un expediente",
+        # "no puedo entrar") que aparece entera en la pregunta es la señal
+        # más clara de qué se quiere.
+        for frase in entrada.get("frases", ()):
+            if re.search(r"\b" + re.escape(frase) + r"\b", q):
+                score += 3
+        if entrada["kind"] == "Nomenclador" and not set(palabras_de_articulo) <= encontradas:
+            # Un artículo responde solo si coincide todo lo que no es "pedir":
+            # "se cayó el sistema" no es una pregunta por un "Sistema de aspiración".
+            continue
+        if entrada["kind"] == "Nomenclador" and palabras_de_articulo and set(palabras_de_articulo) <= originales:
+            # Coincide el artículo completo: es justo lo que se busca
+            # ("quiero comprar guantes" → los guantes, no "cómo hacer una compra").
+            # No si la palabra vino de corregir un error de tipeo ("receta" → "recta").
+            score += 3
+        if termino_pedido and entrada["kind"] == "Glosario" and re.match(
+            re.escape(termino_pedido) + r"\b", titulo
+        ):
+            score += 10
         if score > 0:
             # Una sugerencia del chatbot manda el título exacto: tiene que
             # ganar siempre, aunque otra entrada comparta más palabras.
@@ -271,6 +340,29 @@ def buscar_con_puntaje(indice, consulta, limite=12):
 
 def buscar(indice, consulta, limite=12):
     return [entrada for _, entrada in buscar_con_puntaje(indice, consulta, limite)]
+
+
+_CHARLA = [
+    (re.compile(r"^(hola|buen dia|buenos dias|buenas tardes|buenas noches|buenas|hey|que tal)\b"),
+     "¡Hola! Contame tu duda con tus palabras, o tocá una de estas:"),
+    (re.compile(r"^(gracias|muchas gracias|mil gracias|genial|perfecto|buenisimo|joya|ok|dale|listo)\b"),
+     "¡De nada! Si tenés otra duda, escribila acá abajo."),
+    (re.compile(r"^(chau|adios|hasta luego|nos vemos)\b"),
+     "¡Chau! Cuando necesites, acá estoy."),
+]
+
+
+def respuesta_de_charla(consulta):
+    """Saludos y agradecimientos cortos: se responden amablemente en vez de
+    buscarlos en el contenido. Si después del saludo viene una pregunta
+    ("hola, cómo hago un pase"), no es charla."""
+    q = normalizar(consulta).strip()
+    if not q or len(q.split()) > 4:
+        return None
+    for patron, respuesta in _CHARLA:
+        if patron.match(q):
+            return respuesta
+    return None
 
 
 def sugerencias_iniciales(tema, cantidad=4):

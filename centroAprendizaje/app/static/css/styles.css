@@ -960,6 +960,14 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   transition: background var(--dur-fast) var(--ease);
 }
 .chatbot-panel__send:hover { background: var(--accent-hover); }
+.chatbot-panel__pie {
+  margin: 0;
+  padding: 0 14px 10px;
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: center;
+}
+.chatbot-panel__pie a { color: var(--accent); font-weight: 600; }
 
 /* Bloque "heading": subtítulo dentro de un tutorial (ej. para separar
    secciones en "Documentación oficial"). */

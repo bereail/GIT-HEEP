@@ -1769,6 +1769,22 @@
   ],
   "TASKS": [
     {
+      "id": "entrar-mihospital",
+      "question": "¿Cómo entro a miHospital?",
+      "keywords": [
+        "entrar",
+        "ingresar",
+        "no puedo entrar",
+        "login",
+        "usuario",
+        "acceso"
+      ],
+      "moduleId": "primeros-pasos",
+      "lessonId": "ingresar",
+      "level": "basico",
+      "minutes": 4
+    },
+    {
       "id": "buscar-paciente",
       "question": "¿Cómo busco un paciente?",
       "keywords": [

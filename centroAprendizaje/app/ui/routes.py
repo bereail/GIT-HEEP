@@ -232,14 +232,20 @@ def buscar_json(tema_slug):
 def chatbot_responder(tema_slug):
     tema = _tema_o_404(tema_slug)
     consulta = str((request.get_json(silent=True) or {}).get("mensaje", ""))[:300]
+    charla = buscador.respuesta_de_charla(consulta)
+    if charla:
+        # "Hola", "gracias", "chau": no es una duda, no va a estadísticas.
+        return jsonify({"encontrado": False, "charla": charla, "sugerencias": buscador.sugerencias_iniciales(tema)})
     indice = buscador.construir_indice(tema)
-    resultados = buscador.buscar_con_puntaje(indice, consulta, limite=8)
+    resultados = buscador.buscar_con_puntaje(indice, consulta, limite=8, ignorar=_palabras_del_nombre(tema))
     puntaje = resultados[0][0] if resultados else 0
 
     # ¿La pregunta es claramente de otro sistema? (ej.: "cargar una cirugía"
     # preguntado en TIMBÓ Compras). Solo si allá coincide el doble que acá,
     # para no mandar a otro tema algo que este también responde.
-    otro = _buscar_en_otros_temas(tema, consulta, minimo=max(puntaje * 2, CHATBOT_PUNTAJE_MINIMO * 2))
+    otro = _buscar_en_otros_temas(
+        tema, consulta, minimo=max(puntaje * 2, CHATBOT_PUNTAJE_MINIMO * 2), puntaje_local=puntaje
+    )
     respondio = bool(otro) or puntaje >= CHATBOT_PUNTAJE_MINIMO
     if consulta.strip():
         estadisticas.registrar("chatbot", tema=tema, consulta=consulta, hubo_resultado=respondio)
@@ -261,13 +267,31 @@ def chatbot_responder(tema_slug):
     return jsonify({"encontrado": True, **respuesta, "relacionadas": relacionadas})
 
 
-def _buscar_en_otros_temas(tema, consulta, minimo):
+def _palabras_del_nombre(tema):
+    return set(buscador.normalizar(tema.nombre).split())
+
+
+def _nombra_otro_tema(consulta, tema, otro):
+    """¿La pregunta menciona el nombre del otro sistema? ("un pase en timbo"
+    preguntado en miHospital). Solo cuentan las palabras del nombre que no
+    comparte con el tema actual: en TIMBÓ Compras, "timbo" no dice nada."""
+    propias = _palabras_del_nombre(otro) - _palabras_del_nombre(tema)
+    return bool(propias & set(buscador.normalizar(consulta).split()))
+
+
+def _buscar_en_otros_temas(tema, consulta, minimo, puntaje_local=0):
     """Si la pregunta coincide claramente con otro sistema, lo dice en vez
-    de contestar "no sé" (ej.: algo de miHospital preguntado en TIMBÓ)."""
+    de contestar "no sé" (ej.: algo de miHospital preguntado en TIMBÓ).
+    Si la pregunta nombra ese sistema, alcanza con que allá coincida más."""
     mejor = None
     for otro in Tema.query.filter(Tema.activo.is_(True), Tema.id != tema.id).all():
-        resultados = buscador.buscar_con_puntaje(buscador.construir_indice(otro), consulta, limite=1)
-        if resultados and resultados[0][0] >= minimo and (not mejor or resultados[0][0] > mejor[0]):
+        resultados = buscador.buscar_con_puntaje(
+            buscador.construir_indice(otro), consulta, limite=1, ignorar=_palabras_del_nombre(otro)
+        )
+        minimo_otro = minimo
+        if _nombra_otro_tema(consulta, tema, otro):
+            minimo_otro = max(puntaje_local + 0.01, CHATBOT_PUNTAJE_MINIMO)
+        if resultados and resultados[0][0] >= minimo_otro and (not mejor or resultados[0][0] > mejor[0]):
             mejor = (resultados[0][0], otro, resultados[0][1])
     if not mejor:
         return None
