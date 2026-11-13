@@ -120,7 +120,8 @@
             ] },
             { "type": "practice", "text": "Mirá este ejemplo de motivo bien escrito: \"Solicitud de compra de 200 cajas de guantes de nitrilo talle M para el Servicio de Guardia — Pedido interno 45/2026\". Compáralo con uno mal escrito: \"Varios guardia\" o \"Compras\" — un motivo así corre riesgo de que te rechacen la carátula." },
             { "type": "warning", "text": "Si el motivo no coincide con el código del trámite elegido, la Mesa de Entradas puede rechazar la solicitud. Si el trámite involucra a un paciente, consultá con tu jefe/a qué datos corresponde poner — el material no da una regla específica para datos de salud." },
-            { "type": "text", "text": "Al guardar y confirmar, se genera un número de solicitud y el pedido queda en la pestaña \"En curso\", a la espera de que la oficina caratuladora lo revise." }
+            { "type": "text", "text": "Al guardar y confirmar, se genera un número de solicitud y el pedido queda en la pestaña \"En curso\", a la espera de que la oficina caratuladora lo revise." },
+            { "type": "tip", "text": "La carátula sigue el Nomenclador de Trámites. Evitá nombres genéricos como \"Varios\" o \"Tramitaciones varias\": la normativa lo prohíbe expresamente (Circular UG TIMBÓ 3/2025)." }
           ],
           "quiz": []
         },
@@ -236,7 +237,8 @@
             ] },
             { "type": "practice", "text": "Ejemplos de buenas providencias: \"Se remite para su conocimiento y continuidad del trámite\" o \"Se solicita agregar informe técnico sobre el estado del equipo\". Si tenés que escribir mucho, hacelo en un documento aparte y agregalo al expediente." },
             { "type": "text", "text": "Para encontrar el código de una oficina destino: menú Oficinas → buscala en el organigrama → copiá el número que aparece entre paréntesis al lado del nombre." },
-            { "type": "warning", "text": "¿Mandaste el expediente a la oficina equivocada? Avisale a esa oficina para que te lo devuelva con un pase — no hay forma de \"deshacer\" un pase desde tu lado." }
+            { "type": "warning", "text": "¿Mandaste el expediente a la oficina equivocada? Avisale a esa oficina para que te lo devuelva con un pase — no hay forma de \"deshacer\" un pase desde tu lado." },
+            { "type": "warning", "text": "En la providencia no pongas informes, cuadros ni gráficos: está prohibido. Cada providencia queda como una orden del expediente que no se puede borrar (Circular UG TIMBÓ 3/2025)." }
           ],
           "quiz": []
         },
@@ -248,7 +250,8 @@
           "bloques": [
             { "type": "text", "text": "La guarda temporal sirve para apartar un expediente mientras esperás algo (un informe, un dictamen). No todos los usuarios tienen este permiso." },
             { "type": "text", "text": "Enviar Expediente → Enviar a Guarda Temporal → escribí el motivo (opcional) → Continuar → Confirmar. Para retomarlo: pestaña Guarda temporal → ⋮ → Volver a carga de documentación → comentario → confirmar. Vuelve a la pestaña Gestión." },
-            { "type": "warning", "text": "Enviar un expediente al Archivo es el último paso y es irreversible: ya no se puede volver a trabajar, solo consultar." }
+            { "type": "warning", "text": "Enviar un expediente al Archivo es el último paso y es irreversible: ya no se puede volver a trabajar, solo consultar." },
+            { "type": "tip", "text": "Cuando un expediente terminó y no tiene nada pendiente, se lo devuelve al área de origen. La guarda y el archivo los hacen solo los usuarios habilitados (Circular UG TIMBÓ 3/2025)." }
           ],
           "quiz": []
         },
@@ -290,7 +293,8 @@
             { "type": "text", "text": "Para pedir una vista: Expedientes → Gestión de visualización → Nuevo Trámite → Solicitud vista de expediente → escribí el número y buscalo con la lupa → indicá hasta qué fecha la necesitás y el motivo → Enviar." },
             { "type": "text", "text": "Cuando te la aprueben, vas a ver \"Visualizar Expediente\" en \"En curso\". Tocá ⋮ → Gestor de Trámite para ver los documentos." },
             { "type": "text", "text": "Para compartir una vista (si tenés el expediente): Nuevo Trámite → Compartir vista de expediente → buscá y seleccioná los expedientes → agregá destinatarios (personas, una lista o una oficina) → elegí fecha de inicio y de fin → Guardar." },
-            { "type": "warning", "text": "Compartir vistas tiene un máximo de 500 expedientes por vez, y puede tardar hasta una hora en procesarse — no es instantáneo. Los destinatarios reciben un correo cuando está listo." }
+            { "type": "warning", "text": "Compartir vistas tiene un máximo de 500 expedientes por vez, y puede tardar hasta una hora en procesarse — no es instantáneo. Los destinatarios reciben un correo cuando está listo." },
+            { "type": "tip", "text": "Así también se le da vista al Tribunal de Cuentas: compartiendo el expediente desde \"Gestión de visualización\". El expediente sigue su trámite mientras el TCP lo ve (Circular UG TIMBÓ 9/2026)." }
           ],
           "quiz": []
         }
@@ -369,9 +373,30 @@
               { "term": "Enviadas", "def": "El color indica si lo leyeron: verde = todos, amarillo = algunos, naranja = nadie." },
               { "term": "Eliminadas", "def": "Podés \"Restaurar\" lo que borraste." }
             ] },
-            { "type": "tip", "text": "Eliminar una comunicación solo la saca de tu propia bandeja — los demás destinatarios la siguen teniendo." }
+            { "type": "tip", "text": "Eliminar una comunicación solo la saca de tu propia bandeja — los demás destinatarios la siguen teniendo." },
+            { "type": "warning", "text": "Una comunicación oficial vale como notificación desde que llega a tu bandeja, y los plazos corren desde el día hábil siguiente. No vale decir que no entraste o que no tenías conexión: revisá la bandeja seguido (Circular UG TIMBÓ 3/2025)." },
+            { "type": "concepts", "items": [ { "term": "Comunicación oficial", "def": "Información o instrucciones dentro de la administración. Se manda con el documento oficial \"Comunicaciones oficiales\"." }, { "term": "Notificación", "def": "Aviso formal a una persona (por ejemplo, un ciudadano o un proveedor). Va a su domicilio digital con el documento oficial \"Notificaciones\" (Circular UG TIMBÓ 6/2026)." } ] }
           ],
           "quiz": []
+        },
+        {
+          "slug": "pedir-licencia-sjl",
+          "titulo": "Pedir una licencia o justificación (SJL)",
+          "minutos": 4,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Las licencias y justificaciones se piden con un documento oficial: \"Justificaciones y licencias\" (SJL). Lo firman vos, tu jefe o jefa y, al final, Recursos Humanos." },
+            { "type": "warning", "text": "Esto no reemplaza el aviso previo a tu superior directo (en persona, por teléfono o por correo)." },
+            { "type": "step", "number": 1, "explanation": "Creá el documento.", "doThis": "Documentos oficiales → Gestión → \"Nuevo documento oficial\" → Iniciar. Usuario productor: \"Yo mismo\". Tipo de documento: \"Justificaciones y licencias\" (SJL). Guardar." },
+            { "type": "step", "number": 2, "explanation": "Completalo.", "doThis": "En \"Pendientes\", ⋮ → Documento oficial. Completá DNI, fecha de inicio y de fin, cantidad de días y el artículo que corresponde (del desplegable). En Referencia repetí tus datos.", "lookFor": "Si el artículo lo pide, adjuntá la documentación respaldatoria (por ejemplo, el certificado)." },
+            { "type": "step", "number": 3, "explanation": "Armá la cadena de firmas.", "doThis": "En \"Firma conjunta\": primero vos, después tu jefe o jefa directo, luego los niveles superiores que correspondan, y al final alguien de Recursos Humanos." },
+            { "type": "step", "number": 4, "explanation": "Mandalo y firmalo.", "doThis": "\"Acciones\" → \"Enviar a firmar\" → Continuar → Confirmar. En \"Pendientes\": ⋮ → Evaluar → \"Acciones\" → \"Aprobar firma conjunta\" → firma electrónica → Confirmar.", "lookFor": "Lo seguís desde \"Iniciados por mí\". Cuando firma el último, pasa a \"Aprobados\" (o a \"Rechazados\", si no lo aprueban)." },
+            { "type": "tip", "text": "¿Te toca firmar la licencia de otra persona? Está en tus \"Pendientes\" con estado \"Firmar documento oficial\": ⋮ → Evaluar → \"Acciones\" → \"Aprobar firma conjunta\" → firma electrónica." },
+            { "type": "video", "url": "https://youtu.be/OmPfwB6Quek", "title": "Solicitud de justificaciones y licencias", "minutos": 5 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Si pido la licencia por TIMBÓ, ya no hace falta avisarle a mi jefe.", "answer": false, "explanation": "El documento SJL no reemplaza el aviso previo a tu superior directo." }
+          ]
         }
       ]
     },
@@ -443,7 +468,8 @@
           "bloques": [
             { "type": "text", "text": "Cuando todos firmaron, el trámite pasa a \"Evaluar Resolución\": ⋮ → Acciones → Protocolizar Resolución → comentario opcional → Continuar → Confirmar. El sistema le asigna número correlativo y fecha." },
             { "type": "text", "text": "Después hay que publicar la resolución en el Sistema de Información Normativa (SIN, un sistema aparte de TIMBÓ) y pegar el link: ⋮ → Acciones → Link de acceso → Guardar → comentario → Continuar → Confirmar. La resolución pasa a \"Finalizados\"." },
-            { "type": "tip", "text": "Una vez firmada, la resolución se convierte en documento oficial: cualquier usuario de TIMBÓ puede consultarla por su número desde el módulo Documentos oficiales." }
+            { "type": "tip", "text": "Una vez firmada, la resolución se convierte en documento oficial: cualquier usuario de TIMBÓ puede consultarla por su número desde el módulo Documentos oficiales." },
+            { "type": "warning", "text": "Todo acto administrativo registrable firmado se carga en el SIN, y desde el SIN se le manda por correo al Tribunal de Cuentas. Lo gestionan las Direcciones Generales de Despacho (Circular UG TIMBÓ 11/2026)." }
           ],
           "quiz": []
         }
@@ -558,6 +584,24 @@
             { "type": "tip", "text": "Los problemas de instalación o de la plataforma que Informática no pueda resolver se canalizan con un ticket en iTop." }
           ],
           "quiz": []
+        },
+        {
+          "slug": "firmador-digital-web",
+          "titulo": "Firmar un PDF con el Firmador Digital Web",
+          "minutos": 3,
+          "dificultad": "basico",
+          "bloques": [
+            { "type": "text", "text": "Para firmar electrónicamente un PDF que no está en TIMBÓ (o pedirle la firma a otras personas), usá el Firmador Digital Web de la Provincia. Es gratis y solo necesitás tu ID Ciudadana." },
+            { "type": "step", "number": 1, "explanation": "Subí el documento.", "doThis": "Entrá a santafe.gob.ar/firma con tu ID Ciudadana → \"Bandeja de documentos\" → \"Nuevo\" → adjuntá el PDF, elegí el tipo y escribí una descripción → Guardar." },
+            { "type": "step", "number": 2, "explanation": "Firmalo.", "doThis": "Menú de acciones → \"Firma electrónica\"." },
+            { "type": "step", "number": 3, "explanation": "Si firman otras personas, compartilo.", "doThis": "\"Compartir\" → buscá por nombre, apellido o CUIL → seleccioná a la persona y tocá la flecha → Guardar.", "lookFor": "Les llega un aviso al correo de su ID Ciudadana. Tienen que tener ID Ciudadana." },
+            { "type": "step", "number": 4, "explanation": "Descargalo y validalo.", "doThis": "Acciones → \"Ver\" → descargá el PDF firmado. Para comprobar que nadie lo modificó después, en Inicio usá \"Validación de firmas\"." },
+            { "type": "tip", "text": "La firma electrónica tiene validez en el entorno digital, y para la administración provincial tiene el mismo valor que la firma manuscrita." },
+            { "type": "video", "url": "https://youtu.be/ETjXfXTyaBg", "title": "Cómo firmar electrónicamente desde el Firmador Digital Web", "minutos": 3 }
+          ],
+          "quiz": [
+            { "type": "true-false", "question": "Para que otra persona firme en el Firmador Digital Web, tiene que tener ID Ciudadana.", "answer": true, "explanation": "La búsqueda y la firma se hacen con la ID Ciudadana." }
+          ]
         }
       ]
     }
@@ -586,7 +630,12 @@
     { "termino": "Sistema de Información Normativa (SIN)", "definicion": "Sistema (independiente de TIMBÓ) donde se publican las resoluciones ya protocolizadas.", "modulo": "Actos administrativos", "uso": "Se usa al finalizar una resolución, para pegar su link en TIMBÓ." },
     { "termino": "Token", "definicion": "Dispositivo USB especial con el certificado de firma digital. Un pendrive común no sirve: debe cumplir el estándar FIPS 140-2 nivel 2 o superior.", "modulo": "Firma digital", "uso": "Hace falta solo para firmar digitalmente (no para la firma electrónica de uso diario)." },
     { "termino": "iTop", "definicion": "Portal de tickets donde se piden altas, bajas de usuarios y soporte técnico a Informática.", "modulo": "General", "uso": "Se usa cuando falta un permiso, un usuario o hay un problema técnico que no se resuelve dentro de TIMBÓ." },
-    { "termino": "ID Ciudadana", "definicion": "Usuario único (CUIL, IUP o email) con el que se ingresa tanto a TIMBÓ como a otros sistemas de la Provincia, por ejemplo para ver el recibo de sueldo.", "modulo": "General", "uso": "Es lo primero que se pide al entrar a TIMBÓ." }
+    { "termino": "ID Ciudadana", "definicion": "Usuario único (CUIL, IUP o email) con el que se ingresa tanto a TIMBÓ como a otros sistemas de la Provincia, por ejemplo para ver el recibo de sueldo.", "modulo": "General", "uso": "Es lo primero que se pide al entrar a TIMBÓ." },
+    { "termino": "Expediente reservado", "definicion": "Expediente con acceso restringido. Solo lo pueden marcar usuarios habilitados, de forma excepcional y con una providencia fundada (Circular UG TIMBÓ 3/2025).", "modulo": "Expedientes" },
+    { "termino": "Notificación (DO)", "definicion": "Documento oficial para notificar formalmente a una persona en su domicilio digital. No es lo mismo que una comunicación oficial interna (Circular UG TIMBÓ 6/2026).", "modulo": "Documentos oficiales" },
+    { "termino": "PMI", "definicion": "Promotor Ministerial de Innovación: el nexo de cada jurisdicción con la Secretaría de Gestión Pública para pedir trámites nuevos en TIMBÓ.", "modulo": "General" },
+    { "termino": "SJL", "definicion": "Documento oficial \"Justificaciones y licencias\": con él se piden licencias y justificaciones. Lo firman el agente, su jefe y Recursos Humanos.", "modulo": "Documentos oficiales" },
+    { "termino": "Firmador Digital Web", "definicion": "Herramienta gratuita de la Provincia (santafe.gob.ar/firma) para firmar PDF con la ID Ciudadana y validar firmas.", "modulo": "Firma y seguridad" }
   ],
   "situaciones": [
     { "slug": "no-veo-modulos-del-menu", "situacion": "No veo las opciones del menú", "descripcion": "Entrás a TIMBÓ pero el menú lateral aparece vacío o con muy pocas opciones.", "causa": "No estás cargado/a en una oficina de TIMBÓ, o te faltan los permisos correspondientes.", "solucion": "Avisale a tu jefe/a o referente para que lo pida a la Sectorial de Informática (por iTop). No es algo que puedas resolver vos mismo/a desde la pantalla.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "roles-y-permisos", "verificado": true },
@@ -606,9 +655,12 @@
     { "slug": "av-no-puedo-generar-el-expediente", "situacion": "Atención Virtual: no puedo generar el expediente", "descripcion": "Terminaste de revisar un trámite ciudadano pero la opción \"Generar expediente\" no te deja avanzar.", "causa": "Todavía quedan documentos del ciudadano con ícono naranja, sin revisar.", "solucion": "Revisá uno por uno los documentos pendientes (⋮ → Revisar) y aprobalos o rechazalos antes de generar el expediente.", "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "gestionar-tramite-av", "verificado": true },
     { "slug": "av-no-puedo-escribirle-al-ciudadano", "situacion": "Atención Virtual: no puedo escribirle de nuevo al ciudadano", "descripcion": "Le pediste información a un ciudadano y ahora no podés mandarle otro mensaje ni avanzar el trámite.", "causa": "El trámite quedó \"a la espera de que el ciudadano responda\": no se puede avanzar hasta que conteste.", "solucion": "Esperá la respuesta del ciudadano. Cuando conteste, el trámite vuelve a Pendientes de revisión.", "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "revisar-solicitudes-av", "verificado": true },
     { "slug": "av-no-puedo-hacer-el-pase", "situacion": "Atención Virtual: no me deja hacer el pase a otra oficina", "descripcion": "Intentás derivar un trámite de Atención Virtual a otra oficina y el sistema no te deja confirmarlo.", "causa": "La oficina destino no tiene ningún usuario con permiso de operador de Atención Virtual.", "solucion": "Avisale a esa oficina para que gestione el permiso con Informática antes de intentar el pase de nuevo.", "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "gestionar-tramite-av", "verificado": true },
-    { "slug": "olvide-mi-contrasena", "situacion": "Olvidé mi contraseña de TIMBÓ", "descripcion": "No te acordás la contraseña de tu usuario de ID Ciudadana / Intranet.", "causa": "Es normal — pasa con cualquier contraseña que no se usa seguido.", "solucion": "En la pantalla de ingreso, tocá \"¿Olvidaste tu contraseña?\" y seguí los pasos.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar", "verificado": true },
+    { "slug": "olvide-mi-contrasena", "situacion": "Olvidé mi contraseña de TIMBÓ", "descripcion": "No te acordás la contraseña de tu usuario de ID Ciudadana / Intranet.", "causa": "Es normal — pasa con cualquier contraseña que no se usa seguido.", "solucion": "En la pantalla de ingreso, tocá \"¿Olvidaste tu contraseña?\" y seguí los pasos (por correo, por teléfono o con ARCA / Mi Argentina). Si ninguno funciona, llamá al 0800 777 0801, de lunes a viernes de 8 a 18.", "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar", "verificado": true },
     { "slug": "perdi-el-token-o-se-me-bloqueo-la-clave", "situacion": "Perdí el token o se me bloqueó la clave de firma digital", "descripcion": "No podés firmar digitalmente porque perdiste el dispositivo token, o se bloqueó por intentos fallidos.", "causa": "Los certificados de firma digital no tienen un \"blanqueo\" de clave: si se pierde o se bloquea, hay que empezar de nuevo.", "solucion": "Hay que revocar el certificado y tramitar uno nuevo ante la AC-ONTI (turno y presentación con DNI y token ante un Oficial de Registro). Mientras tanto, usá la firma electrónica para lo que puedas.", "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "requisitos-firma-digital", "verificado": true },
-    { "slug": "hice-autorregistro-sin-respuesta", "situacion": "Hice un \"autorregistro\" y no tengo respuesta", "descripcion": "Consultada en el foro del curso oficial, sin que el material documente en detalle este procedimiento.", "causa": "No verificado: el curso oficial no explica el procedimiento de autorregistro con el detalle suficiente.", "solucion": "No hay una solución confirmada en el material disponible. Derivá la consulta a los contactos de soporte de TIMBÓ.", "tutorial_categoria_slug": null, "tutorial_slug": null, "verificado": false }
+    { "slug": "hice-autorregistro-sin-respuesta", "situacion": "Hice un \"autorregistro\" y no tengo respuesta", "descripcion": "Consultada en el foro del curso oficial, sin que el material documente en detalle este procedimiento.", "causa": "No verificado: el curso oficial no explica el procedimiento de autorregistro con el detalle suficiente.", "solucion": "No hay una solución confirmada en el material disponible. Derivá la consulta a los contactos de soporte de TIMBÓ.", "tutorial_categoria_slug": null, "tutorial_slug": null, "verificado": false },
+    { "slug": "tcp-pide-algo-por-av", "situacion": "Llegó un pedido del Tribunal de Cuentas por Atención Virtual", "descripcion": "El TCP pide información o documentación sobre un expediente que tiene en vista.", "solucion": "Mesa de Entradas pide el expediente a quien lo tenga, suma el pedido como nueva orden, lo deriva a la Secretaría de Administración (o la que corresponda), responde la Atención Virtual avisando la recepción y la cierra. La respuesta se hace en el mismo expediente con el documento oficial \"Respuesta al Tribunal de Cuentas – Importado\" o \"– Libre\", con el usuario del TCP como destinatario.", "notas_adicionales": "Quien tenga el expediente tiene que mandarlo enseguida, sin pases intermedios. Circular UG TIMBÓ 11/2026, Anexo I.", "categoria_libre": "Tribunal de Cuentas", "verificado": true },
+    { "slug": "notificaciones-personal-domicilio-digital", "situacion": "¿Me van a notificar al domicilio digital? ¿Y el recibo de sueldo?", "descripcion": "Dudas sobre cómo le llegan las notificaciones al personal.", "solucion": "Desde el 1 de junio de 2026, las notificaciones al personal van al domicilio digital, y el recibo de sueldo también se baja desde ahí. Hay que adherirse al domicilio digital en Atención Virtual con ID Ciudadana de nivel 2 o más.", "notas_adicionales": "La Circular UG TIMBÓ 6/2026 está dirigida al Ministerio de Gobierno e Innovación Pública: confirmá con Recursos Humanos si ya aplica en tu hospital.", "categoria_libre": "Notificaciones", "verificado": false },
+    { "slug": "digitalizar-un-tramite", "situacion": "Queremos que un trámite nuestro se haga por TIMBÓ o por Atención Virtual", "descripcion": "Un procedimiento del hospital todavía no está en TIMBÓ.", "solucion": "Para trámites internos: mandale al PMI de tu jurisdicción el nombre del trámite, las oficinas que intervienen y un resumen del circuito; el PMI lo autoriza y lo reenvía a procesosdigitales@santafe.gov.ar. Para trámites de Atención Virtual: el funcionario responsable lo pide en atencionvirtual.santafe.gob.ar con la gestión \"Solicitud para Digitalización de Trámites para Atención Virtual\".", "notas_adicionales": "Circulares UG TIMBÓ 3/2025 (Anexo II) y 4/2026.", "categoria_libre": "Trámites nuevos", "verificado": true }
   ],
   "tareas": [
     { "slug": "entrar-a-timbo", "pregunta": "¿Cómo entro a TIMBÓ?", "keywords": ["entrar", "ingresar", "login", "usuario", "contraseña"], "tutorial_categoria_slug": "primeros-pasos", "tutorial_slug": "ingresar" },
@@ -634,7 +686,9 @@
     { "slug": "revisar-tramite-de-atencion-virtual", "pregunta": "¿Cómo reviso un trámite que inició un ciudadano?", "keywords": ["atencion virtual", "ciudadano", "revisar", "tramite"], "tutorial_categoria_slug": "atencion-virtual", "tutorial_slug": "revisar-solicitudes-av" },
     { "slug": "que-firma-uso", "pregunta": "¿Qué firma uso, electrónica o digital?", "keywords": ["firma", "electronica", "digital", "token"], "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "firma-electronica-y-digital" },
     { "slug": "cuidar-mi-usuario", "pregunta": "¿Cómo cuido mi usuario y mi contraseña?", "keywords": ["seguridad", "contraseña", "clave", "cuidar"], "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "cuidar-mi-cuenta" },
-    { "slug": "diferencia-vincular-fusionar", "pregunta": "¿Cuál es la diferencia entre vincular y fusionar expedientes?", "keywords": ["vincular", "fusionar", "diferencia", "expedientes"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "vincular-y-fusionar" }
+    { "slug": "diferencia-vincular-fusionar", "pregunta": "¿Cuál es la diferencia entre vincular y fusionar expedientes?", "keywords": ["vincular", "fusionar", "diferencia", "expedientes"], "tutorial_categoria_slug": "expedientes", "tutorial_slug": "vincular-y-fusionar" },
+    { "slug": "pedir-licencia", "pregunta": "¿Cómo pido una licencia o justificación?", "keywords": ["licencia", "justificacion", "sjl", "ausencia", "falta", "enfermedad", "articulo", "recursos humanos", "vacaciones"], "tutorial_categoria_slug": "documentos-oficiales", "tutorial_slug": "pedir-licencia-sjl" },
+    { "slug": "firmar-pdf", "pregunta": "¿Cómo firmo un PDF que no está en TIMBÓ?", "keywords": ["firmar pdf", "firmador", "firmador web", "firma", "validar firma", "pdf", "compartir firma"], "tutorial_categoria_slug": "firma-y-seguridad", "tutorial_slug": "firmador-digital-web" }
   ],
   "quickstart_steps": [
     { "titulo": "Conocer TIMBÓ", "descripcion": "TIMBÓ es la plataforma digital donde la Provincia de Santa Fe hace sus trámites administrativos: reemplaza al expediente en papel.", "tutorial_categoria_slug": null, "tutorial_slug": null, "situacion_slug": null },
