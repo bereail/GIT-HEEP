@@ -119,6 +119,40 @@ Necesita el Visual C++ Redistributable (VCOMP140.DLL). El clasificador de
 permisos no deja que Claude ejecute `whisper-cli.exe`: lo corre la usuaria
 con un `.bat`.
 
+## Para retomar (fin del 13/11)
+
+**Falta deployar** (la usuaria lo vio en local, falta su OK final): los
+commits `44a0c0f` (lección de urgencia/desierto) y `d407af2` (mejoras del
+chatbot) están en la rama `integracion-deploy`, pero **no en `main` ni en el
+servidor** (que quedó en `945a7c9`). Con el OK: push de `integracion-deploy`
+a `main` y el deploy de siempre (ver arriba).
+
+Qué cambió en el chatbot (`d407af2`):
+- Buscador (`app/services/buscador.py`): palabra entera 1.5 / al principio
+  de otra 1 / adentro de otra 0.3; un artículo del Nomenclador responde solo
+  si coincide todo lo que no es "pedir" (y suma +3 si es así, salvo que la
+  palabra venga de corregir un error de tipeo); "¿qué es X?" busca X aunque
+  sea palabra vacía ("SIN"); las palabras clave de las tareas cuentan como
+  título y las de varias palabras suman +3 si están enteras en la pregunta;
+  el nombre del propio tema se ignora ("timbo" dentro de TIMBÓ); saludos y
+  agradecimientos con `respuesta_de_charla`.
+- `routes.py`: si la pregunta nombra otro sistema, deriva ahí con umbral
+  más bajo.
+- `chatbot.js`: conversación guardada en `sessionStorage` por tema, ejemplo
+  de pregunta en el placeholder, pie fijo "Dejá tu consulta", respuesta a
+  "hola"/"gracias".
+- Pruebas: `tests/test_buscador.py`. La batería de 72 preguntas está en el
+  scratchpad de la sesión (`tools/bateria_chatbot.py`); conviene pasarla a
+  `scripts/` si se sigue afinando.
+
+Lo que el chatbot todavía no responde bien: en Compras "no me deja firmar"
+(responde algo sin relación) y "¿cómo subo un archivo?" (deriva a
+Expedientes); en miHospital "internar", "evolución" y "receta" no tienen
+contenido.
+
+La vista previa local se cierra sola si a la PC le falta memoria (7,7 GB):
+levantarla solo cuando haga falta.
+
 ## Pendientes (actualizado 2026-11-13)
 
 Contenido:
