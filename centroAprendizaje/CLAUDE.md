@@ -68,6 +68,49 @@ aparece de nuevo una divergencia de git sin commits en común, es probable que
 sea por lo mismo: confirmá en qué PC se trabajó antes de asumir que es un
 error.
 
+## Segunda reconciliación y deploy (2026-11-13)
+
+Volvió a pasar: la PC "BERE-PC" (repo `D:\Bere\GIT\GIT-HEEP`, todo en la raíz)
+trabajó un día entero en paralelo. Se integró acá con una combinación de 3
+vías del contenido (base: commit `2537247` de esa línea) y se deployó. Lo que
+sumó:
+- Revisión contra fuentes oficiales: circulares SCyGB y UG TIMBÓ, Pliego
+  Único, guías PDF y videos (listas "APP-TimboCompras", "Timbó para la
+  Reforma", "Timboteca", "Timbó Rendiciones").
+- Compras: lecciones por rol (Gestor, Supervisor, Evaluador), pliego modelo,
+  montos 2026, adjudicar y después de adjudicar; alta de artículos con la vía
+  de Farmacia (SUFYD) para medicamentos y descartables.
+- Expedientes: licencias (SJL), documento importado y embebidos, Firmador
+  Digital Web, módulo "Rendiciones de subsidios".
+- Chatbot: puntaje mínimo y "¿Te referís a...?", sugerencias, pasos plegados,
+  sinónimos y errores de tipeo, derivación a otro tema; 👎 queda en
+  estadísticas como "sin respuesta".
+- `app/services/importacion.py`: al reimportar un tema, consultas, feedback y
+  eventos pasan al tema nuevo (antes quedaban huérfanos). El nomenclador se
+  borra con el tema: correr siempre `importar_equivalencias.py` al final.
+- miHospital figuraba como "TIMBÓ" en su JSON: corregido.
+
+**Deploy en el servidor** (`/var/www/timbo-capacitaciones`, servicio
+`timbo-capacitaciones`): `git pull` y scripts como el usuario
+`timbo-capacitaciones` (`sudo -u timbo-capacitaciones -H ...`), nunca como
+root: quedaron 132 archivos a nombre de root y el `git pull` fallaba. Orden:
+importar_mihospital → importar_timbo_expedientes → importar_timbo_compras →
+importar_faq_chats → importar_equivalencias, y después
+`systemctl restart timbo-capacitaciones`. Antes, backup de
+`instance/centro_aprendizaje.sqlite3`.
+
+Pendiente de esta etapa:
+- 10 videos oficiales sin subtítulos (compras directas 70 min, Clase 01 de
+  Compras, 4 capacitaciones largas de Expedientes, CD-01, registro de
+  proveedor, "Expediente/Documentos oficiales ¿Cómo lo hacemos?"): se
+  transcriben localmente con whisper.cpp y falta volcar lo útil al portal.
+  6 videos de las listas son privados. "Edición MS-Compras" y "Del papel a
+  la IA" no aplican al hospital.
+- El test `test_mensaje_nuevo_del_usuario_se_marca_no_leido_por_admin` falla
+  a veces por la resolución de las marcas de tiempo.
+- Confirmar con Compras si aplica el control de la URC (Circular SCyGB
+  03/2026) y con RRHH si ya rige el domicilio digital para el personal.
+
 ## Estado (2026-11-12)
 
 Hecho:
