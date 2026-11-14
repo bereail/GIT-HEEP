@@ -124,7 +124,11 @@ con un `.bat`.
 ## Revisión del 14/11
 
 - **Deploy**: el 14/11 se subió `integracion-deploy` a `main` y al servidor
-  (lección de urgencia/desierto y chatbot de `d407af2`).
+  (lección de urgencia/desierto y chatbot de `d407af2`). Más tarde ese día
+  se deployó también `e7e93ab`, con todo lo de esta sección. Se hizo copia
+  de la base, se corrieron los 5 importadores y se reinició el servicio.
+  En el servidor, la batería del chatbot dio 88/88. **El servidor y `main`
+  están en `e7e93ab`.**
 - **Videos**: se cruzó el canal oficial completo con el portal (sección 4.2
   de `timboDocumentacion/FAQ_SOPORTE_TIMBO.md`). Se leyeron por subtítulos
   los 13 que no estaban enlazados, incluido "Atención Virtual ¿Cómo lo
@@ -146,6 +150,11 @@ con un `.bat`.
   mensaje siempre queda después (`_despues_de_la_vista_del_admin`).
 - miHospital sigue sin contenido de "evolución" ni "receta": no están en el
   manual. Hay que relevarlo con alguien que use el sistema.
+- Sugerencias que quedaron:
+  - Una vez por semana, revisar en /admin/chatbot las preguntas sin
+    respuesta y los 👎, y sumarlas a la batería.
+  - Tener copia de los videos más cortos en la red interna, porque en
+    muchos hospitales YouTube está bloqueado.
 
 La vista previa local se cierra sola si a la PC le falta memoria (7,7 GB):
 levantarla solo cuando haga falta.
