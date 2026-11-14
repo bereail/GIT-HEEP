@@ -7,6 +7,20 @@
   <p class="hero__desc">{{ tema.descripcion }}</p>
 </div>
 
+<form class="ask-box js-preguntar-form" autocomplete="off">
+  <label class="ask-box__label" for="ask-box-input">¿Qué necesitás hacer?</label>
+  <div class="ask-box__row">
+    <input class="input" id="ask-box-input" type="text" maxlength="300" enterkeyhint="send"
+           placeholder="Escribí tu duda con tus palabras" />
+    <button type="submit" class="btn btn--primary">Preguntar</button>
+  </div>
+  {% if sugerencias %}
+  <div class="ask-box__chips">
+    {% for s in sugerencias %}<button type="button" class="filter-chip" data-preguntar="{{ s }}">{{ s }}</button>{% endfor %}
+  </div>
+  {% endif %}
+</form>
+
 <div class="section" data-progreso-total='{{ categorias_para_js(tema) | tojson }}'>
   <div class="progress-bar"><div class="progress-bar__fill" style="width:0%"></div></div>
   <div class="progress-ring-label" data-progreso-label>Progreso general: 0%</div>

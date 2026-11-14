@@ -948,7 +948,7 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   border-top: 1px solid var(--border);
   flex: none;
 }
-.chatbot-panel__form .input { flex: 1; }
+.chatbot-panel__form .input { flex: 1; padding-left: 12px; }
 .chatbot-panel__send {
   flex: none;
   width: 38px; height: 38px;
@@ -1060,8 +1060,40 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 }
 
 @media (max-width: 520px) {
-  .card-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; gap: 10px; }
+  /* En el celular las tarjetas van en fila (ícono al costado) para que entren varias en pantalla. */
+  .card-link:has(> .home-card__icon) {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    column-gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+  }
+  .card-link > .home-card__icon { grid-row: span 2; margin: 0; font-size: 24px; }
+  .hero h1 { font-size: 22px; }
+  .hero__desc { font-size: 14px; }
+  .ask-box__row { flex-direction: column; }
+  /* Las tablas cortan el texto: en el celular las celdas bajan de línea. */
+  .data-table th, .data-table td { white-space: normal; min-width: 110px; padding: 8px 10px; }
+  .chatbot-panel { left: 8px; right: 8px; bottom: 8px; height: min(85vh, 600px); }
+  .chatbot-fab[aria-expanded="true"] { display: none; }
 }
+
+/* ---------------------------------------------------- Caja de pregunta --- */
+
+.ask-box {
+  margin: 20px 0 8px;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.ask-box__label { display: block; font-weight: 650; font-size: 15px; margin-bottom: 10px; }
+.ask-box__row { display: flex; gap: 8px; }
+.ask-box__row .input { flex: 1; padding-left: 12px; font-size: 15px; }
+.ask-box__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.ask-box__chips .filter-chip { text-align: left; }
 
 /* ------------------------------------------------------- prefers-reduced --- */
 

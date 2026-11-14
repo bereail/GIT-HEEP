@@ -62,7 +62,7 @@ def portal_inicio():
 @ui_bp.route("/temas/<tema_slug>/")
 def ver_tema(tema_slug):
     tema = _tema_o_404(tema_slug)
-    return render_template("tema_inicio.html", tema=tema)
+    return render_template("tema_inicio.html", tema=tema, sugerencias=buscador.sugerencias_iniciales(tema, 6))
 
 
 @ui_bp.route("/temas/<tema_slug>/quickstart")

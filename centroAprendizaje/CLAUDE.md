@@ -186,7 +186,12 @@ Para confirmar con personas del hospital:
 
 Técnico:
 8. ~~Test que fallaba a veces~~: corregido el 14/11.
-9. Pulido final de UI/UX.
+9. Pulido final de UI/UX. Hecho el 14/11:
+   - Caja "¿Qué necesitás hacer?" en el inicio de cada tema. Las preguntas
+     escritas ahí y los botones abren el chatbot ya respondiendo.
+   - En el celular: tarjetas en fila, tablas que bajan de línea y chatbot
+     casi a pantalla completa.
+   Sigue pendiente revisar el resto de las páginas.
 
 ## Estado (2026-11-12)
 

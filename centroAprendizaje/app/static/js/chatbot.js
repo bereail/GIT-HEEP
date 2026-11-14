@@ -266,6 +266,33 @@ export function initChatbot({ temaSlug, nombreTema }) {
     preguntar(consulta);
   });
 
+  // Si llega con una pregunta, no hace falta el saludo con sugerencias.
+  function abrirYPreguntar(consulta) {
+    if (!saludado) {
+      restaurar();
+      saludado = true;
+    }
+    abrir();
+    preguntar(consulta);
+  }
+
+  // La caja "¿Qué necesitás hacer?" del inicio del tema pregunta acá mismo.
+  document.addEventListener('submit', (ev) => {
+    const caja = ev.target.closest('.js-preguntar-form');
+    if (!caja) return;
+    ev.preventDefault();
+    const campo = caja.querySelector('input');
+    const consulta = campo.value.trim();
+    if (!consulta) return campo.focus();
+    campo.value = '';
+    abrirYPreguntar(consulta);
+  });
+  document.addEventListener('click', (ev) => {
+    const boton = ev.target.closest('[data-preguntar]');
+    if (!boton) return;
+    abrirYPreguntar(boton.dataset.preguntar);
+  });
+
   document.getElementById('chatbot-consulta').addEventListener('click', (ev) => {
     if (ultimaPregunta) ev.currentTarget.href = `${urlConsulta}?contexto=${encodeURIComponent(ultimaPregunta)}`;
   });
