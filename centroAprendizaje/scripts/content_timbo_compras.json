@@ -766,10 +766,20 @@
               "text": "Otro principio de Territorio 5.0: no le pidas al proveedor documentación que el Estado ya tiene en su poder."
             },
             {
+              "type": "tip",
+              "text": "Además de \"por monto menor al tope\", al pedir la carátula hay otros tipos de compra directa: por especialización, por reparación de maquinarias, entre organismos del sector público, por exclusividad, entre otros."
+            },
+            {
               "type": "video",
               "url": "https://youtu.be/QH7zvgZ7sbQ",
               "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
               "minutos": 70
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/IpayiPYodbU",
+              "title": "Compras Directas",
+              "minutos": 1
             }
           ],
           "quiz": [
@@ -834,10 +844,41 @@
               "text": "Si ya veías usando un CD-01 armado fuera de TIMBÓ (digital, no escaneado) y firmado digitalmente, lo podés subir igual como archivo PDF al expediente: no es obligatorio generarlo desde Documentos Oficiales."
             },
             {
+              "type": "concepts",
+              "items": [
+                {
+                  "term": "Compra de bienes",
+                  "def": "Con \"Agregar bien\" cargás cada renglón: cantidad, detalle, especificación y costo estimado. Repetilo por cada bien."
+                },
+                {
+                  "term": "Contratación de servicios",
+                  "def": "Igual, con \"Agregar servicio\"."
+                },
+                {
+                  "term": "Costo total estimado y Fundamentación del pedido",
+                  "def": "Son obligatorios: si quedan vacíos, el formulario no avanza."
+                },
+                {
+                  "term": "Nómina de proveedores propuestos",
+                  "def": "Con \"Agregar proveedor\": nombre, dirección, teléfono y e-mail."
+                }
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "En la referencia describí la compra (por ejemplo, \"CD01 Compra de sillas y mesas para Salón Blanco\"). Los firmantes se eligen en \"Definir firmantes\"; después, Acciones → Enviar a firmar → Confirmar."
+            },
+            {
               "type": "video",
               "url": "https://youtu.be/QH7zvgZ7sbQ",
               "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
               "minutos": 70
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/b76RDFmcV3c",
+              "title": "CD-01: Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope",
+              "minutos": 5
             }
           ],
           "quiz": [
@@ -909,6 +950,10 @@
               ]
             },
             {
+              "type": "tip",
+              "text": "Orden del video oficial: vincular el CD-01 → subir la nota de solicitud, la ficha técnica y los presupuestos → tildar todo → \"Incorporar documentos\" (podés reordenarlos) → firma electrónica → pase."
+            },
+            {
               "type": "video",
               "url": "https://youtu.be/QH7zvgZ7sbQ",
               "title": "Gestión Timbó. Capacitación en Compras directas a través de la plataforma digital",
@@ -932,6 +977,12 @@
                   "def": "Después de adjudicar, el pago también se gestiona en TIMBÓ. El paso a paso de cada tipo de compra directa está en la biblioteca de procedimientos administrativos (Timboteca)."
                 }
               ]
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/b76RDFmcV3c",
+              "title": "CD-01: Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope",
+              "minutos": 5
             }
           ],
           "quiz": [
@@ -3041,6 +3092,16 @@
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "publicar-en-portal",
       "verificado": true
+    },
+    {
+      "slug": "no-me-deja-firmar",
+      "situacion": "No me deja firmar o no me aparece la acción",
+      "descripcion": "Tenés que firmar o avanzar un paso (aprobar el pliego, preadjudicar, firmar el CD-01 o un decisorio) y el sistema no te deja.",
+      "causa": "En TIMBÓ Compras, cada paso lo hace solo el rol asignado (Gestor, Supervisor o Evaluador). Los documentos oficiales (CD-01, decisorios, notas) se firman en orden, cuando te toca en la cadena de firmas.",
+      "solucion": "Si es un paso de TIMBÓ Compras, pedile el rol que falta al Administrador Local de tu hospital. Si es un documento oficial, buscalo en Documentos oficiales → Gestión → Pendientes (estado \"Firmar documento oficial\") → ⋮ → Evaluar → Acciones → Aprobar y firmar. Si no está ahí, todavía no es tu turno.",
+      "notas_adicionales": "Los usuarios y los roles de TIMBÓ Compras los asigna el Administrador Local (Circulares UG TIMBÓ 1 y 3/2026). Si sigue sin andar, escribile a la mesa de ayuda de TIMBÓ Compras.",
+      "categoria_libre": "Ayuda",
+      "verificado": true
     }
   ],
   "tareas": [
@@ -3055,9 +3116,7 @@
         "circuito",
         "proceso de compra",
         "licitacion",
-        "contratacion",
-        "adjudicar",
-        "adjudicacion"
+        "contratacion"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "hacer-una-compra"
@@ -3133,7 +3192,12 @@
         "precio",
         "renglones",
         "requisitos minimos",
-        "oferta"
+        "oferta",
+        "oferto",
+        "como oferto",
+        "hacer una oferta",
+        "cargar la oferta",
+        "ofertar"
       ],
       "tutorial_categoria_slug": "ofertar",
       "tutorial_slug": "completar-y-presentar"
@@ -3216,8 +3280,6 @@
         "compra directa",
         "gestion directa",
         "monto menor al tope",
-        "cd01",
-        "cd-01",
         "sin licitacion"
       ],
       "tutorial_categoria_slug": "compras-directas",
@@ -3232,7 +3294,11 @@
         "documento oficial",
         "firma conjunta",
         "renglones",
-        "compra directa"
+        "compra directa",
+        "formulario cd01",
+        "formulario cd-01",
+        "completar el cd-01",
+        "hago el cd-01"
       ],
       "tutorial_categoria_slug": "compras-directas",
       "tutorial_slug": "generar-formulario-cd01"
@@ -3246,7 +3312,10 @@
         "vincular documento",
         "nota de solicitud",
         "ficha tecnica",
-        "compra directa"
+        "compra directa",
+        "pago",
+        "pagar",
+        "gestion de pago"
       ],
       "tutorial_categoria_slug": "compras-directas",
       "tutorial_slug": "armar-expediente-y-pase"

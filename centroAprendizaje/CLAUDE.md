@@ -121,41 +121,36 @@ Necesita el Visual C++ Redistributable (VCOMP140.DLL). El clasificador de
 permisos no deja que Claude ejecute `whisper-cli.exe`: lo corre la usuaria
 con un `.bat`.
 
-## Para retomar (fin del 13/11)
+## Revisión del 14/11
 
-**Falta deployar** (la usuaria lo vio en local, falta su OK final): los
-commits `44a0c0f` (lección de urgencia/desierto) y `d407af2` (mejoras del
-chatbot) están en la rama `integracion-deploy`, pero **no en `main` ni en el
-servidor** (que quedó en `945a7c9`). Con el OK: push de `integracion-deploy`
-a `main` y el deploy de siempre (ver arriba).
-
-Qué cambió en el chatbot (`d407af2`):
-- Buscador (`app/services/buscador.py`): palabra entera 1.5 / al principio
-  de otra 1 / adentro de otra 0.3; un artículo del Nomenclador responde solo
-  si coincide todo lo que no es "pedir" (y suma +3 si es así, salvo que la
-  palabra venga de corregir un error de tipeo); "¿qué es X?" busca X aunque
-  sea palabra vacía ("SIN"); las palabras clave de las tareas cuentan como
-  título y las de varias palabras suman +3 si están enteras en la pregunta;
-  el nombre del propio tema se ignora ("timbo" dentro de TIMBÓ); saludos y
-  agradecimientos con `respuesta_de_charla`.
-- `routes.py`: si la pregunta nombra otro sistema, deriva ahí con umbral
-  más bajo.
-- `chatbot.js`: conversación guardada en `sessionStorage` por tema, ejemplo
-  de pregunta en el placeholder, pie fijo "Dejá tu consulta", respuesta a
-  "hola"/"gracias".
-- Pruebas: `tests/test_buscador.py`. La batería de 72 preguntas está en el
-  scratchpad de la sesión (`tools/bateria_chatbot.py`); conviene pasarla a
-  `scripts/` si se sigue afinando.
-
-Lo que el chatbot todavía no responde bien: en Compras "no me deja firmar"
-(responde algo sin relación) y "¿cómo subo un archivo?" (deriva a
-Expedientes); en miHospital "internar", "evolución" y "receta" no tienen
-contenido.
+- **Deploy**: el 14/11 se subió `integracion-deploy` a `main` y al servidor
+  (lección de urgencia/desierto y chatbot de `d407af2`).
+- **Videos**: se cruzó el canal oficial completo con el portal (sección 4.2
+  de `timboDocumentacion/FAQ_SOPORTE_TIMBO.md`). Se leyeron por subtítulos
+  los 13 que no estaban enlazados, incluido "Atención Virtual ¿Cómo lo
+  hacemos?", y el CD-01 (mudo) se miró cuadro por cuadro. Lo nuevo quedó en
+  16 lecciones, y cada video, enlazado en su lección. Lo único que falta es
+  el texto hablado de la Clase 01 de Compras (whisper lo lee como música;
+  lo de las diapositivas ya está cargado).
+- La integración del 13/11 había perdido las secciones 4.1 y 5 de
+  `FAQ_SOPORTE_TIMBO.md`: se recuperaron de la otra PC.
+- **Chatbot**: la batería ahora está en `scripts/bateria_chatbot.py` (88
+  preguntas; correrla después de importar). Pasó de 69 a 88 bien. Cambios:
+  tareas nuevas de Atención Virtual (agente), situaciones "No me deja
+  firmar" (Expedientes y Compras), palabras clave afinadas, "¿qué es X?"
+  reconoce la sigla al final del término ("... (SIN)"), el bonus por título
+  exacto ya no deriva a otro tema, y la respuesta trae "▶ Ver el video
+  oficial" (el más corto de la lección).
+- El test que fallaba a veces era un error real: un mensaje del usuario con
+  la misma hora que la última vista del admin quedaba como leído. Ahora el
+  mensaje siempre queda después (`_despues_de_la_vista_del_admin`).
+- miHospital sigue sin contenido de "evolución" ni "receta": no están en el
+  manual. Hay que relevarlo con alguien que use el sistema.
 
 La vista previa local se cierra sola si a la PC le falta memoria (7,7 GB):
 levantarla solo cuando haga falta.
 
-## Pendientes (actualizado 2026-11-13)
+## Pendientes (actualizado 2026-11-14)
 
 Contenido:
 1. ~~Lección de contrataciones directas por urgencia o por proceso
@@ -165,8 +160,7 @@ Contenido:
    lección lo avisa): confirmarlos con Compras.
 2. Montos de "¿Qué procedimiento corresponde según el monto?": actualizarlos
    cada año con la circular nueva de la SCyGB.
-3. "Atención Virtual ¿Cómo lo hacemos?" (8:45, lado agente) sigue sin
-   profundizar.
+3. ~~"Atención Virtual ¿Cómo lo hacemos?"~~: hecho el 14/11.
 4. Opcional: el texto completo de la Clase 01 de Compras (7rIDyLtWlHM) no
    está transcripto; lo importante ya salió de las diapositivas.
 
@@ -182,8 +176,7 @@ Para confirmar con personas del hospital:
    `scripts/importar_faq_chats.py`.
 
 Técnico:
-8. El test `test_mensaje_nuevo_del_usuario_se_marca_no_leido_por_admin`
-   falla a veces por la resolución de las marcas de tiempo.
+8. ~~Test que fallaba a veces~~: corregido el 14/11.
 9. Pulido final de UI/UX.
 
 ## Estado (2026-11-12)

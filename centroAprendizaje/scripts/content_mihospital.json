@@ -1807,7 +1807,10 @@
         "libres",
         "sala",
         "ocupacion",
-        "internacion"
+        "internacion",
+        "internar",
+        "internar un paciente",
+        "cama"
       ],
       "moduleId": "internaciones",
       "lessonId": "ocupacion-sala",

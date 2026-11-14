@@ -138,6 +138,22 @@
             {
               "type": "warning",
               "text": "Tres reglas de oro: 1) Tu clave es personal, no se presta — lo que se hace con tu usuario se presume hecho por vos. 2) Lo que incorporás a un expediente no se borra: revisalo antes. 3) Una vez digital, siempre digital: no lo vuelvas al papel."
+            },
+            {
+              "type": "tip",
+              "text": "Para entrar: www.santafe.gob.ar/ms/timbo → \"Ingresar\". Usuario: tu CUIL, IUP o email (el de intranet); clave: la misma con la que ves tu recibo de sueldo. Si no ves un módulo en el menú, es porque todavía no te cargaron en una oficina o no te dieron el permiso."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/alWHBV5ScQ4",
+              "title": "¿Qué es Timbó?",
+              "minutos": 4
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/ZwD_QIsn1eU",
+              "title": "Gestiones en Timbó",
+              "minutos": 1
             }
           ],
           "quiz": []
@@ -330,6 +346,18 @@
             {
               "type": "tip",
               "text": "El motivo es obligatorio y admite hasta 200 caracteres. Lo escribe quien pide la carátula, no la Mesa de Entradas: un resumen del tema con los datos que lo identifican (detalle, beneficiario, monto)."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/e3rhyEJ4g0U",
+              "title": "Expediente Electrónico ¿Cómo lo hacemos?",
+              "minutos": 2
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/qVf-yyXoE0k",
+              "title": "Capacitación en Gestión de Expedientes Electrónicos y Documentos Oficiales",
+              "minutos": 32
             }
           ],
           "quiz": []
@@ -555,6 +583,16 @@
             {
               "type": "warning",
               "text": "Las carátulas y las providencias no se pueden subsanar."
+            },
+            {
+              "type": "tip",
+              "text": "El documento que corrige tiene que ser un documento oficial ya generado en TIMBÓ (no un archivo suelto). Para ver qué orden corrigió a cuál: ⋮ del documento marcado → \"Ver documento de subsanación\"."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/LW7dfhIkwmQ",
+              "title": "Subsanar órdenes",
+              "minutos": 2
             }
           ],
           "quiz": []
@@ -634,6 +672,12 @@
             {
               "type": "tip",
               "text": "Mientras está en guarda temporal, cualquiera de la oficina puede consultar el expediente, pero nadie le puede agregar documentos. Para enviar a guarda se necesita un permiso especial: pedíselo a los administradores de TIMBÓ."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/chjAuO6mX1c",
+              "title": "Guarda temporal",
+              "minutos": 2
             }
           ],
           "quiz": []
@@ -694,6 +738,16 @@
             {
               "type": "tip",
               "text": "Para buscar necesitás el número completo. Si el expediente no está en tu oficina, la consulta solo muestra dónde se inició y por dónde pasó, no su contenido: para leerlo, pedí una vista."
+            },
+            {
+              "type": "tip",
+              "text": "Para leer todos los documentos de un expediente de corrido: ⋮ → vista de la documentación → \"Previsualización de documentos\". Pasás de uno a otro con las flechas del teclado."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/awusWqQR2lE",
+              "title": "Visualizar documentos de un Expediente",
+              "minutos": 1
             }
           ],
           "quiz": []
@@ -731,6 +785,16 @@
             {
               "type": "tip",
               "text": "¿Te dieron vista y querés responder? En \"Gestión de visualización\" → \"En curso\": ⋮ → \"Gestor de trámite\" → \"Enviar trámite\" → \"Generar informe\". Escribilo o adjuntalo (documento oficial o PDF) y guardá: le llega a quien te compartió la vista."
+            },
+            {
+              "type": "tip",
+              "text": "¿Te respondieron con un informe? Te llega un mail con el número de solicitud. Pegalo en el buscador de \"Gestión de visualización\" → \"En curso\" → ⋮ → Previsualizar. Desde ahí podés descargar el informe y subirlo al expediente."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/cIxZoNUAbHc",
+              "title": "¿Cómo gestionar la visualización de un Expediente? Gestión de Vista",
+              "minutos": 4
             }
           ],
           "quiz": []
@@ -930,6 +994,18 @@
             {
               "type": "tip",
               "text": "La referencia es el título con el que después se busca el documento: escribila clara y concreta (hasta 100 caracteres). Si le pedís el documento a otra persona, podés mandarle un \"archivo de trabajo\" (por ejemplo, un modelo de nota) como ayuda."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/aslFJaruz68",
+              "title": "Documentos Oficiales ¿Cómo lo hacemos?",
+              "minutos": 2
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/-1iu7Pll1AI",
+              "title": "Documento Comunicable con Firma Conjunta",
+              "minutos": 4
             }
           ],
           "quiz": []
@@ -1015,6 +1091,20 @@
                   "def": "Aviso formal a una persona (por ejemplo, un ciudadano o un proveedor). Va a su domicilio digital con el documento oficial \"Notificaciones\" (Circular UG TIMBÓ 6/2026)."
                 }
               ]
+            },
+            {
+              "type": "tip",
+              "text": "Para mandar una: Documentos oficiales → Nuevo documento oficial → tipo \"Comunicaciones oficiales\" (tiene que decir \"comunicable interno\") → Guardar. En Pendientes: ⋮ → Documento oficial → completá y tocá el ícono de destinatarios (tienen que estar cargados en una oficina de TIMBÓ) → Acciones → firmalo o mandalo a firmar."
+            },
+            {
+              "type": "tip",
+              "text": "Para ver a quién le llegó: bandeja Aprobados → ⋮ → Historial."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/kb6--2MdL3A",
+              "title": "Notificaciones y Comunicaciones Oficiales",
+              "minutos": 3
             }
           ],
           "quiz": []
@@ -1112,6 +1202,16 @@
             {
               "type": "tip",
               "text": "El ciudadano lo ve entrando a Atención Virtual → pestaña \"Domicilio digital\", donde puede descargar la notificación."
+            },
+            {
+              "type": "tip",
+              "text": "Si es una notificación formal de un acto (con los requisitos de la Ley 14.428), elegí el tipo \"Notificaciones con plazo\" o \"Notificaciones sin plazo\", con el atributo \"comunicable externo\". A la persona le llega un mail de aviso a la dirección de su ID Ciudadana."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/kb6--2MdL3A",
+              "title": "Notificaciones y Comunicaciones Oficiales",
+              "minutos": 3
             }
           ],
           "quiz": []
@@ -1156,6 +1256,16 @@
                   "def": "Solo consulta el estado de los trámites del organismo."
                 }
               ]
+            },
+            {
+              "type": "tip",
+              "text": "Permisos: para iniciar y protocolizar hace falta el de \"Gestor de resolución\"; para firmar, el de \"Firma de actos administrativos\". Se los pedís al Administrador Local."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/htvuudJzMbg",
+              "title": "Actos Administrativos Registrables ¿Cómo lo hacemos?",
+              "minutos": 8
             }
           ],
           "quiz": []
@@ -1311,6 +1421,18 @@
               "text": "El trámite enviado se puede seguir en la pestaña \"Trámites\" (bandejas Necesita información / En proceso / Finalizados). Si deriva en un expediente, el ciudadano puede seguirlo desde su propia pantalla de Atención Virtual en cualquier momento (sin tener que pedir vista, como sí hace un agente de otra oficina): en la pestaña \"Expedientes\" ve una tabla con Nombre, Usuario y fecha, Referencia y Orden de cada documento (carátula, formulario, constancias, solicitud), y por separado una sección \"Documentos enviados\" con lo que el propio ciudadano fue adjuntando después (justificaciones, comprobantes de pago, etc.)."
             },
             {
+              "type": "tip",
+              "text": "También se puede arrancar desde santafe.gob.ar/gestionesciudadanas: busca la gestión, lee requisitos y costos, y toca \"Iniciar gestión online\", que lo lleva a Atención Virtual."
+            },
+            {
+              "type": "tip",
+              "text": "En \"En proceso\", el ⋮ de cada trámite tiene: Ver conversación, Ver historial, Ver documentos y Cancelar trámite. Cuando termina, en \"Finalizados\" → Ver conversación está el PDF para descargar. Cada movimiento le llega por mail."
+            },
+            {
+              "type": "tip",
+              "text": "Si se generó un expediente, el ciudadano puede sumarle documentos cuando quiera: entra al expediente → Acciones → \"Subir nuevo archivo\" → \"Enviar documentos\". Al agente le aparecen como pendientes para incorporar."
+            },
+            {
               "type": "video",
               "url": "https://youtu.be/gV_qoxpmAjE",
               "title": "¿Cómo adherirme al Domicilio Digital en Atención Virtual?",
@@ -1321,6 +1443,18 @@
               "url": "https://youtu.be/M2AUtzccRyI",
               "title": "Consultar un Expediente mediante Atención Virtual",
               "minutos": 2
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/n0qxSRoAFaM",
+              "title": "¿Cómo realizar una gestión online en Atención Virtual?",
+              "minutos": 5
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/BwsDF4xZMmQ",
+              "title": "¿Cómo usar el Portal de Gestiones Ciudadanas?",
+              "minutos": 1
             }
           ],
           "quiz": []
@@ -1346,6 +1480,16 @@
             {
               "type": "warning",
               "text": "Si rechazás algo, tenés que escribirle un mensaje al ciudadano explicando qué falta (es obligatorio) y tocar \"Enviar al ciudadano\". Mientras esperás su respuesta, no se le pueden enviar más mensajes ni avanzar el trámite."
+            },
+            {
+              "type": "tip",
+              "text": "Lo que rechazás le aparece al ciudadano en \"Necesita información\", con un botón \"Completar\". Mientras lo completa, el trámite se ve en tu pestaña \"En proceso\". Cuando lo reenvía vuelve a \"Pendientes de revisión\", y tenés que asignártelo de nuevo."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/ZippZTO_onI",
+              "title": "Atención Virtual ¿Cómo lo hacemos?",
+              "minutos": 9
             }
           ],
           "quiz": []
@@ -1376,6 +1520,24 @@
                   "def": "Sin generar expediente. La oficina destino tiene que tener al menos un usuario con permiso de operador de Atención Virtual; si no, el sistema no deja hacerlo."
                 }
               ]
+            },
+            {
+              "type": "tip",
+              "text": "Finalizar: el comentario es obligatorio y adjuntar un documento es opcional. El trámite queda en \"Finalizados\"."
+            },
+            {
+              "type": "tip",
+              "text": "Pase a otra oficina: elegí primero la oficina de nivel superior (el ministerio) y después la oficina, y escribí el comentario. Se puede hacer sin aprobar la documentación, y todas las veces que haga falta. Después del pase ya no lo ves en tu bandeja."
+            },
+            {
+              "type": "tip",
+              "text": "Generar expediente: se caratula solo. Buscalo en Expedientes → Gestión, pestaña \"Gestión\", y asignátelo. La carátula lleva la firma electrónica de quien lo generó, y los documentos del ciudadano van firmados electrónicamente por él."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/ZippZTO_onI",
+              "title": "Atención Virtual ¿Cómo lo hacemos?",
+              "minutos": 9
             }
           ],
           "quiz": []
@@ -1410,6 +1572,20 @@
             {
               "type": "tip",
               "text": "Todo lo que escribís en el chat queda registrado. Usá un lenguaje claro y amable, y pedí solo los datos necesarios — si tu oficina recibe trámites de pacientes, evitá pedir datos de salud que no sean imprescindibles."
+            },
+            {
+              "type": "text",
+              "text": "Para cerrarlo: subí el documento que acredita el resultado (por ejemplo, un certificado) → incorporalo y firmá → \"Enviar aviso\" eligiendo ese documento, con un mensaje (obligatorio) → \"Enviar expediente\" → \"Enviar a guarda temporal\"."
+            },
+            {
+              "type": "tip",
+              "text": "Cuando el ciudadano responde un pedido de información, o manda algo por su cuenta, aparece un ícono y los documentos quedan en \"Documentos pendientes\". Seleccionalos → Incorporar → firmá."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/ZippZTO_onI",
+              "title": "Atención Virtual ¿Cómo lo hacemos?",
+              "minutos": 9
             }
           ],
           "quiz": []
@@ -2277,6 +2453,16 @@
       "verificado": true
     },
     {
+      "slug": "no-me-deja-firmar",
+      "situacion": "No me deja firmar un documento",
+      "descripcion": "Te pidieron que firmes algo y no encontrás el botón, o el sistema no te deja.",
+      "causa": "Lo más común: todavía no es tu turno en la cadena de firmas, el documento no está asignado a vos, o es una resolución y te falta el permiso de firma.",
+      "solucion": "Buscalo en Documentos oficiales → Gestión → Pendientes, con el estado \"Firmar documento oficial\": ⋮ → Evaluar → Acciones → Aprobar y firmar → Firma electrónica. Si no está ahí, todavía no te toca: los firmantes van en orden. Las resoluciones se firman desde Actos administrativos registrables y necesitan el permiso \"Firma de actos administrativos\" (pedíselo al Administrador Local). Si el PDF no está en TIMBÓ, usá el Firmador Digital Web.",
+      "tutorial_categoria_slug": "documentos-oficiales",
+      "tutorial_slug": "firmar-documento-oficial",
+      "verificado": true
+    },
+    {
       "slug": "firmador-digital-inhabilitado",
       "situacion": "Me aparece el mensaje \"Firmador digital inhabilitado\"",
       "descripcion": "Al ir a firmar algo, el sistema muestra este mensaje en vez de dejarte elegir la firma digital.",
@@ -2825,7 +3011,11 @@
         "corregir",
         "subsanar",
         "error",
-        "documento"
+        "documento",
+        "me equivoque",
+        "documento equivocado",
+        "subi mal",
+        "equivocado"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "subsanar-documento"
@@ -2891,7 +3081,13 @@
         "vista",
         "permiso",
         "ver",
-        "otra oficina"
+        "otra oficina",
+        "vista al tribunal",
+        "tribunal de cuentas",
+        "compartir vista",
+        "dar vista",
+        "doy vista",
+        "informe de vista"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "vistas-de-expediente"
@@ -2903,7 +3099,12 @@
         "resolucion",
         "acto administrativo",
         "aar",
-        "iniciar"
+        "iniciar",
+        "hacer una resolucion",
+        "hago una resolucion",
+        "nueva resolucion",
+        "firma de resolucion",
+        "resoluciones"
       ],
       "tutorial_categoria_slug": "actos-administrativos",
       "tutorial_slug": "iniciar-resolucion"
@@ -2915,7 +3116,14 @@
         "atencion virtual",
         "ciudadano",
         "revisar",
-        "tramite"
+        "tramite",
+        "mando un tramite",
+        "chat de atencion",
+        "rechazar documento",
+        "documento del ciudadano",
+        "aprobar documento",
+        "pendientes de revision",
+        "asignar tramite"
       ],
       "tutorial_categoria_slug": "atencion-virtual",
       "tutorial_slug": "revisar-solicitudes-av"
@@ -3024,7 +3232,10 @@
         "escaneado",
         "embebido",
         "adjuntar",
-        "firmar yo mismo"
+        "firmar yo mismo",
+        "documento embebido",
+        "hacer un embebido",
+        "embebidos"
       ],
       "tutorial_categoria_slug": "documentos-oficiales",
       "tutorial_slug": "documento-importado-y-embebidos"
@@ -3046,6 +3257,37 @@
       ],
       "tutorial_categoria_slug": "rendiciones",
       "tutorial_slug": "rendir-un-subsidio"
+    },
+    {
+      "slug": "gestionar-tramite-de-atencion-virtual",
+      "pregunta": "¿Cómo finalizo, derivo o genero un expediente desde Atención Virtual?",
+      "keywords": [
+        "generar expediente",
+        "finalizar tramite",
+        "derivar",
+        "pase atencion virtual",
+        "atencion virtual",
+        "acciones",
+        "otra oficina"
+      ],
+      "tutorial_categoria_slug": "atencion-virtual",
+      "tutorial_slug": "gestionar-tramite-av"
+    },
+    {
+      "slug": "responder-y-cerrar-atencion-virtual",
+      "pregunta": "¿Cómo le respondo al ciudadano y cierro el expediente de Atención Virtual?",
+      "keywords": [
+        "enviar aviso",
+        "aviso al ciudadano",
+        "solicitar informacion",
+        "pedir documentacion",
+        "responder al ciudadano",
+        "certificado",
+        "cerrar",
+        "atencion virtual"
+      ],
+      "tutorial_categoria_slug": "atencion-virtual",
+      "tutorial_slug": "trabajar-expediente-av"
     }
   ],
   "quickstart_steps": [

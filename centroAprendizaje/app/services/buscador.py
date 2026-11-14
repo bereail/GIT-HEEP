@@ -261,11 +261,13 @@ def _valor_en(texto, palabra):
     return mejor
 
 
-def buscar_con_puntaje(indice, consulta, limite=12, ignorar=()):
+def buscar_con_puntaje(indice, consulta, limite=12, ignorar=(), premiar_titulo_exacto=True):
     """Devuelve pares (puntaje, entrada), para que el chatbot pueda
     distinguir una coincidencia clara de una adivinanza. `ignorar`: palabras
     que no aportan en este índice (el nombre del propio sistema: "timbo"
-    aparece en todo el contenido de TIMBÓ)."""
+    aparece en todo el contenido de TIMBÓ). `premiar_titulo_exacto`: apagarlo
+    al comparar con otros temas, para que "documento embebido" no se vaya a
+    otro sistema solo porque allá hay un término con ese nombre exacto."""
     q = normalizar(consulta).strip()
     if not q:
         return []
@@ -320,14 +322,17 @@ def buscar_con_puntaje(indice, consulta, limite=12, ignorar=()):
             # ("quiero comprar guantes" → los guantes, no "cómo hacer una compra").
             # No si la palabra vino de corregir un error de tipeo ("receta" → "recta").
             score += 3
-        if termino_pedido and entrada["kind"] == "Glosario" and re.match(
-            re.escape(termino_pedido) + r"\b", titulo
+        # El término puede estar al principio ("SIN") o como sigla al final
+        # ("Sistema de Información Normativa (SIN)").
+        termino = re.escape(termino_pedido)
+        if termino_pedido and entrada["kind"] == "Glosario" and (
+            re.match(termino + r"\b", titulo) or re.search(r"\b" + termino + "$", titulo)
         ):
             score += 10
         if score > 0:
             # Una sugerencia del chatbot manda el título exacto: tiene que
             # ganar siempre, aunque otra entrada comparta más palabras.
-            if titulo == q:
+            if premiar_titulo_exacto and titulo == q:
                 score += 100
             peso = entrada["peso"]
             if pide_definicion and entrada["kind"] == "Glosario":
@@ -404,6 +409,19 @@ def _pasos_html(tutorial: Tutorial):
     )
 
 
+def _video_html(tutorial: Tutorial):
+    """Link al video oficial más corto de la lección, para verlo sin buscarlo."""
+    videos = [b for b in (tutorial.bloques or []) if b.get("type") == "video" and b.get("url")]
+    if not videos:
+        return ""
+    video = min(videos, key=lambda b: b.get("minutos") or 999)
+    minutos = f" ({video['minutos']} min)" if video.get("minutos") else ""
+    return (
+        f'<a class="chatbot-msg__video" href="{escape(video["url"])}" target="_blank" rel="noopener">'
+        f"▶ Ver el video oficial{minutos}</a>"
+    )
+
+
 def armar_respuesta_chatbot(entrada):
     """Misma lógica que `armarRespuesta` en chatbot.js, pero con las
     entidades reales en `entrada['ref']` en vez de volver a buscarlas por
@@ -451,7 +469,7 @@ def armar_respuesta_chatbot(entrada):
         html = f"<b>{escape(tarea.tutorial.titulo)}</b>"
         if resumen:
             html += f"<br>{escape(resumen)}"
-        html += _pasos_html(tarea.tutorial)
+        html += _pasos_html(tarea.tutorial) + _video_html(tarea.tutorial)
         return {
             "html": html,
             "url": _url_tutorial(tarea.tutorial),
@@ -493,7 +511,7 @@ def armar_respuesta_chatbot(entrada):
         html = f"<b>{escape(tutorial.titulo)}</b>"
         if resumen:
             html += f"<br>{escape(resumen)}"
-        html += _pasos_html(tutorial)
+        html += _pasos_html(tutorial) + _video_html(tutorial)
         return {
             "html": html,
             "url": _url_tutorial(tutorial),

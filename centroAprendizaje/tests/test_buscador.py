@@ -54,3 +54,18 @@ def test_saludos_y_agradecimientos():
     assert buscador.respuesta_de_charla("muchas gracias")
     assert buscador.respuesta_de_charla("hola, ¿cómo hago un pase a otra oficina?") is None
     assert buscador.respuesta_de_charla("cómo hago un pase") is None
+
+
+def test_que_es_encuentra_la_sigla_al_final_del_termino():
+    indice = [
+        _entrada("Leccion", "Protocolizar y publicar en el SIN", "protocolizar publicar sin sistema"),
+        _entrada("Glosario", "Sistema de Información Normativa (SIN)", "sistema de informacion normativa sin", peso=1),
+    ]
+    assert _primero(indice, "¿Qué es el SIN?") == "Sistema de Información Normativa (SIN)"
+
+
+def test_titulo_exacto_solo_premia_dentro_del_tema():
+    indice = [_entrada("Glosario", "Documento embebido", "documento embebido pdf adjunto", peso=1)]
+    con = buscador.buscar_con_puntaje(indice, "documento embebido")[0][0]
+    sin = buscador.buscar_con_puntaje(indice, "documento embebido", premiar_titulo_exacto=False)[0][0]
+    assert con > 100 > sin

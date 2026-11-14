@@ -109,17 +109,9 @@ que hacer del lado del usuario, solo esperar.
 3. **Documentos en HTML en vez de PDF.** Pedido abierto a Sistemas.
 4. **Servidor propio para los videos.** Propuesta sin respuesta de Formación
    Laboral.
-5. **Guías de artículos (PDF).** Hay que conseguirlas y cargarlas como
-   lecciones del tema TIMBÓ Compras.
-6. **Tres videos de la lista que no se pudieron procesar.** YouTube los marcó
-   como no disponibles en la descarga automática, así que hay que verlos a
-   mano y completar el tutorial:
-   - "Timbó Compras – Cómo presentar una oferta en línea" (49 min)
-   - "¿Cómo ofertar en Timbó Compras? – Capacitación a proveedores" (35 min)
-   - "06 – ¿Cómo visualizar un documento embebido?" (1 min)
-
-   También el "Instructivo para registrarse como proveedor" (1 min), que no
-   tiene subtítulos.
+5. ~~**Guías de artículos (PDF).**~~ Resuelto: la guía de búsqueda en el
+   nomenclador SIPAF está en el portal (lección de alta de artículos).
+6. ~~**Videos que no se pudieron procesar.**~~ Resuelto: ver 4.1 y 4.2.
 
 ---
 
@@ -135,3 +127,111 @@ que hacer del lado del usuario, solo esperar.
 | 05 – Impugnaciones | Ofertar → Presentar una impugnación |
 
 Lista: https://www.youtube.com/playlist?list=PLJKcMr5XTsSc5jJV-Uszw7OXCzG3LwG76
+
+### 4.1 Lista "APP-TimboCompras" (lado del hospital)
+
+Se compartió en el grupo de soporte. Es la que explica TIMBÓ Compras desde el
+organismo: https://www.youtube.com/playlist?list=PLJKcMr5XTsSe33vph6nNpxnZpu8D3RsBE
+
+| Video | Lección del portal |
+|---|---|
+| Paso 01 – Iniciar un proceso (Tt2_Z8fOAt8) | Gestión interna → Gestor: crear el proceso y armar el pliego |
+| Paso 02 – Aprobar contratación, cronograma y nómina (Yq1RArIxk2I) | Gestión interna → Supervisor |
+| Paso 03 – Evaluar una oferta (7najG5QuTHY) | Gestión interna → Evaluador: evaluar las ofertas |
+| Paso 04 – Preadjudicar (yUbSYwLQ0aU) | Gestión interna → Evaluador: preadjudicar |
+| Documento comunicable externo (6BtJX1bhwbg) | Gestión interna → Mandarle una notificación a un proveedor |
+| Clase 02 – Pliego y formularios (66 min, Kkt7GxVnIHA) | Los 8 formularios de la lección del Gestor |
+| Clase 03 – Evaluación y preadjudicación (56 min, Lnd2-_XiOXI) | Enlazada en la lección del Evaluador |
+| Clase 01 – ¿Qué es Timbó Compras? (7rIDyLtWlHM) | Sin subtítulos: se miró cuadro por cuadro (13/11); lo útil está en "Hacer una compra". Falta solo el texto hablado (opcional) |
+
+**Cómo se bajan los subtítulos** (YouTube bloquea la descarga común):
+
+```bash
+yt-dlp --skip-download --ignore-no-formats-error --write-auto-subs   --sub-langs "es-orig,es" --sub-format vtt   --extractor-args "youtube:player_client=web_embedded" URL_DEL_VIDEO
+```
+
+Con eso también salieron los subtítulos de los videos que estaban pendientes
+(Yp3TIlDxpms, JJExl9hnYbo y tSYfZ3yVE58). El de documentos embebidos ya es una
+lección. Las dos capacitaciones largas para proveedores se leyeron completas (lado
+proveedor de TIMBÓ Compras).
+
+### 4.2 Canal "Secretaría de Gestión Pública" (revisado el 14/11/2026)
+
+Se cruzó la lista completa de videos públicos del canal con el portal. Cada
+video que sirve para el hospital está leído (por subtítulos, transcripción o
+cuadro por cuadro) y enlazado en su lección. Para repetir el control:
+`yt-dlp --flat-playlist --print "%(id)s | %(title)s" "https://www.youtube.com/@SecretariadeGestionPublica/videos"`
+y buscar cada id en `scripts/content_*.json`.
+
+| Video | Dónde está |
+|---|---|
+| ¿Qué es Timbó? (alWHBV5ScQ4), Gestiones en Timbó (ZwD_QIsn1eU) | Expedientes → Qué es TIMBÓ |
+| Expediente Electrónico ¿Cómo lo hacemos? (e3rhyEJ4g0U), Capacitación en Expedientes y DO (qVf-yyXoE0k, 32 min) | Abrir un expediente nuevo |
+| Visualizar documentos de un Expediente (awusWqQR2lE) | Buscar un expediente |
+| Subsanar órdenes (LW7dfhIkwmQ) | Corregir un documento (subsanar) |
+| Guarda temporal (chjAuO6mX1c) | Guarda temporal y archivo |
+| Gestión de Vista (cIxZoNUAbHc) | Vistas de expediente |
+| Documentos Oficiales ¿Cómo lo hacemos? (aslFJaruz68), Comunicable con Firma Conjunta (-1iu7Pll1AI) | Hacer una nota o documento oficial |
+| Documento Oficial Importado (WfMIejZNniU), ¿Cómo hacer un documento embebido? (hZvrxPtLjYQ) | Documento importado y embebidos |
+| Notificaciones y Comunicaciones Oficiales (kb6--2MdL3A) | Comunicaciones oficiales · Comunicable a un ciudadano |
+| Documento Comunicable Externo (6BtJX1bhwbg) | Compras → Notificar a un proveedor |
+| Solicitud de Justificaciones y Licencias (OmPfwB6Quek) | Pedir una licencia (SJL) |
+| Firmador Digital Web (ETjXfXTyaBg) | Firmar un PDF con el Firmador Digital Web |
+| AAR ¿Cómo lo hacemos? (htvuudJzMbg) | Qué son los Actos Administrativos Registrables |
+| Atención Virtual ¿Cómo lo hacemos? (ZippZTO_onI) | Las 3 lecciones del agente de Atención Virtual |
+| Gestión online en AV (n0qxSRoAFaM), Portal de Gestiones Ciudadanas (BwsDF4xZMmQ), Domicilio Digital (gV_qoxpmAjE), Consultar un expediente por AV (M2AUtzccRyI) | Lo que ve el ciudadano al hacer un trámite |
+| ¿Cómo crear tu ID Ciudadana? (8ba14toewQ8) | Crear tu ID Ciudadana · Compras → Requisitos |
+| Compras Directas (IpayiPYodbU), CD-01 (b76RDFmcV3c, mudo: se miró cuadro por cuadro), Gestión de pago (BzxCGnsajmw) | Compras → Compras Directas |
+| Videos 00 a 06 de proveedores, las dos capacitaciones largas y las clases/pasos de "APP-TimboCompras" | Ver 4 y 4.1 |
+
+No se cargaron porque no son para el hospital: SIPREC y Oficios ante el
+Registro Civil por AV (trámites de otros organismos), Biblioteca Digital de
+Normativa (lo hace Despacho), Portal de gestiones (publicar servicios), Kit
+Digital, Declaración de Interés Cultural, Programa Autonomía para la Igualdad,
+"Del papel a la IA" y la charla sobre despapelización. Los 6 videos privados
+de las listas no se pueden ver.
+
+---
+
+## 5. Fuentes oficiales (relevadas el 13/11/2026)
+
+Lo que el portal toma de cada documento oficial. Ante una duda, manda la
+fuente oficial por sobre lo que se dijo en los chats.
+
+| Documento | Qué dice (resumen) | Dónde se usa |
+|---|---|---|
+| [Circular SCyGB 04/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf) | Publicación: campos del portal web, marcar "generar enlace con TIMBO" + expediente principal (si no, no aparece OFERTAR), mail a avisosoficiales@santafe.gob.ar con 3 días de anticipación, 10 días corridos hasta la apertura | Publicar en el portal · Hacer una compra |
+| [Circular SCyGB 03/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf) | Mandar el EE a la URC en "Aprobar contratación" (control del pliego) y antes del "Cronograma de impugnación" (control de la preadjudicación). Datos de la mesa de ayuda de TIMBÓ Compras | Hacer una compra |
+| [Circular SCyGB 05/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/CIRCULAR_005-26.pdf___.pdf) | Textos para completar los formularios del PBCP de bienes y de servicios | Pliego modelo |
+| [Res. SCyGB 292/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf) | Alta de artículos y lugares de entrega con el formulario CAByS, paso a paso. Hospitales: código externo obligatorio | Pedir el alta de un artículo |
+| [Circular UG TIMBÓ 9/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-9-2026-UNIDAD-DE-GESTION-TIMBO.pdf) | La vista al TCP se da con "Gestión de Visualización" del módulo Expedientes; el expediente sigue su trámite | Correr vista al TCP |
+| [Circular UG TIMBÓ 11/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/08/Circular-11_2026-TCP-2.pdf) | Todo acto se carga en el SIN y se envía por correo al TCP; los pedidos del TCP llegan por Atención Virtual a Mesa de Entradas y se responden con el DO "Respuesta al Tribunal de Cuentas" | Correr vista al TCP |
+| [Circular UG TIMBÓ 1/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/01/Circular-01-2026-Implementacion-TIMBO-COMPRAS.pdf) y 3/2026 | TIMBÓ Compras obligatorio (licitaciones y concursos de simple sobre); usuarios y roles los da el Administrador Local | Hacer una compra |
+| [Circular UG TIMBÓ 8/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-8-26_TIMBO-COMPRAS.pdf) | Contrataciones directas por urgencia o desierto van por TIMBÓ Compras (mínimo 3 proveedores invitados); las de etapa múltiple, por Expedientes + DO con sobres en papel | Contratación directa por urgencia o desierto |
+| [Tutoriales para proveedores](https://compras.santafe.gob.ar/tutoriales/) | Videos y PDF del lado proveedor; RUPC como requisito indispensable | Primeros pasos · Ofertar |
+| [Normativa de compras](https://compras.santafe.gob.ar/normativas/) y [normativa TIMBÓ](https://www.santafe.gob.ar/ms/timbo/normativas/) | Índices con todas las leyes, decretos, resoluciones y circulares | Referencia |
+
+| [Circular SCyGB 01/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/01/Circular-001-26.pdf) | Topes 2026 por procedimiento y quién aprueba; ya no hay tasa retributiva | ¿Qué procedimiento corresponde según el monto? |
+| [Circular SCyGB 04/2025](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-4-2025-S.C.-y-G.B.-.-1.pdf) | Pasar la gestión a "Concluida" en 2 días hábiles; si no, no se puede publicar más | Después de adjudicar |
+| [Pliego Único (Dec. 287/2026)](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf) | Impugnación de la preadjudicación (2 días), recepción definitiva, multa por mora 0,1 %/día, enmiendas | Después de adjudicar · Mientras está publicado |
+| Circular SCyGB 05/2026, anexos (imágenes) | Pliego modelo de bienes y servicios, y anexos A a F | Pliego modelo |
+| [Circular UG TIMBÓ 3/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-03-26.pdf) | TIMBÓ Compras obligatorio desde el 1/4/2026, incluido Salud | Hacer una compra · ¿Es obligatorio? |
+| [Circular UG TIMBÓ 2/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-02-26.pdf) | RUPC: ID nivel 3, concordancia del objeto, requisitos | Quién puede participar |
+| [Circular UG TIMBÓ 3/2025](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/3_2025-Circular-Pautas-Generales-para-la-Gestion-Digital-TIMBO.pdf) | Reglamento de gestión digital: carátulas, providencias, comunicaciones, archivo | TIMBÓ (Expedientes) |
+| [Circular UG TIMBÓ 4/2025](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/4_2025-Circular-Actos-administrativos.pdf) | Tipos de actos y firma electrónica vs. digital | Glosario |
+| [Circular UG TIMBÓ 6/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/04/Circular-6-2026.pdf) | Notificación vs. comunicación oficial; personal al domicilio digital (dirigida a MGeIP) | Comunicaciones oficiales (Expedientes) |
+| [Circular UG TIMBÓ 4/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-4-Nueva-gestion-digital.pdf) y 7/2025 | Digitalizar trámites por Atención Virtual; no pedir documentación del RPJEC | Situaciones de Expedientes |
+| Videos de la Secretaría de Gestión Pública (canal oficial) | Licencias (SJL), Firmador Digital Web, Atención Virtual, ¿Qué es Timbó?, Kit digital | Expedientes: lecciones SJL y Firmador |
+| Clases 02 y 03 de "APP-TimboCompras" y capacitaciones a proveedores | Detalle de formularios, evaluación, adjudicación y oferta | Lecciones por rol y del proveedor |
+
+No se cargaron (están superadas o no aplican): Manual de Licitaciones
+(Disp. 227/2016) y modelos de PBCP (Res. 519/2018), reemplazados por el Pliego
+Único 2026 y la Circular 05/2026; Circular UG 6/2025 (TCP), reemplazada por las
+9 y 11/2026.
+
+Correcciones que salieron de esta revisión:
+- La vista al TCP **no** es solo "cargar en el SIN": primero se comparte el
+  expediente con "Gestión de Visualización", y el SIN se suma después.
+- La publicación **no** se hace "por Timbó, por correo y por SIN": se carga en
+  el portal web y se pide el aviso oficial por mail (Circular 04/2026).
+- Para ofertar **sí** hace falta otro alta: la inscripción en el RUPC.

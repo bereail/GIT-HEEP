@@ -1,5 +1,6 @@
 import re
 import secrets
+from datetime import datetime, timedelta, timezone
 
 from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, url_for
 
@@ -286,7 +287,8 @@ def _buscar_en_otros_temas(tema, consulta, minimo, puntaje_local=0):
     mejor = None
     for otro in Tema.query.filter(Tema.activo.is_(True), Tema.id != tema.id).all():
         resultados = buscador.buscar_con_puntaje(
-            buscador.construir_indice(otro), consulta, limite=1, ignorar=_palabras_del_nombre(otro)
+            buscador.construir_indice(otro), consulta, limite=1, ignorar=_palabras_del_nombre(otro),
+            premiar_titulo_exacto=False,
         )
         minimo_otro = minimo
         if _nombra_otro_tema(consulta, tema, otro):
@@ -407,10 +409,26 @@ def consulta_responder(token):
     consulta = Consulta.query.filter_by(token=token).first_or_404()
     mensaje = (request.form.get("mensaje") or "").strip()
     if mensaje:
-        db.session.add(MensajeConsulta(consulta_id=consulta.id, autor="usuario", cuerpo=mensaje))
+        db.session.add(MensajeConsulta(
+            consulta_id=consulta.id, autor="usuario", cuerpo=mensaje,
+            creado_en=_despues_de_la_vista_del_admin(consulta),
+        ))
         consulta.estado = "abierta"
         db.session.commit()
     return redirect(url_for("ui.consulta_ver", token=token))
+
+
+def _despues_de_la_vista_del_admin(consulta):
+    """Hora para un mensaje nuevo del usuario, siempre posterior a la última
+    vez que el admin abrió la consulta. El reloj de Windows a veces da la
+    misma hora para dos instantes seguidos, y el mensaje quedaba como leído."""
+    ahora = datetime.now(timezone.utc)
+    vista = consulta.vista_por_admin_en
+    if vista is None:
+        return ahora
+    if vista.tzinfo is None:  # SQLite devuelve las fechas sin zona horaria
+        vista = vista.replace(tzinfo=timezone.utc)
+    return max(ahora, vista + timedelta(microseconds=1))
 
 
 # ------------------------------------------------------------- mis consultas --
