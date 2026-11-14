@@ -90,8 +90,10 @@ sumó:
   borra con el tema: correr siempre `importar_equivalencias.py` al final.
 - miHospital figuraba como "TIMBÓ" en su JSON: corregido.
 
-**Deploy en el servidor** (`/var/www/timbo-capacitaciones`, servicio
-`timbo-capacitaciones`): `git pull` y scripts como el usuario
+**Deploy en el servidor** (app en
+`/var/www/timbo-capacitaciones/centroAprendizaje`, con su `.venv` e
+`instance/` adentro; servicio `timbo-capacitaciones`): `cd` a esa carpeta, y
+`git pull` y scripts (`.venv/bin/python scripts/...`) como el usuario
 `timbo-capacitaciones` (`sudo -u timbo-capacitaciones -H ...`), nunca como
 root: quedaron 132 archivos a nombre de root y el `git pull` fallaba. Orden:
 importar_mihospital → importar_timbo_expedientes → importar_timbo_compras →
