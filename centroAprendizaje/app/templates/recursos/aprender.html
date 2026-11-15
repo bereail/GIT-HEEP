@@ -1,0 +1,54 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav with context %}
+{% block titulo %}Aprendé Compras Públicas — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('aprender') }}
+<section class="apr-hero">
+  <span class="cap-hero__etiqueta">Para participantes</span>
+  <h1>Aprendé Compras Públicas en TIMBÓ</h1>
+  <p>Un recorrido corto: primero los conceptos, después el camino de una compra, y al final practicá con casos del hospital.</p>
+</section>
+
+<ol class="apr-pasos">
+  <li class="card apr-paso">
+    <span class="apr-paso__n">1</span>
+    <div>
+      <h2>Lo fundamental, en una página</h2>
+      <div class="cap-resumen__grid">
+        {% for r in resumen %}<div class="cap-resumen__item"><h3>{{ r.t }}</h3><p>{{ r.d }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </li>
+  <li class="card apr-paso">
+    <span class="apr-paso__n">2</span>
+    <div><h2>¿Qué camino sigue una compra?</h2><p class="text-muted">Respondé las preguntas y mirá el recorrido, con colores por sistema.</p>
+      <a class="btn btn--primary btn--sm" href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}">🧭 Abrir el diagrama</a></div>
+  </li>
+  <li class="card apr-paso">
+    <span class="apr-paso__n">3</span>
+    <div><h2>Los roles</h2><p class="text-muted">Quién hace qué en TIMBÓ Compras.</p>
+      <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_roles') }}">🔐 Ver los roles</a></div>
+  </li>
+  <li class="card apr-paso">
+    <span class="apr-paso__n">4</span>
+    <div><h2>El diccionario</h2><p class="text-muted">Cada término con un ejemplo del hospital.</p>
+      <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_glosario') }}">📖 Abrir el diccionario</a></div>
+  </li>
+  <li class="card apr-paso">
+    <span class="apr-paso__n">5</span>
+    <div><h2>Autoevaluación: el simulador</h2><p class="text-muted">6 casos del hospital. Cada respuesta se explica.</p>
+      <a class="btn btn--primary btn--sm" href="{{ url_for(prefijo ~ 'recursos_simulador') }}">🎯 Practicar</a></div>
+  </li>
+  <li class="card apr-paso">
+    <span class="apr-paso__n">6</span>
+    <div><h2>Para el día a día</h2><p class="text-muted">Checklists, plazos, a quién preguntar y modelos de mensajes.</p>
+      <div class="alg-conexiones">
+        <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}">✅ Checklists</a>
+        <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}">🗓️ Plazos</a>
+        <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}">🧭 ¿A quién le pregunto?</a>
+        <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>
+      </div></div>
+  </li>
+</ol>
+{% endblock %}

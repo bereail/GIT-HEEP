@@ -1,0 +1,854 @@
+{
+  "titulo": "Simulador de Compras — Aprendé tomando decisiones",
+  "aviso": "Los casos son ejemplos didácticos (cantidades y montos inventados). Las respuestas sobre procedimientos se apoyan en la normativa vigente, citada en cada explicación.",
+  "escenarios": [
+    {
+      "slug": "insumos",
+      "icono": "🧤",
+      "titulo": "Compra de insumos médicos",
+      "caso": "Enfermería informa que necesita 5.000 pares de guantes descartables de nitrilo para garantizar el abastecimiento del servicio.",
+      "preguntas": [
+        {
+          "id": "q1",
+          "pregunta": "¿Quién inicia el requerimiento?",
+          "opciones": [
+            {
+              "texto": "El área que lo necesita (Enfermería), con una nota de pedido",
+              "correcta": true,
+              "explicacion": "La necesidad la detecta y la pide el área requirente. El pedido inicia la etapa preparatoria, que se resuelve por expediente electrónico.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "El proveedor que vende guantes",
+              "correcta": false,
+              "explicacion": "El proveedor no inicia la compra: participa recién cuando el proceso se publica o se lo invita."
+            },
+            {
+              "texto": "El Tribunal de Cuentas",
+              "correcta": false,
+              "explicacion": "El Tribunal de Cuentas controla; no pide compras."
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "pregunta": "¿Qué tiene que decir sí o sí la solicitud?",
+          "opciones": [
+            {
+              "texto": "Qué se necesita, cuánto y para qué servicio",
+              "correcta": true,
+              "explicacion": "Sin cantidad, descripción y destino no se puede armar el renglón ni estimar el costo. La justificación queda en el expediente.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "La marca que prefiere el servicio",
+              "correcta": false,
+              "explicacion": "La marca, por sí sola, no justifica nada: lo que se describe son las características técnicas. La ley aclara que la marca no constituye por sí causal de exclusividad.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "El nombre del proveedor que conviene",
+              "correcta": false,
+              "explicacion": "Elegir el proveedor de antemano va contra la concurrencia y la igualdad de oferentes.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "pregunta": "Para saber qué procedimiento corresponde, ¿qué dato te falta?",
+          "opciones": [
+            {
+              "texto": "El valor estimado de la compra",
+              "correcta": true,
+              "explicacion": "El monto estimado define el procedimiento y quién aprueba. Supongamos que el presupuesto de referencia da $40.000.000.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Ninguno: siempre es licitación pública",
+              "correcta": false,
+              "explicacion": "La licitación pública es la regla general, pero la ley admite otros procedimientos según el monto o una causal.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "El color de los guantes",
+              "correcta": false,
+              "explicacion": "Es una característica técnica, no define el procedimiento."
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "pregunta": "Con $40.000.000 y sin ninguna causal de excepción, ¿qué procedimiento corresponde (montos 2026)?",
+          "opciones": [
+            {
+              "texto": "Licitación o concurso privado",
+              "correcta": true,
+              "explicacion": "Más de $5.850.000 y hasta $58.500.000 corresponde licitación o concurso privado. Como el criterio es el precio, es licitación. Aprueba una resolución conjunta con el Ministerio de Economía (más de $29.250.000).",
+              "fuentes": [
+                "circ-scygb-1-2026",
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Compra directa por monto",
+              "correcta": false,
+              "explicacion": "La directa por monto llega hasta $5.850.000 (2026).",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Licitación pública",
+              "correcta": false,
+              "explicacion": "La pública corresponde a más de $58.500.000 (2026). Siempre se puede ir a la regla general, pero no es lo que fija el encuadre por monto.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "pregunta": "¿Dónde se arma el pliego particular?",
+          "opciones": [
+            {
+              "texto": "En TIMBÓ Compras, con los formularios del Gestor",
+              "correcta": true,
+              "explicacion": "Las licitaciones y concursos de simple sobre son obligatorios por TIMBÓ Compras, y el pliego particular se arma con sus formularios.",
+              "fuentes": [
+                "circ-ug-3-2026",
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "En un Word que se escanea",
+              "correcta": false,
+              "explicacion": "Lo que empieza en digital sigue en digital, y en TIMBÓ Compras el pliego se arma con formularios estandarizados.",
+              "fuentes": [
+                "circ-ug-3-2025",
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "En el SIN",
+              "correcta": false,
+              "explicacion": "En el SIN se cargan los actos para el Tribunal de Cuentas.",
+              "fuentes": [
+                "circ-ug-11-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q6",
+          "pregunta": "Un proveedor dice que ofertó, pero su oferta no aparece en la apertura. ¿Qué pasó?",
+          "opciones": [
+            {
+              "texto": "La dejó en borrador: solo valen las ofertas en \"Oferta presentada\"",
+              "correcta": true,
+              "explicacion": "Solo las ofertas en estado \"Oferta presentada\" son válidas en la apertura electrónica.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "El Gestor se olvidó de abrirla",
+              "correcta": false,
+              "explicacion": "La apertura es automática: nadie tiene que abrir las ofertas.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Hay que agregarla a mano",
+              "correcta": false,
+              "explicacion": "No: una oferta no presentada no participa.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q7",
+          "pregunta": "Una oferta no trae la constancia que pide el pliego, pero el resto cumple. ¿Qué puede hacer el Evaluador?",
+          "opciones": [
+            {
+              "texto": "Pedir una subsanación con un plazo, desde TIMBÓ Compras",
+              "correcta": true,
+              "explicacion": "El Evaluador genera subtrámites de subsanación, aclaración o mejora. Si el proveedor no responde a tiempo, pasa a \"descartado\".",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Llamarlo por teléfono y que la mande por WhatsApp",
+              "correcta": false,
+              "explicacion": "Todo queda en TIMBÓ Compras y se notifica al domicilio digital.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Adjudicarle igual",
+              "correcta": false,
+              "explicacion": "Primero se evalúa y se preadjudica; adjudicar es un acto de la autoridad."
+            }
+          ]
+        },
+        {
+          "id": "q8",
+          "pregunta": "Se publicó el informe de preadjudicación. ¿Ya se le puede comprar al proveedor?",
+          "opciones": [
+            {
+              "texto": "No: falta el acto de adjudicación, en el expediente",
+              "correcta": true,
+              "explicacion": "Preadjudicar es recomendar (en TIMBÓ Compras, y se puede impugnar). Adjudicar es decidir: un acto de la autoridad en el expediente.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Sí, la preadjudicación es la decisión final",
+              "correcta": false,
+              "explicacion": "Es la confusión más común: la preadjudicación es una recomendación.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Sí, si pasaron 2 días",
+              "correcta": false,
+              "explicacion": "Los 2 días son para impugnar; después igual hace falta el acto de adjudicación.",
+              "fuentes": [
+                "pliego-unico-2026"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "medicamentos",
+      "icono": "💊",
+      "titulo": "Compra de medicamentos",
+      "caso": "Farmacia necesita un antibiótico que no encuentra en el catálogo de TIMBÓ.",
+      "preguntas": [
+        {
+          "id": "q1",
+          "pregunta": "¿Qué se hace primero?",
+          "opciones": [
+            {
+              "texto": "Buscarlo en el Catálogo WEB con palabras clave y sinónimos",
+              "correcta": true,
+              "explicacion": "La búsqueda previa en el Catálogo WEB es obligatoria antes de pedir un alta.",
+              "fuentes": [
+                "res-scygb-292-2026",
+                "infografia-articulos"
+              ]
+            },
+            {
+              "texto": "Pedir el alta directamente",
+              "correcta": false,
+              "explicacion": "Primero hay que verificar que no esté catalogado.",
+              "fuentes": [
+                "res-scygb-292-2026"
+              ]
+            },
+            {
+              "texto": "Comprarlo con otro código parecido",
+              "correcta": false,
+              "explicacion": "El artículo tiene que coincidir con lo que se compra."
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "pregunta": "No está en el catálogo. Es un medicamento: ¿cómo se pide el alta?",
+          "opciones": [
+            {
+              "texto": "Por el Servicio de Farmacia del efector, que lo eleva a la Dirección Provincial de Farmacia (SUFYD)",
+              "correcta": true,
+              "explicacion": "Medicamentos y descartables se piden por el Servicio de Farmacia → Dirección Provincial de Farmacia → SUFYD → TIMBÓ.",
+              "fuentes": [
+                "infografia-articulos"
+              ]
+            },
+            {
+              "texto": "Con el formulario CAByS",
+              "correcta": false,
+              "explicacion": "El CAByS es para otros bienes y servicios (fuera del área de Farmacia).",
+              "fuentes": [
+                "infografia-articulos",
+                "res-scygb-292-2026"
+              ]
+            },
+            {
+              "texto": "Por mail a la mesa de ayuda",
+              "correcta": false,
+              "explicacion": "La mesa de ayuda orienta, pero el alta tiene su circuito.",
+              "fuentes": [
+                "infografia-articulos"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "pregunta": "Si fuera un artículo de oficina que no está en el catálogo, ¿qué dato es obligatorio para hospitales en el formulario CAByS?",
+          "opciones": [
+            {
+              "texto": "El código externo, en \"Nombre o descripción\"",
+              "correcta": true,
+              "explicacion": "La Res. 292/2026 lo pide expresamente para hospitales y centros de salud.",
+              "fuentes": [
+                "res-scygb-292-2026"
+              ]
+            },
+            {
+              "texto": "La marca",
+              "correcta": false,
+              "explicacion": "La marca no es obligatoria (se pueden poner guiones).",
+              "fuentes": [
+                "res-scygb-292-2026"
+              ]
+            },
+            {
+              "texto": "El precio",
+              "correcta": false,
+              "explicacion": "El formulario de alta no pide precio.",
+              "fuentes": [
+                "res-scygb-292-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "pregunta": "¿Quién aprueba el alta en el catálogo (formulario CAByS)?",
+          "opciones": [
+            {
+              "texto": "La Unidad Rectora Central, que asigna el código y avisa por correo",
+              "correcta": true,
+              "explicacion": "La URC revisa, controla y aprueba o rechaza el formulario.",
+              "fuentes": [
+                "res-scygb-292-2026"
+              ]
+            },
+            {
+              "texto": "El Gestor del proceso",
+              "correcta": false,
+              "explicacion": "El Gestor no administra el catálogo."
+            },
+            {
+              "texto": "El proveedor",
+              "correcta": false,
+              "explicacion": "El proveedor no interviene en la catalogación."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "equipamiento",
+      "icono": "🩺",
+      "titulo": "Adquisición de equipamiento hospitalario",
+      "caso": "Terapia intensiva necesita un monitor multiparamétrico. El presupuesto de referencia es de $70.000.000.",
+      "preguntas": [
+        {
+          "id": "q1",
+          "pregunta": "¿Qué procedimiento corresponde por monto (2026)?",
+          "opciones": [
+            {
+              "texto": "Licitación pública (más de $58.500.000)",
+              "correcta": true,
+              "explicacion": "Más de $58.500.000 corresponde licitación o concurso público, y se aprueba por decreto.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Licitación privada",
+              "correcta": false,
+              "explicacion": "La privada llega hasta $58.500.000 (2026).",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Compra directa",
+              "correcta": false,
+              "explicacion": "Solo hasta $5.850.000, salvo una causal de excepción.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "pregunta": "¿Quién arma y quién aprueba el pliego en TIMBÓ Compras?",
+          "opciones": [
+            {
+              "texto": "Lo arma el Gestor; lo revisa la comitente y lo aprueba el Supervisor",
+              "correcta": true,
+              "explicacion": "Son los roles de la Circular UG 7/2026.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Lo arma y aprueba el Evaluador",
+              "correcta": false,
+              "explicacion": "El Evaluador evalúa ofertas, no arma el pliego.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Lo arma el proveedor",
+              "correcta": false,
+              "explicacion": "El pliego lo elabora y aprueba el organismo.",
+              "fuentes": [
+                "dec-287-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "pregunta": "¿Dónde van las especificaciones técnicas del monitor?",
+          "opciones": [
+            {
+              "texto": "En el renglón (ficha técnica) y, si hace falta, en los anexos del pliego",
+              "correcta": true,
+              "explicacion": "Las especificaciones técnicas son contenido obligatorio del pliego particular; en TIMBÓ Compras van por renglón y en anexos.",
+              "fuentes": [
+                "dec-287-2026",
+                "videos-app-timbocompras"
+              ]
+            },
+            {
+              "texto": "En un mail aparte a los proveedores",
+              "correcta": false,
+              "explicacion": "Todo lo que se exige tiene que estar en el pliego, para todos por igual."
+            },
+            {
+              "texto": "No hacen falta",
+              "correcta": false,
+              "explicacion": "Sin especificaciones no se puede evaluar si la oferta cumple.",
+              "fuentes": [
+                "dec-287-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "pregunta": "¿Cómo se publica una licitación pública?",
+          "opciones": [
+            {
+              "texto": "En el Portal de Compras con \"generar enlace con TIMBO\" y aviso oficial por mail 3 días antes",
+              "correcta": true,
+              "explicacion": "Además, 10 días corridos desde la publicación hasta la apertura.",
+              "fuentes": [
+                "circ-scygb-4-2026"
+              ]
+            },
+            {
+              "texto": "Solo invitando a 3 proveedores",
+              "correcta": false,
+              "explicacion": "Eso describe una invitación acotada; la pública se dirige a todos.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Por WhatsApp",
+              "correcta": false,
+              "explicacion": "La publicidad es por los medios oficiales.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "pregunta": "¿Interviene la URC antes de publicar?",
+          "opciones": [
+            {
+              "texto": "En la Administración Pública Central sí (control del pliego); para el hospital está pendiente de confirmar",
+              "correcta": true,
+              "explicacion": "La Res. ME 73/2026 y la Circ. SCyGB 03/2026 establecen el control para la Administración Pública Central. Si alcanza al hospital está en consulta.",
+              "fuentes": [
+                "res-me-73-2026",
+                "circ-scygb-3-2026"
+              ]
+            },
+            {
+              "texto": "Nunca",
+              "correcta": false,
+              "explicacion": "Hay controles obligatorios de la URC en licitaciones y concursos públicos de la Administración Pública Central.",
+              "fuentes": [
+                "res-me-73-2026"
+              ]
+            },
+            {
+              "texto": "Siempre, en todos los organismos",
+              "correcta": false,
+              "explicacion": "La norma está dirigida a la Administración Pública Central; no lo des por seguro para el hospital.",
+              "fuentes": [
+                "res-me-73-2026"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ascensores",
+      "icono": "🛗",
+      "titulo": "Contratación de mantenimiento de ascensores",
+      "caso": "El hospital necesita contratar el mantenimiento de sus ascensores por un año. El monto estimado es de $25.000.000.",
+      "preguntas": [
+        {
+          "id": "q1",
+          "pregunta": "¿Es una compra de bienes o una contratación de servicios?",
+          "opciones": [
+            {
+              "texto": "Contratación de un servicio",
+              "correcta": true,
+              "explicacion": "El régimen de contrataciones alcanza tanto la compra de bienes como la contratación de servicios.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Compra de bienes",
+              "correcta": false,
+              "explicacion": "No se compra un objeto sino una prestación."
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "pregunta": "Con $25.000.000, ¿qué procedimiento corresponde (2026)?",
+          "opciones": [
+            {
+              "texto": "Licitación o concurso privado",
+              "correcta": true,
+              "explicacion": "Entre $5.850.000 y $58.500.000. Hasta $29.250.000 se aprueba por resolución.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Concurso de precios",
+              "correcta": false,
+              "explicacion": "El concurso de precios hasta $29.250.000 es solo para locación de inmuebles.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Compra directa por monto",
+              "correcta": false,
+              "explicacion": "Solo hasta $5.850.000.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "pregunta": "Es una reparación que exige desarmar el equipo y examinarlo antes. ¿Cambia algo?",
+          "opciones": [
+            {
+              "texto": "Podría encuadrar como directa por excepción (ap. 7), pero no para el mantenimiento, que está excluido",
+              "correcta": true,
+              "explicacion": "El art. 116 inc. c ap. 7 permite la directa para reparaciones que exigen desarme, traslado o examen previo, excluidas las de mantenimiento. Hay que justificarlo y verificar si interviene la SCyGB.",
+              "fuentes": [
+                "ley-12510",
+                "intervencion-scygb-directas"
+              ]
+            },
+            {
+              "texto": "Sí, todo mantenimiento es directa",
+              "correcta": false,
+              "explicacion": "La ley excluye expresamente el mantenimiento de esa causal.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "No existe esa causal",
+              "correcta": false,
+              "explicacion": "Existe: art. 116 inc. c ap. 7.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "pregunta": "En el pliego modelo de servicios, ¿cuándo empieza el servicio?",
+          "opciones": [
+            {
+              "texto": "Dentro de los 10 días de notificada la adjudicación (es el modelo; cada pliego fija el suyo)",
+              "correcta": true,
+              "explicacion": "Es el valor del pliego modelo de la Circular SCyGB 05/2026.",
+              "fuentes": [
+                "circ-scygb-5-2026"
+              ]
+            },
+            {
+              "texto": "Cuando quiera el proveedor",
+              "correcta": false,
+              "explicacion": "Las condiciones del contrato las fija el pliego."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "oficina",
+      "icono": "📎",
+      "titulo": "Compra de materiales de oficina",
+      "caso": "Administración necesita resmas y tóner por un total estimado de $3.000.000.",
+      "preguntas": [
+        {
+          "id": "q1",
+          "pregunta": "¿Qué procedimiento corresponde (2026)?",
+          "opciones": [
+            {
+              "texto": "Gestión directa por monto (hasta $5.850.000)",
+              "correcta": true,
+              "explicacion": "Es la causal del art. 116 inc. c ap. 1. Aprueba una resolución del Subsecretario de Administración o equivalente.",
+              "fuentes": [
+                "circ-scygb-1-2026",
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Licitación privada en TIMBÓ Compras",
+              "correcta": false,
+              "explicacion": "Por el monto, corresponde la directa.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "pregunta": "¿Dónde se tramita?",
+          "opciones": [
+            {
+              "texto": "En el expediente electrónico, con el formulario CD-01 (Documentos Oficiales)",
+              "correcta": true,
+              "explicacion": "La gestión directa por monto va por expediente con los formularios CD-01 a CD-04; no pasa por TIMBÓ Compras.",
+              "fuentes": [
+                "videos-app-timbocompras"
+              ]
+            },
+            {
+              "texto": "En TIMBÓ Compras",
+              "correcta": false,
+              "explicacion": "TIMBÓ Compras se usa para licitaciones y concursos, y para las directas por urgencia o desierto.",
+              "fuentes": [
+                "circ-ug-3-2026",
+                "circ-ug-8-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "pregunta": "¿Con qué trámite se pide la carátula?",
+          "opciones": [
+            {
+              "texto": "\"Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope\"",
+              "correcta": true,
+              "explicacion": "Es el tipo de trámite que muestra la capacitación oficial.",
+              "fuentes": [
+                "videos-app-timbocompras"
+              ]
+            },
+            {
+              "texto": "\"Licitación pública\"",
+              "correcta": false,
+              "explicacion": "No corresponde a este procedimiento."
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "pregunta": "¿Cuántas personas firman el CD-01?",
+          "opciones": [
+            {
+              "texto": "Al menos dos: es un documento de firma conjunta",
+              "correcta": true,
+              "explicacion": "Así lo muestra el video oficial del CD-01.",
+              "fuentes": [
+                "videos-app-timbocompras"
+              ]
+            },
+            {
+              "texto": "Nadie: se sube escaneado",
+              "correcta": false,
+              "explicacion": "Se genera como documento oficial y se firma en TIMBÓ.",
+              "fuentes": [
+                "videos-app-timbocompras"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "pregunta": "¿Cómo se suman los presupuestos al expediente?",
+          "opciones": [
+            {
+              "texto": "Como documento informativo (viaja con el expediente y no lleva firma)",
+              "correcta": true,
+              "explicacion": "Así lo indica la capacitación oficial.",
+              "fuentes": [
+                "videos-app-timbocompras"
+              ]
+            },
+            {
+              "texto": "Como documento incorporado y firmado",
+              "correcta": false,
+              "explicacion": "Lo incorporado no se puede borrar; el presupuesto va como informativo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "excepcion",
+      "icono": "⚡",
+      "titulo": "Contratación directa por excepción",
+      "caso": "Se rompió un equipo crítico y el servicio no puede esperar los plazos de una licitación.",
+      "preguntas": [
+        {
+          "id": "q1",
+          "pregunta": "¿Qué causal podría aplicar?",
+          "opciones": [
+            {
+              "texto": "Urgencia o emergencia imprevisible (art. 116 inc. c ap. 2)",
+              "correcta": true,
+              "va": "q2u",
+              "explicacion": "Aplica si la urgencia es imprevisible, objetiva y de tal magnitud que impide otro procedimiento a tiempo. Hay que justificarlo.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Exclusividad del proveedor (ap. 5)",
+              "correcta": false,
+              "va": "q2e",
+              "explicacion": "Solo si hay un único proveedor y no hay sustitutos, y hay que demostrarlo. No es lo que describe el caso, pero veamos cómo sería.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Ninguna: no existe la urgencia como causal",
+              "correcta": false,
+              "explicacion": "Existe: art. 116 inc. c ap. 2.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q2u",
+          "pregunta": "Por urgencia, ¿en qué sistema se tramita?",
+          "opciones": [
+            {
+              "texto": "Íntegramente en TIMBÓ Compras, con tramitación flexibilizada",
+              "correcta": true,
+              "va": "q3u",
+              "explicacion": "La Circular UG 8/2026 lo hace obligatorio por TIMBÓ Compras, con flexibilizaciones.",
+              "fuentes": [
+                "circ-ug-8-2026"
+              ]
+            },
+            {
+              "texto": "Por expediente con el CD-01",
+              "correcta": false,
+              "va": "q3u",
+              "explicacion": "El CD-01 es de la directa por monto. Urgencia y desierto van por TIMBÓ Compras.",
+              "fuentes": [
+                "circ-ug-8-2026"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "q3u",
+          "pregunta": "¿A cuántos proveedores hay que invitar como mínimo?",
+          "opciones": [
+            {
+              "texto": "Tres, cargados en el sistema",
+              "correcta": true,
+              "explicacion": "La carga mínima es de 3 proveedores.",
+              "fuentes": [
+                "circ-ug-8-2026"
+              ]
+            },
+            {
+              "texto": "Uno solo, el que tiene el repuesto",
+              "correcta": false,
+              "explicacion": "Aun en urgencia, se invita como mínimo a 3.",
+              "fuentes": [
+                "circ-ug-8-2026"
+              ]
+            }
+          ],
+          "fin": true
+        },
+        {
+          "id": "q2e",
+          "pregunta": "Si fuera por exclusividad, ¿qué hay que documentar?",
+          "opciones": [
+            {
+              "texto": "La demostración de la exclusividad y un informe técnico de que no hay sustitutos convenientes",
+              "correcta": true,
+              "explicacion": "La marca no es por sí causal de exclusividad. Además, según el índice oficial, la SCyGB interviene obligatoriamente en esta causal (pendiente de leer el texto).",
+              "fuentes": [
+                "ley-12510",
+                "intervencion-scygb-directas"
+              ]
+            },
+            {
+              "texto": "Que el servicio prefiere esa marca",
+              "correcta": false,
+              "explicacion": "La preferencia por una marca no alcanza.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -77,7 +77,10 @@
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.portal_inicio' else '' }}" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🏠</span>Inicio</a>
         <div class="sidebar__section-title">Recursos</div>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_roles' else '' }}" href="{{ url_for('ui.recursos_roles') }}"><span class="nav-link__icon">🔐</span>Roles y alcances</a>
-        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_glosario' else '' }}" href="{{ url_for('ui.recursos_glosario') }}"><span class="nav-link__icon">📖</span>Glosario general</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_glosario' else '' }}" href="{{ url_for('ui.recursos_glosario') }}"><span class="nav-link__icon">📖</span>Diccionario</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_aprender' else '' }}" href="{{ url_for('ui.recursos_aprender') }}"><span class="nav-link__icon">👥</span>Aprendé desde cero</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_algoritmo' else '' }}" href="{{ url_for('ui.recursos_algoritmo') }}"><span class="nav-link__icon">🧭</span>¿Qué camino sigue?</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_simulador' else '' }}" href="{{ url_for('ui.recursos_simulador') }}"><span class="nav-link__icon">🎯</span>Simulador</a>
         <a class="nav-link" href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}"><span class="nav-link__icon">🔄</span>Nomenclador de artículos</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_biblioteca' else '' }}" href="{{ url_for('ui.recursos_biblioteca') }}"><span class="nav-link__icon">🗂️</span>Normativa y fuentes</a>
         <a class="nav-link {{ 'is-active' if request.view_args and request.view_args.get('clave') == 'plazos' else '' }}" href="{{ url_for('ui.recursos_herramienta', clave='plazos') }}"><span class="nav-link__icon">🗓️</span>Plazos</a>

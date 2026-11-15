@@ -927,6 +927,22 @@ def recursos_biblioteca():
     )
 
 
+@admin_bp.route("/recursos/simulador")
+@requiere_admin
+def recursos_simulador():
+    return render_template(
+        "recursos/simulador.html", simulador=recursos.simulador(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
+    )
+
+
+@admin_bp.route("/recursos/algoritmo")
+@requiere_admin
+def recursos_algoritmo():
+    return render_template(
+        "recursos/algoritmo.html", algoritmo=recursos.algoritmo(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
+    )
+
+
 @admin_bp.route("/recursos/<clave>")
 @requiere_admin
 def recursos_herramienta(clave):
@@ -957,6 +973,16 @@ def capacitacion_algoritmo():
     return render_template(
         "recursos/algoritmo.html", algoritmo=recursos.algoritmo(), docs_min=recursos.docs_minimos(),
         **_contexto_recursos(),
+    )
+
+
+@admin_bp.route("/capacitacion/modo-capacitadora")
+@requiere_admin
+def capacitacion_modo():
+    temas = recursos.capacitacion()["temas_capacitadora"]
+    tema = next((t for t in temas if t["slug"] == request.args.get("tema")), temas[0])
+    return render_template(
+        "admin/capacitacion_modo.html", temas=temas, tema=tema, algoritmo=recursos.algoritmo(), **_contexto_recursos(),
     )
 
 

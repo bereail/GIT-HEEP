@@ -50,15 +50,26 @@
 </div>
 
 {% elif clave == 'checklists' %}
-<div class="her-botones no-imprimir"><button type="button" class="btn btn--ghost btn--sm" id="her-limpiar">↺ Desmarcar todo</button> <button type="button" class="btn btn--ghost btn--sm" id="her-imprimir">🖨️ Imprimir</button></div>
+<div class="her-procs no-imprimir" role="radiogroup" aria-label="Procedimiento">
+  {% for p in h.procedimientos %}
+  <button type="button" class="her-proc {{ 'is-active' if loop.first }}" data-proc="{{ p.letra }}" role="radio" aria-checked="{{ 'true' if loop.first else 'false' }}"><span class="her-proc__letra">{{ p.letra }}</span><b>{{ p.nombre }}</b><small>{{ p.detalle }}</small></button>
+  {% endfor %}
+</div>
+<div class="her-resumen">
+  <div class="her-avance"><div class="her-avance__barra"><span id="her-barra"></span></div><b id="her-porcentaje">0%</b></div>
+  <span id="her-alerta" class="her-alerta" aria-live="polite"></span>
+  <span class="her-leyenda"><span class="her-tipo her-tipo--obligatorio">Obligatorio · norma</span> <span class="her-tipo her-tipo--recomendado">Recomendado</span> <span class="her-tipo her-tipo--pendiente">⏳ Pendiente de confirmar</span></span>
+  <span class="her-botones no-imprimir"><button type="button" class="btn btn--ghost btn--sm" id="her-limpiar">↺ Desmarcar todo</button> <button type="button" class="btn btn--ghost btn--sm" id="her-imprimir">🖨️ Imprimir o guardar PDF</button></span>
+</div>
 <div class="her-checklists">
-  {% for l in h.listas %}
-  <section class="card her-check" data-lista="{{ l.slug }}">
-    <header><h2>{{ l.titulo }}</h2><span class="badge badge--neutral">{{ l.rol }}</span><span class="her-check__avance" aria-live="polite"></span></header>
+  {% for e in h.etapas %}
+  <section class="card her-check" data-etapa="{{ e.slug }}">
+    <header><h2>{{ loop.index }}. {{ e.titulo }}</h2><span class="her-check__avance" aria-live="polite"></span></header>
     <ul>
-      {% for i in l['items'] %}
-      <li class="{{ 'her-check--pendiente' if i.estado == 'pendiente' }}">
-        <label><input type="checkbox" data-item="{{ l.slug }}-{{ loop.index }}" /> <span>{{ i.t }}</span></label>
+      {% for i in e['items'] %}
+      <li data-procs="{{ i.procs | join(',') }}">
+        <label><input type="checkbox" data-item="{{ e.slug }}-{{ loop.index }}" data-tipo="{{ i.tipo }}" /> <span>{{ i.t }}</span></label>
+        <div class="her-item__meta"><span class="her-tipo her-tipo--{{ i.tipo }}">{{ {'obligatorio': 'Obligatorio', 'recomendado': 'Recomendado', 'pendiente': '⏳ Pendiente'}[i.tipo] }}</span>{% if i.resp %}<span class="her-resp">👤 {{ i.resp }}</span>{% endif %}{% if i.nota %}<span class="text-muted">{{ i.nota }}</span>{% endif %}</div>
         {{ fuentes(i.fuentes) }}
       </li>
       {% endfor %}

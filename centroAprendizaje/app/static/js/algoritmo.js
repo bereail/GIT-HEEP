@@ -102,6 +102,39 @@
     if (ejemplo) banner.innerHTML = `<b>${A.ejemplos[ejemplo].icono} Ejemplo didáctico:</b> ${esc(A.ejemplos[ejemplo].texto)} <span class="alg-tipo alg-tipo--ejemplo">EJEMPLO DIDÁCTICO</span>`;
   }
 
+  // Conexiones: término del diccionario, escenario del simulador y checklist.
+  const TERMINOS = {
+    'c-pliego': 'PBCP', 'c-aprobacion': 'Supervisor', 'c-acto': 'Autoridad competente', 'c-tcp': 'Sistema de Información Normativa',
+    'c-consultas': 'Circular', 'c-ofertas': 'Oferta presentada', 'c-apertura': 'Apertura', 'c-evaluacion': 'Evaluación',
+    'c-preadjudicacion': 'Preadjudicación', 'c-impugnaciones': 'Impugnación', 'c-adjudicacion': 'Adjudicación',
+    'fin-contractual': 'Orden de compra', 'd-publicacion': 'Publicación', 'c-invitacion': 'Convocatoria',
+    'a-directa': 'Compra directa', 'a-cd01': 'Compra directa', 'b-urgencia': 'Contratación directa por excepción',
+    'b-desierto': 'Contratación directa por excepción', 'b-otras': 'Contratación directa por excepción',
+    'c-privada': 'Licitación privada', 'd-publica': 'Licitación pública', 'necesidad': 'Requerimiento',
+    'e-convenio': 'Convenio marco', 'e-subasta': 'Subasta', 'e-etapa-multiple': 'etapa múltiple', 'd-urc-pliego': 'URC', 'd-urc-preadj': 'URC',
+  };
+  function procedimientoDe(id) {
+    if (/^a-/.test(id)) return 'A';
+    if (/^b-/.test(id)) return 'B';
+    if (/^d-/.test(id) && id !== 'd-excepcion' && id !== 'd-modalidad' && id !== 'd-monto') return 'D';
+    const ruta = expandir(pasos);
+    if (ruta.includes('d-publica')) return 'D';
+    if (ruta.includes('c-privada')) return 'C';
+    if (ruta.some((x) => /^b-/.test(x))) return 'B';
+    if (ruta.includes('a-directa')) return 'A';
+    return /^c-/.test(id) ? 'C' : null;
+  }
+  const ESCENARIO = { A: 'oficina', B: 'excepcion', C: 'insumos', D: 'equipamiento' };
+  function conexiones(id) {
+    const termino = TERMINOS[id];
+    const proc = procedimientoDe(id);
+    let html = '<h3>Seguí por acá</h3><div class="alg-conexiones">';
+    if (termino) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlDic}?q=${encodeURIComponent(termino)}">📖 "${esc(termino)}" en el diccionario</a>`;
+    if (proc) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlSim}?escenario=${ESCENARIO[proc]}">🎯 Practicar en el simulador</a>`;
+    if (proc) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlCheck}?procedimiento=${proc}">✅ Checklist del procedimiento ${proc}</a>`;
+    return html + '</div>';
+  }
+
   function abrirFicha(id) {
     const n = N[id];
     const f = n.ficha || {};
@@ -124,7 +157,7 @@
       if (d && d.vigencia) html += ` <span class="text-muted">· ${esc(d.vigencia)}</span>`;
       html += '</li>';
     });
-    html += '</ul>';
+    html += '</ul>' + conexiones(id);
     ficha.querySelector('.alg-ficha__cuerpo').innerHTML = html;
     ficha.hidden = false;
     ficha.querySelector('.alg-ficha__cerrar').focus();

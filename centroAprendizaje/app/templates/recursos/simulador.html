@@ -1,0 +1,16 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav with context %}
+{% block titulo %}Simulador de Compras — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('simulador') }}
+<div id="sim">
+  <h1 style="margin:8px 0 4px">🎯 {{ simulador.titulo }}</h1>
+  <p class="text-muted" style="margin:0 0 6px">Elegí un escenario y decidí en cada paso. Cada respuesta se explica y dice de dónde surge.</p>
+  <p class="text-muted" style="margin:0 0 16px;font-size:13px">ℹ️ {{ simulador.aviso }}</p>
+  <div id="sim-vista" aria-live="polite"></div>
+</div>
+<script type="application/json" id="sim-datos">{{ simulador | tojson }}</script>
+<script type="application/json" id="sim-docs">{{ docs_min | tojson }}</script>
+{% endblock %}
+{% block script_pagina %}<script src="{{ url_for('static', filename='js/simulador.js') }}"></script>{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "admin/base_admin.html" %}
+{% from "recursos/_comun.html" import estado, fuentes with context %}
+{% block titulo %}Modo capacitadora — Centro de capacitación{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+<nav class="rec-subnav no-imprimir" aria-label="Centro de capacitación">
+  <a href="{{ url_for('admin.capacitacion_inicio') }}">🎓 Centro de capacitación</a>
+  <a href="{{ url_for('admin.capacitacion_modo') }}" class="is-active">👩‍🏫 Modo capacitadora</a>
+  <a href="{{ url_for('admin.capacitacion_primera_clase') }}">📋 Guía de la primera clase</a>
+  <a href="{{ url_for('ui.recursos_aprender') }}" target="_blank" rel="noopener">👥 Modo participante ↗</a>
+</nav>
+<h1 style="margin:8px 0 4px">👩‍🏫 Modo capacitadora</h1>
+<p class="text-muted no-imprimir" style="margin:0 0 12px">Elegí un tema y tenés todo para darlo: explicación, ejemplo, diagrama, normativa, preguntas, ejercicio y errores a evitar.</p>
+
+<div class="cap-temas no-imprimir" role="tablist" aria-label="Temas">
+  {% for t in temas %}<a class="cap-tema {{ 'is-active' if t.slug == tema.slug }}" href="{{ url_for('admin.capacitacion_modo', tema=t.slug) }}" role="tab" aria-selected="{{ 'true' if t.slug == tema.slug else 'false' }}">{{ t.icono }} {{ t.titulo }}</a>{% endfor %}
+</div>
+
+<article class="card cap-ficha">
+  <header class="cap-ficha__head">
+    <span class="cap-ficha__icono">{{ tema.icono }}</span>
+    <h2>{{ tema.titulo }}</h2>
+    <button type="button" class="btn btn--ghost btn--sm no-imprimir" data-imprimir>🖨️ Imprimir o guardar PDF</button>
+  </header>
+
+  <div class="cap-ficha__grid">
+    <section><h3>Explicación sencilla</h3><p class="cap-palabras">💬 {{ tema.sencilla }}</p></section>
+    <section><h3>Explicación técnica</h3><p>{{ tema.tecnica }}</p></section>
+  </div>
+  <p class="cap-ejemplo">🏥 <b>Ejemplo del hospital:</b> {{ tema.ejemplo }} <span class="alg-tipo alg-tipo--ejemplo">EJEMPLO DIDÁCTICO</span></p>
+
+  <h3>Diagrama</h3>
+  <div class="cap-diagrama">
+    {% for id in tema.diagrama %}{% set n = algoritmo.nodos[id] %}
+    <span class="alg-mini alg-mini--{{ n.tipo }} alg-sis--{{ n.sistema }}">{{ n.titulo }}</span>{% if not loop.last %}<span class="cap-diagrama__flecha" aria-hidden="true">→</span>{% endif %}
+    {% endfor %}
+  </div>
+
+  <h3>¿De dónde surge?</h3>
+  {{ fuentes(tema.fuentes) }}
+
+  <div class="cap-ficha__grid">
+    <section><h3>❓ Preguntas para el grupo</h3><ul>{% for q in tema.preguntas %}<li>{{ q }}</li>{% endfor %}</ul></section>
+    <section><h3>✍️ Ejercicio</h3><p>{{ tema.ejercicio.consigna }}</p>
+      <details class="cap-dudas"><summary>Respuesta esperada</summary><p>{{ tema.ejercicio.respuesta }}</p></details></section>
+  </div>
+  <div class="cap-evitar">🚫 <b>Errores conceptuales frecuentes:</b> {{ tema.errores | join(' · ') }}</div>
+
+  <div class="alg-conexiones no-imprimir" style="margin-top:14px">
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.recursos_glosario', q=tema.enlaces.termino) }}">📖 "{{ tema.enlaces.termino }}" en el diccionario</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.recursos_simulador', escenario=tema.enlaces.escenario) }}">🎯 Ejercicio en el simulador</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.capacitacion_algoritmo') }}">🧭 Diagrama interactivo completo</a>
+    {% if tema.enlaces.procedimiento %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.recursos_herramienta', clave='checklists', procedimiento=tema.enlaces.procedimiento) }}">✅ Checklist del procedimiento {{ tema.enlaces.procedimiento }}</a>{% endif %}
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.recursos_biblioteca') }}">⚖️ Normativa</a>
+  </div>
+</article>
+{% endblock %}

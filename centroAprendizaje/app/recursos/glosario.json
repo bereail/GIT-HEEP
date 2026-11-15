@@ -1,60 +1,1432 @@
 {
-  "categorias": ["Sistemas y plataformas", "Roles y perfiles", "Organismos", "Procedimiento de compra", "Estados y documentos", "Proveedores", "Firma y validez", "Siglas"],
+  "categorias": [
+    "A. Documentación",
+    "B. Procedimientos",
+    "C. Etapas",
+    "D. Organismos y roles",
+    "E. Sistemas y registros"
+  ],
   "terminos": [
-    {"termino": "TIMBÓ", "categoria": "Sistemas y plataformas", "sencilla": "La plataforma de la Provincia para hacer los trámites en digital.", "tecnica": "Sistema de Gestión Documental Electrónica de la Provincia de Santa Fe. Comprende el expediente electrónico y los módulos que lo integran.", "ejemplo": "Un pedido de compra se tramita en un expediente de TIMBÓ.", "modulo": "Todos", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "TIMBÓ Compras", "categoria": "Sistemas y plataformas", "sencilla": "La parte de TIMBÓ donde se hacen las licitaciones y concursos.", "tecnica": "Módulo de TIMBÓ para los procedimientos de la Ley 12.510 y el Dec. 1104/16, desde el pliego particular hasta el informe de preadjudicación.", "ejemplo": "El Gestor arma el pliego en TIMBÓ Compras; la adjudicación sigue en el expediente.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Expediente electrónico", "categoria": "Sistemas y plataformas", "sencilla": "La carpeta digital del trámite.", "tecnica": "Conjunto de documentos electrónicos ordenados cronológicamente, con firma digital, que es el soporte formal de las actuaciones en TIMBÓ.", "ejemplo": "Sin número de expediente no se puede iniciar un proceso en TIMBÓ Compras.", "modulo": "Expedientes · TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "SIN (Sistema de Información Normativa)", "categoria": "Sistemas y plataformas", "sencilla": "El sistema donde se cargan las normas y los actos firmados.", "tecnica": "Sistema de Información Normativa de la Provincia. El Boletín Oficial enlaza a las leyes y decretos cargados ahí. En compras, todo acto se carga en el SIN y se envía por correo al TCP. Solo funciona desde la red institucional y con usuario habilitado.", "ejemplo": "Firmado el decisorio, se carga en el SIN para el Tribunal de Cuentas.", "modulo": "TIMBÓ Compras · Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-8-2025", "circ-ug-11-2026"]},
-    {"termino": "SIPAF", "categoria": "Sistemas y plataformas", "sencilla": "El sistema financiero de la Provincia.", "tecnica": "Ahí se dan de alta los beneficiarios de pago que no van al RUPC, y está el módulo de Contrataciones y Gestión de Bienes donde también se catalogan bienes.", "ejemplo": "El cobro de un subsidio no requiere RUPC: el beneficiario se da de alta en SIPAF.", "modulo": "Proveedores · Catálogo", "estado": "confirmado", "fuentes": ["circ-scygb-6-2026", "res-scygb-292-2026"]},
-    {"termino": "Sistema de Gestión de Proveedores Web", "categoria": "Sistemas y plataformas", "sencilla": "El sitio donde los proveedores se inscriben en el RUPC.", "tecnica": "Plataforma del RUPC en www.santafe.gov.ar/proveedores. Requiere clave fiscal nivel 3 con el servicio \"ECON SANTA FE – Registro Único de Proveedores y Contratistas\".", "ejemplo": "Una empresa nueva se inscribe ahí antes de ofertar.", "modulo": "Proveedores", "estado": "confirmado", "fuentes": ["res-scygb-110-2026"]},
-    {"termino": "iTop", "categoria": "Sistemas y plataformas", "sencilla": "El sistema de pedidos a las áreas técnicas.", "tecnica": "Canal técnico por el que la jefatura pide altas y bajas de usuarios en TIMBÓ.", "ejemplo": "La jefa del servicio pide por iTop el alta de un agente nuevo.", "modulo": "Usuarios y permisos", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]},
-    {"termino": "Portal de Compras", "categoria": "Sistemas y plataformas", "sencilla": "La página pública donde se publican las compras.", "tecnica": "Portal web de la Provincia (gestiones de compras). Para que aparezca \"Ofertar\" hay que marcar \"generar enlace con TIMBO\" y poner el expediente principal.", "ejemplo": "Publicado el proceso, se carga en el portal y se pide el aviso oficial por mail.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-scygb-4-2026"]},
-    {"termino": "ID Ciudadana", "categoria": "Sistemas y plataformas", "sencilla": "Tu usuario digital único para todos los sistemas de la Provincia.", "tecnica": "Credenciales (CUIL y contraseña) que se otorgan después de validar la identidad biométricamente. Es el equivalente digital del documento.", "ejemplo": "El proveedor entra a TIMBÓ Compras con su ID Ciudadana.", "modulo": "Todos", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Domicilio digital", "categoria": "Sistemas y plataformas", "sencilla": "Tu casilla oficial de notificaciones.", "tecnica": "Atributo de la ID Ciudadana: bandeja de notificaciones electrónicas de configuración obligatoria. Cada notificación genera una constancia con valor legal (Ley 14.256, arts. 19 a 21).", "ejemplo": "La preadjudicación se notifica al domicilio digital del oferente.", "modulo": "TIMBÓ Compras · Proveedores", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Bandeja de trabajo", "categoria": "Sistemas y plataformas", "sencilla": "Donde ves lo que tenés pendiente.", "tecnica": "Sección personal del usuario en TIMBÓ Compras con tareas pendientes, novedades y documentación de cada proceso. Revisarla periódicamente es responsabilidad del usuario.", "ejemplo": "El Evaluador encuentra el proceso en \"Evaluar ofertas\" en su bandeja.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-
-    {"termino": "Gestor", "categoria": "Roles y perfiles", "sencilla": "Quien arma el proceso y el pliego.", "tecnica": "Rol de TIMBÓ Compras: genera la instancia, completa los formularios del PBCP y genera circulares.", "ejemplo": "La persona de Compras que carga los renglones.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Supervisor", "categoria": "Roles y perfiles", "sencilla": "Quien aprueba el pliego y prepara la publicación.", "tecnica": "Rol de TIMBÓ Compras: aprueba o rechaza los formularios del PBCP, arma el cronograma y la nómina, y carga los actos (aprobación del pliego, sin efecto, adjudicación).", "ejemplo": "Al aprobar, TIMBÓ asigna el número de proceso definitivo.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Evaluador", "categoria": "Roles y perfiles", "sencilla": "Quien evalúa las ofertas.", "tecnica": "Rol de TIMBÓ Compras: evalúa, pide subsanaciones y mejoras, preselecciona, preadjudica, carga el cronograma de impugnaciones y recibe las impugnaciones. Mínimo 3 por proceso.", "ejemplo": "Tres evaluadores firman el informe de preadjudicación en orden.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Jurisdicción comitente", "categoria": "Roles y perfiles", "sencilla": "El organismo que necesita lo que se compra.", "tecnica": "Rol de TIMBÓ Compras que revisa los pliegos particulares. Se nombra en el PBCP si es distinta de la licitante.", "ejemplo": "Si un ministerio licita para un hospital, el hospital es la comitente.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026", "dec-287-2026"]},
-    {"termino": "Oferente", "categoria": "Roles y perfiles", "sencilla": "Quien presenta una oferta.", "tecnica": "Rol de TIMBÓ Compras: accede a los procesos publicados, oferta, consulta, recibe notificaciones e impugna.", "ejemplo": "Un laboratorio inscripto en el RUPC que oferta guantes.", "modulo": "TIMBÓ Compras · Proveedores", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Administrador local", "categoria": "Roles y perfiles", "sencilla": "Quien tramita los roles y usuarios en tu organismo.", "tecnica": "Ante él se tramita el alta de perfiles y roles de TIMBÓ Compras. Junto con la Sectorial de Informática, carga oficinas y usuarios después de la validación institucional. No surge de la norma que autorice los roles.", "ejemplo": "Para que te den el rol de Evaluador, el pedido va al administrador local.", "modulo": "Usuarios y permisos", "estado": "confirmado", "fuentes": ["circ-ug-1-2026", "circ-ug-3-2025"]},
-    {"termino": "Comisión Evaluadora", "categoria": "Roles y perfiles", "sencilla": "El grupo que analiza las ofertas y recomienda.", "tecnica": "Actúa según el PBCP. Analiza admisibilidad y conveniencia, asigna puntajes si corresponde y recomienda la adjudicación. Su opinión no es vinculante.", "ejemplo": "La comisión recomienda adjudicar el renglón 2 a la oferta más conveniente.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["dec-287-2026"]},
-    {"termino": "Permiso de carátula", "categoria": "Roles y perfiles", "sencilla": "El permiso para abrir expedientes.", "tecnica": "Solo para personal de Mesas de Entradas o Despachos, ministros, sus secretarías privadas, y secretarios y subsecretarios políticos.", "ejemplo": "Un servicio del hospital pide la carátula a Mesa de Entradas.", "modulo": "Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]},
-
-    {"termino": "Unidad de Gestión TIMBÓ (UG TIMBÓ)", "categoria": "Organismos", "sencilla": "El área que dirige TIMBÓ y dicta sus circulares.", "tecnica": "Autoridad de aplicación de TIMBÓ (Dec. 191/2024). Puede revisar, modificar o revocar permisos y autorizar vías alternativas ante una falla técnica.", "ejemplo": "La Circular UG TIMBÓ 7/2026 fija los roles de TIMBÓ Compras.", "modulo": "Todos", "estado": "confirmado", "fuentes": ["circ-ug-3-2025", "circ-ug-1-2026"]},
-    {"termino": "URC (Unidad Rectora Central)", "categoria": "Organismos", "sencilla": "El área de la Provincia que controla las compras.", "tecnica": "La Subsecretaría de Contrataciones y Gestión de Bienes. Controla el pliego y la preadjudicación de licitaciones y concursos públicos de la Administración Pública Central, aprueba el catálogo y resuelve sobre el RUPC. Si los controles alcanzan al hospital está pendiente.", "ejemplo": "Antes de publicar, el expediente puede pasar a la URC para el control del pliego.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["res-me-73-2026", "circ-scygb-3-2026", "circ-scygb-6-2026"]},
-    {"termino": "SCyGB", "categoria": "Siglas", "sencilla": "Subsecretaría de Contrataciones y Gestión de Bienes.", "tecnica": "Del Ministerio de Economía. Actúa como Unidad Rectora Central.", "ejemplo": "Las circulares SCyGB fijan los montos de cada año.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-scygb-6-2026"]},
-    {"termino": "Unidad Operativa de Contrataciones (UOC)", "categoria": "Organismos", "sencilla": "El área de compras de cada organismo.", "tecnica": "Gestiona las licitaciones y concursos de su ministerio con la colaboración y control de la URC. Verifica los requisitos de participación de los proveedores.", "ejemplo": "Compras del hospital evalúa si el proveedor cumple el pliego.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["res-me-73-2026", "res-scygb-110-2026"]},
-    {"termino": "Sectorial de Informática", "categoria": "Organismos", "sencilla": "El área de informática de tu ministerio.", "tecnica": "Gestiona altas y bajas de usuarios en TIMBÓ a pedido de la jefatura.", "ejemplo": "Recibe por iTop el pedido de alta y lo carga.", "modulo": "Usuarios y permisos", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]},
-    {"termino": "PMI (Promotores Ministeriales de Innovación)", "categoria": "Organismos", "sencilla": "Referentes de cada ministerio para la transformación digital.", "tecnica": "Red que acompaña técnicamente a cada jurisdicción y pide la incorporación de trámites nuevos a TIMBÓ.", "ejemplo": "Para digitalizar un trámite nuevo, el pedido pasa por el PMI.", "modulo": "Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]},
-    {"termino": "TCP (Tribunal de Cuentas de la Provincia)", "categoria": "Organismos", "sencilla": "El órgano que controla los gastos.", "tecnica": "Recibe la vista por \"Gestión de Visualización\" y los actos por SIN y correo. Sus pedidos llegan por Atención Virtual a Mesa de Entradas.", "ejemplo": "Se le corre vista con el decisorio preventivo.", "modulo": "TIMBÓ Compras · Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-9-2026", "circ-ug-11-2026"]},
-
-    {"termino": "PBCP (Pliego de Bases y Condiciones Particulares)", "categoria": "Procedimiento de compra", "sencilla": "Las reglas de esta compra en particular.", "tecnica": "Lo elaboran y aprueban los órganos competentes de cada jurisdicción. En TIMBÓ Compras se arma con formularios estandarizados. El Dec. 287/2026 (art. 131) lista lo que debe incluir.", "ejemplo": "Renglones, garantías, plazos de entrega y evaluadores.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["dec-287-2026", "circ-ug-7-2026"]},
-    {"termino": "Pliego Único de Bases y Condiciones Generales", "categoria": "Procedimiento de compra", "sencilla": "Las reglas generales que valen para todas las compras.", "tecnica": "Aprobado por el Dec. 287/2026 para el Sector Provincial No Financiero.", "ejemplo": "Fija, por ejemplo, el plazo de impugnación de la preadjudicación.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["dec-287-2026", "pliego-unico-2026"]},
-    {"termino": "Etapa preparatoria / etapa contractual", "categoria": "Procedimiento de compra", "sencilla": "Lo que pasa antes y después de TIMBÓ Compras.", "tecnica": "La etapa preparatoria se resuelve por expediente electrónico. La adjudicación y la etapa contractual, también. TIMBÓ Compras cubre del pliego al informe de preadjudicación.", "ejemplo": "La afectación preventiva va en el expediente; las ofertas, en TIMBÓ Compras.", "modulo": "TIMBÓ Compras · Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Simple sobre / etapa múltiple", "categoria": "Procedimiento de compra", "sencilla": "Si las ofertas se evalúan de una vez o en fases.", "tecnica": "Etapa múltiple: evaluación en dos o más fases, con preselecciones sucesivas (Dec. 287/2026, art. 123). TIMBÓ Compras es obligatorio para simple sobre; la etapa múltiple, por ahora, va por expediente.", "ejemplo": "Una obra compleja puede ir por etapa múltiple.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["dec-287-2026", "circ-ug-3-2026", "res-me-73-2026"]},
-    {"termino": "Nómina de proveedores", "categoria": "Procedimiento de compra", "sencilla": "La lista de proveedores a los que se invita.", "tecnica": "La arma el Supervisor. TIMBÓ Compras manda invitaciones a los correos de la nómina, además de la publicidad obligatoria.", "ejemplo": "Se suman a la nómina tres proveedores del rubro.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Cronograma de fechas", "categoria": "Procedimiento de compra", "sencilla": "Las fechas del proceso.", "tecnica": "Fija inicio y fin de la publicación, la apertura y el período de impugnación de ofertas. Los plazos se rigen por la hora del servidor de TIMBÓ Compras.", "ejemplo": "La apertura se hace sola a la hora del cronograma.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Circular aclaratoria / modificatoria", "categoria": "Procedimiento de compra", "sencilla": "La respuesta a una consulta o un cambio al pliego.", "tecnica": "La genera el Gestor y queda disponible para todos los participantes como parte del proceso. Las consultas no muestran el autor.", "ejemplo": "Un proveedor pregunta por una medida y la respuesta sale como circular.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Subtrámite", "categoria": "Procedimiento de compra", "sencilla": "Un pedido puntual al proveedor durante la evaluación.", "tecnica": "Subsanación, aclaración, mejora de precios o documentación complementaria. Si vence el plazo sin respuesta pasa a \"descartado\". Respondidos o descartados, se incorporan solos al expediente.", "ejemplo": "Se le pide al oferente la constancia que faltó.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Impugnación", "categoria": "Procedimiento de compra", "sencilla": "El reclamo formal de un oferente.", "tecnica": "Se presenta en TIMBÓ Compras con el formulario y la garantía exigida. Puede ser a las ofertas o al informe de preadjudicación, dentro del período del cronograma.", "ejemplo": "Un oferente impugna la preadjudicación dentro del plazo.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026", "dec-287-2026"]},
-    {"termino": "Correo de cortesía", "categoria": "Procedimiento de compra", "sencilla": "Un aviso por mail que no es una notificación oficial.", "tecnica": "Aviso al personal sobre novedades del proceso. La notificación válida es el evento del sistema (cambio de estado, envío).", "ejemplo": "Aunque no te llegue el mail, el plazo corre desde el cambio de estado.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "CAByS (formulario de alta)", "categoria": "Procedimiento de compra", "sencilla": "El formulario para pedir que se agregue un artículo al catálogo.", "tecnica": "Documento oficial \"Timbó Compras: Alta de bienes y servicios CAByS\". Para hospitales es obligatorio informar el código externo. Lo aprueba la URC.", "ejemplo": "Un insumo que no está en el catálogo se pide con este formulario.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["res-scygb-292-2026"]},
-    {"termino": "Foja cero", "categoria": "Procedimiento de compra", "sencilla": "Un sistema anterior que ya no se usa.", "tecnica": "Sistema de Foja Cero (art. 14 del Dec. 914/2018), derogado por el Dec. 287/2026.", "ejemplo": "Ya no hace falta en los pliegos.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["dec-287-2026"]},
-
-    {"termino": "Oferta presentada", "categoria": "Estados y documentos", "sencilla": "La oferta que el proveedor confirmó y envió.", "tecnica": "Estado que adquiere la oferta al confirmarla antes de la apertura. Solo estas ofertas son válidas en la apertura electrónica.", "ejemplo": "Una oferta que quedó en borrador no participa.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
-    {"termino": "Acta de apertura y cuadro comparativo", "categoria": "Estados y documentos", "sencilla": "Lo que genera TIMBÓ al abrir las ofertas.", "tecnica": "La apertura es automática a la hora del cronograma y genera el acta y el cuadro comparativo de precios.", "ejemplo": "El Evaluador puede bajar el cuadro comparativo en Excel.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026", "videos-app-timbocompras"]},
-    {"termino": "Documento embebido", "categoria": "Estados y documentos", "sencilla": "Un archivo que viene adentro de un PDF.", "tecnica": "Los anexos de TIMBÓ Compras se ven como documentos embebidos en PDF, para que conserven sus firmas. Se abren desde el panel de adjuntos del lector de PDF.", "ejemplo": "Las fichas técnicas del pliego están adjuntas dentro del PDF.", "modulo": "TIMBÓ Compras", "estado": "confirmado", "fuentes": ["circ-ug-7-2026", "videos-proveedores"]},
-    {"termino": "Estados del proceso", "categoria": "Estados y documentos", "sencilla": "En qué etapa está la compra.", "tecnica": "Las fuentes nombran, entre otros: Aprobar contratación, Publicado, Evaluar ofertas, Cronograma de impugnación, Preadjudicado. No hay una lista oficial completa.", "ejemplo": "En \"Aprobar contratación\" el expediente puede ir a la URC.", "modulo": "TIMBÓ Compras", "estado": "pendiente", "fuentes": ["circ-scygb-3-2026", "videos-app-timbocompras"]},
-
-    {"termino": "RUPC (Registro Único de Proveedores y Contratistas)", "categoria": "Proveedores", "sencilla": "El registro donde tiene que estar un proveedor para ofertar.", "tecnica": "Inscripción en www.santafe.gov.ar/proveedores. Desde la Circ. UG 2/2026, el RUPC administra la inscripción y la Unidad Operativa verifica los requisitos de participación. Hay una discrepancia sobre si la inscripción vence.", "ejemplo": "Sin RUPC, el proveedor no puede ofertar.", "modulo": "Proveedores", "estado": "discrepancia", "fuentes": ["res-scygb-110-2026", "circ-ug-2-2026", "dec-287-2026"]},
-    {"termino": "RBPCME", "categoria": "Siglas", "sencilla": "Un registro de beneficiarios que ya no existe.", "tecnica": "Registro de Beneficiarios de Pagos para Compras Menores o Excepciones, suprimido por el Dec. 287/2026. Queda solo el RUPC.", "ejemplo": "—", "modulo": "Proveedores", "estado": "confirmado", "fuentes": ["dec-287-2026", "circ-scygb-6-2026"]},
-    {"termino": "Legajo digital del proveedor", "categoria": "Proveedores", "sencilla": "La carpeta de antecedentes de cada proveedor.", "tecnica": "Lo arma el RUPC. Incluye el desempeño contractual, que se pondera en futuras contrataciones. Al terminar el contrato, el organismo manda un informe de desempeño.", "ejemplo": "Compras informa que el proveedor entregó fuera de término.", "modulo": "Proveedores", "estado": "confirmado", "fuentes": ["circ-ug-2-2026"]},
-    {"termino": "Boletín Electrónico de Compras", "categoria": "Proveedores", "sencilla": "El aviso de compras que reciben los proveedores inscriptos.", "tecnica": "Los inscriptos en el RUPC quedan suscriptos automáticamente.", "ejemplo": "—", "modulo": "Proveedores", "estado": "confirmado", "fuentes": ["res-scygb-110-2026"]},
-
-    {"termino": "Firma electrónica / firma digital", "categoria": "Firma y validez", "sencilla": "La firma dentro del sistema (electrónica) o con token (digital).", "tecnica": "La firma electrónica alcanza para la mayoría de los actos; la digital (con token) se reserva para decretos y resoluciones ministeriales. Las dos tienen valor legal.", "ejemplo": "Un decisorio del hospital se firma con firma electrónica.", "modulo": "Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-4-2025"]},
-    {"termino": "Firmador Digital Web", "categoria": "Firma y validez", "sencilla": "La herramienta para firmar y validar PDF fuera de TIMBÓ.", "tecnica": "Herramienta oficial de la Provincia. La firma electrónica puede validarse ahí. El sitio de validación que cita la Circ. 5/2024 hoy pide iniciar sesión.", "ejemplo": "Validar la firma de un documento que llegó por mail.", "modulo": "Expedientes", "estado": "confirmado", "fuentes": ["circ-ug-4-2025", "circ-ug-5-2024"]},
-    {"termino": "Credenciales intransferibles", "categoria": "Firma y validez", "sencilla": "Tu clave es solo tuya.", "tecnica": "Lo hecho con tu clave se presume hecho por vos. Prestarla está prohibido y el usuario responde por su uso.", "ejemplo": "No compartas la clave por WhatsApp.", "modulo": "Todos", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]}
+    {
+      "termino": "TIMBÓ",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La plataforma de la Provincia para hacer los trámites en digital.",
+      "tecnica": "Sistema de Gestión Documental Electrónica de la Provincia de Santa Fe. Comprende el expediente electrónico y los módulos que lo integran.",
+      "ejemplo": "Un pedido de compra se tramita en un expediente de TIMBÓ.",
+      "modulo": "Todos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Todo el circuito",
+      "sistema": "TIMBÓ",
+      "relacionados": [
+        "TIMBÓ Compras",
+        "Expediente electrónico"
+      ]
+    },
+    {
+      "termino": "TIMBÓ Compras",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La parte de TIMBÓ donde se hacen las licitaciones y concursos.",
+      "tecnica": "Módulo de TIMBÓ para los procedimientos de la Ley 12.510 y el Dec. 1104/16, desde el pliego particular hasta el informe de preadjudicación.",
+      "ejemplo": "El Gestor arma el pliego en TIMBÓ Compras; la adjudicación sigue en el expediente.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Del pliego a la preadjudicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Expediente electrónico",
+        "PBCP (Pliego de Bases y Condiciones Particulares)",
+        "Preadjudicación"
+      ]
+    },
+    {
+      "termino": "Expediente electrónico",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La carpeta digital del trámite.",
+      "tecnica": "Conjunto de documentos electrónicos ordenados cronológicamente, con firma digital, que es el soporte formal de las actuaciones en TIMBÓ.",
+      "ejemplo": "Sin número de expediente no se puede iniciar un proceso en TIMBÓ Compras.",
+      "modulo": "Expedientes · TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Etapa preparatoria, adjudicación y etapa contractual",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "TIMBÓ Compras",
+        "Etapa preparatoria / etapa contractual"
+      ]
+    },
+    {
+      "termino": "SIN (Sistema de Información Normativa)",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "El sistema donde se cargan las normas y los actos firmados.",
+      "tecnica": "Sistema de Información Normativa de la Provincia. El Boletín Oficial enlaza a las leyes y decretos cargados ahí. En compras, todo acto se carga en el SIN y se envía por correo al TCP. Solo funciona desde la red institucional y con usuario habilitado.",
+      "ejemplo": "Firmado el decisorio, se carga en el SIN para el Tribunal de Cuentas.",
+      "modulo": "TIMBÓ Compras · Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-8-2025",
+        "circ-ug-11-2026"
+      ],
+      "etapa": "Después de firmar un acto",
+      "sistema": "SIN (externo)",
+      "relacionados": [
+        "TCP (Tribunal de Cuentas de la Provincia)"
+      ]
+    },
+    {
+      "termino": "SIPAF",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "El sistema financiero de la Provincia.",
+      "tecnica": "Ahí se dan de alta los beneficiarios de pago que no van al RUPC, y está el módulo de Contrataciones y Gestión de Bienes donde también se catalogan bienes.",
+      "ejemplo": "El cobro de un subsidio no requiere RUPC: el beneficiario se da de alta en SIPAF.",
+      "modulo": "Proveedores · Catálogo",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-6-2026",
+        "res-scygb-292-2026"
+      ],
+      "etapa": "Catálogo y pagos",
+      "sistema": "SIPAF (externo)",
+      "relacionados": [
+        "RUPC (Registro Único de Proveedores y Contratistas)",
+        "CAByS (formulario de alta)"
+      ]
+    },
+    {
+      "termino": "Sistema de Gestión de Proveedores Web",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "El sitio donde los proveedores se inscriben en el RUPC.",
+      "tecnica": "Plataforma del RUPC en www.santafe.gov.ar/proveedores. Requiere clave fiscal nivel 3 con el servicio \"ECON SANTA FE – Registro Único de Proveedores y Contratistas\".",
+      "ejemplo": "Una empresa nueva se inscribe ahí antes de ofertar.",
+      "modulo": "Proveedores",
+      "estado": "confirmado",
+      "fuentes": [
+        "res-scygb-110-2026"
+      ],
+      "etapa": "Antes de ofertar",
+      "sistema": "Externo",
+      "relacionados": [
+        "RUPC (Registro Único de Proveedores y Contratistas)"
+      ]
+    },
+    {
+      "termino": "iTop",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "El sistema de pedidos a las áreas técnicas.",
+      "tecnica": "Canal técnico por el que la jefatura pide altas y bajas de usuarios en TIMBÓ.",
+      "ejemplo": "La jefa del servicio pide por iTop el alta de un agente nuevo.",
+      "modulo": "Usuarios y permisos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ],
+      "etapa": "Altas y permisos",
+      "sistema": "iTop (externo)",
+      "relacionados": [
+        "Administrador local",
+        "Sectorial de Informática"
+      ]
+    },
+    {
+      "termino": "Portal de Compras",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La página pública donde se publican las compras.",
+      "tecnica": "Portal web de la Provincia (gestiones de compras). Para que aparezca \"Ofertar\" hay que marcar \"generar enlace con TIMBO\" y poner el expediente principal.",
+      "ejemplo": "Publicado el proceso, se carga en el portal y se pide el aviso oficial por mail.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-4-2026"
+      ],
+      "etapa": "Publicación",
+      "sistema": "Portal de Compras (externo)",
+      "relacionados": [
+        "Publicación",
+        "Convocatoria"
+      ]
+    },
+    {
+      "termino": "ID Ciudadana",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "Tu usuario digital único para todos los sistemas de la Provincia.",
+      "tecnica": "Credenciales (CUIL y contraseña) que se otorgan después de validar la identidad biométricamente. Es el equivalente digital del documento.",
+      "ejemplo": "El proveedor entra a TIMBÓ Compras con su ID Ciudadana.",
+      "modulo": "Todos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Para entrar a los sistemas",
+      "sistema": "ID Ciudadana",
+      "relacionados": [
+        "Domicilio digital"
+      ]
+    },
+    {
+      "termino": "Domicilio digital",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "Tu casilla oficial de notificaciones.",
+      "tecnica": "Atributo de la ID Ciudadana: bandeja de notificaciones electrónicas de configuración obligatoria. Cada notificación genera una constancia con valor legal (Ley 14.256, arts. 19 a 21).",
+      "ejemplo": "La preadjudicación se notifica al domicilio digital del oferente.",
+      "modulo": "TIMBÓ Compras · Proveedores",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Notificaciones",
+      "sistema": "ID Ciudadana",
+      "relacionados": [
+        "ID Ciudadana",
+        "Preadjudicación"
+      ]
+    },
+    {
+      "termino": "Bandeja de trabajo",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "Donde ves lo que tenés pendiente.",
+      "tecnica": "Sección personal del usuario en TIMBÓ Compras con tareas pendientes, novedades y documentación de cada proceso. Revisarla periódicamente es responsabilidad del usuario.",
+      "ejemplo": "El Evaluador encuentra el proceso en \"Evaluar ofertas\" en su bandeja.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Todo el proceso",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Correo de cortesía"
+      ]
+    },
+    {
+      "termino": "Gestor",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien arma el proceso y el pliego.",
+      "tecnica": "Rol de TIMBÓ Compras: genera la instancia, completa los formularios del PBCP y genera circulares.",
+      "ejemplo": "La persona de Compras que carga los renglones.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Preparación del pliego",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Supervisor",
+        "PBCP (Pliego de Bases y Condiciones Particulares)"
+      ]
+    },
+    {
+      "termino": "Supervisor",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien aprueba el pliego y prepara la publicación.",
+      "tecnica": "Rol de TIMBÓ Compras: aprueba o rechaza los formularios del PBCP, arma el cronograma y la nómina, y carga los actos (aprobación del pliego, sin efecto, adjudicación).",
+      "ejemplo": "Al aprobar, TIMBÓ asigna el número de proceso definitivo.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Aprobación y publicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Gestor",
+        "Nómina de proveedores",
+        "Adjudicación"
+      ]
+    },
+    {
+      "termino": "Evaluador",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien evalúa las ofertas.",
+      "tecnica": "Rol de TIMBÓ Compras: evalúa, pide subsanaciones y mejoras, preselecciona, preadjudica, carga el cronograma de impugnaciones y recibe las impugnaciones. Mínimo 3 por proceso.",
+      "ejemplo": "Tres evaluadores firman el informe de preadjudicación en orden.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Evaluación y preadjudicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Comisión Evaluadora",
+        "Preadjudicación",
+        "Subtrámite"
+      ]
+    },
+    {
+      "termino": "Jurisdicción comitente",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El organismo que necesita lo que se compra.",
+      "tecnica": "Rol de TIMBÓ Compras que revisa los pliegos particulares. Se nombra en el PBCP si es distinta de la licitante.",
+      "ejemplo": "Si un ministerio licita para un hospital, el hospital es la comitente.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ],
+      "etapa": "Revisión del pliego",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Gestor",
+        "Área requirente"
+      ]
+    },
+    {
+      "termino": "Oferente",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien presenta una oferta.",
+      "tecnica": "Rol de TIMBÓ Compras: accede a los procesos publicados, oferta, consulta, recibe notificaciones e impugna.",
+      "ejemplo": "Un laboratorio inscripto en el RUPC que oferta guantes.",
+      "modulo": "TIMBÓ Compras · Proveedores",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Publicación, ofertas e impugnaciones",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Proveedor",
+        "Oferta presentada"
+      ]
+    },
+    {
+      "termino": "Administrador local",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien tramita los roles y usuarios en tu organismo.",
+      "tecnica": "Ante él se tramita el alta de perfiles y roles de TIMBÓ Compras. Junto con la Sectorial de Informática, carga oficinas y usuarios después de la validación institucional. No surge de la norma que autorice los roles.",
+      "ejemplo": "Para que te den el rol de Evaluador, el pedido va al administrador local.",
+      "modulo": "Usuarios y permisos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-1-2026",
+        "circ-ug-3-2025"
+      ],
+      "etapa": "Altas de roles",
+      "sistema": "TIMBÓ",
+      "relacionados": [
+        "Gestor",
+        "iTop"
+      ]
+    },
+    {
+      "termino": "Comisión Evaluadora",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El grupo que analiza las ofertas y recomienda.",
+      "tecnica": "Actúa según el PBCP. Analiza admisibilidad y conveniencia, asigna puntajes si corresponde y recomienda la adjudicación. Su opinión no es vinculante.",
+      "ejemplo": "La comisión recomienda adjudicar el renglón 2 a la oferta más conveniente.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026"
+      ],
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Evaluador",
+        "Preadjudicación"
+      ]
+    },
+    {
+      "termino": "Permiso de carátula",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El permiso para abrir expedientes.",
+      "tecnica": "Solo para personal de Mesas de Entradas o Despachos, ministros, sus secretarías privadas, y secretarios y subsecretarios políticos.",
+      "ejemplo": "Un servicio del hospital pide la carátula a Mesa de Entradas.",
+      "modulo": "Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ],
+      "etapa": "Inicio del expediente",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Expediente electrónico"
+      ]
+    },
+    {
+      "termino": "Unidad de Gestión TIMBÓ (UG TIMBÓ)",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El área que dirige TIMBÓ y dicta sus circulares.",
+      "tecnica": "Autoridad de aplicación de TIMBÓ (Dec. 191/2024). Puede revisar, modificar o revocar permisos y autorizar vías alternativas ante una falla técnica.",
+      "ejemplo": "La Circular UG TIMBÓ 7/2026 fija los roles de TIMBÓ Compras.",
+      "modulo": "Todos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-3-2025",
+        "circ-ug-1-2026"
+      ],
+      "etapa": "Rectoría del sistema",
+      "sistema": "TIMBÓ",
+      "relacionados": [
+        "TIMBÓ"
+      ]
+    },
+    {
+      "termino": "URC (Unidad Rectora Central)",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El área de la Provincia que controla las compras.",
+      "tecnica": "La Subsecretaría de Contrataciones y Gestión de Bienes. Controla el pliego y la preadjudicación de licitaciones y concursos públicos de la Administración Pública Central, aprueba el catálogo y resuelve sobre el RUPC. Si los controles alcanzan al hospital está pendiente.",
+      "ejemplo": "Antes de publicar, el expediente puede pasar a la URC para el control del pliego.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "res-me-73-2026",
+        "circ-scygb-3-2026",
+        "circ-scygb-6-2026"
+      ],
+      "etapa": "Controles y catálogo",
+      "sistema": "Expediente electrónico (pase)",
+      "relacionados": [
+        "SCyGB",
+        "CAByS (formulario de alta)"
+      ]
+    },
+    {
+      "termino": "SCyGB",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Subsecretaría de Contrataciones y Gestión de Bienes.",
+      "tecnica": "Del Ministerio de Economía. Actúa como Unidad Rectora Central.",
+      "ejemplo": "Las circulares SCyGB fijan los montos de cada año.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-6-2026"
+      ],
+      "etapa": "Normativa de compras",
+      "sistema": "—",
+      "relacionados": [
+        "URC (Unidad Rectora Central)"
+      ]
+    },
+    {
+      "termino": "Unidad Operativa de Contrataciones (UOC)",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El área de compras de cada organismo.",
+      "tecnica": "Gestiona las licitaciones y concursos de su ministerio con la colaboración y control de la URC. Verifica los requisitos de participación de los proveedores.",
+      "ejemplo": "Compras del hospital evalúa si el proveedor cumple el pliego.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "res-me-73-2026",
+        "res-scygb-110-2026"
+      ],
+      "etapa": "Todo el procedimiento",
+      "sistema": "TIMBÓ Compras + expediente",
+      "relacionados": [
+        "URC (Unidad Rectora Central)"
+      ]
+    },
+    {
+      "termino": "Sectorial de Informática",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El área de informática de tu ministerio.",
+      "tecnica": "Gestiona altas y bajas de usuarios en TIMBÓ a pedido de la jefatura.",
+      "ejemplo": "Recibe por iTop el pedido de alta y lo carga.",
+      "modulo": "Usuarios y permisos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ],
+      "etapa": "Altas de usuarios",
+      "sistema": "TIMBÓ",
+      "relacionados": [
+        "iTop"
+      ]
+    },
+    {
+      "termino": "PMI (Promotores Ministeriales de Innovación)",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Referentes de cada ministerio para la transformación digital.",
+      "tecnica": "Red que acompaña técnicamente a cada jurisdicción y pide la incorporación de trámites nuevos a TIMBÓ.",
+      "ejemplo": "Para digitalizar un trámite nuevo, el pedido pasa por el PMI.",
+      "modulo": "Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ],
+      "etapa": "Nuevos trámites digitales",
+      "sistema": "TIMBÓ",
+      "relacionados": []
+    },
+    {
+      "termino": "TCP (Tribunal de Cuentas de la Provincia)",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El órgano que controla los gastos.",
+      "tecnica": "Recibe la vista por \"Gestión de Visualización\" y los actos por SIN y correo. Sus pedidos llegan por Atención Virtual a Mesa de Entradas.",
+      "ejemplo": "Se le corre vista con el decisorio preventivo.",
+      "modulo": "TIMBÓ Compras · Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-9-2026",
+        "circ-ug-11-2026"
+      ],
+      "etapa": "Vista",
+      "sistema": "Expediente + SIN",
+      "relacionados": [
+        "SIN (Sistema de Información Normativa)"
+      ]
+    },
+    {
+      "termino": "PBCP (Pliego de Bases y Condiciones Particulares)",
+      "categoria": "A. Documentación",
+      "sencilla": "Las reglas de esta compra en particular.",
+      "tecnica": "Lo elaboran y aprueban los órganos competentes de cada jurisdicción. En TIMBÓ Compras se arma con formularios estandarizados. El Dec. 287/2026 (art. 131) lista lo que debe incluir.",
+      "ejemplo": "Renglones, garantías, plazos de entrega y evaluadores.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Preparación del procedimiento",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "PBCG (Pliego Único de Bases y Condiciones Generales)",
+        "Especificaciones técnicas",
+        "Gestor"
+      ]
+    },
+    {
+      "termino": "PBCG (Pliego Único de Bases y Condiciones Generales)",
+      "categoria": "A. Documentación",
+      "sencilla": "Las reglas generales que valen para todas las compras.",
+      "tecnica": "Aprobado por el Dec. 287/2026 para el Sector Provincial No Financiero.",
+      "ejemplo": "Fija, por ejemplo, el plazo de impugnación de la preadjudicación.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "pliego-unico-2026"
+      ],
+      "etapa": "Rige todo el procedimiento",
+      "sistema": "—",
+      "relacionados": [
+        "PBCP (Pliego de Bases y Condiciones Particulares)"
+      ]
+    },
+    {
+      "termino": "Etapa preparatoria / etapa contractual",
+      "categoria": "C. Etapas",
+      "sencilla": "Lo que pasa antes y después de TIMBÓ Compras.",
+      "tecnica": "La etapa preparatoria se resuelve por expediente electrónico. La adjudicación y la etapa contractual, también. TIMBÓ Compras cubre del pliego al informe de preadjudicación.",
+      "ejemplo": "La afectación preventiva va en el expediente; las ofertas, en TIMBÓ Compras.",
+      "modulo": "TIMBÓ Compras · Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Antes y después de TIMBÓ Compras",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Requerimiento",
+        "Adjudicación"
+      ]
+    },
+    {
+      "termino": "Simple sobre / etapa múltiple",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Si las ofertas se evalúan de una vez o en fases.",
+      "tecnica": "Etapa múltiple: evaluación en dos o más fases, con preselecciones sucesivas (Dec. 287/2026, art. 123). TIMBÓ Compras es obligatorio para simple sobre; la etapa múltiple, por ahora, va por expediente.",
+      "ejemplo": "Una obra compleja puede ir por etapa múltiple.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "circ-ug-3-2026",
+        "res-me-73-2026"
+      ],
+      "etapa": "Encuadre",
+      "sistema": "TIMBÓ Compras / expediente",
+      "relacionados": [
+        "Licitación pública",
+        "Licitación privada"
+      ]
+    },
+    {
+      "termino": "Nómina de proveedores",
+      "categoria": "A. Documentación",
+      "sencilla": "La lista de proveedores a los que se invita.",
+      "tecnica": "La arma el Supervisor. TIMBÓ Compras manda invitaciones a los correos de la nómina, además de la publicidad obligatoria.",
+      "ejemplo": "Se suman a la nómina tres proveedores del rubro.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Publicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Supervisor",
+        "Convocatoria"
+      ]
+    },
+    {
+      "termino": "Cronograma de fechas",
+      "categoria": "A. Documentación",
+      "sencilla": "Las fechas del proceso.",
+      "tecnica": "Fija inicio y fin de la publicación, la apertura y el período de impugnación de ofertas. Los plazos se rigen por la hora del servidor de TIMBÓ Compras.",
+      "ejemplo": "La apertura se hace sola a la hora del cronograma.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Publicación y apertura",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Apertura"
+      ]
+    },
+    {
+      "termino": "Circular aclaratoria / modificatoria",
+      "categoria": "A. Documentación",
+      "sencilla": "La respuesta a una consulta o un cambio al pliego.",
+      "tecnica": "La genera el Gestor y queda disponible para todos los participantes como parte del proceso. Las consultas no muestran el autor.",
+      "ejemplo": "Un proveedor pregunta por una medida y la respuesta sale como circular.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Publicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Gestor"
+      ]
+    },
+    {
+      "termino": "Subtrámite",
+      "categoria": "C. Etapas",
+      "sencilla": "Un pedido puntual al proveedor durante la evaluación.",
+      "tecnica": "Subsanación, aclaración, mejora de precios o documentación complementaria. Si vence el plazo sin respuesta pasa a \"descartado\". Respondidos o descartados, se incorporan solos al expediente.",
+      "ejemplo": "Se le pide al oferente la constancia que faltó.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Subsanación",
+        "Aclaración",
+        "Mejora de precios"
+      ]
+    },
+    {
+      "termino": "Impugnación",
+      "categoria": "C. Etapas",
+      "sencilla": "El reclamo formal de un oferente.",
+      "tecnica": "Se presenta en TIMBÓ Compras con el formulario y la garantía exigida. Puede ser a las ofertas o al informe de preadjudicación, dentro del período del cronograma.",
+      "ejemplo": "Un oferente impugna la preadjudicación dentro del plazo.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ],
+      "etapa": "Después de la apertura o de la preadjudicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Preadjudicación",
+        "Garantía"
+      ]
+    },
+    {
+      "termino": "Correo de cortesía",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "Un aviso por mail que no es una notificación oficial.",
+      "tecnica": "Aviso al personal sobre novedades del proceso. La notificación válida es el evento del sistema (cambio de estado, envío).",
+      "ejemplo": "Aunque no te llegue el mail, el plazo corre desde el cambio de estado.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Todo el proceso",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Domicilio digital"
+      ]
+    },
+    {
+      "termino": "CAByS (formulario de alta)",
+      "categoria": "A. Documentación",
+      "sencilla": "El formulario para pedir que se agregue un artículo al catálogo.",
+      "tecnica": "Documento oficial \"Timbó Compras: Alta de bienes y servicios CAByS\". Para hospitales es obligatorio informar el código externo. Lo aprueba la URC.",
+      "ejemplo": "Un insumo que no está en el catálogo se pide con este formulario.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "res-scygb-292-2026"
+      ],
+      "etapa": "Etapa preparatoria",
+      "sistema": "Documentos Oficiales",
+      "relacionados": [
+        "URC (Unidad Rectora Central)"
+      ]
+    },
+    {
+      "termino": "Foja cero",
+      "categoria": "A. Documentación",
+      "sencilla": "Un sistema anterior que ya no se usa.",
+      "tecnica": "Sistema de Foja Cero (art. 14 del Dec. 914/2018), derogado por el Dec. 287/2026.",
+      "ejemplo": "Ya no hace falta en los pliegos.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026"
+      ],
+      "etapa": "(derogado)",
+      "sistema": "—",
+      "relacionados": [
+        "PBCP (Pliego de Bases y Condiciones Particulares)"
+      ]
+    },
+    {
+      "termino": "Oferta presentada",
+      "categoria": "C. Etapas",
+      "sencilla": "La oferta que el proveedor confirmó y envió.",
+      "tecnica": "Estado que adquiere la oferta al confirmarla antes de la apertura. Solo estas ofertas son válidas en la apertura electrónica.",
+      "ejemplo": "Una oferta que quedó en borrador no participa.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "etapa": "Ofertas y apertura",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Apertura"
+      ]
+    },
+    {
+      "termino": "Acta de apertura y cuadro comparativo",
+      "categoria": "A. Documentación",
+      "sencilla": "Lo que genera TIMBÓ al abrir las ofertas.",
+      "tecnica": "La apertura es automática a la hora del cronograma y genera el acta y el cuadro comparativo de precios.",
+      "ejemplo": "El Evaluador puede bajar el cuadro comparativo en Excel.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "videos-app-timbocompras"
+      ],
+      "etapa": "Apertura",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Apertura",
+        "Evaluación"
+      ]
+    },
+    {
+      "termino": "Documento embebido",
+      "categoria": "A. Documentación",
+      "sencilla": "Un archivo que viene adentro de un PDF.",
+      "tecnica": "Los anexos de TIMBÓ Compras se ven como documentos embebidos en PDF, para que conserven sus firmas. Se abren desde el panel de adjuntos del lector de PDF.",
+      "ejemplo": "Las fichas técnicas del pliego están adjuntas dentro del PDF.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "videos-proveedores"
+      ],
+      "etapa": "Publicación y ofertas",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "PBCP (Pliego de Bases y Condiciones Particulares)"
+      ]
+    },
+    {
+      "termino": "Estados del proceso",
+      "categoria": "C. Etapas",
+      "sencilla": "En qué etapa está la compra.",
+      "tecnica": "Las fuentes nombran, entre otros: Aprobar contratación, Publicado, Evaluar ofertas, Cronograma de impugnación, Preadjudicado. No hay una lista oficial completa.",
+      "ejemplo": "En \"Aprobar contratación\" el expediente puede ir a la URC.",
+      "modulo": "TIMBÓ Compras",
+      "estado": "pendiente",
+      "fuentes": [
+        "circ-scygb-3-2026",
+        "videos-app-timbocompras"
+      ],
+      "etapa": "Todo el proceso",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": []
+    },
+    {
+      "termino": "RUPC (Registro Único de Proveedores y Contratistas)",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "El registro donde tiene que estar un proveedor para ofertar.",
+      "tecnica": "Inscripción en www.santafe.gov.ar/proveedores. Desde la Circ. UG 2/2026, el RUPC administra la inscripción y la Unidad Operativa verifica los requisitos de participación. Hay una discrepancia sobre si la inscripción vence.",
+      "ejemplo": "Sin RUPC, el proveedor no puede ofertar.",
+      "modulo": "Proveedores",
+      "estado": "discrepancia",
+      "fuentes": [
+        "res-scygb-110-2026",
+        "circ-ug-2-2026",
+        "dec-287-2026"
+      ],
+      "etapa": "Antes de ofertar",
+      "sistema": "Sistema de Gestión de Proveedores Web",
+      "relacionados": [
+        "Proveedor",
+        "Legajo digital del proveedor"
+      ]
+    },
+    {
+      "termino": "RBPCME",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "Un registro de beneficiarios que ya no existe.",
+      "tecnica": "Registro de Beneficiarios de Pagos para Compras Menores o Excepciones, suprimido por el Dec. 287/2026. Queda solo el RUPC.",
+      "ejemplo": "—",
+      "modulo": "Proveedores",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "circ-scygb-6-2026"
+      ],
+      "etapa": "(suprimido)",
+      "sistema": "—",
+      "relacionados": [
+        "RUPC (Registro Único de Proveedores y Contratistas)"
+      ]
+    },
+    {
+      "termino": "Legajo digital del proveedor",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La carpeta de antecedentes de cada proveedor.",
+      "tecnica": "Lo arma el RUPC. Incluye el desempeño contractual, que se pondera en futuras contrataciones. Al terminar el contrato, el organismo manda un informe de desempeño.",
+      "ejemplo": "Compras informa que el proveedor entregó fuera de término.",
+      "modulo": "Proveedores",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-2-2026"
+      ],
+      "etapa": "Después del contrato",
+      "sistema": "RUPC",
+      "relacionados": [
+        "RUPC (Registro Único de Proveedores y Contratistas)"
+      ]
+    },
+    {
+      "termino": "Boletín Electrónico de Compras",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "El aviso de compras que reciben los proveedores inscriptos.",
+      "tecnica": "Los inscriptos en el RUPC quedan suscriptos automáticamente.",
+      "ejemplo": "—",
+      "modulo": "Proveedores",
+      "estado": "confirmado",
+      "fuentes": [
+        "res-scygb-110-2026"
+      ],
+      "etapa": "Publicación",
+      "sistema": "RUPC",
+      "relacionados": []
+    },
+    {
+      "termino": "Firma electrónica / firma digital",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La firma dentro del sistema (electrónica) o con token (digital).",
+      "tecnica": "La firma electrónica alcanza para la mayoría de los actos; la digital (con token) se reserva para decretos y resoluciones ministeriales. Las dos tienen valor legal.",
+      "ejemplo": "Un decisorio del hospital se firma con firma electrónica.",
+      "modulo": "Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-4-2025"
+      ],
+      "etapa": "Todo el proceso",
+      "sistema": "TIMBÓ",
+      "relacionados": [
+        "Firmador Digital Web"
+      ]
+    },
+    {
+      "termino": "Firmador Digital Web",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "La herramienta para firmar y validar PDF fuera de TIMBÓ.",
+      "tecnica": "Herramienta oficial de la Provincia. La firma electrónica puede validarse ahí. El sitio de validación que cita la Circ. 5/2024 hoy pide iniciar sesión.",
+      "ejemplo": "Validar la firma de un documento que llegó por mail.",
+      "modulo": "Expedientes",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-4-2025",
+        "circ-ug-5-2024"
+      ],
+      "etapa": "Validación",
+      "sistema": "Externo",
+      "relacionados": [
+        "Firma electrónica / firma digital"
+      ]
+    },
+    {
+      "termino": "Credenciales intransferibles",
+      "categoria": "E. Sistemas y registros",
+      "sencilla": "Tu clave es solo tuya.",
+      "tecnica": "Lo hecho con tu clave se presume hecho por vos. Prestarla está prohibido y el usuario responde por su uso.",
+      "ejemplo": "No compartas la clave por WhatsApp.",
+      "modulo": "Todos",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ],
+      "etapa": "Todo el proceso",
+      "sistema": "TIMBÓ",
+      "relacionados": [
+        "ID Ciudadana"
+      ]
+    },
+    {
+      "termino": "Pliego",
+      "categoria": "A. Documentación",
+      "sencilla": "Las reglas de juego de una compra.",
+      "tecnica": "Hay un pliego general (PBCG, igual para todas) y uno particular (PBCP, el de cada compra).",
+      "ejemplo": "El pliego de la compra de guantes dice qué se compra, cómo se oferta y cómo se evalúa.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Preparación del procedimiento",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "PBCP (Pliego de Bases y Condiciones Particulares)",
+        "PBCG (Pliego Único de Bases y Condiciones Generales)"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026"
+      ]
+    },
+    {
+      "termino": "Especificaciones técnicas",
+      "categoria": "A. Documentación",
+      "sencilla": "Las características que tiene que cumplir lo que se compra.",
+      "tecnica": "Contenido obligatorio del PBCP (Dec. 287/2026, art. 131). En TIMBÓ Compras van por renglón (ficha técnica) y en anexos.",
+      "ejemplo": "Guante de nitrilo, talle M, no estéril, caja por 100.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Preparación del procedimiento",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "PBCP (Pliego de Bases y Condiciones Particulares)",
+        "Renglón"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "videos-app-timbocompras"
+      ]
+    },
+    {
+      "termino": "Renglón",
+      "categoria": "A. Documentación",
+      "sencilla": "Cada cosa distinta que se compra, con su cantidad.",
+      "tecnica": "Se carga en el formulario \"Detalle de productos o servicios\" con el código del catálogo, la unidad, la cantidad y el precio estimado.",
+      "ejemplo": "Renglón 1: 5.000 pares de guantes de nitrilo.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Preparación del procedimiento",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Especificaciones técnicas"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "videos-app-timbocompras"
+      ]
+    },
+    {
+      "termino": "Informe de evaluación",
+      "categoria": "A. Documentación",
+      "sencilla": "El análisis firmado de cada oferta.",
+      "tecnica": "TIMBÓ Compras genera la documentación oficial firmada de la evaluación y la incorpora al expediente.",
+      "ejemplo": "La evaluación administrativa, técnica y económica de las tres ofertas de guantes.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Evaluación",
+        "Informe de preadjudicación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Informe de preadjudicación",
+      "categoria": "A. Documentación",
+      "sencilla": "El documento que recomienda a quién adjudicar.",
+      "tecnica": "Lo firman los evaluadores en el orden del formulario \"Ordenar evaluadores\" y se notifica a los oferentes al pasar a \"Preadjudicado\".",
+      "ejemplo": "El informe recomienda adjudicar el renglón 1 a la oferta más conveniente que cumple.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Preadjudicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Preadjudicación",
+        "Impugnación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Orden de compra",
+      "categoria": "A. Documentación",
+      "sencilla": "El documento que formaliza la compra con el adjudicatario.",
+      "tecnica": "Los plazos de entrega corren desde su notificación (pliego modelo). En la directa por monto se usa el CD-04 (orden de provisión).",
+      "ejemplo": "Se notifica la orden de compra y el proveedor tiene los días del pliego para entregar.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Etapa contractual",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Adjudicación",
+        "Recepción"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-5-2026",
+        "videos-app-timbocompras"
+      ]
+    },
+    {
+      "termino": "Dictamen",
+      "categoria": "A. Documentación",
+      "sencilla": "Una opinión técnica o jurídica escrita.",
+      "tecnica": "La Circ. UG 8/2026 lo menciona entre los documentos oficiales de la etapa múltiple. En qué casos es obligatorio en el circuito del hospital no está relevado.",
+      "ejemplo": "—",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Según el procedimiento",
+      "sistema": "Documentos Oficiales",
+      "relacionados": [
+        "Simple sobre / etapa múltiple"
+      ],
+      "estado": "pendiente",
+      "fuentes": [
+        "circ-ug-8-2026"
+      ]
+    },
+    {
+      "termino": "Garantía",
+      "categoria": "A. Documentación",
+      "sencilla": "Un respaldo económico que da el proveedor.",
+      "tecnica": "Tipos: mantenimiento de oferta, fiel cumplimiento e impugnación. El pliego modelo usa 1 %, 7 % y 3 %; cada pliego fija los suyos.",
+      "ejemplo": "Para impugnar la preadjudicación, el oferente integra la garantía de impugnación.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Ofertas, impugnación y contrato",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Impugnación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-5-2026",
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Compra directa (gestión directa por monto)",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Comprar sin licitación cuando el monto es chico.",
+      "tecnica": "Art. 116 inc. c ap. 1. Hasta $5.850.000 (2026). Se tramita por expediente con los formularios CD-01 a CD-04.",
+      "ejemplo": "Resmas y tóner por $3.000.000.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Contratación directa por excepción",
+        "Licitación privada"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "ley-12510",
+        "circ-scygb-1-2026",
+        "videos-app-timbocompras"
+      ]
+    },
+    {
+      "termino": "Contratación directa por excepción",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Contratar directo por una causa prevista en la ley.",
+      "tecnica": "Art. 116 inc. c ap. 2 a 9: urgencia, desierto, especialidad, exclusividad, entre organismos, reparaciones, lugar de producción, economía social. Urgencia y desierto van por TIMBÓ Compras (Circ. UG 8/2026).",
+      "ejemplo": "Se rompe un equipo crítico y el servicio no puede esperar.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "TIMBÓ Compras o expediente, según la causal",
+      "relacionados": [
+        "Compra directa (gestión directa por monto)"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "ley-12510",
+        "circ-ug-8-2026"
+      ]
+    },
+    {
+      "termino": "Licitación privada",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Se invita a una cantidad determinada de proveedores.",
+      "tecnica": "Hasta $58.500.000 (2026). También se evalúan las ofertas de quienes no fueron invitados (art. 121).",
+      "ejemplo": "Guantes por $40.000.000.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "TIMBÓ Compras + expediente",
+      "relacionados": [
+        "Licitación pública",
+        "Concurso"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "ley-12510",
+        "circ-scygb-1-2026"
+      ]
+    },
+    {
+      "termino": "Licitación pública",
+      "categoria": "B. Procedimientos",
+      "sencilla": "El llamado se dirige a todos los posibles proveedores.",
+      "tecnica": "Regla general de la ley (art. 116). Más de $58.500.000 (2026), se aprueba por decreto.",
+      "ejemplo": "Un monitor multiparamétrico de $70.000.000.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "TIMBÓ Compras + expediente",
+      "relacionados": [
+        "Licitación privada",
+        "Publicación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "ley-12510",
+        "circ-scygb-1-2026"
+      ]
+    },
+    {
+      "termino": "Concurso",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Como la licitación, pero se elige por factores que no son solo el precio.",
+      "tecnica": "Licitación si el criterio es primordialmente económico; concurso si no lo es (art. 118). Mismos montos.",
+      "ejemplo": "Un servicio donde pesa la calidad técnica de la propuesta.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "TIMBÓ Compras + expediente",
+      "relacionados": [
+        "Licitación privada",
+        "Licitación pública"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "ley-12510"
+      ]
+    },
+    {
+      "termino": "Convenio marco",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Un acuerdo para comprar varias veces lo mismo con condiciones ya fijadas.",
+      "tecnica": "Res. 211/2018 (según el índice oficial). Si está habilitado en TIMBÓ Compras está pendiente de confirmar. También existe la Orden de Compra Abierta (Res. 101/2019).",
+      "ejemplo": "Insumos de uso permanente.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "Pendiente",
+      "relacionados": [
+        "Licitación pública"
+      ],
+      "estado": "pendiente",
+      "fuentes": [
+        "res-211-2018",
+        "res-101-2019"
+      ]
+    },
+    {
+      "termino": "Subasta o remate",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Comprar o vender con un precio máximo o mínimo fijado antes.",
+      "tecnica": "Art. 116 inc. b: solo con autorización del Poder Ejecutivo o de la máxima autoridad del Poder Legislativo o Judicial.",
+      "ejemplo": "Venta de bienes en desuso.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Encuadre",
+      "sistema": "—",
+      "relacionados": [],
+      "estado": "confirmado",
+      "fuentes": [
+        "ley-12510"
+      ]
+    },
+    {
+      "termino": "Requerimiento",
+      "categoria": "C. Etapas",
+      "sencilla": "El pedido formal del área que necesita algo.",
+      "tecnica": "Inicia la etapa preparatoria, que se resuelve por expediente electrónico.",
+      "ejemplo": "Enfermería pide 5.000 pares de guantes.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Inicio",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Área requirente",
+        "Etapa preparatoria / etapa contractual"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Convocatoria",
+      "categoria": "C. Etapas",
+      "sencilla": "El llamado a los proveedores para que oferten.",
+      "tecnica": "En la privada, invitación a la nómina; en la pública, publicación en el portal y aviso oficial. TIMBÓ Compras invita por correo a la nómina.",
+      "ejemplo": "Se invita a 5 proveedores del rubro.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Publicación",
+      "sistema": "TIMBÓ Compras + Portal de Compras",
+      "relacionados": [
+        "Publicación",
+        "Nómina de proveedores"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "circ-scygb-4-2026"
+      ]
+    },
+    {
+      "termino": "Publicación",
+      "categoria": "C. Etapas",
+      "sencilla": "Dar a conocer el llamado.",
+      "tecnica": "Portal de Compras con \"generar enlace con TIMBO\", aviso oficial a avisosoficiales@santafe.gob.ar 3 días antes y 10 días corridos hasta la apertura (públicas).",
+      "ejemplo": "El llamado aparece en el portal y en TIMBÓ Compras.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Publicación",
+      "sistema": "Portal de Compras (externo)",
+      "relacionados": [
+        "Convocatoria",
+        "Portal de Compras"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-4-2026"
+      ]
+    },
+    {
+      "termino": "Apertura",
+      "categoria": "C. Etapas",
+      "sencilla": "El momento en que se abren las ofertas.",
+      "tecnica": "Automática en TIMBÓ Compras a la fecha y hora del cronograma; genera el acta y el cuadro comparativo.",
+      "ejemplo": "El martes a las 10 se abren solas las 3 ofertas.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Apertura",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Acta de apertura y cuadro comparativo",
+        "Oferta presentada"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Evaluación",
+      "categoria": "C. Etapas",
+      "sencilla": "El análisis de las ofertas.",
+      "tecnica": "La hacen los evaluadores (mínimo 3); su opinión no es vinculante. Puede incluir subsanaciones, aclaraciones y mejoras.",
+      "ejemplo": "Se revisa si cada oferta cumple la ficha técnica y los requisitos.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Evaluador",
+        "Subtrámite",
+        "Preadjudicación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ]
+    },
+    {
+      "termino": "Subsanación",
+      "categoria": "C. Etapas",
+      "sencilla": "Pedirle al proveedor que complete algo que faltó.",
+      "tecnica": "Subtrámite con plazo; si vence, pasa a \"descartado\".",
+      "ejemplo": "Falta una constancia: se pide que la presente.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Subtrámite",
+        "Aclaración"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Aclaración",
+      "categoria": "C. Etapas",
+      "sencilla": "Pedirle al proveedor que explique algo de su oferta.",
+      "tecnica": "Subtrámite de aclaración o documentación complementaria.",
+      "ejemplo": "No queda claro el plazo de entrega ofrecido.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Subtrámite",
+        "Subsanación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Mejora de precios",
+      "categoria": "C. Etapas",
+      "sencilla": "Pedirle al proveedor que mejore su precio.",
+      "tecnica": "Subtrámite que genera el Evaluador.",
+      "ejemplo": "Dos ofertas cumplen y están muy parejas.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Subtrámite"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Preadjudicación",
+      "categoria": "C. Etapas",
+      "sencilla": "La recomendación de qué oferta conviene.",
+      "tecnica": "Resultado de la evaluación, documentado en el informe de preadjudicación y sujeto a impugnaciones. No es la decisión final.",
+      "ejemplo": "Se recomienda adjudicar los guantes a la oferta más conveniente que cumple el pliego.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Preadjudicación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Adjudicación",
+        "Informe de preadjudicación",
+        "Impugnación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Adjudicación",
+      "categoria": "C. Etapas",
+      "sencilla": "La decisión final de a quién se le compra.",
+      "tecnica": "Acto de la autoridad competente en el expediente electrónico; resuelve también las impugnaciones. El Supervisor lo carga en TIMBÓ Compras.",
+      "ejemplo": "El acto que adjudica los guantes.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Adjudicación",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Preadjudicación",
+        "Orden de compra",
+        "Autoridad competente"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ]
+    },
+    {
+      "termino": "Recepción",
+      "categoria": "C. Etapas",
+      "sencilla": "Recibir lo comprado y controlarlo.",
+      "tecnica": "Se certifica con el certificado de recepción definitiva de bienes o de servicios (CRDB o CRDS).",
+      "ejemplo": "El depósito recibe las cajas y controla cantidad y calidad.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Etapa contractual",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Conformidad",
+        "Orden de compra"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "disp-226-2016"
+      ]
+    },
+    {
+      "termino": "Conformidad",
+      "categoria": "C. Etapas",
+      "sencilla": "Dar el OK de que lo recibido cumple.",
+      "tecnica": "La conformidad final queda en el certificado de recepción definitiva, que habilita el pago.",
+      "ejemplo": "El servicio firma que los guantes cumplen.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Etapa contractual",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Recepción"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "disp-226-2016"
+      ]
+    },
+    {
+      "termino": "Área requirente",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "El servicio que necesita la compra.",
+      "tecnica": "Hace el pedido y justifica la necesidad en la etapa preparatoria. No es un rol de TIMBÓ Compras.",
+      "ejemplo": "Enfermería.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Inicio",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Requerimiento",
+        "Jurisdicción comitente"
+      ],
+      "estado": "didactico",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Autoridad competente",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien firma los actos que aprueban y adjudican.",
+      "tecnica": "Depende del monto: resolución del Subsecretario de Administración o equivalente, resolución, resolución conjunta con el Ministerio de Economía o decreto (2026).",
+      "ejemplo": "Para $40.000.000, resolución conjunta con el Ministerio de Economía.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Aprobación y adjudicación",
+      "sistema": "Expediente electrónico",
+      "relacionados": [
+        "Adjudicación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-1-2026"
+      ]
+    },
+    {
+      "termino": "Proveedor",
+      "categoria": "D. Organismos y roles",
+      "sencilla": "Quien vende o presta el servicio.",
+      "tecnica": "Para ofertar tiene que estar inscripto en el RUPC y tener ID Ciudadana nivel 3 con domicilio digital.",
+      "ejemplo": "Una droguería inscripta en el RUPC.",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Publicación y ofertas",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Oferente",
+        "RUPC (Registro Único de Proveedores y Contratistas)"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-2-2026",
+        "res-scygb-110-2026"
+      ]
+    }
   ]
 }

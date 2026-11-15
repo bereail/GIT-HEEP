@@ -1,18 +1,22 @@
 {% extends layout %}
 {% from "recursos/_comun.html" import subnav, estado, fuentes, datos_glosario with context %}
-{% block titulo %}Glosario general — Recursos{% endblock %}
+{% block titulo %}Diccionario de Compras Públicas — Recursos{% endblock %}
 {% block shell_clase %}admin-shell--ancho{% endblock %}
 {% block contenido %}
 {{ subnav('glosario') }}
-<h1 style="margin:8px 0 4px">Glosario general</h1>
-<p class="text-muted" style="margin:0 0 14px">{{ glosario.terminos | length }} términos. De todos los temas: miHospital, TIMBÓ (Expedientes) y TIMBÓ Compras. Los que tienen fuente oficial citada están marcados como confirmados; el resto todavía no tiene la fuente revisada.</p>
+<h1 style="margin:8px 0 4px">📖 Diccionario de Compras Públicas</h1>
+<p class="text-muted" style="margin:0 0 14px">Cada término con definición sencilla, explicación técnica, ejemplo de hospital, etapa, sistema, términos relacionados y fuente. También están los glosarios de todos los temas del sitio.</p>
 
+<div class="dic-grupos" role="radiogroup" aria-label="Qué términos ver">
+  <button type="button" class="her-proc is-active" data-grupo="compras" role="radio" aria-checked="true"><b>Compras públicas</b><small>{{ glosario.terminos | selectattr('fuentes') | list | length }} términos con fuente</small></button>
+  <button type="button" class="her-proc" data-grupo="todos" role="radio" aria-checked="false"><b>Todos los temas</b><small>{{ glosario.terminos | length }} términos</small></button>
+</div>
 <div class="rec-filtros">
   <div class="input-wrap" style="flex:1;min-width:220px">
     <span class="input-wrap__icon">🔎</span>
-    <input class="input" id="rec-filtro" type="search" aria-label="Buscar un término" placeholder="Buscar un término. Ej.: SIN, evaluador, RUPC..." />
+    <input class="input" id="rec-filtro" type="search" aria-label="Buscar un término" placeholder="Buscar un término o una sigla. Ej.: PBCP, preadjudicación, RUPC..." />
   </div>
-  <select class="input" id="rec-categoria" aria-label="Filtrar por categoría" style="max-width:240px">
+  <select class="input" id="rec-categoria" aria-label="Filtrar por categoría" style="max-width:260px">
     <option value="">Todas las categorías</option>
     {% for c in glosario.categorias %}<option>{{ c }}</option>{% endfor %}
   </select>
@@ -25,20 +29,22 @@
 {% for t in glosario.terminos %}
   {% set letra = t.termino[0] | upper %}
   {% if loop.first or (glosario.terminos[loop.index0 - 1].termino[0] | upper) != letra %}<h2 class="rec-letra" id="letra-{{ letra }}">{{ letra }}</h2>{% endif %}
-  <article class="card rec-termino" data-categoria="{{ t.categoria }}" data-filtro="{{ (t.termino ~ ' ' ~ t.sencilla ~ ' ' ~ t.tecnica) | lower }}">
+  <article class="card rec-termino" id="t-{{ t.termino | lower | replace(' ', '-') | replace('/', '') | replace('(', '') | replace(')', '') }}" data-categoria="{{ t.categoria }}" data-grupo="{{ 'compras' if t.categoria[:2] in ['A.', 'B.', 'C.', 'D.', 'E.'] else 'tema' }}" data-filtro="{{ (t.termino ~ ' ' ~ t.sencilla ~ ' ' ~ t.tecnica) | lower }}">
     <header class="rec-termino__head">
       <h3>{{ t.termino }}</h3>
       {{ estado(t.estado) }}
       <span class="badge badge--neutral">{{ t.categoria }}</span>
     </header>
     <p class="rec-termino__sencilla">{{ t.sencilla }}</p>
-    {% if t.tecnica or t.ejemplo %}
+    {% if t.etapa or t.sistema %}<p class="dic-chips">{% if t.etapa %}<span class="alg-chip alg-sis--decision">🕒 {{ t.etapa }}</span>{% endif %}{% if t.sistema %}<span class="alg-chip alg-sis--compras">🖥️ {{ t.sistema }}</span>{% endif %}</p>{% endif %}
+    {% if t.tecnica or (t.ejemplo and t.ejemplo != '—') %}
     <details class="rec-termino__mas">
       <summary>Ver más</summary>
-      {% if t.tecnica %}<p><b>Técnica:</b> {{ t.tecnica }}</p>{% endif %}
-      {% if t.ejemplo and t.ejemplo != '—' %}<p><b>Ejemplo:</b> {{ t.ejemplo }}</p>{% endif %}
+      {% if t.tecnica %}<p><b>Explicación técnica:</b> {{ t.tecnica }}</p>{% endif %}
+      {% if t.ejemplo and t.ejemplo != '—' %}<p><b>Ejemplo en el hospital:</b> {{ t.ejemplo }} <span class="alg-tipo alg-tipo--ejemplo">EJEMPLO DIDÁCTICO</span></p>{% endif %}
     </details>
     {% endif %}
+    {% if t.relacionados %}<p class="dic-rel">🔗 {% for r in t.relacionados %}<a href="#t-{{ r | lower | replace(' ', '-') | replace('/', '') | replace('(', '') | replace(')', '') }}" data-relacionado>{{ r }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
     <p class="rec-termino__pie"><span>📍 {{ t.modulo }}</span> {{ fuentes(t.fuentes) }}{% if t.nota %} <span class="text-muted">{{ t.nota }}</span>{% endif %}</p>
   </article>
 {% endfor %}

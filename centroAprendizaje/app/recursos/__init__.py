@@ -113,3 +113,8 @@ HERRAMIENTAS = {
 @lru_cache(maxsize=None)
 def herramientas():
     return _leer("herramientas.json")
+
+
+@lru_cache(maxsize=None)
+def simulador():
+    return _leer("simulador.json")

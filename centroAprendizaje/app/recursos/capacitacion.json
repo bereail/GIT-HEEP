@@ -570,5 +570,290 @@
         "detalle": "También se gestiona en TIMBÓ (biblioteca de procedimientos)."
       }
     ]
-  }
+  },
+  "temas_capacitadora": [
+    {
+      "slug": "que-es-timbo",
+      "icono": "🖥️",
+      "titulo": "Qué es TIMBÓ y qué va en cada sistema",
+      "sencilla": "TIMBÓ es la plataforma de la Provincia para hacer los trámites en digital. TIMBÓ Compras es su módulo de licitaciones y concursos: el principio y el final de la compra van por expediente, y el medio, por TIMBÓ Compras.",
+      "tecnica": "Circular UG TIMBÓ 7/2026, punto 6: la etapa preparatoria se resuelve por expediente electrónico; del pliego al informe de preadjudicación, por TIMBÓ Compras; la adjudicación y la etapa contractual, por expediente. Lo que genera TIMBÓ Compras se incorpora solo al expediente (punto 7).",
+      "ejemplo": "El pedido de Enfermería va al expediente; el pliego y las ofertas, a TIMBÓ Compras; la adjudicación vuelve al expediente.",
+      "diagrama": [
+        "necesidad",
+        "c-pliego",
+        "c-ofertas",
+        "c-preadjudicacion",
+        "c-adjudicacion",
+        "fin-contractual"
+      ],
+      "fuentes": [
+        "circ-ug-7-2026",
+        "circ-ug-3-2026"
+      ],
+      "preguntas": [
+        "¿Dónde empieza una compra: en TIMBÓ Compras o en el expediente?",
+        "¿Qué pasa con los documentos que genera TIMBÓ Compras?"
+      ],
+      "ejercicio": {
+        "consigna": "Ordená en qué sistema se hace: el pedido, el pliego, la apertura, la adjudicación.",
+        "respuesta": "Pedido: expediente. Pliego y apertura: TIMBÓ Compras. Adjudicación: expediente."
+      },
+      "errores": [
+        "Decir que TIMBÓ Compras reemplaza al expediente.",
+        "Decir que la publicación en el portal o el SIN se hacen dentro de TIMBÓ Compras."
+      ],
+      "enlaces": {
+        "termino": "TIMBÓ Compras",
+        "escenario": "insumos"
+      }
+    },
+    {
+      "slug": "roles",
+      "icono": "🔐",
+      "titulo": "Los 5 roles de TIMBÓ Compras",
+      "sencilla": "Cada usuario no hace lo mismo: el Gestor arma, el Supervisor aprueba, los Evaluadores evalúan y preadjudican, la comitente revisa el pliego y el proveedor oferta.",
+      "tecnica": "Circular UG TIMBÓ 7/2026, punto 10 (funciones de cada rol), punto 9 (cada usuario ve los procesos de sus roles) y punto 13 (mínimo 3 evaluadores). Los roles se tramitan ante el administrador local (Circ. UG 1 y 3/2026); quién autoriza el pedido no está establecido.",
+      "ejemplo": "Compras arma el pliego (Gestor), la jefatura lo aprueba (Supervisor) y tres personas del hospital evalúan (Evaluadores).",
+      "diagrama": [
+        "c-pliego",
+        "c-aprobacion",
+        "c-evaluacion",
+        "c-preadjudicacion"
+      ],
+      "fuentes": [
+        "circ-ug-7-2026",
+        "circ-ug-1-2026"
+      ],
+      "preguntas": [
+        "¿Quién aprueba el pliego?",
+        "¿Por qué hacen falta al menos 3 evaluadores?"
+      ],
+      "ejercicio": {
+        "consigna": "¿Qué rol pide una subsanación? ¿Y quién carga el acto de adjudicación?",
+        "respuesta": "La subsanación la pide el Evaluador. El acto de adjudicación lo carga el Supervisor (lo firma la autoridad en el expediente)."
+      },
+      "errores": [
+        "Decir que el Evaluador adjudica: preadjudica.",
+        "Decir que el administrador local decide los roles: el alta se tramita ante él."
+      ],
+      "enlaces": {
+        "termino": "Gestor",
+        "escenario": "equipamiento"
+      }
+    },
+    {
+      "slug": "pliego",
+      "icono": "📑",
+      "titulo": "El pliego desde cero",
+      "sencilla": "El pliego son las reglas de juego de la compra. El general (PBCG) vale para todas; el particular (PBCP) es el de cada compra.",
+      "tecnica": "El Pliego Único de Bases y Condiciones Generales lo aprobó el Dec. 287/2026. El PBCP lo elaboran y aprueban los órganos competentes de cada jurisdicción y debe incluir, entre otros, objeto, especificaciones técnicas, órganos y criterios de evaluación, garantías y plazos (Dec. 287/2026, art. 131). En TIMBÓ Compras se arma con formularios estandarizados (Circ. UG 7/2026, punto 12) y la Circ. SCyGB 05/2026 trae textos modelo.",
+      "ejemplo": "Renglón 1: guantes descartables de nitrilo · Cantidad: 5.000 pares · Características técnicas: las que establezca el organismo · Entrega: según el pliego.",
+      "diagrama": [
+        "c-pliego",
+        "c-aprobacion",
+        "c-acto",
+        "c-consultas"
+      ],
+      "fuentes": [
+        "dec-287-2026",
+        "pliego-unico-2026",
+        "circ-ug-7-2026",
+        "circ-scygb-5-2026"
+      ],
+      "preguntas": [
+        "¿Qué tiene que decir sí o sí un pliego para que se pueda ofertar?",
+        "¿Qué pasa si hay que cambiar el pliego ya publicado?"
+      ],
+      "ejercicio": {
+        "consigna": "Un proveedor no presentó un certificado que no figuraba en los requisitos de participación. ¿Se le puede exigir?",
+        "respuesta": "No: lo que no está en los requisitos de participación no se le puede exigir. Si hay que cambiar el pliego, se emite una circular modificatoria."
+      },
+      "errores": [
+        "Decir que el pliego lo arma el sistema: el sistema da los formularios, el contenido lo define el organismo.",
+        "Confundir el pliego general con el particular."
+      ],
+      "enlaces": {
+        "termino": "PBCP",
+        "escenario": "equipamiento",
+        "procedimiento": "C"
+      }
+    },
+    {
+      "slug": "procedimientos",
+      "icono": "🧭",
+      "titulo": "Qué procedimiento corresponde",
+      "sencilla": "La regla general es la licitación pública. Según el monto puede ser privada o directa, y hay causales de excepción previstas en la ley.",
+      "tecnica": "Ley 12.510, art. 116: regla general, licitación o concurso privado según la Ley de Presupuesto, subasta, y contratación directa por las causales del inc. c (ap. 1 a 9). Montos 2026 (Circ. SCyGB 01/2026): directa hasta $5.850.000; privada hasta $58.500.000; pública, más. Urgencia y desierto, por TIMBÓ Compras (Circ. UG 8/2026).",
+      "ejemplo": "Guantes por $40.000.000: licitación privada. Resmas por $3.000.000: directa por monto. Un equipo roto que no puede esperar: posible urgencia (hay que justificarla).",
+      "diagrama": [
+        "d-excepcion",
+        "d-modalidad",
+        "d-monto",
+        "a-directa",
+        "c-privada",
+        "d-publica"
+      ],
+      "fuentes": [
+        "ley-12510",
+        "circ-scygb-1-2026",
+        "circ-ug-8-2026"
+      ],
+      "preguntas": [
+        "¿El monto alcanza para decidir el procedimiento?",
+        "¿Qué diferencia hay entre una directa por monto y una por excepción?"
+      ],
+      "ejercicio": {
+        "consigna": "Mantenimiento de ascensores por $25.000.000: ¿qué procedimiento? ¿Y si fuera una reparación que exige desarmar el equipo?",
+        "respuesta": "Licitación o concurso privado. La causal del ap. 7 (reparación con desarme) excluye el mantenimiento: solo aplicaría a una reparación, justificada."
+      },
+      "errores": [
+        "Decidir solo por el monto sin revisar causales o modalidades especiales.",
+        "Usar montos de años anteriores."
+      ],
+      "enlaces": {
+        "termino": "Contratación directa por excepción",
+        "escenario": "ascensores"
+      }
+    },
+    {
+      "slug": "apertura-evaluacion",
+      "icono": "🔍",
+      "titulo": "Ofertas, apertura y evaluación",
+      "sencilla": "Solo valen las ofertas presentadas. La apertura es automática y después los evaluadores analizan cada oferta; si falta algo, pueden pedir que se subsane.",
+      "tecnica": "Circular UG TIMBÓ 7/2026: solo las ofertas en estado \"Oferta presentada\" son válidas (punto 18); la apertura es automática y genera acta y cuadro comparativo (punto 19); los subtrámites vencidos pasan a \"descartado\" (punto 21). La comisión actúa según el pliego y su opinión no es vinculante (Dec. 287/2026).",
+      "ejemplo": "Se abren 3 ofertas de guantes; a una le falta una constancia y se le pide subsanarla con plazo.",
+      "diagrama": [
+        "c-ofertas",
+        "c-apertura",
+        "c-evaluacion"
+      ],
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ],
+      "preguntas": [
+        "¿Quién abre las ofertas?",
+        "¿Qué pasa si el proveedor no responde la subsanación a tiempo?"
+      ],
+      "ejercicio": {
+        "consigna": "Un proveedor dice que ofertó y no aparece en la apertura. ¿Qué pasó?",
+        "respuesta": "La dejó en borrador: solo valen las ofertas en \"Oferta presentada\"."
+      },
+      "errores": [
+        "Pedir documentación por WhatsApp: todo va por TIMBÓ Compras.",
+        "Pensar que alguien tiene que abrir las ofertas a mano."
+      ],
+      "enlaces": {
+        "termino": "Evaluación",
+        "escenario": "insumos",
+        "procedimiento": "C"
+      }
+    },
+    {
+      "slug": "preadjudicacion",
+      "icono": "⚖️",
+      "titulo": "Preadjudicar no es adjudicar",
+      "sencilla": "Preadjudicar es recomendar: lo hacen los evaluadores en TIMBÓ Compras. Adjudicar es decidir: es un acto de la autoridad en el expediente.",
+      "tecnica": "El informe de preadjudicación lo firman los evaluadores en orden y se notifica al domicilio digital (Circ. UG 7/2026, punto 22). Se puede impugnar (punto 20; 2 días según el Pliego Único). La adjudicación y la etapa contractual van por expediente (punto 6).",
+      "ejemplo": "El informe recomienda a la droguería X; pasan los 2 días de impugnación; la autoridad firma el acto de adjudicación.",
+      "diagrama": [
+        "c-preadjudicacion",
+        "c-impugnaciones",
+        "c-adjudicacion",
+        "fin-contractual"
+      ],
+      "fuentes": [
+        "circ-ug-7-2026",
+        "pliego-unico-2026"
+      ],
+      "preguntas": [
+        "Si el sistema dice \"Preadjudicado\", ¿ya le podemos comprar?",
+        "¿Quién resuelve las impugnaciones?"
+      ],
+      "ejercicio": {
+        "consigna": "Ordená: adjudicación, impugnaciones, informe de preadjudicación, orden de compra.",
+        "respuesta": "Informe de preadjudicación → impugnaciones → adjudicación → orden de compra."
+      },
+      "errores": [
+        "Confundir preadjudicación con adjudicación.",
+        "Entregar la orden de compra antes del acto de adjudicación."
+      ],
+      "enlaces": {
+        "termino": "Preadjudicación",
+        "escenario": "insumos",
+        "procedimiento": "C"
+      }
+    },
+    {
+      "slug": "proveedores",
+      "icono": "🏢",
+      "titulo": "Proveedores y RUPC",
+      "sencilla": "Para ofertar, el proveedor tiene que estar en el RUPC y tener ID Ciudadana nivel 3. El hospital verifica sus requisitos al evaluar.",
+      "tecnica": "Res. SCyGB 110/2026: inscripción en www.santafe.gov.ar/proveedores con clave fiscal nivel 3. Circ. UG 2/2026: requisitos de participación que verifica la jurisdicción contratante y el informe de desempeño al terminar el contrato. Hay una discrepancia sobre si la inscripción vence.",
+      "ejemplo": "Una droguería nueva se inscribe en el RUPC antes de ofertar los guantes.",
+      "diagrama": [
+        "c-invitacion",
+        "c-consultas",
+        "c-ofertas",
+        "c-impugnaciones"
+      ],
+      "fuentes": [
+        "res-scygb-110-2026",
+        "circ-ug-2-2026"
+      ],
+      "preguntas": [
+        "¿La inscripción en el RUPC se hace en TIMBÓ?",
+        "¿Qué verifica el hospital del proveedor?"
+      ],
+      "ejercicio": {
+        "consigna": "Un proveedor quiere consultar sobre el pliego pero no participó del proceso. ¿Puede?",
+        "respuesta": "No: para consultar tiene que haber participado (Circ. UG 7/2026, punto 17)."
+      },
+      "errores": [
+        "Decir que la inscripción en el RUPC vence o no vence como dato seguro: hay discrepancia.",
+        "Consultar u ofertar por el proveedor."
+      ],
+      "enlaces": {
+        "termino": "RUPC",
+        "escenario": "insumos"
+      }
+    },
+    {
+      "slug": "excepcion",
+      "icono": "⚡",
+      "titulo": "Contratación directa por excepción",
+      "sencilla": "La ley permite contratar directo en casos puntuales, siempre justificados: urgencia, desierto, exclusividad, entre otros.",
+      "tecnica": "Ley 12.510, art. 116 inc. c ap. 2 a 9. Urgencia y desierto: íntegramente por TIMBÓ Compras, con flexibilizaciones (autorización en el sistema, plazos reducidos, mínimo 3 proveedores) según la Circ. UG 8/2026. Otras causales: según la capacitación oficial, se elige el tipo al pedir la carátula; algunas requieren intervención de la SCyGB (pendiente de leer los textos).",
+      "ejemplo": "Se rompe un equipo crítico y no se puede esperar una licitación: se justifica la urgencia y se invita como mínimo a 3 proveedores.",
+      "diagrama": [
+        "d-excepcion",
+        "b-urgencia",
+        "b-flex",
+        "c-ofertas"
+      ],
+      "fuentes": [
+        "ley-12510",
+        "circ-ug-8-2026",
+        "intervencion-scygb-directas"
+      ],
+      "preguntas": [
+        "¿Toda compra urgente es una urgencia según la ley?",
+        "¿En qué se diferencia del CD-01?"
+      ],
+      "ejercicio": {
+        "consigna": "La licitación quedó desierta. ¿Se pueden cambiar las condiciones para la directa?",
+        "respuesta": "No: rigen exactamente las condiciones del llamado original (art. 116 inc. c ap. 3)."
+      },
+      "errores": [
+        "Usar la urgencia para cubrir una mala planificación: tiene que ser imprevisible.",
+        "Tramitar la urgencia con el CD-01."
+      ],
+      "enlaces": {
+        "termino": "Contratación directa por excepción",
+        "escenario": "excepcion",
+        "procedimiento": "B"
+      }
+    }
+  ]
 }

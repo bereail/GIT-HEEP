@@ -17,7 +17,7 @@
   </a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_glosario') }}">
     <span class="home-card__icon">📖</span>
-    <div class="home-card__title">Glosario general</div>
+    <div class="home-card__title">Diccionario de Compras Públicas</div>
     <div class="home-card__desc">{{ glosario.terminos | length }} términos de todos los módulos de TIMBÓ, por letra y por categoría.</div>
   </a>
   <a class="card card-link" href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}">
@@ -34,6 +34,8 @@
 
 <h2 class="section__title">Herramientas prácticas</h2>
 <div class="card-grid">
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}"><span class="home-card__icon">🧭</span><div class="home-card__title">¿Qué camino sigue una compra?</div><div class="home-card__desc">Diagrama interactivo con las ramas de cada procedimiento.</div></a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_simulador') }}"><span class="home-card__icon">🎯</span><div class="home-card__title">Simulador de Compras</div><div class="home-card__desc">Seis casos del hospital para decidir paso a paso, con puntaje.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}"><span class="home-card__icon">🗓️</span><div class="home-card__title">Calendario de plazos</div><div class="home-card__desc">Cuántos días tiene cada etapa: aviso, apertura, impugnación, cierre.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}"><span class="home-card__icon">🧭</span><div class="home-card__title">¿A quién le pregunto?</div><div class="home-card__desc">Según el problema: mesa de ayuda, iTop, administrador local, RUPC, Farmacia.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}"><span class="home-card__icon">✉️</span><div class="home-card__title">Modelos de mensajes</div><div class="home-card__desc">Plantillas para copiar: consulta, reporte de error, pedido de rol.</div></a>

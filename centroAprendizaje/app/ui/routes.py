@@ -574,6 +574,25 @@ def recursos_biblioteca():
     )
 
 
+@ui_bp.route("/recursos/aprender")
+def recursos_aprender():
+    return render_template("recursos/aprender.html", resumen=recursos.capacitacion()["resumen"], **_contexto_recursos())
+
+
+@ui_bp.route("/recursos/simulador")
+def recursos_simulador():
+    return render_template(
+        "recursos/simulador.html", simulador=recursos.simulador(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
+    )
+
+
+@ui_bp.route("/recursos/algoritmo")
+def recursos_algoritmo():
+    return render_template(
+        "recursos/algoritmo.html", algoritmo=recursos.algoritmo(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
+    )
+
+
 @ui_bp.route("/recursos/<clave>")
 def recursos_herramienta(clave):
     if clave not in recursos.HERRAMIENTAS:

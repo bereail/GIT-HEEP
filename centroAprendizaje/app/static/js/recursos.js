@@ -15,7 +15,9 @@
     const cat = categoria ? categoria.value : '';
     let alguno = false;
     items.forEach((el) => {
-      const ok = (!q || el.dataset.filtro.includes(q)) && (!cat || el.dataset.categoria === cat);
+      const grupo = document.querySelector('.dic-grupos .is-active');
+      const soloCompras = grupo && grupo.dataset.grupo === 'compras';
+      const ok = (!q || el.dataset.filtro.includes(q)) && (!cat || el.dataset.categoria === cat) && (!soloCompras || el.dataset.grupo !== 'tema');
       el.hidden = !ok;
       alguno = alguno || ok;
     });
@@ -30,9 +32,35 @@
       s.hidden = !s.querySelector('[data-filtro]:not([hidden])');
     });
     if (vacio) vacio.hidden = alguno;
+    // El término cuyo título coincide con la búsqueda se resalta y queda a la vista.
+    items.forEach((el) => el.classList.remove('dic-coincide'));
+    if (q.length >= 2) {
+      const exacto = items.find((el) => !el.hidden && el.querySelector('h3') && el.querySelector('h3').textContent.toLowerCase().startsWith(q));
+      if (exacto) { exacto.classList.add('dic-coincide'); exacto.scrollIntoView({ block: 'nearest' }); }
+    }
   }
   filtro.addEventListener('input', aplicar);
+  document.querySelectorAll('.dic-grupos [data-grupo]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.dic-grupos [data-grupo]').forEach((x) => { x.classList.toggle('is-active', x === b); x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+    aplicar();
+  }));
+  // Un término relacionado que está filtrado: se limpian los filtros para mostrarlo.
+  document.addEventListener('click', (ev) => {
+    const a = ev.target.closest('[data-relacionado]');
+    if (!a) return;
+    const destino = document.querySelector(a.getAttribute('href'));
+    if (destino && destino.hidden) {
+      filtro.value = ''; if (categoria) categoria.value = '';
+      const todos = document.querySelector('.dic-grupos [data-grupo="todos"]');
+      if (destino.dataset.grupo === 'tema' && todos) todos.click(); else aplicar();
+    }
+    if (destino) { destino.classList.add('dic-resaltado'); setTimeout(() => destino.classList.remove('dic-resaltado'), 1600); }
+  });
+  // Búsqueda desde otros módulos: ?q=preadjudicación
+  const pedido = new URLSearchParams(location.search).get('q');
+  if (pedido) filtro.value = pedido;
   if (categoria) categoria.addEventListener('change', aplicar);
+  aplicar();
 })();
 
 // Glosario sin salir de la pantalla: en las zonas [data-glosario-auto], la
@@ -113,33 +141,58 @@ document.addEventListener('click', (ev) => {
   }
 });
 
-// Checklists: las marcas se guardan solo en este navegador.
+// Checklists por procedimiento: se filtran los controles, se calcula el
+// avance y se avisa cuántos obligatorios faltan. Marcas solo en este navegador.
 (function () {
-  const listas = document.querySelectorAll('.her-check');
-  if (!listas.length) return;
-  const CLAVE = 'checklists-timbo';
-  let marcas = {};
-  try { marcas = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (e) { marcas = {}; }
-  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(marcas)); } catch (e) { /* modo privado */ } }
-  function avance() {
-    listas.forEach((l) => {
-      const cajas = l.querySelectorAll('input[type=checkbox]');
-      const hechas = Array.from(cajas).filter((c) => c.checked).length;
-      l.querySelector('.her-check__avance').textContent = `${hechas} de ${cajas.length}`;
-      l.classList.toggle('her-check--completa', hechas === cajas.length);
+  const etapas = document.querySelectorAll('.her-check');
+  if (!etapas.length) return;
+  const CLAVE = 'checklists-timbo-v2';
+  let datos = {};
+  try { datos = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (e) { datos = {}; }
+  const botones = document.querySelectorAll('.her-proc');
+  let proc = (botones[0] && botones[0].dataset.proc) || 'A';
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(datos)); } catch (e) { /* modo privado */ } }
+  function marcas() { datos[proc] = datos[proc] || {}; return datos[proc]; }
+  function aplicar() {
+    const m = marcas();
+    let total = 0; let hechas = 0; let faltanOblig = 0;
+    etapas.forEach((et) => {
+      let t = 0; let h = 0;
+      et.querySelectorAll('li[data-procs]').forEach((li) => {
+        const visible = li.dataset.procs.split(',').includes(proc);
+        li.hidden = !visible;
+        const c = li.querySelector('input');
+        c.checked = !!m[c.dataset.item];
+        if (!visible) return;
+        t += 1; if (c.checked) h += 1;
+        if (!c.checked && c.dataset.tipo === 'obligatorio') faltanOblig += 1;
+      });
+      et.hidden = t === 0;
+      et.querySelector('.her-check__avance').textContent = t ? `${h} de ${t}` : '';
+      et.classList.toggle('her-check--completa', t > 0 && h === t);
+      total += t; hechas += h;
     });
+    const pct = total ? Math.round((100 * hechas) / total) : 0;
+    document.getElementById('her-barra').style.width = pct + '%';
+    document.getElementById('her-porcentaje').textContent = pct + '%';
+    document.getElementById('her-alerta').textContent = faltanOblig ? `⚠️ Faltan ${faltanOblig} controles obligatorios` : '✔ Sin obligatorios pendientes';
+    document.getElementById('her-alerta').classList.toggle('her-alerta--ok', !faltanOblig);
   }
+  botones.forEach((b) => b.addEventListener('click', () => {
+    proc = b.dataset.proc;
+    botones.forEach((x) => { x.classList.toggle('is-active', x === b); x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+    aplicar();
+  }));
   document.querySelectorAll('.her-check input[type=checkbox]').forEach((c) => {
-    c.checked = !!marcas[c.dataset.item];
-    c.addEventListener('change', () => { marcas[c.dataset.item] = c.checked; guardar(); avance(); });
+    c.addEventListener('change', () => { marcas()[c.dataset.item] = c.checked; guardar(); aplicar(); });
   });
   const limpiar = document.getElementById('her-limpiar');
-  if (limpiar) limpiar.addEventListener('click', () => {
-    marcas = {}; guardar();
-    document.querySelectorAll('.her-check input[type=checkbox]').forEach((c) => { c.checked = false; });
-    avance();
-  });
+  if (limpiar) limpiar.addEventListener('click', () => { datos[proc] = {}; guardar(); aplicar(); });
   const imprimir = document.getElementById('her-imprimir');
   if (imprimir) imprimir.addEventListener('click', () => window.print());
-  avance();
+  const pedido = new URLSearchParams(location.search).get('procedimiento');
+  if (pedido) { const b = Array.from(botones).find((x) => x.dataset.proc === pedido); if (b) b.click(); else aplicar(); } else aplicar();
 })();
+
+// Botones de imprimir genéricos.
+document.addEventListener('click', (ev) => { if (ev.target.closest('[data-imprimir]')) window.print(); });

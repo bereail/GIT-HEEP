@@ -16,8 +16,11 @@
 {% macro subnav(activo) %}
 <nav class="rec-subnav" aria-label="Secciones de Recursos">
   <a href="{{ url_for(prefijo ~ 'recursos_inicio') }}" class="{{ 'is-active' if activo == 'inicio' }}">📚 Recursos</a>
+  {% if prefijo == 'ui.' %}<a href="{{ url_for('ui.recursos_aprender') }}" class="{{ 'is-active' if activo == 'aprender' }}">👥 Aprendé desde cero</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_roles') }}" class="{{ 'is-active' if activo == 'roles' }}">🔐 Roles y circuito</a>
-  <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}" class="{{ 'is-active' if activo == 'glosario' }}">📖 Glosario</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}" class="{{ 'is-active' if activo == 'algoritmo' }}">🧭 ¿Qué camino sigue?</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_simulador') }}" class="{{ 'is-active' if activo == 'simulador' }}">🎯 Simulador</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}" class="{{ 'is-active' if activo == 'glosario' }}">📖 Diccionario</a>
   <a href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}" class="{{ 'is-active' if activo == 'biblioteca' }}">🗂️ Biblioteca</a>
   <a href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}">🔄 Nomenclador de artículos</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}" class="{{ 'is-active' if activo == 'plazos' }}">🗓️ Plazos</a>
