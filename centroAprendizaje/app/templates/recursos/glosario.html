@@ -1,0 +1,50 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, estado, fuentes, datos_glosario with context %}
+{% block titulo %}Glosario general — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('glosario') }}
+<h1 style="margin:8px 0 4px">Glosario general</h1>
+<p class="text-muted" style="margin:0 0 14px">{{ glosario.terminos | length }} términos. De todos los temas: miHospital, TIMBÓ (Expedientes) y TIMBÓ Compras. Los que tienen fuente oficial citada están marcados como confirmados; el resto todavía no tiene la fuente revisada.</p>
+
+<div class="rec-filtros">
+  <div class="input-wrap" style="flex:1;min-width:220px">
+    <span class="input-wrap__icon">🔎</span>
+    <input class="input" id="rec-filtro" type="search" aria-label="Buscar un término" placeholder="Buscar un término. Ej.: SIN, evaluador, RUPC..." />
+  </div>
+  <select class="input" id="rec-categoria" aria-label="Filtrar por categoría" style="max-width:240px">
+    <option value="">Todas las categorías</option>
+    {% for c in glosario.categorias %}<option>{{ c }}</option>{% endfor %}
+  </select>
+</div>
+
+{% set letras = glosario.terminos | map(attribute='termino') | map('first') | map('upper') | unique | list %}
+<nav class="glossary-jump" aria-label="Ir a la letra">{% for l in letras %}<a href="#letra-{{ l }}">{{ l }}</a>{% endfor %}</nav>
+
+<div id="rec-terminos">
+{% for t in glosario.terminos %}
+  {% set letra = t.termino[0] | upper %}
+  {% if loop.first or (glosario.terminos[loop.index0 - 1].termino[0] | upper) != letra %}<h2 class="rec-letra" id="letra-{{ letra }}">{{ letra }}</h2>{% endif %}
+  <article class="card rec-termino" data-categoria="{{ t.categoria }}" data-filtro="{{ (t.termino ~ ' ' ~ t.sencilla ~ ' ' ~ t.tecnica) | lower }}">
+    <header class="rec-termino__head">
+      <h3>{{ t.termino }}</h3>
+      {{ estado(t.estado) }}
+      <span class="badge badge--neutral">{{ t.categoria }}</span>
+    </header>
+    <p class="rec-termino__sencilla">{{ t.sencilla }}</p>
+    {% if t.tecnica or t.ejemplo %}
+    <details class="rec-termino__mas">
+      <summary>Ver más</summary>
+      {% if t.tecnica %}<p><b>Técnica:</b> {{ t.tecnica }}</p>{% endif %}
+      {% if t.ejemplo and t.ejemplo != '—' %}<p><b>Ejemplo:</b> {{ t.ejemplo }}</p>{% endif %}
+    </details>
+    {% endif %}
+    <p class="rec-termino__pie"><span>📍 {{ t.modulo }}</span> {{ fuentes(t.fuentes) }}{% if t.nota %} <span class="text-muted">{{ t.nota }}</span>{% endif %}</p>
+  </article>
+{% endfor %}
+</div>
+<div class="empty-state" id="rec-vacio" hidden>No hay términos que coincidan.</div>
+{{ datos_glosario(glosario) }}
+{% endblock %}
+
+{% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>{% endif %}{% endblock %}

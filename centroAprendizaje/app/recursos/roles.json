@@ -1,0 +1,798 @@
+{
+  "grupos": [
+    {
+      "slug": "timbo-compras",
+      "titulo": "Roles de TIMBÓ Compras",
+      "bajada": "Son los 5 roles que define la Circular UG TIMBÓ 7/2026 (punto 10). Cada usuario ve solo los procesos que corresponden a sus roles (punto 9).",
+      "roles": [
+        {
+          "slug": "gestor",
+          "nombre": "Gestor",
+          "icono": "📝",
+          "sistema": "TIMBÓ Compras",
+          "significa": {
+            "texto": "Es quien arma el proceso de compra dentro de TIMBÓ Compras.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Genera la instancia de contratación.",
+              "Completa los formularios del pliego de bases y condiciones particulares.",
+              "Genera circulares."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "TIMBÓ Compras: bandeja \"Licitaciones y concursos\". Para iniciar hace falta un número de expediente electrónico (Circ. 7/2026, punto 11).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "videos-app-timbocompras"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "La información, documentación y autorizaciones para iniciar el procedimiento son \"entera responsabilidad de los usuarios\". Los formularios deben cumplir la Ley 12.510, el Dec. 1104/16 y el Pliego Único.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "No aprueba los formularios del pliego: eso lo hace el Supervisor. Es una deducción de la lista de funciones, no un texto expreso.",
+            "estado": "didactico",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "designa": {
+            "texto": "Se tramita \"ante el administrador local de cada jurisdicción\". La norma no dice quién autoriza el pedido.",
+            "estado": "pendiente",
+            "fuentes": [
+              "circ-ug-1-2026",
+              "circ-ug-3-2026"
+            ]
+          },
+          "autorizacion": {
+            "texto": "No establecido en la normativa relevada.",
+            "estado": "pendiente",
+            "fuentes": []
+          },
+          "resumen": "Prepara la contratación: genera la instancia, completa los formularios del pliego particular y genera circulares."
+        },
+        {
+          "slug": "supervisor",
+          "nombre": "Supervisor",
+          "icono": "✅",
+          "sistema": "TIMBÓ Compras",
+          "significa": {
+            "texto": "Es quien controla y aprueba el pliego armado por el Gestor y prepara la publicación.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Aprueba o rechaza los formularios del pliego particular.",
+              "Confecciona el cronograma y la nómina de proveedores.",
+              "Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los \"sin efecto\" y la adjudicación."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "TIMBÓ Compras. Los actos que carga se emiten en el expediente electrónico.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Que el cronograma cumpla los plazos de la normativa (Circ. 7/2026, punto 14). Al aprobar, TIMBÓ asigna el número de proceso definitivo.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "videos-app-timbocompras"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Carga el acto, pero no lo dicta: el acto lo firma la autoridad competente en el expediente.",
+            "estado": "didactico",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-287-2026"
+            ]
+          },
+          "designa": {
+            "texto": "Ante el administrador local. Quién autoriza: no establecido.",
+            "estado": "pendiente",
+            "fuentes": [
+              "circ-ug-1-2026",
+              "circ-ug-3-2026"
+            ]
+          },
+          "autorizacion": {
+            "texto": "No establecido en la normativa relevada.",
+            "estado": "pendiente",
+            "fuentes": []
+          },
+          "resumen": "Aprueba o rechaza los formularios del pliego, arma el cronograma y la nómina de proveedores, y carga los actos (aprobación del pliego, sin efecto, adjudicación)."
+        },
+        {
+          "slug": "evaluador",
+          "nombre": "Evaluador",
+          "icono": "🔍",
+          "sistema": "TIMBÓ Compras",
+          "significa": {
+            "texto": "Integra la comisión que evalúa las ofertas y aconseja a quién adjudicar.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-287-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Evalúa las ofertas.",
+              "Genera subtrámites de subsanación, mejora de precios y aclaración o documentación complementaria.",
+              "Preselecciona renglones y oferentes.",
+              "Organiza a los evaluadores y preadjudica.",
+              "Carga el cronograma de impugnaciones y recibe las impugnaciones."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "TIMBÓ Compras: bandeja \"Licitaciones y concursos\", estado \"Evaluar ofertas\".",
+            "estado": "confirmado",
+            "fuentes": [
+              "videos-app-timbocompras"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Hay que designar al menos 3 evaluadores en el formulario \"Evaluadores\" del pliego. El informe de preadjudicación lo firman en el orden del formulario \"Ordenar evaluadores\". La comisión actúa según el pliego y su opinión no es vinculante.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-287-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "No adjudica: recomienda. La adjudicación se resuelve por acto en el expediente electrónico.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-287-2026"
+            ]
+          },
+          "designa": {
+            "texto": "Se nombran en el formulario \"Evaluadores\" del pliego. Falta confirmar si además hace falta un acto aparte.",
+            "estado": "pendiente",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-1104-2016"
+            ]
+          },
+          "autorizacion": {
+            "texto": "No establecido en la normativa relevada.",
+            "estado": "pendiente",
+            "fuentes": []
+          },
+          "resumen": "Analiza las ofertas, pide subsanaciones o mejoras, preselecciona, preadjudica y recibe las impugnaciones."
+        },
+        {
+          "slug": "jurisdiccion-comitente",
+          "nombre": "Jurisdicción comitente",
+          "icono": "🏥",
+          "sistema": "TIMBÓ Compras",
+          "significa": {
+            "texto": "Es el organismo que necesita el bien o servicio, cuando no es el mismo que licita.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-287-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Revisa los pliegos de bases y condiciones particulares."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "TIMBÓ Compras (el Gestor puede enviarle el pliego para su revisión).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "videos-app-timbocompras"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Revisar el pliego. El PBCP indica el nombre de la comitente si es distinta de la licitante (Dec. 287/2026, art. 131).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "dec-287-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "No figura que apruebe ni publique.",
+            "estado": "didactico",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "designa": {
+            "texto": "No establecido.",
+            "estado": "pendiente",
+            "fuentes": []
+          },
+          "autorizacion": {
+            "texto": "No establecido.",
+            "estado": "pendiente",
+            "fuentes": []
+          },
+          "resumen": "Revisa los pliegos particulares (el organismo que necesita lo que se compra, si no es el que licita)."
+        },
+        {
+          "slug": "oferente",
+          "nombre": "Oferente / Proveedor",
+          "icono": "🏢",
+          "sistema": "TIMBÓ Compras (externo)",
+          "significa": {
+            "texto": "La persona o empresa que participa y presenta ofertas.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Accede a los procesos publicados.",
+              "Presenta ofertas y efectúa consultas.",
+              "Recibe notificaciones en su domicilio digital.",
+              "Realiza impugnaciones."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "TIMBÓ Compras con su ID Ciudadana (bandejas \"Participar de un proceso\" y \"Mis ofertas\"). La inscripción va por el Sistema de Gestión de Proveedores Web.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026",
+              "res-scygb-110-2026"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Estar inscripto en el RUPC para ofertar y mantener sus datos actualizados. Solo valen las ofertas en estado \"Oferta presentada\".",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-2-2026",
+              "circ-ug-7-2026",
+              "res-scygb-110-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Para consultar o recibir circulares tiene que haber participado del proceso. Las consultas no muestran quién las hizo.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-7-2026"
+            ]
+          },
+          "designa": {
+            "texto": "No se designa: se inscribe. La SCyGB acepta o rechaza la inscripción por acto administrativo.",
+            "estado": "confirmado",
+            "fuentes": [
+              "res-scygb-110-2026"
+            ]
+          },
+          "autorizacion": {
+            "texto": "Inscripción en el RUPC (requisito indispensable para ofertar).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-2-2026"
+            ]
+          },
+          "resumen": "Participa: accede a los procesos publicados, presenta ofertas, hace consultas, recibe notificaciones e impugna."
+        }
+      ]
+    },
+    {
+      "slug": "usuarios-permisos",
+      "titulo": "Usuarios, permisos y quién los gestiona",
+      "bajada": "No son roles de TIMBÓ Compras: son las personas y áreas que intervienen para que un usuario exista y tenga permisos. Se separa quién pide, quién carga y quién controla.",
+      "roles": [
+        {
+          "slug": "solicitante",
+          "nombre": "Quien pide el alta o la baja",
+          "icono": "🙋",
+          "sistema": "iTop",
+          "significa": {
+            "texto": "Funcionario político o personal de planta con jerarquía no inferior a jefe de departamento.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Pide el alta y la baja de usuarios en oficinas, por iTop.",
+              "Pide modificaciones de oficinas a la Secretaría de Gestión Pública."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "modulos": {
+            "texto": "iTop (canal técnico).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Que los permisos pedidos respondan a las tareas que la persona efectivamente hace (art. 4.d).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Pide, pero no carga.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "designa": {
+            "texto": "Es su cargo el que lo habilita.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "autorizacion": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          }
+        },
+        {
+          "slug": "sectorial-informatica",
+          "nombre": "Sectorial de Informática",
+          "icono": "🖥️",
+          "sistema": "TIMBÓ",
+          "significa": {
+            "texto": "El área de informática de cada jurisdicción.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Gestiona el alta y la baja de usuarios en oficinas.",
+              "Carga oficinas y usuarios después de la validación institucional.",
+              "Tramita los cambios de oficinas pedidos."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "modulos": {
+            "texto": "Configuración de TIMBÓ.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Cargar lo que se pidió por el canal correspondiente.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Carga, pero no decide quién tiene permisos: eso lo pide la jefatura.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "designa": {
+            "texto": "No establecido en la normativa relevada.",
+            "estado": "pendiente",
+            "fuentes": []
+          },
+          "autorizacion": {
+            "texto": "Actúa a pedido de la jefatura.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          }
+        },
+        {
+          "slug": "administrador-local",
+          "nombre": "Administrador local",
+          "icono": "🧑‍💼",
+          "sistema": "TIMBÓ y TIMBÓ Compras",
+          "significa": {
+            "texto": "Usuario de la jurisdicción que gestiona altas de perfiles y roles.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026",
+              "circ-ug-3-2025"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Recibe los pedidos de alta de perfiles y roles de TIMBÓ Compras.",
+              "Junto con la Sectorial de Informática, carga oficinas y usuarios después de la validación institucional."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026",
+              "circ-ug-3-2026",
+              "circ-ug-3-2025"
+            ]
+          },
+          "modulos": {
+            "texto": "Administración de usuarios de TIMBÓ.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Tramitar las altas pedidas.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Que gestione los roles no significa que los autorice: la norma no le da esa atribución.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026",
+              "circ-ug-3-2025"
+            ]
+          },
+          "designa": {
+            "texto": "Según soporte: aprobar el curso \"TIMBÓ paso a paso\", pedido del referente por iTop y curso de Administrador Local. Es práctica informada por soporte, no norma.",
+            "estado": "practica",
+            "fuentes": []
+          },
+          "autorizacion": {
+            "texto": "No establecido en la normativa relevada.",
+            "estado": "pendiente",
+            "fuentes": []
+          }
+        },
+        {
+          "slug": "mesa-entradas",
+          "nombre": "Mesa de Entradas / Despacho",
+          "icono": "📥",
+          "sistema": "TIMBÓ (Expedientes)",
+          "significa": {
+            "texto": "Oficinas con el permiso de carátula.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Caratula expedientes.",
+              "Recibe los pedidos del TCP que llegan por Atención Virtual."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025",
+              "circ-ug-11-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "Expedientes y Atención Virtual.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025",
+              "circ-ug-11-2026"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Una sola Mesa de Entradas por ministerio u organismo, salvo los órganos rectores.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "limitaciones": {
+            "texto": "El permiso de carátula es solo para Mesas de Entradas o Despachos, ministros, sus secretarías privadas y secretarios y subsecretarios políticos.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "designa": {
+            "texto": "Por el circuito de altas de la Circ. 3/2025.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "autorizacion": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          }
+        },
+        {
+          "slug": "ug-timbo",
+          "nombre": "Unidad de Gestión TIMBÓ",
+          "icono": "🏛️",
+          "sistema": "Rectoría de TIMBÓ",
+          "significa": {
+            "texto": "Autoridad de aplicación de TIMBÓ (Dec. 191/2024).",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026",
+              "circ-ug-3-2025"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Dicta las circulares de TIMBÓ.",
+              "Puede revisar, modificar o revocar permisos.",
+              "Ante una imposibilidad técnica, puede autorizar vías alternativas."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025",
+              "circ-ug-1-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "Todo TIMBÓ.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-3-2025"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Definir la obligatoriedad y el cronograma de cada módulo.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          },
+          "designa": {
+            "texto": "Creada por el Dec. 191/2024.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-1-2026"
+            ]
+          },
+          "autorizacion": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          }
+        }
+      ]
+    },
+    {
+      "slug": "areas-externas",
+      "titulo": "Áreas que intervienen fuera del sistema",
+      "bajada": "Intervienen en el circuito de compra, pero no son usuarios de TIMBÓ Compras del hospital.",
+      "roles": [
+        {
+          "slug": "urc",
+          "nombre": "Unidad Rectora Central (URC)",
+          "icono": "⚖️",
+          "sistema": "Externo (por expediente)",
+          "significa": {
+            "texto": "La Subsecretaría de Contrataciones y Gestión de Bienes. Los controles los hace su Dirección General de Contrataciones y Gestión de Bienes.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-scygb-6-2026",
+              "circ-scygb-3-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Controla el pliego y lo resuelto por la comisión de preadjudicación.",
+              "Aprueba las altas del catálogo (formulario CAByS).",
+              "Acepta o rechaza las inscripciones en el RUPC."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "res-me-73-2026",
+              "res-scygb-292-2026",
+              "res-scygb-110-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "Recibe el expediente electrónico por pase.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-scygb-3-2026"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Sin su informe de control en el expediente, el proceso no se aprueba ni avanza a preadjudicado.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-scygb-3-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Si estos controles alcanzan a los hospitales está pendiente: la norma está dirigida a la Administración Pública Central.",
+            "estado": "pendiente",
+            "fuentes": [
+              "res-me-73-2026"
+            ]
+          },
+          "designa": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          },
+          "autorizacion": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          }
+        },
+        {
+          "slug": "tcp",
+          "nombre": "Tribunal de Cuentas (TCP)",
+          "icono": "🏛️",
+          "sistema": "Externo (Gestión de Visualización + SIN)",
+          "significa": {
+            "texto": "Órgano de control al que se le da vista.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-9-2026",
+              "circ-ug-11-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Recibe la vista del expediente por \"Gestión de Visualización\".",
+              "Recibe los actos cargados en el SIN por correo.",
+              "Hace pedidos que llegan por Atención Virtual."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-9-2026",
+              "circ-ug-11-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "Expedientes (Gestión de Visualización), SIN y Atención Virtual.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-9-2026",
+              "circ-ug-11-2026"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          },
+          "limitaciones": {
+            "texto": "Mientras tiene la vista, el expediente sigue su trámite.",
+            "estado": "confirmado",
+            "fuentes": [
+              "circ-ug-9-2026"
+            ]
+          },
+          "designa": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          },
+          "autorizacion": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          }
+        },
+        {
+          "slug": "rupc",
+          "nombre": "Registro Único de Proveedores y Contratistas (RUPC)",
+          "icono": "🗂️",
+          "sistema": "Externo (Sistema de Gestión de Proveedores Web)",
+          "significa": {
+            "texto": "Registro de proveedores de la Provincia.",
+            "estado": "confirmado",
+            "fuentes": [
+              "res-scygb-110-2026"
+            ]
+          },
+          "funciones": {
+            "items": [
+              "Administra el sistema de inscripción.",
+              "Arma el legajo digital de cada proveedor."
+            ],
+            "estado": "confirmado",
+            "fuentes": [
+              "res-scygb-110-2026",
+              "circ-ug-2-2026"
+            ]
+          },
+          "modulos": {
+            "texto": "www.santafe.gov.ar/proveedores",
+            "estado": "confirmado",
+            "fuentes": [
+              "res-scygb-110-2026"
+            ]
+          },
+          "responsabilidades": {
+            "texto": "Desde la Circ. UG 2/2026 solo administra la inscripción: los requisitos de participación los verifica la Unidad Operativa de Compras (el hospital).",
+            "estado": "confirmado",
+            "fuentes": [
+              "res-scygb-110-2026",
+              "circ-ug-2-2026"
+            ]
+          },
+          "limitaciones": {
+            "texto": "Hay una discrepancia sobre si la inscripción vence (ver biblioteca).",
+            "estado": "discrepancia",
+            "fuentes": [
+              "dec-287-2026",
+              "res-scygb-110-2026"
+            ]
+          },
+          "designa": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          },
+          "autorizacion": {
+            "texto": "—",
+            "estado": "confirmado",
+            "fuentes": []
+          }
+        }
+      ]
+    }
+  ],
+  "pendientes": [
+    "Quién autoriza que alguien tenga el rol Gestor, Supervisor o Evaluador: la norma solo dice \"tramitar ante el administrador local\".",
+    "Si la designación de los evaluadores necesita un acto administrativo además del formulario \"Evaluadores\".",
+    "Si los controles de la URC alcanzan al hospital (encuadre institucional).",
+    "Requisitos formales para ser administrador local (lo que hay sale de soporte, no de una norma)."
+  ]
+}

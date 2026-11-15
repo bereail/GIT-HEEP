@@ -1,0 +1,522 @@
+{
+  "consultado": "2026-11-15",
+  "categorias": [
+    {
+      "slug": "timbo-compras",
+      "titulo": "TIMBÓ Compras",
+      "icono": "🛒"
+    },
+    {
+      "slug": "roles-permisos",
+      "titulo": "Roles, usuarios y permisos",
+      "icono": "🔐"
+    },
+    {
+      "slug": "proveedores",
+      "titulo": "Proveedores y RUPC",
+      "icono": "🏢"
+    },
+    {
+      "slug": "compras-normativa",
+      "titulo": "Normativa de compras",
+      "icono": "⚖️"
+    },
+    {
+      "slug": "pliegos-catalogo",
+      "titulo": "Pliegos y catalogación",
+      "icono": "📑"
+    },
+    {
+      "slug": "expediente",
+      "titulo": "Expediente electrónico y firma",
+      "icono": "📁"
+    },
+    {
+      "slug": "tribunal",
+      "titulo": "Tribunal de Cuentas y SIN",
+      "icono": "🏛️"
+    },
+    {
+      "slug": "capacitacion",
+      "titulo": "Material de capacitación",
+      "icono": "🎓"
+    },
+    {
+      "slug": "soporte",
+      "titulo": "Soporte y asistencia",
+      "icono": "🛟"
+    }
+  ],
+  "documentos": [
+    {
+      "id": "circ-ug-7-2026",
+      "categoria": "timbo-compras",
+      "titulo": "Circular UG TIMBÓ N° 7/2026 — Términos y condiciones de uso de TIMBÓ Compras",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Roles, etapas por sistema, comisión de evaluación, notificaciones, ofertas, apertura, impugnaciones, glosario",
+      "contiene": "Define los 5 roles de TIMBÓ Compras (Gestor, Supervisor, Evaluador, Jurisdicción comitente, Oferente/Proveedor), qué etapa va por expediente y cuál por TIMBÓ Compras, mínimo de 3 evaluadores y valor de los correos de cortesía.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/05/CIRCULAR-7-UG-TYC-TIMBO-COMPRAS.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-1-2026",
+      "categoria": "timbo-compras",
+      "titulo": "Circular UG TIMBÓ N° 1/2026 — Implementación de TIMBÓ Compras",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Obligatoriedad inicial, alcance, roles ante el administrador local, contingencia técnica",
+      "contiene": "Uso obligatorio para las primeras jurisdicciones (licitaciones y concursos de simple sobre). Pide tramitar el alta de perfiles y roles ante el administrador local. La UG puede autorizar vías alternativas si el sistema no funciona.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/01/Circular-01-2026-Implementacion-TIMBO-COMPRAS.pdf",
+      "vigencia": "vigente (complementada por la 3/2026 y la 7/2026)",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-3-2026",
+      "categoria": "timbo-compras",
+      "titulo": "Circular UG TIMBÓ N° 3/2026 — Ampliación de TIMBÓ Compras a todos los ministerios",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Obligatoriedad desde el 1/4/2026, incluido Salud; ejecución operativa descentralizada",
+      "contiene": "Extiende el uso obligatorio al Ministerio de Salud y demás ministerios. No confundir con la Circular SCyGB 03/2026.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-03-26.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-8-2026",
+      "categoria": "timbo-compras",
+      "titulo": "Circular UG TIMBÓ N° 8/2026 — Contrataciones directas por urgencia o desierto",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Directas por TIMBÓ Compras; etapa múltiple por expediente",
+      "contiene": "Las directas por urgencia o por proceso desierto van por TIMBÓ Compras con al menos 3 proveedores invitados.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-8-26_TIMBO-COMPRAS.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "res-me-73-2026",
+      "categoria": "timbo-compras",
+      "titulo": "Resolución ME N° 73/2026 — Descentralización operativa de licitaciones y concursos públicos",
+      "emisor": "Ministerio de Economía",
+      "fecha": "07/04/2026",
+      "tema": "Gestión por las Unidades Operativas y controles obligatorios de la URC",
+      "contiene": "Desde el 15/4/2026, las licitaciones y concursos públicos por TIMBÓ Compras los gestionan las Unidades Operativas de la Administración Pública Central. La URC controla el pliego y la preadjudicación.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/Res.-ME-N.%C2%B0-0073-2026.pdf",
+      "vigencia": "vigente — aplicación al hospital pendiente de confirmar",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-scygb-3-2026",
+      "categoria": "timbo-compras",
+      "titulo": "Circular SCyGB N° 03/2026 — Intervención de la URC del SABS",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "15/04/2026",
+      "tema": "Cuándo mandar el expediente a la URC; mesa de ayuda",
+      "contiene": "Remitir el expediente a la Dirección General de Contrataciones en \"Aprobar contratación\" y antes del \"Cronograma de impugnación\". Publica los datos de la mesa de ayuda de TIMBÓ Compras. No confundir con la Circular UG TIMBÓ 3/2026.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf",
+      "vigencia": "vigente — dirigida a la Administración Pública Central",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-3-2025",
+      "categoria": "roles-permisos",
+      "titulo": "Circular UG TIMBÓ N° 3/2025 — Reglamento general para la gestión digital interna (RGGDITIMBÓ)",
+      "emisor": "Unidad de Gestión TIMBÓ (Secretaría de Gestión Pública)",
+      "fecha": "07/07/2025",
+      "tema": "Oficinas, usuarios, permisos, credenciales, expedientes, comunicaciones, archivo",
+      "contiene": "Arts. 3 a 5: criterios de oficinas, quién puede ser usuario, permiso de carátula, quién pide altas y bajas (jefatura de departamento o superior, por iTop), quién las carga (Sectorial de Informática o administradores locales) y la facultad de la UG de revocar permisos.",
+      "modulos": [
+        "Expedientes",
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/3_2025-Circular-Pautas-Generales-para-la-Gestion-Digital-TIMBO.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa (arts. 1 a 5); resto analizado por búsqueda"
+    },
+    {
+      "id": "circ-ug-2-2026",
+      "categoria": "proveedores",
+      "titulo": "Circular UG TIMBÓ N° 2/2026 — Requisitos del RUPC y de participación",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Inscripción en el RUPC, requisitos de participación, legajo digital, declaración jurada",
+      "contiene": "Condiciones para quedar \"Inscripto\", qué verifica la jurisdicción contratante al evaluar, informe de desempeño al terminar el contrato y declaración jurada unificada.",
+      "modulos": [
+        "TIMBÓ Compras",
+        "Proveedores"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-02-26.pdf",
+      "vigencia": "vigente — ver discrepancia sobre la vigencia de la inscripción",
+      "lectura": "completa"
+    },
+    {
+      "id": "res-scygb-110-2026",
+      "categoria": "proveedores",
+      "titulo": "Resolución SCyGB N° 110/2026 — Nuevo procedimiento de inscripción en el RUPC",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Inscripción, actualización y modificación de datos en el RUPC",
+      "contiene": "Portal www.santafe.gov.ar/proveedores, plazo de 30 días para completar, documentación por tipo de persona (anexos II a IV) y requisitos técnicos (anexo V: clave fiscal nivel 3, PDF de hasta 8 MB).",
+      "modulos": [
+        "Proveedores"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Resolucion-Proveedores-N%C2%B0-00000110-Nuevo-Procedimiento-Inscripcion-RUPC.pdf",
+      "vigencia": "vigente (reemplaza el procedimiento de las Res. 133/2020 y 47/2024)",
+      "lectura": "completa"
+    },
+    {
+      "id": "res-scygb-260-2026",
+      "categoria": "proveedores",
+      "titulo": "Resoluciones SCyGB N° 125, 175, 205 y 260/2026 — Prórrogas de inscripciones RUPC",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Prórroga para inscripciones vencidas con renovación iniciada en 2026",
+      "contiene": "Prórrogas sucesivas al 31/5, 30/6, 31/8 y 31/12/2026. La última vigente es la 260/2026.",
+      "modulos": [
+        "Proveedores"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/09/RESOLUCION-260.pdf",
+      "vigencia": "la 260/2026 reemplaza a las anteriores",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-scygb-6-2026",
+      "categoria": "proveedores",
+      "titulo": "Circular SCyGB N° 006/2026 — Inscripción en el RUPC (supresión del RBPCME)",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "22/07/2026",
+      "tema": "Quién va al RUPC y quién se da de alta como beneficiario en SIPAF",
+      "contiene": "Desde el Dec. 287/2026 solo existe el RUPC. Los beneficiarios de pagos no alcanzados por el art. 142 se dan de alta en SIPAF por la jurisdicción.",
+      "modulos": [
+        "Proveedores"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/08/CIRCULAR_006-26_SCYGB.pdf___non-Linux-generated_files-job_287.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "dec-287-2026",
+      "categoria": "compras-normativa",
+      "titulo": "Decreto N° 287/2026 — Aprueba el Pliego Único y modifica los Decretos 1104/16 y 914/18",
+      "emisor": "Poder Ejecutivo provincial",
+      "fecha": "23/02/2026",
+      "tema": "Pliego Único, comisión evaluadora, contenido del PBCP, RUPC, foja cero, RBPCME",
+      "contiene": "Modifica los arts. 123, 130, 131, 132, 139 y 142 del Dec. 1104/16. Deroga la foja cero y suprime el RBPCME. El art. 142 habla de una vigencia preestablecida de la calidad de proveedor (ver discrepancia).",
+      "modulos": [
+        "TIMBÓ Compras",
+        "Proveedores"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/DEC-2026-00000287-APPSF-PE-1.pdf__nux-generated_files-job_1090.pdf",
+      "vigencia": "vigente",
+      "lectura": "parte dispositiva completa; anexo (Pliego Único) ya relevado aparte"
+    },
+    {
+      "id": "pliego-unico-2026",
+      "categoria": "pliegos-catalogo",
+      "titulo": "Pliego Único de Bases y Condiciones Generales (anexo del Dec. 287/2026)",
+      "emisor": "Poder Ejecutivo provincial",
+      "fecha": "2026",
+      "tema": "Condiciones generales de licitaciones y concursos de bienes y servicios",
+      "contiene": "Impugnación de la preadjudicación (2 días), recepción, multa por mora, enmiendas.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf",
+      "vigencia": "vigente (reemplaza al pliego anterior y a los modelos de la Res. 519/2018)",
+      "lectura": "relevado el 13/11/2026"
+    },
+    {
+      "id": "dec-1104-2016",
+      "categoria": "compras-normativa",
+      "titulo": "Decreto N° 1104/2016 — Reglamento del Subsistema de Administración de Bienes y Servicios",
+      "emisor": "Poder Ejecutivo provincial",
+      "fecha": "2016 (con modificaciones)",
+      "tema": "Reglamentación de la Ley 12.510 en compras",
+      "contiene": "Procedimientos de selección, comisión evaluadora, RUPC, sanciones. Varios artículos fueron modificados por el Dec. 287/2026.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/2_Decreto-N%C2%B01.104-2016.pdf",
+      "vigencia": "vigente con modificaciones (texto ordenado en preparación según el Dec. 287)",
+      "lectura": "analizado por búsqueda de temas (62 páginas)"
+    },
+    {
+      "id": "ley-12510",
+      "categoria": "compras-normativa",
+      "titulo": "Ley N° 12.510 — Administración, Eficiencia y Control del Estado",
+      "emisor": "Legislatura provincial",
+      "fecha": "con modificatorias",
+      "tema": "Subsistema de bienes y servicios (arts. 106 a 140)",
+      "contiene": "Marco legal de las contrataciones provinciales.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/1_Ley-No-12.510-y-Modificatorias-Normas-reglamentarias-y-complementarias-24-04-15.pdf",
+      "vigencia": "vigente",
+      "lectura": "pendiente de lectura en el inventario"
+    },
+    {
+      "id": "circ-scygb-1-2026",
+      "categoria": "compras-normativa",
+      "titulo": "Circular SCyGB N° 01/2026 — Encuadre según la Ley de Presupuesto",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Montos de cada procedimiento y quién aprueba",
+      "contiene": "Topes 2026 por procedimiento. Hay que actualizarla cada año.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/01/Circular-001-26.pdf",
+      "vigencia": "vigente para 2026",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-scygb-4-2026",
+      "categoria": "compras-normativa",
+      "titulo": "Circular SCyGB N° 04/2026 — Procedimiento de publicación",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Publicación en el portal y aviso oficial",
+      "contiene": "Campos del portal web, \"generar enlace con TIMBO\" y expediente principal, mail a avisosoficiales@santafe.gob.ar con 3 días de anticipación.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-scygb-4-2025",
+      "categoria": "compras-normativa",
+      "titulo": "Circular SCyGB N° 04/2025 — Registración de las contrataciones en el portal",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2025",
+      "tema": "Pasar la gestión a \"Concluida\"",
+      "contiene": "Actualizar el estado en el portal en 2 días hábiles; si no, se bloquean publicaciones nuevas.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-4-2025-S.C.-y-G.B.-.-1.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-scygb-5-2026",
+      "categoria": "pliegos-catalogo",
+      "titulo": "Circular SCyGB N° 05/2026 — Textos para los formularios del PBCP",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Pliego modelo de bienes y de servicios",
+      "contiene": "Textos para completar los formularios del pliego particular, con anexos A a F.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/CIRCULAR_005-26.pdf___.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa (relevada el 13/11/2026)"
+    },
+    {
+      "id": "res-scygb-292-2026",
+      "categoria": "pliegos-catalogo",
+      "titulo": "Resolución SCyGB N° 292/2026 — Procedimiento digital de catalogación",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Alta de bienes, servicios y lugares de entrega (formulario CAByS)",
+      "contiene": "Búsqueda previa en el catálogo, formulario \"Timbó Compras: Alta de bienes y servicios CAByS\", código externo obligatorio para hospitales, aprobación de la URC.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "infografia-articulos",
+      "categoria": "pliegos-catalogo",
+      "titulo": "¿No encontrás un artículo en TIMBÓ? Resolvelo en 4 pasos",
+      "emisor": "Ministerio de Salud",
+      "fecha": "sin fecha",
+      "tema": "Búsqueda en el catálogo y pedido de alta de artículos",
+      "contiene": "Medicamentos y descartables: Servicio de Farmacia → Dirección Provincial de Farmacia → SUFYD → TIMBÓ. Otros bienes: formulario CAByS.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "/static/docs/timbo-compras/como-solicitar-alta-de-articulos.pdf",
+      "vigencia": "vigente (copia local de la infografía oficial)",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-4-2025",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 4/2025 — Actos administrativos",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2025",
+      "tema": "Tipos de actos, firma electrónica y digital",
+      "contiene": "La firma electrónica alcanza para la mayoría de los actos; la digital (token) queda para decretos y resoluciones ministeriales. Se valida en el Firmador Digital Web.",
+      "modulos": [
+        "Expedientes"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/4_2025-Circular-Actos-administrativos.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-5-2024",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 05/2024 — Validación de firma digital",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2024",
+      "tema": "Cómo validar documentos firmados",
+      "contiene": "Verificar la firma en el sitio oficial de validación. El sitio citado ahora pide iniciar sesión.",
+      "modulos": [
+        "Expedientes"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/11/Circular-05-Validacion-Firma-Digital-3.pdf",
+      "vigencia": "vigente — el enlace de validación cambió (pide sesión)",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-9-2026",
+      "categoria": "tribunal",
+      "titulo": "Circular UG TIMBÓ N° 9/2026 (y 10/2026, que fija su vigencia) — Vista al Tribunal de Cuentas",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Vista al TCP con Gestión de Visualización",
+      "contiene": "La vista al TCP se da compartiendo el expediente con \"Gestión de Visualización\"; el expediente sigue su trámite.",
+      "modulos": [
+        "Expedientes",
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-9-2026-UNIDAD-DE-GESTION-TIMBO.pdf",
+      "vigencia": "vigente (reemplaza la Circular UG 6/2025)",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-11-2026",
+      "categoria": "tribunal",
+      "titulo": "Circular UG TIMBÓ N° 11/2026 — Actos al TCP y carga en el SIN",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "SIN, correo al TCP y respuesta a pedidos del TCP",
+      "contiene": "Todo acto se carga en el SIN y se envía por correo al TCP. Los pedidos del TCP llegan por Atención Virtual a Mesa de Entradas.",
+      "modulos": [
+        "Expedientes",
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/08/Circular-11_2026-TCP-2.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "circ-ug-8-2025",
+      "categoria": "tribunal",
+      "titulo": "Circular UG TIMBÓ N° 8/2025 — Publicación en el Boletín Oficial con enlace al SIN",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "23/12/2025",
+      "tema": "Sistema de Información Normativa",
+      "contiene": "Confirma el nombre oficial del SIN: Sistema de Información Normativa de la Provincia.",
+      "modulos": [
+        "Expedientes"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/12/Circular-N8-2025-UG-timbo-1.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "videos-app-timbocompras",
+      "categoria": "capacitacion",
+      "titulo": "Lista de videos \"APP-TimboCompras\" (lado del organismo)",
+      "emisor": "Secretaría de Gestión Pública",
+      "fecha": "2026",
+      "tema": "Gestor, Supervisor, Evaluador, preadjudicación y clases de capacitación",
+      "contiene": "Pasos 01 a 04, documento comunicable externo y clases 01 a 03. Revisados por subtítulos; la Clase 01 se revisó cuadro por cuadro.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.youtube.com/playlist?list=PLJKcMr5XTsSe33vph6nNpxnZpu8D3RsBE",
+      "vigencia": "vigente",
+      "lectura": "subtítulos completos"
+    },
+    {
+      "id": "videos-proveedores",
+      "categoria": "capacitacion",
+      "titulo": "Lista de videos \"Timbó Compras\" (lado del proveedor) y tutoriales del portal",
+      "emisor": "Secretaría de Gestión Pública / SCyGB",
+      "fecha": "2026",
+      "tema": "Requisitos, participar, ofertar, consultas, subsanar, impugnar",
+      "contiene": "Videos 00 a 06 y dos capacitaciones largas para proveedores.",
+      "modulos": [
+        "Proveedores",
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/tutoriales/",
+      "vigencia": "vigente",
+      "lectura": "subtítulos completos"
+    },
+    {
+      "id": "mesa-ayuda-compras",
+      "categoria": "soporte",
+      "titulo": "Mesa de ayuda de TIMBÓ Compras",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "15/04/2026",
+      "tema": "Canales de consulta",
+      "contiene": "timbocompras@santafe.gob.ar · 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 640-0792 · de 8 a 13 h. Publicada en la Circular SCyGB 03/2026.",
+      "modulos": [
+        "TIMBÓ Compras",
+        "Soporte"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa"
+    },
+    {
+      "id": "superados",
+      "categoria": "compras-normativa",
+      "titulo": "Documentos superados que no se usan",
+      "emisor": "Varios",
+      "fecha": "2016-2025",
+      "tema": "Referencia histórica",
+      "contiene": "Manual de Licitaciones (Disp. 227/2016) y modelos de PBCP (Res. 519/2018), reemplazados por el Pliego Único 2026 y la Circ. 05/2026; Circular UG 6/2025 (TCP), reemplazada por la 9 y la 11/2026; Res. 133/2020 y 47/2024 (RUPC), reemplazadas por la 110/2026.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/normativas/",
+      "vigencia": "superados",
+      "lectura": "identificados; no se usan como fuente"
+    }
+  ],
+  "discrepancias": [
+    {
+      "tema": "Vigencia de la inscripción en el RUPC",
+      "fuentes": [
+        "dec-287-2026",
+        "circ-ug-2-2026",
+        "res-scygb-110-2026",
+        "res-scygb-260-2026"
+      ],
+      "detalle": "El art. 142 del Dec. 1104/16, según el Dec. 287/2026, dice que la calidad de proveedor tiene una vigencia preestablecida y que, vencida, hay que renovarla. La Circ. UG 2/2026 y la Res. 110/2026 dicen que la inscripción es \"sin plazo de caducidad\". Las prórrogas hablan de \"inscripciones vencidas\".",
+      "estado": "pendiente de confirmar con el RUPC"
+    }
+  ]
+}

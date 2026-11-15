@@ -1,0 +1,45 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, leyenda, cinco_roles, estado, fuentes with context %}
+{% block titulo %}Recursos — Panel de administración{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('inicio') }}
+<h1 style="margin:8px 0 4px">Recursos de consulta</h1>
+<p class="text-muted" style="margin:0 0 18px">Roles y alcances, glosario de todos los temas, nomenclador de artículos y normativa oficial, con el estado de verificación de cada dato. Consultado el {{ biblioteca.consultado }}.</p>
+
+{{ cinco_roles(roles) }}
+
+<div class="card-grid">
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_roles') }}">
+    <span class="home-card__icon">🔐</span>
+    <div class="home-card__title">Roles y circuito</div>
+    <div class="home-card__desc">{{ roles.grupos | map(attribute='roles') | map('length') | sum }} roles y áreas, tabla comparativa, esquema de permisos y circuito en {{ circuito.etapas | length }} etapas.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_glosario') }}">
+    <span class="home-card__icon">📖</span>
+    <div class="home-card__title">Glosario general</div>
+    <div class="home-card__desc">{{ glosario.terminos | length }} términos de todos los módulos de TIMBÓ, por letra y por categoría.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}">
+    <span class="home-card__icon">🔄</span>
+    <div class="home-card__title">Nomenclador de artículos</div>
+    <div class="home-card__desc">Qué código del catálogo usar en TIMBÓ para cada artículo del hospital.</div>
+  </a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}">
+    <span class="home-card__icon">🗂️</span>
+    <div class="home-card__title">Biblioteca documental</div>
+    <div class="home-card__desc">{{ biblioteca.documentos | length }} documentos oficiales con emisor, fecha, vigencia y enlace. {{ biblioteca.discrepancias | length }} discrepancia(s) documentada(s).</div>
+  </a>
+</div>
+
+<h2 class="section__title">Cómo leer los estados</h2>
+{{ leyenda() }}
+
+<h2 class="section__title">Pendientes de confirmar</h2>
+<ul class="rec-lista">
+  {% for p in roles.pendientes %}<li>⏳ {{ p }}</li>{% endfor %}
+  {% for d in biblioteca.discrepancias %}<li>⚠️ <b>{{ d.tema }}:</b> {{ d.detalle }}</li>{% endfor %}
+</ul>
+{% endblock %}
+
+{% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>{% endif %}{% endblock %}

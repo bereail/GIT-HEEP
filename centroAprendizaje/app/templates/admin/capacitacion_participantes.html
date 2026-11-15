@@ -1,0 +1,50 @@
+{% extends "admin/base_admin.html" %}
+{% from "recursos/_comun.html" import estado, fuentes with context %}
+{% block titulo %}Material para participantes — TIMBÓ Compras{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+<nav class="rec-subnav no-imprimir" aria-label="Centro de capacitación">
+  <a href="{{ url_for('admin.capacitacion_inicio') }}">🎓 Centro de capacitación</a>
+  <a href="{{ url_for('admin.capacitacion_primera_clase') }}">📋 Guía de la capacitadora</a>
+  <a href="{{ url_for('admin.capacitacion_participantes') }}" class="is-active">🧾 Para participantes</a>
+</nav>
+<p class="no-imprimir text-muted">Para repartir: usá "Imprimir" del navegador (Ctrl+P). El resumen entra en una hoja; el glosario va en hojas aparte.</p>
+
+<section class="cap-resumen">
+  <h1>TIMBÓ Compras en una página</h1>
+  <p class="cap-resumen__bajada">Primera clase · Área de Compras del hospital · Fuentes: circulares de la UG TIMBÓ y de la SCyGB, Dec. 287/2026 y videos oficiales</p>
+  <div class="cap-resumen__grid">
+    {% for r in cap.resumen %}<div class="cap-resumen__item"><h2>{{ r.t }}</h2><p>{{ r.d }}</p></div>{% endfor %}
+  </div>
+</section>
+
+<section class="cap-salto" id="glosario">
+  <h2 class="section__title">Glosario de la clase</h2>
+  <div class="cap-glosario">
+    {% for g in cap.glosario_clase %}
+    <article class="card cap-termino">
+      <header><h3>{{ g.termino }}</h3> {{ estado(g.estado) }}</header>
+      <dl>
+        <dt>Qué es</dt><dd>{{ g.que }}</dd>
+        <dt>Para qué sirve</dt><dd>{{ g.para }}</dd>
+        <dt>Cuándo aparece</dt><dd>{{ g.cuando }}</dd>
+        <dt>Ejemplo</dt><dd>{{ g.ejemplo }}</dd>
+      </dl>
+      {% if g.nota %}<p class="text-muted rec-nota">⏳ {{ g.nota }}</p>{% endif %}
+      {{ fuentes(g.fuentes) }}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% set v = cap.visualizar_detalle_accion %}
+<section class="cap-salto">
+  <h2 class="section__title">Mirar o hacer: no es lo mismo {{ estado(v.estado) }}</h2>
+  <p>{{ v.texto }}</p>
+  <div class="cap-glosario">
+    {% for i in v['items'] %}<article class="card cap-termino"><header><h3>{{ i.tipo }}</h3></header><p>{{ i.ejemplos }}</p><p class="text-muted">{{ i.efecto }}</p></article>{% endfor %}
+  </div>
+  <p class="text-muted rec-nota">⏳ {{ v.pendiente }}</p>
+  {{ fuentes(v.fuentes) }}
+</section>
+{% endblock %}

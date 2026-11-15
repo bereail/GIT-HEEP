@@ -1,0 +1,64 @@
+{# Piezas comunes de las páginas de Recursos (borrador privado del panel). #}
+
+{% macro estado(clave) -%}
+  {%- set e = estados.get(clave, estados['pendiente']) -%}
+  <span class="rec-estado rec-estado--{{ clave }}" title="{{ e[2] }}">{{ e[0] }} {{ e[1] }}</span>
+{%- endmacro %}
+
+{% macro fuentes(ids) -%}
+  {%- if ids -%}
+  <span class="rec-fuentes">Fuente:
+    {%- for i in ids %}{% set d = docs.get(i) %}{% if d %} <a href="{{ d.url }}" target="_blank" rel="noopener" title="{{ d.titulo }}">{{ d.titulo.split(' — ')[0] }}</a>{% if not loop.last %} ·{% endif %}{% endif %}{% endfor -%}
+  </span>
+  {%- endif -%}
+{%- endmacro %}
+
+{% macro subnav(activo) %}
+<nav class="rec-subnav" aria-label="Secciones de Recursos">
+  <a href="{{ url_for(prefijo ~ 'recursos_inicio') }}" class="{{ 'is-active' if activo == 'inicio' }}">📚 Recursos</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_roles') }}" class="{{ 'is-active' if activo == 'roles' }}">🔐 Roles y circuito</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}" class="{{ 'is-active' if activo == 'glosario' }}">📖 Glosario</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}" class="{{ 'is-active' if activo == 'biblioteca' }}">🗂️ Biblioteca</a>
+  <a href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}">🔄 Nomenclador de artículos</a>
+</nav>
+{% if prefijo == 'admin.' %}<div class="callout callout--warning rec-borrador">
+  <span class="callout__icon">🔒</span>
+  <div><b>Vista del panel.</b> En local también está en el sitio principal (/recursos); en producción no hay nada publicado todavía.</div>
+</div>{% endif %}
+{% endmacro %}
+
+{% macro leyenda() %}
+<div class="rec-leyenda">
+  {% for clave, e in estados.items() %}<span class="rec-estado rec-estado--{{ clave }}" title="{{ e[2] }}">{{ e[0] }} {{ e[1] }}</span> <span class="text-muted">{{ e[2] }}</span>{% endfor %}
+</div>
+{% endmacro %}
+
+{# Datos del glosario para los términos que se abren sin salir de la página. #}
+{% macro datos_glosario(glosario) %}
+<script type="application/json" id="glosario-datos">{{ glosario.terminos | map(attribute='termino') | list | tojson }}</script>
+<script type="application/json" id="glosario-defs">{{ glosario.terminos | tojson }}</script>
+<div class="rec-popover" id="rec-popover" role="dialog" aria-modal="false" hidden>
+  <button type="button" class="rec-popover__cerrar" aria-label="Cerrar">×</button>
+  <div class="rec-popover__cuerpo"></div>
+</div>
+{% endmacro %}
+
+{# Los cinco roles de TIMBÓ Compras, en una tabla simple (Circ. UG TIMBÓ 7/2026). #}
+{% macro cinco_roles(roles) %}
+{% set grupo = roles.grupos | selectattr('slug', 'equalto', 'timbo-compras') | first %}
+<section class="rec-bloque rec-cinco">
+  <h2 class="section__title">Los cinco roles de TIMBÓ Compras</h2>
+  <p class="text-muted" style="margin-top:0">Cada usuario no hace lo mismo: los roles los define la Circular UG TIMBÓ 7/2026 (punto 10), y cada persona ve solo los procesos de sus roles. {{ estado('confirmado') }}</p>
+  <div class="table-wrap">
+    <table class="data-table rec-tabla">
+      <thead><tr><th>Rol</th><th>Función principal</th></tr></thead>
+      <tbody>
+        {% for r in grupo.roles %}
+        <tr><td><a href="{{ url_for(prefijo ~ 'recursos_roles') }}#rol-{{ r.slug }}"><b>{{ r.icono }} {{ r.nombre }}</b></a></td><td>{{ r.resumen }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {{ fuentes(['circ-ug-7-2026']) }}
+</section>
+{% endmacro %}

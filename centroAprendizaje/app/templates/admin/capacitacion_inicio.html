@@ -1,0 +1,48 @@
+{% extends "admin/base_admin.html" %}
+{% from "recursos/_comun.html" import estado with context %}
+{% block titulo %}Centro de capacitación — TIMBÓ Compras{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set pc = cap.primera_clase %}
+<div class="callout callout--warning rec-borrador"><span class="callout__icon">🔒</span><div><b>Privado.</b> Solo se ve en el panel; no está publicado para el personal.</div></div>
+<h1 style="margin:8px 0 4px">🎓 Centro de capacitación · TIMBÓ Compras</h1>
+<p class="text-muted" style="margin:0 0 16px">Para el personal del área de Compras del hospital. Todo con fuentes oficiales y con lo pendiente marcado.</p>
+
+<section class="cap-hero">
+  <div class="cap-hero__texto">
+    <span class="cap-hero__etiqueta">Para mañana</span>
+    <h2>{{ pc.titulo }}</h2>
+    <p>{{ pc.duracion }} minutos · 6 bloques · {{ pc.objetivo }}</p>
+    <div class="cap-hero__botones">
+      <a class="btn btn--primary" href="{{ url_for('admin.capacitacion_primera_clase') }}">📋 Guía de la capacitadora</a>
+      {% for a in pc.archivos %}<a class="btn btn--ghost" href="{{ url_for('admin.capacitacion_archivo', nombre=a.nombre) }}">{{ a.icono }} {{ a.titulo }}</a>{% endfor %}
+      <a class="btn btn--ghost" href="{{ url_for('admin.capacitacion_participantes') }}">🧾 Material para participantes</a>
+    </div>
+  </div>
+  <ol class="cap-agenda">
+    {% for b in pc.bloques %}<li><span>{{ b.minutos }}'</span>{{ b.titulo }}</li>{% endfor %}
+  </ol>
+</section>
+
+<h2 class="section__title">Módulos de consulta</h2>
+{% set modulos = [
+  ('1', 'Introducción a TIMBÓ', 'Qué es, para qué sirve y qué va en cada sistema.', url_for('admin.capacitacion_primera_clase') ~ '#bloque-2', 'listo'),
+  ('2', 'Roles y responsabilidades', 'Los 5 roles, tabla comparativa y quién pide, carga y autoriza.', url_for('admin.recursos_roles'), 'listo'),
+  ('3', 'Conceptos y glosario', '17 términos de la clase con ejemplos del hospital, y el glosario general.', url_for('admin.capacitacion_participantes') ~ '#glosario', 'listo'),
+  ('4', 'Circuito de una compra', 'Compra directa y licitación, cada una con su diagrama y sus sistemas.', url_for('admin.capacitacion_primera_clase') ~ '#circuitos', 'listo'),
+  ('5', 'Uso práctico del sistema', 'Paso a paso por rol (Gestor, Supervisor, Evaluador), con lo que muestran los videos oficiales.', url_for('ui.ver_tutorial', tema_slug='timbo-compras', categoria_slug='gestion-interna', tutorial_slug='gestor-iniciar-proceso'), 'parcial'),
+  ('6', 'Proveedores', 'Inscripción en el RUPC, cómo participan, ofertan, consultan e impugnan.', url_for('ui.ver_categoria', tema_slug='timbo-compras', categoria_slug='ofertar'), 'parcial'),
+  ('7', 'Errores frecuentes y buenas prácticas', 'Errores documentados y consultas reales de soporte.', url_for('ui.ver_problemas', tema_slug='timbo-compras'), 'parcial'),
+  ('8', 'Práctica y evaluación', 'Actividad de roles y sistemas; ejercicios en cada lección. La evaluación final está en preparación.', url_for('admin.capacitacion_primera_clase') ~ '#bloque-6', 'parcial'),
+] %}
+<div class="card-grid cap-modulos">
+  {% for num, t, d, url, est in modulos %}
+  <a class="card card-link" href="{{ url }}">
+    <div class="cap-modulo__head"><span class="cap-modulo__num">{{ num }}</span><span class="cap-estado cap-estado--{{ est }}">{{ 'Listo' if est == 'listo' else 'En preparación' }}</span></div>
+    <div class="home-card__title">{{ t }}</div>
+    <div class="home-card__desc">{{ d }}</div>
+  </a>
+  {% endfor %}
+</div>
+<p class="text-muted rec-nota">Los módulos 5 a 7 enlazan a las lecciones públicas que ya existen (se abren en el sitio). Las capturas de pantalla reales que hay son las de la documentación oficial; lo que falta se va a marcar como ilustrativo.</p>
+{% endblock %}

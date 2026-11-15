@@ -1,0 +1,54 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, estado, fuentes, datos_glosario with context %}
+{% block titulo %}Biblioteca documental — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('biblioteca') }}
+<h1 style="margin:8px 0 4px">Biblioteca documental oficial</h1>
+<p class="text-muted" style="margin:0 0 14px">{{ biblioteca.documentos | length }} documentos, leídos y verificados el {{ biblioteca.consultado }}. El inventario exhaustivo de fuentes sigue en curso: esta lista va a crecer.</p>
+
+{% for d in biblioteca.discrepancias %}
+<div class="callout callout--warning"><span class="callout__icon">⚠️</span>
+  <div><b>Discrepancia: {{ d.tema }}.</b> {{ d.detalle }} <i>Estado: {{ d.estado }}.</i> {{ fuentes(d.fuentes) }}</div>
+</div>
+{% endfor %}
+
+<div class="rec-filtros">
+  <div class="input-wrap" style="flex:1;min-width:220px">
+    <span class="input-wrap__icon">🔎</span>
+    <input class="input" id="rec-filtro" type="search" aria-label="Buscar un documento" placeholder="Buscar por título, tema o emisor..." />
+  </div>
+</div>
+<nav class="glossary-jump" aria-label="Ir a la categoría">{% for c in biblioteca.categorias %}<a href="#cat-{{ c.slug }}">{{ c.icono }} {{ c.titulo }}</a>{% endfor %}</nav>
+
+<div id="rec-terminos">
+{% for c in biblioteca.categorias %}
+  {% set docs_cat = biblioteca.documentos | selectattr('categoria', 'equalto', c.slug) | list %}
+  {% if docs_cat %}
+  <section class="rec-bloque rec-seccion" id="cat-{{ c.slug }}">
+    <h2 class="section__title">{{ c.icono }} {{ c.titulo }}</h2>
+    {% for d in docs_cat %}
+    <article class="card rec-doc" data-filtro="{{ (d.titulo ~ ' ' ~ d.tema ~ ' ' ~ d.emisor ~ ' ' ~ d.contiene) | lower }}" data-glosario-auto>
+      <header class="rec-doc__head">
+        <h3><a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.titulo }}</a></h3>
+        <span class="rec-vigencia {{ 'rec-vigencia--ok' if d.vigencia.startswith('vigente') else 'rec-vigencia--no' }}">{{ d.vigencia }}</span>
+      </header>
+      <p>{{ d.contiene }}</p>
+      <dl class="rec-doc__meta">
+        <div><dt>Emisor</dt><dd>{{ d.emisor }}</dd></div>
+        <div><dt>Fecha</dt><dd>{{ d.fecha }}</dd></div>
+        <div><dt>Tema</dt><dd>{{ d.tema }}</dd></div>
+        <div><dt>Módulo</dt><dd>{{ d.modulos | join(' · ') }}</dd></div>
+        <div><dt>Lectura</dt><dd>{{ d.lectura }}</dd></div>
+      </dl>
+    </article>
+    {% endfor %}
+  </section>
+  {% endif %}
+{% endfor %}
+</div>
+<div class="empty-state" id="rec-vacio" hidden>No hay documentos que coincidan.</div>
+{{ datos_glosario(glosario) }}
+{% endblock %}
+
+{% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>{% endif %}{% endblock %}

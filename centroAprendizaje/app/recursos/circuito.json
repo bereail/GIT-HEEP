@@ -1,0 +1,201 @@
+{
+  "titulo": "Circuito de una licitación o concurso (simple sobre)",
+  "bajada": "Quién interviene en cada etapa y en qué sistema se hace. Las etapas con línea punteada tienen algo pendiente de confirmar para el hospital.",
+  "etapas": [
+    {
+      "n": 1,
+      "titulo": "Pedido y autorización para iniciar",
+      "actor": "Área que necesita · Compras",
+      "sistema": "expediente",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "La etapa preparatoria se resuelve por expediente electrónico. Sin número de expediente no se puede iniciar el proceso en TIMBÓ Compras."
+    },
+    {
+      "n": 2,
+      "titulo": "Armar el pliego particular",
+      "actor": "Gestor",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "El Gestor genera la instancia y completa los formularios del PBCP."
+    },
+    {
+      "n": 3,
+      "titulo": "Revisión del pliego",
+      "actor": "Jurisdicción comitente",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "Revisa el PBCP cuando la comitente es distinta de la licitante."
+    },
+    {
+      "n": 4,
+      "titulo": "Aprobar formularios, cronograma y nómina",
+      "actor": "Supervisor",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "Aprueba o rechaza los formularios. TIMBÓ asigna el número de proceso definitivo."
+    },
+    {
+      "n": 5,
+      "titulo": "Control del pliego",
+      "actor": "URC",
+      "sistema": "externo",
+      "estado": "pendiente",
+      "fuentes": [
+        "res-me-73-2026",
+        "circ-scygb-3-2026"
+      ],
+      "detalle": "En la Administración Pública Central, el expediente va a la URC con el pliego en PDF. Si aplica al hospital está pendiente de confirmar."
+    },
+    {
+      "n": 6,
+      "titulo": "Acto que aprueba el pliego y autoriza el llamado",
+      "actor": "Autoridad competente · Supervisor lo carga",
+      "sistema": "expediente",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026",
+        "videos-app-timbocompras"
+      ],
+      "detalle": "El acto se firma en el expediente y el Supervisor lo carga en TIMBÓ Compras."
+    },
+    {
+      "n": 7,
+      "titulo": "Vista al Tribunal de Cuentas y SIN",
+      "actor": "Compras o Mesa de Entradas",
+      "sistema": "externo",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-9-2026",
+        "circ-ug-11-2026"
+      ],
+      "detalle": "Vista con \"Gestión de Visualización\" del expediente; el acto se carga en el SIN y se envía por correo al TCP."
+    },
+    {
+      "n": 8,
+      "titulo": "Publicación",
+      "actor": "Compras",
+      "sistema": "externo",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-4-2026",
+        "circ-ug-7-2026"
+      ],
+      "detalle": "Carga en el Portal de Compras con \"generar enlace con TIMBO\" y aviso oficial por mail. TIMBÓ Compras invita a la nómina."
+    },
+    {
+      "n": 9,
+      "titulo": "Consultas, circulares y ofertas",
+      "actor": "Oferentes · Gestor (circulares)",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "Solo valen las ofertas en estado \"Oferta presentada\" antes de la apertura."
+    },
+    {
+      "n": 10,
+      "titulo": "Apertura automática",
+      "actor": "TIMBÓ Compras",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "A la hora del cronograma: genera el acta y el cuadro comparativo."
+    },
+    {
+      "n": 11,
+      "titulo": "Evaluación, subsanación y preselección",
+      "actor": "Evaluadores (mínimo 3)",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ],
+      "detalle": "Pedidos de subsanación o mejora como subtrámites. La comisión recomienda; su opinión no es vinculante."
+    },
+    {
+      "n": 12,
+      "titulo": "Control de la preadjudicación",
+      "actor": "URC",
+      "sistema": "externo",
+      "estado": "pendiente",
+      "fuentes": [
+        "res-me-73-2026",
+        "circ-scygb-3-2026"
+      ],
+      "detalle": "Antes del \"Cronograma de impugnación\" en la Administración Pública Central. Si aplica al hospital está pendiente."
+    },
+    {
+      "n": 13,
+      "titulo": "Preadjudicación e impugnaciones",
+      "actor": "Evaluadores · Oferentes",
+      "sistema": "compras",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "Informe firmado en el orden de \"Ordenar evaluadores\", notificado al domicilio digital."
+    },
+    {
+      "n": 14,
+      "titulo": "Adjudicación y etapa contractual",
+      "actor": "Autoridad competente · Supervisor carga el acto",
+      "sistema": "expediente",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "detalle": "Se resuelven por expediente electrónico. Después: recepción, pago y pasar la gestión a \"Concluida\" en el portal."
+    }
+  ],
+  "permisos": [
+    {
+      "paso": "Pide",
+      "quien": "Jefatura (departamento o superior) o funcionario político",
+      "como": "iTop",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ]
+    },
+    {
+      "paso": "Carga",
+      "quien": "Sectorial de Informática o administrador local",
+      "como": "Administración de TIMBÓ",
+      "fuentes": [
+        "circ-ug-3-2025",
+        "circ-ug-1-2026"
+      ]
+    },
+    {
+      "paso": "Controla",
+      "quien": "Unidad de Gestión TIMBÓ",
+      "como": "Puede revisar, modificar o revocar permisos",
+      "fuentes": [
+        "circ-ug-3-2025"
+      ]
+    },
+    {
+      "paso": "Autoriza roles de TIMBÓ Compras",
+      "quien": "No establecido en la normativa",
+      "como": "Pendiente de confirmar",
+      "fuentes": [],
+      "pendiente": true
+    }
+  ]
+}

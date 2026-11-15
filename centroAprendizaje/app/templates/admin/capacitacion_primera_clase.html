@@ -1,0 +1,83 @@
+{% extends "admin/base_admin.html" %}
+{% from "recursos/_comun.html" import estado, fuentes, cinco_roles, datos_glosario with context %}
+{% block titulo %}Guía de la capacitadora — Primera clase{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set pc = cap.primera_clase %}
+<nav class="rec-subnav" aria-label="Centro de capacitación">
+  <a href="{{ url_for('admin.capacitacion_inicio') }}">🎓 Centro de capacitación</a>
+  <a href="{{ url_for('admin.capacitacion_primera_clase') }}" class="is-active">📋 Guía de la capacitadora</a>
+  <a href="{{ url_for('admin.capacitacion_participantes') }}">🧾 Para participantes</a>
+</nav>
+<h1 style="margin:8px 0 4px">📋 Guía de la capacitadora</h1>
+<p class="text-muted" style="margin:0 0 10px">{{ pc.titulo }} · {{ pc.duracion }} minutos. {{ pc.objetivo }}</p>
+<div class="cap-hero__botones" style="margin-bottom:14px">
+  {% for a in pc.archivos %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.capacitacion_archivo', nombre=a.nombre) }}" title="{{ a.detalle }}">{{ a.icono }} {{ a.titulo }}</a>{% endfor %}
+</div>
+
+<div class="cap-linea" aria-label="Agenda">
+  {% for b in pc.bloques %}<a href="#bloque-{{ loop.index }}" style="flex:{{ b.minutos }}"><b>{{ b.minutos }}'</b> {{ b.titulo }}</a>{% endfor %}
+</div>
+
+{% for b in pc.bloques %}
+<section class="card cap-bloque" id="bloque-{{ loop.index }}" data-glosario-auto>
+  <header class="cap-bloque__head">
+    <span class="cap-bloque__min">{{ b.minutos }}'</span>
+    <div><h2>{{ loop.index }}. {{ b.titulo }}</h2><span class="text-muted">Diapositivas {{ b.diapositivas }}</span></div>
+  </header>
+  <div class="cap-bloque__grid">
+    <div><h3>Qué explicar</h3><ul>{% for x in b.explicar %}<li>{{ x }}</li>{% endfor %}</ul></div>
+    <div><h3>Imprescindible</h3><ul class="cap-clave">{% for x in b.imprescindible %}<li>{{ x }}</li>{% endfor %}</ul></div>
+  </div>
+  <p class="cap-palabras">💬 <b>Con palabras sencillas:</b> {{ b.palabras }}</p>
+  {% if b.ejemplo %}<p class="cap-ejemplo">🏥 <b>Ejemplo del hospital:</b> {{ b.ejemplo }}</p>{% endif %}
+  {% if b.preguntas %}<p><b>❓ Preguntas al grupo:</b> {{ b.preguntas | join(' · ') }}</p>{% endif %}
+  {% if b.dudas %}
+  <details class="cap-dudas"><summary>Dudas que pueden surgir y qué responder ({{ b.dudas | length }})</summary>
+    <dl>{% for d in b.dudas %}<dt>{{ d.q }}</dt><dd>{{ d.a }}</dd>{% endfor %}</dl>
+  </details>
+  {% endif %}
+  {% if b.evitar %}<div class="cap-evitar">🚫 <b>Errores a evitar:</b> {{ b.evitar | join(' · ') }}</div>{% endif %}
+  {{ fuentes(b.fuentes) if b.fuentes }}
+
+  {% if loop.index == 3 %}{{ cinco_roles(roles) }}{% endif %}
+
+  {% if loop.index == 5 %}
+  <div id="circuitos">
+    <h3 style="margin-top:18px">Dos flujos para comparar</h3>
+    <div class="rec-sistemas">
+      <span class="rec-sistema rec-sistema--expediente">📁 Expediente electrónico</span>
+      <span class="rec-sistema rec-sistema--compras">🛒 TIMBÓ Compras</span>
+      <span class="rec-sistema rec-sistema--externo">↗ Fuera del sistema</span>
+    </div>
+    <div class="cap-flujos">
+      <div>
+        <h4>{{ cap.flujo_directa.titulo }}</h4>
+        <ol class="rec-circuito">
+          {% for e in cap.flujo_directa.etapas %}
+          <li class="rec-etapa rec-etapa--{{ e.sistema }}"><details><summary><span class="rec-etapa__n">{{ e.n }}</span><span class="rec-etapa__titulo">{{ e.titulo }}</span><span class="rec-etapa__actor">{{ e.actor }}</span></summary><div class="rec-etapa__detalle">{{ e.detalle }}</div></details></li>
+          {% endfor %}
+        </ol>
+        <p class="text-muted rec-nota">{{ cap.flujo_directa.nota }}</p>
+        {{ fuentes(cap.flujo_directa.fuentes) }}
+      </div>
+      <div>
+        <h4>{{ circuito.titulo }}</h4>
+        <ol class="rec-circuito">
+          {% for e in circuito.etapas %}
+          <li class="rec-etapa rec-etapa--{{ e.sistema }} {{ 'rec-etapa--pendiente' if e.estado == 'pendiente' }}"><details><summary><span class="rec-etapa__n">{{ e.n }}</span><span class="rec-etapa__titulo">{{ e.titulo }}</span><span class="rec-etapa__actor">{{ e.actor }}</span>{% if e.estado != 'confirmado' %}{{ estado(e.estado) }}{% endif %}</summary><div class="rec-etapa__detalle">{{ e.detalle }} {{ fuentes(e.fuentes) }}</div></details></li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endfor %}
+
+<section class="card cap-bloque">
+  <h2>Para la segunda clase</h2>
+  <ul>{% for x in pc.segunda_clase %}<li>{{ x }}</li>{% endfor %}</ul>
+</section>
+{{ datos_glosario(glosario) }}
+{% endblock %}

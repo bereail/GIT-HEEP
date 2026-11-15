@@ -1,0 +1,574 @@
+{
+  "primera_clase": {
+    "titulo": "Primera clase — Introducción a TIMBÓ Compras",
+    "duracion": 75,
+    "objetivo": "Que cada participante entienda cómo funciona una compra en TIMBÓ, quién hace cada cosa y en qué sistema se hace. La práctica en pantalla queda para la segunda clase.",
+    "archivos": [
+      {
+        "nombre": "Introduccion_TIMBO_Compras.pptx",
+        "titulo": "Presentación editable (PowerPoint)",
+        "icono": "📊",
+        "detalle": "20 diapositivas en 16:9, con notas para la capacitadora en cada una"
+      },
+      {
+        "nombre": "Introduccion_TIMBO_Compras.pdf",
+        "titulo": "Presentación para proyectar (PDF)",
+        "icono": "📄",
+        "detalle": "La misma presentación, lista para proyectar"
+      }
+    ],
+    "bloques": [
+      {
+        "minutos": 10,
+        "titulo": "Presentación y contexto",
+        "diapositivas": "1 y 2",
+        "explicar": [
+          "Quién sos y para qué es la capacitación.",
+          "Hoy no se aprenden todos los botones: se entiende el circuito y los roles.",
+          "Todo lo que se dice sale de documentos oficiales; lo que no está confirmado se dice así."
+        ],
+        "imprescindible": [
+          "Los 4 objetivos de la clase."
+        ],
+        "palabras": "\"Hoy vamos a ver el mapa completo. En la próxima clase vamos a manejar el sistema.\"",
+        "preguntas": [
+          "¿Quién entró alguna vez a TIMBÓ?",
+          "¿Quién participó de una licitación en papel?"
+        ],
+        "dudas": [],
+        "evitar": [
+          "Prometer que hoy van a aprender a cargar una licitación completa."
+        ]
+      },
+      {
+        "minutos": 10,
+        "titulo": "Qué es TIMBÓ y cómo funciona",
+        "diapositivas": "3, 4 y 5",
+        "explicar": [
+          "TIMBÓ es la plataforma de la Provincia para hacer los trámites en digital. TIMBÓ Compras es uno de sus módulos.",
+          "Para qué sirve: trazabilidad, firma electrónica y todo en un solo lugar.",
+          "Es obligatorio para Salud desde el 1/4/2026 (licitaciones y concursos de simple sobre).",
+          "El expediente y TIMBÓ Compras trabajan juntos: el principio y el final van por expediente; el medio, por TIMBÓ Compras."
+        ],
+        "imprescindible": [
+          "TIMBÓ Compras no reemplaza al expediente.",
+          "Sin número de expediente no se puede iniciar un proceso en TIMBÓ Compras."
+        ],
+        "palabras": "\"Antes había una carpeta con fojas que viajaba de oficina en oficina. Ahora es un expediente digital que se ve desde cualquier oficina.\"",
+        "ejemplo": "El pedido de Enfermería se carga en el expediente; el pliego y las ofertas, en TIMBÓ Compras; la adjudicación vuelve al expediente.",
+        "preguntas": [
+          "¿Qué problemas tenían con el expediente en papel?"
+        ],
+        "dudas": [
+          {
+            "q": "¿TIMBÓ Compras es otro sistema?",
+            "a": "Es un módulo de TIMBÓ. Se entra con la misma ID Ciudadana."
+          },
+          {
+            "q": "¿Lo que empezó en papel lo pasamos a TIMBÓ?",
+            "a": "No: lo que empezó en papel antes del 1/4/2026 sigue en papel (Circular UG TIMBÓ 3/2026). Lo que empieza en digital sigue en digital."
+          }
+        ],
+        "evitar": [
+          "Decir que TIMBÓ Compras reemplaza al expediente.",
+          "Decir que la publicación en el portal o la carga en el SIN se hacen en TIMBÓ Compras: son externas."
+        ],
+        "fuentes": [
+          "circ-ug-7-2026",
+          "circ-ug-3-2026",
+          "circ-ug-3-2025"
+        ]
+      },
+      {
+        "minutos": 10,
+        "titulo": "Roles y responsabilidades",
+        "diapositivas": "7",
+        "explicar": [
+          "Hay 5 roles en TIMBÓ Compras: Gestor, Supervisor, Evaluador, Jurisdicción comitente y Oferente/Proveedor.",
+          "Cada usuario ve solo los procesos de sus roles.",
+          "Los roles se tramitan ante el administrador local de la jurisdicción."
+        ],
+        "imprescindible": [
+          "El Evaluador preadjudica, no adjudica.",
+          "Mínimo 3 evaluadores por proceso.",
+          "El Supervisor carga los actos, pero los actos los firma la autoridad en el expediente."
+        ],
+        "palabras": "\"Es como un equipo: uno arma, otro revisa y aprueba, otros evalúan. Nadie hace todo.\"",
+        "ejemplo": "La persona de Compras arma el pliego (Gestor); la jefatura lo aprueba (Supervisor); tres personas del hospital evalúan las ofertas (Evaluadores).",
+        "preguntas": [
+          "¿Quién creen que debería aprobar el pliego?",
+          "¿Por qué hacen falta al menos 3 evaluadores?"
+        ],
+        "dudas": [
+          {
+            "q": "¿Quién me da el rol?",
+            "a": "Se tramita ante el administrador local de tu jurisdicción (Circulares UG TIMBÓ 1 y 3/2026). Quién autoriza el pedido no está escrito en la normativa: decir que está pendiente de confirmar."
+          },
+          {
+            "q": "¿Una persona puede tener dos roles?",
+            "a": "No está establecido en la normativa relevada. Decir que se va a consultar."
+          }
+        ],
+        "evitar": [
+          "Decir que el administrador local decide quién tiene cada rol: la norma solo dice que el alta se tramita ante él.",
+          "Inventar roles que no están en la Circular UG TIMBÓ 7/2026."
+        ],
+        "fuentes": [
+          "circ-ug-7-2026",
+          "circ-ug-1-2026",
+          "circ-ug-3-2026"
+        ]
+      },
+      {
+        "minutos": 15,
+        "titulo": "Conceptos fundamentales y pliego",
+        "diapositivas": "8, 9 y 10",
+        "explicar": [
+          "Repasar los 8 conceptos con ejemplos del hospital.",
+          "El pliego son las reglas de juego de la compra.",
+          "Pliego general (Pliego Único, Dec. 287/2026): vale para todas las compras. Pliego particular (PBCP): las reglas de esta compra.",
+          "En TIMBÓ Compras el pliego particular se arma con 8 formularios."
+        ],
+        "imprescindible": [
+          "Diferencia entre pliego general y particular.",
+          "Lo que no esté en \"Requisitos de participación\" no se le puede exigir al proveedor.",
+          "Preadjudicar es recomendar; adjudicar es decidir."
+        ],
+        "palabras": "\"El pliego general es el reglamento de la liga; el particular, lo de este partido: qué se juega, dónde, cuándo y con qué reglas.\"",
+        "ejemplo": "Renglón 1: 500 cajas de guantes de látex talle M, con su ficha técnica.",
+        "preguntas": [
+          "¿Qué tiene que decir sí o sí un pliego para que un proveedor pueda ofertar?",
+          "Si el sistema dice \"Preadjudicado\", ¿ya le podemos comprar?"
+        ],
+        "dudas": [
+          {
+            "q": "¿El pliego lo arma el sistema?",
+            "a": "El sistema da los formularios; el contenido lo define el organismo (Dec. 287/2026, art. 131)."
+          },
+          {
+            "q": "¿Hay un modelo?",
+            "a": "Sí: la Circular SCyGB 05/2026 trae textos modelo para cada formulario."
+          }
+        ],
+        "evitar": [
+          "Confundir preadjudicación con adjudicación.",
+          "Decir que la ficha técnica es obligatoria siempre: para medicamentos alcanza con la descripción."
+        ],
+        "fuentes": [
+          "dec-287-2026",
+          "circ-ug-7-2026",
+          "circ-scygb-5-2026"
+        ]
+      },
+      {
+        "minutos": 15,
+        "titulo": "Recorrido del circuito de compras",
+        "diapositivas": "6, 11, 12 y 13",
+        "explicar": [
+          "El recorrido en 5 grandes pasos y en qué sistema se hace cada uno.",
+          "Compra directa por monto (expediente, CD-01 a CD-04) vs. licitación (TIMBÓ Compras).",
+          "Los 12 pasos de una licitación.",
+          "Del llamado a la preadjudicación: oferta presentada, apertura automática, evaluación, preadjudicación e impugnaciones."
+        ],
+        "imprescindible": [
+          "Topes 2026: directa hasta $5.850.000; licitación o concurso privado hasta $58.500.000; público, más.",
+          "Las directas por urgencia o desierto sí van por TIMBÓ Compras.",
+          "Solo valen las ofertas en estado \"Oferta presentada\"."
+        ],
+        "palabras": "\"El monto define el procedimiento; el procedimiento define el sistema.\"",
+        "ejemplo": "Guantes por $40.000.000: licitación privada, por TIMBÓ Compras (diapositiva 16).",
+        "preguntas": [
+          "Hay que comprar 20 sillas por $3.000.000: ¿qué procedimiento?",
+          "¿Quién abre las ofertas?"
+        ],
+        "dudas": [
+          {
+            "q": "¿La URC controla nuestros pliegos?",
+            "a": "Pendiente de confirmar: la Res. ME 73/2026 está dirigida a la Administración Pública Central. No darlo por seguro."
+          },
+          {
+            "q": "¿Y si el proveedor dice que ofertó y no aparece?",
+            "a": "No la presentó: quedó en borrador. Solo cuentan las ofertas en \"Oferta presentada\"."
+          }
+        ],
+        "evitar": [
+          "Decir que la compra directa por monto va por TIMBÓ Compras.",
+          "Afirmar que los controles de la URC aplican al hospital."
+        ],
+        "fuentes": [
+          "circ-scygb-1-2026",
+          "circ-ug-8-2026",
+          "circ-ug-7-2026",
+          "res-me-73-2026"
+        ]
+      },
+      {
+        "minutos": 15,
+        "titulo": "Preguntas, ejemplos y práctica",
+        "diapositivas": "14 a 20",
+        "explicar": [
+          "Qué hacen los proveedores (RUPC, ID Ciudadana, ofertar).",
+          "Buenas prácticas y errores frecuentes.",
+          "Ejemplo de los guantes.",
+          "Actividad en grupos: ¿quién lo hace y dónde?",
+          "Preguntas frecuentes, repaso y próximos pasos."
+        ],
+        "imprescindible": [
+          "Para ofertar, el proveedor tiene que estar en el RUPC.",
+          "Lo incorporado al expediente no se borra: se subsana.",
+          "La mesa de ayuda de TIMBÓ Compras."
+        ],
+        "palabras": "\"Si me equivoco en un documento ya incorporado, no lo borro: lo corrijo con otro y queda registrado.\"",
+        "preguntas": [
+          "Actividad de la diapositiva 17 (respuestas en las notas)."
+        ],
+        "dudas": [
+          {
+            "q": "¿Vence la inscripción en el RUPC?",
+            "a": "Hay una discrepancia entre el Dec. 287/2026 y la Res. SCyGB 110/2026. Decir que está en consulta."
+          },
+          {
+            "q": "¿Qué hago si un artículo no está en el catálogo?",
+            "a": "Formulario CAByS (Res. SCyGB 292/2026); medicamentos y descartables, por el Servicio de Farmacia. Es tema de la segunda clase."
+          }
+        ],
+        "evitar": [
+          "Responder de memoria algo que no está en las fuentes: mejor anotar la duda y consultarla."
+        ],
+        "fuentes": [
+          "res-scygb-110-2026",
+          "circ-ug-2-2026",
+          "circ-scygb-3-2026"
+        ]
+      }
+    ],
+    "segunda_clase": [
+      "Práctica en pantalla por rol: Gestor (crear el proceso y los 8 formularios), Supervisor (aprobar, cronograma, nómina) y Evaluador (evaluar y preadjudicar).",
+      "Pedido de alta de artículos (CAByS) y el circuito de Farmacia.",
+      "Vista al Tribunal de Cuentas y carga en el SIN.",
+      "Contrataciones directas por urgencia o desierto.",
+      "Garantías, montos y modelos de pliego (Circular SCyGB 05/2026)."
+    ]
+  },
+  "glosario_clase": [
+    {
+      "termino": "Compra directa",
+      "que": "Comprar sin licitación, cuando el monto es chico o hay una causa prevista en la ley.",
+      "para": "Resolver compras menores de forma más simple.",
+      "cuando": "Al definir el procedimiento según el monto (hasta $5.850.000 en 2026, por monto).",
+      "ejemplo": "Comprar 20 sillas por $3.000.000: gestión directa por monto, por expediente con el CD-01.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-1-2026"
+      ]
+    },
+    {
+      "termino": "Licitación",
+      "que": "Procedimiento con publicidad y competencia entre proveedores, con un pliego y apertura de ofertas.",
+      "para": "Comprar montos mayores eligiendo la oferta más conveniente.",
+      "cuando": "Cuando el monto supera el tope de la compra directa. Privada hasta $58.500.000; pública, más (2026).",
+      "ejemplo": "Guantes para todo el año por $40.000.000: licitación privada en TIMBÓ Compras.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-1-2026",
+        "circ-ug-3-2026"
+      ]
+    },
+    {
+      "termino": "Contratación",
+      "que": "El proceso completo para comprar un bien o contratar un servicio.",
+      "para": "Que el Estado compre de forma legal y transparente.",
+      "cuando": "Desde el pedido hasta el contrato.",
+      "ejemplo": "Contratar el servicio de lavandería del hospital.",
+      "estado": "didactico",
+      "fuentes": [
+        "ley-12510"
+      ]
+    },
+    {
+      "termino": "Proveedor",
+      "que": "La persona o empresa que vende o presta el servicio.",
+      "para": "Ofertar en los procesos de compra.",
+      "cuando": "Desde la publicación. Para ofertar tiene que estar inscripto en el RUPC.",
+      "ejemplo": "Una droguería inscripta en el RUPC que oferta guantes.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-2-2026",
+        "res-scygb-110-2026"
+      ]
+    },
+    {
+      "termino": "Expediente",
+      "que": "La carpeta digital del trámite en TIMBÓ.",
+      "para": "Reunir todos los documentos y pasos en orden.",
+      "cuando": "Al inicio (pedido) y al final (adjudicación y contrato). Sin número de expediente no se inicia un proceso en TIMBÓ Compras.",
+      "ejemplo": "El expediente con el pedido de Enfermería y el decisorio.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Pliego",
+      "que": "Las reglas de juego de una compra: qué se compra, cómo se oferta, cómo se evalúa y cómo se entrega.",
+      "para": "Que todos los proveedores oferten en igualdad de condiciones.",
+      "cuando": "Antes de publicar. Se arma, se revisa y se aprueba.",
+      "ejemplo": "El pliego de la compra de guantes: renglones, garantías, plazos y requisitos.",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026"
+      ]
+    },
+    {
+      "termino": "Pliego de bases y condiciones",
+      "que": "El nombre completo del pliego. Hay uno general (Pliego Único, igual para todas las compras) y uno particular (PBCP, el de cada compra).",
+      "para": "El general fija las reglas comunes; el particular, las de esa compra.",
+      "cuando": "El general ya está aprobado (Dec. 287/2026). El particular se arma en cada proceso con los 8 formularios de TIMBÓ Compras.",
+      "ejemplo": "El plazo para impugnar la preadjudicación lo fija el Pliego Único; la cantidad de guantes, el PBCP.",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "pliego-unico-2026",
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Especificaciones técnicas",
+      "que": "Las características que tiene que cumplir lo que se compra.",
+      "para": "Que el proveedor sepa exactamente qué ofrecer y la comisión pueda evaluar.",
+      "cuando": "Al armar el pliego: por renglón (ficha técnica) y en los anexos. Son contenido obligatorio del PBCP.",
+      "ejemplo": "Guante de látex, talle M, no estéril, caja por 100 unidades.",
+      "estado": "confirmado",
+      "fuentes": [
+        "dec-287-2026",
+        "videos-app-timbocompras"
+      ]
+    },
+    {
+      "termino": "Renglón",
+      "que": "Cada cosa distinta que se compra, con su cantidad y unidad.",
+      "para": "Que se cotice y adjudique por separado.",
+      "cuando": "En el formulario \"Detalle de productos o servicios\" del pliego.",
+      "ejemplo": "Renglón 1: guantes talle M · Renglón 2: guantes talle L.",
+      "estado": "confirmado",
+      "fuentes": [
+        "videos-app-timbocompras"
+      ]
+    },
+    {
+      "termino": "Oferta",
+      "que": "La propuesta del proveedor: precio y documentación.",
+      "para": "Competir por la compra.",
+      "cuando": "Mientras el proceso está publicado, hasta la apertura. Solo vale en estado \"Oferta presentada\".",
+      "ejemplo": "La droguería carga precio por renglón y adjunta la documentación pedida.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Cotización",
+      "que": "El precio que el proveedor ofrece, por renglón.",
+      "para": "Comparar precios entre ofertas.",
+      "cuando": "Dentro de la oferta. Cómo se cotiza (moneda, parcial o total) lo fija el pliego en \"Aspectos generales\".",
+      "ejemplo": "$12.000 la caja de guantes talle M.",
+      "estado": "confirmado",
+      "fuentes": [
+        "videos-app-timbocompras",
+        "circ-scygb-5-2026"
+      ]
+    },
+    {
+      "termino": "Apertura",
+      "que": "El momento en que se abren las ofertas.",
+      "para": "Que todas se conozcan al mismo tiempo.",
+      "cuando": "En la fecha y hora del cronograma. En TIMBÓ Compras es automática y genera el acta y el cuadro comparativo.",
+      "ejemplo": "El martes a las 10, TIMBÓ abre las 3 ofertas solo.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Evaluación",
+      "que": "El análisis de cada oferta: si cumple y cuál conviene.",
+      "para": "Recomendar a quién adjudicar.",
+      "cuando": "Después de la apertura. La hacen los evaluadores (mínimo 3); pueden pedir subsanar, aclarar o mejorar precio.",
+      "ejemplo": "La comisión revisa si los guantes cumplen la ficha técnica y si el proveedor presentó la garantía.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "dec-287-2026"
+      ]
+    },
+    {
+      "termino": "Preadjudicación",
+      "que": "La recomendación de la comisión: a quién conviene adjudicar.",
+      "para": "Dar a conocer el resultado antes de decidir, para que se pueda impugnar.",
+      "cuando": "Al terminar la evaluación, en TIMBÓ Compras. Se notifica al domicilio digital de los oferentes.",
+      "ejemplo": "Se preadjudica el renglón 1 a la oferta más conveniente que cumple.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Adjudicación",
+      "que": "La decisión final de a quién se le compra.",
+      "para": "Habilitar el contrato.",
+      "cuando": "Después de la preadjudicación y las impugnaciones. Es un acto de la autoridad, en el expediente electrónico.",
+      "ejemplo": "El acto que adjudica los guantes, firmado por la autoridad competente.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    {
+      "termino": "Orden de compra",
+      "que": "El documento con el que se le formaliza la compra al proveedor adjudicado.",
+      "para": "Que el proveedor entregue: los plazos de entrega corren desde su notificación.",
+      "cuando": "En la etapa contractual, después de la adjudicación. En la compra directa por monto se usa el CD-04 (orden de provisión).",
+      "ejemplo": "Se notifica la orden de compra y desde ahí corren los días para entregar los guantes.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-scygb-5-2026",
+        "videos-app-timbocompras"
+      ],
+      "nota": "El formato exacto que usa el hospital para la orden de compra en la etapa contractual está pendiente de relevar."
+    },
+    {
+      "termino": "SIN",
+      "que": "El Sistema de Información Normativa de la Provincia.",
+      "para": "Cargar los actos administrativos; desde ahí se envían al Tribunal de Cuentas.",
+      "cuando": "Después de firmar un acto (por ejemplo, el que aprueba el pliego), para la vista al Tribunal de Cuentas. Solo desde la red institucional y con usuario habilitado.",
+      "ejemplo": "Firmado el decisorio, se carga en el SIN para el Tribunal de Cuentas.",
+      "estado": "confirmado",
+      "fuentes": [
+        "circ-ug-8-2025",
+        "circ-ug-11-2026"
+      ]
+    }
+  ],
+  "visualizar_detalle_accion": {
+    "estado": "didactico",
+    "texto": "En los videos oficiales, cada proceso tiene un menú (⋮) con opciones para mirar y opciones para hacer. Mirar no cambia nada; hacer sí.",
+    "items": [
+      {
+        "tipo": "Mirar",
+        "ejemplos": "Previsualizar (ver los documentos del proceso), ver el flujo, ver el historial",
+        "efecto": "Solo consulta: no cambia el estado ni el contenido."
+      },
+      {
+        "tipo": "Hacer",
+        "ejemplos": "Acciones (completar formularios, enviar, aprobar, evaluar, preadjudicar)",
+        "efecto": "Cambia el estado del proceso y queda registrado a tu nombre."
+      }
+    ],
+    "pendiente": "Las opciones llamadas exactamente \"Visualizar\" y \"Detalle\" no aparecen en las fuentes oficiales relevadas: falta saber en qué pantalla se ven.",
+    "fuentes": [
+      "videos-app-timbocompras",
+      "videos-proveedores"
+    ]
+  },
+  "resumen": [
+    {
+      "t": "TIMBÓ",
+      "d": "La plataforma de la Provincia para hacer los trámites en digital. TIMBÓ Compras es su módulo de licitaciones y concursos."
+    },
+    {
+      "t": "Qué va en cada sistema",
+      "d": "Expediente: pedido, actos, adjudicación y contrato. TIMBÓ Compras: pliego, consultas, ofertas, apertura, evaluación y preadjudicación. Afuera: portal de compras, SIN y Tribunal de Cuentas."
+    },
+    {
+      "t": "Los 5 roles",
+      "d": "Gestor (arma el pliego) · Supervisor (lo aprueba, arma cronograma y nómina, carga los actos) · Evaluador (evalúa y preadjudica; mínimo 3) · Jurisdicción comitente (revisa el pliego) · Oferente/Proveedor (consulta, oferta e impugna)."
+    },
+    {
+      "t": "El pliego",
+      "d": "Las reglas de juego. General: el Pliego Único (Dec. 287/2026), igual para todas. Particular: el de esta compra, armado con 8 formularios."
+    },
+    {
+      "t": "Montos 2026",
+      "d": "Compra directa hasta $5.850.000 (por expediente). Licitación o concurso privado hasta $58.500.000; público, más (por TIMBÓ Compras)."
+    },
+    {
+      "t": "Ofertas",
+      "d": "Solo valen las que quedan en \"Oferta presentada\" antes de la apertura. La apertura es automática."
+    },
+    {
+      "t": "Preadjudicar ≠ adjudicar",
+      "d": "Preadjudicar es la recomendación de los evaluadores (en TIMBÓ Compras). Adjudicar es la decisión de la autoridad (en el expediente)."
+    },
+    {
+      "t": "Proveedores",
+      "d": "Tienen que estar inscriptos en el RUPC (www.santafe.gov.ar/proveedores) y tener ID Ciudadana nivel 3 con domicilio digital."
+    },
+    {
+      "t": "Cuidado",
+      "d": "Lo incorporado al expediente no se borra: se subsana. Lo firmado no se edita. Los plazos se cuentan con la hora del servidor. La clave es personal."
+    },
+    {
+      "t": "Ayuda",
+      "d": "Mesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · 0342-4506600 / 4506800 (internos 39479 y 39480) · WhatsApp +54 9 342 640-0792 · de 8 a 13 h."
+    }
+  ],
+  "flujo_directa": {
+    "titulo": "Compra directa por monto menor al tope (todo por expediente)",
+    "fuentes": [
+      "circ-scygb-1-2026",
+      "videos-app-timbocompras"
+    ],
+    "nota": "Marco: Ley 12.510, art. 116, inc. 1, y Dec. 1104/16. Pasos tomados del video oficial \"CD-01\" y del curso de expedientes.",
+    "etapas": [
+      {
+        "n": 1,
+        "titulo": "Pedido y presupuesto de referencia",
+        "actor": "Área que necesita · Compras",
+        "sistema": "expediente",
+        "detalle": "Nota de solicitud y, si corresponde, ficha técnica (obligatoria para bienes tecnológicos)."
+      },
+      {
+        "n": 2,
+        "titulo": "Carátula del expediente",
+        "actor": "Mesa de Entradas",
+        "sistema": "expediente",
+        "detalle": "Trámite \"Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope\"."
+      },
+      {
+        "n": 3,
+        "titulo": "Formulario CD-01",
+        "actor": "Compras",
+        "sistema": "expediente",
+        "detalle": "Documento oficial desde Documentos Oficiales, con firma conjunta (al menos dos firmantes). Costo total y fundamentación son obligatorios."
+      },
+      {
+        "n": 4,
+        "titulo": "Armar el expediente",
+        "actor": "Compras",
+        "sistema": "expediente",
+        "detalle": "Vincular el CD-01, subir nota y ficha técnica, presupuestos como documento informativo, incorporar y firmar."
+      },
+      {
+        "n": 5,
+        "titulo": "Pase para aprobación",
+        "actor": "Compras → oficina que aprueba",
+        "sistema": "expediente",
+        "detalle": "\"Realizar un pase\" con la providencia. La oficina puede autorizar en el mismo pase."
+      },
+      {
+        "n": 6,
+        "titulo": "Presupuestos, evaluación y orden de provisión",
+        "actor": "Compras",
+        "sistema": "expediente",
+        "detalle": "CD-02 (pedido de presupuesto), CD-03 (evaluación y adjudicación) y CD-04 (orden de provisión)."
+      },
+      {
+        "n": 7,
+        "titulo": "Pago",
+        "actor": "Administración",
+        "sistema": "expediente",
+        "detalle": "También se gestiona en TIMBÓ (biblioteca de procedimientos)."
+      }
+    ]
+  }
+}

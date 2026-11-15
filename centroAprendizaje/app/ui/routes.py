@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 
 from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, url_for
 
-from app import csrf
+from app import csrf, recursos
 from app.extensions import db
 from app.models import Categoria, Consulta, EquivalenciaArticulo, Feedback, MensajeConsulta, Tema, Tutorial
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
@@ -534,4 +534,41 @@ def feedback_nuevo(tema_slug):
     return render_template(
         "feedback_nuevo.html", tema=tema, categorias=CATEGORIAS_FEEDBACK,
         opciones_tutoriales=_opciones_tutoriales_tema(tema), valores=None,
+    )
+
+
+# ----------------------------------------------------------------- recursos --
+# Consulta general (roles, glosario de todos los temas, biblioteca). Mismos
+# datos y plantillas que el panel, con el diseño del sitio.
+
+def _contexto_recursos():
+    return {"estados": recursos.ESTADOS, "docs": recursos.documentos_por_id(), "layout": "base.html", "prefijo": "ui."}
+
+
+@ui_bp.route("/recursos")
+def recursos_inicio():
+    return render_template(
+        "recursos/inicio.html", roles=recursos.roles(), biblioteca=recursos.biblioteca(), circuito=recursos.circuito(),
+        glosario=recursos.glosario_completo(), **_contexto_recursos(),
+    )
+
+
+@ui_bp.route("/recursos/roles")
+def recursos_roles():
+    return render_template(
+        "recursos/roles.html", roles=recursos.roles(), circuito=recursos.circuito(),
+        glosario=recursos.glosario_completo(), **_contexto_recursos(),
+    )
+
+
+@ui_bp.route("/recursos/glosario")
+def recursos_glosario():
+    return render_template("recursos/glosario.html", glosario=recursos.glosario_completo(), **_contexto_recursos())
+
+
+@ui_bp.route("/recursos/biblioteca")
+def recursos_biblioteca():
+    return render_template(
+        "recursos/biblioteca.html", biblioteca=recursos.biblioteca(), glosario=recursos.glosario_completo(),
+        **_contexto_recursos(),
     )

@@ -11,12 +11,13 @@ from flask import (
     redirect,
     render_template,
     request,
+    send_from_directory,
     session,
     url_for,
 )
 from werkzeug.utils import secure_filename
 
-from app import csrf
+from app import csrf, recursos
 from app.admin.auth import contrasena_correcta, requiere_admin, sesion_admin_activa
 from app.extensions import db
 from app.models import (
@@ -878,3 +879,85 @@ def imagen_eliminar(tema_slug, nombre):
         os.remove(ruta)
         flash(f"Imagen '{nombre}' eliminada.", "ok")
     return redirect(url_for("admin.imagenes", tema_slug=tema.slug))
+
+
+# ----------------------------------------------------------------- recursos --
+# Roles, glosario, biblioteca y circuito. Los datos están en app/recursos/*.json
+# y las plantillas en templates/recursos/, compartidas con el sitio público.
+
+def _contexto_recursos():
+    return {"estados": recursos.ESTADOS, "docs": recursos.documentos_por_id(),
+            "layout": "admin/base_admin.html", "prefijo": "admin."}
+
+
+def _glosario_completo():
+    return recursos.glosario_completo()
+
+
+@admin_bp.route("/recursos")
+@requiere_admin
+def recursos_inicio():
+    return render_template(
+        "recursos/inicio.html", roles=recursos.roles(), biblioteca=recursos.biblioteca(), circuito=recursos.circuito(),
+        glosario=_glosario_completo(), **_contexto_recursos(),
+    )
+
+
+@admin_bp.route("/recursos/roles")
+@requiere_admin
+def recursos_roles():
+    return render_template(
+        "recursos/roles.html", roles=recursos.roles(), circuito=recursos.circuito(),
+        glosario=_glosario_completo(), **_contexto_recursos(),
+    )
+
+
+@admin_bp.route("/recursos/glosario")
+@requiere_admin
+def recursos_glosario():
+    return render_template("recursos/glosario.html", glosario=_glosario_completo(), **_contexto_recursos())
+
+
+@admin_bp.route("/recursos/biblioteca")
+@requiere_admin
+def recursos_biblioteca():
+    return render_template(
+        "recursos/biblioteca.html", biblioteca=recursos.biblioteca(), glosario=_glosario_completo(),
+        **_contexto_recursos(),
+    )
+
+
+# ------------------------------------------------- centro de capacitación --
+# Privado: guía de la capacitadora, presentación y material para participantes.
+
+@admin_bp.route("/capacitacion")
+@requiere_admin
+def capacitacion_inicio():
+    return render_template(
+        "admin/capacitacion_inicio.html", cap=recursos.capacitacion(), roles=recursos.roles(),
+        glosario=_glosario_completo(), biblioteca=recursos.biblioteca(), **_contexto_recursos(),
+    )
+
+
+@admin_bp.route("/capacitacion/primera-clase")
+@requiere_admin
+def capacitacion_primera_clase():
+    return render_template(
+        "admin/capacitacion_primera_clase.html", cap=recursos.capacitacion(), roles=recursos.roles(),
+        circuito=recursos.circuito(), glosario=_glosario_completo(), **_contexto_recursos(),
+    )
+
+
+@admin_bp.route("/capacitacion/participantes")
+@requiere_admin
+def capacitacion_participantes():
+    return render_template("admin/capacitacion_participantes.html", cap=recursos.capacitacion(), **_contexto_recursos())
+
+
+@admin_bp.route("/capacitacion/archivos/<nombre>")
+@requiere_admin
+def capacitacion_archivo(nombre):
+    permitidos = {a["nombre"] for a in recursos.capacitacion()["primera_clase"]["archivos"]}
+    if nombre not in permitidos:
+        abort(404)
+    return send_from_directory(recursos.ARCHIVOS, nombre, as_attachment=True)
