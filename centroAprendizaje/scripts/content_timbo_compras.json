@@ -1364,9 +1364,9 @@
             {
               "type": "step",
               "number": 3,
-              "explanation": "Control del pliego (Unidad Rectora Central).",
+              "explanation": "Control del pliego por la Unidad Rectora Central (si corresponde a tu hospital).",
               "doThis": "El Supervisor aprueba los formularios y TIMBÓ da el número de proceso definitivo. Descargá el pliego desde \"Previsualizar\" y mandá el expediente con el pliego en PDF a la Dirección General de Contrataciones y Gestión de Bienes.",
-              "lookFor": "Sin el informe de control de la URC en el expediente, el proceso no se puede aprobar ni publicar (Circular SCyGB 03/2026, para la Administración Central). Consultá con tu referente si aplica a tu hospital."
+              "lookFor": "Sin el informe de control de la URC en el expediente, el proceso no se puede aprobar ni publicar (Circular SCyGB 03/2026). Si este control aplica a los hospitales está pendiente de confirmar: la norma está dirigida a la Administración Pública Central. Consultá con tu referente."
             },
             {
               "type": "step",
@@ -1422,7 +1422,7 @@
               "number": 11,
               "explanation": "Evaluá, preadjudicá y adjudicá.",
               "doThis": "Rol Evaluador: evaluación económica, administrativa y técnica de cada oferta; si falta algo, pedí subsanación, mejora de precio o aclaración. Después, selección de renglones, orden de evaluadores e informe de preadjudicación. Ver lecciones \"Evaluador\".",
-              "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación. Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación, por expediente electrónico."
+              "lookFor": "Antes de completar el \"Cronograma de impugnación\", el expediente vuelve a la URC para controlar la preadjudicación (si ese control aplica a tu hospital: pendiente de confirmar). Después, la autoridad que aprueba resuelve las impugnaciones junto con la adjudicación, por expediente electrónico."
             },
             {
               "type": "step",
@@ -1478,7 +1478,7 @@
               "instruction": "Ordená las etapas de una compra:",
               "steps": [
                 "Armar el pliego con los renglones",
-                "Control del pliego por la URC",
+                "Control del pliego (URC, si corresponde)",
                 "Firmar el decisorio",
                 "Correr vista al Tribunal de Cuentas",
                 "Publicar la compra",
@@ -2339,7 +2339,7 @@
               "number": 5,
               "explanation": "El n.º 1 carga el cronograma de impugnaciones.",
               "doThis": "Cuando aprueba el último, cargá fecha y hora de publicación de la preadjudicación, e inicio y fin de impugnación → \"Confirmar\".",
-              "lookFor": "Pasa a \"Espera incorporaciones\" (TIMBÓ genera y firma los documentos) y después a \"Preadjudicado\". Antes de este paso, el expediente va a la URC para controlar la preadjudicación (Circular SCyGB 03/2026)."
+              "lookFor": "Pasa a \"Espera incorporaciones\" (TIMBÓ genera y firma los documentos) y después a \"Preadjudicado\". Antes de este paso, el expediente va a la URC para controlar la preadjudicación (Res. ME 73/2026 y Circular SCyGB 03/2026). Si este control aplica a los hospitales está pendiente de confirmar: la norma está dirigida a la Administración Pública Central."
             },
             {
               "type": "tip",
@@ -2901,7 +2901,7 @@
     },
     {
       "termino": "URC",
-      "definicion": "Unidad Rectora Central: la Dirección General de Contrataciones y Gestión de Bienes. Controla el pliego y la preadjudicación.",
+      "definicion": "Unidad Rectora Central: la Subsecretaría de Contrataciones y Gestión de Bienes; los controles los hace su Dirección General de Contrataciones y Gestión de Bienes. Controla el pliego y la preadjudicación de las licitaciones y concursos públicos de la Administración Pública Central (Res. ME 73/2026). Si alcanza a cada hospital está pendiente de confirmar.",
       "modulo": "Gestión interna"
     },
     {

@@ -45,7 +45,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   (function () {
     const estrellas = document.querySelectorAll('#star-rating .star-rating__star');
     const input = document.getElementById('puntuacion-valor');

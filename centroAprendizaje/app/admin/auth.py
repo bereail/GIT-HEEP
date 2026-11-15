@@ -18,4 +18,6 @@ def requiere_admin(vista):
 
 
 def contrasena_correcta(contrasena):
-    return contrasena == current_app.config["ADMIN_PASSWORD"]
+    from app.seguridad import contrasena_admin_correcta
+
+    return contrasena_admin_correcta(current_app, contrasena)

@@ -40,7 +40,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   // Guarda este token en "Mis consultas" (localStorage del navegador) y
   // marca el momento en que se vio, para el indicador de "nuevo" allá.
   (function () {
@@ -56,7 +56,7 @@
   })();
 </script>
 {% if es_nueva %}
-<script>
+<script nonce="{{ csp_nonce }}">
   document.getElementById('btn-copiar-link').addEventListener('click', () => {
     const input = document.getElementById('link-consulta');
     input.select();

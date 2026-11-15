@@ -6,6 +6,7 @@ import pytest
 from app import create_app
 from app.extensions import db
 from app.models import Categoria, Tema, Tutorial
+from app.seguridad import limitador
 
 
 @pytest.fixture(scope="session")
@@ -16,6 +17,7 @@ def app():
         "SQLALCHEMY_DATABASE_URI": f"sqlite:///{db_path}",
         "WTF_CSRF_ENABLED": False,
         "ADMIN_PASSWORD": "test-admin-pass",
+        "SESSION_COOKIE_SECURE": False,  # el cliente de pruebas usa http
     })
     assert flask_app.config["SQLALCHEMY_DATABASE_URI"] == f"sqlite:///{db_path}"
     yield flask_app
@@ -29,6 +31,7 @@ def app():
 def _base_de_datos_limpia(app):
     """Esquema nuevo y datos semilla (un tema/categoría/tutorial) antes de
     cada test; se tira todo al terminar, así ningún test ve datos de otro."""
+    limitador.reiniciar()  # los límites de pedidos tampoco pasan de un test a otro
     with app.app_context():
         db.create_all()
         tema = Tema(slug="demo", nombre="Demo", orden=0)

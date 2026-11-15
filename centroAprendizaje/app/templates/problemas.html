@@ -74,7 +74,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   (function () {
     // Si llegás desde el chatbot o el buscador, se abre la situación justa.
     function abrirDelLink() {

@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   (function () {
     const contenedor = document.getElementById('mis-consultas-lista');
 

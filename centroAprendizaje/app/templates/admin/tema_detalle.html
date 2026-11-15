@@ -41,7 +41,7 @@
     <a class="admin-list-item__title" href="{{ url_for('admin.glosario_editar', tema_slug=tema.slug, entrada_id=entrada.id) }}">{{ entrada.termino }}</a>
     <span class="admin-list-item__meta">{{ entrada.modulo }}</span>
     <span class="admin-list-item__actions">
-      <form method="post" action="{{ url_for('admin.glosario_eliminar', tema_slug=tema.slug, entrada_id=entrada.id) }}" onsubmit="return confirm('¿Eliminar este término del glosario?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+      <form method="post" action="{{ url_for('admin.glosario_eliminar', tema_slug=tema.slug, entrada_id=entrada.id) }}" data-confirmar="¿Eliminar este término del glosario?"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
     </span>
   </div>
   {% else %}
@@ -62,7 +62,7 @@
     <span class="admin-list-item__actions">
       <form method="post" action="{{ url_for('admin.situacion_mover', tema_slug=tema.slug, situacion_slug=situacion.slug, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
       <form method="post" action="{{ url_for('admin.situacion_mover', tema_slug=tema.slug, situacion_slug=situacion.slug, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
-      <form method="post" action="{{ url_for('admin.situacion_eliminar', tema_slug=tema.slug, situacion_slug=situacion.slug) }}" onsubmit="return confirm('¿Eliminar esta situación?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+      <form method="post" action="{{ url_for('admin.situacion_eliminar', tema_slug=tema.slug, situacion_slug=situacion.slug) }}" data-confirmar="¿Eliminar esta situación?"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
     </span>
   </div>
   {% else %}
@@ -82,7 +82,7 @@
     <span class="admin-list-item__actions">
       <form method="post" action="{{ url_for('admin.tarea_mover', tema_slug=tema.slug, tarea_slug=tarea.slug, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
       <form method="post" action="{{ url_for('admin.tarea_mover', tema_slug=tema.slug, tarea_slug=tarea.slug, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
-      <form method="post" action="{{ url_for('admin.tarea_eliminar', tema_slug=tema.slug, tarea_slug=tarea.slug) }}" onsubmit="return confirm('¿Eliminar esta tarea?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+      <form method="post" action="{{ url_for('admin.tarea_eliminar', tema_slug=tema.slug, tarea_slug=tarea.slug) }}" data-confirmar="¿Eliminar esta tarea?"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
     </span>
   </div>
   {% else %}
@@ -103,7 +103,7 @@
     <span class="admin-list-item__actions">
       <form method="post" action="{{ url_for('admin.paso_mover', tema_slug=tema.slug, paso_id=paso.id, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
       <form method="post" action="{{ url_for('admin.paso_mover', tema_slug=tema.slug, paso_id=paso.id, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
-      <form method="post" action="{{ url_for('admin.paso_eliminar', tema_slug=tema.slug, paso_id=paso.id) }}" onsubmit="return confirm('¿Eliminar este paso?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+      <form method="post" action="{{ url_for('admin.paso_eliminar', tema_slug=tema.slug, paso_id=paso.id) }}" data-confirmar="¿Eliminar este paso?"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
     </span>
   </div>
   {% else %}
@@ -140,7 +140,7 @@
 <div class="admin-section-head">
   <h2 class="section__title" style="margin:0; color:var(--danger)">Zona de riesgo</h2>
 </div>
-<form method="post" action="{{ url_for('admin.tema_eliminar', tema_slug=tema.slug) }}" onsubmit="return confirm('Esto borra el tema completo y TODO su contenido (módulos, tutoriales, glosario, situaciones, tareas). ¿Confirmás?')">
+<form method="post" action="{{ url_for('admin.tema_eliminar', tema_slug=tema.slug) }}" data-confirmar="Esto borra el tema completo y TODO su contenido (módulos, tutoriales, glosario, situaciones, tareas). ¿Confirmás?">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
   <button type="submit" class="btn btn--subtle btn--sm">Eliminar este tema completo</button>
 </form>

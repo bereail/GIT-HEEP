@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block titulo %}Centro de Aprendizaje{% endblock %}</title>
+  <link rel="icon" href="data:," />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
 </head>
 <body
@@ -106,6 +107,6 @@
   <div class="toast" id="toast"></div>
 
   {% block script_pagina %}{% endblock %}
-  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script nonce="{{ csp_nonce }}" type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

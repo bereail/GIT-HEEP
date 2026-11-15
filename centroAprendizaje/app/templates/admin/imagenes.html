@@ -21,7 +21,7 @@
     <img src="{{ url_for('static', filename='img/' + tema.slug + '/' + archivo) }}" alt="{{ archivo }}" loading="lazy" />
     <div class="upload-grid__item-body">
       <div class="upload-grid__item-name">{{ archivo }}</div>
-      <form method="post" action="{{ url_for('admin.imagen_eliminar', tema_slug=tema.slug, nombre=archivo) }}" onsubmit="return confirm('¿Eliminar esta imagen?')">
+      <form method="post" action="{{ url_for('admin.imagen_eliminar', tema_slug=tema.slug, nombre=archivo) }}" data-confirmar="¿Eliminar esta imagen?">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
         <button type="submit" class="btn btn--subtle btn--sm">Eliminar</button>
       </form>

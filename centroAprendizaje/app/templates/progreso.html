@@ -27,7 +27,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script type="module">
+<script nonce="{{ csp_nonce }}" type="module">
   import * as progreso from "{{ url_for('static', filename='js/progreso.js') }}";
 
   const temaSlug = {{ tema.slug | tojson }};

@@ -35,7 +35,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   (function () {
     var input = document.getElementById('filtro-tareas');
     var filas = Array.prototype.slice.call(document.querySelectorAll('#lista-tareas [data-filtro]'));

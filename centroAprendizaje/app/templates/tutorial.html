@@ -56,7 +56,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script type="module">
+<script nonce="{{ csp_nonce }}" type="module">
   import { renderizarQuiz } from "{{ url_for('static', filename='js/quiz.js') }}";
   import * as progreso from "{{ url_for('static', filename='js/progreso.js') }}";
 

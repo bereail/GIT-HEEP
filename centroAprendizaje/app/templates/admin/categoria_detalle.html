@@ -24,7 +24,7 @@
     <span class="admin-list-item__actions">
       <form method="post" action="{{ url_for('admin.tutorial_mover', tema_slug=tema.slug, categoria_slug=categoria.slug, tutorial_slug=tutorial.slug, direccion='subir') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Subir">↑</button></form>
       <form method="post" action="{{ url_for('admin.tutorial_mover', tema_slug=tema.slug, categoria_slug=categoria.slug, tutorial_slug=tutorial.slug, direccion='bajar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--icon btn--sm" type="submit" aria-label="Bajar">↓</button></form>
-      <form method="post" action="{{ url_for('admin.tutorial_eliminar', tema_slug=tema.slug, categoria_slug=categoria.slug, tutorial_slug=tutorial.slug) }}" onsubmit="return confirm('¿Eliminar este tutorial?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
+      <form method="post" action="{{ url_for('admin.tutorial_eliminar', tema_slug=tema.slug, categoria_slug=categoria.slug, tutorial_slug=tutorial.slug) }}" data-confirmar="¿Eliminar este tutorial?"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--subtle btn--sm" type="submit">Eliminar</button></form>
     </span>
   </div>
   {% else %}
@@ -32,7 +32,7 @@
   {% endfor %}
 </div>
 
-<form method="post" action="{{ url_for('admin.categoria_eliminar', tema_slug=tema.slug, categoria_slug=categoria.slug) }}" onsubmit="return confirm('¿Eliminar este módulo y todos sus tutoriales?')">
+<form method="post" action="{{ url_for('admin.categoria_eliminar', tema_slug=tema.slug, categoria_slug=categoria.slug) }}" data-confirmar="¿Eliminar este módulo y todos sus tutoriales?">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
   <button type="submit" class="btn btn--subtle btn--sm">Eliminar este módulo completo</button>
 </form>

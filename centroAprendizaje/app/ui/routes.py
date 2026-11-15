@@ -9,6 +9,7 @@ from app.extensions import db
 from app.models import Categoria, Consulta, EquivalenciaArticulo, Feedback, MensajeConsulta, Tema, Tutorial
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
 from app.models.feedback import CATEGORIAS_FEEDBACK
+from app.seguridad import limitar
 from app.services import buscador, estadisticas, notificaciones
 
 _PRIMERA_LETRA = re.compile(r"[A-ZÁÉÍÓÚÑ]", re.IGNORECASE)
@@ -228,11 +229,19 @@ def buscar_json(tema_slug):
     ])
 
 
+def _json_objeto():
+    """El cuerpo JSON como diccionario; cualquier otra cosa (texto, lista,
+    JSON roto) cuenta como vacío en vez de romper con un error 500."""
+    datos = request.get_json(silent=True)
+    return datos if isinstance(datos, dict) else {}
+
+
 @ui_bp.route("/temas/<tema_slug>/chatbot", methods=["POST"])
 @csrf.exempt
+@limitar("chatbot", 60, 60)
 def chatbot_responder(tema_slug):
     tema = _tema_o_404(tema_slug)
-    consulta = str((request.get_json(silent=True) or {}).get("mensaje", ""))[:300]
+    consulta = str(_json_objeto().get("mensaje") or "")[:300]
     charla = buscador.respuesta_de_charla(consulta)
     if charla:
         # "Hola", "gracias", "chau": no es una duda, no va a estadísticas.
@@ -329,11 +338,12 @@ def chatbot_sugerencias(tema_slug):
 
 @ui_bp.route("/temas/<tema_slug>/chatbot/feedback", methods=["POST"])
 @csrf.exempt
+@limitar("chatbot-feedback", 30, 600)
 def chatbot_feedback(tema_slug):
     # Un 👎 cuenta como pregunta sin respuesta útil, para que aparezca en
     # las estadísticas del admin junto a las que el chatbot no supo.
     tema = _tema_o_404(tema_slug)
-    datos = request.get_json(silent=True) or {}
+    datos = _json_objeto()
     pregunta = str(datos.get("pregunta", "")).strip()[:190]
     if datos.get("util") is False and pregunta:
         estadisticas.registrar("chatbot", tema=tema, consulta="👎 " + pregunta, hubo_resultado=False)
@@ -342,9 +352,10 @@ def chatbot_feedback(tema_slug):
 
 @ui_bp.route("/temas/<tema_slug>/feedback-tutorial", methods=["POST"])
 @csrf.exempt
+@limitar("feedback-tutorial", 30, 600)
 def feedback_tutorial(tema_slug):
     tema = _tema_o_404(tema_slug)
-    datos = request.get_json(silent=True) or {}
+    datos = _json_objeto()
     titulo = (datos.get("titulo") or "").strip()
     voto = datos.get("voto")
     if titulo and voto in ("si", "no"):
@@ -362,6 +373,7 @@ def _generar_token():
 
 
 @ui_bp.route("/temas/<tema_slug>/consultas/nueva", methods=["GET", "POST"])
+@limitar("consulta-nueva", 5, 600)
 def consulta_nueva(tema_slug):
     tema = _tema_o_404(tema_slug)
     contexto = request.args.get("contexto", "")
@@ -405,6 +417,7 @@ def consulta_ver(token):
 
 
 @ui_bp.route("/consultas/<token>/responder", methods=["POST"])
+@limitar("consulta-responder", 20, 600)
 def consulta_responder(token):
     consulta = Consulta.query.filter_by(token=token).first_or_404()
     mensaje = (request.form.get("mensaje") or "").strip()
@@ -442,8 +455,9 @@ def mis_consultas():
 
 @ui_bp.route("/mis-consultas.json", methods=["POST"])
 @csrf.exempt
+@limitar("mis-consultas", 60, 60)
 def mis_consultas_json():
-    tokens = (request.get_json(silent=True) or {}).get("tokens", [])
+    tokens = _json_objeto().get("tokens", [])
     if not isinstance(tokens, list) or not tokens:
         return jsonify([])
     tokens = [t for t in tokens if isinstance(t, str)][:100]  # tope defensivo
@@ -485,6 +499,7 @@ def _tutorial_desde_valor(tema, valor):
 
 
 @ui_bp.route("/temas/<tema_slug>/feedback", methods=["GET", "POST"])
+@limitar("feedback-nuevo", 10, 600)
 def feedback_nuevo(tema_slug):
     tema = _tema_o_404(tema_slug)
     if request.method == "POST":

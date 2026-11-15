@@ -15,6 +15,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app import create_app  # noqa: E402
+from app.seguridad import limitador  # noqa: E402
 from app.services.buscador import normalizar  # noqa: E402
 
 MH, EX, CO = "mihospital", "timbo-expedientes", "timbo-compras"
@@ -138,6 +139,7 @@ def main():
         nombres = {t.slug: t.nombre for t in Tema.query.all()}
     fallas = 0
     for tema, pregunta, esperado in PREGUNTAS:
+        limitador.reiniciar()  # son muchas preguntas seguidas: que no frene el límite anti-spam
         datos = cliente.post(f"/temas/{tema}/chatbot", json={"mensaje": pregunta}).get_json()
         titulo = _titulo(datos)
         if esperado and esperado.startswith("OTRO:"):

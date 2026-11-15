@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   (function () {
     var barra = document.getElementById('barra-filtro');
     var grid = document.getElementById('grid-categorias');

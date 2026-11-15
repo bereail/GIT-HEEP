@@ -33,6 +33,7 @@ from app.models import (
 )
 from app.models.consulta import ESTADOS_CONSULTA
 from app.models.feedback import CATEGORIAS_FEEDBACK
+from app.seguridad import ip_cliente, limitador
 from app.services import estadisticas, feedback_stats, notificaciones
 from app.services.textutil import lineas_a_lista, slugify
 
@@ -49,16 +50,25 @@ def login():
         return redirect(url_for("admin.dashboard"))
     error = None
     if request.method == "POST":
+        # Fuerza bruta: 5 intentos fallidos por IP cada 15 minutos.
+        clave = f"login-admin:{ip_cliente()}"
+        if limitador.bloqueado(clave, 5, 15 * 60):
+            error = "Demasiados intentos fallidos. Esperá 15 minutos y probá de nuevo."
+            return render_template("admin/login.html", error=error), 429
         if contrasena_correcta(request.form.get("contrasena", "")):
+            limitador.limpiar(clave)
+            session.clear()  # sesión nueva al entrar (evita fijación de sesión)
+            session.permanent = True
             session["admin_autenticado"] = True
             return redirect(url_for("admin.dashboard"))
+        limitador.registrar(clave, 15 * 60)
         error = "Contraseña incorrecta."
     return render_template("admin/login.html", error=error)
 
 
 @admin_bp.route("/logout", methods=["POST"])
 def logout():
-    session.pop("admin_autenticado", None)
+    session.clear()
     return redirect(url_for("admin.login"))
 
 
@@ -813,6 +823,24 @@ def paso_mover(tema_slug, paso_id, direccion):
 
 # ----------------------------------------------------------------- imágenes --
 
+# Primeros bytes de cada formato: la extensión sola no alcanza (un .png puede
+# ser en realidad un HTML o un script).
+_FIRMAS_IMAGEN = {
+    "jpg": (bytes.fromhex("ffd8ff"),),
+    "jpeg": (bytes.fromhex("ffd8ff"),),
+    "png": (bytes.fromhex("89504e470d0a1a0a"),),
+    "gif": (b"GIF87a", b"GIF89a"),
+}
+
+
+def _es_imagen_real(archivo, extension):
+    cabecera = archivo.stream.read(12)
+    archivo.stream.seek(0)
+    if extension == "webp":
+        return cabecera[:4] == b"RIFF" and cabecera[8:12] == b"WEBP"
+    return any(cabecera.startswith(f) for f in _FIRMAS_IMAGEN[extension])
+
+
 def _carpeta_imagenes(tema):
     carpeta = os.path.join(current_app.static_folder, "img", tema.slug)
     os.makedirs(carpeta, exist_ok=True)
@@ -831,7 +859,7 @@ def imagenes(tema_slug):
         else:
             nombre = secure_filename(archivo.filename)
             extension = nombre.rsplit(".", 1)[-1].lower() if "." in nombre else ""
-            if extension not in EXTENSIONES_PERMITIDAS:
+            if extension not in EXTENSIONES_PERMITIDAS or not _es_imagen_real(archivo, extension):
                 flash("Solo se permiten imágenes JPG, PNG, GIF o WEBP.", "error")
             else:
                 archivo.save(os.path.join(carpeta, nombre))

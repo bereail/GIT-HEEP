@@ -86,7 +86,7 @@ Preguntas de quiz — campo "Quiz":
 {% endblock %}
 
 {% block script_pagina %}
-<script>
+<script nonce="{{ csp_nonce }}">
   (function () {
     var bloques = document.getElementById('bloques');
     var preview = document.getElementById('vista-previa');

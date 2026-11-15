@@ -24,7 +24,7 @@
 <form method="get" class="card" style="margin-bottom:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
   <div>
     <label for="tema" style="font-size:12.5px;font-weight:600;display:block;margin-bottom:4px">Tema</label>
-    <select class="input" id="tema" name="tema" onchange="this.form.submit()">
+    <select class="input" id="tema" name="tema" data-autoenviar>
       <option value="">Todos</option>
       {% for t in temas %}
       <option value="{{ t.slug }}" {{ 'selected' if tema_actual and tema_actual.slug == t.slug }}>{{ t.nombre }}</option>
@@ -33,7 +33,7 @@
   </div>
   <div>
     <label for="categoria" style="font-size:12.5px;font-weight:600;display:block;margin-bottom:4px">Tipo</label>
-    <select class="input" id="categoria" name="categoria" onchange="this.form.submit()">
+    <select class="input" id="categoria" name="categoria" data-autoenviar>
       <option value="">Todos</option>
       {% for valor, etiqueta in categorias.items() %}
       <option value="{{ valor }}" {{ 'selected' if categoria_filtro == valor }}>{{ etiqueta }}</option>
@@ -42,7 +42,7 @@
   </div>
   <div>
     <label for="puntuacion" style="font-size:12.5px;font-weight:600;display:block;margin-bottom:4px">Puntuación</label>
-    <select class="input" id="puntuacion" name="puntuacion" onchange="this.form.submit()">
+    <select class="input" id="puntuacion" name="puntuacion" data-autoenviar>
       <option value="">Todas</option>
       {% for n in [5, 4, 3, 2, 1] %}
       <option value="{{ n }}" {{ 'selected' if puntuacion_filtro == n }}>{{ n }} ★</option>

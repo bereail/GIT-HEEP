@@ -160,7 +160,7 @@
 }
 </style>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 (function () {
   const DATOS = {{ datos | tojson }};
   const LIMITE = 30; // Pocas por vez: lo normal es buscar el artículo, no recorrer la lista.

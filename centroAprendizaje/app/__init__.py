@@ -18,13 +18,13 @@ def create_app(test_config=None):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["JSON_AS_ASCII"] = False
 
-    # SECRET_KEY firma la cookie de sesión del panel de administración.
-    # ADMIN_PASSWORD es la contraseña compartida para entrar al panel — en
-    # desarrollo usa un valor por defecto, pero en producción hay que
-    # definir las dos variables de entorno antes de exponer el sitio.
-    app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "clave-de-desarrollo-cambiar-en-produccion")
-    app.config["ADMIN_PASSWORD"] = os.environ.get("ADMIN_PASSWORD", "admin123")
     app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8 MB por archivo subido
+
+    # Secretos (SECRET_KEY, ADMIN_PASSWORD) desde variables de entorno, cookies
+    # seguras, encabezados HTTP y proxy. Nunca hay contraseña por defecto.
+    from app import seguridad
+
+    seguridad.aplicar(app)
 
     # Para tests: pisa config (p. ej. SQLALCHEMY_DATABASE_URI) ANTES de
     # inicializar las extensiones, para que no quede ligado a la base real.
@@ -63,5 +63,16 @@ def create_app(test_config=None):
     @app.errorhandler(404)
     def no_encontrado(_error):
         return render_template("404.html"), 404
+
+    @app.errorhandler(429)
+    def demasiados_pedidos(_error):
+        return render_template("error.html", titulo="Demasiados intentos",
+                               mensaje="Hiciste muchos pedidos seguidos. Esperá unos minutos y probá de nuevo."), 429
+
+    @app.errorhandler(500)
+    def error_interno(_error):
+        # Sin detalles técnicos: el detalle queda en el log del servidor.
+        return render_template("error.html", titulo="Algo salió mal",
+                               mensaje="Hubo un error al procesar el pedido. Probá de nuevo en un rato."), 500
 
     return app
