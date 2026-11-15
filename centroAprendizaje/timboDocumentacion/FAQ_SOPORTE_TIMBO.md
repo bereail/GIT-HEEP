@@ -94,7 +94,7 @@ que hacer del lado del usuario, solo esperar.
 | ¿Quién es nuestro Promotor de Innovación? | Listado oficial: santafe.gob.ar/ms/innovacion-publica/promotores-innovacion/ | ✅ |
 | ¿Dónde está el link para publicar en el portal? | Es el link de la gestión en TIMBÓ. Se publica por TIMBÓ, por correo y con carga en el SIN (Circular 04/2026) | ✅ |
 | ¿La vista al TCP la corre Compras o Mesa de Entradas? | Cualquiera de las dos, lo decide el hospital | ✅ |
-| El artículo no está en el nomenclador | Hay dos guías PDF ("Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes" y "Guía en cuatro pasos para solicitar artículos") | ✅ (las guías no están en el portal) |
+| El artículo no está en el nomenclador | Guía oficial en 4 pasos del Ministerio de Salud ("¿No encontrás un artículo en TIMBÓ?"), en el portal | ✅ |
 | ¿Pueden pasar los videos para no entrar a YouTube? | Lista de videos + bajarlos a la red | ✅ |
 | Que TIMBÓ Compras genere PDF y no HTML | Pedido a Sistemas | ❌ Sin respuesta |
 
@@ -109,8 +109,9 @@ que hacer del lado del usuario, solo esperar.
 3. **Documentos en HTML en vez de PDF.** Pedido abierto a Sistemas.
 4. **Servidor propio para los videos.** Propuesta sin respuesta de Formación
    Laboral.
-5. ~~**Guías de artículos (PDF).**~~ Resuelto: la guía de búsqueda en el
-   nomenclador SIPAF está en el portal (lección de alta de artículos).
+5. ~~**Guías de artículos (PDF).**~~ Resuelto: la guía oficial en 4 pasos
+   está en el portal (lección de alta de artículos y nomenclador). La guía
+   "Búsqueda Nomenclador SIPAF" se sacó el 15/11/2026: no es la oficial.
 6. ~~**Videos que no se pudieron procesar.**~~ Resuelto: ver 4.1 y 4.2.
 
 ---

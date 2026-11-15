@@ -399,8 +399,9 @@ Pendiente (ver también la sección 3 de FAQ_SOPORTE_TIMBO.md y el README):
 2. ~~Consultas abiertas en los chats~~ — pasó a "Pendientes (actualizado
    2026-11-13)", más arriba.
 3. ~~Conseguir y cargar las guías PDF de artículos o nomenclador SIPAF~~ —
-   hecho: `app/static/docs/timbo-compras/guia-busqueda-nomenclador-y-solicitud-sipaf.pdf`,
-   enlazada desde el nomenclador y la lección de alta de artículos.
+   hecho. Desde el 15/11/2026 se usa solo la guía oficial en 4 pasos
+   (`como-solicitar-alta-de-articulos.pdf`). La de "Búsqueda Nomenclador
+   SIPAF" se borró porque no es la oficial: no volver a cargarla.
 4. Pulido final de UI/UX — pasó a la lista de arriba.
 
 ## Equivalencia de artículos (cerrado 2026-11-13)

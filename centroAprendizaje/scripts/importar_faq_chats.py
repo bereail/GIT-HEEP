@@ -253,7 +253,7 @@ SITUACIONES_TIMBO_COMPRAS = [
             "se le piden a la Dirección Provincial de Farmacia (los crea en SUFYD); el resto, con el Documento Oficial "
             "\"Timbó Compras: Alta de bienes y servicios CAByS\" (Res. SCyGB 292/2026)."
         ),
-        "notas_adicionales": 'También existen las guías "Búsqueda Nomenclador SIPAF y Solicitud de Artículos Faltantes" y "Guía en cuatro pasos para solicitar artículos".',
+        "notas_adicionales": 'Guía oficial: "¿No encontrás un artículo en TIMBÓ? Resolvelo en 4 pasos" (Ministerio de Salud), en la lección "Pedir el alta de un artículo".',
         "categoria_libre": "Artículos y disponibilidad",
         "verificado": True,
         "tutorial": ("gestion-interna", "pedir-alta-articulo"),

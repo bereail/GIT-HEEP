@@ -2584,8 +2584,8 @@
             },
             {
               "type": "pdf",
-              "file": "guia-busqueda-nomenclador-y-solicitud-sipaf.pdf",
-              "title": "Búsqueda en el nomenclador y solicitud de artículos faltantes"
+              "file": "como-solicitar-alta-de-articulos.pdf",
+              "title": "¿No encontrás un artículo en TIMBÓ? Resolvelo en 4 pasos (guía oficial del Ministerio de Salud)"
             }
           ],
           "quiz": [
@@ -2670,12 +2670,7 @@
             {
               "type": "pdf",
               "file": "como-solicitar-alta-de-articulos.pdf",
-              "title": "Guía en 4 pasos para solicitar un artículo que no está en el Catálogo WEB"
-            },
-            {
-              "type": "pdf",
-              "file": "guia-busqueda-nomenclador-y-solicitud-sipaf.pdf",
-              "title": "Guía completa: búsqueda en el Nomenclador TIMBÓ y solicitud de artículos faltantes (paso a paso del formulario CAByS)"
+              "title": "¿No encontrás un artículo en TIMBÓ? Resolvelo en 4 pasos (guía oficial del Ministerio de Salud)"
             },
             {
               "type": "heading",
