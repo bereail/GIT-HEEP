@@ -77,6 +77,23 @@
   </div>
 </section>
 
+{# ---------------------------------------------------------- matriz #}
+<section class="rec-bloque">
+  <h2 class="section__title">{{ roles.matriz.titulo }}</h2>
+  <p class="text-muted" style="margin-top:0">{{ roles.matriz.bajada }}</p>
+  <div class="table-wrap">
+    <table class="data-table rec-tabla mat-tabla">
+      <thead><tr><th>Etapa</th>{% for c in roles.matriz.columnas %}<th>{{ c }}</th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for f in roles.matriz.filas %}
+        <tr><td><b>{{ f.etapa }}</b><br>{{ estado(f.estado) }}</td>{% for c in f.celdas %}<td>{{ c }}</td>{% endfor %}</tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {{ fuentes(['circ-ug-7-2026', 'dec-287-2026', 'circ-scygb-1-2026', 'res-me-73-2026']) }}
+</section>
+
 {# ---------------------------------------------------------- fichas #}
 {% set campos = [
   ('significa', 'Qué significa'), ('funciones', 'Funciones y operaciones'), ('modulos', 'Módulos y acceso'),

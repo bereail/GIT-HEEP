@@ -855,5 +855,125 @@
         "procedimiento": "B"
       }
     }
+  ],
+  "explicame": [
+    {
+      "q": "¿Qué es un pliego?",
+      "palabras": "pliego pbcp pbcg reglas",
+      "a": "Las reglas de juego de una compra. El general (Pliego Único) vale para todas; el particular (PBCP) es el de cada compra y en TIMBÓ Compras se arma con formularios.",
+      "fuentes": [
+        "dec-287-2026",
+        "circ-ug-7-2026"
+      ],
+      "nodo": "c-pliego"
+    },
+    {
+      "q": "¿Quién aprueba el pliego?",
+      "palabras": "aprueba pliego supervisor autoridad",
+      "a": "En TIMBÓ Compras, el Supervisor aprueba o rechaza los formularios (la comitente lo revisa). Después la autoridad competente, según el monto, firma el acto que aprueba el pliego y autoriza el llamado.",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "circ-scygb-1-2026"
+      ],
+      "nodo": "c-aprobacion"
+    },
+    {
+      "q": "¿Dónde se reciben las ofertas?",
+      "palabras": "ofertas reciben donde presentan",
+      "a": "En TIMBÓ Compras, hasta la fecha y hora de apertura. Solo valen las que quedan en \"Oferta presentada\". En la etapa múltiple, por ahora, en sobres de papel.",
+      "fuentes": [
+        "circ-ug-7-2026",
+        "circ-ug-8-2026"
+      ],
+      "nodo": "c-ofertas"
+    },
+    {
+      "q": "¿Qué diferencia hay entre preadjudicar y adjudicar?",
+      "palabras": "preadjudicar adjudicar diferencia",
+      "a": "Preadjudicar es recomendar: lo hacen los evaluadores en TIMBÓ Compras y se puede impugnar. Adjudicar es decidir: un acto de la autoridad en el expediente.",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "nodo": "c-preadjudicacion"
+    },
+    {
+      "q": "¿Qué es una subsanación?",
+      "palabras": "subsanacion subsanar falta documento",
+      "a": "Un pedido al proveedor para que complete algo que faltó en su oferta, con plazo. Lo genera el Evaluador en TIMBÓ Compras; si vence, pasa a \"descartado\".",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "nodo": "c-evaluacion"
+    },
+    {
+      "q": "¿Cuándo interviene la Unidad Rectora Central?",
+      "palabras": "urc unidad rectora interviene control",
+      "a": "En licitaciones y concursos públicos de la Administración Pública Central: controla el pliego (en \"Aprobar contratación\") y la preadjudicación (antes del \"Cronograma de impugnación\"). Si alcanza al hospital está pendiente de confirmar. También aprueba las altas del catálogo.",
+      "fuentes": [
+        "res-me-73-2026",
+        "circ-scygb-3-2026",
+        "res-scygb-292-2026"
+      ],
+      "nodo": "d-urc-pliego"
+    },
+    {
+      "q": "¿Qué sucede después de la apertura?",
+      "palabras": "despues apertura que pasa",
+      "a": "TIMBÓ genera el acta y el cuadro comparativo, y los evaluadores analizan cada oferta (pueden pedir subsanar, aclarar o mejorar precio) hasta el informe de preadjudicación.",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ],
+      "nodo": "c-apertura"
+    },
+    {
+      "q": "¿Qué diferencia hay entre una gestión directa y una contratación directa por excepción?",
+      "palabras": "gestion directa excepcion diferencia cd-01",
+      "a": "La gestión directa por monto es la causal del ap. 1 (hasta $5.850.000 en 2026) y va por expediente con el CD-01. La directa por excepción usa otras causales (urgencia, desierto, exclusividad…) que hay que justificar; urgencia y desierto van por TIMBÓ Compras.",
+      "fuentes": [
+        "ley-12510",
+        "circ-scygb-1-2026",
+        "circ-ug-8-2026"
+      ],
+      "nodo": "d-excepcion"
+    },
+    {
+      "q": "¿Qué procedimiento corresponde según el monto?",
+      "palabras": "monto procedimiento tope 2026",
+      "a": "Montos 2026: directa hasta $5.850.000; licitación o concurso privado hasta $58.500.000; público, más. Antes se revisa si hay una causal de excepción o una modalidad especial.",
+      "fuentes": [
+        "circ-scygb-1-2026",
+        "ley-12510"
+      ],
+      "nodo": "d-monto"
+    },
+    {
+      "q": "¿Qué hago si un artículo no está en el catálogo?",
+      "palabras": "articulo catalogo cabys farmacia alta",
+      "a": "Buscarlo primero en el Catálogo WEB. Si no está: medicamentos y descartables, por el Servicio de Farmacia; otros bienes, con el formulario CAByS, que aprueba la URC.",
+      "fuentes": [
+        "res-scygb-292-2026",
+        "infografia-articulos"
+      ],
+      "nodo": "necesidad"
+    },
+    {
+      "q": "¿Qué necesita un proveedor para ofertar?",
+      "palabras": "proveedor ofertar rupc requisitos",
+      "a": "Estar inscripto en el RUPC (www.santafe.gov.ar/proveedores) y tener ID Ciudadana nivel 3 con domicilio digital.",
+      "fuentes": [
+        "res-scygb-110-2026",
+        "circ-ug-2-2026"
+      ],
+      "nodo": "c-ofertas"
+    },
+    {
+      "q": "¿Cuánto tiempo hay para impugnar la preadjudicación?",
+      "palabras": "plazo impugnar impugnacion dias",
+      "a": "2 días, con la garantía correspondiente (Pliego Único).",
+      "fuentes": [
+        "pliego-unico-2026"
+      ],
+      "nodo": "c-impugnaciones"
+    }
   ]
 }

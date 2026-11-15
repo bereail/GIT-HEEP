@@ -1727,3 +1727,22 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 }
 .dic-coincide { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft-border); }
 .her-proc { padding-right: 40px; }
+
+/* ------------------------------------- Sistemas, matriz y explicame -- */
+.sis-columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+.sis-col { padding: 16px; border-top: 4px solid var(--sis); }
+.sis-col h2 { margin: 0 0 8px; font-size: 16px; color: var(--sis); }
+.sis-col ul { margin: 0; padding-left: 18px; font-size: 14px; display: grid; gap: 4px; }
+.sis-ejemplo { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; counter-reset: paso; }
+.sis-paso { counter-increment: paso; background: var(--surface); border: 1px solid var(--border); border-left: 5px solid var(--sis); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px; }
+.sis-paso::before { content: counter(paso) ". "; font-weight: 700; }
+.mat-tabla td { min-width: 150px; font-size: 13px; }
+.exp-buscador, .exp-etapa { padding: 18px; margin-bottom: 14px; }
+.exp-preguntas { display: grid; gap: 6px; margin-top: 12px; }
+.exp-pregunta { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; background: var(--surface); }
+.exp-pregunta summary { cursor: pointer; font-weight: 650; font-size: 14.5px; }
+.exp-pregunta p { margin: 8px 0; font-size: 14px; }
+.exp-selector { display: grid; gap: 6px; max-width: 520px; margin-bottom: 12px; }
+.exp-etapa__titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 19px; margin: 6px 0 10px; }
+.exp-etapa h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); margin: 14px 0 6px; }
+@media (max-width: 760px) { .sis-columnas { grid-template-columns: 1fr; } }

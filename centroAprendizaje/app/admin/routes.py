@@ -943,6 +943,20 @@ def recursos_algoritmo():
     )
 
 
+@admin_bp.route("/recursos/explicame")
+@requiere_admin
+def recursos_explicame():
+    alg = recursos.algoritmo()
+    nodo_id = request.args.get("etapa")
+    if nodo_id not in alg["nodos"]:
+        nodo_id = "c-pliego"
+    nodos = [(i, n) for i, n in alg["nodos"].items() if n["tipo"] != "decision" or i == nodo_id]
+    return render_template(
+        "recursos/explicame.html", algoritmo=alg, nodos=nodos, nodo_id=nodo_id,
+        preguntas=recursos.capacitacion()["explicame"], ejemplo=alg["ejemplos"]["insumos"]["texto"], **_contexto_recursos(),
+    )
+
+
 @admin_bp.route("/recursos/<clave>")
 @requiere_admin
 def recursos_herramienta(clave):

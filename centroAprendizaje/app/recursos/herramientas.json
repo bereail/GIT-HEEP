@@ -937,5 +937,98 @@
         ]
       }
     ]
+  },
+  "sistemas": {
+    "titulo": "¿Qué se hace en cada sistema?",
+    "bajada": "TIMBÓ Compras y el expediente electrónico no duplican tareas: se reparten las etapas y lo que genera TIMBÓ Compras se incorpora solo al expediente.",
+    "columnas": [
+      {
+        "sistema": "expediente",
+        "titulo": "📁 Expediente electrónico",
+        "items": [
+          "Etapa preparatoria: pedido, justificación y autorización para iniciar",
+          "Actos administrativos (aprobación del pliego, adjudicación)",
+          "Adjudicación",
+          "Etapa contractual: orden de compra, recepción y pago",
+          "Documentación que TIMBÓ Compras no genera (por ejemplo, constancias de publicidad)"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026"
+        ]
+      },
+      {
+        "sistema": "compras",
+        "titulo": "🛒 TIMBÓ Compras",
+        "items": [
+          "Pliego de bases y condiciones particulares",
+          "Consultas y circulares",
+          "Ofertas",
+          "Acta de apertura y cuadro comparativo",
+          "Evaluación",
+          "Subsanaciones, mejoras de precios y aclaraciones",
+          "Impugnaciones",
+          "Informe de preadjudicación"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026"
+        ]
+      },
+      {
+        "sistema": "externo",
+        "titulo": "↗ Fuera de los dos",
+        "items": [
+          "Publicación en el Portal de Compras y aviso oficial",
+          "Carga en el SIN (Tribunal de Cuentas)",
+          "Inscripción de proveedores en el RUPC",
+          "Alta de artículos en el catálogo (formulario CAByS o Farmacia)"
+        ],
+        "fuentes": [
+          "circ-scygb-4-2026",
+          "circ-ug-11-2026",
+          "res-scygb-110-2026",
+          "res-scygb-292-2026"
+        ]
+      }
+    ],
+    "puente": {
+      "texto": "Toda la documentación oficial que genera TIMBÓ Compras en cada etapa se incorpora automáticamente al expediente electrónico relacionado. Los anexos se ven como documentos embebidos en PDF.",
+      "fuentes": [
+        "circ-ug-7-2026"
+      ]
+    },
+    "ejemplo": {
+      "titulo": "Ejemplo: guantes para el hospital (licitación privada)",
+      "pasos": [
+        {
+          "sistema": "expediente",
+          "t": "Enfermería pide los guantes: se abre el expediente y se justifica la necesidad."
+        },
+        {
+          "sistema": "compras",
+          "t": "El Gestor crea el proceso con el número de expediente y arma el pliego."
+        },
+        {
+          "sistema": "compras",
+          "t": "El Supervisor aprueba el pliego; TIMBÓ asigna el número de proceso."
+        },
+        {
+          "sistema": "expediente",
+          "t": "La autoridad firma el acto que aprueba el pliego; el Supervisor lo vincula en TIMBÓ Compras."
+        },
+        {
+          "sistema": "externo",
+          "t": "Vista al Tribunal de Cuentas y carga en el SIN; invitación y publicación."
+        },
+        {
+          "sistema": "compras",
+          "t": "Consultas, ofertas, apertura automática, evaluación y preadjudicación. Cada documento pasa solo al expediente."
+        },
+        {
+          "sistema": "expediente",
+          "t": "La autoridad adjudica; se notifica la orden de compra, se recibe y se paga."
+        }
+      ],
+      "nota": "Ejemplo didáctico."
+    }
   }
 }

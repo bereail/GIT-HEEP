@@ -1,0 +1,56 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, estado, fuentes with context %}
+{% block titulo %}Explicame este paso — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('explicame') }}
+<h1 style="margin:8px 0 4px">💡 Explicame este paso</h1>
+<p class="text-muted" style="margin:0 0 14px">Escribí tu pregunta o elegí una etapa del circuito. Las respuestas salen del material verificado del centro.</p>
+
+<section class="card exp-buscador">
+  <label class="ask-box__label" for="rec-filtro">¿Qué querés saber?</label>
+  <div class="input-wrap"><span class="input-wrap__icon">🔎</span><input class="input" id="rec-filtro" type="search" placeholder="Ej.: ¿quién aprueba el pliego?, subsanación, URC, después de la apertura..." /></div>
+  <div id="rec-terminos" class="exp-preguntas">
+    {% for p in preguntas %}
+    <details class="exp-pregunta" data-filtro="{{ (p.q ~ ' ' ~ p.palabras ~ ' ' ~ p.a) | lower }}">
+      <summary>{{ p.q }}</summary>
+      <p>{{ p.a }}</p>
+      {{ fuentes(p.fuentes) }}
+      <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_explicame', etapa=p.nodo) }}#etapa">Ver la etapa en detalle →</a>
+    </details>
+    {% endfor %}
+  </div>
+  <div class="empty-state" id="rec-vacio" hidden>No encontramos esa pregunta. Probá con otras palabras, buscala en el <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}">diccionario</a> o consultá a la mesa de ayuda de TIMBÓ Compras.</div>
+</section>
+
+<section class="card exp-etapa" id="etapa">
+  <form method="get" class="exp-selector">
+    <label for="exp-etapa"><b>Elegí una etapa del circuito</b></label>
+    <select class="input" id="exp-etapa" name="etapa" data-autoenviar>
+      {% for id, n in nodos %}<option value="{{ id }}" {{ 'selected' if id == nodo_id }}>{{ n.titulo }}</option>{% endfor %}
+    </select>
+    <noscript><button class="btn btn--primary btn--sm">Ver</button></noscript>
+  </form>
+  {% set n = algoritmo.nodos[nodo_id] %}{% set f = n.ficha %}
+  <h2 class="exp-etapa__titulo alg-sis--{{ n.sistema }}"><span class="alg-chip">{{ {'expediente': '📁 Expediente electrónico', 'compras': '🛒 TIMBÓ Compras', 'decision': '◆ Decisión o control', 'externo': '↗ Externo', 'organismo': '🏛️ Otro organismo'}[n.sistema] }}</span> {{ n.titulo }} {% if n.estado == 'pendiente' %}{{ estado('pendiente') }}{% endif %}</h2>
+  <div class="cap-ficha__grid">
+    <div><h3>En simple</h3><p class="cap-palabras">💬 {{ f.que }} {{ f.para }}</p></div>
+    <div><h3>Técnicamente</h3><p>{{ f.sistema }} {{ f.verificar }}</p></div>
+  </div>
+  <dl class="alg-ficha__campos">
+    <dt>Responsable</dt><dd>{{ f.quien }}</dd>
+    <dt>Documentación</dt><dd>{{ f.docs }}</dd>
+    <dt>Etapa siguiente</dt><dd>{{ f.despues }}</dd>
+  </dl>
+  {% if ejemplo %}<p class="cap-ejemplo">🏥 <b>Ejemplo del hospital:</b> {{ ejemplo }} <span class="alg-tipo alg-tipo--ejemplo">EJEMPLO DIDÁCTICO</span></p>{% endif %}
+  <h3>¿De dónde surge?</h3>
+  <ul class="alg-ficha__fuentes">
+    {% for r in f.fuentes %}{% set d = docs.get(r.id) %}<li><span class="alg-tipo alg-tipo--{{ r.tipo or 'norma' }}">{{ {'norma': 'NORMA', 'procedimiento': 'PROCEDIMIENTO OPERATIVO', 'ejemplo': 'EJEMPLO DIDÁCTICO'}[r.tipo or 'norma'] }}</span> {% if d %}<a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.titulo }}</a>{% else %}{{ r.id }}{% endif %}{% if r.punto %} <span class="text-muted">— {{ r.punto }}</span>{% endif %}</li>{% endfor %}
+  </ul>
+  <div class="alg-conexiones" style="margin-top:12px">
+    <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}">🧭 Verla en el recorrido completo</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_simulador') }}">🎯 Practicar</a>
+  </div>
+</section>
+{% endblock %}
+{% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script><script src="{{ url_for('static', filename='js/admin.js') }}"></script>{% endif %}{% endblock %}

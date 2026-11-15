@@ -197,9 +197,11 @@ levantarla solo cuando haga falta.
 - **Faltan:**
   - el inventario exhaustivo de documentos y videos;
   - la matriz de trazabilidad de todo el contenido;
-  - en capacitación: la sección "qué se hace en cada sistema", la matriz
-    de responsabilidades, "explicame este paso" con buscador de preguntas y
-    el examen final;
+  - capacitación: "qué se hace en cada sistema" (`/recursos/sistemas`), la
+    matriz de responsabilidades (en Roles), "explicame este paso"
+    (`/recursos/explicame`) y la evaluación final (simulador, 12 preguntas)
+    quedaron hechos el 15/11. Falta revisarlos en un navegador: no se
+    levantó el servidor por falta de memoria en la PC;
   - las fichas FP y el examen profesional.
   - Para las causales de contratación directa hay que leer el art. 116 de
     la Ley 12.510 (todavía no se leyó completa).

@@ -20,6 +20,8 @@
   <a href="{{ url_for(prefijo ~ 'recursos_roles') }}" class="{{ 'is-active' if activo == 'roles' }}">🔐 Roles y circuito</a>
   <a href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}" class="{{ 'is-active' if activo == 'algoritmo' }}">🧭 ¿Qué camino sigue?</a>
   <a href="{{ url_for(prefijo ~ 'recursos_simulador') }}" class="{{ 'is-active' if activo == 'simulador' }}">🎯 Simulador</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_explicame') }}" class="{{ 'is-active' if activo == 'explicame' }}">💡 Explicame</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='sistemas') }}" class="{{ 'is-active' if activo == 'sistemas' }}">🔀 Cada sistema</a>
   <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}" class="{{ 'is-active' if activo == 'glosario' }}">📖 Diccionario</a>
   <a href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}" class="{{ 'is-active' if activo == 'biblioteca' }}">🗂️ Biblioteca</a>
   <a href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}">🔄 Nomenclador de artículos</a>

@@ -794,5 +794,140 @@
     "Si la designación de los evaluadores necesita un acto administrativo además del formulario \"Evaluadores\".",
     "Si los controles de la URC alcanzan al hospital (encuadre institucional).",
     "Requisitos formales para ser administrador local (lo que hay sale de soporte, no de una norma)."
-  ]
+  ],
+  "matriz": {
+    "titulo": "Quién prepara, quién revisa, quién evalúa y quién decide",
+    "bajada": "Los roles de TIMBÓ Compras (Circ. UG 7/2026) no son cargos del organismo: la autoridad competente y el área requirente intervienen fuera del sistema.",
+    "columnas": [
+      "Prepara",
+      "Revisa o controla",
+      "Evalúa",
+      "Decide"
+    ],
+    "filas": [
+      {
+        "etapa": "Pedido y justificación",
+        "celdas": [
+          "Área requirente",
+          "Compras (Unidad Operativa)",
+          "—",
+          "Autoridad que autoriza iniciar"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026"
+        ],
+        "estado": "didactico"
+      },
+      {
+        "etapa": "Pliego particular",
+        "celdas": [
+          "Gestor",
+          "Jurisdicción comitente · Supervisor · URC si corresponde",
+          "—",
+          "Autoridad competente (acto que aprueba el pliego)"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026",
+          "res-me-73-2026",
+          "circ-scygb-1-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Cronograma y nómina",
+        "celdas": [
+          "Supervisor",
+          "—",
+          "—",
+          "Supervisor"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Consultas y circulares",
+        "celdas": [
+          "Gestor (circulares)",
+          "—",
+          "—",
+          "—"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Ofertas",
+        "celdas": [
+          "Oferentes",
+          "—",
+          "—",
+          "—"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Evaluación y preadjudicación",
+        "celdas": [
+          "Evaluadores",
+          "URC si corresponde",
+          "Evaluadores (mínimo 3, opinión no vinculante)",
+          "—"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026",
+          "dec-287-2026",
+          "res-me-73-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Impugnaciones",
+        "celdas": [
+          "Oferentes",
+          "Evaluadores (las reciben)",
+          "—",
+          "Autoridad competente (junto con la adjudicación)"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026",
+          "dec-287-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Adjudicación",
+        "celdas": [
+          "Compras (proyecto del acto)",
+          "—",
+          "—",
+          "Autoridad competente; el Supervisor carga el acto"
+        ],
+        "fuentes": [
+          "circ-ug-7-2026",
+          "circ-scygb-1-2026"
+        ],
+        "estado": "confirmado"
+      },
+      {
+        "etapa": "Recepción y pago",
+        "celdas": [
+          "Área receptora",
+          "Compras",
+          "—",
+          "Administración"
+        ],
+        "fuentes": [
+          "disp-226-2016"
+        ],
+        "estado": "didactico"
+      }
+    ]
+  }
 }

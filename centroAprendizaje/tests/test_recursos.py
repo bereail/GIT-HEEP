@@ -60,7 +60,8 @@ def test_paginas_de_recursos_y_algoritmo(app):
     anonimo = app.test_client()
     herramientas = tuple(f"/recursos/{c}" for c in recursos.HERRAMIENTAS)
     for url in ("/recursos", "/recursos/roles", "/recursos/glosario", "/recursos/biblioteca", "/recursos/algoritmo",
-                "/recursos/simulador", "/recursos/aprender") + herramientas:
+                "/recursos/simulador", "/recursos/aprender", "/recursos/explicame", "/recursos/explicame?etapa=d-monto",
+                "/recursos/explicame?etapa=no-existe") + herramientas:
         assert anonimo.get(url).status_code == 200, url
     assert anonimo.get("/recursos/no-existe").status_code == 404
     assert anonimo.get("/admin/capacitacion/algoritmo").status_code == 302
@@ -93,3 +94,17 @@ def test_diccionario_relacionados_y_modo_capacitadora():
     for tema in recursos.capacitacion()["temas_capacitadora"]:
         assert all(n in nodos for n in tema["diagrama"]), tema["slug"]
         assert tema["fuentes"] and tema["ejercicio"]["respuesta"], tema["slug"]
+
+
+def test_explicame_apunta_a_etapas_que_existen():
+    nodos = recursos.algoritmo()["nodos"]
+    for p in recursos.capacitacion()["explicame"]:
+        assert p["nodo"] in nodos, p["q"]
+        assert p["fuentes"], p["q"]
+
+
+def test_matriz_y_sistemas_completos():
+    m = recursos.roles()["matriz"]
+    assert all(len(f["celdas"]) == len(m["columnas"]) for f in m["filas"])
+    assert {c["sistema"] for c in recursos.herramientas()["sistemas"]["columnas"]} == {"expediente", "compras", "externo"}
+    assert any(e["slug"] == "evaluacion-final" and len(e["preguntas"]) >= 12 for e in recursos.simulador()["escenarios"])

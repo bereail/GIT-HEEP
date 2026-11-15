@@ -107,6 +107,7 @@ HERRAMIENTAS = {
     "modelos": ("modelos", "✉️", "Modelos de mensajes"),
     "checklists": ("checklists", "✅", "Checklists"),
     "estados": ("estados", "🚦", "Estados del proceso"),
+    "sistemas": ("sistemas", "🔀", "¿Qué se hace en cada sistema?"),
 }
 
 

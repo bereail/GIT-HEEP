@@ -849,6 +849,303 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "evaluacion-final",
+      "icono": "🏁",
+      "titulo": "Evaluación final (intermedia y avanzada)",
+      "caso": "Doce preguntas sobre todo el circuito. Al final ves tu puntaje y qué repasar.",
+      "preguntas": [
+        {
+          "id": "f1",
+          "pregunta": "¿Cuál es la regla general para comprar según la Ley 12.510?",
+          "opciones": [
+            {
+              "texto": "Licitación o concurso público",
+              "correcta": true,
+              "explicacion": "Art. 116: por regla general, previa licitación o concurso público.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Compra directa",
+              "correcta": false,
+              "explicacion": "Es una excepción."
+            },
+            {
+              "texto": "Licitación privada",
+              "correcta": false,
+              "explicacion": "Depende del monto que fija la Ley de Presupuesto."
+            }
+          ]
+        },
+        {
+          "id": "f2",
+          "pregunta": "¿Qué etapa NO se hace en TIMBÓ Compras?",
+          "opciones": [
+            {
+              "texto": "La adjudicación",
+              "correcta": true,
+              "explicacion": "La adjudicación y la etapa contractual van por expediente electrónico.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "La evaluación de ofertas",
+              "correcta": false,
+              "explicacion": "Se hace en TIMBÓ Compras."
+            },
+            {
+              "texto": "Las circulares",
+              "correcta": false,
+              "explicacion": "Se hacen en TIMBÓ Compras."
+            }
+          ]
+        },
+        {
+          "id": "f3",
+          "pregunta": "¿Quién carga en TIMBÓ Compras el acto de adjudicación?",
+          "opciones": [
+            {
+              "texto": "El Supervisor",
+              "correcta": true,
+              "explicacion": "Es una función del Supervisor; el acto lo firma la autoridad.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "El Evaluador",
+              "correcta": false,
+              "explicacion": "El Evaluador preadjudica."
+            },
+            {
+              "texto": "El Gestor",
+              "correcta": false,
+              "explicacion": "El Gestor arma el pliego y genera circulares."
+            }
+          ]
+        },
+        {
+          "id": "f4",
+          "pregunta": "¿Cuántos evaluadores hay que designar como mínimo?",
+          "opciones": [
+            {
+              "texto": "Tres",
+              "correcta": true,
+              "explicacion": "Punto 13 de la Circ. UG 7/2026.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Uno",
+              "correcta": false,
+              "explicacion": "Son al menos tres."
+            },
+            {
+              "texto": "Cinco",
+              "correcta": false,
+              "explicacion": "El mínimo es tres."
+            }
+          ]
+        },
+        {
+          "id": "f5",
+          "pregunta": "Una directa por urgencia, ¿a cuántos proveedores invita como mínimo?",
+          "opciones": [
+            {
+              "texto": "Tres, cargados en TIMBÓ Compras",
+              "correcta": true,
+              "explicacion": "Circ. UG 8/2026, art. 4.d.",
+              "fuentes": [
+                "circ-ug-8-2026"
+              ]
+            },
+            {
+              "texto": "Uno",
+              "correcta": false,
+              "explicacion": "El mínimo es tres."
+            },
+            {
+              "texto": "Ninguno: se adjudica directo",
+              "correcta": false,
+              "explicacion": "Se invita a un mínimo de tres."
+            }
+          ]
+        },
+        {
+          "id": "f6",
+          "pregunta": "Un proceso desierto se contrata directo. ¿Qué condiciones rigen?",
+          "opciones": [
+            {
+              "texto": "Exactamente las del llamado original",
+              "correcta": true,
+              "explicacion": "Art. 116 inc. c ap. 3.",
+              "fuentes": [
+                "ley-12510",
+                "circ-ug-8-2026"
+              ]
+            },
+            {
+              "texto": "Las que se acuerden con el proveedor",
+              "correcta": false,
+              "explicacion": "No se pueden cambiar."
+            },
+            {
+              "texto": "Las del pliego modelo",
+              "correcta": false,
+              "explicacion": "Rigen las del llamado original."
+            }
+          ]
+        },
+        {
+          "id": "f7",
+          "pregunta": "¿Qué es un correo de cortesía en TIMBÓ Compras?",
+          "opciones": [
+            {
+              "texto": "Un aviso que no es notificación válida",
+              "correcta": true,
+              "explicacion": "La notificación válida para el personal es el evento del sistema.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Una notificación fehaciente",
+              "correcta": false,
+              "explicacion": "No lo es: la fehaciente es el domicilio digital para los oferentes."
+            },
+            {
+              "texto": "Una circular",
+              "correcta": false,
+              "explicacion": "No."
+            }
+          ]
+        },
+        {
+          "id": "f8",
+          "pregunta": "En la licitación privada, ¿qué pasa con las ofertas de proveedores no invitados?",
+          "opciones": [
+            {
+              "texto": "Se consideran y evalúan",
+              "correcta": true,
+              "explicacion": "Art. 121 de la Ley 12.510.",
+              "fuentes": [
+                "ley-12510"
+              ]
+            },
+            {
+              "texto": "Se rechazan",
+              "correcta": false,
+              "explicacion": "La ley pide considerarlas."
+            },
+            {
+              "texto": "Solo si el Supervisor lo autoriza",
+              "correcta": false,
+              "explicacion": "La ley pide considerarlas siempre."
+            }
+          ]
+        },
+        {
+          "id": "f9",
+          "pregunta": "¿Hasta cuándo se cuentan los plazos en TIMBÓ Compras?",
+          "opciones": [
+            {
+              "texto": "Con la fecha y hora del servidor de TIMBÓ Compras",
+              "correcta": true,
+              "explicacion": "Circ. UG 7/2026, punto 4.",
+              "fuentes": [
+                "circ-ug-7-2026"
+              ]
+            },
+            {
+              "texto": "Con la hora de la computadora del usuario",
+              "correcta": false,
+              "explicacion": "Manda el servidor."
+            },
+            {
+              "texto": "Con la hora del mail",
+              "correcta": false,
+              "explicacion": "Manda el servidor."
+            }
+          ]
+        },
+        {
+          "id": "f10",
+          "pregunta": "¿Qué pasa si no se pasa la gestión a \"Concluida\" en el portal?",
+          "opciones": [
+            {
+              "texto": "No se pueden publicar gestiones nuevas",
+              "correcta": true,
+              "explicacion": "Circ. SCyGB 04/2025: hay 2 días hábiles.",
+              "fuentes": [
+                "circ-scygb-4-2025"
+              ]
+            },
+            {
+              "texto": "Nada",
+              "correcta": false,
+              "explicacion": "Se bloquean publicaciones nuevas."
+            },
+            {
+              "texto": "Se anula la compra",
+              "correcta": false,
+              "explicacion": "No se anula; se bloquean publicaciones."
+            }
+          ]
+        },
+        {
+          "id": "f11",
+          "pregunta": "Un hospital necesita monitores por $70.000.000 (2026). ¿Quién aprueba?",
+          "opciones": [
+            {
+              "texto": "Decreto",
+              "correcta": true,
+              "explicacion": "Más de $58.500.000 se aprueba por decreto.",
+              "fuentes": [
+                "circ-scygb-1-2026"
+              ]
+            },
+            {
+              "texto": "Resolución del Subsecretario",
+              "correcta": false,
+              "explicacion": "Eso es hasta $5.850.000."
+            },
+            {
+              "texto": "Resolución conjunta",
+              "correcta": false,
+              "explicacion": "Eso es entre $29.250.000 y $58.500.000."
+            }
+          ]
+        },
+        {
+          "id": "f12",
+          "pregunta": "La licitación de etapa múltiple, hoy, ¿por dónde se tramita?",
+          "opciones": [
+            {
+              "texto": "Por expediente y Documentos Oficiales, con sobres en papel",
+              "correcta": true,
+              "explicacion": "Régimen transitorio de la Circ. UG 8/2026 hasta que TIMBÓ Compras lo permita.",
+              "fuentes": [
+                "circ-ug-8-2026"
+              ]
+            },
+            {
+              "texto": "Por TIMBÓ Compras",
+              "correcta": false,
+              "explicacion": "Todavía no está disponible para etapa múltiple."
+            },
+            {
+              "texto": "Por mail",
+              "correcta": false,
+              "explicacion": "No."
+            }
+          ]
+        }
+      ]
     }
   ]
 }
