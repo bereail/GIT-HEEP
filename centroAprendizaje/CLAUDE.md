@@ -159,6 +159,43 @@ con un `.bat`.
 La vista previa local se cierra sola si a la PC le falta memoria (7,7 GB):
 levantarla solo cuando haga falta.
 
+## Segunda etapa (15/11/2026) — todo en local, nada deployado
+
+- **Seguridad** (`timboDocumentacion/AUDITORIA_SEGURIDAD.md`, `app/seguridad.py`,
+  `tests/test_seguridad.py`): límites de intentos, sin contraseña por
+  defecto, cookies seguras, CSP con nonce (no usar JS en línea: los
+  `onsubmit`/`onclick` van en `admin.js` con `data-*`), Flask 3.1.3. Al
+  deployar: `pip install -r requirements.txt`. Pendientes en el servidor
+  (con autorización): `chmod 600` a la base y las copias, `server_tokens
+  off` y `limit_req` en nginx.
+- **Investigación** (`timboDocumentacion/INVESTIGACION_SEGUNDA_ETAPA.md`):
+  fuentes, confirmado y pendiente.
+  - Hay **dos "Circulares 03/2026"**: la UG TIMBÓ (obligatoriedad) y la
+    SCyGB (URC y mesa de ayuda).
+  - Hay una discrepancia sobre la vigencia del RUPC.
+  - El control de la URC en el hospital queda pendiente.
+- **Recursos** (`/recursos` en el sitio y `/admin/recursos`): roles y
+  alcances, circuito, glosario de todos los temas, biblioteca y
+  nomenclador. Datos en `app/recursos/*.json`, con estado (confirmado,
+  didáctico, práctica, pendiente o discrepancia) y fuentes por id de la
+  biblioteca. Plantillas en `templates/recursos/`, compartidas entre el
+  sitio y el panel.
+- **Capacitación** (privado, `/admin/capacitacion`): guía de la primera
+  clase, material para participantes y presentación de 20 diapositivas
+  (`app/recursos/archivos/`, se descarga solo con sesión). Para
+  regenerarla: `timboDocumentacion/capacitacion/generar_presentacion.js`
+  (pptxgenjs). El PDF se exporta con PowerPoint.
+- **Faltan:**
+  - el inventario exhaustivo de documentos y videos;
+  - la matriz de trazabilidad de todo el contenido;
+  - en capacitación: el algoritmo interactivo de procedimientos, la
+    sección "qué se hace en cada sistema", el pliego desde cero, la matriz
+    de responsabilidades, "explicame este paso", los ejercicios y la
+    evaluación final;
+  - las fichas FP y el examen profesional.
+  - Para las causales de contratación directa hay que leer el art. 116 de
+    la Ley 12.510 (todavía no se leyó completa).
+
 ## Pendientes (actualizado 2026-11-14)
 
 Contenido:
