@@ -265,3 +265,59 @@ Otros datos confirmados del proceso (Circ. UG 7/2026):
   - un proveedor que no está en el RUPC;
   - una oferta que quedó en borrador;
   - un pliego sin informe de la URC.
+
+---
+
+## 6. Revisión complementaria (15/11/2026)
+
+**Dos "Circulares 03/2026" distintas.** No hay que confundirlas:
+
+| Circular | Emisor | Fecha | Qué dice | Respalda |
+|---|---|---|---|---|
+| [Circular UG TIMBÓ 3/2026](https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-03-26.pdf) | Unidad de Gestión TIMBÓ | 2026 (marzo) | TIMBÓ Compras obligatorio en los ministerios restantes, incluido Salud, desde el 1/4/2026. Roles ante el administrador local | Obligatoriedad · roles |
+| [Circular SCyGB 03/2026](https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf) | Subsecretaría de Contrataciones y Gestión de Bienes | 15/4/2026 | Controles de la URC en "Aprobar contratación" y "Cronograma de impugnación". **Datos de la mesa de ayuda de TIMBÓ Compras** | Controles URC · **mesa de ayuda** |
+
+El contenido del centro ya cita cada una con su emisor (se revisaron todas
+las menciones).
+
+**Decreto 287/2026** (23/2/2026). Aprueba el Pliego Único y modifica los
+artículos 123, 130, 131, 132, 139 y 142 del Dec. 1104/16. Para el
+contenido:
+- ✅ El PBCP lo elaboran y aprueban "los órganos competentes de las
+  Jurisdicciones o Entidades" (art. 131.3), con la lista de lo que tiene que
+  incluir.
+- ✅ La Comisión Evaluadora actúa "conforme lo establecido en el PBCP", y su
+  opinión no es vinculante (art. 123).
+- ✅ Se derogó la **foja cero** (art. 4) y se suprimió el **RBPCME** (art. 5).
+- ⚠️ **Discrepancia, pendiente de resolver.**
+  - El art. 142, en la versión del Dec. 287, dice que la calidad de
+    proveedor se otorga "por un tiempo de vigencia preestablecido" y que
+    vencido hay que renovarla.
+  - La Circ. UG 2/2026 y la Res. SCyGB 110/2026 dicen que la inscripción en
+    el RUPC es "sin plazo de caducidad".
+  - Las prórrogas 125/175/205/260 hablan de "inscripciones vencidas" con
+    renovación iniciada.
+  - No se elige ninguna: el centro va a mostrar las dos y marcarlo como
+    pendiente de confirmar con el RUPC.
+
+**Res. SCyGB 292/2026** (catalogación). La lección "Pedir el alta de un
+artículo" coincide paso a paso con el anexo I:
+- búsqueda previa;
+- formulario "Timbó Compras: Alta de bienes y servicios CAByS";
+- grilla de bienes;
+- código externo obligatorio para hospitales;
+- lugares de entrega;
+- firma del responsable;
+- aprobación de la URC con aviso por correo.
+
+La resolución nombra a dos personas como destinatarios. El centro dice "el
+destinatario que indica la resolución", así no queda desactualizado ni
+publica nombres.
+
+**Control de la URC en hospitales.** Sigue ⏳ pendiente hasta confirmar el
+encuadre institucional del hospital. En las lecciones de Compras se marcó
+así en los 5 lugares donde aparece:
+- los dos pasos de control de "Hacer una compra";
+- el paso de "Preadjudicar";
+- el ejercicio de ordenar;
+- el glosario.
