@@ -185,13 +185,21 @@ levantarla solo cuando haga falta.
   (`app/recursos/archivos/`, se descarga solo con sesión). Para
   regenerarla: `timboDocumentacion/capacitacion/generar_presentacion.js`
   (pptxgenjs). El PDF se exporta con PowerPoint.
+- **15/11, segunda tanda (local):**
+  - algoritmo "¿Qué camino sigue una compra?", con las ramas A a E (`algoritmo.json`);
+  - simulador con 6 escenarios (`simulador.json`);
+  - checklist por procedimiento;
+  - diccionario A–E (`glosario.json`);
+  - plazos, a quién preguntar, modelos de mensajes y estados (`herramientas.json`);
+  - modo capacitadora (`/admin/capacitacion/modo-capacitadora`) y modo participante (`/recursos/aprender`).
+
+  `tests/test_recursos.py` valida fuentes y caminos.
 - **Faltan:**
   - el inventario exhaustivo de documentos y videos;
   - la matriz de trazabilidad de todo el contenido;
-  - en capacitación: el algoritmo interactivo de procedimientos, la
-    sección "qué se hace en cada sistema", el pliego desde cero, la matriz
-    de responsabilidades, "explicame este paso", los ejercicios y la
-    evaluación final;
+  - en capacitación: la sección "qué se hace en cada sistema", la matriz
+    de responsabilidades, "explicame este paso" con buscador de preguntas y
+    el examen final;
   - las fichas FP y el examen profesional.
   - Para las causales de contratación directa hay que leer el art. 116 de
     la Ley 12.510 (todavía no se leyó completa).
