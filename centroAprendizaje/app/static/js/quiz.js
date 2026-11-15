@@ -13,6 +13,8 @@ function mezclar(array) {
 function crearElemento(tag, props = {}, hijos = []) {
   const el = document.createElement(tag);
   for (const [clave, valor] of Object.entries(props)) {
+    // null/false = sin atributo. Ojo: setAttribute('disabled', null) igual desactiva el botón.
+    if (valor == null || valor === false) continue;
     if (clave === 'class') el.className = valor;
     else if (clave === 'html') el.innerHTML = valor;
     else if (clave.startsWith('on') && typeof valor === 'function') el.addEventListener(clave.slice(2), valor);
@@ -74,8 +76,15 @@ function renderTrueFalse(pregunta, contenedor, onResuelta) {
   );
 }
 
+function mezclarDistinto(pasos) {
+  // Que no arranque ya ordenado (si hay más de un paso).
+  let orden = mezclar(pasos);
+  for (let i = 0; i < 10 && pasos.length > 1 && orden.every((p, j) => p === pasos[j]); i++) orden = mezclar(pasos);
+  return orden;
+}
+
 function renderOrderSteps(pregunta, contenedor, onResuelta) {
-  const orden = mezclar(pregunta.steps);
+  let orden = mezclarDistinto(pregunta.steps);
   let resuelto = false;
 
   const lista = crearElemento('ul', { class: 'quiz-order-list' });
@@ -139,14 +148,33 @@ function renderOrderSteps(pregunta, contenedor, onResuelta) {
         feedback.className = `quiz-feedback ${acerto ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect'}`;
         feedback.textContent = acerto ? '✓ ¡Orden correcto!' : '✗ El orden no es correcto — en verde ves las posiciones acertadas.';
         botonComprobar.disabled = true;
+        botonReintentar.style.display = acerto ? 'none' : '';
         onResuelta(acerto);
       },
     },
     ['Comprobar orden']
   );
+  const botonReintentar = crearElemento(
+    'button',
+    {
+      class: 'btn btn--ghost btn--sm',
+      type: 'button',
+      style: 'display:none;margin-left:8px',
+      onclick: () => {
+        resuelto = false;
+        orden = mezclarDistinto(pregunta.steps);
+        feedback.style.display = 'none';
+        botonComprobar.disabled = false;
+        botonReintentar.style.display = 'none';
+        render();
+      },
+    },
+    ['↺ Volver a intentar']
+  );
 
   contenedor.appendChild(lista);
   contenedor.appendChild(botonComprobar);
+  contenedor.appendChild(botonReintentar);
   contenedor.appendChild(feedback);
 }
 
