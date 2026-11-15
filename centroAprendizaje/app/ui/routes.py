@@ -572,3 +572,14 @@ def recursos_biblioteca():
         "recursos/biblioteca.html", biblioteca=recursos.biblioteca(), glosario=recursos.glosario_completo(),
         **_contexto_recursos(),
     )
+
+
+@ui_bp.route("/recursos/<clave>")
+def recursos_herramienta(clave):
+    if clave not in recursos.HERRAMIENTAS:
+        abort(404)
+    seccion = recursos.HERRAMIENTAS[clave][0]
+    return render_template(
+        "recursos/herramienta.html", clave=clave, h=recursos.herramientas()[seccion],
+        iconos={k: v[1] for k, v in recursos.HERRAMIENTAS.items()}, **_contexto_recursos(),
+    )

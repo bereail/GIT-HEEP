@@ -98,3 +98,18 @@ def algoritmo():
 def docs_minimos():
     """Lo justo de cada documento para citar fuentes desde JavaScript."""
     return {d["id"]: {"titulo": d["titulo"], "url": d["url"], "vigencia": d.get("vigencia", "")} for d in biblioteca()["documentos"]}
+
+
+# Herramientas prácticas: clave en la URL → (sección del JSON, ícono, título corto).
+HERRAMIENTAS = {
+    "plazos": ("plazos", "🗓️", "Plazos"),
+    "a-quien-preguntar": ("a_quien", "🧭", "¿A quién le pregunto?"),
+    "modelos": ("modelos", "✉️", "Modelos de mensajes"),
+    "checklists": ("checklists", "✅", "Checklists"),
+    "estados": ("estados", "🚦", "Estados del proceso"),
+}
+
+
+@lru_cache(maxsize=None)
+def herramientas():
+    return _leer("herramientas.json")

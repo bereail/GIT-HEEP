@@ -80,6 +80,11 @@
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_glosario' else '' }}" href="{{ url_for('ui.recursos_glosario') }}"><span class="nav-link__icon">📖</span>Glosario general</a>
         <a class="nav-link" href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}"><span class="nav-link__icon">🔄</span>Nomenclador de artículos</a>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.recursos_biblioteca' else '' }}" href="{{ url_for('ui.recursos_biblioteca') }}"><span class="nav-link__icon">🗂️</span>Normativa y fuentes</a>
+        <a class="nav-link {{ 'is-active' if request.view_args and request.view_args.get('clave') == 'plazos' else '' }}" href="{{ url_for('ui.recursos_herramienta', clave='plazos') }}"><span class="nav-link__icon">🗓️</span>Plazos</a>
+        <a class="nav-link {{ 'is-active' if request.view_args and request.view_args.get('clave') == 'a-quien-preguntar' else '' }}" href="{{ url_for('ui.recursos_herramienta', clave='a-quien-preguntar') }}"><span class="nav-link__icon">🧭</span>¿A quién le pregunto?</a>
+        <a class="nav-link {{ 'is-active' if request.view_args and request.view_args.get('clave') == 'modelos' else '' }}" href="{{ url_for('ui.recursos_herramienta', clave='modelos') }}"><span class="nav-link__icon">✉️</span>Modelos de mensajes</a>
+        <a class="nav-link {{ 'is-active' if request.view_args and request.view_args.get('clave') == 'checklists' else '' }}" href="{{ url_for('ui.recursos_herramienta', clave='checklists') }}"><span class="nav-link__icon">✅</span>Checklists</a>
+        <a class="nav-link {{ 'is-active' if request.view_args and request.view_args.get('clave') == 'estados' else '' }}" href="{{ url_for('ui.recursos_herramienta', clave='estados') }}"><span class="nav-link__icon">🚦</span>Estados del proceso</a>
       {% endif %}
     </aside>
     <div class="sidebar-scrim" id="sidebar-scrim"></div>

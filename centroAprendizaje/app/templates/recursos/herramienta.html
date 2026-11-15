@@ -1,0 +1,88 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, estado, fuentes with context %}
+{% block titulo %}{{ h.titulo }} — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav(clave) }}
+<h1 style="margin:8px 0 4px">{{ iconos[clave] }} {{ h.titulo }}</h1>
+<p class="text-muted" style="margin:0 0 16px">{{ h.bajada }}</p>
+
+{% if clave == 'plazos' %}
+<ol class="her-linea">
+  {% for p in h['items'] %}
+  <li class="her-linea__item">
+    <span class="her-linea__etapa">{{ p.etapa }}</span>
+    <div class="card her-linea__card">
+      <div class="her-linea__plazo">{{ p.plazo }}</div>
+      <p>{{ p.que }}</p>
+      <div class="her-pie">{{ estado(p.estado) }}{% if p.nota %} <span class="text-muted">{{ p.nota }}</span>{% endif %} {{ fuentes(p.fuentes) }}</div>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+
+{% elif clave == 'a-quien-preguntar' %}
+<div class="rec-filtros"><div class="input-wrap" style="flex:1;max-width:480px"><span class="input-wrap__icon">🔎</span><input class="input" id="rec-filtro" type="search" aria-label="Buscar un problema" placeholder="Escribí tu problema. Ej.: rol, artículo, no funciona..." /></div></div>
+<div class="her-grid" id="rec-terminos">
+  {% for a in h['items'] %}
+  <article class="card her-tarjeta" data-filtro="{{ (a.problema ~ ' ' ~ a.quien ~ ' ' ~ a.como) | lower }}">
+    <div class="her-tarjeta__head"><span class="her-icono">{{ a.icono }}</span><h2>{{ a.problema }}</h2></div>
+    <p class="her-quien">→ {{ a.quien }}</p>
+    <p class="text-muted">{{ a.como }}</p>
+    <div class="her-pie">{{ estado(a.estado) }} {{ fuentes(a.fuentes) }}</div>
+  </article>
+  {% endfor %}
+</div>
+<div class="empty-state" id="rec-vacio" hidden>No encontramos ese problema. Probá con otra palabra o consultá a la mesa de ayuda de TIMBÓ Compras.</div>
+
+{% elif clave == 'modelos' %}
+<div class="callout callout--tip"><span class="callout__icon">💡</span><div><b>Antes de escribir:</b> {{ h.consejos | join(' · ') }}</div></div>
+<p>{{ estado('didactico') }} <span class="alg-tipo alg-tipo--ejemplo">EJEMPLO DIDÁCTICO</span> <span class="text-muted">Los canales y destinatarios salen de las fuentes; el texto es un modelo.</span> {{ fuentes(h.fuentes) }}</p>
+<div class="her-modelos">
+  {% for m in h['items'] %}
+  <article class="card her-modelo">
+    <h2>{{ m.titulo }}</h2>
+    <dl><dt>Para</dt><dd>{{ m.para }}</dd><dt>Asunto</dt><dd>{{ m.asunto }}</dd></dl>
+    <pre class="her-modelo__texto" id="modelo-{{ loop.index }}">{{ m.cuerpo }}</pre>
+    <button type="button" class="btn btn--ghost btn--sm" data-copiar="modelo-{{ loop.index }}">📋 Copiar texto</button>
+  </article>
+  {% endfor %}
+</div>
+
+{% elif clave == 'checklists' %}
+<div class="her-botones no-imprimir"><button type="button" class="btn btn--ghost btn--sm" id="her-limpiar">↺ Desmarcar todo</button> <button type="button" class="btn btn--ghost btn--sm" id="her-imprimir">🖨️ Imprimir</button></div>
+<div class="her-checklists">
+  {% for l in h.listas %}
+  <section class="card her-check" data-lista="{{ l.slug }}">
+    <header><h2>{{ l.titulo }}</h2><span class="badge badge--neutral">{{ l.rol }}</span><span class="her-check__avance" aria-live="polite"></span></header>
+    <ul>
+      {% for i in l['items'] %}
+      <li class="{{ 'her-check--pendiente' if i.estado == 'pendiente' }}">
+        <label><input type="checkbox" data-item="{{ l.slug }}-{{ loop.index }}" /> <span>{{ i.t }}</span></label>
+        {{ fuentes(i.fuentes) }}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>
+
+{% elif clave == 'estados' %}
+<h2 class="section__title">Estados del proceso en TIMBÓ Compras</h2>
+<ol class="her-estados">
+  {% for e in h.proceso %}
+  <li class="card her-estado">
+    <span class="her-estado__n">{{ loop.index }}</span>
+    <div><h3>{{ e.estado }}</h3><span class="badge badge--neutral">👤 {{ e.quien }}</span><p>{{ e.que }}</p>{{ fuentes(e.fuentes) }}</div>
+  </li>
+  {% endfor %}
+</ol>
+<h2 class="section__title">Estados de una oferta</h2>
+<div class="her-grid">
+  {% for e in h.oferta %}<article class="card her-tarjeta"><h2>{{ e.estado }}</h2><p class="text-muted">{{ e.que }}</p>{{ fuentes(e.fuentes) }}</article>{% endfor %}
+</div>
+<p class="text-muted rec-nota">⏳ Lista armada con los estados que nombran las circulares y los videos oficiales: no es una lista oficial completa.</p>
+{% endif %}
+{% endblock %}
+
+{% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>{% endif %}{% endblock %}

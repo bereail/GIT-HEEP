@@ -1548,3 +1548,78 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   .alg-nodo__forma, .alg-mapa__rama { box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 .alg-elegido { margin-top: 6px; font-size: 12.5px; color: #9a4a00; background: #fff1e3; border-radius: 999px; padding: 3px 12px; }
+
+/* ------------------------------------------ Herramientas prácticas (Recursos) -- */
+
+.rec-menu__grupo { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint); padding: 8px 10px 2px; border-top: 1px solid var(--border); margin-top: 4px; }
+.rec-menu__chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 10px 4px; }
+.rec-menu__chips a { font-size: 12.5px; padding: 4px 9px; border-radius: 999px; background: var(--surface-sunken); color: var(--text); text-decoration: none; }
+.rec-menu__chips a:hover, .rec-menu__chips a:focus-visible { background: var(--accent-soft); color: var(--accent); outline: none; }
+
+.her-pie { margin-top: 8px; font-size: 12.5px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+.her-pie .rec-fuentes { display: inline; margin: 0; }
+
+.her-linea { list-style: none; padding: 0; margin: 0; position: relative; }
+.her-linea::before { content: ""; position: absolute; left: 110px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+.her-linea__item { display: grid; grid-template-columns: 100px 1fr; gap: 24px; margin-bottom: 12px; align-items: start; }
+.her-linea__etapa { font-size: 12px; font-weight: 700; color: var(--text-muted); text-align: right; padding-top: 14px; }
+.her-linea__card { padding: 12px 16px; position: relative; }
+.her-linea__card::before { content: ""; position: absolute; left: -19px; top: 16px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--surface); }
+.her-linea__plazo { font-size: 20px; font-weight: 800; color: var(--accent); }
+.her-linea__card p { margin: 4px 0 0; font-size: 14px; }
+
+.her-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.her-tarjeta { padding: 14px 16px; }
+.her-tarjeta h2 { margin: 0; font-size: 15px; }
+.her-tarjeta p { margin: 6px 0 0; font-size: 13.5px; }
+.her-tarjeta__head { display: flex; gap: 10px; align-items: center; }
+.her-icono { font-size: 22px; }
+.her-quien { font-weight: 650; color: var(--accent); }
+
+.her-modelos { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 12px; margin-top: 12px; }
+.her-modelo { padding: 16px; }
+.her-modelo h2 { margin: 0 0 8px; font-size: 15px; }
+.her-modelo dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; margin: 0 0 8px; font-size: 13px; }
+.her-modelo dt { color: var(--text-muted); font-weight: 650; }
+.her-modelo dd { margin: 0; }
+.her-modelo__texto { white-space: pre-wrap; font-family: inherit; font-size: 13.5px; background: var(--surface-sunken); border-radius: 8px; padding: 12px; margin: 0 0 10px; }
+
+.her-botones { margin-bottom: 12px; display: flex; gap: 6px; }
+.her-checklists { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.her-check { padding: 14px 16px; }
+.her-check header { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-bottom: 8px; }
+.her-check h2 { margin: 0; font-size: 15px; flex: 1 1 100%; }
+.her-check__avance { font-size: 12.5px; font-weight: 700; color: var(--text-muted); margin-left: auto; }
+.her-check--completa { border-color: var(--success); }
+.her-check--completa .her-check__avance { color: var(--success); }
+.her-check ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.her-check label { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; cursor: pointer; }
+.her-check input { margin-top: 3px; width: 16px; height: 16px; flex: none; }
+.her-check input:checked + span { color: var(--text-muted); text-decoration: line-through; }
+.her-check li .rec-fuentes { margin-left: 24px; }
+.her-check--pendiente label span::after { content: " ⏳"; }
+
+.her-estados { list-style: none; padding: 0; margin: 0 0 20px; display: grid; gap: 10px; }
+.her-estado { display: flex; gap: 14px; padding: 12px 16px; align-items: flex-start; }
+.her-estado__n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-weight: 700; flex: none; }
+.her-estado h3 { margin: 0 0 4px; font-size: 15px; }
+.her-estado p { margin: 6px 0 0; font-size: 13.5px; }
+
+@media (max-width: 640px) {
+  .her-linea::before { left: 6px; }
+  .her-linea__item { grid-template-columns: 1fr; gap: 4px; padding-left: 22px; }
+  .her-linea__etapa { text-align: left; padding-top: 0; }
+  .her-linea__card::before { left: -22px; }
+  .her-modelos, .her-checklists { grid-template-columns: 1fr; }
+}
+@media print {
+  .her-check { break-inside: avoid; box-shadow: none; }
+  .rec-subnav, .rec-borrador { display: none !important; }
+}
+
+/* Barra superior en celular: que entren menú, marca, Recursos y búsqueda. */
+@media (max-width: 520px) {
+  .topbar { gap: 8px; padding: 0 12px; }
+  .topbar__brand { font-size: 14px; gap: 8px; min-width: 0; }
+  .topbar__brand > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}

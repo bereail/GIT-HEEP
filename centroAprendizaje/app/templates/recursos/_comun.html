@@ -20,6 +20,11 @@
   <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}" class="{{ 'is-active' if activo == 'glosario' }}">📖 Glosario</a>
   <a href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}" class="{{ 'is-active' if activo == 'biblioteca' }}">🗂️ Biblioteca</a>
   <a href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}">🔄 Nomenclador de artículos</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}" class="{{ 'is-active' if activo == 'plazos' }}">🗓️ Plazos</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}" class="{{ 'is-active' if activo == 'a-quien-preguntar' }}">🧭 ¿A quién le pregunto?</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}" class="{{ 'is-active' if activo == 'modelos' }}">✉️ Modelos de mensajes</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}" class="{{ 'is-active' if activo == 'checklists' }}">✅ Checklists</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}" class="{{ 'is-active' if activo == 'estados' }}">🚦 Estados</a>
 </nav>
 {% if prefijo == 'admin.' %}<div class="callout callout--warning rec-borrador">
   <span class="callout__icon">🔒</span>

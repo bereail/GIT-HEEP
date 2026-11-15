@@ -25,6 +25,11 @@
     <a class="card card-link" href="{{ url_for('ui.recursos_glosario') }}"><span class="home-card__icon">📖</span><div><div class="home-card__title">Glosario general</div><div class="home-card__desc">Los términos de todos los temas, explicados en simple.</div></div></a>
     {% if tema_nomenclador %}<a class="card card-link" href="{{ url_for('ui.ver_equivalencias', tema_slug=tema_nomenclador.slug) }}"><span class="home-card__icon">🔄</span><div><div class="home-card__title">Nomenclador de artículos</div><div class="home-card__desc">¿Con qué nombre pido un artículo en TIMBÓ? Buscalo acá.</div></div></a>{% endif %}
     <a class="card card-link" href="{{ url_for('ui.recursos_biblioteca') }}"><span class="home-card__icon">🗂️</span><div><div class="home-card__title">Normativa y fuentes</div><div class="home-card__desc">Circulares, resoluciones y guías oficiales, con fecha y vigencia.</div></div></a>
+    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='plazos') }}"><span class="home-card__icon">🗓️</span><div><div class="home-card__title">Calendario de plazos</div><div class="home-card__desc">Cuántos días tiene cada etapa de una compra.</div></div></a>
+    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='a-quien-preguntar') }}"><span class="home-card__icon">🧭</span><div><div class="home-card__title">¿A quién le pregunto?</div><div class="home-card__desc">A dónde ir según el problema.</div></div></a>
+    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='modelos') }}"><span class="home-card__icon">✉️</span><div><div class="home-card__title">Modelos de mensajes</div><div class="home-card__desc">Plantillas para la mesa de ayuda y pedidos de rol.</div></div></a>
+    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='checklists') }}"><span class="home-card__icon">✅</span><div><div class="home-card__title">Checklists</div><div class="home-card__desc">Para no olvidarse nada antes de cada paso.</div></div></a>
+    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='estados') }}"><span class="home-card__icon">🚦</span><div><div class="home-card__title">Estados del proceso</div><div class="home-card__desc">Qué significa cada estado de TIMBÓ Compras.</div></div></a>
   </div>
 </section>
 {% else %}

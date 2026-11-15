@@ -97,3 +97,49 @@
   });
   document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') pop.hidden = true; });
 })();
+
+// Modelos de mensajes: copiar el texto de una plantilla.
+document.addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-copiar]');
+  if (!b) return;
+  const texto = document.getElementById(b.dataset.copiar).textContent;
+  const listo = () => { const antes = b.textContent; b.textContent = '✓ Copiado'; setTimeout(() => { b.textContent = antes; }, 1600); };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(texto).then(listo, () => {});
+  else {
+    const t = document.createElement('textarea');
+    t.value = texto; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); listo(); } catch (e) { /* sin portapapeles */ }
+    t.remove();
+  }
+});
+
+// Checklists: las marcas se guardan solo en este navegador.
+(function () {
+  const listas = document.querySelectorAll('.her-check');
+  if (!listas.length) return;
+  const CLAVE = 'checklists-timbo';
+  let marcas = {};
+  try { marcas = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (e) { marcas = {}; }
+  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(marcas)); } catch (e) { /* modo privado */ } }
+  function avance() {
+    listas.forEach((l) => {
+      const cajas = l.querySelectorAll('input[type=checkbox]');
+      const hechas = Array.from(cajas).filter((c) => c.checked).length;
+      l.querySelector('.her-check__avance').textContent = `${hechas} de ${cajas.length}`;
+      l.classList.toggle('her-check--completa', hechas === cajas.length);
+    });
+  }
+  document.querySelectorAll('.her-check input[type=checkbox]').forEach((c) => {
+    c.checked = !!marcas[c.dataset.item];
+    c.addEventListener('change', () => { marcas[c.dataset.item] = c.checked; guardar(); avance(); });
+  });
+  const limpiar = document.getElementById('her-limpiar');
+  if (limpiar) limpiar.addEventListener('click', () => {
+    marcas = {}; guardar();
+    document.querySelectorAll('.her-check input[type=checkbox]').forEach((c) => { c.checked = false; });
+    avance();
+  });
+  const imprimir = document.getElementById('her-imprimir');
+  if (imprimir) imprimir.addEventListener('click', () => window.print());
+  avance();
+})();

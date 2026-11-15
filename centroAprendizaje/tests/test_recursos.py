@@ -24,7 +24,8 @@ def _ids_citados(obj):
 def test_todas_las_fuentes_citadas_existen_en_la_biblioteca():
     docs = recursos.documentos_por_id()
     for nombre, datos in [("roles", recursos.roles()), ("circuito", recursos.circuito()),
-                          ("capacitacion", recursos.capacitacion()), ("algoritmo", recursos.algoritmo())]:
+                          ("capacitacion", recursos.capacitacion()), ("algoritmo", recursos.algoritmo()),
+                          ("herramientas", recursos.herramientas())]:
         faltan = {i for i in _ids_citados(datos) if i not in docs}
         assert not faltan, f"{nombre} cita fuentes que no están en biblioteca.json: {faltan}"
     for d in recursos.biblioteca()["discrepancias"]:
@@ -56,8 +57,10 @@ def test_cada_rama_termina_en_un_final():
 
 def test_paginas_de_recursos_y_algoritmo(app):
     anonimo = app.test_client()
-    for url in ("/recursos", "/recursos/roles", "/recursos/glosario", "/recursos/biblioteca"):
+    herramientas = tuple(f"/recursos/{c}" for c in recursos.HERRAMIENTAS)
+    for url in ("/recursos", "/recursos/roles", "/recursos/glosario", "/recursos/biblioteca") + herramientas:
         assert anonimo.get(url).status_code == 200, url
+    assert anonimo.get("/recursos/no-existe").status_code == 404
     assert anonimo.get("/admin/capacitacion/algoritmo").status_code == 302
     admin = app.test_client()
     admin.post("/admin/login", data={"contrasena": "test-admin-pass"})

@@ -235,5 +235,6 @@ admin uno por uno. **Nunca** incluir datos personales del material fuente
    (SIN sin "comenzar una carga", numeración de decisorios, documentos
    HTML→PDF) y pasar esas situaciones a `verificado: True` en
    `scripts/importar_faq_chats.py` cuando haya respuesta.
-4. Conseguir y cargar las guías PDF de artículos / nomenclador SIPAF que
-   se compartieron en el chat de soporte pero todavía no están en el portal.
+4. ~~Guías de artículos~~: hecho. Se usa solo la guía oficial en 4 pasos del
+   Ministerio de Salud (`como-solicitar-alta-de-articulos.pdf`). La guía
+   "Búsqueda Nomenclador SIPAF" no es oficial y no se carga.

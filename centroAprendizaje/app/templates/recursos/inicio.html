@@ -32,6 +32,15 @@
   </a>
 </div>
 
+<h2 class="section__title">Herramientas prácticas</h2>
+<div class="card-grid">
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}"><span class="home-card__icon">🗓️</span><div class="home-card__title">Calendario de plazos</div><div class="home-card__desc">Cuántos días tiene cada etapa: aviso, apertura, impugnación, cierre.</div></a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}"><span class="home-card__icon">🧭</span><div class="home-card__title">¿A quién le pregunto?</div><div class="home-card__desc">Según el problema: mesa de ayuda, iTop, administrador local, RUPC, Farmacia.</div></a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}"><span class="home-card__icon">✉️</span><div class="home-card__title">Modelos de mensajes</div><div class="home-card__desc">Plantillas para copiar: consulta, reporte de error, pedido de rol.</div></a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}"><span class="home-card__icon">✅</span><div class="home-card__title">Checklists</div><div class="home-card__desc">Antes del pliego, de publicar, de la apertura, de preadjudicar y después de adjudicar.</div></a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}"><span class="home-card__icon">🚦</span><div class="home-card__title">Estados del proceso</div><div class="home-card__desc">Qué significa cada estado que aparece en TIMBÓ Compras.</div></a>
+</div>
+
 <h2 class="section__title">Cómo leer los estados</h2>
 {{ leyenda() }}
 

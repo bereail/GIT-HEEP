@@ -1,0 +1,113 @@
+{
+  "plazos": {
+    "titulo": "Calendario de plazos",
+    "bajada": "Los plazos que fijan las normas, en el orden en que aparecen en una compra. Los marcados como modelo salen del pliego modelo: cada pliego puede fijar otros.",
+    "items": [
+      {"etapa": "Publicación", "plazo": "3 días", "que": "Anticipación mínima para pedir el aviso oficial por mail a avisosoficiales@santafe.gob.ar.", "estado": "confirmado", "fuentes": ["circ-scygb-4-2026"]},
+      {"etapa": "Publicación", "plazo": "10 días corridos", "que": "Desde la publicación hasta la apertura, en licitaciones y concursos públicos.", "estado": "confirmado", "fuentes": ["circ-scygb-4-2026"]},
+      {"etapa": "Ofertas y apertura", "plazo": "Hora del servidor", "que": "Todos los plazos de TIMBÓ Compras se rigen por la fecha y hora del servidor, no por la de tu computadora.", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
+      {"etapa": "Evaluación", "plazo": "El que fija el evaluador", "que": "Plazo para responder una subsanación, aclaración o mejora. Si vence, el subtrámite pasa a \"descartado\".", "estado": "confirmado", "fuentes": ["circ-ug-7-2026"]},
+      {"etapa": "Preadjudicación", "plazo": "2 días", "que": "Para impugnar el informe de preadjudicación, con la garantía correspondiente.", "estado": "confirmado", "fuentes": ["pliego-unico-2026"]},
+      {"etapa": "Etapa múltiple", "plazo": "2 días hábiles", "que": "Para impugnar el acta de preselección, desde su notificación.", "estado": "confirmado", "fuentes": ["dec-287-2026"]},
+      {"etapa": "Contrato (servicios)", "plazo": "10 días", "que": "Inicio del servicio desde la notificación de la adjudicación, en el pliego modelo.", "estado": "didactico", "nota": "Modelo de la Circular SCyGB 05/2026: cada pliego fija el suyo.", "fuentes": ["circ-scygb-5-2026"]},
+      {"etapa": "Contrato (bienes)", "plazo": "Desde la orden de compra", "que": "Los plazos de entrega corren desde la notificación de la orden de compra, en el pliego modelo.", "estado": "didactico", "nota": "Modelo de la Circular SCyGB 05/2026.", "fuentes": ["circ-scygb-5-2026"]},
+      {"etapa": "Cierre", "plazo": "2 días hábiles", "que": "Para pasar la gestión a \"Concluida\" en el portal. Si no se hace, no se pueden publicar gestiones nuevas.", "estado": "confirmado", "fuentes": ["circ-scygb-4-2025"]},
+      {"etapa": "Proveedores (RUPC)", "plazo": "30 días corridos", "que": "Para presentar lo que faltó en la inscripción, desde la notificación. Si no, el trámite se da de baja solo.", "estado": "confirmado", "fuentes": ["res-scygb-110-2026"]},
+      {"etapa": "Proveedores (RUPC)", "plazo": "30 días", "que": "Antigüedad máxima del Libre Deuda de la Ley 17.250 al pedir la inscripción.", "estado": "confirmado", "fuentes": ["res-scygb-110-2026"]},
+      {"etapa": "Locación de inmuebles", "plazo": "24 meses", "que": "Plazo máximo recomendado del contrato; canon fijo como mínimo los primeros 3 meses.", "estado": "confirmado", "nota": "Es una recomendación de la SCyGB.", "fuentes": ["locaciones-inmuebles"]}
+    ]
+  },
+  "a_quien": {
+    "titulo": "¿A quién le pregunto?",
+    "bajada": "Según el problema, a dónde ir. Tené a mano el número de expediente o de proceso.",
+    "items": [
+      {"problema": "Dudas sobre un proceso en TIMBÓ Compras", "icono": "🛒", "quien": "Mesa de ayuda de TIMBÓ Compras", "como": "timbocompras@santafe.gob.ar · 0342-4506600 / 4506800 (internos 39479 y 39480) · WhatsApp +54 9 342 640-0792 · de 8 a 13 h", "estado": "confirmado", "fuentes": ["circ-scygb-3-2026"]},
+      {"problema": "Necesito el rol de Gestor, Supervisor o Evaluador", "icono": "🔐", "quien": "Administrador local de tu jurisdicción", "como": "Se tramita el alta del perfil y el rol ante él. Quién autoriza el pedido no está establecido en la normativa.", "estado": "confirmado", "fuentes": ["circ-ug-1-2026", "circ-ug-3-2026"]},
+      {"problema": "Alta o baja de un usuario en TIMBÓ", "icono": "🙋", "quien": "Tu jefatura (departamento o superior) lo pide; lo carga la Sectorial de Informática", "como": "Por iTop.", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]},
+      {"problema": "Crear o modificar una oficina en TIMBÓ", "icono": "🏢", "quien": "Secretaría de Gestión Pública (lo eleva un funcionario o una jefatura de departamento o superior)", "como": "En el modo que indique la Secretaría; la Sectorial de Informática hace el cambio.", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]},
+      {"problema": "Un artículo no está en el catálogo", "icono": "🔎", "quien": "Unidad Rectora Central (formulario CAByS) · medicamentos y descartables: Servicio de Farmacia del efector", "como": "Primero buscalo en el Catálogo WEB. Si no está: formulario \"Timbó Compras: Alta de bienes y servicios CAByS\".", "estado": "confirmado", "fuentes": ["res-scygb-292-2026", "infografia-articulos"]},
+      {"problema": "TIMBÓ Compras no funciona", "icono": "⚠️", "quien": "Mesa de ayuda de TIMBÓ Compras · ante una imposibilidad técnica acreditada, la UG TIMBÓ puede autorizar otra vía", "como": "Reportá el problema con captura (sin datos personales) y número de proceso.", "estado": "confirmado", "fuentes": ["circ-scygb-3-2026", "circ-ug-1-2026"]},
+      {"problema": "Usuarios para el SIN (vista al Tribunal de Cuentas)", "icono": "🏛️", "quien": "Subsecretaría de Contrataciones, que pide el alta por iTop a la STG", "como": "Planilla de datos por mail. Mientras tanto, se carga con usuarios ya habilitados.", "estado": "practica", "fuentes": []},
+      {"problema": "Un proveedor quiere inscribirse", "icono": "🏢", "quien": "Registro Único de Proveedores y Contratistas (RUPC)", "como": "www.santafe.gov.ar/proveedores, con clave fiscal nivel 3.", "estado": "confirmado", "fuentes": ["res-scygb-110-2026"]},
+      {"problema": "Validar la firma de un documento", "icono": "✍️", "quien": "Firmador Digital Web de la Provincia", "como": "El sitio de validación que cita la Circular 5/2024 hoy pide iniciar sesión.", "estado": "confirmado", "fuentes": ["circ-ug-4-2025", "circ-ug-5-2024"]},
+      {"problema": "Digitalizar un trámite nuevo", "icono": "🧩", "quien": "Promotor Ministerial de Innovación (PMI) de tu ministerio", "como": "El PMI eleva el pedido a la Secretaría de Gestión Pública.", "estado": "confirmado", "fuentes": ["circ-ug-3-2025"]}
+    ]
+  },
+  "modelos": {
+    "titulo": "Modelos de mensajes",
+    "bajada": "Plantillas para copiar y completar. Son ejemplos didácticos: completá los [campos] y adaptalos al caso.",
+    "consejos": ["Tené a mano el número de expediente (EE-...) y el número de proceso.", "Contá qué pasos ya hiciste y qué esperabas que pasara.", "Si mandás una captura, tapá nombres, CUIL, teléfonos y mails.", "Una consulta por mensaje: así se resuelve más rápido."],
+    "items": [
+      {"titulo": "Consulta a la mesa de ayuda de TIMBÓ Compras", "para": "timbocompras@santafe.gob.ar", "asunto": "Consulta sobre el proceso [número de proceso]", "cuerpo": "Hola. Les escribo desde [hospital / área].\n\nEstoy trabajando en el proceso [número de proceso], expediente [EE-...], con el rol de [Gestor / Supervisor / Evaluador].\n\nYa hice estos pasos: [pasos].\nLo que pasa es: [qué aparece o qué no aparece].\nLo que esperaba: [qué esperabas].\n\n¿Me pueden indicar cómo continuar?\n\nGracias.\n[nombre y área]"},
+      {"titulo": "Reporte de un error del sistema", "para": "timbocompras@santafe.gob.ar", "asunto": "Error en TIMBÓ Compras — proceso [número]", "cuerpo": "Hola. Les reporto un error en TIMBÓ Compras.\n\nProceso: [número] · Expediente: [EE-...]\nFecha y hora en que pasó: [dd/mm/aaaa hh:mm]\nPantalla o acción: [por ejemplo, \"Acciones\" → \"Enviar\"]\nMensaje que aparece: [texto del error]\n\nAdjunto una captura (sin datos personales).\n\nGracias.\n[nombre y área]"},
+      {"titulo": "Pedido de rol al administrador local", "para": "[administrador local de tu jurisdicción]", "asunto": "Pedido de rol en TIMBÓ Compras", "cuerpo": "Hola. Solicito el alta del rol de [Gestor / Supervisor / Evaluador] en TIMBÓ Compras para:\n\nNombre y apellido: [ ]\nOficina en TIMBÓ: [ ]\nMotivo: [tareas que va a realizar]\n\nLo pide / autoriza: [jefatura que lo solicita].\n\nGracias."},
+      {"titulo": "Pedido de alta de usuario (para la jefatura, por iTop)", "para": "iTop", "asunto": "Alta de usuario en TIMBÓ", "cuerpo": "Solicito el alta en TIMBÓ de:\n\nNombre y apellido: [ ]\nOficina: [ ]\nPermisos que necesita según sus tareas: [ ]\n\nSolicita: [nombre, cargo — jefatura de departamento o superior]."},
+      {"titulo": "Orientación a un proveedor que quiere participar", "para": "[mail del proveedor]", "asunto": "Cómo participar de las compras del hospital", "cuerpo": "Hola. Para participar de nuestras compras tiene que:\n\n1. Inscribirse en el Registro Único de Proveedores y Contratistas (RUPC): www.santafe.gov.ar/proveedores, con clave fiscal nivel 3.\n2. Tener ID Ciudadana de Santa Fe nivel 3, con domicilio digital.\n3. Ver los procesos publicados en TIMBÓ Compras, en \"Participar de un proceso\".\n\nLos tutoriales oficiales están en compras.santafe.gob.ar/tutoriales.\n\nSaludos.\n[nombre y área]"}
+    ],
+    "fuentes": ["circ-scygb-3-2026", "circ-ug-1-2026", "circ-ug-3-2025", "res-scygb-110-2026", "circ-ug-2-2026"]
+  },
+  "checklists": {
+    "titulo": "Checklists",
+    "bajada": "Marcá cada punto antes de avanzar. Las marcas se guardan solo en este navegador.",
+    "listas": [
+      {"slug": "pliego", "titulo": "Antes de mandar el pliego al Supervisor", "rol": "Gestor", "items": [
+        {"t": "Están completos los 8 formularios del pliego", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "Hay al menos 3 evaluadores (y conviene sumar suplentes)", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "Todo lo que se le va a exigir al proveedor está en \"Requisitos de participación\"", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "Si se aceptan ofertas alternativas, está marcado", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "Los renglones tienen cantidad, unidad y, si corresponde, ficha técnica", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "Los artículos están en el catálogo (si no, se pidió el alta con el formulario CAByS)", "fuentes": ["res-scygb-292-2026"]},
+        {"t": "No se pide documentación que ya está en registros del Estado (RUPC, RPJEC)", "fuentes": ["circ-scygb-5-2026"]}
+      ]},
+      {"slug": "publicar", "titulo": "Antes de publicar", "rol": "Supervisor · Compras", "items": [
+        {"t": "El pliego está aprobado y tiene número de proceso definitivo", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "El acto que aprueba el pliego y autoriza el llamado está firmado y vinculado", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "Si corresponde al hospital, está el informe de control de la URC (pendiente de confirmar)", "fuentes": ["res-me-73-2026", "circ-scygb-3-2026"], "estado": "pendiente"},
+        {"t": "Se corrió vista al Tribunal de Cuentas y el acto está cargado en el SIN", "fuentes": ["circ-ug-9-2026", "circ-ug-11-2026"]},
+        {"t": "Nómina de proveedores y cronograma cargados", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "En el portal: \"generar enlace con TIMBO\" marcado y el expediente como principal", "fuentes": ["circ-scygb-4-2026"]},
+        {"t": "Aviso oficial pedido a avisosoficiales@santafe.gob.ar con 3 días de anticipación", "fuentes": ["circ-scygb-4-2026"]}
+      ]},
+      {"slug": "apertura", "titulo": "Antes de la apertura", "rol": "Gestor", "items": [
+        {"t": "Todas las consultas están respondidas con circulares", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "Si hubo circular modificatoria, el pliego nuevo está publicado", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "La fecha y hora de apertura del cronograma siguen vigentes (la apertura es automática)", "fuentes": ["circ-ug-7-2026"]}
+      ]},
+      {"slug": "preadjudicar", "titulo": "Antes de preadjudicar", "rol": "Evaluadores", "items": [
+        {"t": "Cada oferta tiene evaluación administrativa, técnica y económica", "fuentes": ["videos-app-timbocompras"]},
+        {"t": "Los subtrámites están respondidos o vencidos", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "Se verificó el RUPC y que la actividad del proveedor coincide con lo que se compra", "fuentes": ["circ-ug-2-2026"]},
+        {"t": "Se evaluaron también las ofertas de quienes no fueron invitados (privadas)", "fuentes": ["ley-12510"]},
+        {"t": "Los evaluadores están ordenados para firmar el informe", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "Si corresponde al hospital, está el control de la URC sobre la preadjudicación (pendiente de confirmar)", "fuentes": ["res-me-73-2026"], "estado": "pendiente"}
+      ]},
+      {"slug": "cierre", "titulo": "Después de adjudicar", "rol": "Compras", "items": [
+        {"t": "El acto de adjudicación está firmado y cargado en TIMBÓ Compras", "fuentes": ["circ-ug-7-2026"]},
+        {"t": "La orden de compra está notificada", "fuentes": ["circ-scygb-5-2026"]},
+        {"t": "La recepción tiene su certificado (CRDB o CRDS)", "fuentes": ["disp-226-2016"]},
+        {"t": "La gestión pasó a \"Concluida\" en el portal en 2 días hábiles", "fuentes": ["circ-scygb-4-2025"]},
+        {"t": "Al terminar el contrato, se mandó el informe de desempeño del proveedor al RUPC", "fuentes": ["circ-ug-2-2026"]}
+      ]}
+    ]
+  },
+  "estados": {
+    "titulo": "Mapa de estados del proceso",
+    "bajada": "Los estados que nombran las fuentes oficiales, en orden. No hay una lista oficial completa: si ves uno que no está acá, avisanos.",
+    "proceso": [
+      {"estado": "Gestionar contratación", "quien": "Gestor", "que": "El proceso recién creado, con número de instancia provisorio, mientras se arma el pliego.", "fuentes": ["videos-app-timbocompras"]},
+      {"estado": "Evaluar contratación supervisor", "quien": "Supervisor", "que": "El Gestor lo envió al Supervisor: no lo puede tocar hasta que vuelva.", "fuentes": ["videos-app-timbocompras"]},
+      {"estado": "Aprobar contratación", "quien": "Supervisor · URC si corresponde", "que": "Formularios aprobados y número de proceso definitivo. En la Administración Pública Central, acá va el control del pliego.", "fuentes": ["circ-scygb-3-2026", "videos-app-timbocompras"]},
+      {"estado": "Publicado", "quien": "Oferentes", "que": "Visible en \"Participar de un proceso\". Se reciben consultas y ofertas.", "fuentes": ["circ-ug-7-2026"]},
+      {"estado": "Evaluar ofertas", "quien": "Evaluadores", "que": "Después de la apertura automática: acta, cuadro comparativo y evaluación.", "fuentes": ["videos-app-timbocompras"]},
+      {"estado": "Cronograma de impugnación", "quien": "Evaluador · URC si corresponde", "que": "Antes de completarlo se controla la preadjudicación (Administración Pública Central). Al completarlo se publica y notifica lo actuado.", "fuentes": ["circ-scygb-3-2026"]},
+      {"estado": "Espera incorporaciones", "quien": "Sistema", "que": "TIMBÓ genera y firma los documentos de la evaluación.", "fuentes": ["videos-app-timbocompras"]},
+      {"estado": "Preadjudicado", "quien": "Oferentes notificados", "que": "Informe de preadjudicación notificado al domicilio digital; corre el plazo de impugnación.", "fuentes": ["circ-ug-7-2026"]},
+      {"estado": "Finalizados", "quien": "Gestor", "que": "Con el acto de adjudicación cargado, el proceso termina en TIMBÓ Compras. El contrato sigue por expediente.", "fuentes": ["videos-app-timbocompras"]}
+    ],
+    "oferta": [
+      {"estado": "Borrador", "que": "La oferta se está completando: no participa de la apertura.", "fuentes": ["circ-ug-7-2026"]},
+      {"estado": "Oferta presentada", "que": "Confirmada y enviada antes de la apertura: es la única que vale.", "fuentes": ["circ-ug-7-2026"]},
+      {"estado": "Subtrámite descartado", "que": "Venció el plazo para responder una subsanación, aclaración o mejora.", "fuentes": ["circ-ug-7-2026"]}
+    ]
+  }
+}

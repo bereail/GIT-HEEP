@@ -927,6 +927,18 @@ def recursos_biblioteca():
     )
 
 
+@admin_bp.route("/recursos/<clave>")
+@requiere_admin
+def recursos_herramienta(clave):
+    if clave not in recursos.HERRAMIENTAS:
+        abort(404)
+    seccion = recursos.HERRAMIENTAS[clave][0]
+    return render_template(
+        "recursos/herramienta.html", clave=clave, h=recursos.herramientas()[seccion],
+        iconos={k: v[1] for k, v in recursos.HERRAMIENTAS.items()}, **_contexto_recursos(),
+    )
+
+
 # ------------------------------------------------- centro de capacitación --
 # Privado: guía de la capacitadora, presentación y material para participantes.
 
