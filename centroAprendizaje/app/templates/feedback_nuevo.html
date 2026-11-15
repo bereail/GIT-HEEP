@@ -9,7 +9,7 @@
   <p class="hero__desc">Tu valoración nos ayuda a mejorar. No hace falta completar todo — puntuar ya es útil.</p>
 </div>
 
-<form method="post" class="card" style="max-width:560px">
+<form method="post" class="card form-card">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
   <input type="hidden" name="puntuacion" id="puntuacion-valor" value="{{ valores.get('puntuacion', '') if valores else '' }}" />
 

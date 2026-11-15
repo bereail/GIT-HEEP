@@ -250,6 +250,8 @@ main.content {
 }
 .card-link:active { transform: translateY(0); }
 
+.form-card { max-width: 560px; padding: 20px; }
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -328,7 +330,8 @@ main.content {
   background: var(--surface-sunken);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 9px 12px 9px 36px;
+  padding: 9px 12px;
+  font-family: inherit;
   font-size: 14px;
   color: var(--text);
   transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
@@ -339,6 +342,8 @@ main.content {
   outline: none;
 }
 .input-wrap { position: relative; }
+.input-wrap .input { padding-left: 36px; } /* lugar para el ícono */
+textarea.input { resize: vertical; line-height: 1.5; }
 .input-wrap__icon {
   position: absolute;
   left: 12px; top: 50%;
@@ -655,10 +660,19 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 
 /* ------------------------------------------------------------- Situation --- */
 
-.situation-card { padding: 18px 20px; margin-bottom: 14px; }
-.situation-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-.situation-card__title { font-weight: 650; font-size: 15px; }
-.situation-card__desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px; }
+.situation-card { margin-bottom: 10px; scroll-margin-top: 76px; }
+.situation-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 14px 18px; cursor: pointer; list-style: none; }
+.situation-card__head::-webkit-details-marker { display: none; }
+.situation-card__head::before { content: "▸"; color: var(--text-faint); transition: transform var(--dur-fast) var(--ease); }
+.situation-card[open] > .situation-card__head::before { transform: rotate(90deg); }
+.situation-card__head > span:first-of-type { flex: 1; }
+.situation-card__head:hover .situation-card__title { color: var(--accent); }
+.situation-card__head .badge { flex: none; }
+.situation-card__title { display: block; font-weight: 650; font-size: 15px; }
+.situation-card__desc { display: block; font-size: 13.5px; color: var(--text-muted); margin-top: 3px; }
+.situation-card__body { padding: 0 18px 16px 40px; }
+.situation-card__body > .situation-card__label:first-child { margin-top: 0; }
+.task-group__title { font-size: 14px; font-weight: 700; color: var(--text-muted); margin: 22px 0 -6px; }
 .situation-card__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-faint); margin-top: 10px; }
 .situation-card__text { font-size: 13.5px; white-space: pre-line; }
 
@@ -948,7 +962,7 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   border-top: 1px solid var(--border);
   flex: none;
 }
-.chatbot-panel__form .input { flex: 1; padding-left: 12px; }
+.chatbot-panel__form .input { flex: 1; }
 .chatbot-panel__send {
   flex: none;
   width: 38px; height: 38px;
@@ -1073,6 +1087,11 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   .hero h1 { font-size: 22px; }
   .hero__desc { font-size: 14px; }
   .ask-box__row { flex-direction: column; }
+  .form-card { padding: 16px; }
+  .situation-card__head { flex-direction: column; gap: 6px; padding: 12px 14px; }
+  .situation-card__head::before { display: none; }
+  .situation-card__body { padding: 0 14px 14px; }
+  .lesson-row { flex-wrap: wrap; row-gap: 4px; }
   /* Las tablas cortan el texto: en el celular las celdas bajan de línea. */
   .data-table th, .data-table td { white-space: normal; min-width: 110px; padding: 8px 10px; }
   .chatbot-panel { left: 8px; right: 8px; bottom: 8px; height: min(85vh, 600px); }
@@ -1091,7 +1110,7 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 }
 .ask-box__label { display: block; font-weight: 650; font-size: 15px; margin-bottom: 10px; }
 .ask-box__row { display: flex; gap: 8px; }
-.ask-box__row .input { flex: 1; padding-left: 12px; font-size: 15px; }
+.ask-box__row .input { flex: 1; font-size: 15px; }
 .ask-box__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .ask-box__chips .filter-chip { text-align: left; }
 

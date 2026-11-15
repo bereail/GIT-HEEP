@@ -10,13 +10,21 @@
   <span class="input-wrap__icon">🔎</span>
   <input class="input" id="filtro-tareas" type="text" placeholder="Filtrar tareas..." />
 </div>
-<div class="lesson-list" id="lista-tareas">
-  {% for tarea in tema.tareas %}
+<div id="lista-tareas">
+  {% for grupo in tema.tareas | groupby('tutorial.categoria.orden') %}
+  {% set categoria = grupo.list[0].tutorial.categoria %}
+  <section class="task-group">
+  <h2 class="task-group__title">{{ categoria.icono }} {{ categoria.titulo }}</h2>
+  <div class="lesson-list">
+  {% for tarea in grupo.list %}
   <a class="lesson-row" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=tarea.tutorial.categoria.slug, tutorial_slug=tarea.tutorial.slug) }}"
      data-filtro="{{ (tarea.pregunta ~ ' ' ~ (tarea.keywords | join(' '))) | lower }}">
     <span class="lesson-row__title">{{ tarea.pregunta }}</span>
     <span class="lesson-row__meta">{{ badge_dificultad(tarea.tutorial.dificultad) }} · {{ tarea.tutorial.minutos }} min</span>
   </a>
+  {% endfor %}
+  </div>
+  </section>
   {% else %}
   <div class="empty-state"><div class="empty-state__icon">🔎</div>Todavía no hay tareas cargadas para este tema.</div>
   {% endfor %}
@@ -31,6 +39,7 @@
   (function () {
     var input = document.getElementById('filtro-tareas');
     var filas = Array.prototype.slice.call(document.querySelectorAll('#lista-tareas [data-filtro]'));
+    var grupos = Array.prototype.slice.call(document.querySelectorAll('.task-group'));
     var sinResultados = document.getElementById('sin-resultados');
     if (!input) return;
     input.addEventListener('input', function () {
@@ -41,9 +50,13 @@
         fila.style.display = visible ? '' : 'none';
         if (visible) algunaVisible = true;
       });
+      grupos.forEach(function (g) {
+        g.style.display = g.querySelector('.lesson-row:not([style*="none"])') ? '' : 'none';
+      });
       sinResultados.style.display = (filas.length && !algunaVisible) ? '' : 'none';
     });
-    input.focus();
+    // En el celular, el foco automático abre el teclado y tapa la lista.
+    if (window.matchMedia('(min-width: 881px)').matches) input.focus();
   })();
 </script>
 {% endblock %}

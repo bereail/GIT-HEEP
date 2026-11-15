@@ -112,7 +112,7 @@ def construir_indice(tema):
             "kind": "Problema",
             "title": situacion.situacion,
             "subtitle": situacion.descripcion,
-            "url": url_for("ui.ver_problemas", tema_slug=tema.slug),
+            "url": url_for("ui.ver_problemas", tema_slug=tema.slug, _anchor=f"s-{situacion.slug}"),
             "texto": normalizar(texto_busqueda),
             "peso": 2,
             "ref": situacion,
@@ -451,7 +451,7 @@ def armar_respuesta_chatbot(entrada):
             }
         return {
             "html": html,
-            "url": url_for("ui.ver_problemas", tema_slug=situacion.tema.slug),
+            "url": url_for("ui.ver_problemas", tema_slug=situacion.tema.slug, _anchor=f"s-{situacion.slug}"),
             "link_texto": 'Ver en "Tengo un problema" →',
         }
 

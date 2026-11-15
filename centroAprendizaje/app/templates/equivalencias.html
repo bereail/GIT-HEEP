@@ -150,7 +150,10 @@
 .equiv-fab-ayuda__icon{font-size:16px;line-height:1;}
 
 @media (max-width:620px){
-  .equiv-summary{grid-template-columns:1fr;}
+  .equiv-summary{gap:6px;}
+  .equiv-tile{padding:10px 6px;}
+  .equiv-tile__num{font-size:20px;}
+  .equiv-tile__label{font-size:11px;}
   .equiv-row{grid-template-columns:1fr;gap:4px;}
   .equiv-row__nota{grid-column:1;}
   .equiv-fab-ayuda__text{display:none;}
@@ -161,7 +164,7 @@
 <script>
 (function () {
   const DATOS = {{ datos | tojson }};
-  const LIMITE = 100;
+  const LIMITE = 30; // Pocas por vez: lo normal es buscar el artículo, no recorrer la lista.
   let limiteActual = LIMITE;
   let filtroConfianza = '';
   let filtroOrigen = '';

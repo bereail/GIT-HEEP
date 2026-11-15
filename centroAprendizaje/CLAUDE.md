@@ -191,7 +191,16 @@ Técnico:
      escritas ahí y los botones abren el chatbot ya respondiendo.
    - En el celular: tarjetas en fila, tablas que bajan de línea y chatbot
      casi a pantalla completa.
-   Sigue pendiente revisar el resto de las páginas.
+   El 15/11, en el resto de las páginas:
+   - "Tengo un problema": tarjetas plegables, con buscador. El link del
+     chatbot abre la situación justa (`#s-<slug>`). Solo se marca "Sin
+     confirmar".
+   - "Quiero hacer": tareas agrupadas por módulo.
+   - Formularios con margen interno y campos sin el hueco del ícono: solo
+     los `.input` dentro de `.input-wrap` dejan lugar para el ícono.
+   - Nomenclador: de a 30 artículos.
+   Las capturas se sacan con Chrome headless por CDP (Node 22, sin
+   dependencias), con el servidor local levantado solo para eso.
 
 ## Estado (2026-11-12)
 

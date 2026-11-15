@@ -29,7 +29,7 @@
 </div>
 
 {% if consulta.estado != 'cerrada' %}
-<form method="post" action="{{ url_for('ui.consulta_responder', token=consulta.token) }}" class="card" style="max-width:560px">
+<form method="post" action="{{ url_for('ui.consulta_responder', token=consulta.token) }}" class="card form-card">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
   <textarea class="input" name="mensaje" rows="3" required style="width:100%;resize:vertical;margin-bottom:10px" placeholder="Sumar algo más..."></textarea>
   <button type="submit" class="btn btn--primary btn--sm">Enviar</button>

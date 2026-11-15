@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% block titulo %}Tengo un problema — {{ tema.nombre }}{% endblock %}
+
 {% block contenido %}
 {% macro tarjeta_situacion(s) %}
-<div class="card situation-card">
-  <div class="situation-card__head">
-    <span class="situation-card__title">{{ s.situacion }}</span>
-    <span class="badge badge--{{ 'verified' if s.verificado else 'unverified' }}">{{ '✓ Verificado' if s.verificado else '🟡 No verificado' }}</span>
-  </div>
-  <div class="situation-card__desc">{{ s.descripcion }}</div>
+<details class="card situation-card" id="s-{{ s.slug }}"
+         data-filtro="{{ (s.situacion ~ ' ' ~ s.descripcion ~ ' ' ~ (s.causa or '') ~ ' ' ~ s.solucion) | lower }}">
+  <summary class="situation-card__head">
+    <span>
+      <span class="situation-card__title">{{ s.situacion }}</span>
+      <span class="situation-card__desc">{{ s.descripcion }}</span>
+    </span>
+    {% if not s.verificado %}<span class="badge badge--unverified" title="Esta respuesta todavía no está confirmada oficialmente">🟡 Sin confirmar</span>{% endif %}
+  </summary>
+  <div class="situation-card__body">
   {% if s.causa %}
   <div class="situation-card__label">Por qué pasa</div>
   <div class="situation-card__text">{{ s.causa }}</div>
@@ -22,13 +27,18 @@
     <a class="btn btn--ghost btn--sm" href="{{ url_for('ui.ver_tutorial', tema_slug=tema.slug, categoria_slug=s.tutorial.categoria.slug, tutorial_slug=s.tutorial.slug) }}">Ir al procedimiento →</a>
   </div>
   {% endif %}
-</div>
+  </div>
+</details>
 {% endmacro %}
 
 <nav class="breadcrumbs" aria-label="Ruta de navegación">
   <a href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">Inicio</a><span class="sep">/</span>Tengo un problema
 </nav>
-<div class="hero"><h1>¿Tenés un problema?</h1><p class="hero__desc">Elegí la situación que te pasó. Si algo no está verificado todavía, te lo decimos con claridad.</p></div>
+<div class="hero"><h1>¿Tenés un problema?</h1><p class="hero__desc">Tocá la situación que te pasó para ver por qué pasa y qué hacer.</p></div>
+<div class="input-wrap" style="margin:6px 0 14px;max-width:480px">
+  <span class="input-wrap__icon">🔎</span>
+  <input class="input" id="filtro-problemas" type="text" placeholder="Buscá tu problema. Ej.: firmar, contraseña..." />
+</div>
 
 {% if grupos|length > 1 %}
 <nav class="glossary-jump" aria-label="Ir a la categoría">
@@ -53,8 +63,46 @@
   {% endif %}
 {% endfor %}
 
+<div class="empty-state" id="sin-resultados" style="display:none">
+  <div class="empty-state__icon">🩹</div>No encontramos ese problema. Probá con otras palabras, o contanos qué te pasó acá abajo.
+</div>
+
 <div class="callout callout--tip" style="margin-top:24px">
   <span class="callout__icon">✉️</span>
   <div>¿No encontraste tu problema acá? <a href="{{ url_for('ui.consulta_nueva', tema_slug=tema.slug, contexto='Tengo un problema') }}">Contanos qué te pasó →</a></div>
 </div>
+{% endblock %}
+
+{% block script_pagina %}
+<script>
+  (function () {
+    // Si llegás desde el chatbot o el buscador, se abre la situación justa.
+    function abrirDelLink() {
+      var destino = location.hash && document.getElementById(location.hash.slice(1));
+      if (destino && destino.tagName === 'DETAILS') { destino.open = true; destino.scrollIntoView({ block: 'start' }); }
+    }
+    abrirDelLink();
+    window.addEventListener('hashchange', abrirDelLink);
+
+    var input = document.getElementById('filtro-problemas');
+    var tarjetas = Array.prototype.slice.call(document.querySelectorAll('.situation-card[data-filtro]'));
+    var secciones = Array.prototype.slice.call(document.querySelectorAll('.section[id^="cat-"]'));
+    var salto = document.querySelector('.glossary-jump');
+    var sinResultados = document.getElementById('sin-resultados');
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var alguna = false;
+      tarjetas.forEach(function (t) {
+        var visible = !q || t.dataset.filtro.indexOf(q) !== -1;
+        t.style.display = visible ? '' : 'none';
+        alguna = alguna || visible;
+      });
+      secciones.forEach(function (sec) {
+        sec.style.display = sec.querySelector('.situation-card:not([style*="none"])') ? '' : 'none';
+      });
+      if (salto) salto.style.display = q ? 'none' : '';
+      sinResultados.style.display = alguna ? 'none' : '';
+    });
+  })();
+</script>
 {% endblock %}
