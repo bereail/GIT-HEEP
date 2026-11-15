@@ -30,10 +30,10 @@
 <div class="equiv-controls">
   <div class="input-wrap" style="flex:1;min-width:200px">
     <span class="input-wrap__icon">🔎</span>
-    <input class="input" type="search" id="equiv-buscar" placeholder="Buscar artículo..." autocomplete="off">
+    <input class="input" type="search" id="equiv-buscar" aria-label="Buscar artículo" placeholder="Buscar artículo..." autocomplete="off">
   </div>
   {% if origenes|length > 1 %}
-  <select class="input" id="equiv-origen" style="max-width:220px">
+  <select class="input" id="equiv-origen" aria-label="Filtrar por pedido" style="max-width:220px">
     <option value="">Todos los pedidos</option>
     {% for o in origenes %}
     <option value="{{ o }}">{{ o }}</option>
