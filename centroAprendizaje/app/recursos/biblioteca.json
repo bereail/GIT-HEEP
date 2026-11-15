@@ -22,6 +22,11 @@
       "icono": "⚖️"
     },
     {
+      "slug": "procedimientos",
+      "titulo": "Procedimientos y modalidades",
+      "icono": "🧭"
+    },
+    {
       "slug": "pliegos-catalogo",
       "titulo": "Pliegos y catalogación",
       "icono": "📑"
@@ -268,22 +273,22 @@
       "emisor": "Legislatura provincial",
       "fecha": "con modificatorias",
       "tema": "Subsistema de bienes y servicios (arts. 106 a 140)",
-      "contiene": "Marco legal de las contrataciones provinciales.",
+      "contiene": "Regla general: licitación o concurso público (art. 116). Excepciones: licitación o concurso privado según la Ley de Presupuesto, subasta o remate, y contratación directa por las causales del inc. c. Licitación si el criterio es económico; concurso si no lo es (art. 118). Público/privado, etapa única/múltiple (arts. 119 a 123).",
       "modulos": [
         "TIMBÓ Compras"
       ],
       "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/1_Ley-No-12.510-y-Modificatorias-Normas-reglamentarias-y-complementarias-24-04-15.pdf",
       "vigencia": "vigente",
-      "lectura": "pendiente de lectura en el inventario"
+      "lectura": "arts. 114 a 126 leídos completos (procedimientos y causales); texto compilado del portal, actualizado a 2015"
     },
     {
       "id": "circ-scygb-1-2026",
       "categoria": "compras-normativa",
       "titulo": "Circular SCyGB N° 01/2026 — Encuadre según la Ley de Presupuesto",
       "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
-      "fecha": "2026",
+      "fecha": "05/01/2026",
       "tema": "Montos de cada procedimiento y quién aprueba",
-      "contiene": "Topes 2026 por procedimiento. Hay que actualizarla cada año.",
+      "contiene": "Ley de Presupuesto 14.424, art. 36: privado hasta $58.500.000. Encuadre: directa por monto hasta $5.850.000; concurso de precios para locación de inmuebles hasta $29.250.000; privado hasta $58.500.000; público, más. Aprobación: hasta $5.850.000 resolución del Subsecretario de Administración o equivalente; hasta $29.250.000 resolución; hasta $58.500.000 resolución conjunta con el Ministerio de Economía; más, decreto.",
       "modulos": [
         "TIMBÓ Compras"
       ],
@@ -504,6 +509,111 @@
       "url": "https://compras.santafe.gob.ar/normativas/",
       "vigencia": "superados",
       "lectura": "identificados; no se usan como fuente"
+    },
+    {
+      "id": "ley-13861-dec-667-2019",
+      "categoria": "procedimientos",
+      "titulo": "Ley 13.861 y Decreto N° 667/2019 — Contratación directa con efectores de la economía social y emprendedores (art. 116, inc. c, ap. 9)",
+      "emisor": "Legislatura provincial / Poder Ejecutivo",
+      "fecha": "05/04/2019 (decreto)",
+      "tema": "Causal de contratación directa del apartado 9",
+      "contiene": "La Ley 13.861 agregó el apartado 9 al art. 116 inc. c: contratos con inscriptos en el Registro Nacional de Efectores de Desarrollo Local y Economía Social y en el Registro Provincial de Emprendedores (Ley 12.375), hasta el monto que fije la reglamentación. El decreto lo reglamenta.",
+      "modulos": [
+        "Procedimientos"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Decreto-N%C2%B0-667-19-art-116-inc-c-apartado-9.pdf",
+      "vigencia": "vigente",
+      "lectura": "considerandos leídos (escaneo con texto); el monto reglamentado queda pendiente de leer"
+    },
+    {
+      "id": "dec-122-2025",
+      "categoria": "procedimientos",
+      "titulo": "Decreto N° 122/2025 — Deja sin efecto el art. 4 del Decreto 914/18",
+      "emisor": "Poder Ejecutivo provincial",
+      "fecha": "2025",
+      "tema": "Intervención de la SCyGB en licitaciones y concursos privados",
+      "contiene": "Deja sin efecto el art. 4 del Dec. 914/18. Según el índice oficial, ese artículo definía en qué licitaciones y concursos privados intervenía obligatoriamente la SCyGB.",
+      "modulos": [
+        "Procedimientos"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/DEC-2025-00000122-APPSF-PE.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa; el texto del art. 4 derogado no se leyó"
+    },
+    {
+      "id": "res-101-2019",
+      "categoria": "procedimientos",
+      "titulo": "Resolución SCyGB N° 101/2019 — Orden de Compra Abierta (OCA)",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "20/03/2019",
+      "tema": "Modalidad para bienes y servicios de demanda recurrente",
+      "contiene": "Regula la modalidad de orden de compra abierta para el Sector Público Provincial No Financiero, con modelo de pliego.",
+      "modulos": [
+        "Procedimientos"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-SCyGB-N%C2%B0-101-19-OCA.pdf",
+      "vigencia": "vigente según el índice oficial",
+      "lectura": "parcial (encabezado y anexo)"
+    },
+    {
+      "id": "res-211-2018",
+      "categoria": "procedimientos",
+      "titulo": "Resolución N° 211/2018 — Convenio Marco",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2018",
+      "tema": "Procedimiento de compras por Convenio Marco",
+      "contiene": "Según el índice oficial: aprueba y modifica el procedimiento para compras bajo la modalidad de Convenio Marco.",
+      "modulos": [
+        "Procedimientos"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-N%C2%B0-211-18.pdf",
+      "vigencia": "vigente según el índice oficial",
+      "lectura": "no se pudo leer (PDF escaneado sin texto): solo la descripción del índice oficial"
+    },
+    {
+      "id": "locaciones-inmuebles",
+      "categoria": "procedimientos",
+      "titulo": "Decreto N° 1178/2025 y Circular SCyGB N° 007/2025 — Locación de inmuebles",
+      "emisor": "Poder Ejecutivo / Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "07/10/2025 (circular)",
+      "tema": "Alquiler de inmuebles por el Estado",
+      "contiene": "Intervención de la SCyGB. La circular recomienda: plazo máximo de 24 meses, canon fijo los primeros 3 meses y actualización trimestral, informe de Catastro y constancias de al menos dos inmobiliarias.",
+      "modulos": [
+        "Procedimientos"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR_007_locaciones_1178-25.pdf.pdf",
+      "vigencia": "vigente",
+      "lectura": "circular completa; decreto: descripción del índice oficial"
+    },
+    {
+      "id": "intervencion-scygb-directas",
+      "categoria": "procedimientos",
+      "titulo": "Disposición N° 282/2016, Decreto N° 652/2020 y Resolución SCyGB N° 114/2020 — Intervención de la SCyGB en contrataciones directas",
+      "emisor": "SCyGB / Poder Ejecutivo",
+      "fecha": "2016 a 2020",
+      "tema": "Supuestos de directa con intervención obligatoria de la SCyGB",
+      "contiene": "Según el índice oficial: intervención obligatoria de la SCyGB en contrataciones directas del art. 116 inc. c, entre ellas los apartados 4, 5 y 8.",
+      "modulos": [
+        "Procedimientos"
+      ],
+      "url": "https://compras.santafe.gob.ar/normativas/",
+      "vigencia": "vigente según el índice oficial",
+      "lectura": "solo la descripción del índice oficial: falta leer los textos"
+    },
+    {
+      "id": "disp-226-2016",
+      "categoria": "procedimientos",
+      "titulo": "Disposición N° 226/2016 — Modelos de certificados de recepción definitiva",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2016",
+      "tema": "Recepción definitiva de bienes y servicios (CRDB y CRDS)",
+      "contiene": "Según el índice oficial: aprueba los modelos de Certificado de Recepción Definitiva de Bienes y de Servicios, clave para la conformidad final y el pago.",
+      "modulos": [
+        "Etapa contractual"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/5_Disposicion-N%C2%B0-226.pdf",
+      "vigencia": "vigente según el índice oficial",
+      "lectura": "solo la descripción del índice oficial"
     }
   ],
   "discrepancias": [

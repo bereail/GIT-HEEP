@@ -939,6 +939,15 @@ def capacitacion_inicio():
     )
 
 
+@admin_bp.route("/capacitacion/algoritmo")
+@requiere_admin
+def capacitacion_algoritmo():
+    return render_template(
+        "recursos/algoritmo.html", algoritmo=recursos.algoritmo(), docs_min=recursos.docs_minimos(),
+        **_contexto_recursos(),
+    )
+
+
 @admin_bp.route("/capacitacion/primera-clase")
 @requiere_admin
 def capacitacion_primera_clase():

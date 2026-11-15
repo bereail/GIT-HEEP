@@ -1,0 +1,231 @@
+{
+  "titulo": "¿Qué camino sigue una compra?",
+  "actualizado": "2026-11-15",
+  "montos": {
+    "vigencia": "2026",
+    "fuente": "circ-scygb-1-2026",
+    "base": "Ley de Presupuesto N° 14.424, art. 36 (Circular SCyGB 01/2026 del 05/01/2026)",
+    "aviso": "Los montos cambian cada año con la Ley de Presupuesto. Verificá la circular de encuadre del año en curso.",
+    "tramos": [
+      {"hasta": "Hasta $5.850.000", "proc": "Contratación directa por monto", "aprueba": "Resolución del Subsecretario de Administración o equivalente"},
+      {"hasta": "Hasta $29.250.000", "proc": "Concurso de precios (solo locación de inmuebles)", "aprueba": "Resolución"},
+      {"hasta": "Hasta $58.500.000", "proc": "Licitación o concurso privado", "aprueba": "Hasta $29.250.000: resolución · Más: resolución conjunta con el Ministerio de Economía"},
+      {"hasta": "Más de $58.500.000", "proc": "Licitación o concurso público", "aprueba": "Decreto"}
+    ]
+  },
+  "ejemplos": {
+    "insumos": {"nombre": "Insumos médicos", "icono": "🧤", "texto": "Guantes de nitrilo para todo el hospital."},
+    "medicamentos": {"nombre": "Medicamentos", "icono": "💊", "texto": "Antibióticos para la farmacia del hospital."},
+    "equipamiento": {"nombre": "Equipamiento", "icono": "🩺", "texto": "Un monitor multiparamétrico para terapia intensiva."},
+    "mantenimiento": {"nombre": "Servicio de mantenimiento", "icono": "🛗", "texto": "Mantenimiento de los ascensores del hospital."},
+    "oficina": {"nombre": "Materiales de oficina", "icono": "📎", "texto": "Resmas y tóner para las oficinas administrativas."}
+  },
+  "inicio": "necesidad",
+  "nodos": {
+    "necesidad": {
+      "tipo": "inicio", "sistema": "expediente", "titulo": "¿Qué necesita comprar el organismo?",
+      "pregunta": "Elegí un ejemplo para seguir el recorrido",
+      "opciones_ejemplo": true, "siguiente": "d-excepcion",
+      "ficha": {
+        "que": "Un área del hospital detecta que le falta algo para funcionar y lo pide formalmente.",
+        "para": "Que la compra responda a una necesidad real y justificada.",
+        "quien": "Área requirente (el servicio que necesita) y el área de Compras.",
+        "sistema": "Expediente electrónico: el pedido y su justificación se suman al expediente.",
+        "docs": "Nota de pedido con qué, cuánto y para qué; si corresponde, ficha técnica y presupuesto de referencia.",
+        "verificar": "Que el pedido diga qué se necesita, la cantidad y el destino.",
+        "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 6: la etapa preparatoria se resuelve por expediente electrónico"}],
+        "despues": "Se analiza qué procedimiento corresponde."
+      }
+    },
+    "d-excepcion": {
+      "tipo": "decision", "sistema": "decision", "titulo": "¿Hay una causal de contratación directa por excepción?",
+      "pregunta": "La regla general es la licitación o concurso público. ¿Se da alguno de estos casos previstos en la ley?",
+      "opciones": [
+        {"texto": "Urgencia o emergencia imprevisible", "va": "b-urgencia", "nota": "art. 116 inc. c ap. 2"},
+        {"texto": "Una licitación anterior quedó desierta", "va": "b-desierto", "nota": "art. 116 inc. c ap. 3"},
+        {"texto": "Otra causal: exclusividad, especialidad, entre organismos, reparación…", "va": "b-otras", "nota": "art. 116 inc. c ap. 4 a 9"},
+        {"texto": "No, ninguna", "va": "d-modalidad"}
+      ],
+      "ficha": {
+        "que": "Antes de mirar el monto, se revisa si la compra encaja en una causal de excepción prevista en la ley.",
+        "para": "Las excepciones permiten contratar directamente solo en casos justificados y documentados.",
+        "quien": "Área de Compras (Unidad Operativa), con la justificación del área requirente.",
+        "sistema": "Decisión de encuadre: se documenta en el expediente.",
+        "docs": "Justificación de la causal (por ejemplo, informe de urgencia o constancia de exclusividad).",
+        "verificar": "Que la causal esté prevista en el art. 116 inc. c y que su justificación quede en el expediente.",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116: regla general y excepciones"}],
+        "despues": "Si no hay causal, se ve si es una modalidad especial y después el monto."
+      }
+    },
+    "d-modalidad": {
+      "tipo": "decision", "sistema": "decision", "titulo": "¿Es una modalidad especial?",
+      "pregunta": "Algunas compras tienen un procedimiento propio.",
+      "opciones": [
+        {"texto": "Alquiler de un inmueble", "va": "e-locacion"},
+        {"texto": "Evaluación en varias fases (etapa múltiple)", "va": "e-etapa-multiple"},
+        {"texto": "Convenio Marco u Orden de Compra Abierta", "va": "e-convenio"},
+        {"texto": "Subasta o remate", "va": "e-subasta"},
+        {"texto": "No, es una compra común", "va": "d-monto"}
+      ],
+      "ficha": {
+        "que": "Se identifica si la compra tiene una modalidad o tratamiento especial.",
+        "para": "No forzar todas las compras a un único circuito.",
+        "quien": "Área de Compras.",
+        "sistema": "Decisión de encuadre.",
+        "docs": "—",
+        "verificar": "La normativa específica de cada modalidad.",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "arts. 116 (subasta), 119 a 123 (etapa múltiple)"}, {"id": "locaciones-inmuebles", "tipo": "norma"}, {"id": "res-101-2019", "tipo": "norma"}, {"id": "res-211-2018", "tipo": "norma"}],
+        "despues": "Si es una compra común, el procedimiento depende del monto."
+      }
+    },
+    "d-monto": {
+      "tipo": "decision", "sistema": "decision", "titulo": "¿Cuál es el valor estimado de la compra?",
+      "pregunta": "Con la estimación del presupuesto de referencia (montos 2026):",
+      "muestra_montos": true,
+      "opciones": [
+        {"texto": "Hasta $5.850.000", "va": "a-directa"},
+        {"texto": "Más de $5.850.000 y hasta $58.500.000", "va": "c-privada"},
+        {"texto": "Más de $58.500.000", "va": "d-publica"}
+      ],
+      "ficha": {
+        "que": "El monto estimado define el procedimiento y quién aprueba.",
+        "para": "Cuanto mayor es el monto, más publicidad y competencia se exigen.",
+        "quien": "Área de Compras, con el presupuesto de referencia.",
+        "sistema": "Decisión de encuadre.",
+        "docs": "Presupuesto de referencia o estimación del costo.",
+        "verificar": "Usar los montos del año en curso (cambian con cada Ley de Presupuesto).",
+        "fuentes": [{"id": "circ-scygb-1-2026", "tipo": "norma", "punto": "encuadre y aprobación 2026"}, {"id": "ley-12510", "tipo": "norma", "punto": "arts. 116, 117 y 121"}],
+        "despues": "Cada tramo sigue un circuito distinto."
+      }
+    },
+
+    "a-directa": {
+      "tipo": "accion", "sistema": "expediente", "rama": "A", "titulo": "Gestión directa por monto (CD-01)",
+      "responsable": "Compras · oficina que aprueba", "docs_cortos": "CD-01 a CD-04",
+      "pasos": ["a-caratula", "a-cd01", "a-armar", "a-pase", "a-cd", "fin-contractual"],
+      "ficha": {
+        "que": "Se compra sin licitación porque el monto no supera el tope: es la causal del art. 116 inc. c ap. 1.",
+        "para": "Resolver compras de monto menor con un trámite más simple.",
+        "quien": "Área de Compras; aprueba la oficina competente (hasta $5.850.000: resolución del Subsecretario de Administración o equivalente).",
+        "sistema": "Todo por expediente electrónico y Documentos Oficiales. No pasa por TIMBÓ Compras.",
+        "docs": "Nota de solicitud, presupuestos (como documento informativo), CD-01 (solicitud), CD-02 (pedido de presupuesto), CD-03 (evaluación y adjudicación), CD-04 (orden de provisión).",
+        "verificar": "Que el monto no supere el tope del año y que el CD-01 tenga costo total y fundamentación.",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 1"}, {"id": "circ-scygb-1-2026", "tipo": "norma", "punto": "tope 2026"}, {"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "video oficial \"CD-01\""}],
+        "despues": "Carátula, CD-01, armado del expediente y pase para aprobar."
+      }
+    },
+    "a-caratula": {"tipo": "accion", "sistema": "expediente", "titulo": "Carátula", "responsable": "Mesa de Entradas", "docs_cortos": "Trámite \"Gestión Directa - por Monto Menor al Tope\"", "ficha": {"que": "Se abre el expediente con el tipo de trámite de compra directa.", "para": "Que el trámite tenga su carpeta digital desde el inicio.", "quien": "Mesa de Entradas (tiene el permiso de carátula).", "sistema": "Expediente electrónico.", "docs": "Carátula del trámite \"Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope\".", "verificar": "Elegir el tipo de trámite correcto.", "fuentes": [{"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "video oficial \"Compras Directas\""}, {"id": "circ-ug-3-2025", "tipo": "norma", "punto": "art. 4.c: permiso de carátula"}], "despues": "Se genera el CD-01."}},
+    "a-cd01": {"tipo": "accion", "sistema": "expediente", "titulo": "Formulario CD-01", "responsable": "Compras", "docs_cortos": "Documento oficial con firma conjunta", "ficha": {"que": "Se completa la solicitud de contratación directa como documento oficial.", "para": "Dejar constancia de qué se compra, cuánto cuesta y por qué.", "quien": "Compras; firman al menos dos personas (firma conjunta).", "sistema": "Documentos Oficiales de TIMBÓ.", "docs": "CD-01 con renglones, costo total estimado, fundamentación y proveedores propuestos.", "verificar": "Costo total y fundamentación son obligatorios.", "fuentes": [{"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "video oficial \"CD-01\""}], "despues": "Se arma el expediente."}},
+    "a-armar": {"tipo": "accion", "sistema": "expediente", "titulo": "Armar el expediente", "responsable": "Compras", "docs_cortos": "CD-01 vinculado · nota · presupuestos", "ficha": {"que": "Se vincula el CD-01, se suben la nota y la ficha técnica, y los presupuestos van como documento informativo.", "para": "Que la oficina que aprueba tenga todo junto.", "quien": "Compras.", "sistema": "Expediente electrónico.", "docs": "Nota de solicitud, ficha técnica si corresponde, presupuestos.", "verificar": "Lo incorporado no se puede borrar: revisar antes de incorporar.", "fuentes": [{"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "video oficial \"CD-01\""}], "despues": "Pase para aprobación."}},
+    "a-pase": {"tipo": "accion", "sistema": "expediente", "titulo": "Pase para aprobación", "responsable": "Compras → oficina que aprueba", "docs_cortos": "Providencia del pase", "ficha": {"que": "El expediente pasa a la oficina que tiene que autorizar la compra.", "para": "Obtener la autorización.", "quien": "La oficina competente según el monto.", "sistema": "Expediente electrónico.", "docs": "Providencia del pase; la oficina puede autorizar en el mismo pase.", "verificar": "Elegir la oficina correcta: al confirmar, el expediente sale de tu bandeja.", "fuentes": [{"id": "videos-app-timbocompras", "tipo": "procedimiento"}, {"id": "circ-scygb-1-2026", "tipo": "norma", "punto": "quién aprueba según el monto"}], "despues": "Presupuestos, evaluación y orden de provisión (CD-02 a CD-04)."}},
+    "a-cd": {"tipo": "accion", "sistema": "expediente", "titulo": "Presupuestos, evaluación y orden de provisión", "responsable": "Compras", "docs_cortos": "CD-02 · CD-03 · CD-04", "ficha": {"que": "Se piden presupuestos, se evalúan y se emite la orden de provisión.", "para": "Elegir la mejor propuesta y formalizar la compra.", "quien": "Compras y quien aprueba.", "sistema": "Expediente y Documentos Oficiales.", "docs": "CD-02 (pedido de presupuesto), CD-03 (evaluación y adjudicación), CD-04 (orden de provisión). CD-05 es una nota de rechazo.", "verificar": "Que el proveedor cumpla los requisitos para cobrar (RUPC o alta de beneficiario según corresponda).", "fuentes": [{"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "formularios CD-01 a CD-05"}, {"id": "circ-scygb-6-2026", "tipo": "norma", "punto": "RUPC o alta en SIPAF"}], "despues": "Entrega, recepción y pago."}},
+
+    "b-urgencia": {
+      "tipo": "accion", "sistema": "compras", "rama": "B", "titulo": "Contratación directa por urgencia o emergencia",
+      "responsable": "Compras · autoridad competente", "docs_cortos": "Justificación de la urgencia", "alerta": "Va por TIMBÓ Compras (Circular UG TIMBÓ 8/2026)",
+      "pasos": ["b-flex", "c-ofertas", "c-apertura", "c-evaluacion", "c-preadjudicacion", "c-adjudicacion", "fin-contractual"],
+      "ficha": {
+        "que": "Se contrata directamente porque una urgencia imprevisible impide hacer otro procedimiento a tiempo.",
+        "para": "Responder a una necesidad que no puede esperar una licitación.",
+        "quien": "Compras, con la justificación del área; autoriza la autoridad competente.",
+        "sistema": "Íntegramente en TIMBÓ Compras.",
+        "docs": "Justificación de la urgencia (circunstancias objetivas). Como mínimo, acreditar personería o representación del proveedor.",
+        "verificar": "Que la urgencia sea imprevisible, objetiva y de tal magnitud que impida otro procedimiento a tiempo.",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 2"}, {"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 3 y 4"}],
+        "despues": "Se cargan al menos 3 proveedores y se sigue con plazos reducidos."
+      }
+    },
+    "b-desierto": {
+      "tipo": "accion", "sistema": "compras", "rama": "B", "titulo": "Contratación directa por proceso desierto",
+      "responsable": "Compras", "docs_cortos": "Mismas condiciones del llamado", "alerta": "Rigen exactamente las condiciones del llamado original",
+      "pasos": ["b-flex", "c-ofertas", "c-apertura", "c-evaluacion", "c-preadjudicacion", "c-adjudicacion", "fin-contractual"],
+      "ficha": {
+        "que": "Una licitación o concurso quedó desierto por falta de ofertas ajustadas al pliego y se contrata directamente.",
+        "para": "No volver a empezar de cero cuando nadie ofertó bien.",
+        "quien": "Compras; autoriza la autoridad competente.",
+        "sistema": "Íntegramente en TIMBÓ Compras.",
+        "docs": "Constancia del proceso desierto. Rigen exactamente las mismas condiciones y cláusulas del llamado.",
+        "verificar": "Que no se cambien las condiciones del pliego original.",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 3"}, {"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 3 y 4.c"}],
+        "despues": "Se cargan al menos 3 proveedores y se sigue en TIMBÓ Compras."
+      }
+    },
+    "b-flex": {"tipo": "accion", "sistema": "compras", "titulo": "Tramitación flexibilizada", "responsable": "Compras · autoridad competente", "docs_cortos": "Mínimo 3 proveedores invitados", "alerta": "Se pueden reducir u omitir consultas e impugnaciones", "ficha": {"que": "TIMBÓ Compras admite flexibilizar algunos pasos en urgencia y desierto.", "para": "Ganar tiempo sin dejar de documentar.", "quien": "Compras; la autoridad competente interviene en el sistema o se vincula el documento que autoriza.", "sistema": "TIMBÓ Compras.", "docs": "Autorización: alcanza la intervención en el sistema de la autoridad o vincular el documento autorizatorio, sin acto formal. En urgencia, las garantías y los plazos de mantenimiento son optativos.", "verificar": "Cargar al menos 3 proveedores en el sistema.", "fuentes": [{"id": "circ-ug-8-2026", "tipo": "norma", "punto": "art. 4: autorización, plazos, requisitos, invitaciones"}], "despues": "Ofertas, apertura y evaluación."}},
+    "b-otras": {
+      "tipo": "accion", "sistema": "expediente", "rama": "B", "titulo": "Otras causales de contratación directa",
+      "responsable": "Compras · SCyGB en algunos casos", "docs_cortos": "Justificación según la causal", "alerta": "Algunas causales requieren intervención de la SCyGB",
+      "pasos": ["b-otras-causales", "fin-contractual"],
+      "ficha": {
+        "que": "La ley prevé otras causales: obras de arte o científicas (ap. 4), exclusividad (ap. 5), entre organismos oficiales (ap. 6), reparaciones que exigen desarme (ap. 7), compras en el lugar de producción (ap. 8) y efectores de la economía social y emprendedores (ap. 9).",
+        "para": "Contratar directamente cuando, por la naturaleza del caso, no tiene sentido competir.",
+        "quien": "Compras; según el índice oficial, la SCyGB interviene obligatoriamente en algunos supuestos (entre ellos, ap. 4, 5 y 8).",
+        "sistema": "Según la capacitación oficial, se elige el tipo de compra directa al pedir la carátula (expediente electrónico). La Circular UG 8/2026 solo pasa a TIMBÓ Compras la urgencia y el desierto.",
+        "docs": "La justificación que pide cada causal. Por ejemplo, exclusividad: demostración documentada de la exclusividad e informe técnico de que no hay sustitutos.",
+        "verificar": "El texto exacto de la causal y si requiere intervención de la SCyGB.",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 4 a 8"}, {"id": "ley-13861-dec-667-2019", "tipo": "norma", "punto": "ap. 9"}, {"id": "intervencion-scygb-directas", "tipo": "norma", "punto": "pendiente de leer los textos"}, {"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "video oficial \"Compras Directas\": tipos al pedir la carátula"}],
+        "despues": "Se documenta la causal y se sigue el circuito de la directa."
+      }
+    },
+    "b-otras-causales": {"tipo": "accion", "sistema": "organismo", "titulo": "Justificar la causal y, si corresponde, intervención de la SCyGB", "responsable": "Compras · SCyGB", "docs_cortos": "Informe de la causal", "alerta": "Pendiente: el detalle de cada intervención", "estado": "pendiente", "ficha": {"que": "Se documenta por qué aplica la causal y, en los supuestos previstos, interviene la SCyGB.", "para": "Que la excepción quede justificada y controlada.", "quien": "Compras y, en algunos casos, la Subsecretaría de Contrataciones y Gestión de Bienes.", "sistema": "Expediente electrónico.", "docs": "Informes y constancias según la causal.", "verificar": "Leer la Disposición 282/2016, el Dec. 652/2020 y la Res. 114/2020 (pendiente).", "fuentes": [{"id": "intervencion-scygb-directas", "tipo": "norma"}], "despues": "Adjudicación y etapa contractual."}},
+
+    "c-privada": {
+      "tipo": "accion", "sistema": "compras", "rama": "C", "titulo": "Licitación o concurso privado",
+      "responsable": "Gestor · Supervisor · Evaluadores", "docs_cortos": "Pliego particular · invitaciones",
+      "pasos": ["c-pliego", "c-aprobacion", "c-acto", "c-tcp", "c-invitacion", "c-consultas", "c-ofertas", "c-apertura", "c-evaluacion", "c-preadjudicacion", "c-impugnaciones", "c-adjudicacion", "fin-contractual"],
+      "ficha": {
+        "que": "Se invita a una cantidad determinada de proveedores. Es licitación si se elige por precio y concurso si pesan otros factores.",
+        "para": "Comprar montos medianos con competencia y un trámite más acotado que el público.",
+        "quien": "Gestor, Supervisor, Evaluadores (mínimo 3), Jurisdicción comitente; aprueba la autoridad según el monto.",
+        "sistema": "TIMBÓ Compras para el pliego, las ofertas, la evaluación y la preadjudicación; expediente para los actos y la adjudicación.",
+        "docs": "Pliego particular (8 formularios), acto que aprueba y autoriza el llamado, nómina de invitados.",
+        "verificar": "Que también se evalúen las ofertas de quienes no fueron invitados (art. 121).",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "arts. 116 inc. a, 118 y 121"}, {"id": "circ-scygb-1-2026", "tipo": "norma"}, {"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 6 y 10"}, {"id": "dec-122-2025", "tipo": "norma", "punto": "sin intervención obligatoria de la SCyGB (según el índice oficial)"}],
+        "despues": "El Gestor arma el pliego en TIMBÓ Compras."
+      }
+    },
+    "d-publica": {
+      "tipo": "accion", "sistema": "compras", "rama": "D", "titulo": "Licitación o concurso público",
+      "responsable": "Gestor · Supervisor · Evaluadores · URC", "docs_cortos": "Pliego particular · publicación", "alerta": "Controles de la URC: si aplican al hospital está pendiente",
+      "pasos": ["c-pliego", "c-aprobacion", "d-urc-pliego", "c-acto", "c-tcp", "d-publicacion", "c-consultas", "c-ofertas", "c-apertura", "c-evaluacion", "c-preadjudicacion", "d-urc-preadj", "c-impugnaciones", "c-adjudicacion", "fin-contractual"],
+      "ficha": {
+        "que": "El llamado se dirige a todos los posibles oferentes. Es la regla general de la ley.",
+        "para": "Máxima publicidad y competencia en las compras grandes.",
+        "quien": "Gestor, Supervisor, Evaluadores, Jurisdicción comitente; en la Administración Pública Central, la URC controla el pliego y la preadjudicación; aprueba por decreto.",
+        "sistema": "TIMBÓ Compras + expediente; publicación en el Portal de Compras y aviso oficial.",
+        "docs": "Pliego particular, acto de aprobación (decreto), publicación y aviso oficial.",
+        "verificar": "Publicación con 3 días de anticipación al aviso y 10 días corridos hasta la apertura (Circular SCyGB 04/2026).",
+        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "arts. 116 y 120"}, {"id": "circ-scygb-1-2026", "tipo": "norma"}, {"id": "res-me-73-2026", "tipo": "norma"}, {"id": "circ-scygb-4-2026", "tipo": "norma"}],
+        "despues": "El Gestor arma el pliego en TIMBÓ Compras."
+      }
+    },
+    "c-pliego": {"tipo": "accion", "sistema": "compras", "titulo": "Armar el pliego particular", "responsable": "Gestor", "docs_cortos": "8 formularios · mínimo 3 evaluadores", "ficha": {"que": "El Gestor crea el proceso con el número de expediente y completa los formularios del pliego.", "para": "Definir las reglas de esta compra.", "quien": "Gestor.", "sistema": "TIMBÓ Compras.", "docs": "Aspectos generales, detalle de renglones, requisitos de participación, garantías, condiciones del contrato, facturación y pago, anexos y evaluadores.", "verificar": "Lo que no esté en los requisitos de participación no se le puede exigir al proveedor.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 10 a 13"}, {"id": "circ-scygb-5-2026", "tipo": "norma", "punto": "textos modelo"}, {"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "Paso 01 y Clase 02"}], "despues": "Revisión y aprobación."}},
+    "c-aprobacion": {"tipo": "accion", "sistema": "compras", "titulo": "Revisión y aprobación del pliego", "responsable": "Jurisdicción comitente · Supervisor", "docs_cortos": "Número de proceso definitivo", "ficha": {"que": "La comitente revisa el pliego y el Supervisor aprueba o rechaza los formularios, y arma cronograma y nómina.", "para": "Control antes de publicar.", "quien": "Jurisdicción comitente y Supervisor.", "sistema": "TIMBÓ Compras.", "docs": "Pliego aprobado; TIMBÓ asigna el número de proceso definitivo.", "verificar": "Que el cronograma respete los plazos de la normativa.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 10 y 14"}, {"id": "videos-app-timbocompras", "tipo": "procedimiento", "punto": "Paso 02"}], "despues": "Acto que aprueba el pliego y autoriza el llamado."}},
+    "d-urc-pliego": {"tipo": "control", "sistema": "organismo", "titulo": "Control del pliego (URC)", "responsable": "Dirección General de Contrataciones y Gestión de Bienes", "docs_cortos": "Informe de control en el expediente", "alerta": "Obligatorio en la Administración Pública Central; para el hospital, pendiente", "estado": "pendiente", "ficha": {"que": "En \"Aprobar contratación\", el expediente va a la URC con el pliego en PDF para su control.", "para": "Control obligatorio de la URC sobre licitaciones y concursos públicos.", "quien": "Dirección General de Contrataciones y Gestión de Bienes (URC).", "sistema": "Expediente electrónico (pase).", "docs": "Informe de control de la URC, como orden o documento informativo.", "verificar": "Sin el informe, el proceso no se puede aprobar ni publicar. Si alcanza al hospital está pendiente de confirmar.", "fuentes": [{"id": "res-me-73-2026", "tipo": "norma", "punto": "art. 2"}, {"id": "circ-scygb-3-2026", "tipo": "norma"}], "despues": "Acto que aprueba el pliego."}},
+    "c-acto": {"tipo": "accion", "sistema": "expediente", "titulo": "Acto que aprueba el pliego y autoriza el llamado", "responsable": "Autoridad competente · lo carga el Supervisor", "docs_cortos": "Resolución, resolución conjunta o decreto", "ficha": {"que": "La autoridad firma el acto en el expediente y el Supervisor lo vincula en TIMBÓ Compras.", "para": "Autorizar formalmente el llamado.", "quien": "Autoridad competente según el monto; el Supervisor lo carga.", "sistema": "Expediente (firma) y TIMBÓ Compras (vinculación).", "docs": "Acto administrativo (decisorio) con la afectación presupuestaria.", "verificar": "Número y fecha antes de firmar: lo firmado no se edita.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 10: el Supervisor carga los actos"}, {"id": "circ-scygb-1-2026", "tipo": "norma", "punto": "quién aprueba según el monto"}], "despues": "Vista al Tribunal de Cuentas."}},
+    "c-tcp": {"tipo": "accion", "sistema": "organismo", "titulo": "Vista al Tribunal de Cuentas y SIN", "responsable": "Compras o Mesa de Entradas", "docs_cortos": "Gestión de Visualización · carga en SIN", "ficha": {"que": "Se comparte el expediente con el TCP y el acto se carga en el SIN, que lo envía por correo.", "para": "Control externo del Tribunal de Cuentas.", "quien": "Compras o Mesa de Entradas (lo decide el hospital); usuario habilitado en el SIN.", "sistema": "Expediente (\"Gestión de Visualización\") y SIN (externo).", "docs": "Acto cargado en el SIN.", "verificar": "El SIN solo funciona desde la red institucional y con usuario habilitado.", "fuentes": [{"id": "circ-ug-9-2026", "tipo": "norma"}, {"id": "circ-ug-11-2026", "tipo": "norma"}], "despues": "Invitación o publicación."}},
+    "c-invitacion": {"tipo": "accion", "sistema": "compras", "titulo": "Invitación a la nómina y publicación", "responsable": "Supervisor · Compras", "docs_cortos": "Nómina · cronograma", "ficha": {"que": "TIMBÓ Compras invita por correo a la nómina y el proceso queda visible en \"Participar de un proceso\".", "para": "Que los proveedores se enteren y participen.", "quien": "Supervisor (nómina y cronograma); Compras (portal).", "sistema": "TIMBÓ Compras y Portal de Compras.", "docs": "Nómina de proveedores y cronograma de fechas.", "verificar": "En el portal, marcar \"generar enlace con TIMBO\" y el expediente principal.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 15 y 16"}, {"id": "circ-scygb-4-2026", "tipo": "norma", "punto": "generar enlace con TIMBO"}, {"id": "ley-12510", "tipo": "norma", "punto": "art. 121"}], "despues": "Consultas."}},
+    "d-publicacion": {"tipo": "accion", "sistema": "externo", "titulo": "Publicación en el portal y aviso oficial", "responsable": "Compras", "docs_cortos": "Portal de Compras · avisosoficiales@santafe.gob.ar", "alerta": "3 días de anticipación al aviso y 10 días corridos hasta la apertura", "ficha": {"que": "Se carga la gestión en el Portal de Compras y se pide el aviso oficial por mail.", "para": "Publicidad del llamado público.", "quien": "Compras.", "sistema": "Portal de Compras (externo) y correo; TIMBÓ invita a la nómina.", "docs": "Gestión en el portal con \"generar enlace con TIMBO\"; mail a avisosoficiales@santafe.gob.ar.", "verificar": "Sin el enlace con TIMBÓ, al proveedor no le aparece \"Ofertar\".", "fuentes": [{"id": "circ-scygb-4-2026", "tipo": "norma"}, {"id": "ley-12510", "tipo": "norma", "punto": "art. 115 inc. e: publicidad"}], "despues": "Consultas."}},
+    "c-consultas": {"tipo": "accion", "sistema": "compras", "titulo": "Consultas y circulares", "responsable": "Oferentes · Gestor", "docs_cortos": "Circular aclaratoria o modificatoria", "ficha": {"que": "Los proveedores que participan consultan; se responde con circulares que ven todos.", "para": "Aclarar o corregir el pliego en igualdad de condiciones.", "quien": "Oferentes (consultan) y Gestor (genera las circulares).", "sistema": "TIMBÓ Compras (\"Mis ofertas\").", "docs": "Circulares aclaratorias o modificatorias.", "verificar": "La consulta no muestra el autor. Una modificatoria suspende el proceso hasta publicar el cambio.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 17"}], "despues": "Presentación de ofertas."}},
+    "c-ofertas": {"tipo": "accion", "sistema": "compras", "titulo": "Presentación de ofertas", "responsable": "Oferentes", "docs_cortos": "Oferta técnica y económica · requisitos mínimos", "alerta": "Solo vale la oferta en estado \"Oferta presentada\"", "ficha": {"que": "Los proveedores completan los formularios de oferta hasta la fecha y hora de apertura.", "para": "Competir por la compra.", "quien": "Oferentes inscriptos en el RUPC, con ID Ciudadana.", "sistema": "TIMBÓ Compras.", "docs": "Formularios de oferta técnica y económica y requisitos mínimos; PDF de hasta 5 MB recomendado.", "verificar": "Una oferta en borrador no participa.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 18"}, {"id": "circ-ug-2-2026", "tipo": "norma", "punto": "RUPC"}], "despues": "Apertura."}},
+    "c-apertura": {"tipo": "accion", "sistema": "compras", "titulo": "Apertura automática", "responsable": "TIMBÓ Compras", "docs_cortos": "Acta de apertura · cuadro comparativo", "ficha": {"que": "A la fecha y hora del cronograma, TIMBÓ abre las ofertas solo.", "para": "Que todas se conozcan al mismo tiempo y nadie las vea antes.", "quien": "El sistema (nadie tiene que \"abrir\").", "sistema": "TIMBÓ Compras.", "docs": "Acta de apertura y cuadro comparativo de precios, generados automáticamente.", "verificar": "Hasta la apertura, las ofertas están cifradas.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 9 y 19"}], "despues": "Evaluación."}},
+    "c-evaluacion": {"tipo": "accion", "sistema": "compras", "titulo": "Evaluación y subsanaciones", "responsable": "Evaluadores", "docs_cortos": "Subtrámites: subsanar, aclarar, mejorar precio", "ficha": {"que": "La comisión analiza cada oferta y, si falta algo, pide subsanar, aclarar o mejorar el precio.", "para": "Saber qué ofertas cumplen y cuál conviene.", "quien": "Evaluadores (mínimo 3); su opinión no es vinculante.", "sistema": "TIMBÓ Compras.", "docs": "Evaluación administrativa, técnica y económica; subtrámites al proveedor.", "verificar": "Si el proveedor no responde a tiempo, el subtrámite pasa a \"descartado\".", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 10, 13 y 21"}, {"id": "dec-287-2026", "tipo": "norma", "punto": "art. 123: comisión evaluadora"}], "despues": "Informe de preadjudicación."}},
+    "c-preadjudicacion": {"tipo": "accion", "sistema": "compras", "titulo": "Informe de preadjudicación", "responsable": "Evaluadores", "docs_cortos": "Informe firmado en orden · notificado", "alerta": "Preadjudicar es recomendar, no decidir", "ficha": {"que": "Los evaluadores firman el informe que recomienda a quién adjudicar; se notifica al domicilio digital.", "para": "Dar a conocer la recomendación antes de decidir.", "quien": "Evaluadores, en el orden de \"Ordenar evaluadores\".", "sistema": "TIMBÓ Compras.", "docs": "Informe de preadjudicación.", "verificar": "Que no se confunda con la adjudicación.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 22"}], "despues": "Impugnaciones."}},
+    "d-urc-preadj": {"tipo": "control", "sistema": "organismo", "titulo": "Control de la preadjudicación (URC)", "responsable": "Dirección General de Contrataciones y Gestión de Bienes", "docs_cortos": "Informe de control", "alerta": "Para el hospital, pendiente", "estado": "pendiente", "ficha": {"que": "Antes del \"Cronograma de impugnación\", el expediente va a la URC para controlar lo resuelto por la comisión.", "para": "Control obligatorio en la Administración Pública Central.", "quien": "URC.", "sistema": "Expediente electrónico (pase).", "docs": "Informe de control de la URC.", "verificar": "Sin el informe no se avanza a \"Preadjudicado\". Si alcanza al hospital está pendiente.", "fuentes": [{"id": "res-me-73-2026", "tipo": "norma"}, {"id": "circ-scygb-3-2026", "tipo": "norma"}], "despues": "Impugnaciones."}},
+    "c-impugnaciones": {"tipo": "accion", "sistema": "compras", "titulo": "Impugnaciones", "responsable": "Oferentes · Evaluadores las reciben", "docs_cortos": "Formulario + garantía", "ficha": {"que": "Los oferentes pueden impugnar dentro del período del cronograma, con la garantía exigida.", "para": "Que cualquier oferente pueda cuestionar el resultado.", "quien": "Oferentes; las reciben los Evaluadores; las resuelve la autoridad junto con la adjudicación.", "sistema": "TIMBÓ Compras.", "docs": "Formulario de impugnación y garantía.", "verificar": "El plazo de impugnación de la preadjudicación lo fija el Pliego Único (2 días).", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 20"}, {"id": "pliego-unico-2026", "tipo": "norma"}], "despues": "Adjudicación."}},
+    "c-adjudicacion": {"tipo": "accion", "sistema": "expediente", "titulo": "Adjudicación", "responsable": "Autoridad competente · Supervisor carga el acto", "docs_cortos": "Acto de adjudicación", "alerta": "Recién acá se decide la compra", "ficha": {"que": "La autoridad dicta el acto de adjudicación en el expediente; en TIMBÓ Compras se carga y el proceso se cierra.", "para": "Decidir a quién se le compra.", "quien": "Autoridad competente; el Supervisor carga el acto.", "sistema": "Expediente electrónico (y carga en TIMBÓ Compras).", "docs": "Acto de adjudicación.", "verificar": "Que las impugnaciones estén resueltas.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "puntos 6 y 10"}], "despues": "Etapa contractual."}},
+
+    "e-locacion": {"tipo": "accion", "sistema": "organismo", "rama": "E", "titulo": "Locación de inmueble", "responsable": "Compras · SCyGB · Catastro", "docs_cortos": "Informe de Catastro · constancias inmobiliarias", "alerta": "Intervención de la SCyGB", "pasos": ["fin-contractual"], "ficha": {"que": "El alquiler de un inmueble tiene reglas propias: hasta $29.250.000 (2026) se puede hacer concurso de precios.", "para": "Alquilar a un precio razonable y con plazos acotados.", "quien": "La jurisdicción comitente, con intervención de la SCyGB y del Servicio de Catastro.", "sistema": "Expediente electrónico (no hay constancia de que vaya por TIMBÓ Compras).", "docs": "Informe de Catastro; constancias de al menos dos inmobiliarias o de la Cámara Inmobiliaria.", "verificar": "Plazo máximo recomendado de 24 meses y canon fijo los primeros 3 meses.", "fuentes": [{"id": "locaciones-inmuebles", "tipo": "norma"}, {"id": "circ-scygb-1-2026", "tipo": "norma", "punto": "concurso de precios para locación"}], "despues": "Contrato de locación."}},
+    "e-etapa-multiple": {"tipo": "accion", "sistema": "expediente", "rama": "E", "titulo": "Licitación de etapa múltiple", "responsable": "Compras · comisión evaluadora", "docs_cortos": "Sobres en papel · actas como documentos oficiales", "alerta": "Por ahora NO va por TIMBÓ Compras", "pasos": ["fin-contractual"], "ficha": {"que": "La evaluación se hace en fases (preselección y después oferta económica). Mientras TIMBÓ Compras no lo permita, va por expediente.", "para": "Compras complejas donde primero se evalúan calidades y antecedentes.", "quien": "Compras, comisión evaluadora y autoridad competente.", "sistema": "Expediente electrónico y Documentos Oficiales. Las ofertas se presentan en sobres de papel (puede pedirse copia digital).", "docs": "Pliegos, circulares, designación de comisiones, actas de apertura, preselección, preadjudicación y adjudicación como documentos oficiales.", "verificar": "Prevalece el papel si hay diferencias con la copia digital.", "fuentes": [{"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 5 a 8"}, {"id": "ley-12510", "tipo": "norma", "punto": "art. 123"}, {"id": "dec-287-2026", "tipo": "norma", "punto": "art. 123 del Dec. 1104/16"}, {"id": "res-me-73-2026", "tipo": "norma", "punto": "art. 3"}], "despues": "Adjudicación y contrato por expediente."}},
+    "e-convenio": {"tipo": "accion", "sistema": "organismo", "rama": "E", "titulo": "Convenio Marco u Orden de Compra Abierta", "responsable": "SCyGB · Compras", "docs_cortos": "Según la modalidad", "alerta": "Si va por TIMBÓ Compras: pendiente", "estado": "pendiente", "pasos": ["fin-contractual"], "ficha": {"que": "Modalidades para bienes y servicios de demanda recurrente: se acuerdan condiciones y se compra a medida que se necesita.", "para": "Evitar repetir licitaciones para lo que se compra siempre.", "quien": "SCyGB y las Unidades Operativas.", "sistema": "No hay constancia oficial de que estas modalidades estén habilitadas en TIMBÓ Compras: pendiente de confirmar.", "docs": "Los que fije cada modalidad (Res. 211/2018 y Res. 101/2019).", "verificar": "Leer la Res. 211/2018 (escaneada, sin texto) y consultar su tratamiento en TIMBÓ.", "fuentes": [{"id": "res-211-2018", "tipo": "norma"}, {"id": "res-101-2019", "tipo": "norma"}], "despues": "Órdenes de compra según el convenio."}},
+    "e-subasta": {"tipo": "accion", "sistema": "organismo", "rama": "E", "titulo": "Subasta o remate público", "responsable": "Autoridad que lo autoriza", "docs_cortos": "Precio máximo o mínimo fijado", "alerta": "Requiere autorización del Poder Ejecutivo", "pasos": ["fin-contractual"], "ficha": {"que": "Compra o venta por subasta, con precio máximo (compra) o mínimo (venta) fijado antes.", "para": "Casos puntuales, sobre todo ventas de bienes del Estado.", "quien": "Solo si lo autoriza el Poder Ejecutivo o la máxima autoridad del Poder Legislativo o Judicial.", "sistema": "No hay constancia de que esté en TIMBÓ Compras.", "docs": "Autorización y precio fijado.", "verificar": "La autorización previa.", "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. b"}], "despues": "Según la reglamentación."}},
+
+    "fin-contractual": {"tipo": "fin", "sistema": "expediente", "titulo": "Etapa contractual: orden de compra, recepción, pago y cierre", "responsable": "Compras · área receptora · Administración", "docs_cortos": "Orden de compra · certificado de recepción · pago", "ficha": {"que": "Se notifica la orden de compra (o de provisión), el proveedor entrega, se certifica la recepción y se paga. Al terminar, la gestión pasa a \"Concluida\" en el portal.", "para": "Cumplir el contrato y cerrar el trámite.", "quien": "Compras, el área que recibe, Administración; el proveedor.", "sistema": "Expediente electrónico; estado en el Portal de Compras.", "docs": "Orden de compra o de provisión, certificado de recepción definitiva (CRDB o CRDS), factura y pago. Informe de desempeño del proveedor al RUPC al terminar.", "verificar": "Pasar la gestión a \"Concluida\" en 2 días hábiles; los plazos de entrega corren desde la notificación de la orden de compra.", "fuentes": [{"id": "circ-ug-7-2026", "tipo": "norma", "punto": "punto 6: etapa contractual por expediente"}, {"id": "disp-226-2016", "tipo": "norma", "punto": "certificados de recepción"}, {"id": "circ-scygb-4-2025", "tipo": "norma", "punto": "estado \"Concluida\""}, {"id": "circ-ug-2-2026", "tipo": "norma", "punto": "informe de desempeño"}, {"id": "circ-scygb-5-2026", "tipo": "norma", "punto": "plazos desde la orden de compra"}], "despues": "Fin del circuito."}}
+  },
+  "ramas": [
+    {"letra": "A", "nombre": "Gestión directa por monto", "nodo": "a-directa", "sistema": "expediente"},
+    {"letra": "B", "nombre": "Directa por excepción", "nodos": ["b-urgencia", "b-desierto", "b-otras"], "sistema": "compras"},
+    {"letra": "C", "nombre": "Licitación o concurso privado", "nodo": "c-privada", "sistema": "compras"},
+    {"letra": "D", "nombre": "Licitación o concurso público", "nodo": "d-publica", "sistema": "compras"},
+    {"letra": "E", "nombre": "Modalidades especiales", "nodos": ["e-locacion", "e-etapa-multiple", "e-convenio", "e-subasta"], "sistema": "organismo"}
+  ]
+}

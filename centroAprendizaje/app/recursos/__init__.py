@@ -88,3 +88,13 @@ def capacitacion():
 
 
 ARCHIVOS = os.path.join(CARPETA, "archivos")
+
+
+@lru_cache(maxsize=None)
+def algoritmo():
+    return _leer("algoritmo.json")
+
+
+def docs_minimos():
+    """Lo justo de cada documento para citar fuentes desde JavaScript."""
+    return {d["id"]: {"titulo": d["titulo"], "url": d["url"], "vigencia": d.get("vigencia", "")} for d in biblioteca()["documentos"]}

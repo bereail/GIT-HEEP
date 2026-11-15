@@ -1,0 +1,53 @@
+{% extends layout %}
+{% block titulo %}¿Qué camino sigue una compra? — Centro de capacitación{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% if prefijo == 'admin.' %}
+<nav class="rec-subnav no-imprimir" aria-label="Centro de capacitación">
+  <a href="{{ url_for('admin.capacitacion_inicio') }}">🎓 Centro de capacitación</a>
+  <a href="{{ url_for('admin.capacitacion_algoritmo') }}" class="is-active">🧭 ¿Qué camino sigue una compra?</a>
+  <a href="{{ url_for('admin.capacitacion_primera_clase') }}">📋 Guía de la capacitadora</a>
+  <a href="{{ url_for('admin.recursos_biblioteca') }}">🗂️ Normativa</a>
+</nav>
+{% endif %}
+<div id="alg">
+  <header class="alg-cabecera">
+    <div>
+      <h1>🧭 {{ algoritmo.titulo }}</h1>
+      <p class="text-muted">De la necesidad a la adjudicación. Respondé las preguntas y mirá el recorrido: tocá cualquier etapa para ver su ficha y de dónde surge. Actualizado el {{ algoritmo.actualizado }} · montos {{ algoritmo.montos.vigencia }}.</p>
+    </div>
+    <div class="alg-botones no-imprimir">
+      <button type="button" class="btn btn--primary btn--sm" id="alg-ver-completo">🗺️ Ver recorrido completo</button>
+      <button type="button" class="btn btn--ghost btn--sm" id="alg-atras">← Atrás</button>
+      <button type="button" class="btn btn--ghost btn--sm" id="alg-reiniciar">↺ Reiniciar</button>
+      <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}#cat-procedimientos">⚖️ Consultar normativa</a>
+      <button type="button" class="btn btn--ghost btn--sm" id="alg-ver-ejemplo">🏥 Ver ejemplo hospitalario</button>
+      <button type="button" class="btn btn--ghost btn--sm" id="alg-imprimir">🖨️ Imprimir</button>
+    </div>
+  </header>
+
+  <div class="alg-leyenda" aria-label="Colores">
+    <span class="alg-chip alg-sis--expediente">📁 Expediente electrónico</span>
+    <span class="alg-chip alg-sis--compras">🛒 TIMBÓ Compras</span>
+    <span class="alg-chip alg-sis--decision">◆ Decisión o control</span>
+    <span class="alg-chip alg-sis--externo">↗ Externo o complementario</span>
+    <span class="alg-chip alg-sis--organismo">🏛️ Otro organismo</span>
+    <span class="alg-chip alg-nodo--pendiente">⏳ Línea punteada: pendiente de confirmar</span>
+  </div>
+
+  <div class="callout callout--tip alg-banner" id="alg-ejemplo" hidden></div>
+  <div class="alg-camino" id="alg-camino" aria-live="polite"></div>
+  <section class="alg-completo" id="alg-completo" hidden aria-label="Recorrido completo"></section>
+
+  <div class="alg-ficha" id="alg-ficha" hidden role="dialog" aria-modal="true" aria-label="Ficha de la etapa">
+    <div class="alg-ficha__panel">
+      <button type="button" class="alg-ficha__cerrar" aria-label="Cerrar ficha">×</button>
+      <div class="alg-ficha__cuerpo"></div>
+    </div>
+  </div>
+</div>
+<script type="application/json" id="alg-datos">{{ algoritmo | tojson }}</script>
+<script type="application/json" id="alg-docs">{{ docs_min | tojson }}</script>
+{% endblock %}
+
+{% block script_pagina %}<script src="{{ url_for('static', filename='js/algoritmo.js') }}"></script>{% endblock %}
