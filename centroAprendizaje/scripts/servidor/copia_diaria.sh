@@ -5,6 +5,7 @@
 # se trae la última todos los días (scripts/traer_copia.sh).
 set -eu
 APP=/var/www/timbo-capacitaciones/centroAprendizaje
+cd /  # cron o sudo pueden arrancar en una carpeta sin permiso
 DESTINO=/var/www/timbo-capacitaciones/copias
 umask 077
 mkdir -p "$DESTINO"

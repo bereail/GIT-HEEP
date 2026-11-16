@@ -5,6 +5,7 @@
 # fecha; el resto, la salida de pip-audit).
 set -u
 APP=/var/www/timbo-capacitaciones/centroAprendizaje
+cd /  # cron o sudo pueden arrancar en una carpeta sin permiso
 HERRAMIENTA=/var/www/timbo-capacitaciones/.pip-audit
 SALIDA="$APP/instance/auditoria_dependencias.txt"
 umask 077

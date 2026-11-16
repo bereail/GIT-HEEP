@@ -17,6 +17,7 @@ $COMO git pull --ff-only
 git log --oneline -1
 
 echo "== 3. Dependencias (Flask 3.1.3)"
+$COMO .venv/bin/pip install -q --upgrade pip setuptools
 $COMO .venv/bin/pip install -q -r requirements.txt
 
 echo "== 4. Contenido (en este orden)"
