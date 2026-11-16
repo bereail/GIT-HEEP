@@ -1,0 +1,2 @@
+# Los scripts de shell corren en Linux y en Git Bash: siempre con LF.
+*.sh text eol=lf
