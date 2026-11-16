@@ -5,6 +5,7 @@ miró, qué se buscó y si encontró algo. Pensado para alimentar la pantalla
 de estadísticas del admin, no para analítica de usuarios.
 """
 
+from flask import current_app
 from sqlalchemy import func
 
 from app.extensions import db
@@ -14,6 +15,10 @@ TIPOS_BUSQUEDA = ("busqueda", "busqueda_global", "chatbot")
 
 
 def registrar(tipo, tema=None, titulo=None, consulta=None, hubo_resultado=None):
+    # Las pruebas (p. ej. scripts/bateria_chatbot.py en cada deploy) apagan el
+    # registro: si no, sus preguntas se mezclan con las del personal.
+    if not current_app.config.get("REGISTRAR_ESTADISTICAS", True):
+        return
     db.session.add(EventoUso(
         tema_id=tema.id if tema else None,
         tipo=tipo,
@@ -80,3 +85,39 @@ def resumen(tema_id=None):
         "recursos_utiles": _top_por_titulo(feedback_recursos.filter_by(hubo_resultado=True), 10),
         "recursos_con_feedback_negativo": _top_por_titulo(feedback_recursos.filter_by(hubo_resultado=False), 10),
     }
+
+
+# ------------------------------------------------------- página "Búsquedas" --
+
+PERIODOS = {"hoy": "Hoy", "7": "Últimos 7 días", "30": "Últimos 30 días", "todo": "Todo"}
+TIPOS_FILTRO = {"todas": TIPOS_BUSQUEDA, "buscador": ("busqueda", "busqueda_global"), "asistente": ("chatbot",)}
+
+
+def consulta_busquedas(periodo="30", tipo="todas", solo_sin_resultado=False):
+    """Búsquedas y preguntas al asistente según los filtros, las más nuevas primero."""
+    from datetime import datetime, timedelta, timezone
+
+    q = EventoUso.query.filter(EventoUso.tipo.in_(TIPOS_FILTRO.get(tipo, TIPOS_BUSQUEDA)),
+                               EventoUso.consulta.isnot(None))
+    ahora = datetime.now(timezone.utc)
+    if periodo == "hoy":
+        # "Hoy" en hora de Argentina (UTC-3).
+        inicio_local = (ahora - timedelta(hours=3)).replace(hour=0, minute=0, second=0, microsecond=0)
+        q = q.filter(EventoUso.creado_en >= (inicio_local + timedelta(hours=3)).replace(tzinfo=None))
+    elif periodo in ("7", "30"):
+        q = q.filter(EventoUso.creado_en >= (ahora - timedelta(days=int(periodo))).replace(tzinfo=None))
+    if solo_sin_resultado:
+        q = q.filter(EventoUso.hubo_resultado.is_(False))
+    return q
+
+
+def origen_busqueda(evento):
+    """Dónde se hizo: buscador general, buscador de un tema o asistente."""
+    tema = evento.tema.nombre if evento.tema else ""
+    if evento.tipo == "busqueda_global":
+        return "Buscador general"
+    if evento.tipo == "busqueda":
+        return f"Buscador de {tema}".strip()
+    if (evento.consulta or "").startswith("👎 "):
+        return f"Asistente de {tema} — marcada \"No me sirvió\"".strip()
+    return f"Asistente de {tema}".strip()

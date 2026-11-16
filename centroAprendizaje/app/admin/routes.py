@@ -1230,3 +1230,61 @@ def nomenclador_revision_exportar():
     nombre = f"observaciones_nomenclador_{filtro}_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
     return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
                     headers={"Content-Disposition": f'attachment; filename="{nombre}"'})
+
+
+# ------------------------------------------------------------- búsquedas --
+
+def _filtros_busquedas():
+    periodo = request.args.get("periodo", "30")
+    tipo = request.args.get("tipo", "todas")
+    if periodo not in estadisticas.PERIODOS:
+        periodo = "30"
+    if tipo not in estadisticas.TIPOS_FILTRO:
+        tipo = "todas"
+    return periodo, tipo, request.args.get("sin") == "1"
+
+
+@admin_bp.route("/busquedas")
+@requiere_admin
+def busquedas():
+    from sqlalchemy import func
+
+    from app.models import EventoUso
+
+    periodo, tipo, sin = _filtros_busquedas()
+    q = estadisticas.consulta_busquedas(periodo, tipo, sin)
+    total = q.count()
+    sin_resultado = q.filter(EventoUso.hubo_resultado.is_(False)).count()
+    pagina = max(1, request.args.get("pagina", 1, type=int))
+    por_pagina = 100
+    eventos = q.order_by(EventoUso.creado_en.desc()).offset((pagina - 1) * por_pagina).limit(por_pagina).all()
+    repetidas = (q.with_entities(EventoUso.consulta, func.count(EventoUso.id))
+                 .group_by(EventoUso.consulta).order_by(func.count(EventoUso.id).desc()).limit(15).all())
+    return render_template(
+        "admin/busquedas.html", eventos=eventos, total=total, sin_resultado=sin_resultado, repetidas=repetidas,
+        periodo=periodo, tipo=tipo, sin=sin, pagina=pagina, paginas=max(1, -(-total // por_pagina)),
+        periodos=estadisticas.PERIODOS, origen=estadisticas.origen_busqueda,
+    )
+
+
+@admin_bp.route("/busquedas/exportar")
+@requiere_admin
+def busquedas_exportar():
+    import csv
+    import io
+
+    from flask import Response
+
+    from app.models import EventoUso
+    from app.models.revision_nomenclador import hora_ar
+
+    periodo, tipo, sin = _filtros_busquedas()
+    salida = io.StringIO()
+    w = csv.writer(salida, delimiter=";")
+    w.writerow(["Fecha y hora", "Dónde", "Qué escribió", "¿Encontró resultado?"])
+    for e in estadisticas.consulta_busquedas(periodo, tipo, sin).order_by(EventoUso.creado_en.desc()):
+        w.writerow([hora_ar(e.creado_en), estadisticas.origen_busqueda(e), e.consulta,
+                    "Sí" if e.hubo_resultado else ("No" if e.hubo_resultado is False else "")])
+    nombre = f"busquedas_{periodo}_{tipo}{'_sin-resultado' if sin else ''}_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
+    return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
+                    headers={"Content-Disposition": f'attachment; filename="{nombre}"'})

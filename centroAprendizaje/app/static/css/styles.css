@@ -1937,3 +1937,12 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .rev-aviso__texto span { font-size: 13.5px; color: var(--text-muted); }
 .rev-aviso__ir { font-weight: 600; color: var(--accent); font-size: 14px; }
 .rev-exportar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0 10px; font-size: 13px; }
+.bus-filtros { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: flex-end; margin: 14px 0; }
+.bus-filtros label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.bus-filtros .bus-check { display: flex; align-items: center; gap: 6px; font-weight: 500; }
+.bus-exportar { margin-left: auto; }
+.bus-resumen { margin-bottom: 14px; }
+.bus-tabla td { font-size: 13.5px; vertical-align: top; }
+.bus-fecha { white-space: nowrap; color: var(--text-muted); }
+.bus-tabla tr.bus-sin td { background: #fdf3f2; }
+.bus-paginas { display: flex; gap: 10px; align-items: center; justify-content: center; margin: 12px 0; }

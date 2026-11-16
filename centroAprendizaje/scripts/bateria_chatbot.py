@@ -133,6 +133,8 @@ def _titulo(datos):
 def main():
     detalle = "-v" in sys.argv
     app = create_app()
+    # La batería corre en el servidor en cada deploy: que no cuente como uso real.
+    app.config["REGISTRAR_ESTADISTICAS"] = False
     cliente = app.test_client()
     with app.app_context():
         from app.models import Tema

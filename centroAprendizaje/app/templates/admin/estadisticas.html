@@ -61,6 +61,7 @@
 </div>
 
 <div class="section">
+  <p class="callout callout--tip" style="margin:0 0 10px"><span>🔎 El detalle de cada búsqueda, con fecha, filtros y exportación a Excel, está en <a href="{{ url_for('admin.busquedas') }}">Búsquedas</a>.</span></p>
   <h2 class="section__title">Todas las búsquedas <span class="text-muted" style="font-weight:400;font-size:13px">— con y sin resultado, las más repetidas primero</span></h2>
   {{ tabla(datos.todas_las_busquedas, ["Búsqueda", "Veces"]) }}
 </div>
