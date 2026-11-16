@@ -207,7 +207,9 @@ contra todo lo que usa el centro. Los PDF escaneados se leyeron como imagen.
 - Las circulares UG viejas: 2/2024, 03/2024, 1/2024, 1/2025, 2/2025 (la otra), 5/2025 (convenios) y 5/2026.
 - Los ya superados: Disp. 227, Res. 519/18, 133/2020 y 47/24.
 
-**Video:** la Clase 01 de TIMBÓ Compras sigue sin subtítulos; se probó otra vez el 16/11.
+**Video:** la Clase 01 de TIMBÓ Compras (sin subtítulos) se transcribió el 16/11. Confirma lo que ya tenía "Hacer una compra" (alcance, roles, a quién pedir asistencia, apertura automática, publicidad). Se sumaron el rol Jurisdicción comitente, que una persona puede tener los tres roles y que el primer soporte técnico es la Sectorial de Informática. El video quedó enlazado en la lección.
+
+También el 16/11 se leyeron por subtítulos los dos videos de TIMBÓ Rendiciones (DRz21VWXtEQ y FbNpaAiAlnU): la lección "Rendir un subsidio" coincide con ellos.
 
 ## Lo que sigue
 - Identificar el número del decreto de "Territorio 5.0".

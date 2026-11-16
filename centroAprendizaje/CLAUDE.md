@@ -134,8 +134,8 @@ con un `.bat`.
   los 13 que no estaban enlazados, incluido "Atención Virtual ¿Cómo lo
   hacemos?", y el CD-01 (mudo) se miró cuadro por cuadro. Lo nuevo quedó en
   16 lecciones, y cada video, enlazado en su lección. Lo único que falta es
-  el texto hablado de la Clase 01 de Compras (whisper lo lee como música;
-  lo de las diapositivas ya está cargado).
+  el texto hablado de la Clase 01 de Compras (resuelto el 16/11: ver
+  pendiente 4).
 - La integración del 13/11 había perdido las secciones 4.1 y 5 de
   `FAQ_SOPORTE_TIMBO.md`: se recuperaron de la otra PC.
 - **Chatbot**: la batería ahora está en `scripts/bateria_chatbot.py` (88
@@ -340,8 +340,9 @@ Contenido:
 2. Montos de "¿Qué procedimiento corresponde según el monto?": actualizarlos
    cada año con la circular nueva de la SCyGB.
 3. ~~"Atención Virtual ¿Cómo lo hacemos?"~~: hecho el 14/11.
-4. Opcional: el texto completo de la Clase 01 de Compras (7rIDyLtWlHM) no
-   está transcripto; lo importante ya salió de las diapositivas.
+4. ~~Texto hablado de la Clase 01 de Compras (7rIDyLtWlHM)~~: transcripto el
+   16/11 con faster-whisper "small" limpiando antes la voz con ffmpeg (receta en
+   la sección 4.1 de FAQ_SOPORTE_TIMBO.md). Lo nuevo quedó en "Hacer una compra".
 
 Para confirmar con personas del hospital:
 5. Compras: los nombres exactos de botones del lado del hospital en "Hacer

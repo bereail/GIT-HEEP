@@ -1288,3 +1288,59 @@ def busquedas_exportar():
     nombre = f"busquedas_{periodo}_{tipo}{'_sin-resultado' if sin else ''}_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
     return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
                     headers={"Content-Disposition": f'attachment; filename="{nombre}"'})
+
+
+def _inventario_filtrado():
+    from app.services import inventario
+    from app.services.textutil import slugify as _norm
+
+    tipo = request.args.get("tipo", "")
+    grupo = request.args.get("grupo", "")
+    tema = request.args.get("tema", "")
+    texto = request.args.get("q", "").strip()
+    todas = inventario.filas()
+    filas = [f for f in todas
+             if (not tipo or f["tipo"] == tipo) and (not grupo or f["grupo"] == grupo)
+             and (not tema or tema in f["tema"])
+             and (not texto or _norm(texto) in _norm(f"{f['titulo']} {f['detalle']} {f['grupo_contenido']}"))]
+    return todas, filas, {"tipo": tipo, "grupo": grupo, "tema": tema, "q": texto}
+
+
+@admin_bp.route("/inventario")
+@requiere_admin
+def inventario_vista():
+    from collections import Counter
+
+    from app.services import inventario
+
+    todas, filas, filtros = _inventario_filtrado()
+    por_grupo = Counter(f["grupo"] for f in todas)
+    por_tipo = {t: Counter(f["grupo"] for f in todas if f["tipo"] == t) for t in inventario.TIPOS}
+    return render_template(
+        "admin/inventario.html", filas=filas, total=len(todas), filtros=filtros, por_grupo=por_grupo, por_tipo=por_tipo,
+        tipos=inventario.TIPOS, grupos=inventario.GRUPOS, temas=[t.nombre for t in Tema.query.order_by(Tema.orden)],
+    )
+
+
+@admin_bp.route("/inventario/exportar")
+@requiere_admin
+def inventario_exportar():
+    import csv
+    import io
+
+    from flask import Response
+
+    from app.models.revision_nomenclador import hora_ar
+    from app.services import inventario
+
+    _, filas, _ = _inventario_filtrado()
+    salida = io.StringIO()
+    w = csv.writer(salida, delimiter=";")
+    w.writerow(["Tipo", "Tema", "Módulo o grupo", "Título", "Estado", "Grupo de estado", "Fecha", "Detalle", "Fuente oficial", "Dónde verlo"])
+    for f in filas:
+        w.writerow([inventario.TIPOS[f["tipo"]], f["tema"], f["grupo_contenido"], f["titulo"], f["estado"],
+                    inventario.GRUPOS[f["grupo"]], f["fecha"], f["detalle"], f["fuente"],
+                    (request.host_url.rstrip("/") + f["enlace"]) if f["enlace"] else ""])
+    nombre = f"inventario_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
+    return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
+                    headers={"Content-Disposition": f'attachment; filename="{nombre}"'})

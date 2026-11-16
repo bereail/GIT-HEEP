@@ -7,6 +7,7 @@
 <div class="hero">
   <h1>Nomenclador de artículos</h1>
   <p class="hero__desc">¿Con qué nombre pido esto en TIMBÓ? Acá traducimos el nombre libre de cada artículo (como se pide en el sistema interno del hospital) al código del Catálogo WEB oficial de la Provincia.</p>
+  <p class="equiv-actualizado">¿Necesitás el catálogo completo (unos 17.800 ítems)? Bajalo del <a href="https://www.santafe.gob.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB oficial</a> con el botón «Descargar Excel».</p>
   {% if actualizado_en %}
   <p class="equiv-actualizado">Última actualización: {{ actualizado_en.strftime('%d/%m/%Y') }}</p>
   {% endif %}

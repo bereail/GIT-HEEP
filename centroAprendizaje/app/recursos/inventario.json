@@ -1,0 +1,216 @@
+{
+  "nota": "Estado de verificación de cada lección. El detalle (qué se cotejó y contra qué) está en timboDocumentacion/VERIFICACION_LECCIONES.md. Una lección que no figura acá toma el estado de su tema.",
+  "videos_leidos": [
+    "-1iu7Pll1AI",
+    "0ExXUT8-M14",
+    "5qcZGh3euOU",
+    "6BtJX1bhwbg",
+    "7najG5QuTHY",
+    "7rIDyLtWlHM",
+    "8ba14toewQ8",
+    "BwsDF4xZMmQ",
+    "BzxCGnsajmw",
+    "DRz21VWXtEQ",
+    "ETjXfXTyaBg",
+    "FbNpaAiAlnU",
+    "IpayiPYodbU",
+    "JJExl9hnYbo",
+    "Kkt7GxVnIHA",
+    "LW7dfhIkwmQ",
+    "Lnd2-_XiOXI",
+    "M2AUtzccRyI",
+    "OmPfwB6Quek",
+    "QH7zvgZ7sbQ",
+    "Tt2_Z8fOAt8",
+    "W-_htQe-JdA",
+    "Wb4ZRvB3YSo",
+    "WfMIejZNniU",
+    "Yp3TIlDxpms",
+    "Yq1RArIxk2I",
+    "ZippZTO_onI",
+    "ZwD_QIsn1eU",
+    "alWHBV5ScQ4",
+    "aslFJaruz68",
+    "awusWqQR2lE",
+    "b76RDFmcV3c",
+    "bLSixoqJheg",
+    "cIxZoNUAbHc",
+    "chjAuO6mX1c",
+    "e3rhyEJ4g0U",
+    "fcEjp7lJGUE",
+    "gV_qoxpmAjE",
+    "hZvrxPtLjYQ",
+    "htvuudJzMbg",
+    "kb6--2MdL3A",
+    "n0qxSRoAFaM",
+    "tSYfZ3yVE58",
+    "u0UNen9iQnA",
+    "yUbSYwLQ0aU"
+  ],
+  "estados": {
+    "verificada": "Cotejada frase por frase contra fuentes oficiales",
+    "parcial": "Normativa cotejada; falta el detalle de pantalla del video oficial",
+    "revision-general": "Revisada contra fuentes oficiales, sin cotejo frase por frase",
+    "indice": "Listado de fuentes oficiales"
+  },
+  "temas": {
+    "mihospital": {
+      "estado": "revision-general",
+      "fecha": "",
+      "nota": "Armada con los manuales y videos oficiales de miHospital."
+    },
+    "timbo-expedientes": {
+      "estado": "revision-general",
+      "fecha": "13/11/2026",
+      "nota": "Revisada contra las Circulares UG 3/2025, 6/2026, 9/2026 y 11/2026, los videos oficiales y el curso del Aula Virtual."
+    }
+  },
+  "lecciones": {
+    "timbo-compras": {
+      "inscribirse-como-proveedor-rupc": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: Res. SCyGB 110/2026, Circ. UG 2/2026 y FAQ del RUPC."
+      },
+      "requisitos": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: guías PDF para proveedores y Circ. UG 2/2026."
+      },
+      "ingresar-y-participar": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: guías PDF para proveedores y videos 00 a 06."
+      },
+      "completar-y-presentar": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: guía \"Completar formulario\", Pliego Único y videos oficiales."
+      },
+      "consultas-y-circulares": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: guía \"Consultas\" y video 03."
+      },
+      "subsanar-mejorar-aclarar": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: Circ. UG 7/2026 y video Yp3TIlDxpms."
+      },
+      "impugnaciones": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: Pliego Único (4.3, 5.1 y 10.1.3) y guía \"Impugnaciones\"."
+      },
+      "ver-documentos-embebidos": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 1: guías \"Documentos embebidos\" y \"Paso a paso para ofertar\"."
+      },
+      "que-es-compra-directa": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 2: capacitación oficial de compras directas, Ley 12.510, Circ. UG 2/2025, 04/2024 y 7/2025, Dec. 191/2024."
+      },
+      "generar-formulario-cd01": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 2: capacitación oficial de compras directas y video \"Compras Directas\"."
+      },
+      "armar-expediente-y-pase": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 2: capacitación oficial de compras directas."
+      },
+      "circuito-decisorio": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Circ. UG 9/2026 y 11/2026."
+      },
+      "vista-tribunal-de-cuentas": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Circ. UG 9/2026, 10/2026 y 11/2026."
+      },
+      "publicar-en-portal": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Circ. SCyGB 04/2026."
+      },
+      "hacer-una-compra": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: cotejada contra todas las lecciones y normas de la tanda."
+      },
+      "montos-y-procedimientos": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Circ. SCyGB 01/2026 (Ley de Presupuesto 14.424)."
+      },
+      "directa-urgencia-o-desierto": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Circ. UG 8/2026, Dec. 652/2020 y Res. SCyGB 114/2020."
+      },
+      "pliego-modelo": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Circ. SCyGB 05/2026 (anexos)."
+      },
+      "despues-de-adjudicar": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Pliego Único y Circ. SCyGB 04/2025."
+      },
+      "pedir-alta-articulo": {
+        "estado": "verificada",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: Res. SCyGB 292/2026."
+      },
+      "gestor-iniciar-proceso": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video oficial."
+      },
+      "supervisor-aprobar-y-publicar": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video oficial."
+      },
+      "gestor-mientras-esta-publicado": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video oficial."
+      },
+      "evaluador-evaluar-ofertas": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video oficial."
+      },
+      "evaluador-preadjudicar": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video oficial."
+      },
+      "gestor-adjudicar": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video oficial."
+      },
+      "notificar-proveedor": {
+        "estado": "parcial",
+        "fecha": "16/11/2026",
+        "nota": "Tanda 3: falta el detalle de pantalla del video del documento comunicable externo."
+      },
+      "fuentes-oficiales": {
+        "estado": "indice",
+        "fecha": "",
+        "nota": "Enlaces a las páginas oficiales."
+      }
+    }
+  },
+  "nota_videos": "Videos oficiales leídos por subtítulos, transcripción o cuadro por cuadro (registro: secciones 4 a 4.2 de FAQ_SOPORTE_TIMBO.md). Las transcripciones no se suben a git porque nombran participantes.",
+  "videos_sin_leer": {
+    "qVf-yyXoE0k": "Capacitación larga (32 min): no consta que se haya leído completa; el tema sale del curso oficial del Aula Virtual."
+  }
+}

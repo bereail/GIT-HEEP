@@ -1,0 +1,85 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Inventario del material — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">📋 Inventario del material</h1>
+</div>
+<p class="text-muted" style="margin-top:4px">Todo lo que tiene el centro, con su estado de verificación contra fuentes oficiales. Se arma solo desde el contenido: siempre está al día. El detalle de cada cotejo está en <code>timboDocumentacion/VERIFICACION_LECCIONES.md</code>.</p>
+
+<div class="diagram-cards bus-resumen">
+  {% for clave, texto in grupos.items() %}
+  <a class="diagram-card inv-card inv-{{ clave }}{{ ' is-active' if filtros.grupo == clave }}" href="{{ url_for('admin.inventario_vista', grupo='' if filtros.grupo == clave else clave, tipo=filtros.tipo or None, tema=filtros.tema or None) }}">
+    <div class="diagram-card__value">{{ por_grupo.get(clave, 0) }}</div><div class="diagram-card__label">{{ texto }}</div>
+  </a>
+  {% endfor %}
+</div>
+
+<form method="get" class="bus-filtros">
+  <label>Buscar
+    <input class="input" type="search" name="q" value="{{ filtros.q }}" placeholder="Título o detalle…" />
+  </label>
+  <label>Qué
+    <select class="input" name="tipo" data-autoenviar>
+      <option value="">Todo el material</option>
+      {% for clave, texto in tipos.items() %}<option value="{{ clave }}" {{ 'selected' if filtros.tipo == clave }}>{{ texto }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Estado
+    <select class="input" name="grupo" data-autoenviar>
+      <option value="">Todos los estados</option>
+      {% for clave, texto in grupos.items() %}<option value="{{ clave }}" {{ 'selected' if filtros.grupo == clave }}>{{ texto }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Tema
+    <select class="input" name="tema" data-autoenviar>
+      <option value="">Todos los temas</option>
+      {% for t in temas %}<option value="{{ t }}" {{ 'selected' if filtros.tema == t }}>{{ t }}</option>{% endfor %}
+    </select>
+  </label>
+  <button class="btn btn--ghost btn--sm">Filtrar</button>
+  <a class="btn btn--primary btn--sm bus-exportar" href="{{ url_for('admin.inventario_exportar', **filtros) }}">⬇️ Exportar a Excel</a>
+</form>
+
+<details class="inv-resumen">
+  <summary>Resumen por tipo de material</summary>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Material</th>{% for clave, texto in grupos.items() %}<th>{{ texto }}</th>{% endfor %}<th>Total</th></tr></thead>
+      <tbody>
+        {% for clave, texto in tipos.items() %}
+        <tr><td><a href="{{ url_for('admin.inventario_vista', tipo=clave) }}">{{ texto }}</a></td>
+          {% for g in grupos %}<td>{{ por_tipo[clave].get(g, 0) or '—' }}</td>{% endfor %}
+          <td><b>{{ por_tipo[clave].values() | sum }}</b></td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<p class="text-muted">{{ filas|length }} de {{ total }}.</p>
+{% if filas %}
+<div class="table-wrap">
+  <table class="data-table bus-tabla inv-tabla">
+    <thead><tr><th>Material</th><th>Estado</th></tr></thead>
+    <tbody>
+      {% for f in filas %}
+      <tr class="inv-fila inv-{{ f.grupo }}">
+        <td>
+          <div class="inv-tipo">{{ tipos[f.tipo] }} · {{ f.tema }}{% if f.grupo_contenido %} · {{ f.grupo_contenido }}{% endif %}</div>
+          <b>{{ f.titulo }}</b>
+          {% if f.detalle %}<div class="inv-detalle">{{ f.detalle }}</div>{% endif %}
+          <div class="inv-enlaces">
+            {% if f.enlace %}<a href="{{ f.enlace }}" target="_blank" rel="noopener">Ver en el centro</a>{% endif %}
+            {% if f.fuente %}<a href="{{ f.fuente }}" target="_blank" rel="noopener">Fuente oficial ↗</a>{% endif %}
+          </div>
+        </td>
+        <td class="inv-col-estado"><span class="inv-estado inv-{{ f.grupo }}">{{ f.estado }}</span>{% if f.fecha %}<div class="text-muted inv-sub">{{ f.fecha }}</div>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="empty-state"><div class="empty-state__icon">📋</div>No hay material con estos filtros.</div>
+{% endif %}
+{% endblock %}

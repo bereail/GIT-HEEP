@@ -1286,6 +1286,12 @@
               ]
             },
             {
+              "type": "video",
+              "url": "https://youtu.be/7rIDyLtWlHM",
+              "title": "Clase 01 – ¿Qué es Timbó Compras? (capacitación oficial)",
+              "minutos": 31
+            },
+            {
               "type": "prereq",
               "items": [
                 "El pedido del servicio que necesita la compra.",
@@ -1315,7 +1321,7 @@
                   "Evalúa ofertas, pide subsanaciones, mejoras y aclaraciones, preadjudica y carga el cronograma de impugnaciones"
                 ]
               ],
-              "note": "Circular UG TIMBÓ 7/2026. Los roles los asigna el Administrador Local."
+              "note": "Circular UG TIMBÓ 7/2026. Los roles los asigna el Administrador Local. Una misma persona puede tener los tres roles. Existe además el rol Jurisdicción comitente: el área que pidió la compra puede revisar el proyecto de pliego y aprobar o rechazar sus formularios (Clase 01 de la capacitación oficial)."
             },
             {
               "type": "step",
@@ -1431,7 +1437,7 @@
                   "Secretaría de Tecnologías para la Gestión"
                 ]
               ],
-              "note": "Fuente: Clase 01 de la capacitación oficial \"¿Qué es Timbó Compras?\"."
+              "note": "Fuente: Clase 01 de la capacitación oficial \"¿Qué es Timbó Compras?\". Ante un problema técnico, el primer contacto es la Sectorial de Informática de tu jurisdicción (Administrador Local): tiene un canal directo con la Secretaría de Tecnologías para la Gestión."
             },
             {
               "type": "tip",

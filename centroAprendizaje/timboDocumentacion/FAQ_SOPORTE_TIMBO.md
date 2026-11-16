@@ -143,7 +143,17 @@ organismo: https://www.youtube.com/playlist?list=PLJKcMr5XTsSe33vph6nNpxnZpu8D3R
 | Documento comunicable externo (6BtJX1bhwbg) | Gestión interna → Mandarle una notificación a un proveedor |
 | Clase 02 – Pliego y formularios (66 min, Kkt7GxVnIHA) | Los 8 formularios de la lección del Gestor |
 | Clase 03 – Evaluación y preadjudicación (56 min, Lnd2-_XiOXI) | Enlazada en la lección del Evaluador |
-| Clase 01 – ¿Qué es Timbó Compras? (7rIDyLtWlHM) | Sin subtítulos: se miró cuadro por cuadro (13/11); lo útil está en "Hacer una compra". Falta solo el texto hablado (opcional) |
+| Clase 01 – ¿Qué es Timbó Compras? (7rIDyLtWlHM) | Enlazada en "Hacer una compra". Sin subtítulos: se miró cuadro por cuadro (13/11) y el 16/11 se transcribió el audio (whisper "small", con la voz limpiada antes; ver abajo) |
+
+**Cómo se transcribe un video sin subtítulos** (así salió la Clase 01, 31 min, en unos 9 minutos):
+
+```bash
+yt-dlp --js-runtimes node -f bestaudio -o "clase.%(ext)s" URL_DEL_VIDEO
+ffmpeg -i clase.webm -ac 1 -ar 16000 -af "highpass=f=120,lowpass=f=4000,afftdn=nf=-25,dynaudnorm" voz.wav
+# faster-whisper, modelo "small", language="es", vad_filter=False
+```
+
+Sin limpiar la voz y con el filtro de silencios activado, whisper confundía la clase con música.
 
 **Cómo se bajan los subtítulos** (YouTube bloquea la descarga común):
 

@@ -1946,3 +1946,32 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .bus-fecha { white-space: nowrap; color: var(--text-muted); }
 .bus-tabla tr.bus-sin td { background: #fdf3f2; }
 .bus-paginas { display: flex; gap: 10px; align-items: center; justify-content: center; margin: 12px 0; }
+
+/* Inventario del material (/admin/inventario) */
+.inv-card { text-decoration: none; color: inherit; border-top: 4px solid var(--border); }
+.inv-card.is-active { box-shadow: 0 0 0 2px var(--accent); }
+.inv-card.inv-ok { border-top-color: #1b8a4c; }
+.inv-card.inv-parcial { border-top-color: #c49000; }
+.inv-card.inv-revision { border-top-color: #2f6fd6; }
+.inv-card.inv-pendiente { border-top-color: #b42318; }
+.inv-resumen { margin: 6px 0 14px; }
+.inv-resumen summary { cursor: pointer; font-weight: 600; margin-bottom: 8px; }
+.inv-tabla .inv-fila td:first-child { border-left: 5px solid var(--border); }
+.inv-tabla .inv-fila.inv-ok td:first-child { border-left-color: #1b8a4c; }
+.inv-tabla .inv-fila.inv-parcial td:first-child { border-left-color: #c49000; }
+.inv-tabla .inv-fila.inv-revision td:first-child { border-left-color: #2f6fd6; }
+.inv-tabla .inv-fila.inv-pendiente td:first-child { border-left-color: #b42318; }
+.inv-tipo { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+.inv-sub { font-size: 12px; }
+.inv-enlaces { display: flex; gap: 10px; font-size: 12.5px; margin-top: 2px; }
+.inv-estado { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--surface-2, #f1f3f6); }
+.inv-estado.inv-ok { background: #e6f4ec; color: #14663a; }
+.inv-estado.inv-parcial { background: #fdf3d7; color: #7a5600; }
+.inv-estado.inv-revision { background: #e8f0fc; color: #1e4fa0; }
+.inv-estado.inv-pendiente { background: #fdecea; color: #8f1d13; }
+.inv-detalle { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+.inv-tabla td { overflow-wrap: anywhere; }
+.inv-tabla { table-layout: fixed; width: 100%; }
+.inv-tabla th:last-child, .inv-col-estado { width: 210px; }
+@media (max-width: 720px) { .inv-tabla th:last-child, .inv-col-estado { width: 110px; } }
+.inv-estado { white-space: normal; }
