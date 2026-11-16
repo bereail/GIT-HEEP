@@ -45,6 +45,10 @@ def create_app(test_config=None):
 
     app.register_blueprint(admin_bp)
 
+    from app.revision.routes import revision_bp
+
+    app.register_blueprint(revision_bp)
+
     @app.template_global()
     def tutoriales_para_js(categoria):
         """Lista mínima [{slug}, ...] que progreso.js necesita para calcular

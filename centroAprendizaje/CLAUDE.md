@@ -159,6 +159,30 @@ con un `.bat`.
 La vista previa local se cierra sola si a la PC le falta memoria (7,7 GB):
 levantarla solo cuando haga falta.
 
+## Revisión del nomenclador por una persona externa (16/11/2026)
+
+- **Colores del nomenclador** (`templates/equivalencias.html`): son los
+  estados de `confianza`, sin datos nuevos. 🟢 `alta` = revisado y correcto,
+  🟡 `dudosa` = revisar, 🔴 `sin_match` = problema pendiente (no está en el
+  catálogo). Hay leyenda, chip con texto en cada fila y franja de color.
+  Clases compartidas: `.estado-verde/-amarillo/-rojo` en `styles.css`.
+- **Acceso de la revisora** (`app/revision/routes.py`, blueprint `/revision`):
+  enlace privado `/revision/acceso#<token>`. El token va después del `#`
+  (no viaja en la URL ni queda en logs); `revision.js` lo manda por POST con
+  CSRF. En la base solo se guarda el hash (`revisores_nomenclador`). La
+  sesión usa `revisor_id`, aparte de `admin_autenticado`: no entra al panel.
+  Se da de baja o se genera un enlace nuevo desde `/admin/nomenclador/revision`
+  (el enlace se muestra una sola vez, con botón para descargar el acceso
+  directo `.url` de Windows).
+- **Observaciones** (`observaciones_nomenclador` + `_historial`): una por
+  revisor e ítem, editable, con fecha y versiones anteriores. Solo para ítems
+  en amarillo. Se vinculan por `clave_item` (nombre interno normalizado),
+  NO por el `id`, porque `importar_equivalencias.py` borra y recarga la
+  tabla en cada deploy. Nunca modifican `equivalencias_articulos`.
+- **Migración** `5e1f0a7c2b90` (solo crea las 3 tablas). El deploy ahora
+  corre `flask db upgrade` (paso 3b de `scripts/deploy_servidor.sh`).
+- Tests: `tests/test_revision_nomenclador.py`.
+
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 
 **Reglas nuevas de la usuaria (16/11), además de las de arriba:**

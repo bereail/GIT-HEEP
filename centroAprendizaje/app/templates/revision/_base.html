@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{% block titulo %}Revisión del nomenclador{% endblock %}</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body class="rev-body">
+  <header class="rev-top">
+    <span class="rev-top__marca"><span class="rev-top__logo">C</span> Centro de Aprendizaje · Revisión del nomenclador</span>
+    {% block acciones %}{% endblock %}
+  </header>
+  <main class="rev-main" id="main-content">
+    {% block contenido %}{% endblock %}
+  </main>
+  <script src="{{ url_for('static', filename='js/revision.js') }}"></script>
+</body>
+</html>

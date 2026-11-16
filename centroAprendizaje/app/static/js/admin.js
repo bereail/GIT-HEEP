@@ -11,3 +11,18 @@ document.addEventListener('change', (ev) => {
   const campo = ev.target.closest('[data-autoenviar]');
   if (campo && campo.form) campo.form.submit();
 });
+
+// <button data-acceso-directo="id-del-elemento-con-la-url" data-nombre="..."> → descarga un
+// acceso directo de Windows (.url) que abre esa dirección.
+document.addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-acceso-directo]');
+  if (!b) return;
+  const url = document.getElementById(b.dataset.accesoDirecto).textContent.trim();
+  const blob = new Blob(['[InternetShortcut]\r\nURL=' + url + '\r\n'], { type: 'application/octet-stream' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (b.dataset.nombre || 'Acceso') + '.url';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+});

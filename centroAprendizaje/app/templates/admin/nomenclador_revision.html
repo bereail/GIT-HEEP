@@ -1,0 +1,108 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Revisión del nomenclador — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">🔄 Revisión del nomenclador</h1>
+</div>
+<p class="text-muted" style="margin-top:4px">Observaciones de los revisores sobre los ítems en <b>amarillo</b>. No cambian el nomenclador: para corregirlo, se edita <code>scripts/equivalencias_articulos.csv</code> y se reimporta.</p>
+
+{% if enlace_nuevo %}
+<div class="callout callout--tip rev-enlace" role="status">
+  <span class="callout__icon">🔑</span>
+  <div>
+    <b>Enlace de acceso para {{ enlace_nuevo.nombre }}.</b> Se muestra una sola vez: copialo ahora.
+    <code class="rev-enlace__url" id="rev-enlace-url">{{ enlace_nuevo.url }}</code>
+    <div class="rev-enlace__botones">
+      <button type="button" class="btn btn--primary btn--sm" data-copiar="rev-enlace-url">📋 Copiar enlace</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-acceso-directo="rev-enlace-url" data-nombre="Revisión nomenclador">⬇️ Descargar acceso directo (Windows)</button>
+    </div>
+    <p class="text-muted" style="margin:6px 0 0">En la computadora de la persona: guardá el acceso directo en el escritorio (o abrí el enlace y, en Chrome o Edge, menú → "Guardar y compartir" → "Crear acceso directo"). Quien tenga el enlace puede entrar: si se pierde, generá uno nuevo y el anterior deja de funcionar.</p>
+  </div>
+</div>
+{% endif %}
+
+<section class="card rev-admin-bloque">
+  <h2 class="section__title" style="margin-top:0">Personas con acceso</h2>
+  {% if revisores %}
+  <table class="data-table">
+    <thead><tr><th>Nombre</th><th>Estado</th><th>Último ingreso</th><th>Observaciones</th><th></th></tr></thead>
+    <tbody>
+      {% for r in revisores %}
+      <tr>
+        <td><b>{{ r.nombre }}</b></td>
+        <td>{% if r.activo %}<span class="badge badge--verified">Activo</span>{% else %}<span class="badge badge--neutral">Dado de baja</span>{% endif %}</td>
+        <td>{{ r.ultimo_acceso.strftime('%d/%m/%Y %H:%M') if r.ultimo_acceso else '—' }}</td>
+        <td>{{ r.observaciones | selectattr('texto') | list | length }}</td>
+        <td class="rev-admin-acciones">
+          <form method="post" action="{{ url_for('admin.revisor_enlace', revisor_id=r.id) }}" data-confirmar="¿Generar un enlace nuevo para {{ r.nombre }}? El anterior deja de funcionar.">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">🔑 Enlace nuevo</button>
+          </form>
+          <form method="post" action="{{ url_for('admin.revisor_estado', revisor_id=r.id) }}" data-confirmar="{{ '¿Dar de baja el acceso de ' ~ r.nombre ~ '?' if r.activo else '¿Volver a activar el acceso de ' ~ r.nombre ~ '?' }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">{{ '⛔ Dar de baja' if r.activo else '✅ Activar' }}</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="text-muted">Todavía no hay ninguna persona con acceso.</p>{% endif %}
+  <form method="post" action="{{ url_for('admin.revisor_crear') }}" class="rev-admin-nuevo">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <label for="rev-nombre"><b>Dar acceso a una persona</b></label>
+    <input class="input" id="rev-nombre" name="nombre" maxlength="100" placeholder="Nombre de la persona" required />
+    <button class="btn btn--primary btn--sm">Crear acceso</button>
+  </form>
+</section>
+
+<nav class="rev-filtros" aria-label="Filtrar ítems">
+  {% for clave, texto in [('con', 'Con observaciones'), ('sin', 'Sin observaciones (pendientes)'), ('todos', 'Todos los amarillos')] %}
+  <a class="rev-filtro {{ 'is-active' if filtro == clave }}" href="{{ url_for('admin.nomenclador_revision', filtro=clave) }}">{{ texto }} <b>{{ conteo[clave] }}</b></a>
+  {% endfor %}
+</nav>
+
+<ol class="rev-lista">
+  {% for f in filas %}{% set e = f.item %}
+  <li class="rev-item estado-amarillo {{ 'tiene-obs' if f.observaciones }}">
+    <div class="rev-item__datos">
+      <div><div class="rev-item__label">Como figura en el pedido</div><div class="rev-item__nombre">{{ e.nombre_interno }}</div></div>
+      <div><div class="rev-item__label">Equivalencia propuesta</div><div>{{ [e.bien_o_servicio, e.item_especifico] | select | join(' — ') or '—' }}</div>{% if e.codigo_catalogo %}<span class="rev-item__codigo">{{ e.codigo_catalogo }}</span>{% endif %}</div>
+    </div>
+    <div class="rev-obs">
+      {% for o in f.observaciones %}
+      <div class="rev-obs__vista">
+        <span class="rev-obs__chip">✏️ {{ o.revisor.nombre }}</span>
+        <p class="rev-obs__texto">{{ o.texto }}</p>
+        <span class="rev-obs__fecha">Creada el {{ o.creado_en.strftime('%d/%m/%Y %H:%M') }}{% if o.actualizado_en and o.actualizado_en != o.creado_en %} · modificada el {{ o.actualizado_en.strftime('%d/%m/%Y %H:%M') }}{% endif %}</span>
+        {% if o.historial %}
+        <details class="rev-historial"><summary>Versiones anteriores ({{ o.historial | length }})</summary>
+          <ul>{% for h in o.historial %}<li><span class="text-muted">{{ h.guardado_en.strftime('%d/%m/%Y %H:%M') }}:</span> {{ h.texto or '(vacía)' }}</li>{% endfor %}</ul>
+        </details>
+        {% endif %}
+      </div>
+      {% else %}
+      <span class="text-muted">Sin observaciones todavía.</span>
+      {% endfor %}
+    </div>
+  </li>
+  {% else %}
+  <li class="empty-state">No hay ítems con este filtro.</li>
+  {% endfor %}
+</ol>
+
+{% if huerfanas %}
+<section class="rev-admin-bloque">
+  <h2 class="section__title">Observaciones de ítems que ya no están en amarillo</h2>
+  <p class="text-muted" style="margin-top:0">El ítem cambió de estado o de nombre en el nomenclador. Las observaciones se conservan.</p>
+  <ol class="rev-lista">
+    {% for o in huerfanas %}
+    <li class="rev-item estado-{{ {'alta': 'verde', 'sin_match': 'rojo', 'dudosa': 'amarillo'}.get(estado_actual.get(o.clave_item), 'gris') }}">
+      <div class="rev-item__datos"><div><div class="rev-item__label">Ítem</div><div class="rev-item__nombre">{{ o.nombre_item }}</div>
+        <span class="text-muted">{{ {'alta': '🟢 Ahora en verde', 'sin_match': '🔴 Ahora en rojo'}.get(estado_actual.get(o.clave_item), '⚪ Ya no está en el nomenclador') }}</span></div></div>
+      <div class="rev-obs"><div class="rev-obs__vista"><span class="rev-obs__chip">✏️ {{ o.revisor.nombre }}</span><p class="rev-obs__texto">{{ o.texto }}</p>
+        <span class="rev-obs__fecha">Modificada el {{ o.actualizado_en.strftime('%d/%m/%Y %H:%M') }}</span></div></div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+{% endblock %}

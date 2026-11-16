@@ -1082,3 +1082,101 @@ def capacitacion_archivo(nombre):
     if nombre not in permitidos:
         abort(404)
     return send_from_directory(recursos.ARCHIVOS, nombre, as_attachment=True)
+
+
+# ------------------------------------------------- revisión del nomenclador --
+
+def _datos_revision():
+    """Ítems en amarillo con sus observaciones (de todos los revisores), y las
+    observaciones de ítems que ya no están en amarillo (cambiaron de estado o
+    de nombre en el CSV)."""
+    from app.models import EquivalenciaArticulo
+    from app.models.revision_nomenclador import ObservacionNomenclador, clave_item
+    from app.revision.routes import items_amarillos
+
+    por_clave = {}
+    for o in ObservacionNomenclador.query.order_by(ObservacionNomenclador.actualizado_en.desc()):
+        por_clave.setdefault(o.clave_item, []).append(o)
+    amarillos = items_amarillos()
+    claves_amarillas = {c for c, _ in amarillos}
+    filas = [{"clave": c, "item": e, "observaciones": [o for o in por_clave.get(c, []) if o.texto]} for c, e in amarillos]
+    estado_actual = {clave_item(e.nombre_interno): e.confianza for e in EquivalenciaArticulo.query}
+    huerfanas = [o for c, lista in por_clave.items() if c not in claves_amarillas for o in lista if o.texto]
+    return filas, huerfanas, estado_actual
+
+
+@admin_bp.route("/nomenclador/revision")
+@requiere_admin
+def nomenclador_revision():
+    from app.models.revision_nomenclador import RevisorNomenclador
+
+    filas, huerfanas, estado_actual = _datos_revision()
+    filtro = request.args.get("filtro", "con")
+    if filtro not in ("todos", "con", "sin"):
+        filtro = "con"
+    conteo = {"todos": len(filas), "con": sum(1 for f in filas if f["observaciones"]),
+              "sin": sum(1 for f in filas if not f["observaciones"])}
+    if filtro == "con":
+        filas = [f for f in filas if f["observaciones"]]
+    elif filtro == "sin":
+        filas = [f for f in filas if not f["observaciones"]]
+    return render_template(
+        "admin/nomenclador_revision.html", filas=filas, huerfanas=huerfanas, estado_actual=estado_actual,
+        filtro=filtro, conteo=conteo, revisores=RevisorNomenclador.query.order_by(RevisorNomenclador.nombre).all(),
+        enlace_nuevo=session.pop("enlace_revision_nuevo", None),
+    )
+
+
+def _nuevo_enlace(revisor):
+    """Genera un token nuevo (el anterior deja de servir) y deja el enlace en
+    la sesión para mostrarlo una sola vez: en la base solo queda el hash."""
+    import secrets
+
+    from app.models.revision_nomenclador import hash_token
+
+    token = secrets.token_urlsafe(32)
+    revisor.token_hash = hash_token(token)
+    session["enlace_revision_nuevo"] = {
+        "nombre": revisor.nombre, "url": url_for("revision.acceso", _external=True) + "#" + token}
+
+
+@admin_bp.route("/nomenclador/revisores", methods=["POST"])
+@requiere_admin
+def revisor_crear():
+    from app.models.revision_nomenclador import RevisorNomenclador
+
+    nombre = (request.form.get("nombre") or "").strip()[:100]
+    if not nombre:
+        flash("Escribí el nombre de la persona.", "error")
+        return redirect(url_for("admin.nomenclador_revision"))
+    revisor = RevisorNomenclador(nombre=nombre, token_hash="", activo=True)
+    _nuevo_enlace(revisor)
+    db.session.add(revisor)
+    db.session.commit()
+    flash(f"Acceso creado para {nombre}.", "ok")
+    return redirect(url_for("admin.nomenclador_revision"))
+
+
+@admin_bp.route("/nomenclador/revisores/<int:revisor_id>/enlace", methods=["POST"])
+@requiere_admin
+def revisor_enlace(revisor_id):
+    from app.models.revision_nomenclador import RevisorNomenclador
+
+    revisor = db.session.get(RevisorNomenclador, revisor_id) or abort(404)
+    _nuevo_enlace(revisor)
+    revisor.activo = True
+    db.session.commit()
+    flash(f"Enlace nuevo para {revisor.nombre}: el anterior ya no funciona.", "ok")
+    return redirect(url_for("admin.nomenclador_revision"))
+
+
+@admin_bp.route("/nomenclador/revisores/<int:revisor_id>/estado", methods=["POST"])
+@requiere_admin
+def revisor_estado(revisor_id):
+    from app.models.revision_nomenclador import RevisorNomenclador
+
+    revisor = db.session.get(RevisorNomenclador, revisor_id) or abort(404)
+    revisor.activo = not revisor.activo
+    db.session.commit()
+    flash(f"Acceso de {revisor.nombre} {'activado' if revisor.activo else 'dado de baja'}.", "ok")
+    return redirect(url_for("admin.nomenclador_revision"))

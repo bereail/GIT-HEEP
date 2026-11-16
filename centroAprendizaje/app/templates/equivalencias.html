@@ -15,15 +15,15 @@
 <div class="equiv-summary" id="equiv-summary">
   <button type="button" class="equiv-tile equiv-tile--ok" data-filtro="alta">
     <span class="equiv-tile__num" id="num-alta">—</span>
-    <span class="equiv-tile__label">Listos para cargar</span>
+    <span class="equiv-tile__label">🟢 Listos para cargar</span>
   </button>
   <button type="button" class="equiv-tile equiv-tile--warn" data-filtro="dudosa">
     <span class="equiv-tile__num" id="num-dudosa">—</span>
-    <span class="equiv-tile__label">Confirmar antes de usar</span>
+    <span class="equiv-tile__label">🟡 Confirmar antes de usar</span>
   </button>
   <button type="button" class="equiv-tile equiv-tile--pend" data-filtro="sin_match">
     <span class="equiv-tile__num" id="num-sinmatch">—</span>
-    <span class="equiv-tile__label">Hay que pedir que se agreguen</span>
+    <span class="equiv-tile__label">🔴 Hay que pedir que se agreguen</span>
   </button>
 </div>
 
@@ -66,6 +66,11 @@
   </p>
 </div>
 
+<div class="est-leyenda" aria-label="Qué significa cada color">
+  <span><span class="est-chip estado-verde">🟢 Verde</span>revisado y correcto: coincidencia clara</span>
+  <span><span class="est-chip estado-amarillo">🟡 Amarillo</span>hay que revisarlo o confirmarlo antes de usar</span>
+  <span><span class="est-chip estado-rojo">🔴 Rojo</span>problema pendiente: no está en el catálogo oficial</span>
+</div>
 <div class="equiv-count" id="equiv-count"></div>
 <div class="equiv-rows" id="equiv-rows"></div>
 <div class="empty-state" id="equiv-empty" hidden><div class="empty-state__icon">🔎</div>No encontramos ningún artículo con ese filtro.</div>
@@ -91,7 +96,13 @@
 .equiv-tile__label{display:block;font-size:12px;color:var(--text-muted);margin-top:6px;font-weight:500;}
 .equiv-tile--ok .equiv-tile__num{color:var(--success);}
 .equiv-tile--warn .equiv-tile__num{color:var(--warning);}
-.equiv-tile--pend .equiv-tile__num{color:var(--text-muted);}
+.equiv-tile--pend .equiv-tile__num{color:#b42318;}
+.equiv-tile--ok{border-top:4px solid #1b8a4c;}
+.equiv-tile--warn{border-top:4px solid #c49000;}
+.equiv-tile--pend{border-top:4px solid #b42318;}
+.equiv-tile--warn .equiv-tile__num{color:#9a6c00;}
+.equiv-rows .equiv-row{border-left-width:6px;border-left-color:var(--est,var(--border));}
+.equiv-row__estado{grid-column:1/-1;}
 
 .equiv-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
 .equiv-count{font-size:12.5px;color:var(--text-faint);margin-bottom:10px;}
@@ -178,17 +189,30 @@
     return [d.bien, d.item].filter(Boolean).join(' — ');
   }
 
+  const ESTADOS = {
+    alta: ['estado-verde', '🟢 Revisado y correcto'],
+    dudosa: ['estado-amarillo', '🟡 Revisar antes de usar'],
+    sin_match: ['estado-rojo', '🔴 No está en el catálogo oficial'],
+  };
+  function chip(d) {
+    const e = ESTADOS[d.confianza];
+    return e ? `<div class="equiv-row__estado"><span class="est-chip ${e[0]}">${e[1]}</span></div>` : '';
+  }
+  function clase(d) { return (ESTADOS[d.confianza] || ['estado-gris'])[0]; }
+
   function fila(d) {
     if (d.confianza === 'sin_match') {
       return `
-        <div class="equiv-row equiv-row--pend">
+        <div class="equiv-row equiv-row--pend ${clase(d)}">
+          ${chip(d)}
           <div class="equiv-row__nombre">${escapeHtml(d.nombre)}</div>
           ${d.notas ? `<div class="equiv-row__nota">${escapeHtml(d.notas)}</div>` : ''}
         </div>`;
     }
     const txt = textoBuscar(d);
     return `
-      <div class="equiv-row">
+      <div class="equiv-row ${clase(d)}">
+        ${chip(d)}
         <div>
           <div class="equiv-row__label">Como figura en el pedido</div>
           <div class="equiv-row__nombre">${escapeHtml(d.nombre)}</div>

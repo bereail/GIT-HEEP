@@ -1,0 +1,19 @@
+{% extends "revision/_base.html" %}
+{% block contenido %}
+<section class="card rev-acceso">
+  {% if invalido %}
+    <h1>Este acceso no es válido</h1>
+    <p>El enlace no corresponde a un acceso activo, o fue dado de baja. Pedile un enlace nuevo a quien administra el Centro de Aprendizaje.</p>
+  {% elif salio %}
+    <h1>Saliste de la revisión</h1>
+    <p>Para volver a entrar, abrí de nuevo tu acceso directo.</p>
+  {% else %}
+    <h1 id="rev-acceso-titulo">Entrando…</h1>
+    <p id="rev-acceso-texto">Un momento, estamos verificando tu acceso.</p>
+    <form method="post" action="{{ url_for('revision.acceso_validar') }}" id="rev-acceso-form" hidden>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <input type="hidden" name="token" id="rev-token" />
+    </form>
+  {% endif %}
+</section>
+{% endblock %}

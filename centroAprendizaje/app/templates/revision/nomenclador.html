@@ -1,0 +1,53 @@
+{% extends "revision/_base.html" %}
+{% block acciones %}<span class="rev-top__usuario">👤 {{ revisor.nombre }} · <a href="{{ url_for('revision.salir') }}">Salir</a></span>{% endblock %}
+{% block contenido %}
+<h1 class="rev-titulo">Ítems para revisar</h1>
+<p class="rev-bajada">Son los artículos en <b>amarillo</b>: tienen una equivalencia que hay que confirmar. Si ves algo para aclarar o corregir, tocá <b>"Agregar observación"</b>, escribilo y tocá <b>Guardar</b>. Se guarda al instante y lo podés cambiar cuando quieras. Lo que escribís no cambia el nomenclador: le llega a quien lo administra.</p>
+
+<div class="rev-barra" data-csrf="{{ csrf_token() }}" data-url-guardar="{{ url_for('revision.guardar_observacion') }}">
+  <div class="input-wrap rev-barra__buscar"><span class="input-wrap__icon">🔎</span><input class="input" type="search" id="rev-buscar" placeholder="Buscar un artículo…" aria-label="Buscar un artículo" autocomplete="off" /></div>
+  <div class="rev-filtros" role="radiogroup" aria-label="Qué ítems ver">
+    <button type="button" class="rev-filtro is-active" data-filtro="todos" role="radio" aria-checked="true">Todos <b>{{ items | length }}</b></button>
+    <button type="button" class="rev-filtro" data-filtro="sin" role="radio" aria-checked="false">Sin observación <b id="rev-n-sin">{{ items | length - con_observacion }}</b></button>
+    <button type="button" class="rev-filtro" data-filtro="con" role="radio" aria-checked="false">Con observación <b id="rev-n-con">{{ con_observacion }}</b></button>
+  </div>
+</div>
+
+<ol class="rev-lista" id="rev-lista">
+  {% for i in items %}
+  <li class="rev-item estado-amarillo {{ 'tiene-obs' if i.observacion }}" data-clave="{{ i.clave }}" data-buscar="{{ (i.nombre ~ ' ' ~ i.buscar) | lower }}">
+    <div class="rev-item__datos">
+      <div>
+        <div class="rev-item__label">Como figura en el pedido</div>
+        <div class="rev-item__nombre">{{ i.nombre }}</div>
+      </div>
+      <div>
+        <div class="rev-item__label">Equivalencia propuesta</div>
+        <div>{{ i.buscar or '—' }}</div>
+        {% if i.codigo %}<span class="rev-item__codigo">{{ i.codigo }}</span>{% endif %}
+      </div>
+      {% if i.notas %}<div class="rev-item__nota">{{ i.notas }}</div>{% endif %}
+    </div>
+    <div class="rev-obs">
+      <div class="rev-obs__vista" {{ 'hidden' if not i.observacion }}>
+        <span class="rev-obs__chip">✏️ Tu observación</span>
+        <p class="rev-obs__texto">{{ i.observacion }}</p>
+        <span class="rev-obs__fecha">{% if i.actualizado %}Guardada el {{ i.actualizado }}{% endif %}</span>
+      </div>
+      <button type="button" class="btn btn--ghost btn--sm rev-obs__abrir">{{ 'Editar observación' if i.observacion else '+ Agregar observación' }}</button>
+      <div class="rev-obs__editor" hidden>
+        <label class="sr-only" for="obs-{{ loop.index }}">Observación sobre {{ i.nombre }}</label>
+        <textarea class="input rev-obs__campo" id="obs-{{ loop.index }}" rows="3" maxlength="2000" placeholder="Ej.: el código correcto es…, falta aclarar la medida…, está bien.">{{ i.observacion }}</textarea>
+        <div class="rev-obs__botones">
+          <button type="button" class="btn btn--primary btn--sm rev-obs__guardar">Guardar</button>
+          <button type="button" class="btn btn--ghost btn--sm rev-obs__cancelar">Cancelar</button>
+          <span class="rev-obs__estado" role="status"></span>
+        </div>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+<div class="empty-state" id="rev-vacio" hidden>No hay ítems con ese filtro.</div>
+<div class="rev-mas" id="rev-mas" hidden><span></span> <button type="button" class="btn btn--ghost btn--sm">Ver 40 más</button></div>
+{% endblock %}

@@ -9,6 +9,7 @@ from app.models.consulta import Consulta, MensajeConsulta, TIPOS_CONSULTA, ESTAD
 from app.models.evento_uso import EventoUso
 from app.models.feedback import Feedback, CATEGORIAS_FEEDBACK
 from app.models.equivalencia_articulo import EquivalenciaArticulo, NIVELES_CONFIANZA
+from app.models.revision_nomenclador import ObservacionHistorial, ObservacionNomenclador, RevisorNomenclador
 
 __all__ = [
     "Tema",
@@ -27,4 +28,7 @@ __all__ = [
     "CATEGORIAS_FEEDBACK",
     "EquivalenciaArticulo",
     "NIVELES_CONFIANZA",
+    "RevisorNomenclador",
+    "ObservacionNomenclador",
+    "ObservacionHistorial",
 ]

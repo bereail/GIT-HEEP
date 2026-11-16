@@ -20,6 +20,9 @@ echo "== 3. Dependencias (Flask 3.1.3)"
 $COMO .venv/bin/pip install -q --upgrade pip setuptools
 $COMO .venv/bin/pip install -q -r requirements.txt
 
+echo "== 3b. Esquema de la base (migraciones nuevas, si hay)"
+$COMO env FLASK_APP=run.py .venv/bin/flask db upgrade
+
 echo "== 4. Contenido (en este orden)"
 for s in importar_mihospital importar_timbo_expedientes importar_timbo_compras importar_faq_chats importar_equivalencias; do
   $COMO $PY scripts/$s.py | tail -1
