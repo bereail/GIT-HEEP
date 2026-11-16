@@ -79,8 +79,43 @@ No aparecen en ninguna fuente oficial. También se corrigieron en el glosario de
   - se corrigió la dirección "gestivirtual.gov.ar", que es una errata de la guía, por gestionvirtual.santafe.gob.ar ("Paso a paso para ofertar");
   - se sacó "hasta 45 MB por oferta": no aparece en ninguna fuente.
 
+## Tanda 2 — Compras directas (CD-01) (16/11/2026)
+
+**Fuentes:**
+- **Capacitación oficial "Compras directas a través de la plataforma digital"** (QH7zvgZ7sbQ, 70 min, subtítulos).
+- **Videos oficiales:** "Compras Directas" (IpayiPYodbU) y "Gestión de pago" (BzxCGnsajmw).
+- **Normas:** Ley 12.510 (art. 116), Circular UG TIMBÓ 2/2025 y Circular UG TIMBÓ 2/2026.
+
+| Dato | Fuente |
+|---|---|
+| Marco: art. 116, inc. c), ap. 1, "cuando la operación no exceda el tope de la reglamentación" | Ley 12.510 (texto). **Antes decía "inciso 1": se corrigió** |
+| Solo digital desde la Circular UG TIMBÓ 2/2025 | Circ. UG 2/2025, punto 2 |
+| Territorio 5.0: lo digital sigue digital; no pedir lo que el Estado ya tiene | Capacitación, min. 5:30–6:30. **Se atribuye a la capacitación: no se encontró el número de decreto**. "Una sola vez": Circ. UG 2/2026 (art. 26, Ley 14.256) |
+| CD-01: Documentos Oficiales → Nuevo → tipo CD01; productor puede ser otra persona | Capacitación, min. 17:30 |
+| Fecha, destinatario, área solicitante; dos secciones; costo total 0 en la que no se usa; costo total a mano | Capacitación, min. 18:00–20:00 y 50:30 |
+| Firma conjunta, al menos dos firmantes, de cualquier oficina, por nombre y apellido; Acciones → Enviar a firmar | Capacitación, min. 21:00–22:00 |
+| CD-02 a CD-04 y CD-05 (nota de rechazo) | Video "Compras Directas"; capacitación, min. 24:30 |
+| CD-01 digital guardado como PDF; nunca escaneado | Capacitación, min. 30:30 y 34:00 |
+| Presupuesto de referencia por mail; como documento informativo | Capacitación, min. 37:00 y 40:30 |
+| PDF hasta 50 MB | Capacitación, min. 34:00 |
+| Ficha técnica, sobre todo en insumos tecnológicos; si no está, la elabora la STG | Capacitación, min. 12:00 |
+| Vincular el CD-01: ya firmado, omite la firma | Capacitación, min. 37:30–38:00 |
+| Pase a cualquier oficina, motivo en la Providencia; desaparece de la bandeja; autorizar en la Providencia | Capacitación, min. 39:30 y 45:00 |
+| Lo incorporado no se elimina: "Subsanar documento" | Capacitación, min. 41:00 |
+| Firma electrónica (todos, misma validez) y firma digital (gobernador y ministros, con token) | Capacitación, min. 49:30 |
+| Gestión de pago en TIMBÓ, biblioteca de procedimientos | Video "Gestión de pago" |
+
+**Se sacó, por no tener respaldo:**
+- "no hay interoperabilidad con el Registro de Proveedores";
+- "costo total y fundamentación son obligatorios";
+- los campos de "Agregar proveedor";
+- el ejemplo "sillas y mesas para Salón Blanco";
+- "firmado digitalmente" (CD-01 externo);
+- el "Orden del video oficial", que contradecía la capacitación: ahí primero se suben los PDF y después se vincula el CD-01;
+- el nombre "Timboteca";
+- "secretarios" en firma digital, porque la respuesta oficial nombra al gobernador y a los ministros.
+
 ## Lo que sigue
-- **Tanda 2:** Compras directas (CD-01): ya están las transcripciones de los videos oficiales QH7zvgZ7sbQ, IpayiPYodbU y BzxCGnsajmw.
-  - Falta identificar la norma de "Territorio 5.0".
+- Identificar el número del decreto de "Territorio 5.0".
 - **Tanda 3:** Gestión interna del hospital (17 lecciones), contra las Circulares UG 7, 8, 9 y 11/2026, SCyGB 01, 03, 04 y 05/2026, el Pliego Único, la Res. 292/2026 y las clases 01 a 03.
 - **Después:** las preguntas de "Tengo un problema" de TIMBÓ Compras, Recursos, TIMBÓ (Expedientes) y miHospital.

@@ -749,17 +749,17 @@
                 },
                 {
                   "term": "Marco normativo",
-                  "def": "Inciso 1 del artículo 116 de la Ley 12.510 y su Decreto reglamentario 1104."
+                  "def": "Ley 12.510, art. 116, inciso c), apartado 1: \"cuando la operación no exceda el tope de la reglamentación\", y su Decreto reglamentario 1104/16. Desde la Circular UG TIMBÓ 2/2025, se tramita solo en digital."
                 }
               ]
             },
             {
               "type": "warning",
-              "text": "Por el decreto de Territorio 5.0, una vez que un trámite se hace en digital tiene que seguir siendo digital siempre: no se puede volver a tramitarlo en papel."
+              "text": "Según la capacitación oficial de compras directas, el decreto de Territorio 5.0 establece que un trámite que se hace en digital tiene que seguir siempre en digital: no se vuelve al expediente papel."
             },
             {
               "type": "tip",
-              "text": "Otro principio de Territorio 5.0: no le pidas al proveedor documentación que el Estado ya tiene en su poder."
+              "text": "Otro principio que remarca la capacitación oficial: no pedirle al proveedor documentación que el Estado ya tiene en su poder. La Circular UG TIMBÓ 2/2026 lo llama el principio de \"una sola vez\" (art. 26 de la Ley 14.256)."
             },
             {
               "type": "tip",
@@ -819,7 +819,7 @@
               "type": "step",
               "number": 4,
               "explanation": "Sumá el resto de los datos.",
-              "doThis": "Fundamentación de la compra y, si ya los tenés, proveedores propuestos (no hay interoperabilidad con el Registro de Proveedores: se cargan a mano)."
+              "doThis": "Escribí la fundamentación y, si ya los tenés, cargá los proveedores propuestos. Los datos de proveedores de la Provincia se consultan en el registro de proveedores."
             },
             {
               "type": "step",
@@ -837,32 +837,28 @@
             },
             {
               "type": "warning",
-              "text": "Si ya veías usando un CD-01 armado fuera de TIMBÓ (digital, no escaneado) y firmado digitalmente, lo podés subir igual como archivo PDF al expediente: no es obligatorio generarlo desde Documentos Oficiales."
+              "text": "Si usás el CD-01 digital que ya venías usando, lo podés guardar como PDF y subirlo al expediente: no es obligatorio generarlo desde Documentos Oficiales. Nunca escaneado: ocupa demasiado espacio."
             },
             {
               "type": "concepts",
               "items": [
                 {
                   "term": "Compra de bienes",
-                  "def": "Con \"Agregar bien\" cargás cada renglón: cantidad, detalle, especificación y costo estimado. Repetilo por cada bien."
+                  "def": "Con \"Agregar bien\" cargás cada renglón con su detalle. Repetilo por cada bien."
                 },
                 {
                   "term": "Contratación de servicios",
-                  "def": "Igual, con \"Agregar servicio\"."
+                  "def": "Igual, para servicios. Si no contratás servicios, poné costo total = 0 en esa sección."
                 },
                 {
-                  "term": "Costo total estimado y Fundamentación del pedido",
-                  "def": "Son obligatorios: si quedan vacíos, el formulario no avanza."
-                },
-                {
-                  "term": "Nómina de proveedores propuestos",
-                  "def": "Con \"Agregar proveedor\": nombre, dirección, teléfono y e-mail."
+                  "term": "Costo total",
+                  "def": "Por ahora se carga a mano."
                 }
               ]
             },
             {
               "type": "tip",
-              "text": "En la referencia describí la compra (por ejemplo, \"CD01 Compra de sillas y mesas para Salón Blanco\"). Los firmantes se eligen en \"Definir firmantes\"; después, Acciones → Enviar a firmar → Confirmar."
+              "text": "En la referencia describí la compra (por ejemplo, \"Solicitud compra de equipo informático\"). Elegí al menos dos firmantes y, con todo cargado, Acciones → \"Enviar a firmar\"."
             },
             {
               "type": "video",
@@ -902,7 +898,7 @@
               "type": "step",
               "number": 2,
               "explanation": "Desde el Gestor de expediente, subí la nota de solicitud y, si corresponde, la ficha técnica.",
-              "doThis": "\"Subir nuevo archivo\" → solo PDF, hasta 50 MB por archivo, nunca escaneados (ocupan demasiado espacio). La ficha técnica es obligatoria si comprás un bien tecnológico; si no existe, se la pedís a STG."
+              "doThis": "\"Subir nuevo archivo\": solo PDF, de hasta 50 MB, nunca escaneados (ocupan demasiado espacio). La ficha técnica se pide sobre todo en insumos tecnológicos; si no está, la elabora la STG (le podés hacer un pase y te la devuelve)."
             },
             {
               "type": "tip",
@@ -941,13 +937,9 @@
                 },
                 {
                   "term": "Firma digital",
-                  "def": "La usan el gobernador, ministros y secretarios, con token, desde otro sistema."
+                  "def": "La usan el gobernador y los ministros, con token, en un módulo aparte."
                 }
               ]
-            },
-            {
-              "type": "tip",
-              "text": "Orden del video oficial: vincular el CD-01 → subir la nota de solicitud, la ficha técnica y los presupuestos → tildar todo → \"Incorporar documentos\" (podés reordenarlos) → firma electrónica → pase."
             },
             {
               "type": "video",
@@ -970,7 +962,7 @@
                 },
                 {
                   "term": "Pago",
-                  "def": "Después de adjudicar, el pago también se gestiona en TIMBÓ. El paso a paso de cada tipo de compra directa está en la biblioteca de procedimientos administrativos (Timboteca)."
+                  "def": "Después de adjudicar, la gestión de pago también se hace en TIMBÓ. El paso a paso está en la biblioteca de procedimientos administrativos (video oficial \"Gestión de pago para compras directas\")."
                 }
               ]
             },
