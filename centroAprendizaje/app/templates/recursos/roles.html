@@ -1,130 +1,110 @@
 {% extends layout %}
-{% from "recursos/_comun.html" import subnav, estado, fuentes, datos_glosario, cinco_roles with context %}
+{% from "recursos/_comun.html" import subnav, estado, fuentes, datos_glosario with context %}
 {% block titulo %}Roles y circuito — Recursos{% endblock %}
 {% block shell_clase %}admin-shell--ancho{% endblock %}
 {% block contenido %}
 {{ subnav('roles') }}
-<h1 style="margin:8px 0 4px">Roles, permisos y circuito</h1>
-<p class="text-muted" style="margin:0 0 6px">Quién interviene, qué puede hacer y quién lo autoriza. Tocá un término subrayado para ver qué significa sin salir de la página.</p>
+<h1 style="margin:8px 0 4px">Roles: quién hace qué</h1>
+<p class="text-muted" style="margin:0 0 6px">Lo esencial primero. El detalle completo está al final, en "Ver más".</p>
 
-{{ cinco_roles(roles) }}
-
-{# ---------------------------------------------------------- esquema 1 #}
-<section class="rec-bloque" data-glosario-auto>
-  <h2 class="section__title">¿Cómo alguien obtiene un usuario y un rol?</h2>
-  <div class="rec-flujo">
-    {% for p in circuito.permisos %}
-    <div class="rec-flujo__paso {{ 'rec-flujo__paso--pendiente' if p.pendiente }}">
-      <div class="rec-flujo__etiqueta">{{ p.paso }}</div>
-      <div class="rec-flujo__quien">{{ p.quien }}</div>
-      <div class="rec-flujo__como">{{ p.como }}</div>
-      {{ estado('pendiente' if p.pendiente else 'confirmado') }}
-      {{ fuentes(p.fuentes) }}
-    </div>
-    {% if not loop.last %}<div class="rec-flujo__flecha" aria-hidden="true">→</div>{% endif %}
-    {% endfor %}
-  </div>
-  <p class="text-muted rec-nota">Quien carga los usuarios (Informática o el administrador local) no es quien los autoriza: el pedido lo hace la jefatura. Para los roles de TIMBÓ Compras, la normativa solo dice que se tramitan "ante el administrador local".</p>
-</section>
-
-{# ---------------------------------------------------------- esquema 2 #}
-<section class="rec-bloque" data-glosario-auto>
-  <h2 class="section__title">{{ circuito.titulo }}</h2>
-  <p class="text-muted" style="margin-top:0">{{ circuito.bajada }}</p>
-  <div class="rec-sistemas">
-    <span class="rec-sistema rec-sistema--expediente">📁 Expediente electrónico</span>
-    <span class="rec-sistema rec-sistema--compras">🛒 TIMBÓ Compras</span>
-    <span class="rec-sistema rec-sistema--externo">↗ Fuera del sistema</span>
-  </div>
-  <ol class="rec-circuito">
-    {% for e in circuito.etapas %}
-    <li class="rec-etapa rec-etapa--{{ e.sistema }} {{ 'rec-etapa--pendiente' if e.estado == 'pendiente' }}">
-      <details>
-        <summary>
-          <span class="rec-etapa__n">{{ e.n }}</span>
-          <span class="rec-etapa__titulo">{{ e.titulo }}</span>
-          <span class="rec-etapa__actor">{{ e.actor }}</span>
-          {% if e.estado != 'confirmado' %}{{ estado(e.estado) }}{% endif %}
-        </summary>
-        <div class="rec-etapa__detalle">{{ e.detalle }} {{ fuentes(e.fuentes) }}</div>
-      </details>
-    </li>
-    {% endfor %}
-  </ol>
-</section>
-
-{# ---------------------------------------------------------- tabla comparativa #}
+{# ---------------------------------------------------------- los 5 roles #}
+{% set compras = roles.grupos | selectattr('slug', 'equalto', 'timbo-compras') | first %}
 <section class="rec-bloque">
-  <h2 class="section__title">Tabla comparativa</h2>
-  <div class="table-wrap">
-    <table class="data-table rec-tabla">
-      <thead><tr><th>Rol / área</th><th>Dónde actúa</th><th>Qué hace (principal)</th><th>Quién lo asigna</th><th>Autorización previa</th></tr></thead>
-      <tbody>
-      {% for g in roles.grupos %}
-        <tr class="rec-tabla__grupo"><td colspan="5">{{ g.titulo }}</td></tr>
-        {% for r in g.roles %}
-        <tr>
-          <td><a href="#rol-{{ r.slug }}">{{ r.icono }} {{ r.nombre }}</a></td>
-          <td>{{ r.sistema }}</td>
-          <td>{{ r.funciones['items'][0] }}{% if r.funciones['items'] | length > 1 %} <span class="text-muted">(+{{ r.funciones['items'] | length - 1 }})</span>{% endif %}</td>
-          <td>{{ estado(r.designa.estado) }}<br><span class="rec-tabla__chico">{{ r.designa.texto }}</span></td>
-          <td>{{ estado(r.autorizacion.estado) }}<br><span class="rec-tabla__chico">{{ r.autorizacion.texto }}</span></td>
-        </tr>
-        {% endfor %}
-      {% endfor %}
-      </tbody>
-    </table>
+  <h2 class="section__title">Los 5 roles de TIMBÓ Compras</h2>
+  <div class="rol-tarjetas">
+    {% for r in compras.roles %}
+    <div class="card rol-tarjeta">
+      <div class="rol-tarjeta__head"><span class="rol-tarjeta__icono">{{ r.icono }}</span><b>{{ r.nombre }}</b></div>
+      <p>{{ r.resumen }}</p>
+      <p class="rol-tarjeta__no">🚫 {{ r.limitaciones.texto.split('. ')[0] | trim('.') }}.</p>
+    </div>
+    {% endfor %}
   </div>
+  <p class="text-muted rec-nota">Son roles del sistema, no cargos: una persona puede tener más de uno, y cada una ve solo los procesos de sus roles. {{ fuentes(['circ-ug-7-2026']) }}</p>
 </section>
 
 {# ---------------------------------------------------------- matriz #}
 <section class="rec-bloque">
-  <h2 class="section__title">{{ roles.matriz.titulo }}</h2>
-  <p class="text-muted" style="margin-top:0">{{ roles.matriz.bajada }}</p>
+  <h2 class="section__title">¿Quién hace qué en cada etapa?</h2>
   <div class="table-wrap">
     <table class="data-table rec-tabla mat-tabla">
       <thead><tr><th>Etapa</th>{% for c in roles.matriz.columnas %}<th>{{ c }}</th>{% endfor %}</tr></thead>
       <tbody>
         {% for f in roles.matriz.filas %}
-        <tr><td><b>{{ f.etapa }}</b><br>{{ estado(f.estado) }}</td>{% for c in f.celdas %}<td>{{ c }}</td>{% endfor %}</tr>
+        <tr><td><b>{{ f.etapa }}</b>{% if f.estado != 'confirmado' %}<br>{{ estado(f.estado) }}{% endif %}</td>{% for c in f.celdas %}<td>{{ '' if c == '—' else c }}</td>{% endfor %}</tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-  {{ fuentes(['circ-ug-7-2026', 'dec-287-2026', 'circ-scygb-1-2026', 'res-me-73-2026']) }}
+  <p class="text-muted rec-nota">La autoridad competente y el área que pide la compra actúan fuera de TIMBÓ Compras, en el expediente. {{ fuentes(['circ-ug-7-2026', 'dec-287-2026', 'circ-scygb-1-2026']) }}</p>
 </section>
 
-{# ---------------------------------------------------------- fichas #}
-{% set campos = [
-  ('significa', 'Qué significa'), ('funciones', 'Funciones y operaciones'), ('modulos', 'Módulos y acceso'),
-  ('responsabilidades', 'Responsabilidades'), ('limitaciones', 'Limitaciones'),
-  ('designa', 'Quién lo designa o habilita'), ('autorizacion', '¿Requiere autorización previa?')
-] %}
-{% for g in roles.grupos %}
-<section class="rec-bloque" data-glosario-auto>
-  <h2 class="section__title">{{ g.titulo }}</h2>
-  <p class="text-muted" style="margin-top:0">{{ g.bajada }}</p>
-  {% for r in g.roles %}
-  <details class="card rec-rol" id="rol-{{ r.slug }}">
-    <summary class="rec-rol__head"><span class="rec-rol__icono">{{ r.icono }}</span><span><b>{{ r.nombre }}</b><span class="rec-rol__sistema">{{ r.sistema }}</span></span></summary>
-    <dl class="rec-rol__campos">
-      {% for clave, etiqueta in campos %}{% set c = r[clave] %}
-      <dt>{{ etiqueta }} {{ estado(c.estado) }}</dt>
-      <dd>
-        {% if 'items' in c %}<ul>{% for i in c['items'] %}<li>{{ i }}</li>{% endfor %}</ul>{% else %}{{ c.texto }}{% endif %}
-        {{ fuentes(c.fuentes) }}
-      </dd>
-      {% endfor %}
-    </dl>
-  </details>
-  {% endfor %}
-</section>
-{% endfor %}
-
+{# ---------------------------------------------------------- cómo pedir un rol #}
 <section class="rec-bloque">
-  <h2 class="section__title">Pendiente de confirmar</h2>
-  <ul class="rec-lista">{% for p in roles.pendientes %}<li>⏳ {{ p }}</li>{% endfor %}</ul>
+  <h2 class="section__title">¿Cómo consigo un usuario o un rol?</h2>
+  <ol class="rol-pasos">
+    {% for p in circuito.permisos %}
+    <li class="{{ 'rol-pasos--pendiente' if p.pendiente }}"><b>{{ p.paso }}:</b> {{ p.quien }}{% if p.como and not p.pendiente %} <span class="text-muted">({{ p.como }})</span>{% endif %}{% if p.pendiente %} {{ estado('pendiente') }}{% endif %}</li>
+    {% endfor %}
+  </ol>
+  <p class="text-muted rec-nota">Para los roles de TIMBÓ Compras, la normativa solo dice que se tramitan "ante el administrador local". {{ fuentes(['circ-ug-3-2025', 'circ-ug-7-2026']) }}</p>
 </section>
+
+{# ---------------------------------------------------------- detalle #}
+<details class="rol-mas">
+  <summary>Ver más: fichas completas, otras áreas, circuito y pendientes <span aria-hidden="true">▾</span></summary>
+
+  {% set campos = [
+    ('significa', 'Qué significa'), ('funciones', 'Funciones y operaciones'), ('modulos', 'Módulos y acceso'),
+    ('responsabilidades', 'Responsabilidades'), ('limitaciones', 'Limitaciones'),
+    ('designa', 'Quién lo designa o habilita'), ('autorizacion', '¿Requiere autorización previa?')
+  ] %}
+  {% for g in roles.grupos %}
+  <section class="rec-bloque" data-glosario-auto>
+    <h2 class="section__title">{{ g.titulo }}</h2>
+    <p class="text-muted" style="margin-top:0">{{ g.bajada }}</p>
+    {% for r in g.roles %}
+    <details class="card rec-rol" id="rol-{{ r.slug }}">
+      <summary class="rec-rol__head"><span class="rec-rol__icono">{{ r.icono }}</span><span><b>{{ r.nombre }}</b><span class="rec-rol__sistema">{{ r.sistema }}</span></span></summary>
+      <dl class="rec-rol__campos">
+        {% for clave, etiqueta in campos %}{% set c = r[clave] %}
+        <dt>{{ etiqueta }} {{ estado(c.estado) }}</dt>
+        <dd>
+          {% if 'items' in c %}<ul>{% for i in c['items'] %}<li>{{ i }}</li>{% endfor %}</ul>{% else %}{{ c.texto }}{% endif %}
+          {{ fuentes(c.fuentes) }}
+        </dd>
+        {% endfor %}
+      </dl>
+    </details>
+    {% endfor %}
+  </section>
+  {% endfor %}
+
+  <section class="rec-bloque" data-glosario-auto>
+    <h2 class="section__title">{{ circuito.titulo }}</h2>
+    <p class="text-muted" style="margin-top:0">{{ circuito.bajada }}</p>
+    <ol class="rec-circuito">
+      {% for e in circuito.etapas %}
+      <li class="rec-etapa rec-etapa--{{ e.sistema }} {{ 'rec-etapa--pendiente' if e.estado == 'pendiente' }}">
+        <details>
+          <summary>
+            <span class="rec-etapa__n">{{ e.n }}</span>
+            <span class="rec-etapa__titulo">{{ e.titulo }}</span>
+            <span class="rec-etapa__actor">{{ e.actor }}</span>
+            {% if e.estado != 'confirmado' %}{{ estado(e.estado) }}{% endif %}
+          </summary>
+          <div class="rec-etapa__detalle">{{ e.detalle }} {{ fuentes(e.fuentes) }}</div>
+        </details>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="rec-bloque">
+    <h2 class="section__title">Pendiente de confirmar</h2>
+    <ul class="rec-lista">{% for p in roles.pendientes %}<li>⏳ {{ p }}</li>{% endfor %}</ul>
+  </section>
+</details>
 {{ datos_glosario(glosario) }}
 {% endblock %}
 

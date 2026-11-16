@@ -1742,7 +1742,7 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .sis-ejemplo { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; counter-reset: paso; }
 .sis-paso { counter-increment: paso; background: var(--surface); border: 1px solid var(--border); border-left: 5px solid var(--sis); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px; }
 .sis-paso::before { content: counter(paso) ". "; font-weight: 700; }
-.mat-tabla td { min-width: 150px; font-size: 13px; }
+.mat-tabla td { min-width: 120px; font-size: 13px; }
 .exp-buscador, .exp-etapa { padding: 18px; margin-bottom: 14px; }
 .exp-preguntas { display: grid; gap: 6px; margin-top: 12px; }
 .exp-pregunta { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; background: var(--surface); }
@@ -1778,3 +1778,17 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 @keyframes rec-aparece { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .rec-desplegable__cuerpo, .nav-grupo[open] > :not(summary) { animation: none; } .rec-desplegable__flecha, .nav-grupo__flecha { transition: none; } }
 @media (max-width: 760px) { .rec-desplegable__cuerpo { grid-template-columns: 1fr; } .rec-desplegable__todo { justify-self: start; } }
+
+/* ------------------------------------------------- Roles (versión corta) -- */
+.rol-tarjetas { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.rol-tarjeta { padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.rol-tarjeta__head { display: flex; align-items: center; gap: 8px; font-size: 16px; }
+.rol-tarjeta__icono { font-size: 22px; }
+.rol-tarjeta p { margin: 0; font-size: 14px; }
+.rol-tarjeta__no { color: var(--text-muted); font-size: 13px !important; }
+.rol-pasos { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 14.5px; }
+.rol-mas { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
+.rol-mas > summary { list-style: none; display: inline-flex; gap: 6px; align-items: center; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); font-weight: 600; font-size: 14px; color: var(--accent); cursor: pointer; }
+.rol-mas > summary::-webkit-details-marker { display: none; }
+.rol-mas[open] > summary span { display: inline-block; transform: rotate(180deg); }
+.rol-mas[open] > :not(summary) { animation: rec-aparece .2s ease-out; }
