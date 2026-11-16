@@ -576,11 +576,11 @@
             },
             {
               "type": "tip",
-              "text": "Después de la apertura, durante la ventana de impugnación (2 días hábiles más el día de gracia), en \"Acciones\" podés ver el acta de apertura y descargar las ofertas de los demás para analizarlas."
+              "text": "Después de la apertura, durante la ventana de vista e impugnación (2 días hábiles administrativos desde la apertura, según el Pliego Único, punto 4.3), en \"Acciones\" podés ver el acta de apertura y descargar las ofertas de los demás para analizarlas."
             },
             {
               "type": "tip",
-              "text": "La garantía de impugnación habitualmente equivale al 150% del valor de tu oferta. La ventana para revisar la documentación y decidir si impugnás es la misma que antes se manejaba en papel: dos días hábiles administrativos más un día de gracia desde la apertura."
+              "text": "La garantía de impugnación es del 3% del monto de tu oferta, salvo que el pliego particular fije otro valor (Pliego Único, punto 10.1.3). Para impugnar la apertura o las ofertas tenés 2 días hábiles administrativos desde la apertura; para impugnar la preadjudicación, 2 días desde que te notifican."
             },
             {
               "type": "text",
@@ -614,12 +614,12 @@
               "type": "multiple-choice",
               "question": "¿A cuánto equivale habitualmente la garantía de impugnación?",
               "options": [
+                "3% del monto de tu oferta, salvo que el pliego particular fije otro valor",
                 "150% del valor de tu oferta",
-                "10% del valor de tu oferta",
                 "Un monto fijo igual para todos los procesos"
               ],
               "correctIndex": 0,
-              "explanation": "Es un porcentaje sobre el valor de la oferta que estás impugnando, no un monto fijo."
+              "explanation": "El Pliego Único (punto 10.1.3) fija el 3% del monto de la oferta de quien impugna, o el valor que diga el pliego particular. El 150% es otra cosa: la contragarantía de un anticipo."
             }
           ]
         },
@@ -2087,7 +2087,7 @@
             },
             {
               "type": "warning",
-              "text": "La ventana de impugnación es de 2 días hábiles administrativos después de la apertura, más el día de gracia. Y entre la última publicación y la apertura tienen que pasar al menos 10 días corridos."
+              "text": "La ventana de vista e impugnación es de 2 días hábiles administrativos después de la apertura (Pliego Único, punto 4.3). Y entre la última publicación y la apertura tienen que pasar al menos 10 días corridos."
             },
             {
               "type": "warning",

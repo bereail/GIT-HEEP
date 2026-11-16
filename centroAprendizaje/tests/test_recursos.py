@@ -5,7 +5,11 @@ tests evitan que quede una flecha a una etapa inexistente o una fuente citada
 que no está en la biblioteca.
 """
 
+from pathlib import Path
+
 from app import recursos
+
+RAIZ = Path(__file__).resolve().parent.parent
 
 
 def _ids_citados(obj):
@@ -108,3 +112,11 @@ def test_matriz_y_sistemas_completos():
     assert all(len(f["celdas"]) == len(m["columnas"]) for f in m["filas"])
     assert {c["sistema"] for c in recursos.herramientas()["sistemas"]["columnas"]} == {"expediente", "compras", "externo"}
     assert any(e["slug"] == "evaluacion-final" and len(e["preguntas"]) >= 12 for e in recursos.simulador()["escenarios"])
+
+
+def test_garantia_de_impugnacion_segun_pliego_unico():
+    # Pliego Único, 10.1.3: 3% de la oferta de quien impugna (el 150% es la
+    # contragarantía del anticipo). Tampoco existe un "día de gracia".
+    texto = (RAIZ / "scripts" / "content_timbo_compras.json").read_text(encoding="utf-8")
+    assert "3% del monto de tu oferta" in texto
+    assert "día de gracia" not in texto
