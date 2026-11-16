@@ -12,20 +12,7 @@
   {% endif %}
 </div>
 
-<div class="equiv-summary" id="equiv-summary">
-  <button type="button" class="equiv-tile equiv-tile--ok" data-filtro="alta">
-    <span class="equiv-tile__num" id="num-alta">—</span>
-    <span class="equiv-tile__label">🟢 Listos para cargar</span>
-  </button>
-  <button type="button" class="equiv-tile equiv-tile--warn" data-filtro="dudosa">
-    <span class="equiv-tile__num" id="num-dudosa">—</span>
-    <span class="equiv-tile__label">🟡 Confirmar antes de usar</span>
-  </button>
-  <button type="button" class="equiv-tile equiv-tile--pend" data-filtro="sin_match">
-    <span class="equiv-tile__num" id="num-sinmatch">—</span>
-    <span class="equiv-tile__label">🔴 Hay que pedir que se agreguen</span>
-  </button>
-</div>
+
 
 <div class="equiv-controls">
   <div class="input-wrap" style="flex:1;min-width:200px">
@@ -40,7 +27,12 @@
     {% endfor %}
   </select>
   {% endif %}
-  <button type="button" class="btn btn--ghost" id="equiv-limpiar">Ver todos</button>
+  <select class="input" id="equiv-estado" aria-label="Filtrar por estado" style="max-width:260px">
+    <option value="">Todos los estados</option>
+    <option value="alta">🟢 Listos para cargar</option>
+    <option value="dudosa">🟡 Confirmar antes de usar</option>
+    <option value="sin_match">🔴 No está en el catálogo</option>
+  </select>
 </div>
 
 <div class="callout callout--warning" id="equiv-aclaracion-dudosa" hidden>
@@ -67,9 +59,9 @@
 </div>
 
 <div class="est-leyenda" aria-label="Qué significa cada color">
-  <span><span class="est-chip estado-verde">🟢 Verde</span>revisado y correcto: coincidencia clara</span>
-  <span><span class="est-chip estado-amarillo">🟡 Amarillo</span>hay que revisarlo o confirmarlo antes de usar</span>
-  <span><span class="est-chip estado-rojo">🔴 Rojo</span>problema pendiente: no está en el catálogo oficial</span>
+  <span><span class="est-chip estado-verde">🟢 Verde · <b id="num-alta">—</b></span>revisado y correcto: coincidencia clara</span>
+  <span><span class="est-chip estado-amarillo">🟡 Amarillo · <b id="num-dudosa">—</b></span>hay que revisarlo o confirmarlo antes de usar</span>
+  <span><span class="est-chip estado-rojo">🔴 Rojo · <b id="num-sinmatch">—</b></span>problema pendiente: no está en el catálogo oficial</span>
 </div>
 <div class="equiv-count" id="equiv-count"></div>
 <div class="equiv-rows" id="equiv-rows"></div>
@@ -84,23 +76,6 @@
 <style>
 #equiv-aclaracion-dudosa[hidden],#equiv-aclaracion-sinmatch[hidden]{display:none;}
 .equiv-actualizado{font-size:12.5px;color:var(--text-faint);margin:10px 0 0;}
-.equiv-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 18px;}
-.equiv-tile{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
-  padding:16px 14px;text-align:center;cursor:pointer;font-family:inherit;
-  transition:border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-}
-.equiv-tile:hover{box-shadow:var(--shadow-sm);border-color:var(--border-strong);}
-.equiv-tile.is-active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
-.equiv-tile__num{display:block;font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;}
-.equiv-tile__label{display:block;font-size:12px;color:var(--text-muted);margin-top:6px;font-weight:500;}
-.equiv-tile--ok .equiv-tile__num{color:var(--success);}
-.equiv-tile--warn .equiv-tile__num{color:var(--warning);}
-.equiv-tile--pend .equiv-tile__num{color:#b42318;}
-.equiv-tile--ok{border-top:4px solid #1b8a4c;}
-.equiv-tile--warn{border-top:4px solid #c49000;}
-.equiv-tile--pend{border-top:4px solid #b42318;}
-.equiv-tile--warn .equiv-tile__num{color:#9a6c00;}
 .equiv-rows .equiv-row{border-left-width:6px;border-left-color:var(--est,var(--border));}
 .equiv-row__estado{grid-column:1/-1;}
 
@@ -161,10 +136,6 @@
 .equiv-fab-ayuda__icon{font-size:16px;line-height:1;}
 
 @media (max-width:620px){
-  .equiv-summary{gap:6px;}
-  .equiv-tile{padding:10px 6px;}
-  .equiv-tile__num{font-size:20px;}
-  .equiv-tile__label{font-size:11px;}
   .equiv-row{grid-template-columns:1fr;gap:4px;}
   .equiv-row__nota{grid-column:1;}
   .equiv-fab-ayuda__text{display:none;}
@@ -280,14 +251,9 @@
     document.getElementById('num-sinmatch').textContent = porEstado.sin_match;
   }
 
-  document.getElementById('equiv-summary').addEventListener('click', (e) => {
-    const btn = e.target.closest('.equiv-tile');
-    if (!btn) return;
-    const nuevo = btn.dataset.filtro;
-    const yaActivo = btn.classList.contains('is-active');
-    document.querySelectorAll('.equiv-tile').forEach(t => t.classList.remove('is-active'));
-    filtroConfianza = yaActivo ? '' : nuevo;
-    if (!yaActivo) btn.classList.add('is-active');
+  const selEstado = document.getElementById('equiv-estado');
+  selEstado.addEventListener('change', (e) => {
+    filtroConfianza = e.target.value;
     limiteActual = LIMITE;
     aplicar();
   });
@@ -307,16 +273,6 @@
     aplicar();
   });
 
-  document.getElementById('equiv-limpiar').addEventListener('click', () => {
-    filtroConfianza = '';
-    filtroOrigen = '';
-    busqueda = '';
-    limiteActual = LIMITE;
-    document.querySelectorAll('.equiv-tile').forEach(t => t.classList.remove('is-active'));
-    document.getElementById('equiv-buscar').value = '';
-    if (selOrigen) selOrigen.value = '';
-    aplicar();
-  });
 
   contarYPintar();
   aplicar();
