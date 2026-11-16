@@ -10,7 +10,7 @@ COMO="sudo -u timbo-capacitaciones -H"
 PY=.venv/bin/python
 
 echo "== 1. Copia de la base"
-$COMO cp instance/centro_aprendizaje.sqlite3 "instance/centro_aprendizaje.sqlite3.bak-predeploy-$(date +%Y%m%d-%H%M)"
+$COMO sh -c "umask 077; mkdir -p ../copias && cp instance/centro_aprendizaje.sqlite3 ../copias/predeploy-$(date +%Y%m%d-%H%M).sqlite3"
 
 echo "== 2. Código"
 $COMO git pull --ff-only
