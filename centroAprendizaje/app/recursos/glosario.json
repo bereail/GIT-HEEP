@@ -1537,6 +1537,41 @@
         "CD-04 (Orden de provisión)",
         "Compra directa (gestión directa por monto)"
       ]
+    },
+    {
+      "termino": "Compre Santafesino",
+      "categoria": "B. Procedimientos",
+      "sencilla": "Preferencia a los productos y proveedores de la Provincia al comparar ofertas.",
+      "tecnica": "Ley 13.505, art. 5 (texto de la Ley 14.295): el local gana si su precio es igual o menor al de los no provinciales más un 5%. Si ninguno queda favorecido, la mejor oferta local que no supere en 8% a la mejor puede mejorar su oferta en 15 días. El art. 6 (aumento por certificación de calidad) está derogado.",
+      "ejemplo": "",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Evaluación",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Preadjudicación"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "compre-santafesino"
+      ]
+    },
+    {
+      "termino": "Pagaré (garantía)",
+      "categoria": "A. Documentación",
+      "sencilla": "Una de las formas de dar una garantía, con un límite de monto.",
+      "tecnica": "Pagaré a la vista firmado por quien puede obligar a la empresa (Pliego Único, punto 10.1, inc. g). Para el fiel cumplimiento, hasta el 10% del tope del privado de la Ley de Presupuesto (excepto Convenio Marco); para el mantenimiento de oferta, sin límite (Res. SCyGB 228/2018).",
+      "ejemplo": "",
+      "modulo": "TIMBÓ Compras",
+      "etapa": "Ofertas y contrato",
+      "sistema": "TIMBÓ Compras",
+      "relacionados": [
+        "Garantía"
+      ],
+      "estado": "confirmado",
+      "fuentes": [
+        "res-scygb-228-2018",
+        "pliego-unico-2026"
+      ]
     }
   ]
 }

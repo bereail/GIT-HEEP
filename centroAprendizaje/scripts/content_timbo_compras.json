@@ -755,11 +755,11 @@
             },
             {
               "type": "warning",
-              "text": "Según la capacitación oficial de compras directas, el decreto de Territorio 5.0 (Decreto 191/24) establece que un trámite que se hace en digital tiene que seguir siempre en digital: no se vuelve al expediente papel. Además, el Decreto 2518/25 prohíbe iniciar trámites en papel desde el 1/7/2026 (Circ. UG TIMBÓ 9/2026 y 11/2026)."
+              "text": "Según la capacitación oficial de compras directas, el Programa Territorio 5.0 (Decreto 191/2024) establece que un trámite que se hace en digital sigue siempre en digital. Además, desde el 1/7/2026 no se pueden iniciar trámites nuevos en papel (Decreto 2518/25, citado en la Circular UG TIMBÓ 9/2026)."
             },
             {
               "type": "tip",
-              "text": "Otro principio que remarca la capacitación oficial: no pedirle al proveedor documentación que el Estado ya tiene en su poder. La Circular UG TIMBÓ 2/2026 lo llama el principio de \"una sola vez\" (art. 26 de la Ley 14.256)."
+              "text": "Principio de \"una sola vez\": no pedirle al proveedor documentación que el Estado ya tiene (Ley 14.256, art. 26; Decreto 191/2024, Anexo I; Circulares UG TIMBÓ 04/2024 y 7/2025)."
             },
             {
               "type": "tip",
@@ -1643,6 +1643,10 @@
             {
               "type": "tip",
               "text": "Los nombres exactos de las opciones en pantalla para estos casos no están relevados. Si algo no coincide con tu sistema, avisá desde \"Dejar una consulta\" y lo corregimos."
+            },
+            {
+              "type": "warning",
+              "text": "Si el monto supera el 50% del tope de la licitación o concurso privado (en 2026, más de $29.250.000), antes de pedir cotizaciones hay que mandar las actuaciones a la Subsecretaría de Contrataciones y Gestión de Bienes (Decreto 652/2020). Qué documentación mandar: términos de referencia, fundamento de la excepción, autorización y proyecto de pedido de cotización (Res. SCyGB 114/2020)."
             }
           ],
           "quiz": [

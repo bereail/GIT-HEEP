@@ -130,8 +130,8 @@
         "quien": "Compras, con la justificación del área; autoriza la autoridad competente.",
         "sistema": "Íntegramente en TIMBÓ Compras.",
         "docs": "Justificación de la urgencia (circunstancias objetivas). Como mínimo, acreditar personería o representación del proveedor.",
-        "verificar": "Que la urgencia sea imprevisible, objetiva y de tal magnitud que impida otro procedimiento a tiempo.",
-        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 2"}, {"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 3 y 4"}],
+        "verificar": "Que la urgencia sea imprevisible, objetiva y de tal magnitud que impida otro procedimiento a tiempo. Si el monto supera el 50% del tope del privado (2026: más de $29.250.000), antes de pedir cotizaciones interviene la SCyGB (Dec. 652/2020 y Res. 114/2020).",
+        "fuentes": [{"id": "intervencion-scygb-directas", "tipo": "norma", "punto": "Dec. 652/2020, arts. 1 y 3"}, {"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 2"}, {"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 3 y 4"}],
         "despues": "Se cargan al menos 3 proveedores y se sigue con plazos reducidos."
       }
     },
@@ -145,8 +145,8 @@
         "quien": "Compras; autoriza la autoridad competente.",
         "sistema": "Íntegramente en TIMBÓ Compras.",
         "docs": "Constancia del proceso desierto. Rigen exactamente las mismas condiciones y cláusulas del llamado.",
-        "verificar": "Que no se cambien las condiciones del pliego original.",
-        "fuentes": [{"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 3"}, {"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 3 y 4.c"}],
+        "verificar": "Que no se cambien las condiciones del pliego original. Si el monto supera el 50% del tope del privado (2026: más de $29.250.000), antes de pedir cotizaciones interviene la SCyGB (Dec. 652/2020 y Res. 114/2020).",
+        "fuentes": [{"id": "intervencion-scygb-directas", "tipo": "norma", "punto": "Dec. 652/2020, arts. 1 y 3"}, {"id": "ley-12510", "tipo": "norma", "punto": "art. 116 inc. c ap. 3"}, {"id": "circ-ug-8-2026", "tipo": "norma", "punto": "arts. 3 y 4.c"}],
         "despues": "Se cargan al menos 3 proveedores y se sigue en TIMBÓ Compras."
       }
     },
@@ -166,7 +166,7 @@
         "despues": "Se documenta la causal y se sigue el circuito de la directa."
       }
     },
-    "b-otras-causales": {"tipo": "accion", "sistema": "organismo", "titulo": "Justificar la causal y, si corresponde, intervención de la SCyGB", "responsable": "Compras · SCyGB", "docs_cortos": "Informe de la causal", "alerta": "Pendiente: el detalle de cada intervención", "estado": "pendiente", "ficha": {"que": "Se documenta por qué aplica la causal y, en los supuestos previstos, interviene la SCyGB.", "para": "Que la excepción quede justificada y controlada.", "quien": "Compras y, en algunos casos, la Subsecretaría de Contrataciones y Gestión de Bienes.", "sistema": "Expediente electrónico.", "docs": "Informes y constancias según la causal.", "verificar": "Leer la Disposición 282/2016, el Dec. 652/2020 y la Res. 114/2020 (pendiente).", "fuentes": [{"id": "intervencion-scygb-directas", "tipo": "norma"}], "despues": "Adjudicación y etapa contractual."}},
+    "b-otras-causales": {"tipo": "accion", "sistema": "organismo", "titulo": "Justificar la causal y, si corresponde, intervención de la SCyGB", "responsable": "Compras · SCyGB", "docs_cortos": "Informe de la causal", "alerta": "Pendiente: el detalle de cada intervención", "estado": "confirmado", "ficha": {"que": "Se documenta por qué aplica la causal. En los apartados 4, 5 y 8, la SCyGB interviene antes de que la autoridad competente autorice la gestión; en el apartado 7 (reparaciones), antes de pedir cotizaciones si el monto supera el 50% del tope del privado.", "para": "Que la excepción quede justificada y controlada.", "quien": "Compras y, en algunos casos, la Subsecretaría de Contrataciones y Gestión de Bienes.", "sistema": "Expediente electrónico.", "docs": "Informes y constancias según la causal.", "verificar": "Ap. 4, 5 y 8: Disp. 282/16. Ap. 7: Dec. 652/2020 y Res. 114/2020 (en 2026, más de $29.250.000).", "fuentes": [{"id": "intervencion-scygb-directas", "tipo": "norma"}], "despues": "Adjudicación y etapa contractual."}},
 
     "c-privada": {
       "tipo": "accion", "sistema": "compras", "rama": "C", "titulo": "Licitación o concurso privado",

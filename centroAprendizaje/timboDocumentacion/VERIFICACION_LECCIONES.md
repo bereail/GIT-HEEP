@@ -186,6 +186,29 @@ Las demás preguntas de `importar_faq_chats.py` marcadas `verificado: True` tamb
 
 🔴 **Bloqueo nuevo (16/11): no se pudieron bajar subtítulos de YouTube en esta sesión.** Se intentó con yt-dlp (instalado en el venv del proyecto) para los videos Paso 01, Clase 02, etc. — cuatro variantes probadas (cliente por defecto, `--js-runtimes node`, cliente `ios`, cliente `web_embedded`) y todas terminan en "Only images are available" al pedir subtítulos. Parece un bloqueo general de YouTube en este momento, no algo de la configuración del cliente. Sin esto, no se puede avanzar con las 6 lecciones que dependen de esos videos. Si se retoma: probar de nuevo más tarde, o que la usuaria baje el audio a mano (como ya hace con whisper.cpp) y lo deje en una carpeta para transcribir.
 
+## Normativa leída el 16/11/2026 (documentos que nunca se habían leído completos)
+
+Fuente: las páginas oficiales de normativa de TIMBÓ y de Compras, comparadas
+contra todo lo que usa el centro. Los PDF escaneados se leyeron como imagen.
+
+| Documento | Qué dice | Dónde quedó en el centro |
+|---|---|---|
+| **Dec. 652/2020** + Res. SCyGB 114/2020 | Directas por urgencia, desierto o reparación (art. 116 inc. c, ap. 2, 3 y 7): intervención previa de la SCyGB, antes de pedir cotizaciones, si el monto supera el 50% del tope del privado (2026: más de $29.250.000). La Res. 114 dice qué documentación mandar | Algoritmo (urgencia, desierto, otras causales), lección de urgencia o desierto, biblioteca |
+| **Disp. 282/16** (escaneada) | Ap. 4, 5 y 8: intervención de la SCyGB antes de que la autoridad autorice la gestión | Algoritmo: "otras causales" deja de estar pendiente |
+| **Res. SCyGB 228/18** (escaneada) | Pagaré: fiel cumplimiento hasta el 10% del tope del privado (salvo Convenio Marco); mantenimiento de oferta, sin límite. El Pliego Único (10.1.g) remite a este monto | Diccionario (Pagaré), Para proveedores, biblioteca |
+| **Compre Santafesino**: Ley 13.505, 13.619 y **14.295** (escaneada), Dec. 549/19 | Preferencia: 5%; si nadie gana, la mejor local hasta 8% puede mejorar en 15 días. **La Ley 14.295 derogó el art. 6** (el +50% por certificación): el texto actualizado del sitio de Compras no lo muestra | Diccionario, biblioteca |
+| **Circ. UG 04/2024** y **7/2025** | "Una sola vez" (Ley 14.256, art. 26; **Dec. 191/2024 = Territorio 5.0**, Anexo I); no pedir documentación del RPJEC | Lección "Qué es una compra directa", biblioteca |
+| **Circ. UG 10/2026** | La Circ. 9/2026 rige desde el 18/08/2026; la que se derogó es la 6/2025 | Biblioteca |
+
+**Pendiente cerrado:** cuándo interviene la SCyGB en las otras causales.
+
+**Sin leer, de menor prioridad:**
+- Dec. 914/18, Dec. 2.233/16, Dec. 923/2019 (reglamentación del art. 132; sería anterior al Dec. 287/2026), Res. 204 (Circular 3) y Res. 125, 175 y 205/2026 (prórrogas del RUPC).
+- Las circulares UG viejas: 2/2024, 03/2024, 1/2024, 1/2025, 2/2025 (la otra), 5/2025 (convenios) y 5/2026.
+- Los ya superados: Disp. 227, Res. 519/18, 133/2020 y 47/24.
+
+**Video:** la Clase 01 de TIMBÓ Compras sigue sin subtítulos; se probó otra vez el 16/11.
+
 ## Lo que sigue
 - Identificar el número del decreto de "Territorio 5.0".
 - **Tanda 3:** Gestión interna del hospital (17 lecciones), contra las Circulares UG 7, 8, 9 y 11/2026, SCyGB 01, 03, 04 y 05/2026, el Pliego Único, la Res. 292/2026 y las clases 01 a 03.

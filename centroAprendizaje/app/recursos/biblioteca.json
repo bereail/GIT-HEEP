@@ -592,13 +592,13 @@
       "emisor": "SCyGB / Poder Ejecutivo",
       "fecha": "2016 a 2020",
       "tema": "Supuestos de directa con intervención obligatoria de la SCyGB",
-      "contiene": "Según el índice oficial: intervención obligatoria de la SCyGB en contrataciones directas del art. 116 inc. c, entre ellas los apartados 4, 5 y 8.",
+      "contiene": "Disp. 282/16: la SCyGB interviene en los apartados 4, 5 y 8 del art. 116 inc. c), antes de que la autoridad competente autorice la gestión. Dec. 652/2020: en los apartados 2 (urgencia), 3 (desierto) y 7 (reparaciones), intervención previa, antes de pedir cotizaciones, solo si el monto supera el 50% del tope de la licitación o concurso privado (2026: más de $29.250.000). Res. 114/2020: instructivo con la documentación que hay que mandar (términos de referencia, fundamento de la excepción, autorización y proyecto de pedido de cotización).",
       "modulos": [
         "Procedimientos"
       ],
-      "url": "https://compras.santafe.gob.ar/normativas/",
-      "vigencia": "vigente según el índice oficial",
-      "lectura": "solo la descripción del índice oficial: falta leer los textos"
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/D0065220.pdf",
+      "vigencia": "vigente",
+      "lectura": "texto completo (la Disp. 282/16 es un PDF escaneado)"
     },
     {
       "id": "disp-226-2016",
@@ -703,6 +703,82 @@
         "TIMBÓ (Expedientes)"
       ],
       "url": "https://www.santafe.gob.ar/nube/index.php/s/HC5MD5nEfats8no",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
+    },
+    {
+      "id": "res-scygb-228-2018",
+      "categoria": "compras-normativa",
+      "titulo": "Resolución SCyGB N° 228/2018 — Límite de las garantías con pagaré",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2018",
+      "tema": "Hasta qué monto se puede garantizar con pagaré a la vista",
+      "contiene": "Garantía de fiel cumplimiento con pagaré: hasta el 10% del tope que fija la Ley de Presupuesto para la licitación o concurso privado (excepto Convenio Marco). Garantía de mantenimiento de oferta con pagaré: sin límite. El Pliego Único remite a este monto (punto 10.1, inc. g).",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-SCyGB-228-18-Limite-en-constitucion-de-garantias-por-pagare.pdf",
+      "vigencia": "vigente",
+      "lectura": "texto completo (PDF escaneado)"
+    },
+    {
+      "id": "compre-santafesino",
+      "categoria": "compras-normativa",
+      "titulo": "Compre Santafesino — Ley 13.505 (modif. Leyes 13.619 y 14.295) y Decreto 549/2019",
+      "emisor": "Legislatura / Poder Ejecutivo",
+      "fecha": "2016 a 2026",
+      "tema": "Preferencia a productos y proveedores de la Provincia",
+      "contiene": "Art. 5 (texto de la Ley 14.295): preferencia al producto o proveedor local si su precio es igual o menor al de los no provinciales más un 5%; si nadie queda favorecido, la mejor oferta local que no supere en 8% a la mejor puede mejorar su oferta en 15 días. La Ley 14.295 derogó el art. 6 (el aumento por certificación de calidad).",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/08/Ley_14295.pdf__DF-job_286.pdf",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
+    },
+    {
+      "id": "circ-ug-4-2024",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 04/2024 — Prohibición de solicitar documentación de la que ya dispone el Estado",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2024",
+      "tema": "Principio de \"una sola vez\"",
+      "contiene": "Ley 14.256, art. 26, y Decreto 191/2024 (Territorio 5.0), Anexo I: no se puede pedir al ciudadano información que el Estado ya tiene. Desde el 15/11/2024, la Administración Pública Central no pide, entre otras, constancias de subsistencia de personas jurídicas.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/11/Circular-04-Eliminacion-de-requisitos.pdf",
+      "vigencia": "vigente (el punto 1.a lo reemplaza la Circ. 7/2025)",
+      "lectura": "texto completo"
+    },
+    {
+      "id": "circ-ug-7-2025",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 7/2025 — No pedir documentación que ya tiene el RPJEC",
+      "emisor": "Unidad de Gestión TIMBÓ y RPJEC",
+      "fecha": "2025",
+      "tema": "Documentación de personas jurídicas",
+      "contiene": "Desde el 13/11/2025 la Administración Pública Provincial no puede pedir al ciudadano constancias que figuran en el Registro de Personas Jurídicas, Empresas y Contratos: se obtienen por medios internos (cert-igpj, Sistema de Información Normativa o rpjec-institucional@santafe.gov.ar).",
+      "modulos": [
+        "TIMBÓ (Expedientes)",
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-7_2025-Prohibicion-de-solicitar-documentacion.pdf",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
+    },
+    {
+      "id": "circ-ug-10-2026",
+      "categoria": "tribunal",
+      "titulo": "Circular UG TIMBÓ N° 10/2026 — Prórroga de la Circular 9/2026",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Desde cuándo rige la vinculación digital con el Tribunal de Cuentas",
+      "contiene": "Prorrogó hasta el 18/08/2026 la implementación de la Circular 9/2026 y rectificó su art. 11: la que queda sin efecto es la Circular 6/2025.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-10_Determina-fecha-de-entrada-en-vigencia-de-Circular-9.pdf",
       "vigencia": "vigente",
       "lectura": "texto completo"
     }

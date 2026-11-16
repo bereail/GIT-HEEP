@@ -278,8 +278,8 @@ Compras (empezando por proveedor: las 8 guías ya están en texto), después
 Recursos y el diccionario, TIMBÓ (Expedientes) y miHospital; a cada
 formulario, su link oficial. Pendientes institucionales: aplicación de la
 URC al hospital, vigencia del RUPC, quién autoriza los roles, si una
-persona puede tener más de un rol, Convenio Marco en TIMBÓ, intervención
-de la SCyGB en otras causales, "Territorio 5.0" (lección de compra directa:
+persona puede tener más de un rol, Convenio Marco en TIMBÓ (la intervención
+de la SCyGB en otras causales quedó resuelta el 16/11: Dec. 652/2020 y Disp. 282/16), "Territorio 5.0" (lección de compra directa:
 falta identificar la norma).
 
 ## Segunda etapa (15/11/2026) — deployada el 16/11

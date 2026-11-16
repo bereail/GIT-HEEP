@@ -1166,7 +1166,8 @@
           "Requisitos mínimos: en cada requisito, \"Editar\", \"Examinar\" para adjuntar, descripción y \"Guardar\"; al final, \"Enviar\".",
           "Presentá la oferta: solo las ofertas en estado \"Presentadas\" participan de la apertura automática.",
           "Se puede editar hasta la fecha y hora de la apertura.",
-          "Garantía de mantenimiento de la oferta: 1% del valor total de la oferta."
+          "Garantía de mantenimiento de la oferta: 1% del valor total de la oferta.",
+          "Las garantías se pueden dar con pagaré a la vista: en la de mantenimiento de oferta, sin límite (Res. SCyGB 228/2018)."
         ],
         "links": [
           [
@@ -1180,7 +1181,8 @@
         ],
         "fuentes": [
           "guias-proveedor",
-          "pliego-unico-2026"
+          "pliego-unico-2026",
+          "res-scygb-228-2018"
         ]
       },
       {
@@ -1271,7 +1273,8 @@
       {
         "t": "Si te adjudican",
         "items": [
-          "Garantía de fiel cumplimiento: 7% del valor total de la adjudicación, dentro de los 5 días de recibida la notificación."
+          "Garantía de fiel cumplimiento: 7% del valor total de la adjudicación, dentro de los 5 días de recibida la notificación.",
+          "Con pagaré a la vista, la garantía de fiel cumplimiento puede ser de hasta el 10% del tope de la licitación o concurso privado (Res. SCyGB 228/2018); en 2026, $5.850.000."
         ],
         "links": [
           [
@@ -1280,7 +1283,8 @@
           ]
         ],
         "fuentes": [
-          "pliego-unico-2026"
+          "pliego-unico-2026",
+          "res-scygb-228-2018"
         ]
       }
     ],
