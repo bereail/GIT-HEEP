@@ -232,9 +232,22 @@ salen, `player_client=ios`) y `scripts/vtt_a_texto.py`.
 
 **Verificación frase por frase (16/11, en curso):** el registro está en
 `timboDocumentacion/VERIFICACION_LECCIONES.md`. Tandas 1 (proveedor) y 2
-(compras directas): hechas. **Tanda 3 (gestión interna): van 5 de 17**; la
-lista de lo que falta y las fuentes está en ese archivo. Copia de la memoria
-de Claude de esta PC: `timboDocumentacion/memoria_claude/`.
+(compras directas): hechas. **Tanda 3 (gestión interna): van 10 de 17**
+(quedan 7: las de Gestor/Supervisor/Evaluador y "notificar-proveedor",
+bloqueadas por ahora porque no se pudieron bajar subtítulos de YouTube —
+yt-dlp devuelve "Only images are available" con varios clientes). Esta
+tanda encontró y corrigió 4 atribuciones de rol que contradecían la
+Circular UG TIMBÓ 7/2026 (el Supervisor carga los actos de adjudicación y
+"sin efecto", no el Gestor). Lista de lo que falta y las fuentes en ese
+archivo. Copia de la memoria de Claude de esta PC: `timboDocumentacion/memoria_claude/`.
+
+**Deploy 16/11 (commit `484777d`): servidor y `main` al día.** Además de
+lo de la tanda 3: se sacaron del nomenclador las 89 filas de "Pedido 1984
+- Microbiología" (quedan las 1000 del nomenclador interno completo), el
+inicio del portal se simplificó (se sacó "¿Qué necesitás hacer hoy?",
+queda "Elegí un sistema" + Recursos) y en `/admin/estadisticas` se
+agregaron "Todas las búsquedas" y "Todas las preguntas al asistente" (antes
+solo se veían las que no tuvieron resultado). Batería del chatbot: 88/88.
 
 **Sigue (punto 2):** verificar frase por frase las lecciones de TIMBÓ
 Compras (empezando por proveedor: las 8 guías ya están en texto), después
