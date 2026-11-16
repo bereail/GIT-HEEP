@@ -755,7 +755,7 @@
             },
             {
               "type": "warning",
-              "text": "Según la capacitación oficial de compras directas, el decreto de Territorio 5.0 establece que un trámite que se hace en digital tiene que seguir siempre en digital: no se vuelve al expediente papel."
+              "text": "Según la capacitación oficial de compras directas, el decreto de Territorio 5.0 (Decreto 191/24) establece que un trámite que se hace en digital tiene que seguir siempre en digital: no se vuelve al expediente papel. Además, el Decreto 2518/25 prohíbe iniciar trámites en papel desde el 1/7/2026 (Circ. UG TIMBÓ 9/2026 y 11/2026)."
             },
             {
               "type": "tip",
@@ -1398,7 +1398,7 @@
               "type": "step",
               "number": 12,
               "explanation": "Cerrá el proceso.",
-              "doThis": "Con el acto de adjudicación firmado, el Gestor va a \"Acciones\" → \"Adjudicar\" y carga el documento oficial. El proceso pasa a \"Finalizados\".",
+              "doThis": "Con el acto de adjudicación firmado, el Supervisor va a \"Acciones\" → \"Adjudicar\" y carga el documento oficial. El proceso pasa a \"Finalizados\".",
               "lookFor": "Ver lección \"Adjudicar y cerrar el proceso\". El contrato sigue por expediente."
             },
             {
@@ -1557,7 +1557,7 @@
               "items": [
                 {
                   "term": "Por urgencia o emergencia",
-                  "def": "No se puede esperar los plazos de una licitación. También se usa cuando se rescindió un contrato y hacen falta ya los bienes o servicios (Pliego Único, punto 9.2)."
+                  "def": "No se puede esperar los plazos de una licitación. También corresponde cuando se rescindió un contrato por culpa del proveedor y hacen falta ya los bienes o servicios: en ese caso, la nueva compra directa va a cuenta y cargo del proveedor incumplidor (Pliego Único, punto 9.2)."
                 },
                 {
                   "term": "Por proceso desierto o fracasado",
@@ -1634,7 +1634,7 @@
             },
             {
               "type": "tip",
-              "text": "Esto vale para los procesos iniciados desde que salió la circular. Si tenés uno anterior en curso, podés aplicarla si el estado del trámite lo permite."
+              "text": "Esto vale para los procesos iniciados desde el día hábil siguiente a esta circular (8/7/2026). Si tenés uno anterior en curso, podés aplicarla si el estado del trámite lo permite (Circular UG TIMBÓ 8/2026, art. 10)."
             },
             {
               "type": "tip",
@@ -1920,8 +1920,16 @@
                   "Antecedentes técnicos y certificados o habilitaciones de cada bien (seguridad eléctrica, ASSAL, ANMAT) según el Anexo C, y declaración jurada de garantía y servicio técnico"
                 ],
                 [
+                  "Técnicos (servicios)",
+                  "Antecedentes técnicos del oferente y constancia de visita previa obligatoria, según el Anexo C; el detalle de lo que exige la prestación (marcas, equipamiento) se agrega según el servicio"
+                ],
+                [
                   "Administrativos",
                   "Declaración jurada (Anexo D), constancia del RUPC o del inicio del trámite, declaración jurada con el Formulario 522/A de ARCA y certificado negativo RDAM (Anexo E), y poder de quien firma"
+                ],
+                [
+                  "Administrativos (solo servicios)",
+                  "Además de lo de arriba: ART vigente, Formulario 931 del SUSS, Seguro Colectivo de Vida y, si el servicio es de limpieza o vigilancia, el convenio colectivo sectorial vigente; si se piden servicios eventuales, la cotización de la hora eventual (Anexo G)"
                 ]
               ]
             },
@@ -1940,7 +1948,7 @@
                 ],
                 [
                   "Servicios",
-                  "Inicio dentro de los 10 días de notificada la adjudicación. Prórroga: 1 período de 12 meses (punto 8.2 del Pliego Único)"
+                  "Inicio dentro de los 10 días de notificada la adjudicación. Prórroga: 1 período de 12 meses (punto 7.2 del Pliego Único; la Circular SCyGB 05/2026 cita \"punto 8.2\", pero en el Pliego Único vigente las prórrogas son el 7.2 — el 8.2 es Penalidades por incumplimiento)"
                 ],
                 [
                   "Pago",
@@ -1982,12 +1990,16 @@
                 {
                   "term": "Anexo F",
                   "def": "Penalidades por incumplimiento."
+                },
+                {
+                  "term": "Anexo G",
+                  "def": "Declaración jurada con el valor de la hora eventual, solo para servicios eventuales (limpieza, vigilancia, traslado de documentación)."
                 }
               ]
             },
             {
               "type": "tip",
-              "text": "No le pidas al proveedor documentación que ya está vigente en registros del Estado (RUPC, RPJEC): la comisión la consulta ahí (Circular UG TIMBÓ 7/2025)."
+              "text": "No le pidas al proveedor documentación que ya figure vigente en registros de la Administración Pública Provincial: no corresponde pedirla de nuevo (Circular SCyGB 05/2026, Anexos A y B). Para estados contables o actas societarias registrados antes del 25/8/2025 en el RPJEC, la comisión evaluadora los pide por mail a rpjec-institucional@santafe.gov.ar; consultar directo en el RUPC va a ser posible recién cuando el legajo digital esté operativo ahí."
             },
             {
               "type": "tip",
@@ -2132,7 +2144,7 @@
                 ],
                 [
                   "Dejar sin efecto",
-                  "Desde \"Acciones\", vinculando el documento oficial que lo deja sin efecto"
+                  "Lo hace el Supervisor (no el Gestor): desde \"Acciones\", vinculando el documento oficial que lo deja sin efecto (Circular UG TIMBÓ 7/2026, art. 10)"
                 ],
                 [
                   "Enmiendas menores",
@@ -2346,13 +2358,13 @@
               "number": 1,
               "explanation": "Esperá el acto de adjudicación.",
               "doThis": "El expediente ya tiene toda la documentación del proceso. Las áreas de despacho y jurídicas trabajan sobre él.",
-              "lookFor": "Mientras tanto, el proceso sigue abierto: si una oferta preadjudicada se cae (por ejemplo, por mantenimiento de oferta), el Gestor puede volver a \"Organizar evaluadores\" y repetir la preadjudicación."
+              "lookFor": "Mientras tanto, el proceso sigue abierto: si una oferta preadjudicada se cae (por ejemplo, por mantenimiento de oferta), el evaluador n.º 1 puede volver a \"Organizar evaluadores\" y repetir la preadjudicación (es tarea del Evaluador, según la Circular UG TIMBÓ 7/2026, art. 10)."
             },
             {
               "type": "step",
               "number": 2,
               "explanation": "Cargá el acto.",
-              "doThis": "Rol Gestor: \"Acciones\" → \"Adjudicar\". Cargá el número del documento oficial del acto (decreto, resolución o resolución conjunta), verificá que sea el final y \"Guardar\".",
+              "doThis": "Rol Supervisor (es quien carga los actos de adjudicación, según la Circular UG TIMBÓ 7/2026, art. 10): \"Acciones\" → \"Adjudicar\". Cargá el número del documento oficial del acto (decreto, resolución o resolución conjunta), verificá que sea el final y \"Guardar\".",
               "lookFor": "El proceso pasa a la pestaña \"Finalizados\", y las ofertas también."
             },
             {
@@ -2390,7 +2402,7 @@
               "type": "step",
               "number": 2,
               "explanation": "Pedí la garantía de fiel cumplimiento.",
-              "doThis": "El adjudicatario la tiene que presentar dentro del plazo del pliego (en el modelo, 5 días hábiles desde que se le notifica la orden de compra)."
+              "doThis": "El adjudicatario la tiene que presentar dentro del plazo del pliego: en el modelo son 5 días hábiles, contados desde que se le notifica la orden de compra (bienes) o la adjudicación (servicios)."
             },
             {
               "type": "step",
@@ -2543,6 +2555,10 @@
               "explanation": "Mandalo a firmar.",
               "doThis": "Completá la referencia, el destinatario que indica la resolución y los adjuntos (fichas técnicas, fotos). Después: Acciones → \"Enviar a Firmar\" → Continuar → Confirmar.",
               "lookFor": "Lo firma el responsable del área desde su bandeja de pendientes (\"Evaluar\")."
+            },
+            {
+              "type": "tip",
+              "text": "\"Agregar\" (dentro de la ventana de cada línea) solo suma ese artículo a la tabla en pantalla: todavía no está guardado. Para guardarlo de verdad como borrador y poder cerrar sin perder lo cargado, tocá el botón \"Guardar\" general del formulario (no el \"Agregar\" de cada línea) — vas a ver el mensaje \"Éxito al guardar el formulario como borrador\". Podés cargar los artículos de a poco y retomarlo cuando quieras desde tu bandeja de pendientes (⋮ → Documento oficial), antes de mandarlo a firmar."
             },
             {
               "type": "tip",

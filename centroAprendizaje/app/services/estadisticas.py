@@ -74,6 +74,8 @@ def resumen(tema_id=None):
         "top_modulos": _top_por_titulo(vistas_modulo, 10),
         "busquedas_sin_resultado": _top_por_consulta(busquedas_sin_resultado, 15),
         "chatbot_sin_resultado": _top_por_consulta(chatbot_sin_resultado, 15),
+        "todas_las_busquedas": _top_por_consulta(busquedas, 100),
+        "todas_las_preguntas_chatbot": _top_por_consulta(chatbot, 100),
         "lecciones_con_feedback_negativo": _top_por_titulo(feedback_negativo, 10),
         "recursos_utiles": _top_por_titulo(feedback_recursos.filter_by(hubo_resultado=True), 10),
         "recursos_con_feedback_negativo": _top_por_titulo(feedback_recursos.filter_by(hubo_resultado=False), 10),

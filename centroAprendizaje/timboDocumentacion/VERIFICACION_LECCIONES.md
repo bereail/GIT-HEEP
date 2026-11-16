@@ -123,7 +123,12 @@ No aparecen en ninguna fuente oficial. También se corrigieron en el glosario de
 - **Otras normas:** Res. ME 73/2026, Res. SCyGB 292/2026, Ley 12.510, Pliego Único y Dec. 287/2026.
 - **Transcripciones:** Clases 02 y 03, y Pasos 01 a 04.
 
-**Hechas (5 de 17):**
+**Hechas (10 de 17):**
+- **directa-urgencia-o-desierto, cotejada contra el texto completo de la Circular UG TIMBÓ 8/2026** (bajada de nuevo de la biblioteca y leída entera, artículo por artículo). Coincide casi en su totalidad:
+  - La tabla "Qué cambia respecto de un proceso común" (autorización, consultas e impugnaciones, requisitos al proveedor, invitados) reproduce fielmente el art. 4, incisos a) a d).
+  - Los tips sobre etapa múltiple (arts. 5 a 8) y vigencia (art. 10) coinciden.
+  - **Corrección:** el concepto "Por urgencia o emergencia" citaba el Pliego Único, punto 9.2, sin la condición real de esa norma: el punto 9.2 habla puntualmente de recontratar tras la rescisión de un contrato **por culpa del proveedor**, y esa nueva compra directa va **a cuenta y cargo del proveedor incumplidor** — se agregó esa condición, que faltaba.
+  - **Corrección:** el tip de vigencia decía "desde que salió la circular"; se precisó "desde el día hábil siguiente" (art. 10) y se sumó la fecha de la circular (8/7/2026, según las firmas digitales del PDF).
 - **circuito-decisorio, rehecha.** Ahora se llama "El acto que aprueba el pliego y la vista al Tribunal de Cuentas".
   - "Decisorio preventivo y definitivo" era terminología de los chats del hospital, sin norma.
   - Ahora sigue la Clase 02, min. 42:00–47:00: pliego definitivo → expediente → dictamen → acto → el Supervisor lo vincula → recién ahí cronograma y nómina.
@@ -142,20 +147,44 @@ No aparecen en ninguna fuente oficial. También se corrigieron en el glosario de
   - Se corrigió "quién corre la vista" con lo que dicen las circulares.
   - Batería del chatbot: el caso "usuarios del SIN" se cambió por "cargar el acto en el SIN para el tribunal".
 
+- **pliego-modelo, cotejada contra el texto completo de la Circular SCyGB 05/2026** (bajada de nuevo y leída entera: los dos anexos de formularios, Bienes y Servicios, más los Anexos A a G). Las cuatro tablas de la lección (aspectos generales, garantías, requisitos, contrato/facturación/pago) coinciden casi palabra por palabra con los valores modelo de la circular — es la lección mejor calzada con su fuente de toda la tanda.
+  - **Corrección real:** un tip citaba "Circular UG TIMBÓ 7/2025" para el principio de no pedir dos veces la misma documentación — esa circular no existe en la biblioteca. Se corrigió la cita a la fuente real (Circ. SCyGB 05/2026, Anexos A y B) y se precisó lo que dice de verdad: para RPJEC es un pedido por mail (no consulta automática), y el RUPC todavía no permite consultar directo (lo va a permitir cuando el legajo digital esté operativo ahí).
+  - **Completado:** la tabla de "Requisitos de participación" solo traía los requisitos técnicos y administrativos del lado de Bienes. Se agregaron los de Servicios, que la circular trae aparte y son bastante distintos: constancia de visita previa obligatoria (técnico), y del lado administrativo, ART, Formulario 931 del SUSS, Seguro Colectivo de Vida, convenio colectivo sectorial (limpieza/vigilancia) y el Anexo G (cotización de hora eventual) para servicios eventuales — ninguno de estos estaba, ni el Anexo G en el glosario de anexos.
+
+- **despues-de-adjudicar, cotejada contra el Pliego Único completo y la Circular SCyGB 04/2025** (bajada y leída entera). Casi todo coincide exacto: documentación a publicar, plazo de 2 días hábiles para "Concluida", recepción provisoria (6.9), certificación de la recepción definitiva con comisión de hasta 3 miembros (6.10), plazo 7/30 días (6.10.1), pago a los 20 días corridos desde la recepción definitiva, multa de 0,1% por mora (punto 8.2).
+  - **Confirmado: Resolución 081/25 sí existe** (no estaba en la biblioteca como entrada propia, pero la cita la propia Circular SCyGB 04/2025, que la transcribe: es la resolución que fija el plazo de 2 días y el bloqueo de publicaciones nuevas).
+  - **Precisión agregada:** el paso de pedir la garantía de fiel cumplimiento decía "5 días hábiles desde que se le notifica la orden de compra" sin aclarar que eso es así solo para Bienes — en el modelo de Servicios (Circ. SCyGB 05/2026, Anexo II) el plazo corre desde la notificación de la **adjudicación**, no de la orden de compra. Se agregó la distinción.
+  - 🔴 **Hallazgo cruzado con `pliego-modelo` (ya corregido ahí):** la Circular SCyGB 05/2026 cita "punto 8.2 del Pliego Único" para la prórroga de servicios, pero en el índice real del Pliego Único las prórrogas son el **punto 7.2** ("Modificación del contrato") — el 8.2 es "Penalidades por incumplimiento" (que sí es la cita correcta para la multa por mora de esta lección). Es un error de la circular al remitir al pliego, no del contenido del centro; se corrigió la cita en `pliego-modelo` y se dejó una nota explicando el porqué.
+
+- **pedir-alta-articulo, cotejada contra el texto completo de la Resolución SCyGB 292/2026** (bajada y leída entera, los 6 pasos del Anexo I). **Sin errores**: cada paso, cada campo del formulario y el aviso de "código externo obligatorio para hospitales" coinciden palabra por palabra con la resolución. No hizo falta ningún cambio.
+
+- **Las 5 lecciones de Gestor/Supervisor/Evaluador (gestor-iniciar-proceso, supervisor-aprobar-y-publicar, gestor-mientras-esta-publicado, evaluador-evaluar-ofertas, evaluador-preadjudicar, gestor-adjudicar), verificación parcial (16/11): cotejada toda la parte normativa contra el texto completo de la Circular UG TIMBÓ 7/2026** (bajada y leída entera — define los 5 roles en su art. 10°, con qué hace cada uno) **y contra el Pliego Único.** Falta todavía lo que depende pura y exclusivamente del video (nombres exactos de pantallas, pestañas y botones) — eso sigue bloqueado (ver nota de YouTube).
+  - 🔴 **Hallazgo real, 3 correcciones:** el art. 10° de la Circular 7/2026 dice explícitamente que **el Supervisor** es quien "carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación", y que **organizar a los evaluadores** es tarea del Evaluador. Las lecciones le atribuían dos de esas tres acciones al Gestor:
+    - `gestor-adjudicar`: decía "Rol Gestor" para cargar el acto de adjudicación → corregido a Supervisor.
+    - `gestor-adjudicar`: decía "el Gestor puede volver a 'Organizar evaluadores'" → corregido a "el evaluador n.º 1".
+    - `gestor-mientras-esta-publicado`: la fila "Dejar sin efecto" no aclaraba el rol (quedaba implícito que era el Gestor, por el título de la lección) → se aclaró que es el Supervisor.
+  - El resto de lo normativo coincide bien: mínimo de 3 evaluadores (art. 13°), vista e impugnación de 2 días hábiles tras la apertura (Pliego Único 4.3), enmiendas menores hasta 3 días antes sin mover la fecha (Pliego Único 2.3), la nómina de proveedores no reemplaza la publicidad obligatoria (art. 15°), y el control pendiente de confirmar de la URC en preadjudicaciones (Res. ME 73/2026 y Circ. SCyGB 03/2026) ya estaba bien señalado como "aplicación al hospital pendiente de confirmar".
+  - No se tocó `pliego-modelo` en esta pasada (ya verificada antes) ni `evaluador-evaluar-ofertas` (su contenido es íntegramente procedimental de pantalla, sin ninguna norma citable aparte del rol Evaluador, que coincide).
+
+- **hacer-una-compra, cotejada contra todo lo anterior de la tanda** (la tabla de roles, las 8 lecciones de Gestor/Supervisor/Evaluador, publicar-en-portal, circuito-decisorio, vista-tribunal-de-cuentas, directa-urgencia-o-desierto, pedir-alta-articulo y la Circular UG TIMBÓ 7/2026 ya leída completa). Es la lección resumen de las 12 etapas y, en general, es internamente consistente con todo lo ya verificado: la tabla de roles (líneas 1299-1318) coincide palabra por palabra con el art. 10° de la Circular 7/2026.
+  - 🔴 **Error real, y de los buenos: la propia lección se contradecía a sí misma.** La tabla de roles, 10 líneas más arriba, dice bien que el **Supervisor** "carga los actos (aprobación, sin efecto, adjudicación)" — pero el paso 12 decía "el **Gestor** va a 'Acciones' → 'Adjudicar'". Es el mismo error que ya se había corregido en `gestor-adjudicar`, repetido acá. Corregido a Supervisor.
+  - El resto de los 12 pasos coincide bien con lo ya verificado: apertura automática con acta y cuadro comparativo (art. 19° de la Circular 7/2026), estado "oferta presentada" como único válido para la apertura (glosario de la misma circular), control de la URC en pliego y preadjudicación con el mismo "pendiente de confirmar para hospitales" ya usado en otras lecciones, y el aviso oficial con 3 días de anticipación igual que en "publicar-en-portal".
+  - No se verificó en esta pasada la fecha "1° de abril de 2026" ni "licitaciones y concursos de simple sobre" de la Circular UG TIMBÓ 3/2026 (tip del inicio): no se bajó esa circular todavía, queda para una próxima revisión si hace falta.
+
+**Con esto se cierra lo que se podía hacer sin los videos bloqueados.** Quedan 6 lecciones con el detalle de pantalla pendiente (gestor-iniciar-proceso, supervisor-aprobar-y-publicar, gestor-mientras-esta-publicado, evaluador-evaluar-ofertas, evaluador-preadjudicar, gestor-adjudicar — ya con su parte normativa revisada) y `notificar-proveedor`, que depende 100% de un video sin norma propia.
+
 **Datos encontrados:**
 - **Territorio 5.0 = Decreto 191/24.**
 - **El Decreto 2518/25 prohíbe iniciar trámites en papel desde el 1/7/2026.**
-- Las dos cosas las citan las Circ. UG 9 y 11/2026. Falta actualizar la lección "Qué es una compra directa" con esto.
+- Las dos cosas las citan las Circ. UG 9 y 11/2026. ~~Falta actualizar la lección "Qué es una compra directa" con esto~~ — hecho: se sumó el número del Decreto 191/24 a la advertencia que ya citaba "Territorio 5.0", y se agregó la prohibición del Decreto 2518/25 (con la cita a las Circ. UG 9 y 11/2026).
 
-**Faltan (12):**
-- directa-urgencia-o-desierto (Circ. UG 8/2026);
-- gestor-iniciar-proceso, pliego-modelo (Circ. SCyGB 05/2026), supervisor-aprobar-y-publicar, gestor-mientras-esta-publicado, evaluador-evaluar-ofertas, evaluador-preadjudicar y gestor-adjudicar (Clases 02 y 03, Pasos 01 a 04, Circ. UG 7/2026);
-- despues-de-adjudicar (Pliego Único, Circ. SCyGB 04/2025);
-- notificar-proveedor (video del documento comunicable externo, 6BtJX1bhwbg);
-- pedir-alta-articulo (Res. 292/2026);
-- hacer-una-compra (la lección más larga: cotejarla con todo lo anterior).
+**Faltan (7), todas con la parte normativa ya revisada donde la hay — solo falta el detalle de pantalla del video:**
+- gestor-iniciar-proceso, supervisor-aprobar-y-publicar, gestor-mientras-esta-publicado, evaluador-evaluar-ofertas, evaluador-preadjudicar y gestor-adjudicar — **bloqueadas en el detalle de pantalla**: necesitan las transcripciones de los videos (Clases 02 y 03, Pasos 01 a 04) para los nombres exactos de pestañas y botones, y no se pudieron bajar (YouTube devuelve "Only images are available" con yt-dlp, probado con varios clientes — ver nota más abajo). La parte normativa (quién hace qué, plazos, mínimos) ya se cotejó contra la Circular UG TIMBÓ 7/2026 y el Pliego Único — ver más arriba.
+- notificar-proveedor (video del documento comunicable externo, 6BtJX1bhwbg) — también depende de un video, mismo bloqueo probable, y no tiene norma aparte que cotejar.
 
 Las demás preguntas de `importar_faq_chats.py` marcadas `verificado: True` también salieron de los chats: hay que revisarlas una por una.
+
+🔴 **Bloqueo nuevo (16/11): no se pudieron bajar subtítulos de YouTube en esta sesión.** Se intentó con yt-dlp (instalado en el venv del proyecto) para los videos Paso 01, Clase 02, etc. — cuatro variantes probadas (cliente por defecto, `--js-runtimes node`, cliente `ios`, cliente `web_embedded`) y todas terminan en "Only images are available" al pedir subtítulos. Parece un bloqueo general de YouTube en este momento, no algo de la configuración del cliente. Sin esto, no se puede avanzar con las 6 lecciones que dependen de esos videos. Si se retoma: probar de nuevo más tarde, o que la usuaria baje el audio a mano (como ya hace con whisper.cpp) y lo deje en una carpeta para transcribir.
 
 ## Lo que sigue
 - Identificar el número del decreto de "Territorio 5.0".
