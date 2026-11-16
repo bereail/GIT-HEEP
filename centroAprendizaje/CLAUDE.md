@@ -159,7 +159,87 @@ con un `.bat`.
 La vista previa local se cierra sola si a la PC le falta memoria (7,7 GB):
 levantarla solo cuando haga falta.
 
-## Segunda etapa (15/11/2026) — todo en local, nada deployado
+## Estado al 16/11/2026 (deployado: servidor y `main` al día)
+
+**Reglas nuevas de la usuaria (16/11), además de las de arriba:**
+- **Nada que no esté chequeado como oficial, en TODO el centro.** Cada
+  frase normativa u operativa se coteja con el texto oficial (bajar el PDF
+  y buscar el punto). No deducir ni completar con sentido común. Lo que no
+  tiene respaldo se saca o queda solo en /admin. Ya aparecieron errores así:
+  garantía de impugnación "150%" (el Pliego Único dice 3%) y "una persona
+  puede tener más de un rol" (la Circular UG 7/2026 no lo dice).
+- **Todo formulario o documento que se nombre va con su link oficial.**
+- Los manuales y videos de miHospital cuentan como fuente oficial.
+- Mostrar en local antes de subir; la usuaria decide cuándo se deploya.
+
+**Cómo funciona "solo lo oficial" en el sitio público:**
+- `app/recursos/__init__.py`: `es_publico(estado)` (confirmado o
+  discrepancia), `glosario_publico()` y `algoritmo_publico()` filtran lo
+  pendiente, didáctico o de práctica. En /admin se ve todo. Las plantillas
+  usan `oficial(estado)` (lo da el context processor de `ui/routes.py`).
+- `OCULTOS_PUBLICO = {"simulador", "checklists"}`: dan 404 en el sitio y
+  siguen en /admin. (Los "Modelos de mensajes" se volvieron a mostrar por
+  pedido de la usuaria.)
+- Los importadores no cargan los casos con `verificado: False`.
+- `tests/test_recursos.py::test_sitio_publico_solo_muestra_lo_verificado`
+  controla que no quede nada pendiente o didáctico en las páginas públicas.
+
+**Lo nuevo del 16/11:**
+- Inicio con "¿Qué necesitás hacer hoy?" (9 accesos directos), Recursos
+  plegado (botón desplegable, barra lateral y "Ir a otro recurso"), un solo
+  glosario (el de cada tema redirige al Diccionario filtrado), buscador
+  global que incluye Recursos, "¿Te sirvió esta página?" (votos en
+  /admin/estadisticas), "Revisado al…", ícono de la pestaña.
+- Recursos: Roles corto (tarjetas + matriz + "Ver más"), **Montos y topes
+  2026** (copia de la Circular SCyGB 01/2026), **Para proveedores**
+  (requisitos, RUPC, paso a paso con las guías y videos oficiales, mensaje
+  para copiar), **Ficha A4 para asignar roles** (`/recursos/roles/ficha`;
+  PDF en `timboDocumentacion/capacitacion/`), formularios **CD-01 a CD-05**
+  en el Diccionario.
+- `app/static/js/topes.js`: en todo el sitio, "monto menor al tope",
+  "licitación privada", etc. muestran el tope al pasar el mouse
+  (`recursos.topes()`), los formularios (CAByS, CD-01 a CD-04, Pliego
+  Único) se vuelven link oficial (`recursos.enlaces_oficiales()`; CAByS y
+  CD abren TIMBÓ en tramites.santafe.gob.ar porque se crean adentro) y las
+  direcciones santafe.gob.ar/gov.ar escritas como texto quedan clickeables.
+- Solo en /admin: **Flujos paso a paso** (`/admin/recursos/flujos`) y el
+  **Gráfico de flujo** en SVG (`/admin/recursos/grafico`,
+  `app/recursos/grafico.py`).
+- Biblioteca nueva: Circular UG TIMBÓ 2/2025 (compras directas 100%
+  digitales), videos oficiales de compras directas, guías para
+  proveedores, manuales del Firmador Digital Web.
+- **Seguridad del servidor aplicada** (`scripts/servidor/aplicar_seguridad.sh`):
+  base y copias con permisos 600 en `/var/www/timbo-capacitaciones/copias`,
+  copia diaria a las 3:15 (14 días) y pip-audit el día 1 de cada mes
+  (resultado arriba en /admin), nginx sin versión y con límite de intentos
+  en `/admin/login`. Sin contraseña extra en /admin (la usuaria no quiso).
+- **Copia en la PC:** tarea de Windows "Centro de Aprendizaje - copia de la
+  base" (10 h) corre `scripts/traer_copia.sh` → `D:\Bere\Copias\timbo-capacitaciones`.
+  En otra PC hay que crearla de nuevo (PowerShell como administrador, ver
+  el script) si se quiere ahí también.
+
+**Deploy:** `git push origin integracion-deploy:main` y después, aparte,
+`tr -d '\r' < scripts/deploy_servidor.sh | ssh -i ~/.ssh/timboheep_ed25519 -p5440 root@138.36.238.175 'sh -s'`.
+El script hace copia, pull, dependencias, los 5 importadores, batería del
+chatbot (88/88), reinicio y controles. El clasificador de permisos suele
+bloquear que Claude corra el deploy: lo corre la usuaria con `!` (un
+comando por mensaje: si se pegan dos juntos, el segundo no corre).
+
+**Transcripciones de videos:** `timboDocumentacion/transcripciones/` (no
+se sube a git: nombran a participantes). Se regeneran con yt-dlp
+(`--extractor-args "youtube:player_client=web_embedded"`, y para los que no
+salen, `player_client=ios`) y `scripts/vtt_a_texto.py`.
+
+**Sigue (punto 2):** verificar frase por frase las lecciones de TIMBÓ
+Compras (empezando por proveedor: las 8 guías ya están en texto), después
+Recursos y el diccionario, TIMBÓ (Expedientes) y miHospital; a cada
+formulario, su link oficial. Pendientes institucionales: aplicación de la
+URC al hospital, vigencia del RUPC, quién autoriza los roles, si una
+persona puede tener más de un rol, Convenio Marco en TIMBÓ, intervención
+de la SCyGB en otras causales, "Territorio 5.0" (lección de compra directa:
+falta identificar la norma).
+
+## Segunda etapa (15/11/2026) — deployada el 16/11
 
 - **Seguridad** (`timboDocumentacion/AUDITORIA_SEGURIDAD.md`, `app/seguridad.py`,
   `tests/test_seguridad.py`): límites de intentos, sin contraseña por
