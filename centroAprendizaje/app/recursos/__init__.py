@@ -106,6 +106,25 @@ def docs_minimos():
 
 
 # Herramientas prácticas: clave en la URL → (sección del JSON, ícono, título corto).
+def topes():
+    """Frases que, al pasar el mouse, muestran el tope de la Circular SCyGB
+    01/2026. Salen de la misma tabla que la página "Montos y topes"."""
+    filas = {f["que"]: f["monto"] for f in herramientas()["montos"]["encuadre"]}
+    fuente = "Circular SCyGB N° 01/2026"
+    return [
+        {"frases": ["monto menor al tope", "gestión directa por monto", "compra directa por monto",
+                    "contratación directa por monto", "directa por monto"],
+         "texto": f"Contratación directa por monto: {filas['Contratación directa por monto'].lower()} en 2026 ({fuente})."},
+        {"frases": ["licitación o concurso privado", "licitaciones privadas", "licitación privada", "concurso privado"],
+         "texto": f"Licitación o concurso privado: {filas['Licitación o concurso privado'].lower()} en 2026 ({fuente})."},
+        {"frases": ["licitación o concurso público", "licitaciones públicas", "licitación pública", "concurso público"],
+         "texto": f"Licitación o concurso público: {filas['Licitación o concurso público'].lower()} en 2026 ({fuente})."},
+        {"frases": ["concurso de precios"],
+         "texto": f"Concurso de precios para locación de inmuebles: "
+                  f"{filas['Concurso de precios para locación de inmuebles (art. 140, punto 2, Ley 12.510)'].lower()} en 2026 ({fuente})."},
+    ]
+
+
 def revisado_al():
     """Fecha en que se consultó la normativa oficial, como dd/mm/aaaa."""
     a, m, d = biblioteca()["consultado"].split("-")

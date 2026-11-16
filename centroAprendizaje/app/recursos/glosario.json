@@ -1038,13 +1038,16 @@
       "sistema": "Expediente electrónico",
       "relacionados": [
         "Contratación directa por excepción",
-        "Licitación privada"
+        "Licitación privada",
+        "CD-01 (Solicitud de contratación directa)"
       ],
       "estado": "confirmado",
       "fuentes": [
         "ley-12510",
         "circ-scygb-1-2026",
-        "videos-app-timbocompras"
+        "videos-app-timbocompras",
+        "video-compras-directas",
+        "circ-ug-2-2025"
       ]
     },
     {
@@ -1426,6 +1429,113 @@
       "fuentes": [
         "circ-ug-2-2026",
         "res-scygb-110-2026"
+      ]
+    },
+    {
+      "termino": "CD-01 (Solicitud de contratación directa)",
+      "sencilla": "El formulario con el que se pide la compra directa.",
+      "tecnica": "Se crea desde el módulo Documentos oficiales de TIMBÓ y se vincula al expediente de la compra directa. Lleva firma conjunta: hay que elegir al menos dos firmantes.",
+      "fuentes": [
+        "video-compras-directas",
+        "video-capacitacion-compras-directas",
+        "circ-ug-2-2025"
+      ],
+      "categoria": "A. Documentación",
+      "ejemplo": "",
+      "modulo": "TIMBÓ (Expedientes) · Compra directa",
+      "etapa": "Compra directa",
+      "sistema": "Expediente electrónico",
+      "estado": "confirmado",
+      "relacionados": [
+        "CD-02 (Solicitud de presupuesto)",
+        "CD-03 (Evaluación de propuestas y adjudicación)",
+        "CD-04 (Orden de provisión)",
+        "CD-05 (Nota de rechazo)",
+        "Compra directa (gestión directa por monto)"
+      ]
+    },
+    {
+      "termino": "CD-02 (Solicitud de presupuesto)",
+      "sencilla": "El formulario para pedir presupuesto.",
+      "tecnica": "Se crea desde el módulo Documentos oficiales de TIMBÓ y se vincula al expediente de la compra directa.",
+      "fuentes": [
+        "video-compras-directas"
+      ],
+      "categoria": "A. Documentación",
+      "ejemplo": "",
+      "modulo": "TIMBÓ (Expedientes) · Compra directa",
+      "etapa": "Compra directa",
+      "sistema": "Expediente electrónico",
+      "estado": "confirmado",
+      "relacionados": [
+        "CD-01 (Solicitud de contratación directa)",
+        "CD-03 (Evaluación de propuestas y adjudicación)",
+        "CD-04 (Orden de provisión)",
+        "CD-05 (Nota de rechazo)",
+        "Compra directa (gestión directa por monto)"
+      ]
+    },
+    {
+      "termino": "CD-03 (Evaluación de propuestas y adjudicación)",
+      "sencilla": "El formulario donde se evalúan las propuestas y se adjudica.",
+      "tecnica": "Se crea desde el módulo Documentos oficiales de TIMBÓ y se vincula al expediente de la compra directa.",
+      "fuentes": [
+        "video-compras-directas"
+      ],
+      "categoria": "A. Documentación",
+      "ejemplo": "",
+      "modulo": "TIMBÓ (Expedientes) · Compra directa",
+      "etapa": "Compra directa",
+      "sistema": "Expediente electrónico",
+      "estado": "confirmado",
+      "relacionados": [
+        "CD-01 (Solicitud de contratación directa)",
+        "CD-02 (Solicitud de presupuesto)",
+        "CD-04 (Orden de provisión)",
+        "CD-05 (Nota de rechazo)",
+        "Compra directa (gestión directa por monto)"
+      ]
+    },
+    {
+      "termino": "CD-04 (Orden de provisión)",
+      "sencilla": "El formulario de la orden de provisión.",
+      "tecnica": "Se crea desde el módulo Documentos oficiales de TIMBÓ y se vincula al expediente de la compra directa.",
+      "fuentes": [
+        "video-compras-directas"
+      ],
+      "categoria": "A. Documentación",
+      "ejemplo": "",
+      "modulo": "TIMBÓ (Expedientes) · Compra directa",
+      "etapa": "Compra directa",
+      "sistema": "Expediente electrónico",
+      "estado": "confirmado",
+      "relacionados": [
+        "CD-01 (Solicitud de contratación directa)",
+        "CD-02 (Solicitud de presupuesto)",
+        "CD-03 (Evaluación de propuestas y adjudicación)",
+        "CD-05 (Nota de rechazo)",
+        "Compra directa (gestión directa por monto)"
+      ]
+    },
+    {
+      "termino": "CD-05 (Nota de rechazo)",
+      "sencilla": "Es una nota de rechazo, no un formulario.",
+      "tecnica": "Lo aclara la capacitación oficial de compras directas (min. 24:30).",
+      "fuentes": [
+        "video-capacitacion-compras-directas"
+      ],
+      "categoria": "A. Documentación",
+      "ejemplo": "",
+      "modulo": "TIMBÓ (Expedientes) · Compra directa",
+      "etapa": "Compra directa",
+      "sistema": "Expediente electrónico",
+      "estado": "confirmado",
+      "relacionados": [
+        "CD-01 (Solicitud de contratación directa)",
+        "CD-02 (Solicitud de presupuesto)",
+        "CD-03 (Evaluación de propuestas y adjudicación)",
+        "CD-04 (Orden de provisión)",
+        "Compra directa (gestión directa por monto)"
       ]
     }
   ]

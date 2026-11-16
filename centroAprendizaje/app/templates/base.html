@@ -126,5 +126,7 @@
 
   {% block script_pagina %}{% endblock %}
   <script nonce="{{ csp_nonce }}" type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script type="application/json" id="topes-datos" nonce="{{ csp_nonce }}">{{ topes | tojson }}</script>
+  <script src="{{ url_for('static', filename='js/topes.js') }}"></script>
 </body>
 </html>

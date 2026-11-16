@@ -225,3 +225,14 @@ def test_flujos_paso_a_paso_en_el_panel(app, admin_client):
     for texto in ("Gestión directa por monto", "Licitación o concurso público", "Control del pliego (URC)", "flujo-c-privada"):
         assert texto in html, texto
     assert app.test_client().get("/admin/recursos/flujos").status_code in (302, 401)
+
+
+def test_topes_al_pasar_el_mouse_salen_de_la_circular(app):
+    import json
+    import re
+    html = app.test_client().get("/").get_data(as_text=True)
+    datos = json.loads(re.search(r'<script type="application/json" id="topes-datos"[^>]*>(.*?)</script>', html, re.S).group(1))
+    textos = " ".join(t["texto"] for t in datos)
+    for monto in ("hasta $5.850.000", "hasta $58.500.000", "más de $58.500.000", "hasta $29.250.000"):
+        assert monto in textos, monto
+    assert "/static/js/topes.js" in html

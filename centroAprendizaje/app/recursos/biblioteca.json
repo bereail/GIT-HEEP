@@ -614,6 +614,52 @@
       "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/5_Disposicion-N%C2%B0-226.pdf",
       "vigencia": "vigente según el índice oficial",
       "lectura": "solo la descripción del índice oficial"
+    },
+    {
+      "id": "circ-ug-2-2025",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 2/2025 — Nuevos trámites nativos digitales",
+      "emisor": "Unidad de Gestión para la Implementación de TIMBÓ",
+      "fecha": "2025",
+      "tema": "Trámites que se hacen solo en digital",
+      "contiene": "Punto 2: las compras directas del art. 116 de la Ley 12.510 se hacen de forma exclusivamente digital en EGD-TIMBÓ (por monto menor al tope, por especialización, exclusividad, entre organismos oficiales del Sector Público, por reparación de maquinaria e in situ).",
+      "modulos": [
+        "TIMBÓ (Expedientes)",
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/innovacion-publica/wp-content/uploads/sites/18/2025/08/Circular-2_2025-UNIDAD-DE-GESTION-_TIMBO_-Nuevos-tramites-nativos-digitales.pdf",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
+    },
+    {
+      "id": "video-compras-directas",
+      "categoria": "capacitacion",
+      "titulo": "Video oficial \"Compras Directas\"",
+      "emisor": "Gobierno de Santa Fe (TIMBÓ)",
+      "fecha": "2025",
+      "tema": "Formularios CD-01 a CD-04 y cómo iniciar una compra directa",
+      "contiene": "CD01 solicitud de contratación directa, CD02 solicitud de presupuesto, CD03 evaluación de propuestas y adjudicación, CD04 orden de provisión; se crean desde Documentos oficiales y se vinculan al expediente.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://youtu.be/IpayiPYodbU",
+      "vigencia": "vigente",
+      "lectura": "subtítulos completos"
+    },
+    {
+      "id": "video-capacitacion-compras-directas",
+      "categoria": "capacitacion",
+      "titulo": "Capacitación \"Compras directas a través de la plataforma digital\" (70 min)",
+      "emisor": "Gestión Timbó",
+      "fecha": "2025",
+      "tema": "CD-01 paso a paso, carátula, expediente y pase",
+      "contiene": "CD-01 desde Documentos oficiales (min. 17), firma conjunta con al menos dos firmantes (min. 21), CD-02 a CD-04 y el CD-05 como nota de rechazo (min. 24:30).",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://youtu.be/QH7zvgZ7sbQ",
+      "vigencia": "vigente",
+      "lectura": "subtítulos completos"
     }
   ],
   "discrepancias": [

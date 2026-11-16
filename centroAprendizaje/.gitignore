@@ -16,3 +16,6 @@ instance/*.bak
 # valores reales sí se versiona: deploy/.env.example
 .env
 
+
+# Subtítulos de videos con nombres de participantes: solo locales (scripts/vtt_a_texto.py los regenera).
+timboDocumentacion/transcripciones/
