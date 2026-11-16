@@ -217,7 +217,8 @@ def test_sitio_publico_solo_muestra_lo_verificado(app):
         for marca in ("rec-estado--pendiente", "rec-estado--didactico", "rec-estado--practica", "EJEMPLO DIDÁCTICO",
                       '"estado": "pendiente"', '"estado": "didactico"'):
             assert marca not in html, (url, marca)
-    assert cliente.get("/recursos/modelos").status_code == 404
+    # Los modelos de mensajes se ven (pedido de la usuaria): son plantillas, marcadas como didácticas.
+    assert cliente.get("/recursos/modelos").status_code == 200
 
 
 def test_flujos_paso_a_paso_en_el_panel(app, admin_client):

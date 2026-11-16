@@ -132,7 +132,7 @@ def revisado_al():
 
 
 # Ocultos por ahora en el sitio público (pedido del 16/11/2026); en /admin siguen.
-OCULTOS_PUBLICO = frozenset({"simulador", "checklists", "modelos"})
+OCULTOS_PUBLICO = frozenset({"simulador", "checklists"})
 
 # En el sitio público solo va lo verificado contra documentación oficial
 # (regla de la usuaria, 16/11/2026). Una discrepancia se muestra porque las
