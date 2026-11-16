@@ -137,6 +137,13 @@
   border-top:1px solid var(--border);padding-top:8px;
 }
 .equiv-row--pend .equiv-row__nota{border-top:none;padding-top:0;margin-top:4px;}
+.equiv-row__interno{display:block;margin-top:3px;font-size:12px;color:var(--text-faint);}
+.equiv-copiar{
+  margin-left:6px;vertical-align:middle;background:transparent;border:1px solid var(--border);border-radius:5px;
+  padding:1px 8px;font-size:11.5px;color:var(--text-muted);cursor:pointer;
+}
+.equiv-copiar:hover{border-color:var(--border-strong);color:var(--text);}
+.equiv-copiar.is-ok{color:var(--success, #15803d);border-color:currentColor;}
 
 .equiv-more{text-align:center;padding:16px;font-size:13px;color:var(--text-faint);}
 .equiv-more button{
@@ -195,14 +202,23 @@
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
+  function sinTildes(s) {
+    return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+  // Se busca en el nombre del pedido, en el del catálogo y en los códigos, sin importar tildes ni el orden de las palabras.
+  function indice(d) {
+    if (d._t === undefined) d._t = sinTildes([d.nombre, d.bien, d.item, d.codigo, d.notas].filter(Boolean).join(' '));
+    return d._t;
+  }
+
   function textoBuscar(d) {
     return [d.bien, d.item].filter(Boolean).join(' — ');
   }
 
   const ESTADOS = {
-    alta: ['estado-verde', '🟢 Revisado y correcto'],
-    dudosa: ['estado-amarillo', '🟡 Revisar antes de usar'],
-    sin_match: ['estado-rojo', '🔴 No está en el catálogo oficial'],
+    alta: ['estado-verde', '🟢 Listo para cargar'],
+    dudosa: ['estado-amarillo', '🟡 Confirmar antes de usar'],
+    sin_match: ['estado-rojo', '🔴 Hay que pedir que se agregue'],
   };
   function chip(d) {
     const e = ESTADOS[d.confianza];
@@ -210,13 +226,30 @@
   }
   function clase(d) { return (ESTADOS[d.confianza] || ['estado-gris'])[0]; }
 
+  // Las notas vienen de la revisión: se saca lo técnico y lo que ya dice la etiqueta.
+  function interno(d) {
+    const m = /\[cod\. interno (\d+)\]/.exec(d.notas || '');
+    return m ? `<span class="equiv-row__interno">Código interno del hospital: ${m[1]}</span>` : '';
+  }
+  function nota(d) {
+    let n = (d.notas || '')
+      .replace(/\[cod\. interno \d+\]\s*/, '')
+      .replace(/^match automatico por palabras clave, revisar antes de usar\.?/i, '')
+      .replace(/^match automatico por palabras clave,?\s*(pero\s*)?/i, '')
+      .replace(/^(revision manual|encontrado en segunda busqueda):\s*/i, '')
+      .trim();
+    if (!n) return '';
+    n = n.charAt(0).toUpperCase() + n.slice(1);
+    return `<div class="equiv-row__nota">${escapeHtml(n)}</div>`;
+  }
+
   function fila(d) {
     if (d.confianza === 'sin_match') {
       return `
         <div class="equiv-row equiv-row--pend ${clase(d)}">
           ${chip(d)}
-          <div class="equiv-row__nombre">${escapeHtml(d.nombre)}</div>
-          ${d.notas ? `<div class="equiv-row__nota">${escapeHtml(d.notas)}</div>` : ''}
+          <div class="equiv-row__nombre">${escapeHtml(d.nombre)}${interno(d)}</div>
+          ${nota(d)}
         </div>`;
     }
     const txt = textoBuscar(d);
@@ -226,13 +259,14 @@
         <div>
           <div class="equiv-row__label">Como figura en el pedido</div>
           <div class="equiv-row__nombre">${escapeHtml(d.nombre)}</div>
+          ${interno(d)}
         </div>
         <div>
           <div class="equiv-row__label">Buscar en TIMBÓ como</div>
           <div class="equiv-row__buscar">${escapeHtml(txt)}</div>
-          ${d.codigo ? `<span class="equiv-row__codigo">${escapeHtml(d.codigo)}</span>` : ''}
+          ${d.codigo ? `<span class="equiv-row__codigo">${escapeHtml(d.codigo)}</span><button type="button" class="equiv-copiar" data-codigo="${escapeHtml(d.codigo)}">Copiar</button>` : ''}
         </div>
-        ${d.notas ? `<div class="equiv-row__nota">${escapeHtml(d.notas)}</div>` : ''}
+        ${nota(d)}
       </div>`;
   }
 
@@ -241,12 +275,11 @@
     if (filtroOrigen) items = items.filter(d => d.origen === filtroOrigen);
     if (filtroConfianza) items = items.filter(d => d.confianza === filtroConfianza);
     if (busqueda) {
-      const q = busqueda.toLowerCase();
-      items = items.filter(d =>
-        d.nombre.toLowerCase().includes(q) ||
-        (d.bien && d.bien.toLowerCase().includes(q)) ||
-        (d.item && d.item.toLowerCase().includes(q))
-      );
+      const palabras = sinTildes(busqueda).split(/\s+/).filter(Boolean);
+      items = items.filter(d => {
+        const t = indice(d);
+        return palabras.every(p => t.includes(p));
+      });
     }
 
     const rows = document.getElementById('equiv-rows');
@@ -324,6 +357,16 @@
       aplicar();
     });
   }
+
+  document.getElementById('equiv-rows').addEventListener('click', (e) => {
+    const b = e.target.closest('.equiv-copiar');
+    if (!b || !navigator.clipboard) return;
+    navigator.clipboard.writeText(b.dataset.codigo).then(() => {
+      b.textContent = '¡Copiado!';
+      b.classList.add('is-ok');
+      setTimeout(() => { b.textContent = 'Copiar'; b.classList.remove('is-ok'); }, 1500);
+    });
+  });
 
   document.getElementById('equiv-buscar').addEventListener('input', (e) => {
     busqueda = e.target.value.trim();
