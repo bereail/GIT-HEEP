@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "recursos/_grupos.html" import grupos_recursos with context %}
 {% block titulo %}Centro de Aprendizaje{% endblock %}
 {% block contenido %}
 <div class="hero">
@@ -18,23 +19,22 @@
   {% endfor %}
 </div>
 
-<section class="portal-recursos">
-  <h2 class="section__title">📚 Recursos</h2>
-  <div class="card-grid">
-    <a class="card card-link" href="{{ url_for('ui.recursos_aprender') }}"><span class="home-card__icon">👥</span><div><div class="home-card__title">Aprendé desde cero</div><div class="home-card__desc">Conceptos, el camino de una compra y casos para practicar.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_algoritmo') }}"><span class="home-card__icon">🧭</span><div><div class="home-card__title">¿Qué camino sigue una compra?</div><div class="home-card__desc">El diagrama interactivo de cada procedimiento.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_simulador') }}"><span class="home-card__icon">🎯</span><div><div class="home-card__title">Simulador de Compras</div><div class="home-card__desc">Decidí paso a paso en casos del hospital.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_roles') }}"><span class="home-card__icon">🔐</span><div><div class="home-card__title">Roles y alcances</div><div class="home-card__desc">Quién hace qué en TIMBÓ Compras, qué no le corresponde y quién autoriza.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_glosario') }}"><span class="home-card__icon">📖</span><div><div class="home-card__title">Diccionario de Compras Públicas</div><div class="home-card__desc">Cada término con ejemplo del hospital, etapa y fuente.</div></div></a>
-    {% if tema_nomenclador %}<a class="card card-link" href="{{ url_for('ui.ver_equivalencias', tema_slug=tema_nomenclador.slug) }}"><span class="home-card__icon">🔄</span><div><div class="home-card__title">Nomenclador de artículos</div><div class="home-card__desc">¿Con qué nombre pido un artículo en TIMBÓ? Buscalo acá.</div></div></a>{% endif %}
-    <a class="card card-link" href="{{ url_for('ui.recursos_biblioteca') }}"><span class="home-card__icon">🗂️</span><div><div class="home-card__title">Normativa y fuentes</div><div class="home-card__desc">Circulares, resoluciones y guías oficiales, con fecha y vigencia.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='plazos') }}"><span class="home-card__icon">🗓️</span><div><div class="home-card__title">Calendario de plazos</div><div class="home-card__desc">Cuántos días tiene cada etapa de una compra.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='a-quien-preguntar') }}"><span class="home-card__icon">🧭</span><div><div class="home-card__title">¿A quién le pregunto?</div><div class="home-card__desc">A dónde ir según el problema.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='modelos') }}"><span class="home-card__icon">✉️</span><div><div class="home-card__title">Modelos de mensajes</div><div class="home-card__desc">Plantillas para la mesa de ayuda y pedidos de rol.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='checklists') }}"><span class="home-card__icon">✅</span><div><div class="home-card__title">Checklists</div><div class="home-card__desc">Para no olvidarse nada antes de cada paso.</div></div></a>
-    <a class="card card-link" href="{{ url_for('ui.recursos_herramienta', clave='estados') }}"><span class="home-card__icon">🚦</span><div><div class="home-card__title">Estados del proceso</div><div class="home-card__desc">Qué significa cada estado de TIMBÓ Compras.</div></div></a>
+<details class="rec-desplegable">
+  <summary class="rec-desplegable__boton">
+    <span class="rec-desplegable__icono">📚</span>
+    <span class="rec-desplegable__texto"><b>Recursos</b><small>Diccionario, roles, nomenclador, simulador, checklists y más</small></span>
+    <span class="rec-desplegable__flecha" aria-hidden="true">▾</span>
+  </summary>
+  <div class="rec-desplegable__cuerpo">
+    {% for titulo, items in grupos_recursos %}
+    <div class="rec-desplegable__grupo">
+      <h3>{{ titulo }}</h3>
+      {% for icono, nombre, url, endpoint, clave in items %}<a href="{{ url }}"><span aria-hidden="true">{{ icono }}</span>{{ nombre }}</a>{% endfor %}
+    </div>
+    {% endfor %}
+    <a class="rec-desplegable__todo" href="{{ url_for('ui.recursos_inicio') }}">Ver todos los recursos →</a>
   </div>
-</section>
+</details>
 {% else %}
 <div class="empty-state">
   <div class="empty-state__icon">🧭</div>

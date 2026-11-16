@@ -15,7 +15,10 @@
 
 {% macro subnav(activo) %}
 <nav class="rec-subnav" aria-label="Secciones de Recursos">
-  <a href="{{ url_for(prefijo ~ 'recursos_inicio') }}" class="{{ 'is-active' if activo == 'inicio' }}">📚 Recursos</a>
+  <a class="rec-subnav__inicio {{ 'is-active' if activo == 'inicio' }}" href="{{ url_for(prefijo ~ 'recursos_inicio') }}">📚 Recursos</a>
+  <details class="rec-subnav__mas">
+    <summary>Ir a otro recurso <span aria-hidden="true">▾</span></summary>
+    <div class="rec-subnav__chips">
   {% if prefijo == 'ui.' %}<a href="{{ url_for('ui.recursos_aprender') }}" class="{{ 'is-active' if activo == 'aprender' }}">👥 Aprendé desde cero</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_roles') }}" class="{{ 'is-active' if activo == 'roles' }}">🔐 Roles y circuito</a>
   <a href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}" class="{{ 'is-active' if activo == 'algoritmo' }}">🧭 ¿Qué camino sigue?</a>
@@ -30,10 +33,12 @@
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}" class="{{ 'is-active' if activo == 'modelos' }}">✉️ Modelos de mensajes</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}" class="{{ 'is-active' if activo == 'checklists' }}">✅ Checklists</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}" class="{{ 'is-active' if activo == 'estados' }}">🚦 Estados</a>
+    </div>
+  </details>
 </nav>
 {% if prefijo == 'admin.' %}<div class="callout callout--warning rec-borrador">
   <span class="callout__icon">🔒</span>
-  <div><b>Vista del panel.</b> En local también está en el sitio principal (/recursos); en producción no hay nada publicado todavía.</div>
+  <div><b>Vista del panel.</b> Es lo mismo que ve todo el personal en el sitio, en /recursos.</div>
 </div>{% endif %}
 {% endmacro %}
 

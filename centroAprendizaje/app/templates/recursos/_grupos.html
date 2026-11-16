@@ -1,0 +1,28 @@
+{# Los recursos del sitio público agrupados en tres, para mostrarlos plegados
+   (inicio del portal y barra lateral) en vez de una lista larga. #}
+{% set grupos_recursos = [
+  ('Para entender', [
+    ('🔐', 'Roles y alcances', url_for('ui.recursos_roles'), 'ui.recursos_roles', None),
+    ('📖', 'Diccionario', url_for('ui.recursos_glosario'), 'ui.recursos_glosario', None),
+    ('🔄', 'Nomenclador de artículos', url_for('ui.ver_equivalencias', tema_slug='timbo-compras'), 'ui.ver_equivalencias', None),
+    ('🗂️', 'Normativa y fuentes', url_for('ui.recursos_biblioteca'), 'ui.recursos_biblioteca', None),
+  ]),
+  ('Para practicar', [
+    ('👥', 'Aprendé desde cero', url_for('ui.recursos_aprender'), 'ui.recursos_aprender', None),
+    ('🧭', '¿Qué camino sigue una compra?', url_for('ui.recursos_algoritmo'), 'ui.recursos_algoritmo', None),
+    ('🎯', 'Simulador', url_for('ui.recursos_simulador'), 'ui.recursos_simulador', None),
+    ('💡', 'Explicame este paso', url_for('ui.recursos_explicame'), 'ui.recursos_explicame', None),
+  ]),
+  ('Para el día a día', [
+    ('✅', 'Checklists', url_for('ui.recursos_herramienta', clave='checklists'), 'ui.recursos_herramienta', 'checklists'),
+    ('🗓️', 'Plazos', url_for('ui.recursos_herramienta', clave='plazos'), 'ui.recursos_herramienta', 'plazos'),
+    ('🧭', '¿A quién le pregunto?', url_for('ui.recursos_herramienta', clave='a-quien-preguntar'), 'ui.recursos_herramienta', 'a-quien-preguntar'),
+    ('✉️', 'Modelos de mensajes', url_for('ui.recursos_herramienta', clave='modelos'), 'ui.recursos_herramienta', 'modelos'),
+    ('🚦', 'Estados del proceso', url_for('ui.recursos_herramienta', clave='estados'), 'ui.recursos_herramienta', 'estados'),
+    ('🔀', '¿Qué se hace en cada sistema?', url_for('ui.recursos_herramienta', clave='sistemas'), 'ui.recursos_herramienta', 'sistemas'),
+  ]),
+] %}
+
+{% macro activo(endpoint, clave) -%}
+{{ 'is-active' if request.endpoint == endpoint and (not clave or (request.view_args or {}).get('clave') == clave) }}
+{%- endmacro %}
