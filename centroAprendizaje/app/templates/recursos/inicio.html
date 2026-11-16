@@ -10,7 +10,6 @@
 {{ cinco_roles(roles) }}
 
 <div class="card-grid">
-  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_proveedores') }}"><span class="home-card__icon">🏢</span><div class="home-card__title">Para proveedores</div><div class="home-card__desc">Requisitos, inscripción en el RUPC y paso a paso para ofertar, con los links oficiales. Se puede copiar y enviar.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_roles') }}">
     <span class="home-card__icon">🔐</span>
     <div class="home-card__title">Roles y circuito</div>
@@ -31,6 +30,7 @@
     <div class="home-card__title">Biblioteca documental</div>
     <div class="home-card__desc">{{ biblioteca.documentos | length }} documentos oficiales con emisor, fecha, vigencia y enlace. {{ biblioteca.discrepancias | length }} discrepancia(s) documentada(s).</div>
   </a>
+  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_proveedores') }}"><span class="home-card__icon">🏢</span><div class="home-card__title">Para proveedores</div><div class="home-card__desc">Requisitos, inscripción en el RUPC y paso a paso para ofertar, con los links oficiales. Se puede copiar y enviar.</div></a>
 </div>
 
 <h2 class="section__title">Herramientas prácticas</h2>

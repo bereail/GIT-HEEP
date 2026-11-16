@@ -2,11 +2,11 @@
    (inicio del portal y barra lateral) en vez de una lista larga. #}
 {% set grupos_recursos = [
   ('Para entender', [
-    ('🏢', 'Para proveedores', url_for('ui.recursos_proveedores'), 'ui.recursos_proveedores', None),
     ('🔐', 'Roles y alcances', url_for('ui.recursos_roles'), 'ui.recursos_roles', None),
     ('📖', 'Diccionario', url_for('ui.recursos_glosario'), 'ui.recursos_glosario', None),
     ('🔄', 'Nomenclador de artículos', url_for('ui.ver_equivalencias', tema_slug='timbo-compras'), 'ui.ver_equivalencias', None),
     ('🗂️', 'Normativa y fuentes', url_for('ui.recursos_biblioteca'), 'ui.recursos_biblioteca', None),
+    ('🏢', 'Para proveedores', url_for('ui.recursos_proveedores'), 'ui.recursos_proveedores', None),
   ]),
   ('Para practicar', [
     ('👥', 'Aprendé desde cero', url_for('ui.recursos_aprender'), 'ui.recursos_aprender', None),
