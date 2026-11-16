@@ -37,16 +37,17 @@
   </li>
   <li class="card apr-paso">
     <span class="apr-paso__n">5</span>
-    <div><h2>Autoevaluación: el simulador</h2><p class="text-muted">6 casos del hospital. Cada respuesta se explica.</p>
+    {% if prefijo == 'admin.' or 'simulador' not in ocultos %}<div><h2>Autoevaluación: el simulador</h2><p class="text-muted">6 casos del hospital. Cada respuesta se explica.</p>
       <a class="btn btn--primary btn--sm" href="{{ url_for(prefijo ~ 'recursos_simulador') }}">🎯 Practicar</a>
       <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_simulador', escenario='evaluacion-final') }}">🏁 Evaluación final</a>
+      {% else %}<div><h2>¿Te quedó una duda?</h2><p class="text-muted">Buscá tu pregunta o elegí una etapa del circuito.</p>{% endif %}
       <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_explicame') }}">💡 Tengo una duda</a></div>
   </li>
   <li class="card apr-paso">
     <span class="apr-paso__n">6</span>
-    <div><h2>Para el día a día</h2><p class="text-muted">Checklists, plazos, a quién preguntar y modelos de mensajes.</p>
+    <div><h2>Para el día a día</h2><p class="text-muted">Plazos, a quién preguntar y modelos de mensajes.</p>
       <div class="alg-conexiones">
-        <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}">✅ Checklists</a>
+        {% if prefijo == 'admin.' or 'checklists' not in ocultos %}<a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}">✅ Checklists</a>{% endif %}
         <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}">🗓️ Plazos</a>
         <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}">🧭 ¿A quién le pregunto?</a>
         <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>

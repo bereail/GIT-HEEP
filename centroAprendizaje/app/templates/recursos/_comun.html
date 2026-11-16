@@ -22,7 +22,7 @@
   {% if prefijo == 'ui.' %}<a href="{{ url_for('ui.recursos_aprender') }}" class="{{ 'is-active' if activo == 'aprender' }}">👥 Aprendé desde cero</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_roles') }}" class="{{ 'is-active' if activo == 'roles' }}">🔐 Roles y circuito</a>
   <a href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}" class="{{ 'is-active' if activo == 'algoritmo' }}">🧭 ¿Qué camino sigue?</a>
-  <a href="{{ url_for(prefijo ~ 'recursos_simulador') }}" class="{{ 'is-active' if activo == 'simulador' }}">🎯 Simulador</a>
+  {% if prefijo == 'admin.' or 'simulador' not in ocultos %}<a href="{{ url_for(prefijo ~ 'recursos_simulador') }}" class="{{ 'is-active' if activo == 'simulador' }}">🎯 Simulador</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_explicame') }}" class="{{ 'is-active' if activo == 'explicame' }}">💡 Explicame</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='sistemas') }}" class="{{ 'is-active' if activo == 'sistemas' }}">🔀 Cada sistema</a>
   <a href="{{ url_for(prefijo ~ 'recursos_glosario') }}" class="{{ 'is-active' if activo == 'glosario' }}">📖 Diccionario</a>
@@ -31,7 +31,7 @@
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}" class="{{ 'is-active' if activo == 'plazos' }}">🗓️ Plazos</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}" class="{{ 'is-active' if activo == 'a-quien-preguntar' }}">🧭 ¿A quién le pregunto?</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}" class="{{ 'is-active' if activo == 'modelos' }}">✉️ Modelos de mensajes</a>
-  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}" class="{{ 'is-active' if activo == 'checklists' }}">✅ Checklists</a>
+  {% if prefijo == 'admin.' or 'checklists' not in ocultos %}<a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}" class="{{ 'is-active' if activo == 'checklists' }}">✅ Checklists</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}" class="{{ 'is-active' if activo == 'estados' }}">🚦 Estados</a>
     </div>
   </details>

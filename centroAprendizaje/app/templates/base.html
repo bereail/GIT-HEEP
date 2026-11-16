@@ -81,7 +81,7 @@
           <summary class="nav-link nav-grupo__titulo"><span class="nav-link__icon">📚</span>Recursos<span class="nav-grupo__flecha" aria-hidden="true">▾</span></summary>
           {% for titulo, items in grupos_recursos %}
           <div class="nav-grupo__subtitulo">{{ titulo }}</div>
-          {% for icono, nombre, url, endpoint, clave in items %}<a class="nav-link {{ activo(endpoint, clave) }}" href="{{ url }}"><span class="nav-link__icon">{{ icono }}</span>{{ nombre }}</a>{% endfor %}
+          {% for icono, nombre, url, endpoint, clave in items if (clave or endpoint.split('_')[-1]) not in ocultos %}<a class="nav-link {{ activo(endpoint, clave) }}" href="{{ url }}"><span class="nav-link__icon">{{ icono }}</span>{{ nombre }}</a>{% endfor %}
           {% endfor %}
         </details>
       {% endif %}

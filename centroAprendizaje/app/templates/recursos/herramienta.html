@@ -89,10 +89,6 @@
   {% endfor %}
 </div>
 <div class="callout callout--tip"><span class="callout__icon">🔗</span><div><b>No duplican tareas.</b> {{ h.puente.texto }} {{ fuentes(h.puente.fuentes) }}</div></div>
-<h2 class="section__title">{{ h.ejemplo.titulo }} <span class="alg-tipo alg-tipo--ejemplo">EJEMPLO DIDÁCTICO</span></h2>
-<ol class="sis-ejemplo">
-  {% for p in h.ejemplo.pasos %}<li class="sis-paso alg-sis--{{ p.sistema }}"><span class="alg-chip">{{ {'expediente': '📁 Expediente', 'compras': '🛒 TIMBÓ Compras', 'externo': '↗ Fuera'}[p.sistema] }}</span> {{ p.t }}</li>{% endfor %}
-</ol>
 
 {% elif clave == 'estados' %}
 <h2 class="section__title">Estados del proceso en TIMBÓ Compras</h2>

@@ -887,7 +887,7 @@ def imagen_eliminar(tema_slug, nombre):
 
 def _contexto_recursos():
     return {"estados": recursos.ESTADOS, "docs": recursos.documentos_por_id(),
-            "layout": "admin/base_admin.html", "prefijo": "admin."}
+            "layout": "admin/base_admin.html", "prefijo": "admin.", "ocultos": frozenset()}
 
 
 def _glosario_completo():

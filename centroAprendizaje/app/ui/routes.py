@@ -545,6 +545,12 @@ def _contexto_recursos():
     return {"estados": recursos.ESTADOS, "docs": recursos.documentos_por_id(), "layout": "base.html", "prefijo": "ui."}
 
 
+@ui_bp.app_context_processor
+def _recursos_ocultos():
+    # Los menús del sitio no muestran lo que está oculto; en /admin se ve todo.
+    return {"ocultos": recursos.OCULTOS_PUBLICO}
+
+
 @ui_bp.route("/recursos")
 def recursos_inicio():
     return render_template(
@@ -581,6 +587,8 @@ def recursos_aprender():
 
 @ui_bp.route("/recursos/simulador")
 def recursos_simulador():
+    if "simulador" in recursos.OCULTOS_PUBLICO:
+        abort(404)
     return render_template(
         "recursos/simulador.html", simulador=recursos.simulador(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
     )
@@ -608,7 +616,7 @@ def recursos_explicame():
 
 @ui_bp.route("/recursos/<clave>")
 def recursos_herramienta(clave):
-    if clave not in recursos.HERRAMIENTAS:
+    if clave not in recursos.HERRAMIENTAS or clave in recursos.OCULTOS_PUBLICO:
         abort(404)
     seccion = recursos.HERRAMIENTAS[clave][0]
     return render_template(

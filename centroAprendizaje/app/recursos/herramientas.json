@@ -995,40 +995,6 @@
       "fuentes": [
         "circ-ug-7-2026"
       ]
-    },
-    "ejemplo": {
-      "titulo": "Ejemplo: guantes para el hospital (licitación privada)",
-      "pasos": [
-        {
-          "sistema": "expediente",
-          "t": "Enfermería pide los guantes: se abre el expediente y se justifica la necesidad."
-        },
-        {
-          "sistema": "compras",
-          "t": "El Gestor crea el proceso con el número de expediente y arma el pliego."
-        },
-        {
-          "sistema": "compras",
-          "t": "El Supervisor aprueba el pliego; TIMBÓ asigna el número de proceso."
-        },
-        {
-          "sistema": "expediente",
-          "t": "La autoridad firma el acto que aprueba el pliego; el Supervisor lo vincula en TIMBÓ Compras."
-        },
-        {
-          "sistema": "externo",
-          "t": "Vista al Tribunal de Cuentas y carga en el SIN; invitación y publicación."
-        },
-        {
-          "sistema": "compras",
-          "t": "Consultas, ofertas, apertura automática, evaluación y preadjudicación. Cada documento pasa solo al expediente."
-        },
-        {
-          "sistema": "expediente",
-          "t": "La autoridad adjudica; se notifica la orden de compra, se recibe y se paga."
-        }
-      ],
-      "nota": "Ejemplo didáctico."
     }
   }
 }

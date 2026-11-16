@@ -12,7 +12,7 @@
   <a href="{{ url_for('admin.recursos_biblioteca') }}">🗂️ Normativa</a>
 </nav>
 {% endif %}
-<div id="alg" data-url-dic="{{ url_for(prefijo ~ 'recursos_glosario') }}" data-url-sim="{{ url_for(prefijo ~ 'recursos_simulador') }}" data-url-check="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}">
+<div id="alg" data-url-dic="{{ url_for(prefijo ~ 'recursos_glosario') }}" {% if prefijo == 'admin.' or 'simulador' not in ocultos %}data-url-sim="{{ url_for(prefijo ~ 'recursos_simulador') }}"{% endif %} {% if prefijo == 'admin.' or 'checklists' not in ocultos %}data-url-check="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}"{% endif %}>
   <header class="alg-cabecera">
     <div>
       <h1>🧭 {{ algoritmo.titulo }}</h1>

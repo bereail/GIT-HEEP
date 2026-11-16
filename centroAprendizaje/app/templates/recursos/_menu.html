@@ -7,17 +7,17 @@
     <a class="rec-menu__item" href="{{ url_for('ui.recursos_glosario') }}"><span class="rec-menu__icono">📖</span><span><b>Diccionario de Compras Públicas</b><small>Cada término con ejemplo, etapa y fuente</small></span></a>
     <a class="rec-menu__item" href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}"><span class="rec-menu__icono">🔄</span><span><b>Nomenclador de artículos</b><small>Qué código usar en TIMBÓ para cada artículo</small></span></a>
     <a class="rec-menu__item" href="{{ url_for('ui.recursos_biblioteca') }}"><span class="rec-menu__icono">🗂️</span><span><b>Normativa y fuentes</b><small>Circulares, resoluciones y guías oficiales</small></span></a>
-    <a class="rec-menu__item" href="{{ url_for('ui.recursos_aprender') }}"><span class="rec-menu__icono">👥</span><span><b>Aprendé desde cero</b><small>Conceptos, el camino de una compra y el simulador</small></span></a>
+    <a class="rec-menu__item" href="{{ url_for('ui.recursos_aprender') }}"><span class="rec-menu__icono">👥</span><span><b>Aprendé desde cero</b><small>Conceptos y el camino de una compra</small></span></a>
     <div class="rec-menu__grupo">Herramientas prácticas</div>
     <div class="rec-menu__chips">
       <a href="{{ url_for('ui.recursos_algoritmo') }}">🧭 ¿Qué camino sigue?</a>
-      <a href="{{ url_for('ui.recursos_simulador') }}">🎯 Simulador</a>
+      {% if 'simulador' not in ocultos %}<a href="{{ url_for('ui.recursos_simulador') }}">🎯 Simulador</a>{% endif %}
       <a href="{{ url_for('ui.recursos_explicame') }}">💡 Explicame este paso</a>
       <a href="{{ url_for('ui.recursos_herramienta', clave='sistemas') }}">🔀 Cada sistema</a>
       <a href="{{ url_for('ui.recursos_herramienta', clave='plazos') }}">🗓️ Plazos</a>
       <a href="{{ url_for('ui.recursos_herramienta', clave='a-quien-preguntar') }}">🧭 ¿A quién le pregunto?</a>
       <a href="{{ url_for('ui.recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>
-      <a href="{{ url_for('ui.recursos_herramienta', clave='checklists') }}">✅ Checklists</a>
+      {% if 'checklists' not in ocultos %}<a href="{{ url_for('ui.recursos_herramienta', clave='checklists') }}">✅ Checklists</a>{% endif %}
       <a href="{{ url_for('ui.recursos_herramienta', clave='estados') }}">🚦 Estados</a>
     </div>
     <a class="rec-menu__todo" href="{{ url_for('ui.recursos_inicio') }}">Ver todos los recursos →</a>

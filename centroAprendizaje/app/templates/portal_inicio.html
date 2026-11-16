@@ -22,14 +22,14 @@
 <details class="rec-desplegable">
   <summary class="rec-desplegable__boton">
     <span class="rec-desplegable__icono">📚</span>
-    <span class="rec-desplegable__texto"><b>Recursos</b><small>Diccionario, roles, nomenclador, simulador, checklists y más</small></span>
+    <span class="rec-desplegable__texto"><b>Recursos</b><small>Diccionario, roles, nomenclador, plazos y más</small></span>
     <span class="rec-desplegable__flecha" aria-hidden="true">▾</span>
   </summary>
   <div class="rec-desplegable__cuerpo">
     {% for titulo, items in grupos_recursos %}
     <div class="rec-desplegable__grupo">
       <h3>{{ titulo }}</h3>
-      {% for icono, nombre, url, endpoint, clave in items %}<a href="{{ url }}"><span aria-hidden="true">{{ icono }}</span>{{ nombre }}</a>{% endfor %}
+      {% for icono, nombre, url, endpoint, clave in items if (clave or endpoint.split('_')[-1]) not in ocultos %}<a href="{{ url }}"><span aria-hidden="true">{{ icono }}</span>{{ nombre }}</a>{% endfor %}
     </div>
     {% endfor %}
     <a class="rec-desplegable__todo" href="{{ url_for('ui.recursos_inicio') }}">Ver todos los recursos →</a>

@@ -101,6 +101,9 @@ def docs_minimos():
 
 
 # Herramientas prácticas: clave en la URL → (sección del JSON, ícono, título corto).
+# Ocultos por ahora en el sitio público (pedido del 16/11/2026); en /admin siguen.
+OCULTOS_PUBLICO = frozenset({"simulador", "checklists"})
+
 HERRAMIENTAS = {
     "plazos": ("plazos", "🗓️", "Plazos"),
     "a-quien-preguntar": ("a_quien", "🧭", "¿A quién le pregunto?"),

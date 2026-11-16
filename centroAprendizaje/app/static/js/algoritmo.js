@@ -130,8 +130,8 @@
     const proc = procedimientoDe(id);
     let html = '<h3>Seguí por acá</h3><div class="alg-conexiones">';
     if (termino) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlDic}?q=${encodeURIComponent(termino)}">📖 "${esc(termino)}" en el diccionario</a>`;
-    if (proc) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlSim}?escenario=${ESCENARIO[proc]}">🎯 Practicar en el simulador</a>`;
-    if (proc) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlCheck}?procedimiento=${proc}">✅ Checklist del procedimiento ${proc}</a>`;
+    if (proc && raiz.dataset.urlSim) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlSim}?escenario=${ESCENARIO[proc]}">🎯 Practicar en el simulador</a>`;
+    if (proc && raiz.dataset.urlCheck) html += `<a class="btn btn--ghost btn--sm" href="${raiz.dataset.urlCheck}?procedimiento=${proc}">✅ Checklist del procedimiento ${proc}</a>`;
     return html + '</div>';
   }
 

@@ -49,7 +49,7 @@
   </ul>
   <div class="alg-conexiones" style="margin-top:12px">
     <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}">🧭 Verla en el recorrido completo</a>
-    <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_simulador') }}">🎯 Practicar</a>
+    {% if prefijo == 'admin.' or 'simulador' not in ocultos %}<a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_simulador') }}">🎯 Practicar</a>{% endif %}
   </div>
 </section>
 {% endblock %}

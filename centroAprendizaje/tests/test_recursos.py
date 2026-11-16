@@ -62,9 +62,12 @@ def test_cada_rama_termina_en_un_final():
 
 def test_paginas_de_recursos_y_algoritmo(app):
     anonimo = app.test_client()
-    herramientas = tuple(f"/recursos/{c}" for c in recursos.HERRAMIENTAS)
+    herramientas = tuple(f"/recursos/{c}" for c in recursos.HERRAMIENTAS if c not in recursos.OCULTOS_PUBLICO)
+    for oculto in recursos.OCULTOS_PUBLICO:
+        assert anonimo.get(f"/recursos/{oculto}").status_code == 404, oculto
+        assert f"/recursos/{oculto}" not in anonimo.get("/").get_data(as_text=True)
     for url in ("/recursos", "/recursos/roles", "/recursos/glosario", "/recursos/biblioteca", "/recursos/algoritmo",
-                "/recursos/simulador", "/recursos/aprender", "/recursos/explicame", "/recursos/explicame?etapa=d-monto",
+                "/recursos/aprender", "/recursos/explicame", "/recursos/explicame?etapa=d-monto",
                 "/recursos/explicame?etapa=no-existe") + herramientas:
         assert anonimo.get(url).status_code == 200, url
     assert anonimo.get("/recursos/no-existe").status_code == 404
