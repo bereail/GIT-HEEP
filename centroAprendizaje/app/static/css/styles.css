@@ -1884,6 +1884,8 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .est-chip { display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; color: var(--est); background: var(--est-suave); border: 1px solid var(--est); white-space: nowrap; }
 .est-leyenda { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 0 0 12px; font-size: 13px; color: var(--text-muted); }
 .est-leyenda .est-chip { margin-right: 4px; }
+.est-leyenda > span { white-space: nowrap; }
+@media (min-width: 720px) { .est-leyenda { flex-wrap: nowrap; gap: 18px; } }
 
 /* ------------------------------------------------ Revisión del nomenclador -- */
 .rev-body { background: var(--bg, #f5f6f8); min-height: 100vh; margin: 0; }

@@ -785,3 +785,13 @@ un caso nuevo para este `kind`: muestra el código si lo hay, avisa
 agreguen" si es "sin_match". Probado con `curl` contra
 `/temas/timbo-compras/buscar.json`, `/buscar.json` (global) y
 `/temas/timbo-compras/chatbot` (POST) — los tres funcionan.
+
+## Nomenclador contra el Catálogo WEB completo (16/11/2026)
+
+- El catálogo oficial completo se baja del Catálogo WEB con «Descargar Excel» sin filtros
+  (`output.php?a=catalogo.get_csv`, 17.818 ítems, separado por `|`). No trae bodega.
+- Los 936 renglones con código siguen existiendo y con el mismo texto.
+- 34 renglones rojos tenían un candidato claro en el catálogo completo (butterfly, Kehr,
+  Peezer, manguitos neonatales, lanreotida, cotrimoxazol, ortoftalaldehído, etc.): pasaron a
+  amarillo con la nota "candidato encontrado el 16/11/2026… Confirmar antes de usar". Quedan
+  30 rojos. Para repetir: bajar el catálogo y cruzar los rojos por palabras y medidas.

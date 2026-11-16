@@ -27,6 +27,7 @@
     <span class="equiv-tile__label">🔴 Hay que pedir que se agreguen</span>
   </button>
 </div>
+<div class="equiv-todos-wrap"><button type="button" class="equiv-todos" id="equiv-todos">Mostrar todos</button></div>
 
 <div class="equiv-controls">
   <div class="input-wrap" style="flex:1;min-width:200px">
@@ -73,9 +74,9 @@
 </div>
 
 <div class="est-leyenda" aria-label="Qué significa cada color">
-  <span><span class="est-chip estado-verde">🟢 Verde</span>revisado y correcto: coincidencia clara</span>
-  <span><span class="est-chip estado-amarillo">🟡 Amarillo</span>hay que revisarlo o confirmarlo antes de usar</span>
-  <span><span class="est-chip estado-rojo">🔴 Rojo</span>problema pendiente: no está en el catálogo oficial</span>
+  <span><span class="est-chip estado-verde">🟢 Verde</span>coincidencia clara</span>
+  <span><span class="est-chip estado-amarillo">🟡 Amarillo</span>confirmar antes de usar</span>
+  <span><span class="est-chip estado-rojo">🔴 Rojo</span>no está en el catálogo</span>
 </div>
 <div class="equiv-count" id="equiv-count"></div>
 <div class="equiv-rows" id="equiv-rows"></div>
@@ -90,7 +91,10 @@
 <style>
 #equiv-aclaracion-dudosa[hidden],#equiv-aclaracion-sinmatch[hidden]{display:none;}
 .equiv-actualizado{font-size:12.5px;color:var(--text-faint);margin:10px 0 0;}
-.equiv-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 18px;}
+.equiv-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 6px;}
+.equiv-todos-wrap{display:flex;justify-content:flex-end;margin:0 0 10px;}
+.equiv-todos{background:none;border:1px solid var(--border);border-radius:999px;padding:3px 12px;font:inherit;font-size:12.5px;color:var(--text-muted);cursor:pointer;}
+.equiv-todos:hover{color:var(--accent);border-color:var(--accent);}
 .equiv-tile{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
   padding:16px 14px;text-align:center;cursor:pointer;font-family:inherit;
@@ -303,6 +307,14 @@
     aplicar();
   }
   selEstado.addEventListener('change', (e) => elegirEstado(e.target.value));
+
+  document.getElementById('equiv-todos').addEventListener('click', () => {
+    busqueda = '';
+    filtroOrigen = '';
+    document.getElementById('equiv-buscar').value = '';
+    if (selOrigen) selOrigen.value = '';
+    elegirEstado('');
+  });
 
   const selOrigen = document.getElementById('equiv-origen');
   if (selOrigen) {
