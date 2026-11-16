@@ -49,6 +49,10 @@ def create_app(test_config=None):
 
     app.register_blueprint(revision_bp)
 
+    from app.models.revision_nomenclador import hora_ar
+
+    app.add_template_filter(hora_ar, "hora_ar")
+
     @app.template_global()
     def tutoriales_para_js(categoria):
         """Lista mínima [{slug}, ...] que progreso.js necesita para calcular

@@ -20,7 +20,7 @@ from flask import Blueprint, abort, jsonify, redirect, render_template, request,
 from app.extensions import db
 from app.models import EquivalenciaArticulo, Tema
 from app.models.revision_nomenclador import (
-    ObservacionHistorial, ObservacionNomenclador, RevisorNomenclador, clave_item, hash_token,
+    ObservacionHistorial, ObservacionNomenclador, RevisorNomenclador, clave_item, hash_token, hora_ar,
 )
 from app.seguridad import limitar
 
@@ -98,7 +98,7 @@ def nomenclador():
         "clave": clave, "nombre": e.nombre_interno, "codigo": e.codigo_catalogo or "",
         "buscar": " — ".join(x for x in (e.bien_o_servicio, e.item_especifico) if x), "notas": e.notas or "",
         "observacion": propias[clave].texto if clave in propias else "",
-        "actualizado": propias[clave].actualizado_en.strftime("%d/%m/%Y %H:%M") if clave in propias else "",
+        "actualizado": hora_ar(propias[clave].actualizado_en) if clave in propias else "",
     } for clave, e in items_amarillos()]
     return render_template("revision/nomenclador.html", revisor=revisor, items=items,
                            con_observacion=sum(1 for i in items if i["observacion"]))
@@ -125,7 +125,7 @@ def guardar_observacion():
     obs = ObservacionNomenclador.query.filter_by(revisor_id=revisor.id, clave_item=clave).first()
     ahora = _ahora()
     if obs and obs.texto == texto:
-        return jsonify({"ok": True, "texto": texto, "actualizado": obs.actualizado_en.strftime("%d/%m/%Y %H:%M")})
+        return jsonify({"ok": True, "texto": texto, "actualizado": hora_ar(obs.actualizado_en)})
     if obs:
         db.session.add(ObservacionHistorial(observacion_id=obs.id, texto=obs.texto, guardado_en=obs.actualizado_en or ahora))
         if texto:
@@ -140,4 +140,4 @@ def guardar_observacion():
     else:
         return jsonify({"ok": True, "texto": "", "actualizado": ""})
     db.session.commit()
-    return jsonify({"ok": True, "texto": obs.texto, "actualizado": obs.actualizado_en.strftime("%d/%m/%Y %H:%M")})
+    return jsonify({"ok": True, "texto": obs.texto, "actualizado": hora_ar(obs.actualizado_en)})

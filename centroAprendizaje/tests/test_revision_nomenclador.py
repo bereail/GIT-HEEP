@@ -152,3 +152,25 @@ def test_nomenclador_publico_con_colores_y_leyenda(app, nomenclador):
     html = app.test_client().get("/temas/timbo-compras/equivalencias").get_data(as_text=True)
     for texto in ("est-leyenda", "estado-verde", "estado-amarillo", "estado-rojo", "🔴 Hay que pedir que se agreguen"):
         assert texto in html, texto
+
+
+def test_exportar_a_excel(app, nomenclador, admin_client):
+    c = app.test_client()
+    entrar(c)
+    guardar(c, "Guantes de látex M", "Primera versión")
+    guardar(c, "Guantes de látex M", "Talle; revisar")
+    r = admin_client.get("/admin/nomenclador/revision/exportar?filtro=con")
+    assert r.status_code == 200 and "attachment" in r.headers["Content-Disposition"]
+    texto = r.get_data(as_text=True)
+    assert texto.startswith("﻿") and "Guantes de látex M" in texto and '"Talle; revisar"' in texto
+    assert "Primera versión" in texto and "Jeringa 5 ml" not in texto
+    pendientes = admin_client.get("/admin/nomenclador/revision/exportar?filtro=sin").get_data(as_text=True)
+    assert "Jeringa 5 ml" in pendientes and "Guantes de látex M" not in pendientes
+    assert app.test_client().get("/admin/nomenclador/revision/exportar").status_code == 302  # sin login
+
+
+def test_hora_de_argentina():
+    from datetime import datetime
+
+    from app.models.revision_nomenclador import hora_ar
+    assert hora_ar(datetime(2026, 11, 16, 17, 47)) == "16/11/2026 14:47"

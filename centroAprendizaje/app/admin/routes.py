@@ -1187,3 +1187,46 @@ def revisor_estado(revisor_id):
     db.session.commit()
     flash(f"Acceso de {revisor.nombre} {'activado' if revisor.activo else 'dado de baja'}.", "ok")
     return redirect(url_for("admin.nomenclador_revision"))
+
+
+@admin_bp.route("/nomenclador/revision/exportar")
+@requiere_admin
+def nomenclador_revision_exportar():
+    """Las observaciones en CSV para abrir con Excel (separador ";" y BOM UTF-8,
+    así se ven bien las tildes). Respeta el filtro de la pantalla."""
+    import csv
+    import io
+
+    from flask import Response
+
+    from app.models.revision_nomenclador import hora_ar
+
+    filas, huerfanas, estado_actual = _datos_revision()
+    filtro = request.args.get("filtro", "con")
+    if filtro == "con":
+        filas = [f for f in filas if f["observaciones"]]
+    elif filtro == "sin":
+        filas = [f for f in filas if not f["observaciones"]]
+    estados = {"alta": "Verde", "dudosa": "Amarillo", "sin_match": "Rojo"}
+
+    salida = io.StringIO()
+    w = csv.writer(salida, delimiter=";")
+    w.writerow(["Estado actual", "Como figura en el pedido", "Código catálogo", "Equivalencia propuesta",
+                "Notas del nomenclador", "Revisor/a", "Observación", "Creada", "Modificada", "Versiones anteriores"])
+    for f in filas:
+        e = f["item"]
+        base = ["Amarillo", e.nombre_interno, e.codigo_catalogo or "",
+                " — ".join(x for x in (e.bien_o_servicio, e.item_especifico) if x), e.notas or ""]
+        if not f["observaciones"]:
+            w.writerow(base + ["", "", "", "", ""])
+        for o in f["observaciones"]:
+            w.writerow(base + [o.revisor.nombre, o.texto, hora_ar(o.creado_en), hora_ar(o.actualizado_en),
+                               " | ".join(f"{hora_ar(h.guardado_en)}: {h.texto}" for h in o.historial)])
+    if filtro != "sin":
+        for o in huerfanas:
+            w.writerow([estados.get(estado_actual.get(o.clave_item), "Ya no está en el nomenclador"), o.nombre_item,
+                        "", "", "", o.revisor.nombre, o.texto, hora_ar(o.creado_en), hora_ar(o.actualizado_en),
+                        " | ".join(f"{hora_ar(h.guardado_en)}: {h.texto}" for h in o.historial)])
+    nombre = f"observaciones_nomenclador_{filtro}_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
+    return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
+                    headers={"Content-Disposition": f'attachment; filename="{nombre}"'})

@@ -9,13 +9,22 @@ porque `importar_equivalencias.py` borra y recarga esa tabla en cada deploy.
 import hashlib
 import re
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from app.extensions import db
 
 
 def _ahora():
     return datetime.now(timezone.utc)
+
+
+def hora_ar(momento, formato="%d/%m/%Y %H:%M"):
+    """Fecha guardada en UTC (SQLite la devuelve sin zona) → hora de Argentina."""
+    if not momento:
+        return ""
+    if momento.tzinfo is None:
+        momento = momento.replace(tzinfo=timezone.utc)
+    return momento.astimezone(timezone(timedelta(hours=-3))).strftime(formato)
 
 
 def clave_item(nombre_interno):

@@ -31,7 +31,7 @@
       <tr>
         <td><b>{{ r.nombre }}</b></td>
         <td>{% if r.activo %}<span class="badge badge--verified">Activo</span>{% else %}<span class="badge badge--neutral">Dado de baja</span>{% endif %}</td>
-        <td>{{ r.ultimo_acceso.strftime('%d/%m/%Y %H:%M') if r.ultimo_acceso else '—' }}</td>
+        <td>{{ (r.ultimo_acceso | hora_ar) if r.ultimo_acceso else '—' }}</td>
         <td>{{ r.observaciones | selectattr('texto') | list | length }}</td>
         <td class="rev-admin-acciones">
           <form method="post" action="{{ url_for('admin.revisor_enlace', revisor_id=r.id) }}" data-confirmar="¿Generar un enlace nuevo para {{ r.nombre }}? El anterior deja de funcionar.">
@@ -54,6 +54,10 @@
   </form>
 </section>
 
+<div class="rev-exportar">
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.nomenclador_revision_exportar', filtro=filtro) }}">⬇️ Exportar a Excel ({{ {'con': 'con observaciones', 'sin': 'pendientes', 'todos': 'todos los amarillos'}[filtro] }})</a>
+  <span class="text-muted">Descarga lo que estás viendo con este filtro, con fechas y versiones anteriores.</span>
+</div>
 <nav class="rev-filtros" aria-label="Filtrar ítems">
   {% for clave, texto in [('con', 'Con observaciones'), ('sin', 'Sin observaciones (pendientes)'), ('todos', 'Todos los amarillos')] %}
   <a class="rev-filtro {{ 'is-active' if filtro == clave }}" href="{{ url_for('admin.nomenclador_revision', filtro=clave) }}">{{ texto }} <b>{{ conteo[clave] }}</b></a>
@@ -72,10 +76,10 @@
       <div class="rev-obs__vista">
         <span class="rev-obs__chip">✏️ {{ o.revisor.nombre }}</span>
         <p class="rev-obs__texto">{{ o.texto }}</p>
-        <span class="rev-obs__fecha">Creada el {{ o.creado_en.strftime('%d/%m/%Y %H:%M') }}{% if o.actualizado_en and o.actualizado_en != o.creado_en %} · modificada el {{ o.actualizado_en.strftime('%d/%m/%Y %H:%M') }}{% endif %}</span>
+        <span class="rev-obs__fecha">Creada el {{ o.creado_en | hora_ar }}{% if o.actualizado_en and o.actualizado_en != o.creado_en %} · modificada el {{ o.actualizado_en | hora_ar }}{% endif %}</span>
         {% if o.historial %}
         <details class="rev-historial"><summary>Versiones anteriores ({{ o.historial | length }})</summary>
-          <ul>{% for h in o.historial %}<li><span class="text-muted">{{ h.guardado_en.strftime('%d/%m/%Y %H:%M') }}:</span> {{ h.texto or '(vacía)' }}</li>{% endfor %}</ul>
+          <ul>{% for h in o.historial %}<li><span class="text-muted">{{ h.guardado_en | hora_ar }}:</span> {{ h.texto or '(vacía)' }}</li>{% endfor %}</ul>
         </details>
         {% endif %}
       </div>
@@ -99,7 +103,7 @@
       <div class="rev-item__datos"><div><div class="rev-item__label">Ítem</div><div class="rev-item__nombre">{{ o.nombre_item }}</div>
         <span class="text-muted">{{ {'alta': '🟢 Ahora en verde', 'sin_match': '🔴 Ahora en rojo'}.get(estado_actual.get(o.clave_item), '⚪ Ya no está en el nomenclador') }}</span></div></div>
       <div class="rev-obs"><div class="rev-obs__vista"><span class="rev-obs__chip">✏️ {{ o.revisor.nombre }}</span><p class="rev-obs__texto">{{ o.texto }}</p>
-        <span class="rev-obs__fecha">Modificada el {{ o.actualizado_en.strftime('%d/%m/%Y %H:%M') }}</span></div></div>
+        <span class="rev-obs__fecha">Modificada el {{ o.actualizado_en | hora_ar }}</span></div></div>
     </li>
     {% endfor %}
   </ol>

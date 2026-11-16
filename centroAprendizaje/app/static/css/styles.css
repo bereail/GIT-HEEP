@@ -1936,3 +1936,4 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .rev-aviso__texto { display: grid; gap: 2px; flex: 1; }
 .rev-aviso__texto span { font-size: 13.5px; color: var(--text-muted); }
 .rev-aviso__ir { font-weight: 600; color: var(--accent); font-size: 14px; }
+.rev-exportar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0 10px; font-size: 13px; }
