@@ -1698,6 +1698,16 @@
             {
               "type": "tip",
               "text": "Los problemas de instalación o de la plataforma que Informática no pueda resolver se canalizan con un ticket en iTop."
+            },
+            {
+              "type": "pdf",
+              "url": "https://www.santafe.gob.ar/nube/index.php/s/HC5MD5nEfats8no",
+              "title": "Instalación del puesto de trabajo para firma digital"
+            },
+            {
+              "type": "pdf",
+              "url": "https://www.santafe.gob.ar/nube/index.php/s/gkeFgzt3xyX5LNS",
+              "title": "Manual de usuario del Firmador Digital Web"
             }
           ],
           "quiz": []
@@ -1710,7 +1720,7 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Para firmar electrónicamente un PDF que no está en TIMBÓ (o pedirle la firma a otras personas), usá el Firmador Digital Web de la Provincia. Es gratis y solo necesitás tu ID Ciudadana."
+              "text": "Para firmar electrónicamente un PDF que no está en TIMBÓ (o pedirle la firma a otras personas), usá el Firmador Digital Web de la Provincia. Se entra con la ID Ciudadana."
             },
             {
               "type": "step",
@@ -1746,6 +1756,11 @@
               "url": "https://youtu.be/ETjXfXTyaBg",
               "title": "Cómo firmar electrónicamente desde el Firmador Digital Web",
               "minutos": 3
+            },
+            {
+              "type": "pdf",
+              "url": "https://www.santafe.gob.ar/nube/index.php/s/gkeFgzt3xyX5LNS",
+              "title": "Manual de usuario del Firmador Digital Web"
             }
           ],
           "quiz": [

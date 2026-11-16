@@ -103,7 +103,7 @@
     </a>
 
   {% elif b.type == 'pdf' %}
-    <a class="video-link" href="{{ pdf_base }}/{{ b.file }}" target="_blank" rel="noopener">
+    <a class="video-link" href="{{ b.url or (pdf_base ~ '/' ~ b.file) }}" target="_blank" rel="noopener">
       <span class="video-link__icon" aria-hidden="true">📄</span>
       <span>
         <span class="video-link__title">Instructivo oficial (PDF): {{ b.title }}</span>

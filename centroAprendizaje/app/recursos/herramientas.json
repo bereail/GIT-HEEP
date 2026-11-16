@@ -1245,6 +1245,30 @@
         ]
       },
       {
+        "t": "Si necesitás firmar un PDF",
+        "items": [
+          "La Provincia tiene un Firmador Digital Web que se puede usar si hace falta. Se entra con la ID Ciudadana en santafe.gob.ar/firma."
+        ],
+        "links": [
+          [
+            "Firmador Digital Web",
+            "https://www.santafe.gob.ar/firma"
+          ],
+          [
+            "Manual de usuario",
+            "https://www.santafe.gob.ar/nube/index.php/s/gkeFgzt3xyX5LNS"
+          ],
+          [
+            "Video: firmar desde el Firmador Digital Web",
+            "https://youtu.be/ETjXfXTyaBg"
+          ]
+        ],
+        "fuentes": [
+          "guias-proveedor",
+          "manual-firmador-web"
+        ]
+      },
+      {
         "t": "Si te adjudican",
         "items": [
           "Garantía de fiel cumplimiento: 7% del valor total de la adjudicación, dentro de los 5 días de recibida la notificación."

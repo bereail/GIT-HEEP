@@ -675,6 +675,36 @@
       "url": "https://compras.santafe.gob.ar/tutoriales/",
       "vigencia": "vigente",
       "lectura": "texto completo"
+    },
+    {
+      "id": "manual-firmador-web",
+      "categoria": "expediente",
+      "titulo": "Manual de usuario del Sistema Firmador Digital Web (v2.6)",
+      "emisor": "Secretaría de Tecnologías para la Gestión",
+      "fecha": "s/f",
+      "tema": "Firmar, validar y compartir PDF en santafe.gob.ar/firma",
+      "contiene": "Ingreso con ID Ciudadana; para firma digital hace falta un token con certificado válido de la ONTI; archivos de hasta 10 MB; validación de firmas digitales y electrónicas; compartir para firma conjunta (hasta 10 personas por archivo). Consultas: firmadigital@santafe.gov.ar · 342-4508700.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/nube/index.php/s/gkeFgzt3xyX5LNS",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
+    },
+    {
+      "id": "manual-puesto-firma",
+      "categoria": "expediente",
+      "titulo": "Instalación del puesto de trabajo — Firmador Digital Web (v1.13)",
+      "emisor": "Secretaría de Tecnologías para la Gestión",
+      "fecha": "s/f",
+      "tema": "Preparar una PC para firmar con token",
+      "contiene": "Java Web Start, drivers y certificados del token, permisos otorgados por el referente del organismo, verificación FIPS 140-2 nivel 2 del token y configuración de Acrobat para validar firmas.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/nube/index.php/s/HC5MD5nEfats8no",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
     }
   ],
   "discrepancias": [
