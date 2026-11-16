@@ -5,7 +5,9 @@ miró, qué se buscó y si encontró algo. Pensado para alimentar la pantalla
 de estadísticas del admin, no para analítica de usuarios.
 """
 
-from flask import current_app
+import re
+
+from flask import current_app, has_request_context, request
 from sqlalchemy import func
 
 from app.extensions import db
@@ -14,10 +16,26 @@ from app.models.evento_uso import EventoUso
 TIPOS_BUSQUEDA = ("busqueda", "busqueda_global", "chatbot")
 
 
+_AUTOMATICO = re.compile(
+    r"bot|spider|crawl|slurp|python|requests|curl|wget|go-http|headlesschrome|gptbot|claude|"
+    r"bytespider|facebookexternalhit|preview|monitor|scrapy|httpclient|okhttp|java/|libwww",
+    re.IGNORECASE,
+)
+
+
+def es_automatico(user_agent):
+    """True si el pedido no lo hizo una persona con un navegador."""
+    return not user_agent or bool(_AUTOMATICO.search(user_agent))
+
+
 def registrar(tipo, tema=None, titulo=None, consulta=None, hubo_resultado=None):
     # Las pruebas (p. ej. scripts/bateria_chatbot.py en cada deploy) apagan el
     # registro: si no, sus preguntas se mezclan con las del personal.
     if not current_app.config.get("REGISTRAR_ESTADISTICAS", True):
+        return
+    # Tampoco cuentan los robots (buscadores, rastreadores de IA) ni los
+    # controles automáticos (curl, Chrome sin pantalla): no son personas.
+    if es_automatico(request.headers.get("User-Agent", "") if has_request_context() else ""):
         return
     db.session.add(EventoUso(
         tema_id=tema.id if tema else None,

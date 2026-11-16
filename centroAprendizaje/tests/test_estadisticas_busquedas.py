@@ -48,3 +48,22 @@ def test_las_pruebas_no_registran_estadisticas(app):
     client.get("/buscar.json?q=guantes")
     with app.app_context():
         assert EventoUso.query.count() == 1
+
+
+def test_robots_y_controles_automaticos_no_cuentan(app):
+    from app.models import EventoUso as E
+    app.config["REGISTRAR_ESTADISTICAS"] = True
+    try:
+        cliente = app.test_client()
+        with app.app_context():
+            antes = E.query.count()
+        for ua in ("Mozilla/5.0 (compatible; GPTBot/1.2)", "curl/8.4.0", "Mozilla/5.0 HeadlessChrome/120.0", ""):
+            cliente.get("/buscar.json?q=guantes", headers={"User-Agent": ua})
+        with app.app_context():
+            assert E.query.count() == antes
+        cliente.get("/buscar.json?q=guantes", headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0) Chrome/157.0 Safari/537.36"})
+        with app.app_context():
+            assert E.query.count() == antes + 1
+    finally:
+        app.config["REGISTRAR_ESTADISTICAS"] = True
+    assert estadisticas.es_automatico("Mozilla/5.0 (compatible; ClaudeBot/1.0)")
