@@ -34,6 +34,7 @@
 
 <h2 class="section__title">Herramientas prácticas</h2>
 <div class="card-grid">
+  {% if prefijo == 'admin.' %}<a class="card card-link" href="{{ url_for('admin.recursos_flujos') }}"><span class="home-card__icon">🔀</span><div class="home-card__title">Flujos paso a paso</div><div class="home-card__desc">Todas las bifurcaciones y cada camino con sus pasos, en una sola página. Solo en el panel.</div></a>{% endif %}
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}"><span class="home-card__icon">🧭</span><div class="home-card__title">¿Qué camino sigue una compra?</div><div class="home-card__desc">Diagrama interactivo con las ramas de cada procedimiento.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_explicame') }}"><span class="home-card__icon">💡</span><div class="home-card__title">Explicame este paso</div><div class="home-card__desc">Buscá tu pregunta o elegí una etapa: explicación simple, técnica y su fuente.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='sistemas') }}"><span class="home-card__icon">🔀</span><div class="home-card__title">¿Qué se hace en cada sistema?</div><div class="home-card__desc">Expediente, TIMBÓ Compras y lo que va por fuera, con un ejemplo.</div></a>

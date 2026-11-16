@@ -908,6 +908,32 @@ def _glosario_completo():
     return recursos.glosario_completo()
 
 
+@admin_bp.route("/recursos/flujos")
+@requiere_admin
+def recursos_flujos():
+    """Todas las bifurcaciones del algoritmo y, para cada camino, sus pasos."""
+    alg = recursos.algoritmo()
+    nodos = alg["nodos"]
+    decisiones, flujos, caminos = [], [], {alg["inicio"]: []}
+    pendientes = [alg["inicio"]]
+    while pendientes:  # recorrido en orden desde el inicio, con el camino a cada nodo
+        actual = pendientes.pop(0)
+        nodo = nodos[actual]
+        salidas = [(o["va"], (nodo["titulo"], o["texto"])) for o in nodo.get("opciones", [])]
+        if nodo.get("siguiente"):
+            salidas.append((nodo["siguiente"], None))
+        if nodo["tipo"] == "decision":
+            decisiones.append(actual)
+        if nodo.get("pasos"):
+            flujos.append({"id": actual, "camino": caminos[actual]})
+        for destino, eleccion in salidas:
+            if destino not in caminos:
+                caminos[destino] = caminos[actual] + ([eleccion] if eleccion else [])
+                pendientes.append(destino)
+    return render_template("recursos/flujos.html", algoritmo=alg, decisiones=decisiones, flujos=flujos,
+                           **_contexto_recursos())
+
+
 @admin_bp.route("/recursos")
 @requiere_admin
 def recursos_inicio():

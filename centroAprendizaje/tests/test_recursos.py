@@ -218,3 +218,10 @@ def test_sitio_publico_solo_muestra_lo_verificado(app):
                       '"estado": "pendiente"', '"estado": "didactico"'):
             assert marca not in html, (url, marca)
     assert cliente.get("/recursos/modelos").status_code == 404
+
+
+def test_flujos_paso_a_paso_en_el_panel(app, admin_client):
+    html = admin_client.get("/admin/recursos/flujos").get_data(as_text=True)
+    for texto in ("Gestión directa por monto", "Licitación o concurso público", "Control del pliego (URC)", "flujo-c-privada"):
+        assert texto in html, texto
+    assert app.test_client().get("/admin/recursos/flujos").status_code in (302, 401)

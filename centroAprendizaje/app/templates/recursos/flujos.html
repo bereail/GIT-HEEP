@@ -1,0 +1,76 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, estado with context %}
+{% block titulo %}Flujos paso a paso — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('flujos') }}
+{% set N = algoritmo.nodos %}
+{% set SISTEMAS = {'expediente': '📁 Expediente electrónico', 'compras': '🛒 TIMBÓ Compras', 'decision': '◆ Decisión', 'externo': '↗ Fuera del sistema', 'organismo': '🏛️ Otro organismo'} %}
+<h1 style="margin:8px 0 4px">🔀 Flujos paso a paso</h1>
+<p class="text-muted" style="margin:0 0 12px">Todas las bifurcaciones de una compra y, para cada camino, sus pasos en orden. Tocá un paso para ver su ficha y de dónde surge. Esta vista es solo del panel: muestra también lo pendiente.</p>
+<div class="rec-sistemas" style="margin-bottom:14px">
+  {% for clave in ['expediente', 'compras', 'externo', 'organismo'] %}<span class="alg-chip alg-sis--{{ clave }}">{{ SISTEMAS[clave] }}</span>{% endfor %}
+  <span class="alg-chip alg-nodo--pendiente">⏳ Pendiente de confirmar</span>
+</div>
+
+{# ---------------------------------------------------------- bifurcaciones #}
+<section class="card flu-arbol" id="bifurcaciones">
+  <h2 class="section__title" style="margin-top:0">Las bifurcaciones</h2>
+  <ol class="flu-decisiones">
+    {% for d in decisiones %}{% set n = N[d] %}
+    <li>
+      <p class="flu-pregunta">◆ {{ n.titulo }}</p>
+      <ul>
+        {% for o in n.opciones %}{% set destino = N[o.va] %}
+        <li>
+          <span class="flu-opcion">{{ o.texto }}</span>{% if o.nota %} <span class="text-muted">({{ o.nota }})</span>{% endif %}
+          →
+          {% if destino.tipo == 'decision' %}<span class="text-muted">sigue con: "{{ destino.titulo }}"</span>
+          {% else %}<a href="#flujo-{{ o.va }}"><b>{{ destino.titulo }}</b></a>{% if destino.estado == 'pendiente' %} {{ estado('pendiente') }}{% endif %}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# ---------------------------------------------------------- cada flujo #}
+{% for f in flujos %}{% set n = N[f.id] %}
+<section class="card flu-flujo alg-sis--{{ n.sistema }}" id="flujo-{{ f.id }}">
+  <header class="flu-flujo__head">
+    <h2>{{ n.titulo }} {% if n.estado == 'pendiente' %}{{ estado('pendiente') }}{% endif %}</h2>
+    <p class="flu-camino">🧭 {% for paso in f.camino %}<span>{{ paso[0] }} → <b>{{ paso[1] }}</b></span>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  </header>
+  <ol class="flu-pasos">
+    {% for p in n.pasos %}{% set s = N[p] %}
+    <li class="flu-paso alg-sis--{{ s.sistema }} {{ 'alg-nodo--pendiente' if s.estado == 'pendiente' }}">
+      <details>
+        <summary>
+          <span class="flu-paso__n">{{ loop.index }}</span>
+          <span class="flu-paso__titulo">{{ s.titulo }}</span>
+          <span class="flu-paso__quien">{{ s.responsable or '' }}</span>
+          <span class="alg-chip">{{ SISTEMAS[s.sistema] }}</span>
+          {% if s.estado == 'pendiente' %}{{ estado('pendiente') }}{% endif %}
+        </summary>
+        {% set fi = s.ficha %}
+        {% if fi %}
+        <dl class="alg-ficha__campos">
+          {% if fi.que %}<dt>Qué es</dt><dd>{{ fi.que }} {{ fi.para }}</dd>{% endif %}
+          {% if fi.quien %}<dt>Quién</dt><dd>{{ fi.quien }}</dd>{% endif %}
+          {% if fi.docs %}<dt>Documentación</dt><dd>{{ fi.docs }}</dd>{% endif %}
+          {% if fi.verificar %}<dt>Qué verificar</dt><dd>{{ fi.verificar }}</dd>{% endif %}
+          {% if fi.despues %}<dt>Después</dt><dd>{{ fi.despues }}</dd>{% endif %}
+        </dl>
+        <ul class="alg-ficha__fuentes">
+          {% for r in fi.fuentes %}{% set d = docs.get(r.id) %}<li><span class="alg-tipo alg-tipo--{{ r.tipo or 'norma' }}">{{ {'norma': 'NORMA', 'procedimiento': 'PROCEDIMIENTO OPERATIVO', 'ejemplo': 'EJEMPLO DIDÁCTICO'}[r.tipo or 'norma'] }}</span> {% if d %}<a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.titulo }}</a>{% else %}{{ r.id }}{% endif %}{% if r.punto %} <span class="text-muted">— {{ r.punto }}</span>{% endif %}</li>{% endfor %}
+        </ul>
+        {% endif %}
+      </details>
+    </li>
+    {% endfor %}
+  </ol>
+  <a class="flu-arriba" href="#bifurcaciones">↑ Volver a las bifurcaciones</a>
+</section>
+{% endfor %}
+{% endblock %}

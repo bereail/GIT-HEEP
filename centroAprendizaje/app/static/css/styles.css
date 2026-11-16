@@ -1810,3 +1810,22 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 @media (prefers-reduced-motion: reduce) { .necesito__opcion { transition: none; } .necesito__opcion:hover { transform: none; } }
 
 .mon-tabla td.mon-monto { white-space: nowrap; font-weight: 700; color: var(--accent); }
+
+/* ------------------------------------------- Flujos paso a paso (panel) -- */
+.flu-arbol { padding: 18px; margin-bottom: 16px; }
+.flu-decisiones { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.flu-pregunta { margin: 0 0 4px; font-weight: 700; }
+.flu-decisiones ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
+.flu-opcion { font-weight: 600; }
+.flu-flujo { padding: 16px 18px; margin-bottom: 14px; border-top: 4px solid var(--sis, var(--accent)); scroll-margin-top: 16px; }
+.flu-flujo__head h2 { margin: 0 0 4px; font-size: 18px; }
+.flu-camino { margin: 0 0 10px; font-size: 13px; color: var(--text-muted); }
+.flu-pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.flu-paso details { border: 1px solid var(--border); border-left: 5px solid var(--sis, var(--border)); border-radius: var(--radius-sm); background: var(--surface); }
+.flu-paso.alg-nodo--pendiente details { border-style: dashed; }
+.flu-paso summary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 9px 12px; cursor: pointer; }
+.flu-paso__n { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--surface-sunken); font-weight: 700; font-size: 13px; }
+.flu-paso__titulo { font-weight: 650; }
+.flu-paso__quien { color: var(--text-muted); font-size: 13px; flex: 1; }
+.flu-paso details > :not(summary) { margin: 0 14px 10px; }
+.flu-arriba { display: inline-block; margin-top: 10px; font-size: 13px; }

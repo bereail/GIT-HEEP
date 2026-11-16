@@ -16,6 +16,7 @@
 {% macro subnav(activo) %}
 <nav class="rec-subnav" aria-label="Secciones de Recursos">
   <a class="rec-subnav__inicio {{ 'is-active' if activo == 'inicio' }}" href="{{ url_for(prefijo ~ 'recursos_inicio') }}">📚 Recursos</a>
+  {% if prefijo == 'admin.' %}<a class="rec-subnav__inicio {{ 'is-active' if activo == 'flujos' }}" href="{{ url_for('admin.recursos_flujos') }}">🔀 Flujos paso a paso</a>{% endif %}
   <details class="rec-subnav__mas">
     <summary>Ir a otro recurso <span aria-hidden="true">▾</span></summary>
     <div class="rec-subnav__chips">
@@ -40,7 +41,7 @@
 </nav>
 {% if prefijo == 'admin.' %}<div class="callout callout--warning rec-borrador">
   <span class="callout__icon">🔒</span>
-  <div><b>Vista del panel.</b> Es lo mismo que ve todo el personal en el sitio, en /recursos.</div>
+  <div><b>Vista del panel.</b> Acá ves también lo pendiente, lo didáctico y lo oculto. En el sitio (/recursos) el personal ve solo lo verificado como oficial.</div>
 </div>{% endif %}
 {% endmacro %}
 
