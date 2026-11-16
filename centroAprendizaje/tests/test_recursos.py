@@ -237,3 +237,12 @@ def test_topes_al_pasar_el_mouse_salen_de_la_circular(app):
     for monto in ("hasta $5.850.000", "hasta $58.500.000", "más de $58.500.000", "hasta $29.250.000"):
         assert monto in textos, monto
     assert "/static/js/topes.js" in html
+
+
+def test_grafico_de_flujo(app, admin_client):
+    html = app.test_client().get("/recursos/grafico").get_data(as_text=True)
+    for texto in ("¿Hay una causal de contratación directa por excepción?", "Hasta $5.850.000", "Licitación o concurso público",
+                  "Etapa contractual"):
+        assert texto in html, texto
+    assert "Convenio Marco" not in html  # pendiente: solo en el panel
+    assert "Convenio Marco" in admin_client.get("/admin/recursos/grafico").get_data(as_text=True)

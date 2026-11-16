@@ -959,6 +959,12 @@ def recursos_ficha_roles():
     return render_template("recursos/ficha_roles.html", **_contexto_recursos())
 
 
+@admin_bp.route("/recursos/grafico")
+@requiere_admin
+def recursos_grafico():
+    return render_template("recursos/grafico.html", algoritmo=recursos.algoritmo(), **_contexto_recursos())
+
+
 @admin_bp.route("/recursos/glosario")
 @requiere_admin
 def recursos_glosario():

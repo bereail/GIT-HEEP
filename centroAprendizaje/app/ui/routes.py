@@ -575,6 +575,11 @@ def recursos_ficha_roles():
     return render_template("recursos/ficha_roles.html", **_contexto_recursos())
 
 
+@ui_bp.route("/recursos/grafico")
+def recursos_grafico():
+    return render_template("recursos/grafico.html", algoritmo=recursos.algoritmo_publico(), **_contexto_recursos())
+
+
 @ui_bp.route("/recursos/glosario")
 def recursos_glosario():
     return render_template("recursos/glosario.html", glosario=recursos.glosario_publico(recursos.glosario_completo()), **_contexto_recursos())

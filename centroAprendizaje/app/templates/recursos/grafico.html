@@ -1,0 +1,34 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav with context %}
+{% block titulo %}Gráfico: qué camino sigue una compra — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('grafico') }}
+{% set N = algoritmo.nodos %}
+{% set RAMA = {} %}{% for r in algoritmo.ramas %}{% for x in (r.nodos or [r.nodo]) %}{% set _ = RAMA.update({x: r.letra}) %}{% endfor %}{% endfor %}
+{% set SIS = {'expediente': '📁 Expediente', 'compras': '🛒 TIMBÓ Compras', 'organismo': '🏛️ Otro organismo', 'externo': '↗ Fuera'} %}
+
+<div class="gf" role="img" aria-label="Gráfico de flujo: qué camino sigue una compra según la causal, la modalidad y el monto">
+  <div class="gf-inicio">🏥 El área necesita comprar algo</div>
+  {% for d in ['d-excepcion', 'd-modalidad', 'd-monto'] %}{% set n = N[d] %}
+  <div class="gf-flecha" aria-hidden="true">{{ '↓' if loop.first else '↓ No' }}</div>
+  <div class="gf-fila">
+    <div class="gf-pregunta"><span>◆</span>{{ n.titulo }}</div>
+    <ul class="gf-opciones">
+      {% for o in n.opciones if N[o.va].tipo != 'decision' %}{% set dst = N[o.va] %}
+      <li class="gf-opcion">
+        <span class="gf-si">{{ o.texto }}</span>
+        <a class="gf-destino alg-sis--{{ dst.sistema }} {{ 'alg-nodo--pendiente' if dst.estado == 'pendiente' }}" href="{{ url_for('admin.recursos_flujos') ~ '#flujo-' ~ o.va if prefijo == 'admin.' else url_for(prefijo ~ 'recursos_algoritmo') }}">
+          <b>{% if RAMA.get(o.va) %}<span class="gf-letra">{{ RAMA[o.va] }}</span>{% endif %}{{ dst.titulo }}</b>
+          <small>{{ SIS.get(dst.sistema, '') }}{% if dst.estado == 'pendiente' %} · ⏳ pendiente{% endif %}</small>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+  <div class="gf-flecha" aria-hidden="true">↓ todos los caminos terminan en</div>
+  <div class="gf-fin alg-sis--expediente">📁 {{ N['fin-contractual'].titulo }}</div>
+  <p class="gf-pie">Montos 2026 según la Circular SCyGB N° 01/2026. Tocá un camino para ver sus pasos.</p>
+</div>
+{% endblock %}
