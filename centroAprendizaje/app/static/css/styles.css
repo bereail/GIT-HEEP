@@ -1808,3 +1808,5 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 #rec-terminos .rec-termino { margin: 0; }
 @media (max-width: 760px) { #rec-terminos { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .necesito__opcion { transition: none; } .necesito__opcion:hover { transform: none; } }
+
+.mon-tabla td.mon-monto { white-space: nowrap; font-weight: 700; color: var(--accent); }

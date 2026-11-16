@@ -90,6 +90,29 @@
 </div>
 <div class="callout callout--tip"><span class="callout__icon">🔗</span><div><b>No duplican tareas.</b> {{ h.puente.texto }} {{ fuentes(h.puente.fuentes) }}</div></div>
 
+{% elif clave == 'montos' %}
+{% set circular = docs.get('circ-scygb-1-2026') %}
+<p><a class="btn btn--primary btn--sm" href="{{ circular.url }}" target="_blank" rel="noopener">📄 Ver la Circular SCyGB N° 01/2026 (sitio oficial)</a></p>
+<section class="rec-bloque">
+  <h2 class="section__title">¿Qué procedimiento corresponde?</h2>
+  <div class="table-wrap"><table class="data-table rec-tabla mon-tabla">
+    <thead><tr><th>Monto</th><th>Procedimiento</th></tr></thead>
+    <tbody>{% for f in h.encuadre %}<tr><td class="mon-monto">{{ f.monto }}</td><td>{{ f.que }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+<section class="rec-bloque">
+  <h2 class="section__title">¿Quién aprueba?</h2>
+  <div class="table-wrap"><table class="data-table rec-tabla mon-tabla">
+    <thead><tr><th>Monto</th><th>Se aprueba por</th></tr></thead>
+    <tbody>{% for f in h.aprobacion %}<tr><td class="mon-monto">{{ f.monto }}</td><td>{{ f.quien }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+<section class="rec-bloque">
+  <h2 class="section__title">También dice la circular</h2>
+  <ul class="rec-lista">{% for o in h.otros %}<li>{{ o }}</li>{% endfor %}</ul>
+</section>
+<div class="callout callout--warning"><span class="callout__icon">🗓️</span><div>{{ h.aviso }} {{ fuentes(h.fuentes) }}</div></div>
+
 {% elif clave == 'estados' %}
 <h2 class="section__title">Estados del proceso en TIMBÓ Compras</h2>
 <ol class="her-estados">

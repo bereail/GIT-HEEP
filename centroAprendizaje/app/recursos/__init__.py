@@ -114,6 +114,7 @@ def revisado_al():
 OCULTOS_PUBLICO = frozenset({"simulador", "checklists"})
 
 HERRAMIENTAS = {
+    "montos": ("montos", "💲", "Montos y topes 2026"),
     "plazos": ("plazos", "🗓️", "Plazos"),
     "a-quien-preguntar": ("a_quien", "🧭", "¿A quién le pregunto?"),
     "modelos": ("modelos", "✉️", "Modelos de mensajes"),

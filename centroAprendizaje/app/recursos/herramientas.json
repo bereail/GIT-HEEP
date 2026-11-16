@@ -996,5 +996,54 @@
         "circ-ug-7-2026"
       ]
     }
+  },
+  "montos": {
+    "titulo": "Montos y topes de compra 2026",
+    "bajada": "Qué procedimiento corresponde según el monto y quién aprueba. Copiado de la Circular SCyGB N° 01/2026, que aplica el art. 36 de la Ley de Presupuesto N° 14.424.",
+    "encuadre": [
+      {
+        "monto": "Hasta $5.850.000",
+        "que": "Contratación directa por monto"
+      },
+      {
+        "monto": "Hasta $29.250.000",
+        "que": "Concurso de precios para locación de inmuebles (art. 140, punto 2, Ley 12.510)"
+      },
+      {
+        "monto": "Hasta $58.500.000",
+        "que": "Licitación o concurso privado"
+      },
+      {
+        "monto": "Más de $58.500.000",
+        "que": "Licitación o concurso público"
+      }
+    ],
+    "aprobacion": [
+      {
+        "monto": "Hasta $5.850.000",
+        "quien": "Resolución del Subsecretario de Administración o su equivalente"
+      },
+      {
+        "monto": "Entre $5.850.000 y $29.250.000",
+        "quien": "Resolución"
+      },
+      {
+        "monto": "Entre $29.250.000 y $58.500.000",
+        "quien": "Resolución conjunta con el Ministerio de Economía"
+      },
+      {
+        "monto": "Más de $58.500.000",
+        "quien": "Decreto"
+      }
+    ],
+    "otros": [
+      "Obra pública: el tope para licitación privada (art. 20, Ley 5188) es $87.750.000.",
+      "Sellado del pagaré: alícuota 0,50% (código 11086).",
+      "Desde 2026 no se cobra la tasa retributiva de servicios en licitaciones públicas y privadas (art. 47, Ley 14.426)."
+    ],
+    "aviso": "Los montos cambian cada año con la Ley de Presupuesto: esta página vale para 2026.",
+    "fuentes": [
+      "circ-scygb-1-2026"
+    ]
   }
 }

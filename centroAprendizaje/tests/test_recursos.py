@@ -196,3 +196,12 @@ def test_ficha_para_asignar_roles(app, admin_client):
         assert rol in html
     assert "/recursos/roles/ficha" in app.test_client().get("/recursos/roles").get_data(as_text=True)
     assert admin_client.get("/admin/recursos/roles/ficha").status_code == 200
+
+
+def test_montos_2026_iguales_a_la_circular(app):
+    # Circular SCyGB N° 01/2026: si cambia un monto acá, tiene que cambiar ahí.
+    html = app.test_client().get("/recursos/montos").get_data(as_text=True)
+    for texto in ("Hasta $5.850.000", "Contratación directa por monto", "Hasta $29.250.000", "Hasta $58.500.000",
+                  "Licitación o concurso privado", "Más de $58.500.000", "Licitación o concurso público",
+                  "Resolución conjunta con el Ministerio de Economía", "Decreto", "Circular-001-26.pdf"):
+        assert texto in html, texto
