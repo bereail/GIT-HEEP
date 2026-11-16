@@ -1,5 +1,5 @@
 {
-  "consultado": "2026-11-15",
+  "consultado": "2026-11-16",
   "categorias": [
     {
       "slug": "timbo-compras",
@@ -157,7 +157,7 @@
       ],
       "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/3_2025-Circular-Pautas-Generales-para-la-Gestion-Digital-TIMBO.pdf",
       "vigencia": "vigente",
-      "lectura": "completa (arts. 1 a 5); resto analizado por búsqueda"
+      "lectura": "completa (16/11/2026)"
     },
     {
       "id": "circ-ug-2-2026",
@@ -502,7 +502,7 @@
       "emisor": "Varios",
       "fecha": "2016-2025",
       "tema": "Referencia histórica",
-      "contiene": "Manual de Licitaciones (Disp. 227/2016) y modelos de PBCP (Res. 519/2018), reemplazados por el Pliego Único 2026 y la Circ. 05/2026; Circular UG 6/2025 (TCP), reemplazada por la 9 y la 11/2026; Res. 133/2020 y 47/2024 (RUPC), reemplazadas por la 110/2026.",
+      "contiene": "Manual de Licitaciones (Disp. 227/2016) y modelos de PBCP (Res. 519/2018), reemplazados por el Pliego Único 2026 y la Circ. 05/2026; Circular UG 6/2025 (TCP), reemplazada por la 9 y la 11/2026; Res. 133/2020 y 47/2024 (RUPC), reemplazadas por la 110/2026. Revisados el 16/11/2026 (parte dispositiva): Disp. 227/2016, Res. 519/2018, 133/2020 y 47/2024; la Circ. UG 6/2025, completa.",
       "modulos": [
         "TIMBÓ Compras"
       ],
@@ -517,13 +517,13 @@
       "emisor": "Legislatura provincial / Poder Ejecutivo",
       "fecha": "05/04/2019 (decreto)",
       "tema": "Causal de contratación directa del apartado 9",
-      "contiene": "La Ley 13.861 agregó el apartado 9 al art. 116 inc. c: contratos con inscriptos en el Registro Nacional de Efectores de Desarrollo Local y Economía Social y en el Registro Provincial de Emprendedores (Ley 12.375), hasta el monto que fije la reglamentación. El decreto lo reglamenta.",
+      "contiene": "La Ley 13.861 agregó el apartado 9 al art. 116 inc. c: contratos con inscriptos en el Registro Nacional de Efectores de Desarrollo Local y Economía Social y en el Registro Provincial de Emprendedores (Ley 12.375), hasta el monto que fije la reglamentación. El decreto lo reglamenta. Tope: la compra a cada inscripto no puede superar el 30 % del tope de la licitación privada (Dec. 667/2019, Anexo, art. 1). La SCyGB pide las cotizaciones e interviene una Comisión de Análisis y Evaluación.",
       "modulos": [
         "Procedimientos"
       ],
       "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Decreto-N%C2%B0-667-19-art-116-inc-c-apartado-9.pdf",
       "vigencia": "vigente",
-      "lectura": "considerandos leídos (escaneo con texto); el monto reglamentado queda pendiente de leer"
+      "lectura": "completa (16/11/2026)"
     },
     {
       "id": "dec-122-2025",
@@ -553,7 +553,7 @@
       ],
       "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-SCyGB-N%C2%B0-101-19-OCA.pdf",
       "vigencia": "vigente según el índice oficial",
-      "lectura": "parcial (encabezado y anexo)"
+      "lectura": "completa (16/11/2026): resolución y anexos; el pliego particular es un modelo de 2019"
     },
     {
       "id": "res-211-2018",
@@ -562,13 +562,13 @@
       "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
       "fecha": "2018",
       "tema": "Procedimiento de compras por Convenio Marco",
-      "contiene": "Según el índice oficial: aprueba y modifica el procedimiento para compras bajo la modalidad de Convenio Marco.",
+      "contiene": "Según el índice oficial: aprueba y modifica el procedimiento para compras bajo la modalidad de Convenio Marco. Para celebrar un Convenio Marco con la URC, el oferente tiene que estar inscripto en el RUPC antes de la adjudicación.",
       "modulos": [
         "Procedimientos"
       ],
       "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-N%C2%B0-211-18.pdf",
       "vigencia": "vigente según el índice oficial",
-      "lectura": "no se pudo leer (PDF escaneado sin texto): solo la descripción del índice oficial"
+      "lectura": "completa con reconocimiento de texto (16/11/2026); el flujograma del Anexo I se lee mal"
     },
     {
       "id": "locaciones-inmuebles",
@@ -583,7 +583,7 @@
       ],
       "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR_007_locaciones_1178-25.pdf.pdf",
       "vigencia": "vigente",
-      "lectura": "circular completa; decreto: descripción del índice oficial"
+      "lectura": "completa (16/11/2026)"
     },
     {
       "id": "intervencion-scygb-directas",
@@ -613,7 +613,7 @@
       ],
       "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/5_Disposicion-N%C2%B0-226.pdf",
       "vigencia": "vigente según el índice oficial",
-      "lectura": "solo la descripción del índice oficial"
+      "lectura": "completa con reconocimiento de texto (16/11/2026); el PDF publicado no trae los modelos de los anexos"
     },
     {
       "id": "circ-ug-2-2025",
@@ -622,14 +622,14 @@
       "emisor": "Unidad de Gestión para la Implementación de TIMBÓ",
       "fecha": "2025",
       "tema": "Trámites que se hacen solo en digital",
-      "contiene": "Punto 2: las compras directas del art. 116 de la Ley 12.510 se hacen de forma exclusivamente digital en EGD-TIMBÓ (por monto menor al tope, por especialización, exclusividad, entre organismos oficiales del Sector Público, por reparación de maquinaria e in situ).",
+      "contiene": "Punto 2: las compras directas del art. 116 de la Ley 12.510 se hacen de forma exclusivamente digital en EGD-TIMBÓ (por monto menor al tope, por especialización, exclusividad, entre organismos oficiales del Sector Público, por reparación de maquinaria e in situ). Punto 1: trámites solo digitales; para todas las jurisdicciones, entre otros, traslado, cambio de agrupamiento, licencias sin goce, promoción automática, adicional por título, adscripción, comisión de servicios, licencia anual ordinaria y reintegro de combustible; para Salud, designaciones interinas (Dec. 3202/05), actualización de fichaje CAYA, cese o renuncia del personal permanente y el programa FonRES.",
       "modulos": [
         "TIMBÓ (Expedientes)",
         "TIMBÓ Compras"
       ],
       "url": "https://www.santafe.gob.ar/ms/innovacion-publica/wp-content/uploads/sites/18/2025/08/Circular-2_2025-UNIDAD-DE-GESTION-_TIMBO_-Nuevos-tramites-nativos-digitales.pdf",
       "vigencia": "vigente",
-      "lectura": "texto completo"
+      "lectura": "completa (16/11/2026)"
     },
     {
       "id": "video-compras-directas",
@@ -781,6 +781,186 @@
       "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-10_Determina-fecha-de-entrada-en-vigencia-de-Circular-9.pdf",
       "vigencia": "vigente",
       "lectura": "texto completo"
+    },
+    {
+      "id": "circ-ug-1-2024",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 1/2024 — Fin de servicios de correo de la Contratación Directa 02/23",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2024",
+      "tema": "Servicios de correo que dejan de prestarse",
+      "contiene": "Desde el 15/7/2024 dejan de prestarse, por la Contratación Directa 02/23 con el Correo Oficial, la carta simple, el transporte de documentación en sacas y la logística de IAPOS. No tiene pasos de TIMBÓ para el hospital.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/05/Circular-1-2024-Unidad-de-Gestion-Timbo.docx.pdf",
+      "vigencia": "vigente — no cambia el uso de TIMBÓ",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-2-2024",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 2/2024 — Firma digital de resoluciones ministeriales",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2024-09-16",
+      "tema": "Circuito de firma, protocolización y notificación de resoluciones",
+      "contiene": "Despacho carga el proyecto, arma el circuito de firmas y el orden; un rechazo obliga a iniciar un nuevo circuito; al protocolizar, TIMBÓ pone número y fecha solos; se carga en el SIN y se notifica por correo electrónico (un documento nativo digital impreso no tiene validez). La resolución conjunta la gestiona el ministerio originante, con un único número. Numerador: RES-año-número-APPSF-PE#ministerio (Salud = MS). Una vez que un ministerio firma en digital no vuelve a la firma ológrafa.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/09/Circular-2-UG.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-3-2024",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 03/2024 — Cronograma de trámites nativos digitales",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2024-11-08",
+      "tema": "Una vez digital, siempre digital",
+      "contiene": "Principio \"una vez digital, siempre digital\"; los PMI elevan las propuestas de digitalización; lista de trámites solo digitales desde el 18/11/2024 (transferencias, RR. HH. de autoridades y asistencia técnica, cambio de partida por resolución ministerial, entre otros); al terminar, el expediente vuelve al área de origen para la guarda temporal.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/11/Circular-03-Tramites-digitales-18_11_2024.docx.pdf",
+      "vigencia": "vigente (ampliada por la Circ. 2/2025)",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-1-2025",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 1/2025 — Alcance del art. 6 del Decreto 496/25 (SIMPLE)",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2025-03-26",
+      "tema": "Acceso a bases de datos para simplificar trámites",
+      "contiene": "Aclara que la Secretaría de Gestión Pública puede pedir datos solo para simplificar trámites; la Secretaría de Tecnologías para la Gestión sigue a cargo de las bases de datos. No tiene pasos de TIMBÓ para el hospital.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/03/CIRCULAR-N1-25-UG-1.pdf",
+      "vigencia": "vigente — no cambia el uso de TIMBÓ",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-5-2025",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 5/2025 — Registro digital de tratados, convenios y contratos",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2025",
+      "tema": "Registrar un convenio firmado",
+      "contiene": "El Registro de Tratados, Convenios y Contratos Interjurisdiccionales (Técnica Legislativa) protocoliza en TIMBÓ. Los convenios firmados en digital se mandan enseguida a tecnicalegislativa@santafe.gov.ar; si se firmaron en papel, se digitalizan y se mandan igual. Notifica por correo o por Comunicaciones Oficiales.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/10/Circular-5_2025-Registro-Digital-Convenios.docx.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-4-2026",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 4/2026 — Digitalizar trámites por Atención Virtual",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026",
+      "tema": "Pedir que un trámite ciudadano pase a Atención Virtual",
+      "contiene": "Reemplaza el inciso II del Anexo II de la Circ. 3/2025. El funcionario responsable lo pide en atencionvirtual.santafe.gob.ar con la gestión \"Solicitud para Digitalización de Trámites para Atención Virtual\" y 4 formularios; el PMI verifica y hace el pase a Análisis de Procesos; se prueba en capacitación, se publica y el contenidista lo sube al Portal de Gestiones Ciudadanas.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-4-Nueva-gestion-digital.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-5-2026",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 5/2026 — Sin papel en el Ministerio de Gobierno e Innovación Pública",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026-04-21",
+      "tema": "Expedientes y documentos solo digitales (MGeIP)",
+      "contiene": "Desde el 1/5/2026 el MGeIP no inicia expedientes en papel y no se incorporan documentos escaneados en la gestión interna. Está dirigida solo al MGeIP; para todos rige el Decreto 2518/25 (sin papel desde el 1/7/2026).",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/04/Circular-5-2026.pdf",
+      "vigencia": "vigente — dirigida al MGeIP",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-ug-6-2026",
+      "categoria": "expediente",
+      "titulo": "Circular UG TIMBÓ N° 6/2026 — Notificaciones y comunicaciones oficiales",
+      "emisor": "Unidad de Gestión TIMBÓ",
+      "fecha": "2026-04-21",
+      "tema": "Domicilio digital, notificaciones y comunicaciones oficiales",
+      "contiene": "Define ID Ciudadana, domicilio digital, notificación (documento oficial \"Notificaciones\", al domicilio digital) y comunicación oficial (documento \"Comunicaciones Oficiales\"). Punto 4.a: desde el 1/6/2026 las notificaciones al personal van a su domicilio digital; cada persona da de alta la bandeja en el Portal Ciudadano con ID Ciudadana nivel 2 como mínimo, y la necesita para bajar el recibo de sueldo. Está dirigida al MGeIP.",
+      "modulos": [
+        "TIMBÓ (Expedientes)"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/04/Circular-6-2026.pdf",
+      "vigencia": "vigente — dirigida al MGeIP",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "dec-2233-2016",
+      "categoria": "compras-normativa",
+      "titulo": "Decreto N° 2233/2016 — Montos y funcionarios que aprueban",
+      "emisor": "Poder Ejecutivo",
+      "fecha": "2016-09-02",
+      "tema": "Quién aprueba pliegos y adjudicaciones según el monto",
+      "contiene": "Directa por monto: hasta el 10 % del tope de la licitación privada. Adjudica: hasta el 10 %, el Subsecretario de Coordinación Técnica y Gestión Administrativa o equivalente; hasta el 50 %, el Ministro; hasta el 100 %, el Ministro con el Ministro de Economía; más, el Poder Ejecutivo por decreto. Locaciones: hoy rige el Dec. 1178/2025.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/10_Decreto-N%C2%B0-2.233-2016.pdf",
+      "vigencia": "vigente (para locaciones, ver Dec. 1178/2025)",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "dec-923-2019",
+      "categoria": "compras-normativa",
+      "titulo": "Decreto N° 923/2019 — Publicidad de licitaciones y concursos públicos",
+      "emisor": "Poder Ejecutivo",
+      "fecha": "2019-04-29",
+      "tema": "Dónde y cuántos días se publica",
+      "contiene": "Reemplaza el punto 3 del art. 132 del Dec. 1104/16: dos días en el Boletín Oficial, en la web oficial de la Provincia y al menos un día en uno de los principales medios gráficos o digitales.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/D0092319.pdf",
+      "vigencia": "vigente",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "dec-914-2018",
+      "categoria": "compras-normativa",
+      "titulo": "Decreto N° 914/2018 — RUPC, controles de la URC y sistemas de gestión",
+      "emisor": "Poder Ejecutivo",
+      "fecha": "2018",
+      "tema": "RUPC obligatorio, Foja Cero, SIGAL y SGA",
+      "contiene": "Las licitaciones privadas se gestionan con control de la URC (pliegos, preadjudicación, orden de provisión). Uso obligatorio del Sistema de Gestión de Automotores, del SIGAL (alquileres) y de la Foja Cero (derogada por el Dec. 287/2026). Implementa el RUPC: estar inscripto es condición para contratar. El art. 4 lo dejó sin efecto el Dec. 122/2025.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Decreto-N%C2%B0-914-18.pdf",
+      "vigencia": "vigente con modificaciones (Dec. 122/2025 y 287/2026)",
+      "lectura": "completa (16/11/2026)"
+    },
+    {
+      "id": "circ-scygb-3-2025",
+      "categoria": "proveedores",
+      "titulo": "Circular SCyGB N° 003/2025 (Res. 204/2025) — Certificado de deudores alimentarios (RDAM)",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2025-06-12",
+      "tema": "Cómo se controla el RDAM del proveedor",
+      "contiene": "El hospital no le pide el certificado RDAM al proveedor: verifica en el Sistema de Gestión de Proveedores Web que esté inscripto y vigente en el RUPC y que el RDAM no esté vencido (vale un año). Si está vencido, lo intima a presentar uno nuevo ante el RUPC y vuelve a verificar. Pide adecuar los pliegos particulares.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/resolucion-N-204-que-aprueba-la-Circular-N-3-.pdf",
+      "vigencia": "vigente (el RBPCME que menciona se suprimió: Circ. SCyGB 006/2026)",
+      "lectura": "completa (16/11/2026)"
     }
   ],
   "discrepancias": [

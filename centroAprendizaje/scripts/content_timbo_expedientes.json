@@ -2691,7 +2691,7 @@
       "slug": "notificaciones-personal-domicilio-digital",
       "situacion": "¿Me van a notificar al domicilio digital? ¿Y el recibo de sueldo?",
       "descripcion": "Dudas sobre cómo le llegan las notificaciones al personal.",
-      "solucion": "Desde el 1 de junio de 2026, las notificaciones al personal van al domicilio digital, y el recibo de sueldo también se baja desde ahí. Hay que adherirse al domicilio digital en Atención Virtual con ID Ciudadana de nivel 2 o más.",
+      "solucion": "Desde el 1 de junio de 2026, las notificaciones al personal van a su domicilio digital. Cada persona tiene que dar de alta su bandeja en el Portal Ciudadano, con ID Ciudadana de nivel 2 como mínimo, y la va a necesitar para bajar el recibo de sueldo (Circular UG TIMBÓ 6/2026, punto 4.a).",
       "notas_adicionales": "La Circular UG TIMBÓ 6/2026 está dirigida al Ministerio de Gobierno e Innovación Pública: confirmá con Recursos Humanos si ya aplica en tu hospital.",
       "categoria_libre": "Notificaciones",
       "verificado": false
@@ -2724,6 +2724,53 @@
       "categoria_libre": "Ayuda y soporte",
       "tutorial_categoria_slug": "primeros-pasos",
       "tutorial_slug": "ingresar",
+      "verificado": true
+    },
+    {
+      "slug": "tramites-rrhh-solo-digitales",
+      "situacion": "¿Qué trámites de personal ya se hacen solo en TIMBÓ?",
+      "descripcion": "Dudas sobre si un trámite de Recursos Humanos todavía se puede hacer en papel.",
+      "solucion": "Desde el 1 de julio de 2026 no se inicia nada nuevo en papel (Decreto 2518/25). Además, la Circular UG TIMBÓ 2/2025 ya había pasado a digital, para todas las jurisdicciones, el traslado, el cambio de agrupamiento, las licencias sin goce, la promoción automática, el adicional por título, la adscripción, la comisión de servicios, la licencia anual ordinaria y el reintegro de combustible; y para Salud, las designaciones interinas (Dec. 3202/05), la actualización de fichaje CAYA y el cese o renuncia del personal permanente.",
+      "notas_adicionales": "Lo que ya empezó en digital sigue en digital: no vuelve al papel (Circular UG TIMBÓ 3/2025, art. 2).",
+      "categoria_libre": "Trámites digitales",
+      "verificado": true
+    },
+    {
+      "slug": "plazo-comunicacion-oficial",
+      "situacion": "Me llegó una comunicación oficial: ¿desde cuándo corre el plazo?",
+      "descripcion": "Dudas sobre la validez de lo que llega a la bandeja de Comunicaciones Oficiales.",
+      "solucion": "Lo que llega por el módulo Comunicaciones Oficiales tiene efecto de notificación. Cuenta desde que entra a tu bandeja, y el plazo corre desde el día hábil administrativo siguiente. No se puede alegar que no entraste o que no tenías conexión: revisá la bandeja seguido (Circular UG TIMBÓ 3/2025, art. 15).",
+      "categoria_libre": "Comunicaciones",
+      "tutorial_categoria_slug": "documentos-oficiales",
+      "tutorial_slug": "comunicaciones-oficiales",
+      "verificado": true
+    },
+    {
+      "slug": "como-se-numera-una-resolucion",
+      "situacion": "¿Cómo se lee el número de una resolución?",
+      "descripcion": "Dudas sobre el formato del número que pone TIMBÓ al protocolizar.",
+      "solucion": "TIMBÓ lo pone solo al protocolizar: RES (o RESCONJ si es conjunta), el año, el número, APPSF, PE y el ministerio. Por ejemplo, RES-2024-00001926-APPSF-PE#MS es una resolución del Ministerio de Salud. Una resolución conjunta tiene un solo número, el del ministerio que la originó (Circular UG TIMBÓ 2/2024).",
+      "categoria_libre": "Resoluciones",
+      "tutorial_categoria_slug": "actos-administrativos",
+      "tutorial_slug": "protocolizar-y-publicar",
+      "verificado": true
+    },
+    {
+      "slug": "rechazaron-la-resolucion-en-la-cadena",
+      "situacion": "Un firmante rechazó la resolución: ¿sigo con la misma cadena?",
+      "descripcion": "La resolución volvió rechazada a la bandeja de Despacho.",
+      "solucion": "No. Te llega a la bandeja y un aviso por correo. Corregí lo que motivó el rechazo e iniciá un nuevo circuito de firmas (Circular UG TIMBÓ 2/2024, punto 2).",
+      "categoria_libre": "Resoluciones",
+      "tutorial_categoria_slug": "actos-administrativos",
+      "tutorial_slug": "cadena-de-firmas",
+      "verificado": true
+    },
+    {
+      "slug": "registrar-un-convenio",
+      "situacion": "Firmamos un convenio: ¿cómo se registra?",
+      "descripcion": "Dudas sobre el Registro de Tratados, Convenios y Contratos.",
+      "solucion": "Mandalo apenas esté firmado a tecnicalegislativa@santafe.gov.ar. Si se firmó en papel, digitalizalo y mandalo igual. Técnica Legislativa lo registra y te avisa por correo o por Comunicaciones Oficiales (Circular UG TIMBÓ 5/2025).",
+      "categoria_libre": "Convenios",
       "verificado": true
     }
   ],
@@ -2832,7 +2879,13 @@
         "tomar",
         "asignar",
         "todos",
-        "expediente"
+        "expediente",
+        "soltar",
+        "suelto",
+        "desasignar",
+        "liberar el expediente",
+        "que lo tome un compañero",
+        "compañero"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "tomar-expediente"
@@ -3046,7 +3099,10 @@
         "hacer un pase",
         "mandar",
         "derivar",
-        "remitir"
+        "remitir",
+        "que pongo en la providencia",
+        "escribir la providencia",
+        "comentario del pase"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "enviar-pase"
@@ -3303,6 +3359,38 @@
       ],
       "tutorial_categoria_slug": "atencion-virtual",
       "tutorial_slug": "trabajar-expediente-av"
+    },
+    {
+      "slug": "alta-de-usuario-u-oficina",
+      "pregunta": "¿Cómo doy de alta un usuario o una oficina en TIMBÓ?",
+      "keywords": [
+        "alta de usuario",
+        "dar de alta un usuario",
+        "doy de alta un usuario",
+        "usuario nuevo",
+        "alta en timbo",
+        "baja de usuario",
+        "crear una oficina",
+        "creo una oficina",
+        "oficina nueva",
+        "modificar una oficina",
+        "cargar un usuario"
+      ],
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "roles-y-permisos"
+    },
+    {
+      "slug": "una-vez-digital",
+      "pregunta": "¿Un trámite digital puede volver al papel?",
+      "keywords": [
+        "una vez digital",
+        "siempre digital",
+        "volver al papel",
+        "no regresion",
+        "vuelve al papel"
+      ],
+      "tutorial_categoria_slug": "primeros-pasos",
+      "tutorial_slug": "que-es-timbo"
     }
   ],
   "quickstart_steps": [

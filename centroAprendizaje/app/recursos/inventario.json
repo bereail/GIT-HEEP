@@ -45,7 +45,9 @@
     "n0qxSRoAFaM",
     "tSYfZ3yVE58",
     "u0UNen9iQnA",
-    "yUbSYwLQ0aU"
+    "yUbSYwLQ0aU",
+    "qVf-yyXoE0k",
+    "SDAEZ_4rjZo"
   ],
   "estados": {
     "verificada": "Cotejada frase por frase contra fuentes oficiales",
@@ -210,7 +212,5 @@
     }
   },
   "nota_videos": "Videos oficiales leídos por subtítulos, transcripción o cuadro por cuadro (registro: secciones 4 a 4.2 de FAQ_SOPORTE_TIMBO.md). Las transcripciones no se suben a git porque nombran participantes.",
-  "videos_sin_leer": {
-    "qVf-yyXoE0k": "Capacitación larga (32 min): no consta que se haya leído completa; el tema sale del curso oficial del Aula Virtual."
-  }
+  "videos_sin_leer": {}
 }

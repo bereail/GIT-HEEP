@@ -350,8 +350,11 @@ Para confirmar con personas del hospital:
    les aplica el control de la URC (Circular SCyGB 03/2026, dirigida a la
    Administración Central).
 6. RRHH: si ya rige el domicilio digital para el personal.
-7. Consultas abiertas de los chats: SIN sin "comenzar una carga",
-   numeración de decisorios, documentos HTML→PDF y servidor propio para los
+7. Consultas abiertas de los chats: ~~SIN sin "comenzar una carga"~~ (resuelta
+   el 16/11 con el video oficial SDAEZ_4rjZo: Ingresar → Cargar → Comenzar una
+   carga; si no aparece, bibliotecanormativa@santafe.gob.ar), numeración de
+   decisorios (para resoluciones en AAR el número lo pone TIMBÓ al protocolizar,
+   Circ. UG 2/2024; falta saber si el decisorio del hospital va por AAR), documentos HTML→PDF y servidor propio para los
    videos. Cuando haya respuesta, pasar a `verificado: True` en
    `scripts/importar_faq_chats.py`.
 
@@ -801,3 +804,27 @@ agreguen" si es "sin_match". Probado con `curl` contra
   "actualizado el 16/11/2026…". Se revisaron a mano; los dudosos quedaron como estaban.
 - Estadísticas: desde el 16/11 no cuentan robots ni controles automáticos
   (`estadisticas.es_automatico`). Las vistas viejas mezclan robots (≈452 de 769) con personas.
+- Rojos y amarillos sin medida (16/11/2026, noche): 25 amarillos sin medida apuntaban a un código
+  de otra edad o tipo (pañales de niño con código de adulto, válvula espiratoria con "cemento
+  biológico", etc.): se cambiaron y siguen en amarillo. Los guantes de látex apuntaban a un bien
+  que el catálogo marca «NO UTILIZAR». El manguito neo Nº 5 y la cánula CPAP grande no existen en
+  el catálogo: pasaron a rojo. Quedan 437 verdes, 531 amarillos y 32 rojos. Al reescribir notas,
+  conservar el `[cod. interno N]` (se había perdido en 117 y se devolvió desde 85d04c6).
+- Página del nomenclador: la búsqueda no distingue tildes ni orden de palabras y busca también
+  por código; botón "Copiar" junto al código; las etiquetas dicen lo mismo que las tarjetas; las
+  notas se muestran sin lo técnico ("match automatico…").
+
+## Documentos oficiales leídos el 16/11/2026 (noche)
+
+Se cruzaron las páginas de normativa de TIMBÓ (`/ms/timbo/normativa/`) y de Compras
+(`compras.santafe.gob.ar/normativas/`) contra la biblioteca: 12 documentos nuevos (Circ. UG
+1/2024, 2/2024, 3/2024, 1/2025, 5/2025, 4/2026, 5/2026, 6/2026; Dec. 2233/2016, 923/2019,
+914/2018; Circ. SCyGB 003/2025 del RDAM) y se completó la lectura de la Circ. UG 3/2025, la 2/2025,
+el Dec. 667/2019 (tope 30 %), la Res. 101/2019 y, con reconocimiento de texto de Windows, las
+escaneadas (Disp. 226, 227, 282 y Res. 211/2018, Ley 14.295). Para repetir el OCR: renderizar con
+pymupdf y pasar `Windows.Media.Ocr` (es-ES) desde PowerShell. Respuestas nuevas: RDAM, trámites de
+personal solo digitales, plazo de las comunicaciones oficiales, número y rechazo de resoluciones,
+convenios, Compre Santafesino, alquileres, economía social, OCA, Convenio Marco, Foja Cero.
+Videos: la capacitación qVf-yyXoE0k y el de la Biblioteca Digital de Normativa (SDAEZ_4rjZo) ya
+tienen subtítulos y están leídos. La Ley 12.510 y el Dec. 1104/16 siguen "por temas" (son largos;
+las lecciones citan los artículos que usan).

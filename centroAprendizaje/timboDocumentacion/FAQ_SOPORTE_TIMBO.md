@@ -28,7 +28,7 @@ aparece en los chats, contada por persona o por hospital.
 | 1 | ¿Cómo consigo el permiso de Administrador Local? / ¿Ya me lo dieron? | 12+ | ✅ Resuelta | miHospital |
 | 2 | No puedo matricularme al curso de Administrador Local ("el período finalizó") | 3 | ✅ Resuelta | miHospital |
 | 3 | YouTube está bloqueado en la red del hospital, ¿cómo vemos los videos? | 3 | ✅ Resuelta (con propuesta abierta) | miHospital |
-| 4 | El SIN: no abre, no aparece "comenzar una carga", ¿quién puede cargar? | 3 | ⚠️ Parcial | TIMBÓ Compras |
+| 4 | El SIN: no abre, no aparece "comenzar una carga", ¿quién puede cargar? | 3 | ✅ | TIMBÓ Compras |
 | 5 | TIMBÓ Compras no deja cargar artículos | 2 hospitales | ✅ Resuelta | TIMBÓ Compras |
 | 6 | Decisorio preventivo vs. definitivo, número y fecha | 2 | ⚠️ Parcial | Compras / Expedientes |
 
@@ -62,10 +62,12 @@ propio. Se derivó a Formación Laboral y no hubo respuesta.
 - **¿Cómo sumamos usuarios?** → ✅ planilla de datos por mail a la
   Subsecretaría de Contrataciones, que pide el alta por iTop a la STG. Tarda
   días: mientras tanto se cargan con los usuarios que ya están habilitados.
-- **No aparece "comenzar una carga"** → ❌ **sin resolver**. Se mandó el
-  instructivo "Carga y Edición SIN", pero la pantalla no coincidía con el
-  instructivo. Lo más probable es que el usuario no esté habilitado, aunque no
-  está confirmado.
+- **No aparece "comenzar una carga"** → ✅ resuelto con el video oficial
+  "¿Cómo cargar una norma en la Biblioteca Digital de Normativa?"
+  (https://youtu.be/SDAEZ_4rjZo): app.santafe.gob.ar/normativa → Ingresar →
+  Cargar → Comenzar una carga → elegir la serie. Las series dependen de los
+  permisos (año y ministerio); si falta, escribir a
+  bibliotecanormativa@santafe.gob.ar.
 
 ### 1.5 No se pueden cargar artículos en TIMBÓ Compras
 
@@ -102,7 +104,7 @@ que hacer del lado del usuario, solo esperar.
 
 ## 3. Pendientes (consultas que quedaron sin cerrar)
 
-1. **SIN: no aparece "comenzar una carga".** Hay que confirmarlo con
+1. ~~**SIN: no aparece "comenzar una carga".**~~ Resuelto el 16/11/2026 (ver 1.4). Antes: hay que confirmarlo con
    Contrataciones y, si hace falta, actualizar el instructivo.
 2. **Numeración de decisorios.** Falta saber si el número lo pone TIMBÓ al
    final de la firma o Secretaría de Dirección antes de firmar.
@@ -199,7 +201,9 @@ No se cargaron porque no son para el hospital: SIPREC y Oficios ante el
 Registro Civil por AV (trámites de otros organismos), Biblioteca Digital de
 Normativa (lo hace Despacho), Portal de gestiones (publicar servicios), Kit
 Digital, Declaración de Interés Cultural, Programa Autonomía para la Igualdad,
-"Del papel a la IA" y la charla sobre despapelización. Los 6 videos privados
+"Del papel a la IA" y la charla sobre despapelización. El de la Biblioteca
+Digital de Normativa (SDAEZ_4rjZo) sí se usa desde el 16/11: es la carga en el
+SIN. Los 6 videos privados
 de las listas no se pueden ver.
 
 ---

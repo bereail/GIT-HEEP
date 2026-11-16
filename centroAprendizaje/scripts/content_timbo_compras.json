@@ -1096,6 +1096,16 @@
             },
             {
               "type": "tip",
+              "text": "Para cargar el acto en el SIN: app.santafe.gob.ar/normativa → Ingresar → Cargar → Comenzar una carga. Las series que ves dependen de tus permisos (año y ministerio); si falta alguna, escribí a bibliotecanormativa@santafe.gob.ar. El enlace que queda en la biblioteca es el que después se usa en TIMBÓ."
+            },
+            {
+              "type": "video",
+              "url": "https://youtu.be/SDAEZ_4rjZo",
+              "title": "¿Cómo cargar una norma en la Biblioteca Digital de Normativa?",
+              "minutos": 2
+            },
+            {
+              "type": "tip",
               "text": "¿Quién lo hace? La visualización la administran las áreas con funciones de Despacho o responsables de los actos administrativos registrables (Circular UG TIMBÓ 9/2026, art. 4), y la carga en el SIN está encomendada a las Direcciones Generales de Despacho (Circular UG TIMBÓ 11/2026, art. 2)."
             },
             {
@@ -1224,7 +1234,7 @@
               "number": 3,
               "explanation": "Pedí el aviso oficial.",
               "doThis": "Mandá un mail a avisosoficiales@santafe.gob.ar con la nota de pedido de publicación en dos formatos: editable (.doc, .docx u .odt) y PDF firmado electrónicamente.",
-              "lookFor": "Mandalo con 3 días de anticipación como mínimo. La circular trae una nota modelo: pide la publicación por dos días en el Boletín Oficial y un día en un diario de la Provincia."
+              "lookFor": "Mandalo con 3 días de anticipación como mínimo. La circular trae una nota modelo: pide la publicación por dos días en el Boletín Oficial y un día en un diario de la Provincia. Es lo que fija el Decreto 923/2019: dos días en el Boletín Oficial y al menos uno en un medio gráfico o digital."
             },
             {
               "type": "warning",
@@ -1523,7 +1533,7 @@
                   "Decreto"
                 ]
               ],
-              "note": "Circular SCyGB 01/2026. Son los montos de 2026."
+              "note": "Circular SCyGB 01/2026. Son los montos de 2026. Quién aprueba según el porcentaje del tope: Decreto 2233/2016."
             },
             {
               "type": "tip",
@@ -2974,6 +2984,31 @@
       "termino": "Una sola vez (principio)",
       "definicion": "No se le puede pedir al proveedor o ciudadano documentación que el Estado ya tiene, como constancias del Registro de Personas Jurídicas (Ley 14.256, art. 26; Circulares UG TIMBÓ 04/2024 y 7/2025).",
       "modulo": "Compras Directas (CD-01)"
+    },
+    {
+      "termino": "Orden de Compra Abierta (OCA)",
+      "definicion": "Modalidad que se usa cuando no se puede saber de antemano cuánto se va a pedir: la SCyGB selecciona a los proveedores y arma un catálogo con precios por un período; cada jurisdicción pide por orden de provisión hasta un máximo y no está obligada a pedir el máximo (Res. SCyGB 101/2019).",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Contratación con la economía social",
+      "definicion": "Contratación directa con inscriptos en el Registro Provincial de Emprendedores (Ley 12.375) o en el Registro Nacional de Efectores de la Economía Social: hasta el 30 % del tope de la licitación privada por cada uno. La SCyGB pide las cotizaciones (Ley 13.861 y Dec. 667/2019).",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "RDAM (deudores alimentarios)",
+      "definicion": "Certificado del Registro de Deudores Alimentarios Morosos. No se le pide al proveedor: se verifica en el Sistema de Gestión de Proveedores Web que esté vigente en el RUPC; vale un año (Circular SCyGB 003/2025).",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Foja Cero",
+      "definicion": "Sistema que pedía el Dec. 914/2018 antes de tramitar un gasto. Ya no se usa: lo derogó el Decreto 287/2026.",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Convenio Marco",
+      "definicion": "Licitación pública que hace la SCyGB para que después cada jurisdicción les pida a los proveedores adjudicados con una orden de provisión. Para participar hay que estar inscripto en el RUPC antes de la adjudicación (Res. SCyGB 211/2018).",
+      "modulo": "Gestión interna"
     }
   ],
   "situaciones": [
@@ -3112,6 +3147,39 @@
       "solucion": "Si es un paso de TIMBÓ Compras, pedile el rol que falta al Administrador Local de tu hospital. Si es un documento oficial, buscalo en Documentos oficiales → Gestión → Pendientes (estado \"Firmar documento oficial\") → ⋮ → Evaluar → Acciones → Aprobar y firmar. Si no está ahí, todavía no es tu turno.",
       "notas_adicionales": "Los usuarios y los roles de TIMBÓ Compras los asigna el Administrador Local (Circulares UG TIMBÓ 1 y 3/2026). Si sigue sin andar, escribile a la mesa de ayuda de TIMBÓ Compras.",
       "categoria_libre": "Ayuda",
+      "verificado": true
+    },
+    {
+      "slug": "certificado-rdam-proveedor",
+      "situacion": "¿Le pido al proveedor el certificado de deudores alimentarios (RDAM)?",
+      "descripcion": "Dudas sobre qué certificado exigirle al proveedor.",
+      "causa": "El RDAM ya está cargado en el RUPC y vale un año.",
+      "solucion": "No se lo pidas. Verificá en el Sistema de Gestión de Proveedores Web que esté inscripto y vigente en el RUPC y que su RDAM no esté vencido. Si está vencido, intimalo a que presente uno nuevo ante el RUPC y volvé a verificar cuando venza el plazo (Circular SCyGB 003/2025, aprobada por la Res. 204/2025).",
+      "categoria_libre": "Proveedores",
+      "verificado": true
+    },
+    {
+      "slug": "preferencia-proveedor-santafesino",
+      "situacion": "Un proveedor santafesino cotizó un poco más caro: ¿tiene preferencia?",
+      "descripcion": "Dudas sobre cómo se aplica el Compre Santafesino al comparar precios.",
+      "solucion": "Sí. Gana el local si su precio no supera en más de 5 % al de las empresas no provinciales, en prestaciones y condiciones de pago iguales o similares. Si con eso ningún local queda favorecido, a la mejor oferta local que no supere en 8 % a la mejor cotización se la invita a mejorar su precio en 15 días (Ley 13.505, art. 5, texto de la Ley 14.295).",
+      "categoria_libre": "Evaluación",
+      "verificado": true
+    },
+    {
+      "slug": "alquiler-de-inmueble",
+      "situacion": "¿Cómo se aprueba el alquiler de un inmueble?",
+      "descripcion": "Alquilar un inmueble: contratación nueva, renovación o prórroga de la locación.",
+      "solucion": "Siempre por resolución conjunta del ministro con el Ministro de Economía, con un informe fundado que justifique la necesidad y la razonabilidad del precio. Antes interviene la SCyGB para opinar sobre el precio del alquiler. Si se renueva el mismo inmueble, hay que explicar por qué conviene seguir ahí (Decreto 1178/2025).",
+      "categoria_libre": "Locaciones",
+      "verificado": true
+    },
+    {
+      "slug": "compra-a-economia-social",
+      "situacion": "¿Puedo comprarle directo a un emprendedor o a la economía social?",
+      "descripcion": "Compras a emprendedores, productores o efectores de la economía social.",
+      "solucion": "Sí, con la contratación directa del art. 116, inc. c, ap. 9 de la Ley 12.510: a inscriptos en el Registro Provincial de Emprendedores (Ley 12.375) o en el Registro Nacional de Efectores de la Economía Social, hasta el 30 % del tope de la licitación privada por cada uno. La jurisdicción completa el formulario de cotización y lo manda a la SCyGB, que pide las cotizaciones (Ley 13.861 y Decreto 667/2019).",
+      "categoria_libre": "Contrataciones directas",
       "verificado": true
     }
   ],
@@ -3545,7 +3613,13 @@
         "presupuesto",
         "cuanto",
         "pesos",
-        "encuadre"
+        "encuadre",
+        "quien aprueba",
+        "hasta cuanto",
+        "comprar directo",
+        "millones",
+        "quien adjudica",
+        "segun el monto"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "montos-y-procedimientos"
@@ -3568,7 +3642,11 @@
         "garantia de fiel cumplimiento",
         "pagare",
         "contrato",
-        "orden de compra"
+        "orden de compra",
+        "certificado de recepcion",
+        "certificado de recepcion definitiva",
+        "crdb",
+        "crds"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "despues-de-adjudicar"
