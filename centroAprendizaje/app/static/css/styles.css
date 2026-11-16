@@ -1865,3 +1865,20 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   .gf-opcion { grid-template-columns: 1fr; gap: 4px; }
 }
 @media print { .gf-destino { box-shadow: none; } }
+
+/* ---------------------------------------------------- Para proveedores -- */
+.prov-enviar { padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-bottom: 8px; border-left: 4px solid var(--accent); }
+.prov-enviar__botones { display: flex; gap: 6px; flex-wrap: wrap; }
+.prov-mensaje { display: none; }
+.prov-requisitos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.prov-req, .prov-paso, .prov-bloque { padding: 14px 16px; }
+.prov-req h3, .prov-paso h3, .prov-bloque h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 16px; }
+.prov-bloque h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); margin-top: 6px; }
+.prov-req p, .prov-paso li, .prov-bloque li { font-size: 14px; }
+.prov-n { display: inline-grid; place-items: center; min-width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12.5px; }
+.prov-pasos { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.prov-paso ul, .prov-bloque ul { margin: 0 0 6px; padding-left: 20px; display: grid; gap: 4px; }
+.prov-links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 6px 0; font-size: 13.5px; font-weight: 600; }
+.prov-discrepancia { margin: 8px 0; font-size: 13.5px; }
+@media (max-width: 760px) { .prov-enviar { grid-template-columns: 1fr; } }
+@media print { .prov-enviar { display: none; } .prov-paso, .prov-req, .prov-bloque { break-inside: avoid; box-shadow: none; } }

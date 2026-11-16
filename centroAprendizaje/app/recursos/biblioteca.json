@@ -660,6 +660,21 @@
       "url": "https://youtu.be/QH7zvgZ7sbQ",
       "vigencia": "vigente",
       "lectura": "subtítulos completos"
+    },
+    {
+      "id": "guias-proveedor",
+      "categoria": "proveedores",
+      "titulo": "Guías oficiales para proveedores de TIMBÓ Compras (PDF)",
+      "emisor": "Subsecretaría de Contrataciones y Gestión de Bienes",
+      "fecha": "2026",
+      "tema": "Requisitos, ingresar, ofertar, consultas, subsanar, impugnar y documentos embebidos",
+      "contiene": "Paso a paso para ofertar, quiénes y cómo acceder, cómo acceder y participar, cómo completar el formulario, consultas, subsanar, impugnaciones y documentos embebidos.",
+      "modulos": [
+        "TIMBÓ Compras"
+      ],
+      "url": "https://compras.santafe.gob.ar/tutoriales/",
+      "vigencia": "vigente",
+      "lectura": "texto completo"
     }
   ],
   "discrepancias": [

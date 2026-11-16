@@ -580,6 +580,11 @@ def recursos_grafico():
     return render_template("recursos/grafico.html", algoritmo=recursos.algoritmo_publico(), **_contexto_recursos())
 
 
+@ui_bp.route("/recursos/proveedores")
+def recursos_proveedores():
+    return render_template("recursos/proveedores.html", p=recursos.herramientas()["proveedores"], **_contexto_recursos())
+
+
 @ui_bp.route("/recursos/glosario")
 def recursos_glosario():
     return render_template("recursos/glosario.html", glosario=recursos.glosario_publico(recursos.glosario_completo()), **_contexto_recursos())

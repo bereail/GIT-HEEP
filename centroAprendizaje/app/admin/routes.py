@@ -965,6 +965,12 @@ def recursos_grafico():
     return render_template("recursos/grafico.html", algoritmo=recursos.algoritmo(), **_contexto_recursos())
 
 
+@admin_bp.route("/recursos/proveedores")
+@requiere_admin
+def recursos_proveedores():
+    return render_template("recursos/proveedores.html", p=recursos.herramientas()["proveedores"], **_contexto_recursos())
+
+
 @admin_bp.route("/recursos/glosario")
 @requiere_admin
 def recursos_glosario():

@@ -1,0 +1,69 @@
+{% extends layout %}
+{% from "recursos/_comun.html" import subnav, fuentes with context %}
+{% block titulo %}Para proveedores — Recursos{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{{ subnav('proveedores') }}
+{% set url_pagina = url_for('ui.recursos_proveedores', _external=True) %}
+<h1 style="margin:8px 0 4px">🏢 {{ p.titulo }}</h1>
+<p class="text-muted" style="margin:0 0 12px">{{ p.bajada }}</p>
+
+<section class="card prov-enviar">
+  <div><b>¿Le querés pasar esta información a un proveedor?</b><br><span class="text-muted">Copiá el mensaje (incluye el link a esta página y la mesa de ayuda) o imprimí la página.</span></div>
+  <div class="prov-enviar__botones">
+    <button type="button" class="btn btn--primary btn--sm" data-copiar="prov-mensaje">📋 Copiar mensaje</button>
+    <button type="button" class="btn btn--ghost btn--sm" data-imprimir>🖨️ Imprimir o guardar PDF</button>
+  </div>
+  <pre id="prov-mensaje" class="prov-mensaje">{{ p.mensaje.replace('{url}', url_pagina) }}</pre>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">1. Antes de empezar</h2>
+  <div class="prov-requisitos">
+    {% for r in p.requisitos %}
+    <div class="card prov-req">
+      <h3><span class="prov-n">{{ loop.index }}</span>{{ r.t }}</h3>
+      <p>{{ r.d }}</p>
+      <p class="prov-links">{% for t, u in r.links %}<a href="{{ u }}" target="_blank" rel="noopener">{{ t }} ↗</a>{% endfor %}</p>
+      {{ fuentes(r.fuentes) }}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">2. Inscripción en el RUPC</h2>
+  <div class="card prov-bloque">
+    <h3>Qué se necesita</h3>
+    <ul>{% for i in p.rupc.necesita %}<li>{{ i }}</li>{% endfor %}</ul>
+    <h3>Plazos y avisos</h3>
+    <ul>{% for i in p.rupc.plazos %}<li>{{ i }}</li>{% endfor %}</ul>
+    <p class="callout callout--warning prov-discrepancia"><span>⚠️ {{ p.rupc.discrepancia }}</span></p>
+    <p class="prov-links"><a href="https://www.santafe.gov.ar/proveedores" target="_blank" rel="noopener">Ir al Sistema de Gestión de Proveedores Web ↗</a></p>
+    {{ fuentes(p.rupc.fuentes) }}
+  </div>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">3. Paso a paso en TIMBÓ Compras</h2>
+  <p class="prov-links" style="margin-top:0"><a href="{{ p.guia_completa[1] }}" target="_blank" rel="noopener">📄 {{ p.guia_completa[0] }} ↗</a></p>
+  <ol class="prov-pasos">
+    {% for s in p.pasos %}
+    <li class="card prov-paso">
+      <h3><span class="prov-n">{{ loop.index }}</span>{{ s.t }}</h3>
+      <ul>{% for i in s['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+      <p class="prov-links">{% for t, u in s.links %}<a href="{{ u }}" target="_blank" rel="noopener">{{ t }} ↗</a>{% endfor %}</p>
+      {{ fuentes(s.fuentes or ['guias-proveedor']) }}
+    </li>
+    {% endfor %}
+  </ol>
+  <div class="callout callout--tip"><span class="callout__icon">⏰</span><div>{{ p.importante }} {{ fuentes(p.importante_fuentes) }}</div></div>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">4. Mesa de ayuda de TIMBÓ Compras</h2>
+  {% set m = docs.get('mesa-ayuda-compras') %}
+  <div class="card prov-bloque"><p style="margin:0">{{ m.contiene }}</p>{{ fuentes(['circ-scygb-3-2026']) }}</div>
+</section>
+{% endblock %}
+{% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>{% endif %}{% endblock %}

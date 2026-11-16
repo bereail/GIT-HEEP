@@ -136,6 +136,9 @@ def test_entrada_por_necesidad_lleva_a_lecciones_que_existen(app):
     enlaces = re.findall(r'href="([^"]+)"', bloque)
     assert len(enlaces) >= 8
     for url in enlaces:
+        if url.startswith("/recursos/"):
+            assert app.test_client().get(url).status_code == 200, url
+            continue
         m = re.fullmatch(r"/temas/([\w-]+)/(?:categorias/([\w-]+)/tutoriales/([\w-]+)|equivalencias)", url)
         assert m, url
         tema, categoria, tutorial = m.groups()
@@ -246,3 +249,11 @@ def test_grafico_de_flujo(app, admin_client):
         assert texto in html, texto
     assert "Convenio Marco" not in html  # pendiente: solo en el panel
     assert "Convenio Marco" in admin_client.get("/admin/recursos/grafico").get_data(as_text=True)
+
+
+def test_seccion_para_proveedores(app, admin_client):
+    html = app.test_client().get("/recursos/proveedores").get_data(as_text=True)
+    for texto in ("santafe.gov.ar/proveedores", "ComoCompletarFormulario.pdf", "3% del monto de la oferta", "7% del valor total",
+                  "timbocompras@santafe.gob.ar", "Copiar mensaje", "http://localhost/recursos/proveedores"):
+        assert texto in html, texto
+    assert admin_client.get("/admin/recursos/proveedores").status_code == 200

@@ -1045,5 +1045,229 @@
     "fuentes": [
       "circ-scygb-1-2026"
     ]
+  },
+  "proveedores": {
+    "titulo": "Para proveedores",
+    "bajada": "Todo lo que necesita una persona o empresa para venderle a la Provincia por TIMBÓ Compras, con los links oficiales. Pueden participar personas humanas, personas jurídicas y uniones transitorias.",
+    "requisitos": [
+      {
+        "t": "ID Ciudadana",
+        "d": "Hace falta para consultar y presentar ofertas. Para inscribirse en el RUPC tiene que ser nivel 3.",
+        "links": [
+          [
+            "Crear la ID Ciudadana",
+            "https://www.santafe.gov.ar/idciudadana"
+          ],
+          [
+            "Video: ¿Cómo crear tu ID Ciudadana?",
+            "https://youtu.be/8ba14toewQ8"
+          ]
+        ],
+        "fuentes": [
+          "guias-proveedor",
+          "circ-ug-2-2026"
+        ]
+      },
+      {
+        "t": "Domicilio digital",
+        "d": "Las notificaciones llegan por Atención Virtual, en el módulo Domicilio Digital: hay que adherirse.",
+        "links": [
+          [
+            "Atención Virtual",
+            "https://atencionvirtual.santafe.gob.ar/"
+          ],
+          [
+            "Video: adherirse al Domicilio Digital",
+            "https://youtu.be/gV_qoxpmAjE"
+          ]
+        ],
+        "fuentes": [
+          "guias-proveedor"
+        ]
+      },
+      {
+        "t": "Inscripción en el RUPC",
+        "d": "Es requisito indispensable para presentar ofertas. Se hace en el Sistema de Gestión de Proveedores Web.",
+        "links": [
+          [
+            "Inscribirse en el RUPC",
+            "https://www.santafe.gov.ar/proveedores"
+          ]
+        ],
+        "fuentes": [
+          "circ-ug-2-2026",
+          "res-scygb-110-2026"
+        ]
+      }
+    ],
+    "rupc": {
+      "necesita": [
+        "Clave Fiscal nivel 3 con el servicio \"ECON SANTA FE – Registro Único de Proveedores y Contratistas\".",
+        "Certificado negativo del Registro de Deudores Alimentarios Morosos (en personas jurídicas, de todos los miembros del órgano de administración).",
+        "Nota con declaración jurada de que generó la ID Ciudadana y constituyó domicilio digital.",
+        "Libre Deuda de la Ley 17.250 emitido dentro de los 30 días corridos anteriores a la solicitud.",
+        "Poder ante escribano público, si actúa un apoderado.",
+        "Personas jurídicas y UT no radicadas en Santa Fe: acta constitutiva, contrato o estatuto y designación de autoridades.",
+        "Cada documento en PDF de hasta 8 MB."
+      ],
+      "plazos": [
+        "Si falta documentación, hay 30 días corridos desde la notificación para presentarla; si no, el trámite se da de baja solo.",
+        "Las notificaciones del RUPC llegan por correo electrónico, al mismo correo del domicilio digital.",
+        "Quien se inscribe queda suscripto al Boletín Electrónico de Compras."
+      ],
+      "discrepancia": "Vigencia: la Res. SCyGB 110/2026 dice que la inscripción no caduca; el art. 142 del Dec. 1104/16 (según el Dec. 287/2026) habla de una vigencia preestablecida. Ante la duda, consultá al RUPC.",
+      "fuentes": [
+        "res-scygb-110-2026",
+        "circ-ug-2-2026",
+        "dec-287-2026"
+      ]
+    },
+    "pasos": [
+      {
+        "t": "Entrar y sumarse a un proceso",
+        "items": [
+          "En santafe.gov.ar/ms/compras, \"Procesos de Compra\": las licitaciones digitales tienen el botón naranja \"Ofertar\"; se entra con la ID Ciudadana.",
+          "En la bandeja \"Participar de un proceso\", con los tres puntitos se ven y descargan el pliego, el acto que aprobó el proceso, la nómina y el cronograma.",
+          "\"Participar del proceso\": datos del proveedor, CUIT y correo, y \"Enviar\". La oferta queda en \"Mis Ofertas\" → \"Asignados\"."
+        ],
+        "links": [
+          [
+            "Guía: cómo acceder y participar",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoAcceder-yParticiparDeOferta.pdf"
+          ],
+          [
+            "Video 01",
+            "https://youtu.be/5qcZGh3euOU"
+          ]
+        ]
+      },
+      {
+        "t": "Ver los documentos embebidos del pliego",
+        "items": [
+          "Descargá el pliego y abrilo con un lector de PDF actualizado.",
+          "Tocá el ícono del clip: ahí están las fichas técnicas, las condiciones del contrato y otros anexos."
+        ],
+        "links": [
+          [
+            "Guía: documentos embebidos",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoVIsualizarDocumentosEmbebidos.pdf"
+          ],
+          [
+            "Video 06",
+            "https://youtu.be/tSYfZ3yVE58"
+          ]
+        ]
+      },
+      {
+        "t": "Completar y presentar la oferta",
+        "items": [
+          "\"Mis Ofertas\" → tres puntitos → \"Acciones\": ahí están los formularios obligatorios.",
+          "Oferta técnica y económica: en cada renglón, \"Editar\", cantidad y precio unitario, fichas técnicas si hace falta, \"Guardar\"; al final, \"Enviar\".",
+          "Requisitos mínimos: en cada requisito, \"Editar\", \"Examinar\" para adjuntar, descripción y \"Guardar\"; al final, \"Enviar\".",
+          "Presentá la oferta: solo las ofertas en estado \"Presentadas\" participan de la apertura automática.",
+          "Se puede editar hasta la fecha y hora de la apertura.",
+          "Garantía de mantenimiento de la oferta: 1% del valor total de la oferta."
+        ],
+        "links": [
+          [
+            "Guía: completar el formulario",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoCompletarFormulario.pdf"
+          ],
+          [
+            "Video 02",
+            "https://youtu.be/fcEjp7lJGUE"
+          ]
+        ],
+        "fuentes": [
+          "guias-proveedor",
+          "pliego-unico-2026"
+        ]
+      },
+      {
+        "t": "Hacer consultas y leer circulares",
+        "items": [
+          "Hay que haber participado del proceso y tener el formulario de oferta al menos en \"Completar formulario\".",
+          "Tres puntitos → \"Iniciar consulta del proceso\", completar el detalle y \"Guardar y enviar\".",
+          "Las respuestas salen en circulares aclaratorias o modificatorias. Una circular modificatoria suspende el proceso automáticamente."
+        ],
+        "links": [
+          [
+            "Guía: consultas y circulares",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarConsultas.pdf"
+          ],
+          [
+            "Video 03",
+            "https://youtu.be/W-_htQe-JdA"
+          ]
+        ]
+      },
+      {
+        "t": "Subsanar, mejorar el precio o aclarar",
+        "items": [
+          "Si el organismo lo pide, el trámite aparece en \"Mis Ofertas\" → \"Asignados\" → \"Acciones\", con la fecha y hora límite.",
+          "Si vence el plazo sin responder, el subtrámite pasa a \"descartado\"."
+        ],
+        "links": [
+          [
+            "Guía: subsanar",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoSubsanar.pdf"
+          ],
+          [
+            "Video 04",
+            "https://youtu.be/u0UNen9iQnA"
+          ]
+        ],
+        "fuentes": [
+          "guias-proveedor",
+          "circ-ug-7-2026"
+        ]
+      },
+      {
+        "t": "Impugnar",
+        "items": [
+          "Se puede impugnar cualquier oferta o el informe de preadjudicación, de forma fundada y por escrito.",
+          "Ofertas: 2 días hábiles administrativos desde la apertura. Preadjudicación: 2 días desde la notificación.",
+          "Garantía de impugnación: 3% del monto de la oferta de quien impugna, o el valor que fije el pliego particular."
+        ],
+        "links": [
+          [
+            "Guía: impugnaciones",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/ComoRealizarImpugnaciones.pdf"
+          ],
+          [
+            "Video 05",
+            "https://youtu.be/0ExXUT8-M14"
+          ]
+        ],
+        "fuentes": [
+          "guias-proveedor",
+          "pliego-unico-2026"
+        ]
+      },
+      {
+        "t": "Si te adjudican",
+        "items": [
+          "Garantía de fiel cumplimiento: 7% del valor total de la adjudicación, dentro de los 5 días de recibida la notificación."
+        ],
+        "links": [
+          [
+            "Pliego Único de Bases y Condiciones Generales",
+            "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf"
+          ]
+        ],
+        "fuentes": [
+          "pliego-unico-2026"
+        ]
+      }
+    ],
+    "importante": "Todos los plazos de TIMBÓ Compras se rigen por la fecha y hora del servidor.",
+    "importante_fuentes": [
+      "circ-ug-7-2026"
+    ],
+    "guia_completa": [
+      "Paso a paso para ofertar (guía oficial)",
+      "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/PasoAPasoParaOfertar.docx.pdf"
+    ],
+    "mensaje": "Hola. Para venderle a la Provincia de Santa Fe por TIMBÓ Compras hace falta ID Ciudadana, domicilio digital e inscripción en el RUPC. Toda la información, paso a paso y con los links oficiales, está acá: {url}\nMesa de ayuda de TIMBÓ Compras: timbocompras@santafe.gob.ar · 0342-4506600 / 4506800 (internos 39479 y 39480) · WhatsApp +54 9 342 640-0792, de 8 a 13 h."
   }
 }

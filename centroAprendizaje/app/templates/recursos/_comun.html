@@ -23,6 +23,7 @@
     <div class="rec-subnav__chips">
   {% if prefijo == 'ui.' %}<a href="{{ url_for('ui.recursos_aprender') }}" class="{{ 'is-active' if activo == 'aprender' }}">👥 Aprendé desde cero</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_roles') }}" class="{{ 'is-active' if activo == 'roles' }}">🔐 Roles y circuito</a>
+  <a href="{{ url_for(prefijo ~ 'recursos_proveedores') }}" class="{{ 'is-active' if activo == 'proveedores' }}">🏢 Para proveedores</a>
   <a href="{{ url_for(prefijo ~ 'recursos_algoritmo') }}" class="{{ 'is-active' if activo == 'algoritmo' }}">🧭 ¿Qué camino sigue?</a>
   {% if prefijo == 'admin.' or 'simulador' not in ocultos %}<a href="{{ url_for(prefijo ~ 'recursos_simulador') }}" class="{{ 'is-active' if activo == 'simulador' }}">🎯 Simulador</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_explicame') }}" class="{{ 'is-active' if activo == 'explicame' }}">💡 Explicame</a>
