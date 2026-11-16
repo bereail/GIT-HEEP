@@ -1835,9 +1835,8 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .tope:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 .tope::after { content: attr(data-tope); position: absolute; left: 0; top: calc(100% + 6px); z-index: 50; width: max-content; max-width: min(320px, 80vw);
   padding: 8px 10px; border-radius: var(--radius-sm); background: #1b2333; color: #fff; font-size: 13px; font-weight: 500; line-height: 1.4;
-  white-space: normal; box-shadow: var(--shadow-sm); opacity: 0; visibility: hidden; transition: opacity .12s; pointer-events: none; }
-.tope:hover::after, .tope:focus::after { opacity: 1; visibility: visible; }
-@media (prefers-reduced-motion: reduce) { .tope::after { transition: none; } }
+  white-space: normal; box-shadow: var(--shadow-sm); display: none; pointer-events: none; }
+.tope:hover::after, .tope:focus::after { display: block; }
 @media print { .tope { text-decoration: none; } .tope::after { display: none; } }
 
 /* ------------------------------------- Gráfico de flujo (SVG, panel) -- */
@@ -1874,3 +1873,5 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .prov-discrepancia { margin: 8px 0; font-size: 13.5px; }
 @media (max-width: 760px) { .prov-enviar { grid-template-columns: 1fr; } }
 @media print { .prov-enviar { display: none; } .prov-paso, .prov-req, .prov-bloque { break-inside: avoid; box-shadow: none; } }
+.enlace-oficial { color: var(--accent); font-weight: 600; text-decoration: underline; text-decoration-style: solid; cursor: pointer; }
+.enlace-oficial::before { content: "↗ "; font-size: .85em; }

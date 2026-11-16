@@ -257,3 +257,14 @@ def test_seccion_para_proveedores(app, admin_client):
                   "timbocompras@santafe.gob.ar", "Copiar mensaje", "http://localhost/recursos/proveedores"):
         assert texto in html, texto
     assert admin_client.get("/admin/recursos/proveedores").status_code == 200
+
+
+def test_formularios_con_link_oficial(app):
+    import json
+    import re
+    html = app.test_client().get("/").get_data(as_text=True)
+    datos = json.loads(re.search(r'<script type="application/json" id="enlaces-datos"[^>]*>(.*?)</script>', html, re.S).group(1))
+    por_frase = {f: d["url"] for d in datos for f in d["frases"]}
+    assert por_frase["Timbó Compras: Alta de bienes y servicios CAByS"] == "https://tramites.santafe.gob.ar/"
+    assert por_frase["CD-01"] == "https://tramites.santafe.gob.ar/"
+    assert por_frase["Pliego Único"].startswith("https://compras.santafe.gob.ar/")

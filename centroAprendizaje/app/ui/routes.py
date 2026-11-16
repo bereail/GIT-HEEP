@@ -550,7 +550,7 @@ def _contexto_recursos():
 def _recursos_ocultos():
     # Los menús del sitio no muestran lo que está oculto; en /admin se ve todo.
     return {"ocultos": recursos.OCULTOS_PUBLICO, "revisado_al": recursos.revisado_al(), "oficial": recursos.es_publico,
-            "topes": recursos.topes()}
+            "topes": recursos.topes(), "enlaces_oficiales": recursos.enlaces_oficiales()}
 
 
 @ui_bp.route("/recursos")

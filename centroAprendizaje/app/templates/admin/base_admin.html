@@ -38,6 +38,7 @@
   <script src="{{ url_for('static', filename='js/recursos.js') }}"></script>
   {% block script_pagina %}{% endblock %}
   <script type="application/json" id="topes-datos" nonce="{{ csp_nonce }}">{{ topes | tojson }}</script>
+  <script type="application/json" id="enlaces-datos" nonce="{{ csp_nonce }}">{{ enlaces_oficiales | tojson }}</script>
   <script src="{{ url_for('static', filename='js/topes.js') }}"></script>
 </body>
 </html>

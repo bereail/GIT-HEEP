@@ -125,6 +125,24 @@ def topes():
     ]
 
 
+def enlaces_oficiales():
+    """Formularios y documentos que, al nombrarse en el sitio, se vuelven un
+    link oficial (regla de la usuaria: todo formulario con su link)."""
+    docs = documentos_por_id()
+    timbo = "https://tramites.santafe.gob.ar/"
+    return [
+        {"frases": ["Timbó Compras: Alta de bienes y servicios CAByS", "Formulario Timbo Compras (CAByS)", "formulario CAByS"],
+         "url": timbo,
+         "texto": "Se crea dentro de TIMBÓ: Documentos oficiales → Nuevo Documento Oficial → tipo \"Timbó Compras: Alta de bienes y servicios CAByS\" (Res. SCyGB 292/2026). Tocá para entrar a TIMBÓ."},
+        {"frases": ["CD-01", "CD-02", "CD-03", "CD-04", "CD01", "CD02", "CD03", "CD04"],
+         "url": timbo,
+         "texto": "Formulario de compra directa: se crea dentro de TIMBÓ, en Documentos oficiales (video oficial \"Compras Directas\"). Tocá para entrar a TIMBÓ."},
+        {"frases": ["Pliego Único de Bases y Condiciones Generales", "Pliego Único"],
+         "url": docs["pliego-unico-2026"]["url"],
+         "texto": "Pliego Único de Bases y Condiciones Generales (anexo del Dec. 287/2026). Tocá para abrir el PDF oficial."},
+    ]
+
+
 def revisado_al():
     """Fecha en que se consultó la normativa oficial, como dd/mm/aaaa."""
     a, m, d = biblioteca()["consultado"].split("-")
