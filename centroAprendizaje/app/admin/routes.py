@@ -143,7 +143,14 @@ def _mover(items_ordenados, item, delta):
 @requiere_admin
 def dashboard():
     temas = Tema.query.order_by(Tema.orden).all()
-    return render_template("admin/dashboard.html", temas=temas, dependencias=_auditoria_dependencias())
+    from app.models.revision_nomenclador import ObservacionNomenclador, RevisorNomenclador
+
+    revision = {
+        "observaciones": ObservacionNomenclador.query.filter(ObservacionNomenclador.texto != "").count(),
+        "revisores": RevisorNomenclador.query.filter_by(activo=True).count(),
+        "ultima": ObservacionNomenclador.query.order_by(ObservacionNomenclador.actualizado_en.desc()).first(),
+    }
+    return render_template("admin/dashboard.html", temas=temas, dependencias=_auditoria_dependencias(), revision=revision)
 
 
 def _auditoria_dependencias():

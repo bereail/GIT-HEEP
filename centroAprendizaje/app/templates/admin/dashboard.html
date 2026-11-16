@@ -17,6 +17,15 @@
 </div>
 {% endif %}
 
+<a class="card rev-aviso" href="{{ url_for('admin.nomenclador_revision') }}">
+  <span class="rev-aviso__icono">🔄</span>
+  <span class="rev-aviso__texto">
+    <b>Revisión del nomenclador</b>
+    <span>{{ revision.observaciones }} observación{{ 'es' if revision.observaciones != 1 }} · {{ revision.revisores }} persona{{ 's' if revision.revisores != 1 }} con acceso{% if revision.ultima %} · última: {{ revision.ultima.actualizado_en.strftime('%d/%m/%Y %H:%M') }}{% endif %}</span>
+  </span>
+  <span class="rev-aviso__ir">Ver observaciones y accesos →</span>
+</a>
+
 <div class="admin-list">
   {% for tema in temas %}
   <a class="admin-list-item" href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">

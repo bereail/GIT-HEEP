@@ -1930,3 +1930,9 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 }
 .rev-mas { text-align: center; padding: 16px; font-size: 13px; color: var(--text-muted); }
 .rev-lista [hidden], .rev-mas[hidden], .rev-body .empty-state[hidden] { display: none !important; }
+.rev-aviso { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 16px; margin-bottom: 14px; border-left: 6px solid #c49000; text-decoration: none; color: var(--text); }
+.rev-aviso:hover { box-shadow: var(--shadow-md); }
+.rev-aviso__icono { font-size: 24px; }
+.rev-aviso__texto { display: grid; gap: 2px; flex: 1; }
+.rev-aviso__texto span { font-size: 13.5px; color: var(--text-muted); }
+.rev-aviso__ir { font-weight: 600; color: var(--accent); font-size: 14px; }
