@@ -793,7 +793,8 @@
     "Quién autoriza que alguien tenga el rol Gestor, Supervisor o Evaluador: la norma solo dice \"tramitar ante el administrador local\".",
     "Si la designación de los evaluadores necesita un acto administrativo además del formulario \"Evaluadores\".",
     "Si los controles de la URC alcanzan al hospital (encuadre institucional).",
-    "Requisitos formales para ser administrador local (lo que hay sale de soporte, no de una norma)."
+    "Requisitos formales para ser administrador local (lo que hay sale de soporte, no de una norma).",
+    "Si una misma persona puede tener más de un rol (por ejemplo, Gestor y Supervisor en la misma compra): la Circular UG TIMBÓ 7/2026 no lo dice."
   ],
   "matriz": {
     "titulo": "Quién prepara, quién revisa, quién evalúa y quién decide",
