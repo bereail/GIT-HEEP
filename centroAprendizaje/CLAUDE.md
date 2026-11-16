@@ -230,6 +230,12 @@ se sube a git: nombran a participantes). Se regeneran con yt-dlp
 (`--extractor-args "youtube:player_client=web_embedded"`, y para los que no
 salen, `player_client=ios`) y `scripts/vtt_a_texto.py`.
 
+**Verificación frase por frase (16/11, en curso):** el registro está en
+`timboDocumentacion/VERIFICACION_LECCIONES.md`. Tandas 1 (proveedor) y 2
+(compras directas): hechas. **Tanda 3 (gestión interna): van 5 de 17**; la
+lista de lo que falta y las fuentes está en ese archivo. Copia de la memoria
+de Claude de esta PC: `timboDocumentacion/memoria_claude/`.
+
 **Sigue (punto 2):** verificar frase por frase las lecciones de TIMBÓ
 Compras (empezando por proveedor: las 8 guías ya están en texto), después
 Recursos y el diccionario, TIMBÓ (Expedientes) y miHospital; a cada

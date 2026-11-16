@@ -92,7 +92,7 @@ SITUACIONES_TIMBO_EXPEDIENTES = [
             "Una vez que el Tribunal de Cuentas aprueba, corresponde subir el decisorio definitivo al expediente y a Timbó Compras."
         ),
         "categoria_libre": "Documentos oficiales y decisorios",
-        "verificado": True,
+        "verificado": False,
         "tutorial": ("expedientes", "vincular-documento-oficial"),
     },
     {
@@ -132,7 +132,7 @@ SITUACIONES_TIMBO_EXPEDIENTES = [
         "causa": "El acceso al SIN es exclusivo de los usuarios habilitados específicamente, y además requiere entrar desde una computadora conectada a la red institucional — no funciona desde cualquier dispositivo o red.",
         "solucion": "Confirmá que tu usuario esté habilitado para el SIN y que estés conectado desde una computadora de la red del hospital (no desde una red externa o un celular).",
         "categoria_libre": "Sistema SIN y Tribunal de Cuentas",
-        "verificado": True,
+        "verificado": False,
         "tutorial": ("actos-administrativos", "protocolizar-y-publicar"),
     },
     {
@@ -146,7 +146,7 @@ SITUACIONES_TIMBO_EXPEDIENTES = [
         ),
         "notas_adicionales": "El trámite puede demorar varios días. Mientras se gestiona el alta, conviene seguir usando los usuarios ya habilitados para no perder el plazo de la vista al Tribunal de Cuentas.",
         "categoria_libre": "Sistema SIN y Tribunal de Cuentas",
-        "verificado": True,
+        "verificado": False,
         "tutorial": ("actos-administrativos", "protocolizar-y-publicar"),
     },
     {
@@ -156,7 +156,7 @@ SITUACIONES_TIMBO_EXPEDIENTES = [
         "causa": "Puede deberse a una caída del sistema SIPAF, un sistema provincial del que depende indirectamente el módulo de Compras — no es necesariamente un problema de tu usuario ni de tu configuración.",
         "solucion": "Antes de pedir soporte, confirmá con tu referente si hay un aviso de caída de SIPAF. En ese caso no hay nada para resolver del lado del usuario: hay que esperar a que se restablezca el servicio.",
         "categoria_libre": "Disponibilidad del sistema",
-        "verificado": True,
+        "verificado": False,
     },
 ]
 
@@ -172,14 +172,14 @@ SITUACIONES_TIMBO_COMPRAS = [
             "Después de la vista, se sube el decisorio definitivo al expediente y a Timbó Compras."
         ),
         "categoria_libre": "Decisorios y Tribunal de Cuentas",
-        "verificado": True,
+        "verificado": False,
         "tutorial": ("gestion-interna", "circuito-decisorio"),
     },
     {
         "slug": "quien-corre-vista-tcp",
         "situacion": "¿La vista al Tribunal de Cuentas la corremos desde Compras o la hace Mesa de Entradas?",
         "descripcion": "No está claro qué área tiene que correr la vista del expediente.",
-        "solucion": "Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas.",
+        "solucion": "La visualización del expediente la administran las áreas con funciones de Despacho o responsables de los actos administrativos registrables (Circular UG TIMBÓ 9/2026, art. 4). La carga del acto en el SIN está encomendada a las Direcciones Generales de Despacho (Circular UG TIMBÓ 11/2026, art. 2).",
         "categoria_libre": "Decisorios y Tribunal de Cuentas",
         "verificado": True,
         "tutorial": ("gestion-interna", "vista-tribunal-de-cuentas"),
@@ -202,7 +202,7 @@ SITUACIONES_TIMBO_COMPRAS = [
         "causa": "El SIN solo funciona para usuarios habilitados y desde una computadora conectada a la red institucional.",
         "solucion": "Confirmá que tu usuario esté habilitado y que estés en una computadora de la red del hospital (no desde el celular ni desde otra red).",
         "categoria_libre": "Sistema SIN",
-        "verificado": True,
+        "verificado": False,
         "tutorial": ("gestion-interna", "vista-tribunal-de-cuentas"),
     },
     {
@@ -215,8 +215,8 @@ SITUACIONES_TIMBO_COMPRAS = [
         ),
         "notas_adicionales": "Tarda varios días. Mientras tanto, usá los usuarios ya habilitados para no perder el plazo de la vista al Tribunal de Cuentas.",
         "categoria_libre": "Sistema SIN",
-        "verificado": True,
-        "tutorial": ("gestion-interna", "alta-usuarios-sin"),
+        "verificado": False,
+        "tutorial": ("gestion-interna", "vista-tribunal-de-cuentas"),
     },
     {
         "slug": "link-publicacion-portal-compras",
@@ -242,7 +242,7 @@ SITUACIONES_TIMBO_COMPRAS = [
         "causa": "Suele ser una caída de SIPAF, el sistema provincial del que depende el nomenclador de artículos. No es un problema de tu usuario.",
         "solucion": "Preguntá a tu referente si hay aviso de caída de SIPAF. Si la hay, solo queda esperar a que vuelva el servicio.",
         "categoria_libre": "Artículos y disponibilidad",
-        "verificado": True,
+        "verificado": False,
     },
     {
         "slug": "articulo-no-esta-en-nomenclador",

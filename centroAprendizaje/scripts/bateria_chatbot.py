@@ -105,7 +105,7 @@ PREGUNTAS = [
     (CO, "después de adjudicar", "despues de adjudicar"),
     (CO, "el artículo no está en el catálogo", "articulo"),
     (CO, "pedir el alta de un artículo", "articulo"),
-    (CO, "usuarios del SIN", "sin"),
+    (CO, "cargar el acto en el SIN para el tribunal", "tribunal"),
     (CO, "no puedo cargar artículos", "articulo"),
     (CO, "notificar a un proveedor", "proveedor"),
     (CO, "no me deja firmar", "firmar"),

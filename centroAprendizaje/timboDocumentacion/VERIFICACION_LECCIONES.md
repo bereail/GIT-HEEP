@@ -115,6 +115,48 @@ No aparecen en ninguna fuente oficial. También se corrigieron en el glosario de
 - el nombre "Timboteca";
 - "secretarios" en firma digital, porque la respuesta oficial nombra al gobernador y a los ministros.
 
+## Tanda 3 — Gestión interna del hospital (EN CURSO, 16/11/2026)
+
+**Fuentes descargadas** (en la carpeta temporal de la sesión; se vuelven a bajar desde la biblioteca):
+- **Circulares UG TIMBÓ:** 1, 3, 7, 8, 9 y 11/2026.
+- **Circulares SCyGB:** 01, 03, 04, 05 y 06/2026.
+- **Otras normas:** Res. ME 73/2026, Res. SCyGB 292/2026, Ley 12.510, Pliego Único y Dec. 287/2026.
+- **Transcripciones:** Clases 02 y 03, y Pasos 01 a 04.
+
+**Hechas (5 de 17):**
+- **circuito-decisorio, rehecha.** Ahora se llama "El acto que aprueba el pliego y la vista al Tribunal de Cuentas".
+  - "Decisorio preventivo y definitivo" era terminología de los chats del hospital, sin norma.
+  - Ahora sigue la Clase 02, min. 42:00–47:00: pliego definitivo → expediente → dictamen → acto → el Supervisor lo vincula → recién ahí cronograma y nómina.
+  - Suma la Ley 12.510, art. 82 (afectación preventiva) y la Circ. UG 9/2026 (control preventivo de legalidad).
+- **vista-tribunal-de-cuentas, rehecha** con las Circ. UG 9/2026 y 11/2026.
+  - **Corrección importante:** decía "lo decide cada hospital: Compras o Mesa de Entradas". Según las circulares, la visualización la administran las áreas de Despacho (Circ. 9, art. 4) y la carga en el SIN, las Direcciones Generales de Despacho (Circ. 11, art. 2).
+  - Se sacaron "red institucional / celular", "app.santafe.gov.ar/normativa" y el instructivo "Carga y Edición SIN": no están en ninguna fuente oficial.
+- **alta-usuarios-sin, borrada.** Todo venía de los chats, sin norma. También se borró su tarea.
+- **publicar-en-portal:** coincide con la Circ. SCyGB 04/2026.
+  - Se aclaró que esa circular está dirigida a la Administración Pública Central.
+  - Se sumó lo que dice la nota modelo (2 días en el Boletín Oficial y 1 día en un diario).
+  - El art. 132 dice "presentación de las ofertas", no "apertura".
+- **montos-y-procedimientos:** coincide con la Circ. SCyGB 01/2026. Solo se ajustó la redacción.
+- **Preguntas de los chats (`importar_faq_chats.py`):**
+  - Pasaron a `verificado: False`, y por eso no se publican: el decisorio preventivo/definitivo, el alta de usuarios del SIN (las dos), "no abre el link del SIN" y la caída por SIPAF.
+  - Se corrigió "quién corre la vista" con lo que dicen las circulares.
+  - Batería del chatbot: el caso "usuarios del SIN" se cambió por "cargar el acto en el SIN para el tribunal".
+
+**Datos encontrados:**
+- **Territorio 5.0 = Decreto 191/24.**
+- **El Decreto 2518/25 prohíbe iniciar trámites en papel desde el 1/7/2026.**
+- Las dos cosas las citan las Circ. UG 9 y 11/2026. Falta actualizar la lección "Qué es una compra directa" con esto.
+
+**Faltan (12):**
+- directa-urgencia-o-desierto (Circ. UG 8/2026);
+- gestor-iniciar-proceso, pliego-modelo (Circ. SCyGB 05/2026), supervisor-aprobar-y-publicar, gestor-mientras-esta-publicado, evaluador-evaluar-ofertas, evaluador-preadjudicar y gestor-adjudicar (Clases 02 y 03, Pasos 01 a 04, Circ. UG 7/2026);
+- despues-de-adjudicar (Pliego Único, Circ. SCyGB 04/2025);
+- notificar-proveedor (video del documento comunicable externo, 6BtJX1bhwbg);
+- pedir-alta-articulo (Res. 292/2026);
+- hacer-una-compra (la lección más larga: cotejarla con todo lo anterior).
+
+Las demás preguntas de `importar_faq_chats.py` marcadas `verificado: True` también salieron de los chats: hay que revisarlas una por una.
+
 ## Lo que sigue
 - Identificar el número del decreto de "Territorio 5.0".
 - **Tanda 3:** Gestión interna del hospital (17 lecciones), contra las Circulares UG 7, 8, 9 y 11/2026, SCyGB 01, 03, 04 y 05/2026, el Pliego Único, la Res. 292/2026 y las clases 01 a 03.

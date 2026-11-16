@@ -1,0 +1,26 @@
+---
+name: faq-pendientes-timbo
+description: Estado TIMBÓ — 2026-11-16 noche: todo deployado y en main; el detalle está en CLAUDE.md del repo (sección "Estado al 16/11/2026")
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: aeb0330e-1d42-4e32-b905-d7b172f63d36
+  modified: 2026-11-16T09:44:24.783Z
+---
+
+Al cierre del 2026-11-13 (la usuaria dijo "mañana seguimos"):
+
+- Repo de trabajo: `D:\Bere\GIT\GIT-HEEP-integracion\centroAprendizaje`, rama `integracion-deploy` (pusheada hasta `2ae098f`). `D:\Bere\GIT\GIT-HEEP` es la línea vieja/backup.
+- **2026-11-14, segunda tanda:** commit `e7e93ab` (videos del canal revisados, chatbot 88/88 en `scripts/bateria_chatbot.py`, test inestable corregido) deployado en `main` y en el servidor (batería 88/88 también allá).
+- **2026-11-15:** pulido de UI/UX (`1a65e18` + `aa25ab3`) deployado; servidor y `main` en `aa25ab3`. Para ver la UI sin el navegador conectado: un script chico de Node 22 que maneja por CDP el Chrome headless de `%LOCALAPPDATA%/ms-playwright/chromium-*` (no quedó guardado: rehacerlo). Edge con `--screenshot` no sirve: a 390px corta la página.
+- **2026-11-16 (cierre, se sigue en otra PC):** verificación frase por frase: tandas 1 (proveedor) y 2 (compras directas) hechas; tanda 3 (gestión interna) 5 de 17. Todo en `timboDocumentacion/VERIFICACION_LECCIONES.md` (qué falta y con qué fuentes). Las tandas 1-3 NO están deployadas todavía (la usuaria quiere subir todo junto al terminar la tanda 3). Copia de esta memoria en `timboDocumentacion/memoria_claude/`.
+- **2026-11-16 (noche): todo deployado y pusheado a `main`.** La usuaria sigue desde otra PC (pull). El estado completo, las reglas nuevas (solo lo oficial, link oficial a cada formulario) y cómo deployar están en CLAUDE.md del repo, sección "Estado al 16/11/2026". Siguiente: verificación frase por frase de lecciones de TIMBÓ Compras.
+- **2026-11-16 (tarde): servidor y main en `7687084`.** Sitio público solo con lo verificado (filtro `recursos.es_publico`; simulador, checklists y modelos ocultos), Montos 2026, ficha de roles, Flujos paso a paso en /admin. Seguridad aplicada (`scripts/servidor/aplicar_seguridad.sh`): base y copias 600 en `/var/www/timbo-capacitaciones/copias`, cron diario de copia y mensual de pip-audit (se ve en /admin), nginx sin versión + límite en /admin/login; sin contraseña extra (la usuaria no quiso). Tarea de Windows "Centro de Aprendizaje - copia de la base" trae la copia a `D:\Bere\Copias\timbo-capacitaciones` a las 10. El clasificador de permisos bloquea que Claude corra el deploy: lo corre la usuaria con `!`. Siguiente: verificación frase por frase (punto 2) con links oficiales a cada formulario.
+- **2026-11-16: segunda etapa deployada** (Recursos, capacitación en /admin, seguridad S-01..S-10, guía no oficial borrada, garantía de impugnación 3%). `main` y servidor en `835c7f3`. Deploy ahora = `git push origin integracion-deploy:main` + `tr -d '\r' < scripts/deploy_servidor.sh | ssh ... 'sh -s'` (lo corrió la usuaria con `!`). Los avisos "Falta SECRET_KEY/ADMIN_PASSWORD" de los importadores son normales (el env file solo lo recibe el servicio). Siguen pendientes: chmod 600 de la base/backups y nginx (compartido con otros 3 sitios: tocar solo el server block de TIMBÓ), inventario + matriz de trazabilidad, fichas FP, examen profesional.
+- **Deploy hecho el 2026-11-14:** `main` y el servidor están en `2ae098f` (urgencia + chatbot). La app en el servidor está en el subdirectorio `centroAprendizaje/` de `/var/www/timbo-capacitaciones` (ahí van el `git pull`, los scripts con `.venv/bin/python` y el backup de `instance/`).
+- Servidor: https://timboheep.duckdns.org, `ssh -i ~/.ssh/timboheep_ed25519 -p5440 root@138.36.238.175`, app en `/var/www/timbo-capacitaciones`. Procedimiento de deploy en CLAUDE.md del repo (sección "Segunda reconciliación y deploy").
+- Los 10 videos sin subtítulos ya están revisados y volcados (2108bcb, deployado). Clase 01 no tiene transcripción completa (opcional).
+- Resto de pendientes (urgencia ya hecha; montos anuales; confirmar con Compras/RRHH; consultas abiertas de chats; test flaky; pulido UI) → sección "Pendientes" de CLAUDE.md.
+
+**Why:** retomar sin re-derivar dónde quedó el deploy.
+**How to apply:** No levantar la vista previa local sin pedido (la PC tiene poca memoria y el harness la mata). Ver [[contexto-en-claude-md]].

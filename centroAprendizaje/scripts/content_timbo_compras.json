@@ -1005,13 +1005,13 @@
       "tutoriales": [
         {
           "slug": "circuito-decisorio",
-          "titulo": "Decisorio preventivo y definitivo",
+          "titulo": "El acto que aprueba el pliego y la vista al Tribunal de Cuentas",
           "minutos": 3,
           "dificultad": "intermedio",
           "bloques": [
             {
               "type": "text",
-              "text": "El decisorio pasa dos veces por el circuito: uno antes del Tribunal de Cuentas (preventivo) y otro después (definitivo)."
+              "text": "El pliego se arma en TIMBÓ Compras, pero el acto administrativo que lo aprueba se gestiona por expediente electrónico, con el circuito que tenga cada servicio administrativo."
             },
             {
               "type": "diagram",
@@ -1019,45 +1019,54 @@
               "title": "El circuito, en orden",
               "items": [
                 {
-                  "label": "1. Firmar el decisorio preventivo (con la afectación presupuestaria)",
-                  "hint": "Antes del TCP",
-                  "tone": "intermedio"
-                },
-                {
-                  "label": "2. Correr vista al Tribunal de Cuentas con el expediente completo: pliego, pedido, notas y decisorio preventivo",
-                  "hint": "Vista TCP",
-                  "tone": "intermedio"
-                },
-                {
-                  "label": "3. En TIMBÓ Compras, vincular el Documento Oficial que aprueba el pliego",
-                  "hint": "Habilita la etapa siguiente",
+                  "label": "1. El Supervisor aprueba los formularios: queda el pliego definitivo, con su número de proceso",
+                  "hint": "TIMBÓ Compras",
                   "tone": "verified"
                 },
                 {
-                  "label": "4. Subir el decisorio definitivo al expediente y a TIMBÓ Compras",
-                  "hint": "Después del TCP",
+                  "label": "2. Se descarga el pliego y se incorpora al expediente que inició el proceso",
+                  "hint": "Expediente",
+                  "tone": "intermedio"
+                },
+                {
+                  "label": "3. El expediente pasa por las áreas que correspondan (por ejemplo, dictamen jurídico) hasta el acto administrativo",
+                  "hint": "Expediente",
+                  "tone": "intermedio"
+                },
+                {
+                  "label": "4. El Supervisor vincula en TIMBÓ Compras el documento oficial del acto que aprueba el pliego",
+                  "hint": "Habilita cronograma y nómina",
                   "tone": "verified"
+                },
+                {
+                  "label": "5. Los expedientes con efecto hacendal se ponen a disposición del Tribunal de Cuentas para el control preventivo de legalidad",
+                  "hint": "Gestión de Visualización",
+                  "tone": "intermedio"
                 }
               ]
             },
             {
-              "type": "warning",
-              "text": "Un documento oficial firmado no se edita: si se toca, se rompe la firma. Revisá número y fecha antes de mandarlo a firmar."
+              "type": "tip",
+              "text": "Solo con un acto administrativo válido TIMBÓ Compras deja avanzar a \"Completar cronograma y nómina de oferentes\"."
             },
             {
               "type": "tip",
-              "text": "Si un documento oficial quedó mal, no hace falta archivarlo ni desestimarlo: simplemente no lo vincules ni lo uses."
+              "text": "El compromiso del gasto implica la afectación preventiva del crédito presupuestario (Ley 12.510, art. 82)."
+            },
+            {
+              "type": "tip",
+              "text": "Si un documento oficial quedó mal y todavía no lo incorporaste al expediente, generá uno nuevo y no uses el anterior. Lo que ya está incorporado no se elimina: se usa \"Subsanar documento\"."
             }
           ],
           "quiz": [
             {
               "type": "order-steps",
-              "instruction": "Ordená el circuito del decisorio:",
+              "instruction": "Ordená el circuito:",
               "steps": [
-                "Firmar el decisorio preventivo",
-                "Correr vista al Tribunal de Cuentas",
-                "Vincular el DO que aprueba el pliego en TIMBÓ Compras",
-                "Subir el decisorio definitivo"
+                "El Supervisor aprueba los formularios del pliego",
+                "Se incorpora el pliego al expediente",
+                "Se dicta el acto administrativo que aprueba el pliego",
+                "El Supervisor vincula el acto en TIMBÓ Compras"
               ]
             }
           ]
@@ -1070,36 +1079,24 @@
           "bloques": [
             {
               "type": "text",
-              "text": "La vista tiene dos partes: compartir el expediente con el TCP en TIMBÓ y cargar el acto firmado en el SIN."
+              "text": "Todos los actos administrativos se ponen a disposición del Tribunal de Cuentas con la herramienta de visualización de TIMBÓ y, además, se remiten por correo electrónico a través del Sistema de Información Normativa (SIN)."
             },
             {
               "type": "step",
               "number": 1,
               "explanation": "Compartí el expediente con el TCP.",
-              "doThis": "En TIMBÓ Expedientes, usá \"Gestión de Visualización\" para darle acceso al TCP al expediente completo.",
-              "lookFor": "El expediente sigue su trámite normal mientras el TCP lo ve: no hace falta esperar quieto (Circular UG TIMBÓ 9/2026)."
+              "doThis": "En TIMBÓ Expedientes, con \"Gestión de Visualización\", dale acceso íntegro al expediente.",
+              "lookFor": "El expediente sigue su trámite normal mientras el TCP lo ve (Circular UG TIMBÓ 9/2026, art. 5)."
             },
             {
               "type": "step",
               "number": 2,
               "explanation": "Cargá el acto firmado en el SIN.",
-              "doThis": "Cargalo en el SIN (app.santafe.gov.ar/normativa). Desde ahí se manda por correo al TCP.",
-              "lookFor": "Hay un instructivo oficial: \"Carga y Edición SIN\" (Circular UG TIMBÓ 11/2026)."
-            },
-            {
-              "type": "prereq",
-              "items": [
-                "Para el SIN: un usuario habilitado.",
-                "Una computadora conectada a la red institucional (no funciona desde el celular ni desde otra red)."
-              ]
+              "doThis": "Cada acto administrativo registrable firmado se incorpora al SIN, y desde ahí se remite por correo al TCP (Circular UG TIMBÓ 11/2026, arts. 1 y 2)."
             },
             {
               "type": "tip",
-              "text": "¿Quién corre la vista? Lo decide cada hospital: puede hacerlo Compras o Mesa de Entradas."
-            },
-            {
-              "type": "warning",
-              "text": "Si tu usuario del SIN todavía no está habilitado, que lo cargue alguien que ya lo esté. El alta de usuarios nuevos tarda varios días y se puede vencer el plazo."
+              "text": "¿Quién lo hace? La visualización la administran las áreas con funciones de Despacho o responsables de los actos administrativos registrables (Circular UG TIMBÓ 9/2026, art. 4), y la carga en el SIN está encomendada a las Direcciones Generales de Despacho (Circular UG TIMBÓ 11/2026, art. 2)."
             },
             {
               "type": "diagram",
@@ -1107,36 +1104,35 @@
               "title": "Si el TCP pide algo",
               "items": [
                 {
-                  "label": "1. El pedido llega por Atención Virtual a Mesa de Entradas",
+                  "label": "1. El pedido llega por Atención Virtual a la Mesa de Entradas de la jurisdicción",
                   "hint": "Mesa de Entradas",
                   "tone": "neutral"
                 },
                 {
-                  "label": "2. Mesa de Entradas pide el expediente, suma el pedido como nueva orden, lo deriva y cierra la Atención Virtual",
+                  "label": "2. Mesa de Entradas pide el expediente, incorpora el pedido como nueva orden, lo deriva a la Secretaría de Administración, responde y cierra la Atención Virtual",
                   "hint": "Mesa de Entradas",
                   "tone": "intermedio"
                 },
                 {
-                  "label": "3. Se responde en el mismo expediente con el DO \"Respuesta al Tribunal de Cuentas – Importado\" o \"– Libre\", con el usuario del TCP como destinatario",
-                  "hint": "Área que responde",
+                  "label": "3. La Secretaría de Administración da intervención a las áreas que tienen que responder",
+                  "hint": "Secretaría de Administración",
+                  "tone": "intermedio"
+                },
+                {
+                  "label": "4. La respuesta se incorpora al mismo expediente con el DO \"Respuesta al Tribunal de Cuentas – Importado\" o \"– Libre\", con el usuario del TCP como destinatario",
+                  "hint": "Firma conjunta",
                   "tone": "verified"
                 },
                 {
-                  "label": "4. El expediente vuelve a la oficina que lo tenía",
+                  "label": "5. El expediente vuelve a la dependencia que lo tenía",
                   "hint": "Al terminar",
                   "tone": "verified"
                 }
               ],
-              "note": "Quien tenga el expediente tiene que mandarlo enseguida a la oficina que indique el pedido, sin pases intermedios."
+              "note": "Quien tenga el expediente tiene que mandarlo de inmediato a la oficina que indique la comunicación, sin otros pases (Circular UG TIMBÓ 11/2026, art. 5)."
             }
           ],
           "quiz": [
-            {
-              "type": "true-false",
-              "question": "Puedo cargar en el SIN desde mi celular si tengo usuario habilitado.",
-              "answer": false,
-              "explanation": "Hay que entrar desde una computadora conectada a la red institucional."
-            },
             {
               "type": "multiple-choice",
               "question": "¿Cómo se le da acceso al Tribunal de Cuentas al expediente?",
@@ -1146,34 +1142,20 @@
                 "Imprimiendo el expediente"
               ],
               "correctIndex": 0,
-              "explanation": "Es la herramienta oficial (Circular UG TIMBÓ 9/2026). Además, el acto se carga en el SIN."
+              "explanation": "Es la herramienta que fija la Circular UG TIMBÓ 9/2026 (art. 3). Además, el acto se remite por el SIN."
+            },
+            {
+              "type": "multiple-choice",
+              "question": "¿Por dónde llegan los pedidos del Tribunal de Cuentas?",
+              "options": [
+                "Por Atención Virtual, a la Mesa de Entradas",
+                "Por correo personal al área de Compras",
+                "Por teléfono"
+              ],
+              "correctIndex": 0,
+              "explanation": "Circular UG TIMBÓ 9/2026 (art. 8) y 11/2026 (art. 3 y anexo I)."
             }
           ]
-        },
-        {
-          "slug": "alta-usuarios-sin",
-          "titulo": "Pedir usuarios nuevos para el SIN",
-          "minutos": 2,
-          "dificultad": "basico",
-          "bloques": [
-            {
-              "type": "step",
-              "number": 1,
-              "explanation": "Pedile a tu referente de Contrataciones la \"Planilla de datos\" para alta de usuarios SIN.",
-              "doThis": "Completala con las personas responsables de cargar actos administrativos. Si alguien no tiene correo oficial, indicalo en la planilla."
-            },
-            {
-              "type": "step",
-              "number": 2,
-              "explanation": "Enviala por correo a la Subsecretaría de Contrataciones y Gestión de Bienes.",
-              "lookFor": "Ellos abren un ticket en iTop a la Secretaría de Tecnologías para la Gestión (STG), que crea los usuarios."
-            },
-            {
-              "type": "warning",
-              "text": "Tarda algunos días. Mientras tanto, seguí usando los usuarios que ya están habilitados."
-            }
-          ],
-          "quiz": []
         },
         {
           "slug": "publicar-en-portal",
@@ -1183,7 +1165,7 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Una vez aprobado el pliego en TIMBÓ, la publicación tiene dos partes: cargar la gestión en el portal web y pedir el aviso oficial. Así lo indica la Circular SCyGB 04/2026."
+              "text": "Una vez aprobado el pliego en TIMBÓ, la publicación tiene dos partes: cargar la gestión en el portal web y pedir el aviso oficial. Así lo indica la Circular SCyGB 04/2026, dirigida a las jurisdicciones de la Administración Pública Central."
             },
             {
               "type": "step",
@@ -1242,11 +1224,11 @@
               "number": 3,
               "explanation": "Pedí el aviso oficial.",
               "doThis": "Mandá un mail a avisosoficiales@santafe.gob.ar con la nota de pedido de publicación en dos formatos: editable (.doc, .docx u .odt) y PDF firmado electrónicamente.",
-              "lookFor": "Mandalo con 3 días de anticipación como mínimo. La circular trae una nota modelo."
+              "lookFor": "Mandalo con 3 días de anticipación como mínimo. La circular trae una nota modelo: pide la publicación por dos días en el Boletín Oficial y un día en un diario de la Provincia."
             },
             {
               "type": "warning",
-              "text": "Entre la última publicación y la apertura tienen que pasar al menos 10 días corridos (20 si la licitación es internacional). Artículo 132 de la Ley 12.510."
+              "text": "Entre la última publicación y la presentación de las ofertas tienen que pasar al menos 10 días corridos (20 en licitaciones o concursos internacionales). Artículo 132 de la Ley 12.510."
             },
             {
               "type": "tip",
@@ -1502,7 +1484,7 @@
           "bloques": [
             {
               "type": "text",
-              "text": "El tipo de procedimiento y quién lo aprueba dependen del monto estimado de la compra. Los topes los fija cada año la Ley de Presupuesto."
+              "text": "El tipo de procedimiento y quién lo aprueba dependen del monto estimado de la compra. El tope de las licitaciones y concursos privados lo fija la Ley de Presupuesto (Ley 12.510, art. 116)."
             },
             {
               "type": "diagram",
@@ -1535,7 +1517,7 @@
                   "Decreto"
                 ]
               ],
-              "note": "Circular SCyGB 01/2026. Los montos cambian cada año: revisá la circular vigente."
+              "note": "Circular SCyGB 01/2026. Son los montos de 2026."
             },
             {
               "type": "tip",
@@ -3335,20 +3317,6 @@
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "vista-tribunal-de-cuentas"
-    },
-    {
-      "slug": "usuarios-sin",
-      "pregunta": "Necesito usuarios nuevos para cargar en el SIN",
-      "keywords": [
-        "usuario",
-        "alta",
-        "sin",
-        "planilla",
-        "habilitar",
-        "acceso"
-      ],
-      "tutorial_categoria_slug": "gestion-interna",
-      "tutorial_slug": "alta-usuarios-sin"
     },
     {
       "slug": "publicar-portal",
