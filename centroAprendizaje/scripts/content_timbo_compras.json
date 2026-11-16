@@ -34,76 +34,84 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Antes de ofertar necesitás estar inscripto en el Registro Único de Proveedores y Contratistas (RUPC) de la Provincia. Es un trámite aparte de la ID Ciudadana: la ID Ciudadana sirve para operar en TIMBÓ Compras: el RUPC es lo que te habilita como proveedor."
+              "text": "Para presentar ofertas tenés que estar inscripto en el Registro Único de Proveedores y Contratistas (RUPC) de la Provincia. Es un trámite distinto de la ID Ciudadana: con la ID Ciudadana entrás a TIMBÓ Compras; la inscripción en el RUPC es requisito para presentar ofertas."
             },
             {
               "type": "prereq",
               "items": [
-                "Usuario de ID Ciudadana y domicilio digital constituido",
-                "Clave Fiscal de ARCA (ex AFIP) nivel 3",
-                "El servicio \"API_ECON SANTA FE REGISTRO ÚNICO DE PROVEEDORES Y CONTRATISTAS\" dado de alta en tu Clave Fiscal"
+                "ID Ciudadana nivel 3 y domicilio digital.",
+                "Clave Fiscal de ARCA nivel 3.",
+                "El servicio \"ECON SANTA FE – Registro Único de Proveedores y Contratistas\" incorporado a tu Clave Fiscal. Está dentro del servicio \"API – Adm. Prov. de Impuestos Provincia de Santa Fe\"."
               ]
             },
             {
               "type": "step",
               "number": 1,
-              "explanation": "Dá de alta el servicio en ARCA (solo la primera vez).",
-              "doThis": "Entrá a la página de ARCA (ex AFIP) → \"Administrador de relaciones de Clave Fiscal\" → agregá el servicio \"API_ECON SANTA FE REGISTRO ÚNICO DE PROVEEDORES Y CONTRATISTAS\"."
+              "explanation": "Incorporá el servicio en ARCA (solo la primera vez).",
+              "doThis": "En la página de ARCA, entrá al \"Administrador de relaciones de Clave Fiscal\" y, en el servicio \"API – Adm. Prov. de Impuestos Provincia de Santa Fe\", incorporá \"ECON SANTA FE – Registro Único de Proveedores y Contratistas\".",
+              "lookFor": "Para una persona jurídica se usa \"Nueva relación\" (no \"Adherir servicio\"): el paso a paso está en las preguntas frecuentes del RUPC."
             },
             {
               "type": "step",
               "number": 2,
               "explanation": "Entrá al sitio del Registro.",
-              "doThis": "Andá a www.santafe.gov.ar/proveedores → \"Acceso Proveedor\" → ingresá con tu CUIT y Clave Fiscal en la pantalla de ARCA."
-            },
-            {
-              "type": "step",
-              "number": 4,
-              "explanation": "Adjuntá la documentación obligatoria.",
-              "doThis": "Subí cada documento en PDF en su lugar de la lista (por ejemplo, el poder del representante o el certificado del Registro de Deudores Alimentarios Morosos)."
-            },
-            {
-              "type": "step",
-              "number": 5,
-              "explanation": "Presentá la solicitud.",
-              "doThis": "Aceptá los términos y condiciones y confirmá. Después, en el menú \"Estado del trámite\", podés imprimir la constancia de inicio del trámite.",
-              "lookFor": "La constancia de inicio sirve mientras tanto: el pliego acepta \"constancia del RUPC o del inicio del trámite\"."
-            },
-            {
-              "type": "step",
-              "number": 6,
-              "explanation": "Esperá la validación.",
-              "doThis": "La Subsecretaría de Contrataciones y Gestión de Bienes revisa los datos. Si falta algo, te lo reclama por correo electrónico: respondé lo que pidan.",
-              "lookFor": "Cuando termina, la Subsecretaría emite el acto administrativo que concluye el trámite y te lo notifica."
-            },
-            {
-              "type": "step",
-              "number": 7,
-              "explanation": "Imprimí tu constancia de inscripción.",
-              "doThis": "Ya notificado, entrá a www.santafe.gov.ar/proveedores y descargala desde \"Impresión de constancia\"."
+              "doThis": "En www.santafe.gov.ar/proveedores elegí \"Acceso de proveedores\", ingresá con tu Clave Fiscal nivel 3 y tocá el botón \"Registro Único de Proveedores y Contratistas\"."
             },
             {
               "type": "step",
               "number": 3,
-              "explanation": "Elegí el trámite que necesitás (por ejemplo, Inscripción) y completá el formulario con los datos que pide el sistema.",
-              "doThis": "Al terminar, tocá \"Finalizar formulario\" y adjuntá la documentación requerida."
+              "explanation": "Elegí el trámite y completá el formulario.",
+              "doThis": "Elegí \"Inscripción\", \"Actualización\" o \"Modificación de datos\", según corresponda, y completá el formulario en línea."
+            },
+            {
+              "type": "step",
+              "number": 4,
+              "explanation": "Adjuntá la documentación.",
+              "doThis": "Cada documento en PDF de hasta 8 MB: certificado negativo del Registro de Deudores Alimentarios Morosos, nota de declaración jurada de que tenés ID Ciudadana y domicilio digital, Libre Deuda de la Ley 17.250 emitido dentro de los 30 días corridos anteriores y, si actúa un apoderado, el poder ante escribano. Las personas jurídicas y UT no radicadas en Santa Fe suman su contrato o estatuto y la designación de autoridades."
+            },
+            {
+              "type": "step",
+              "number": 5,
+              "explanation": "Finalizá la presentación.",
+              "doThis": "Al terminar todos los pasos, el sistema te da una constancia de inicio de trámite."
+            },
+            {
+              "type": "step",
+              "number": 6,
+              "explanation": "Si falta algo, presentalo a tiempo.",
+              "doThis": "El Registro te avisa por correo electrónico (al mismo correo de tu domicilio digital). Tenés 30 días corridos desde la notificación para presentar lo que falte: si no, el trámite se da de baja solo."
+            },
+            {
+              "type": "step",
+              "number": 7,
+              "explanation": "Esperá la resolución.",
+              "doThis": "La Subsecretaría de Contrataciones y Gestión de Bienes acepta o rechaza la inscripción con un acto administrativo.",
+              "lookFor": "Si la rechazan, se puede recurrir ante el Ministerio de Economía dentro de los 10 días hábiles de notificado."
             },
             {
               "type": "tip",
-              "text": "Desde el panel de bienvenida del RUPC también podés hacer una Actualización o Modificación de Datos, ver tu Legajo Digital, imprimir la Constancia de Inscripción y consultar el Estado del Trámite."
+              "text": "El Libre Deuda de la Ley 17.250 se saca con Clave Fiscal en ARCA, incorporando el servicio \"AFIP DDJJ 17.250 – Formulario 522 A\"."
+            },
+            {
+              "type": "tip",
+              "text": "Si ya estabas inscripto antes de la Circular UG TIMBÓ 2/2026: cuando venza tu inscripción, hacé por única vez el trámite de Actualización, y gestioná tu domicilio digital desde la ID Ciudadana."
+            },
+            {
+              "type": "tip",
+              "text": "Preguntas frecuentes oficiales del RUPC: www.santafe.gov.ar/proveedores/site/index.php?a=ayuda.faq"
             }
           ],
           "quiz": [
             {
               "type": "multiple-choice",
-              "question": "¿Qué necesitás en ARCA (ex AFIP) para inscribirte en el RUPC?",
+              "question": "¿Qué necesitás en ARCA para entrar al sistema del RUPC?",
               "options": [
-                "Clave Fiscal nivel 3 con el servicio API_ECON SANTA FE dado de alta",
+                "Clave Fiscal nivel 3 con el servicio \"ECON SANTA FE – Registro Único de Proveedores y Contratistas\"",
                 "Solo tu CUIT, sin Clave Fiscal",
                 "Una Clave Fiscal nivel 1"
               ],
               "correctIndex": 0,
-              "explanation": "Sin ese servicio incorporado a tu Clave Fiscal nivel 3, el acceso con Clave Fiscal no te deja entrar."
+              "explanation": "Es lo que piden las preguntas frecuentes del RUPC y la Res. SCyGB 110/2026 (anexo V)."
             }
           ]
         },
@@ -120,14 +128,14 @@
             {
               "type": "prereq",
               "items": [
-                "ID Ciudadana en nivel 2 — se crea en www.santafe.gob.ar/portalciudadano (\"Crear cuenta\")",
-                "Domicilio digital — se adhiere desde Atención Virtual (atencionvirtual.santafe.gob.ar)",
+                "ID Ciudadana: se crea en www.santafe.gob.ar/portalciudadano, con \"Crear cuenta\".",
+                "Domicilio digital: se adhiere desde Atención Virtual (atencionvirtual.santafe.gob.ar).",
                 "Inscripción en el RUPC (Registro Único de Proveedores y Contratistas), con los datos de contacto y la situación jurídica al día."
               ]
             },
             {
               "type": "tip",
-              "text": "El nivel 2 de la ID Ciudadana se consigue subiendo una foto del DNI, o validándote con ARCA o con la app Mi Argentina. Para inscribirte en el RUPC piden nivel 3, validado con ARCA (Circular UG TIMBÓ 2/2026). Hacelo con tiempo."
+              "text": "La ID Ciudadana se crea de tres formas: con ARCA, con Mi Argentina o con el DNI (fotos de frente y dorso). Para inscribirte en el RUPC tiene que ser nivel 3, validada con ARCA (Circular UG TIMBÓ 2/2026)."
             },
             {
               "type": "warning",
@@ -135,14 +143,14 @@
             },
             {
               "type": "warning",
-              "text": "Santa Fe todavía no tiene identificación digital para personas jurídicas ni UTE. Por eso, quien presenta la oferta es siempre una persona física, que después tiene que acreditar que tiene facultades para representar al proveedor: ser parte del directorio, o tener un poder especial con facultades suficientes. Esa acreditación se adjunta en el formulario de \"Requisitos mínimos\" al ofertar."
+              "text": "La Provincia todavía no tiene identificación digital para personas jurídicas ni UTE. Por eso, quien presenta la oferta es siempre una persona física, que tiene que acreditar facultades suficientes para representar al proveedor: ser miembro del directorio o tener un poder con facultades suficientes."
             },
             {
               "type": "concepts",
               "items": [
                 {
                   "term": "Domicilio digital",
-                  "def": "Tiene la misma validez legal que tu domicilio físico: ahí te llegan todas las notificaciones oficiales del proceso (circulares, invitaciones, aperturas). Además te avisan por mail de cortesía, pero lo que vale legalmente es lo que esté en el domicilio digital."
+                  "def": "Tiene la misma validez legal que el domicilio físico: ahí llega la notificación fehaciente. Además te avisan con un mail de cortesía."
                 }
               ]
             },
@@ -151,7 +159,7 @@
               "items": [
                 {
                   "term": "Invitaciones",
-                  "def": "TIMBÓ invita por correo a los proveedores de la nómina y a los inscriptos en el RUPC en el rubro del proceso."
+                  "def": "TIMBÓ manda la invitación a los proveedores de la nómina del proceso y a los inscriptos en el RUPC en el rubro y subrubro del proceso."
                 },
                 {
                   "term": "Concordancia del objeto",
@@ -217,7 +225,7 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Buscá el proceso en el portal de compras (santafe.gov.ar/gestionesdecompras) y tocá \"Ofertar\", o entrá directo a gestionvirtual.santafe.gob.ar. Vas a ingresar con tu ID Ciudadana."
+              "text": "Entrá a santafe.gov.ar/ms/compras y tocá \"Ofertar\", o entrá directo a gestionvirtual.santafe.gob.ar. Vas a ingresar con tu ID Ciudadana."
             },
             {
               "type": "tip",
@@ -239,7 +247,7 @@
             {
               "type": "step",
               "number": 3,
-              "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\". Ojo: esto es solo tu intención de participar (como antes, comprar el pliego). Todavía no ofertaste.",
+              "explanation": "Listo: tu formulario de oferta aparece en la bandeja \"Mis ofertas\", pestaña \"Asignados\". Todavía no ofertaste: falta completar y presentar la oferta.",
               "lookFor": "Desde los tres puntitos de esa fila podés completar la oferta, hacer consultas, ver el flujo del proceso y el historial."
             },
             {
@@ -295,7 +303,7 @@
             },
             {
               "type": "tip",
-              "text": "Si el pliego lo permite, podés cotizar en dólares además de pesos, ofertar cantidad parcial (menos de lo solicitado) y sumar una oferta alternativa al mismo renglón con \"Editar\" → \"Añadir alternativa\"."
+              "text": "Si el pliego lo permite, podés cotizar en una moneda distinta del peso, ofertar una cantidad parcial y sumar una oferta alternativa al mismo renglón con \"Editar\" → \"Añadir alternativa\"."
             },
             {
               "type": "step",
@@ -305,11 +313,11 @@
             },
             {
               "type": "tip",
-              "text": "Los adjuntos tienen que ser PDF (no se aceptan ZIP ni imágenes JPG). No hace falta que estén firmados digitalmente: alcanza con el escaneo, porque la firma de tu oferta completa valida toda la documentación."
+              "text": "Los adjuntos tienen que ser PDF: no se aceptan ZIP ni imágenes (JPG). Toda la documentación queda validada con la firma de tu ID Ciudadana cuando presentás la oferta."
             },
             {
               "type": "tip",
-              "text": "Si el documento que piden ya está vigente en el Registro Único de Proveedores y Contratistas, podés marcar esa opción en vez de adjuntarlo — la Comisión Evaluadora lo verifica directo en el registro. Ojo: si en realidad no está vigente ahí, te lo van a pedir como subsanación."
+              "text": "Si un documento que piden ya está vigente en el Registro Único de Proveedores y Contratistas, podés indicarlo como vigente en vez de adjuntarlo: el evaluador lo controla en el registro. Si ahí no está, te lo van a pedir como subsanación."
             },
             {
               "type": "step",
@@ -323,26 +331,22 @@
             },
             {
               "type": "warning",
-              "text": "Podés editar la oferta hasta un segundo antes de la apertura, pero al editarla deja de estar presentada: tenés que volver a enviar los dos formularios y tocar \"Presentar\" otra vez. Si no, no se abre."
+              "text": "Una vez presentada, podés editar cualquier dato de la oferta hasta la fecha y hora de la apertura automática."
             },
             {
               "type": "concepts",
               "items": [
                 {
-                  "term": "Adjuntos",
-                  "def": "Solo PDF: no se aceptan ZIP ni imágenes (JPG). Puede ser documentación escaneada: la oferta la firmás vos con tu ID Ciudadana."
-                },
-                {
                   "term": "Documentación vigente en el RUPC",
-                  "def": "Si un requisito ya está vigente en el registro, marcalo así y la comisión lo verifica ahí, sin que tengas que adjuntarlo."
+                  "def": "Si un requisito ya está vigente en el registro, indicalo así y el evaluador lo controla ahí."
                 },
                 {
                   "term": "Alternativas y cotización parcial",
-                  "def": "Si el pliego lo permite, en el renglón tocá \"Añadir alternativa\" o cotizá una cantidad menor."
+                  "def": "Si el pliego lo permite, en el renglón tocá \"Editar\" → \"Añadir alternativa\", o cotizá una cantidad menor a la pedida."
                 },
                 {
                   "term": "Anexos adicionales",
-                  "def": "Al final de \"Requisitos mínimos\" podés sumar documentos de más (por ejemplo, certificados de varias personas)."
+                  "def": "Al final de \"Requisitos mínimos\" podés sumar un anexo adicional con información que consideres relevante."
                 }
               ]
             },
@@ -350,10 +354,6 @@
               "type": "pdf",
               "file": "como-completar-formulario.pdf",
               "title": "Cómo completar y presentar la oferta"
-            },
-            {
-              "type": "warning",
-              "text": "Al editar una oferta presentada, no perdés lo que ya cargaste, pero el formulario vuelve a estado \"Completar\". Tenés que volver a enviar los dos formularios y presentarla de nuevo antes de la apertura — si se te pasa la fecha y quedó en \"Completar\", se descarta automáticamente y no participa."
             },
             {
               "type": "video",
@@ -407,9 +407,9 @@
             {
               "type": "prereq",
               "items": [
-                "Estar participando del proceso.",
-                "Que tu formulario de oferta esté en estado \"Completar formulario\".",
-                "Estar dentro de las fechas de consulta del proceso."
+                "Haber participado del proceso.",
+                "Que tu formulario de oferta esté como mínimo en estado \"Completar formulario\".",
+                "Estar dentro del período de consultas: las fechas de inicio y fin aparecen en el formulario."
               ]
             },
             {
@@ -429,11 +429,11 @@
               "items": [
                 {
                   "term": "Circular aclaratoria",
-                  "def": "Responde una consulta o aclara el pliego. El proceso sigue igual."
+                  "def": "Por ella llega la respuesta a una consulta. La ves en la pestaña \"Asignados\"."
                 },
                 {
                   "term": "Circular modificatoria",
-                  "def": "Cambia el pliego. Suspende el proceso automáticamente hasta que se publique el pliego nuevo."
+                  "def": "Altera las condiciones originales del llamado y suspende el proceso automáticamente."
                 }
               ]
             },
@@ -475,7 +475,7 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Después de la apertura, Compras puede pedirte tres cosas. Las tres se responden igual: \"Mis ofertas\" → pestaña \"Asignados\" → ⋮ → \"Acciones\"."
+              "text": "Durante la evaluación, el evaluador puede pedirte tres cosas. Las tres se responden igual: \"Mis ofertas\" → pestaña \"Asignados\" → ⋮ → \"Acciones\"."
             },
             {
               "type": "diagram",
@@ -507,7 +507,7 @@
             },
             {
               "type": "warning",
-              "text": "Cada pedido trae fecha y hora límite. Pasado ese momento ya no se puede responder."
+              "text": "Cada pedido trae fecha y hora límite. Si vence sin respuesta, el trámite pasa a \"descartado\"."
             },
             {
               "type": "tip",
@@ -576,7 +576,7 @@
             },
             {
               "type": "tip",
-              "text": "Después de la apertura, durante la ventana de vista e impugnación (2 días hábiles administrativos desde la apertura, según el Pliego Único, punto 4.3), en \"Acciones\" podés ver el acta de apertura y descargar las ofertas de los demás para analizarlas."
+              "text": "Después de la apertura, la oferta pasa a \"Espera de evaluación\" y podés ver el acta de apertura y las ofertas de los demás para analizarlas. La vista y la impugnación de las ofertas son durante los 2 días hábiles administrativos siguientes a la apertura (Pliego Único, punto 4.3)."
             },
             {
               "type": "tip",
@@ -584,7 +584,7 @@
             },
             {
               "type": "text",
-              "text": "Las impugnaciones las resuelve la autoridad que aprueba la contratación, junto con la adjudicación."
+              "text": "Las impugnaciones las resuelve la autoridad competente, al momento de la adjudicación."
             },
             {
               "type": "pdf",
@@ -642,7 +642,7 @@
             {
               "type": "step",
               "number": 1,
-              "explanation": "Entrá a gestivirtual.gov.ar con tu ID Ciudadana.",
+              "explanation": "Entrá a gestionvirtual.santafe.gob.ar con tu ID Ciudadana.",
               "doThis": "Andá a la pestaña \"Proveedor\" → \"Participar de un proceso\" para ver los procesos de compra activos."
             },
             {
@@ -693,10 +693,6 @@
               "text": "Si tu lector de PDF no está actualizado, puede que no te deje abrir los documentos embebidos."
             },
             {
-              "type": "tip",
-              "text": "Los anexos que subís en tu oferta solo pueden ser PDF (no se aceptan ZIP ni imágenes), y entre todos no pueden superar los 45 MB por oferta."
-            },
-            {
               "type": "video",
               "url": "https://youtu.be/tSYfZ3yVE58",
               "title": "¿Cómo ver un documento embebido?",
@@ -720,7 +716,7 @@
               "type": "true-false",
               "question": "Puedo adjuntar los anexos de mi oferta en formato ZIP si tengo varios archivos.",
               "answer": false,
-              "explanation": "Solo se aceptan archivos PDF, ni ZIP ni imágenes."
+              "explanation": "Solo se aceptan PDF: ni ZIP ni imágenes (capacitación oficial para proveedores)."
             }
           ]
         }
@@ -2766,7 +2762,7 @@
     },
     {
       "termino": "ID Ciudadana",
-      "definicion": "Tu cuenta personal para entrar a los servicios digitales de la Provincia. Para ofertar en TIMBÓ Compras necesitás tenerla en nivel 2 (validada con foto de DNI, ARCA o la app Mi Argentina).",
+      "definicion": "Tu cuenta personal para entrar a los servicios digitales de la Provincia. Se crea con ARCA, con Mi Argentina o con el DNI. Para inscribirte en el RUPC tiene que ser nivel 3, validada con ARCA.",
       "modulo": "Primeros pasos"
     },
     {
@@ -2976,7 +2972,7 @@
       "slug": "cambiar-oferta-presentada",
       "situacion": "Ya presenté la oferta y me equivoqué en un dato",
       "descripcion": "Querés corregir un precio o un adjunto de una oferta ya presentada.",
-      "solucion": "Podés editarla hasta un segundo antes de la apertura, pero después de editar tenés que volver a enviar los dos formularios y tocar \"Presentar\" otra vez. Después de la apertura, solo se corrige si Compras te pide una subsanación.",
+      "solucion": "Una vez presentada, podés editar cualquier dato hasta la fecha y hora de la apertura automática. Después de la apertura, solo se corrige si el evaluador te pide una subsanación.",
       "categoria_libre": "Ofertas",
       "tutorial_categoria_slug": "ofertar",
       "tutorial_slug": "completar-y-presentar",
@@ -3020,7 +3016,7 @@
       "situacion": "Voy a ofertar en nombre de una empresa, no como persona física",
       "descripcion": "Sos apoderado, director o representante de una SA, SRL o UTE y querés presentar una oferta.",
       "causa": "Santa Fe todavía no tiene identificación digital para personas jurídicas ni UTE.",
-      "solucion": "Creá tu ID Ciudadana como persona física (nivel 2) y presentá la oferta vos. En \"Requisitos mínimos\" vas a tener que adjuntar la acreditación de tus facultades: contrato social si sos parte del directorio, o un poder especial con facultades suficientes.",
+      "solucion": "La oferta la presenta una persona física con su ID Ciudadana, que tiene que acreditar facultades suficientes para representar a la empresa: ser miembro del directorio o tener un poder con facultades suficientes.",
       "categoria_libre": "Primeros pasos",
       "tutorial_categoria_slug": "primeros-pasos",
       "tutorial_slug": "requisitos",
