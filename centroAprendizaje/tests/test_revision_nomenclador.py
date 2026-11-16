@@ -150,7 +150,7 @@ def test_panel_ve_observaciones_filtros_y_crea_accesos(app, nomenclador, admin_c
 
 def test_nomenclador_publico_con_colores_y_leyenda(app, nomenclador):
     html = app.test_client().get("/temas/timbo-compras/equivalencias").get_data(as_text=True)
-    for texto in ("est-leyenda", "estado-verde", "estado-amarillo", "estado-rojo", "equiv-estado", "num-sinmatch"):
+    for texto in ("est-leyenda", "estado-verde", "estado-amarillo", "estado-rojo", "🔴 Hay que pedir que se agreguen"):
         assert texto in html, texto
 
 
