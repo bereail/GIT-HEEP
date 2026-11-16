@@ -72,10 +72,12 @@ def glosario(terminos_del_portal=()):
         if clave in vistos:
             continue
         vistos.add(clave)
+        del_manual = t.get("tema") == "miHospital"  # el manual de miHospital es fuente oficial
         terminos.append({
             "termino": t["termino"], "categoria": t.get("tema") or "Del portal (sin revisar)", "sencilla": t["definicion"],
-            "tecnica": "", "ejemplo": "", "modulo": t["modulo"], "estado": "pendiente", "fuentes": [],
-            "nota": "Del glosario del tema. Todavía no tiene la fuente oficial revisada.",
+            "tecnica": "", "ejemplo": "", "modulo": t["modulo"], "estado": "confirmado" if del_manual else "pendiente",
+            "fuentes": [],
+            "nota": "Del manual de miHospital." if del_manual else "Del glosario del tema. Todavía no tiene la fuente oficial revisada.",
         })
     terminos.sort(key=lambda t: _clave_orden(t["termino"]))
     for t in terminos:
@@ -111,7 +113,46 @@ def revisado_al():
 
 
 # Ocultos por ahora en el sitio público (pedido del 16/11/2026); en /admin siguen.
-OCULTOS_PUBLICO = frozenset({"simulador", "checklists"})
+OCULTOS_PUBLICO = frozenset({"simulador", "checklists", "modelos"})
+
+# En el sitio público solo va lo verificado contra documentación oficial
+# (regla de la usuaria, 16/11/2026). Una discrepancia se muestra porque las
+# dos fuentes son oficiales; lo pendiente, didáctico o "de práctica" queda en /admin.
+ESTADOS_PUBLICOS = frozenset({"confirmado", "discrepancia"})
+
+
+def es_publico(estado):
+    return estado is None or estado in ESTADOS_PUBLICOS
+
+
+def glosario_publico(datos):
+    """El diccionario sin términos no verificados ni ejemplos didácticos."""
+    terminos = [{k: v for k, v in t.items() if k != "ejemplo"} for t in datos["terminos"] if es_publico(t.get("estado"))]
+    usadas = {t["categoria"] for t in terminos}
+    return {"terminos": terminos, "categorias": [c for c in datos["categorias"] if c in usadas]}
+
+
+def algoritmo_publico():
+    """El algoritmo sin las etapas pendientes ni los ejemplos didácticos."""
+    import copy
+
+    datos = copy.deepcopy(algoritmo())
+    fuera = {i for i, n in datos["nodos"].items() if not es_publico(n.get("estado"))}
+    for i in fuera:
+        del datos["nodos"][i]
+    for n in datos["nodos"].values():
+        n.pop("opciones_ejemplo", None)
+        if "pasos" in n:
+            n["pasos"] = [p for p in n["pasos"] if p not in fuera]
+        if "opciones" in n:
+            n["opciones"] = [o for o in n["opciones"] if o.get("va") not in fuera]
+        if "ficha" in n:
+            n["ficha"]["fuentes"] = [f for f in n["ficha"].get("fuentes", []) if f.get("tipo") != "ejemplo"]
+    for r in datos["ramas"]:
+        if "nodos" in r:
+            r["nodos"] = [x for x in r["nodos"] if x not in fuera]
+    datos["ejemplos"] = {}
+    return datos
 
 HERRAMIENTAS = {
     "montos": ("montos", "💲", "Montos y topes 2026"),
@@ -158,7 +199,7 @@ def indice_busqueda():
     for p in capacitacion()["explicame"]:
         indice.append(entrada("Pregunta", p["q"], p["a"], url_for("ui.recursos_explicame", etapa=p["nodo"]),
                               f"{p['q']} {p['palabras']}", 2.5))
-    for t in glosario()["terminos"]:
+    for t in glosario_publico(glosario())["terminos"]:
         indice.append(entrada("Diccionario", t["termino"], t["sencilla"], url_for("ui.recursos_glosario", q=t["termino"]),
                               f"{t['termino']} {t['sencilla']}", 1.5))
     for d in biblioteca()["documentos"]:

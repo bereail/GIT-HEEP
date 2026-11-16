@@ -5,7 +5,7 @@
 {% block contenido %}
 {{ subnav('inicio') }}
 <h1 style="margin:8px 0 4px">Recursos de consulta</h1>
-<p class="text-muted" style="margin:0 0 18px">Roles y alcances, glosario de todos los temas, nomenclador de artículos y normativa oficial, con el estado de verificación de cada dato. Consultado el {{ biblioteca.consultado }}.</p>
+<p class="text-muted" style="margin:0 0 18px">Roles y alcances, glosario de todos los temas, nomenclador de artículos y normativa oficial, con la fuente oficial de cada dato. Consultado el {{ biblioteca.consultado }}.</p>
 
 {{ cinco_roles(roles) }}
 
@@ -41,11 +41,12 @@
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='montos') }}"><span class="home-card__icon">💲</span><div class="home-card__title">Montos y topes 2026</div><div class="home-card__desc">Qué procedimiento va según el monto y quién aprueba, según la Circular SCyGB 01/2026.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}"><span class="home-card__icon">🗓️</span><div class="home-card__title">Calendario de plazos</div><div class="home-card__desc">Cuántos días tiene cada etapa: aviso, apertura, impugnación, cierre.</div></a>
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}"><span class="home-card__icon">🧭</span><div class="home-card__title">¿A quién le pregunto?</div><div class="home-card__desc">Según el problema: mesa de ayuda, iTop, administrador local, RUPC, Farmacia.</div></a>
-  <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}"><span class="home-card__icon">✉️</span><div class="home-card__title">Modelos de mensajes</div><div class="home-card__desc">Plantillas para copiar: consulta, reporte de error, pedido de rol.</div></a>
+  {% if prefijo == 'admin.' or 'modelos' not in ocultos %}<a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}"><span class="home-card__icon">✉️</span><div class="home-card__title">Modelos de mensajes</div><div class="home-card__desc">Plantillas para copiar: consulta, reporte de error, pedido de rol.</div></a>{% endif %}
   {% if prefijo == 'admin.' or 'checklists' not in ocultos %}<a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}"><span class="home-card__icon">✅</span><div class="home-card__title">Checklists</div><div class="home-card__desc">Antes del pliego, de publicar, de la apertura, de preadjudicar y después de adjudicar.</div></a>{% endif %}
   <a class="card card-link" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}"><span class="home-card__icon">🚦</span><div class="home-card__title">Estados del proceso</div><div class="home-card__desc">Qué significa cada estado que aparece en TIMBÓ Compras.</div></a>
 </div>
 
+{% if prefijo == 'admin.' %}
 <h2 class="section__title">Cómo leer los estados</h2>
 {{ leyenda() }}
 
@@ -54,6 +55,7 @@
   {% for p in roles.pendientes %}<li>⏳ {{ p }}</li>{% endfor %}
   {% for d in biblioteca.discrepancias %}<li>⚠️ <b>{{ d.tema }}:</b> {{ d.detalle }}</li>{% endfor %}
 </ul>
+{% endif %}
 {% endblock %}
 
 {% block script_pagina %}{% if prefijo == 'ui.' %}<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>{% endif %}{% endblock %}

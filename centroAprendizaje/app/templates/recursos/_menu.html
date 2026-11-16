@@ -4,7 +4,7 @@
   <button type="button" class="rec-menu__boton" aria-haspopup="true">📚 <span class="rec-menu__texto">Recursos</span> <span aria-hidden="true">▾</span></button>
   <div class="rec-menu__panel">
     <a class="rec-menu__item" href="{{ url_for('ui.recursos_roles') }}"><span class="rec-menu__icono">🔐</span><span><b>Roles y alcances</b><small>Quién hace qué en TIMBÓ Compras y quién autoriza</small></span></a>
-    <a class="rec-menu__item" href="{{ url_for('ui.recursos_glosario') }}"><span class="rec-menu__icono">📖</span><span><b>Diccionario de Compras Públicas</b><small>Cada término con ejemplo, etapa y fuente</small></span></a>
+    <a class="rec-menu__item" href="{{ url_for('ui.recursos_glosario') }}"><span class="rec-menu__icono">📖</span><span><b>Diccionario de Compras Públicas</b><small>Cada término en simple, con su fuente</small></span></a>
     <a class="rec-menu__item" href="{{ url_for('ui.ver_equivalencias', tema_slug='timbo-compras') }}"><span class="rec-menu__icono">🔄</span><span><b>Nomenclador de artículos</b><small>Qué código usar en TIMBÓ para cada artículo</small></span></a>
     <a class="rec-menu__item" href="{{ url_for('ui.recursos_biblioteca') }}"><span class="rec-menu__icono">🗂️</span><span><b>Normativa y fuentes</b><small>Circulares, resoluciones y guías oficiales</small></span></a>
     <a class="rec-menu__item" href="{{ url_for('ui.recursos_aprender') }}"><span class="rec-menu__icono">👥</span><span><b>Aprendé desde cero</b><small>Conceptos y el camino de una compra</small></span></a>
@@ -17,7 +17,7 @@
       <a href="{{ url_for('ui.recursos_herramienta', clave='montos') }}">💲 Montos y topes 2026</a>
       <a href="{{ url_for('ui.recursos_herramienta', clave='plazos') }}">🗓️ Plazos</a>
       <a href="{{ url_for('ui.recursos_herramienta', clave='a-quien-preguntar') }}">🧭 ¿A quién le pregunto?</a>
-      <a href="{{ url_for('ui.recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>
+      {% if 'modelos' not in ocultos %}<a href="{{ url_for('ui.recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>{% endif %}
       {% if 'checklists' not in ocultos %}<a href="{{ url_for('ui.recursos_herramienta', clave='checklists') }}">✅ Checklists</a>{% endif %}
       <a href="{{ url_for('ui.recursos_herramienta', clave='estados') }}">🚦 Estados</a>
     </div>

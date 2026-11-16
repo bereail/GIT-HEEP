@@ -549,14 +549,14 @@ def _contexto_recursos():
 @ui_bp.app_context_processor
 def _recursos_ocultos():
     # Los menús del sitio no muestran lo que está oculto; en /admin se ve todo.
-    return {"ocultos": recursos.OCULTOS_PUBLICO, "revisado_al": recursos.revisado_al()}
+    return {"ocultos": recursos.OCULTOS_PUBLICO, "revisado_al": recursos.revisado_al(), "oficial": recursos.es_publico}
 
 
 @ui_bp.route("/recursos")
 def recursos_inicio():
     return render_template(
         "recursos/inicio.html", roles=recursos.roles(), biblioteca=recursos.biblioteca(), circuito=recursos.circuito(),
-        glosario=recursos.glosario_completo(), **_contexto_recursos(),
+        glosario=recursos.glosario_publico(recursos.glosario_completo()), **_contexto_recursos(),
     )
 
 
@@ -564,7 +564,7 @@ def recursos_inicio():
 def recursos_roles():
     return render_template(
         "recursos/roles.html", roles=recursos.roles(), circuito=recursos.circuito(),
-        glosario=recursos.glosario_completo(), **_contexto_recursos(),
+        glosario=recursos.glosario_publico(recursos.glosario_completo()), **_contexto_recursos(),
     )
 
 
@@ -576,13 +576,13 @@ def recursos_ficha_roles():
 
 @ui_bp.route("/recursos/glosario")
 def recursos_glosario():
-    return render_template("recursos/glosario.html", glosario=recursos.glosario_completo(), **_contexto_recursos())
+    return render_template("recursos/glosario.html", glosario=recursos.glosario_publico(recursos.glosario_completo()), **_contexto_recursos())
 
 
 @ui_bp.route("/recursos/biblioteca")
 def recursos_biblioteca():
     return render_template(
-        "recursos/biblioteca.html", biblioteca=recursos.biblioteca(), glosario=recursos.glosario_completo(),
+        "recursos/biblioteca.html", biblioteca=recursos.biblioteca(), glosario=recursos.glosario_publico(recursos.glosario_completo()),
         **_contexto_recursos(),
     )
 
@@ -604,20 +604,20 @@ def recursos_simulador():
 @ui_bp.route("/recursos/algoritmo")
 def recursos_algoritmo():
     return render_template(
-        "recursos/algoritmo.html", algoritmo=recursos.algoritmo(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
+        "recursos/algoritmo.html", algoritmo=recursos.algoritmo_publico(), docs_min=recursos.docs_minimos(), **_contexto_recursos(),
     )
 
 
 @ui_bp.route("/recursos/explicame")
 def recursos_explicame():
-    alg = recursos.algoritmo()
+    alg = recursos.algoritmo_publico()
     nodo_id = request.args.get("etapa")
     if nodo_id not in alg["nodos"]:
         nodo_id = "c-pliego"
     nodos = [(i, n) for i, n in alg["nodos"].items() if n["tipo"] != "decision" or i == nodo_id]
     return render_template(
         "recursos/explicame.html", algoritmo=alg, nodos=nodos, nodo_id=nodo_id,
-        preguntas=recursos.capacitacion()["explicame"], ejemplo=alg["ejemplos"]["insumos"]["texto"], **_contexto_recursos(),
+        preguntas=recursos.capacitacion()["explicame"], ejemplo=None, **_contexto_recursos(),
     )
 
 

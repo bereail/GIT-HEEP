@@ -17,7 +17,7 @@
     <div class="card rol-tarjeta">
       <div class="rol-tarjeta__head"><span class="rol-tarjeta__icono">{{ r.icono }}</span><b>{{ r.nombre }}</b></div>
       <p>{{ r.resumen }}</p>
-      <p class="rol-tarjeta__no">🚫 {{ r.limitaciones.texto.split('. ')[0] | trim('.') }}.</p>
+      {% if oficial(r.limitaciones.estado) %}<p class="rol-tarjeta__no">🚫 {{ r.limitaciones.texto.split('. ')[0] | trim('.') }}.</p>{% endif %}
     </div>
     {% endfor %}
   </div>
@@ -31,7 +31,7 @@
     <table class="data-table rec-tabla mat-tabla">
       <thead><tr><th>Etapa</th>{% for c in roles.matriz.columnas %}<th>{{ c }}</th>{% endfor %}</tr></thead>
       <tbody>
-        {% for f in roles.matriz.filas %}
+        {% for f in roles.matriz.filas if oficial(f.estado) %}
         <tr><td><b>{{ f.etapa }}</b>{% if f.estado != 'confirmado' %}<br>{{ estado(f.estado) }}{% endif %}</td>{% for c in f.celdas %}<td>{{ '' if c == '—' else c }}</td>{% endfor %}</tr>
         {% endfor %}
       </tbody>
@@ -44,7 +44,7 @@
 <section class="rec-bloque">
   <h2 class="section__title">¿Cómo consigo un usuario o un rol?</h2>
   <ol class="rol-pasos">
-    {% for p in circuito.permisos %}
+    {% for p in circuito.permisos if oficial('pendiente' if p.pendiente else 'confirmado') %}
     <li class="{{ 'rol-pasos--pendiente' if p.pendiente }}"><b>{{ p.paso }}:</b> {{ p.quien }}{% if p.como and not p.pendiente %} <span class="text-muted">({{ p.como }})</span>{% endif %}{% if p.pendiente %} {{ estado('pendiente') }}{% endif %}</li>
     {% endfor %}
   </ol>
@@ -53,7 +53,7 @@
 
 {# ---------------------------------------------------------- detalle #}
 <details class="rol-mas">
-  <summary>Ver más: fichas completas, otras áreas, circuito y pendientes <span aria-hidden="true">▾</span></summary>
+  <summary>Ver más: fichas completas, otras áreas y circuito <span aria-hidden="true">▾</span></summary>
 
   {% set campos = [
     ('significa', 'Qué significa'), ('funciones', 'Funciones y operaciones'), ('modulos', 'Módulos y acceso'),
@@ -68,7 +68,7 @@
     <details class="card rec-rol" id="rol-{{ r.slug }}">
       <summary class="rec-rol__head"><span class="rec-rol__icono">{{ r.icono }}</span><span><b>{{ r.nombre }}</b><span class="rec-rol__sistema">{{ r.sistema }}</span></span></summary>
       <dl class="rec-rol__campos">
-        {% for clave, etiqueta in campos %}{% set c = r[clave] %}
+        {% for clave, etiqueta in campos if oficial(r[clave].estado) %}{% set c = r[clave] %}
         <dt>{{ etiqueta }} {{ estado(c.estado) }}</dt>
         <dd>
           {% if 'items' in c %}<ul>{% for i in c['items'] %}<li>{{ i }}</li>{% endfor %}</ul>{% else %}{{ c.texto }}{% endif %}
@@ -85,7 +85,7 @@
     <h2 class="section__title">{{ circuito.titulo }}</h2>
     <p class="text-muted" style="margin-top:0">{{ circuito.bajada }}</p>
     <ol class="rec-circuito">
-      {% for e in circuito.etapas %}
+      {% for e in circuito.etapas if oficial(e.estado) %}
       <li class="rec-etapa rec-etapa--{{ e.sistema }} {{ 'rec-etapa--pendiente' if e.estado == 'pendiente' }}">
         <details>
           <summary>
@@ -101,10 +101,10 @@
     </ol>
   </section>
 
-  <section class="rec-bloque">
+  {% if prefijo == 'admin.' %}<section class="rec-bloque">
     <h2 class="section__title">Pendiente de confirmar</h2>
     <ul class="rec-lista">{% for p in roles.pendientes %}<li>⏳ {{ p }}</li>{% endfor %}</ul>
-  </section>
+  </section>{% endif %}
 </details>
 {{ datos_glosario(glosario) }}
 {% endblock %}

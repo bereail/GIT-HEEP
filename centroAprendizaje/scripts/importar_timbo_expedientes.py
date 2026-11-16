@@ -101,6 +101,8 @@ def importar(ruta_json=RUTA_JSON, orden_tema=1):
 
     situacion_id_por_slug = {}
     for orden, situacion_datos in enumerate(datos.get("situaciones", [])):
+        if situacion_datos.get("verificado") is False:
+            continue  # sin confirmar con una fuente oficial: no se publica
         clave = (situacion_datos.get("tutorial_categoria_slug"), situacion_datos.get("tutorial_slug"))
         tutorial_id = tutorial_id_por_clave.get(clave) if clave[0] else None
         fila = Situacion(

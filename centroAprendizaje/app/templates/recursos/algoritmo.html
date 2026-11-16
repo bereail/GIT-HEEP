@@ -23,7 +23,7 @@
       <button type="button" class="btn btn--ghost btn--sm" id="alg-atras">← Atrás</button>
       <button type="button" class="btn btn--ghost btn--sm" id="alg-reiniciar">↺ Reiniciar</button>
       <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_biblioteca') }}#cat-procedimientos">⚖️ Consultar normativa</a>
-      <button type="button" class="btn btn--ghost btn--sm" id="alg-ver-ejemplo">🏥 Ver ejemplo hospitalario</button>
+      {% if algoritmo.ejemplos %}<button type="button" class="btn btn--ghost btn--sm" id="alg-ver-ejemplo">🏥 Ver ejemplo hospitalario</button>{% endif %}
       <button type="button" class="btn btn--ghost btn--sm" id="alg-imprimir">🖨️ Imprimir</button>
     </div>
   </header>
@@ -34,7 +34,7 @@
     <span class="alg-chip alg-sis--decision">◆ Decisión o control</span>
     <span class="alg-chip alg-sis--externo">↗ Externo o complementario</span>
     <span class="alg-chip alg-sis--organismo">🏛️ Otro organismo</span>
-    <span class="alg-chip alg-nodo--pendiente">⏳ Línea punteada: pendiente de confirmar</span>
+    {% if prefijo == 'admin.' %}<span class="alg-chip alg-nodo--pendiente">⏳ Línea punteada: pendiente de confirmar</span>{% endif %}
   </div>
 
   <div class="callout callout--tip alg-banner" id="alg-ejemplo" hidden></div>

@@ -290,6 +290,8 @@ def _cargar_situaciones(tema_slug, situaciones_datos):
     siguiente_orden = max([s.orden for s in tema.situaciones], default=-1) + 1
     cargadas = 0
     for datos in situaciones_datos:
+        if datos.get("verificado") is False:
+            continue  # sin confirmar con una fuente oficial: no se publica
         existente = Situacion.query.filter_by(tema_id=tema.id, slug=datos["slug"]).first()
         if existente:
             db.session.delete(existente)

@@ -900,7 +900,7 @@ def imagen_eliminar(tema_slug, nombre):
 
 def _contexto_recursos():
     return {"estados": recursos.ESTADOS, "docs": recursos.documentos_por_id(),
-            "layout": "admin/base_admin.html", "prefijo": "admin.", "ocultos": frozenset(),
+            "layout": "admin/base_admin.html", "prefijo": "admin.", "ocultos": frozenset(), "oficial": lambda estado: True,
             "revisado_al": recursos.revisado_al()}
 
 

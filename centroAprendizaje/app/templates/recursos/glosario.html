@@ -5,7 +5,7 @@
 {% block contenido %}
 {{ subnav('glosario') }}
 <h1 style="margin:8px 0 4px">📖 Diccionario de Compras Públicas</h1>
-<p class="text-muted" style="margin:0 0 14px">Cada término en una frase simple. Tocá "Ver más" para la explicación técnica, un ejemplo y la fuente.</p>
+<p class="text-muted" style="margin:0 0 14px">Cada término en una frase simple. Tocá "Ver más" para la explicación técnica y la fuente.</p>
 
 <div class="dic-grupos" role="radiogroup" aria-label="Qué términos ver">
   <button type="button" class="her-proc is-active" data-grupo="compras" role="radio" aria-checked="true"><b>Compras públicas</b><small>{{ glosario.terminos | selectattr('fuentes') | list | length }} términos con fuente</small></button>

@@ -32,7 +32,7 @@
   </li>
   <li class="card apr-paso">
     <span class="apr-paso__n">4</span>
-    <div><h2>El diccionario</h2><p class="text-muted">Cada término con un ejemplo del hospital.</p>
+    <div><h2>El diccionario</h2><p class="text-muted">Cada término en una frase simple, con su fuente.</p>
       <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_glosario') }}">📖 Abrir el diccionario</a></div>
   </li>
   <li class="card apr-paso">
@@ -45,12 +45,12 @@
   </li>
   <li class="card apr-paso">
     <span class="apr-paso__n">6</span>
-    <div><h2>Para el día a día</h2><p class="text-muted">Plazos, a quién preguntar y modelos de mensajes.</p>
+    <div><h2>Para el día a día</h2><p class="text-muted">Montos, plazos y a quién preguntar.</p>
       <div class="alg-conexiones">
         {% if prefijo == 'admin.' or 'checklists' not in ocultos %}<a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}">✅ Checklists</a>{% endif %}
         <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}">🗓️ Plazos</a>
         <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}">🧭 ¿A quién le pregunto?</a>
-        <a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>
+        {% if prefijo == 'admin.' or 'modelos' not in ocultos %}<a class="btn btn--ghost btn--sm" href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}">✉️ Modelos de mensajes</a>{% endif %}
       </div></div>
   </li>
 </ol>

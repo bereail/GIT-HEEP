@@ -31,7 +31,7 @@
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='montos') }}" class="{{ 'is-active' if activo == 'montos' }}">💲 Montos 2026</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='plazos') }}" class="{{ 'is-active' if activo == 'plazos' }}">🗓️ Plazos</a>
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='a-quien-preguntar') }}" class="{{ 'is-active' if activo == 'a-quien-preguntar' }}">🧭 ¿A quién le pregunto?</a>
-  <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}" class="{{ 'is-active' if activo == 'modelos' }}">✉️ Modelos de mensajes</a>
+  {% if prefijo == 'admin.' or 'modelos' not in ocultos %}<a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='modelos') }}" class="{{ 'is-active' if activo == 'modelos' }}">✉️ Modelos de mensajes</a>{% endif %}
   {% if prefijo == 'admin.' or 'checklists' not in ocultos %}<a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='checklists') }}" class="{{ 'is-active' if activo == 'checklists' }}">✅ Checklists</a>{% endif %}
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}" class="{{ 'is-active' if activo == 'estados' }}">🚦 Estados</a>
     </div>

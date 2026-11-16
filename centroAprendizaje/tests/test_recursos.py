@@ -205,3 +205,16 @@ def test_montos_2026_iguales_a_la_circular(app):
                   "Licitación o concurso privado", "Más de $58.500.000", "Licitación o concurso público",
                   "Resolución conjunta con el Ministerio de Economía", "Decreto", "Circular-001-26.pdf"):
         assert texto in html, texto
+
+
+def test_sitio_publico_solo_muestra_lo_verificado(app):
+    # Regla de la usuaria (16/11/2026): nada sin verificar en el sitio público.
+    cliente = app.test_client()
+    for url in ("/", "/recursos", "/recursos/roles", "/recursos/roles/ficha", "/recursos/glosario", "/recursos/biblioteca",
+                "/recursos/algoritmo", "/recursos/explicame", "/recursos/aprender", "/recursos/plazos",
+                "/recursos/a-quien-preguntar", "/recursos/montos"):
+        html = cliente.get(url).get_data(as_text=True)
+        for marca in ("rec-estado--pendiente", "rec-estado--didactico", "rec-estado--practica", "EJEMPLO DIDÁCTICO",
+                      '"estado": "pendiente"', '"estado": "didactico"'):
+            assert marca not in html, (url, marca)
+    assert cliente.get("/recursos/modelos").status_code == 404

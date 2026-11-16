@@ -100,6 +100,8 @@ def importar():
 
     situacion_id_por_slug = {}
     for orden, situacion in enumerate(datos["SITUATIONS"]):
+        if situacion.get("verified") is False:
+            continue  # sin confirmar: no se publica
         va_a = situacion.get("goesTo")
         tutorial_id = tutorial_id_por_clave.get((va_a["moduleId"], va_a["lessonId"])) if va_a else None
         fila = Situacion(

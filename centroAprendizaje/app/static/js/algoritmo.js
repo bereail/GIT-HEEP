@@ -219,7 +219,8 @@
     if (completo.hidden) { if (!completo.innerHTML) renderCompleto(); completo.hidden = false; }
     window.print();
   });
-  document.getElementById('alg-ver-ejemplo').addEventListener('click', () => {
+  const verEjemplo = document.getElementById('alg-ver-ejemplo');
+  if (verEjemplo) verEjemplo.addEventListener('click', () => {
     if (!ejemplo) { ejemplo = 'insumos'; pasos = [A.inicio, N[A.inicio].siguiente]; render(); }
     banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });

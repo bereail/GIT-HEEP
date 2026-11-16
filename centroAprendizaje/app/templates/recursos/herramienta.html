@@ -9,7 +9,7 @@
 
 {% if clave == 'plazos' %}
 <ol class="her-linea">
-  {% for p in h['items'] %}
+  {% for p in h['items'] if oficial(p.estado) %}
   <li class="her-linea__item">
     <span class="her-linea__etapa">{{ p.etapa }}</span>
     <div class="card her-linea__card">
@@ -24,7 +24,7 @@
 {% elif clave == 'a-quien-preguntar' %}
 <div class="rec-filtros"><div class="input-wrap" style="flex:1;max-width:480px"><span class="input-wrap__icon">🔎</span><input class="input" id="rec-filtro" type="search" aria-label="Buscar un problema" placeholder="Escribí tu problema. Ej.: rol, artículo, no funciona..." /></div></div>
 <div class="her-grid" id="rec-terminos">
-  {% for a in h['items'] %}
+  {% for a in h['items'] if oficial(a.estado) %}
   <article class="card her-tarjeta" data-filtro="{{ (a.problema ~ ' ' ~ a.quien ~ ' ' ~ a.como) | lower }}">
     <div class="her-tarjeta__head"><span class="her-icono">{{ a.icono }}</span><h2>{{ a.problema }}</h2></div>
     <p class="her-quien">→ {{ a.quien }}</p>
