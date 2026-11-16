@@ -165,7 +165,8 @@ def construir_indice(tema):
                 "no encuentro el articulo no aparece no esta el articulo en el catalogo "
                 "como se llama como busco como pido un articulo "
                 "nombre correcto del articulo nomenclador equivalencia codigo "
-                "pedir alta de un articulo articulo nuevo falta un articulo que no esta"
+                "pedir alta de un articulo articulo nuevo falta un articulo que no esta "
+                "catalogo completo descargar el catalogo bajar el catalogo excel del catalogo"
             ),
             "peso": 4,
             "ref": tema,

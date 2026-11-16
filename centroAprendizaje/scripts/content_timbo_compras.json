@@ -2954,6 +2954,26 @@
       "termino": "Variable de adjudicación",
       "definicion": "Margen de ±20 % que se puede aplicar a la cantidad al preadjudicar un renglón.",
       "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Compre Santafesino",
+      "definicion": "Preferencia a productos y proveedores de la Provincia: el local gana si su precio no supera en más de 5% al de los no provinciales; si nadie queda favorecido, la mejor oferta local hasta 8% arriba puede mejorar su precio en 15 días (Ley 13.505, art. 5, texto de la Ley 14.295).",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Pagaré (garantía)",
+      "definicion": "Forma de dar una garantía. Para el fiel cumplimiento, hasta el 10% del tope de la licitación o concurso privado (2026: $5.850.000), salvo Convenio Marco; para el mantenimiento de oferta, sin límite (Res. SCyGB 228/2018).",
+      "modulo": "Ofertar"
+    },
+    {
+      "termino": "Jurisdicción comitente",
+      "definicion": "Rol de TIMBÓ Compras para el área que pidió la compra: puede revisar el proyecto de pliego y aprobar o rechazar sus formularios (Clase 01 de la capacitación oficial).",
+      "modulo": "Gestión interna"
+    },
+    {
+      "termino": "Una sola vez (principio)",
+      "definicion": "No se le puede pedir al proveedor o ciudadano documentación que el Estado ya tiene, como constancias del Registro de Personas Jurídicas (Ley 14.256, art. 26; Circulares UG TIMBÓ 04/2024 y 7/2025).",
+      "modulo": "Compras Directas (CD-01)"
     }
   ],
   "situaciones": [
@@ -3271,7 +3291,14 @@
         "compra directa",
         "gestion directa",
         "monto menor al tope",
-        "sin licitacion"
+        "sin licitacion",
+        "una sola vez",
+        "documentacion que no se puede pedir",
+        "constancia de subsistencia",
+        "territorio 5.0",
+        "no puedo pedirle",
+        "documentos que no puedo pedir",
+        "lo que ya tiene el estado"
       ],
       "tutorial_categoria_slug": "compras-directas",
       "tutorial_slug": "que-es-compra-directa"
@@ -3321,7 +3348,11 @@
         "tribunal",
         "tcp",
         "pliego",
-        "vincular"
+        "vincular",
+        "quien firma el decisorio",
+        "firma el decisorio",
+        "acto administrativo",
+        "resolucion que aprueba el pliego"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "circuito-decisorio"
@@ -3339,7 +3370,12 @@
         "mesa de entradas",
         "visualizacion",
         "compartir",
-        "requerimiento"
+        "requerimiento",
+        "sistema sin",
+        "cargar en el sin",
+        "usuarios del sin",
+        "alta en el sin",
+        "tribunal de cuentas"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "vista-tribunal-de-cuentas"
@@ -3360,7 +3396,10 @@
         "avisos oficiales",
         "ofertar",
         "publico",
-        "publicamos"
+        "publicamos",
+        "boletin oficial",
+        "aviso oficial",
+        "diario"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "publicar-en-portal"
@@ -3525,7 +3564,11 @@
         "multa",
         "mora",
         "fiel cumplimiento",
-        "entrega"
+        "entrega",
+        "garantia de fiel cumplimiento",
+        "pagare",
+        "contrato",
+        "orden de compra"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "despues-de-adjudicar"
@@ -3582,10 +3625,35 @@
         "fracasada",
         "licitacion fracasada",
         "licitacion desierta",
-        "quedo desierta"
+        "quedo desierta",
+        "fracasa",
+        "intervencion de la scygb",
+        "subsecretaria de contrataciones",
+        "scygb",
+        "si fracasa",
+        "fracasa un proceso",
+        "proceso fracasado",
+        "quedo fracasado"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "directa-urgencia-o-desierto"
+    },
+    {
+      "slug": "quien-asigna-roles",
+      "pregunta": "¿Quién asigna los roles de TIMBÓ Compras (Gestor, Supervisor, Evaluador)?",
+      "keywords": [
+        "roles",
+        "asigna los roles",
+        "quien asigna",
+        "permisos",
+        "administrador local",
+        "alta de usuario",
+        "usuario de timbo compras",
+        "gestor supervisor evaluador",
+        "jurisdiccion comitente"
+      ],
+      "tutorial_categoria_slug": "gestion-interna",
+      "tutorial_slug": "hacer-una-compra"
     }
   ],
   "quickstart_steps": [

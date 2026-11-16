@@ -795,3 +795,9 @@ agreguen" si es "sin_match". Probado con `curl` contra
   Peezer, manguitos neonatales, lanreotida, cotrimoxazol, ortoftalaldehído, etc.): pasaron a
   amarillo con la nota "candidato encontrado el 16/11/2026… Confirmar antes de usar". Quedan
   30 rojos. Para repetir: bajar el catálogo y cruzar los rojos por palabras y medidas.
+- Amarillos (16/11/2026): se cruzaron los 533 con el catálogo completo. En 119 había un ítem que
+  coincide en medida o dosis con el pedido (sobre todo remedios con otra dosis, tubos
+  endotraqueales, sondas, suturas y agujas): se cambió el código, siguen en amarillo con la nota
+  "actualizado el 16/11/2026…". Se revisaron a mano; los dudosos quedaron como estaban.
+- Estadísticas: desde el 16/11 no cuentan robots ni controles automáticos
+  (`estadisticas.es_automatico`). Las vistas viejas mezclan robots (≈452 de 769) con personas.
