@@ -16,7 +16,7 @@
 {% macro subnav(activo) %}
 <nav class="rec-subnav" aria-label="Secciones de Recursos">
   <a class="rec-subnav__inicio {{ 'is-active' if activo == 'inicio' }}" href="{{ url_for(prefijo ~ 'recursos_inicio') }}">📚 Recursos</a>
-  <a class="rec-subnav__inicio {{ 'is-active' if activo == 'grafico' }}" href="{{ url_for(prefijo ~ 'recursos_grafico') }}">🗺️ Gráfico de flujo</a>
+  {% if prefijo == 'admin.' %}<a class="rec-subnav__inicio {{ 'is-active' if activo == 'grafico' }}" href="{{ url_for('admin.recursos_grafico') }}">🗺️ Gráfico de flujo</a>{% endif %}
   {% if prefijo == 'admin.' %}<a class="rec-subnav__inicio {{ 'is-active' if activo == 'flujos' }}" href="{{ url_for('admin.recursos_flujos') }}">🔀 Flujos paso a paso</a>{% endif %}
   <details class="rec-subnav__mas">
     <summary>Ir a otro recurso <span aria-hidden="true">▾</span></summary>

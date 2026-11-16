@@ -11,7 +11,6 @@
     <a class="rec-menu__item" href="{{ url_for('ui.recursos_aprender') }}"><span class="rec-menu__icono">👥</span><span><b>Aprendé desde cero</b><small>Conceptos y el camino de una compra</small></span></a>
     <div class="rec-menu__grupo">Herramientas prácticas</div>
     <div class="rec-menu__chips">
-      <a href="{{ url_for('ui.recursos_grafico') }}">🗺️ Gráfico de flujo</a>
       <a href="{{ url_for('ui.recursos_algoritmo') }}">🧭 ¿Qué camino sigue?</a>
       {% if 'simulador' not in ocultos %}<a href="{{ url_for('ui.recursos_simulador') }}">🎯 Simulador</a>{% endif %}
       <a href="{{ url_for('ui.recursos_explicame') }}">💡 Explicame este paso</a>

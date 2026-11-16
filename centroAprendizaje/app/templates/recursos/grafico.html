@@ -1,34 +1,57 @@
 {% extends layout %}
 {% from "recursos/_comun.html" import subnav with context %}
-{% block titulo %}Gráfico: qué camino sigue una compra — Recursos{% endblock %}
+{% block titulo %}Gráfico de flujo — Recursos{% endblock %}
 {% block shell_clase %}admin-shell--ancho{% endblock %}
 {% block contenido %}
 {{ subnav('grafico') }}
-{% set N = algoritmo.nodos %}
-{% set RAMA = {} %}{% for r in algoritmo.ramas %}{% for x in (r.nodos or [r.nodo]) %}{% set _ = RAMA.update({x: r.letra}) %}{% endfor %}{% endfor %}
-{% set SIS = {'expediente': '📁 Expediente', 'compras': '🛒 TIMBÓ Compras', 'organismo': '🏛️ Otro organismo', 'externo': '↗ Fuera'} %}
+{% set g = grafico %}
+<div class="gfx-marco">
+<svg class="gfx" viewBox="0 0 {{ g.ancho }} {{ g.alto }}" width="{{ g.ancho }}" role="img" aria-labelledby="gfx-titulo">
+  <title id="gfx-titulo">Diagrama de flujo: qué camino sigue una compra según la causal, la modalidad y el monto</title>
+  <defs>
+    <marker id="gfx-punta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="gfx-punta"/>
+    </marker>
+  </defs>
 
-<div class="gf" role="img" aria-label="Gráfico de flujo: qué camino sigue una compra según la causal, la modalidad y el monto">
-  <div class="gf-inicio">🏥 El área necesita comprar algo</div>
-  {% for d in ['d-excepcion', 'd-modalidad', 'd-monto'] %}{% set n = N[d] %}
-  <div class="gf-flecha" aria-hidden="true">{{ '↓' if loop.first else '↓ No' }}</div>
-  <div class="gf-fila">
-    <div class="gf-pregunta"><span>◆</span>{{ n.titulo }}</div>
-    <ul class="gf-opciones">
-      {% for o in n.opciones if N[o.va].tipo != 'decision' %}{% set dst = N[o.va] %}
-      <li class="gf-opcion">
-        <span class="gf-si">{{ o.texto }}</span>
-        <a class="gf-destino alg-sis--{{ dst.sistema }} {{ 'alg-nodo--pendiente' if dst.estado == 'pendiente' }}" href="{{ url_for('admin.recursos_flujos') ~ '#flujo-' ~ o.va if prefijo == 'admin.' else url_for(prefijo ~ 'recursos_algoritmo') }}">
-          <b>{% if RAMA.get(o.va) %}<span class="gf-letra">{{ RAMA[o.va] }}</span>{% endif %}{{ dst.titulo }}</b>
-          <small>{{ SIS.get(dst.sistema, '') }}{% if dst.estado == 'pendiente' %} · ⏳ pendiente{% endif %}</small>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
+  {# líneas sin punta: repartidores y colector #}
+  {% for x1, y1, x2, y2 in g.buses + g.colector[:-1] %}<line class="gfx-linea" x1="{{ x1 }}" y1="{{ y1 }}" x2="{{ x2 }}" y2="{{ y2 }}"/>{% endfor %}
+  {% set x1, y1, x2, y2 = g.colector[-1] %}<line class="gfx-linea" x1="{{ x1 }}" y1="{{ y1 }}" x2="{{ x2 }}" y2="{{ y2 }}"/>
+  {# flechas #}
+  {% for x1, y1, x2, y2 in g.flechas %}<line class="gfx-linea" x1="{{ x1 }}" y1="{{ y1 }}" x2="{{ x2 }}" y2="{{ y2 }}" marker-end="url(#gfx-punta)"/>{% endfor %}
+
+  {# inicio #}
+  {% set i = g.inicio %}
+  <rect class="gfx-inicio" x="{{ i.x }}" y="{{ i.y }}" width="{{ i.w }}" height="{{ i.h }}" rx="23"/>
+  <text class="gfx-txt gfx-txt--fuerte" x="{{ i.x + i.w / 2 }}" y="{{ i.y + i.h / 2 - (i.texto | length - 1) * 8 }}" text-anchor="middle" dominant-baseline="middle">{% for l in i.texto %}<tspan x="{{ i.x + i.w / 2 }}" dy="{{ 0 if loop.first else 16 }}">{{ l }}</tspan>{% endfor %}</text>
+
+  {# rombos de decisión #}
+  {% for r in g.rombos %}
+  <polygon class="gfx-rombo" points="{{ r.cx }},{{ r.cy - g.rombo_h }} {{ r.cx + g.rombo_w }},{{ r.cy }} {{ r.cx }},{{ r.cy + g.rombo_h }} {{ r.cx - g.rombo_w }},{{ r.cy }}"/>
+  <text class="gfx-txt gfx-txt--fuerte" x="{{ r.cx }}" y="{{ r.cy - (r.texto | length - 1) * 8 }}" text-anchor="middle" dominant-baseline="middle">{% for l in r.texto %}<tspan x="{{ r.cx }}" dy="{{ 0 if loop.first else 16 }}">{{ l }}</tspan>{% endfor %}</text>
   {% endfor %}
-  <div class="gf-flecha" aria-hidden="true">↓ todos los caminos terminan en</div>
-  <div class="gf-fin alg-sis--expediente">📁 {{ N['fin-contractual'].titulo }}</div>
-  <p class="gf-pie">Montos 2026 según la Circular SCyGB N° 01/2026. Tocá un camino para ver sus pasos.</p>
+
+  {# etiquetas de las flechas #}
+  {% for e in g.etiquetas %}
+  <text class="gfx-txt gfx-etiqueta {{ 'gfx-etiqueta--no' if e.no }}" x="{{ e.x }}" y="{{ e.y - 8 - (e.texto | length - 1) * 14 }}">{% for l in e.texto %}<tspan x="{{ e.x }}" dy="{{ 0 if loop.first else 14 }}">{{ l }}</tspan>{% endfor %}</text>
+  {% endfor %}
+
+  {# cajas de destino #}
+  {% for c in g.cajas %}
+  <a href="{{ url_for('admin.recursos_flujos') }}#flujo-{{ c.id }}">
+    <g class="gfx-caja alg-sis--{{ c.sistema }} {{ 'gfx-caja--pendiente' if c.pendiente }}">
+      <rect x="{{ c.x }}" y="{{ c.y }}" width="{{ c.w }}" height="{{ c.h }}" rx="8"/>
+      {% if c.letra %}<circle class="gfx-letra" cx="{{ c.x + 20 }}" cy="{{ c.y + 20 }}" r="11"/><text class="gfx-letra-txt" x="{{ c.x + 20 }}" y="{{ c.y + 21 }}" text-anchor="middle" dominant-baseline="middle">{{ c.letra }}</text>{% endif %}
+      <text class="gfx-txt gfx-txt--fuerte" x="{{ c.x + 38 }}" y="{{ c.y + (16 if c.texto | length > 1 else 21) }}" dominant-baseline="middle">{% for l in c.texto %}<tspan x="{{ c.x + 38 }}" dy="{{ 0 if loop.first else 16 }}">{{ l }}</tspan>{% endfor %}</text>
+      <text class="gfx-txt gfx-chico" x="{{ c.x + 38 }}" y="{{ c.y + c.h - 9 }}">{{ c.sistema_txt }}{% if c.pendiente %} · ⏳ pendiente de confirmar{% endif %}</text>
+    </g>
+  </a>
+  {% endfor %}
+
+  {# final #}
+  {% set f = g.fin %}
+  <rect class="gfx-fin" x="{{ f.x }}" y="{{ f.y }}" width="{{ f.w }}" height="{{ f.h }}" rx="25"/>
+  <text class="gfx-txt gfx-txt--fuerte" x="{{ f.x + f.w / 2 }}" y="{{ f.y + f.h / 2 }}" text-anchor="middle" dominant-baseline="middle">{{ f.texto | join(' ') }}</text>
+</svg>
 </div>
 {% endblock %}

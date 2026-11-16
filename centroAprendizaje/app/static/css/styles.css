@@ -1840,31 +1840,23 @@ table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 @media (prefers-reduced-motion: reduce) { .tope::after { transition: none; } }
 @media print { .tope { text-decoration: none; } .tope::after { display: none; } }
 
-/* ------------------------------------------------- Gráfico de flujo -- */
-.gf { display: grid; justify-items: center; gap: 6px; padding: 8px 0 20px; }
-.gf-inicio, .gf-fin { padding: 12px 22px; border-radius: 999px; font-weight: 700; background: var(--surface); border: 2px solid var(--border); box-shadow: var(--shadow-sm); text-align: center; }
-.gf-fin { border-color: var(--sis, var(--border)); }
-.gf-flecha { color: var(--text-muted); font-weight: 700; font-size: 14px; }
-.gf-fila { width: 100%; display: grid; grid-template-columns: minmax(170px, 240px) 1fr; gap: 0 18px; align-items: center; }
-.gf-pregunta { position: relative; padding: 16px 14px; background: #fff7e0; border: 2px solid #e2b33c; border-radius: 14px; font-weight: 700; text-align: center; }
-.gf-pregunta span { display: block; color: #c18a00; font-size: 18px; }
-.gf-pregunta::after { content: ""; position: absolute; right: -18px; top: 50%; width: 18px; border-top: 2px solid var(--text-muted); }
-.gf-opciones { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid var(--text-muted); display: grid; gap: 8px; }
-.gf-opcion { position: relative; display: grid; grid-template-columns: minmax(120px, 40%) 1fr; gap: 10px; align-items: center; }
-.gf-opcion::before { content: "→"; position: absolute; left: -15px; top: 50%; transform: translateY(-55%); color: var(--text-muted); font-weight: 700; }
-.gf-si { font-size: 13.5px; padding-left: 8px; }
-.gf-destino { display: grid; gap: 2px; padding: 9px 12px; border-radius: var(--radius-sm); border: 2px solid var(--sis, var(--border)); background: var(--surface); color: var(--text); text-decoration: none; box-shadow: var(--shadow-sm); }
-.gf-destino:hover, .gf-destino:focus-visible { transform: translateY(-1px); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
-.gf-destino.alg-nodo--pendiente { border-style: dashed; }
-.gf-destino small { color: var(--text-muted); }
-.gf-letra { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 6px; border-radius: 50%; background: var(--sis, var(--accent)); color: #fff; font-size: 12px; }
-.gf-pie { margin: 10px 0 0; font-size: 12.5px; color: var(--text-muted); }
-@media (max-width: 760px) {
-  .gf-fila { grid-template-columns: 1fr; gap: 8px; }
-  .gf-pregunta::after { display: none; }
-  .gf-opcion { grid-template-columns: 1fr; gap: 4px; }
-}
-@media print { .gf-destino { box-shadow: none; } }
+/* ------------------------------------- Gráfico de flujo (SVG, panel) -- */
+.gfx-marco { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 10px; }
+.gfx { display: block; max-width: 100%; height: auto; min-width: 860px; font-family: inherit; }
+.gfx-linea { stroke: var(--text-muted); stroke-width: 1.6; fill: none; }
+.gfx-punta { fill: var(--text-muted); }
+.gfx-inicio, .gfx-fin { fill: var(--surface); stroke: var(--text); stroke-width: 2; }
+.gfx-rombo { fill: #fff7e0; stroke: #e2b33c; stroke-width: 2; }
+.gfx-txt { fill: var(--text); font-size: 13px; }
+.gfx-txt--fuerte { font-weight: 700; }
+.gfx-chico { fill: var(--text-muted); font-size: 11.5px; }
+.gfx-etiqueta { fill: var(--text-muted); font-size: 12px; }
+.gfx-etiqueta--no { font-weight: 700; fill: var(--text); }
+.gfx-caja rect { fill: var(--surface); stroke: var(--sis, var(--border)); stroke-width: 2; }
+.gfx-caja--pendiente rect { stroke-dasharray: 6 4; }
+.gfx-letra { fill: var(--sis, var(--accent)); }
+.gfx-letra-txt { fill: #fff; font-size: 12px; font-weight: 700; }
+a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 
 /* ---------------------------------------------------- Para proveedores -- */
 .prov-enviar { padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-bottom: 8px; border-left: 4px solid var(--accent); }

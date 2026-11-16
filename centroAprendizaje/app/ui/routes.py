@@ -575,11 +575,6 @@ def recursos_ficha_roles():
     return render_template("recursos/ficha_roles.html", **_contexto_recursos())
 
 
-@ui_bp.route("/recursos/grafico")
-def recursos_grafico():
-    return render_template("recursos/grafico.html", algoritmo=recursos.algoritmo_publico(), **_contexto_recursos())
-
-
 @ui_bp.route("/recursos/proveedores")
 def recursos_proveedores():
     return render_template("recursos/proveedores.html", p=recursos.herramientas()["proveedores"], **_contexto_recursos())

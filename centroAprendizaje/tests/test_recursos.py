@@ -242,13 +242,13 @@ def test_topes_al_pasar_el_mouse_salen_de_la_circular(app):
     assert "/static/js/topes.js" in html
 
 
-def test_grafico_de_flujo(app, admin_client):
-    html = app.test_client().get("/recursos/grafico").get_data(as_text=True)
-    for texto in ("¿Hay una causal de contratación directa por excepción?", "Hasta $5.850.000", "Licitación o concurso público",
-                  "Etapa contractual"):
+def test_grafico_de_flujo_solo_en_el_panel(app, admin_client):
+    assert app.test_client().get("/recursos/grafico").status_code == 404
+    assert "recursos/grafico" not in app.test_client().get("/").get_data(as_text=True)
+    html = admin_client.get("/admin/recursos/grafico").get_data(as_text=True)
+    assert "<svg" in html and "<polygon" in html  # un diagrama de verdad, con rombos
+    for texto in ("Hasta $5.850.000", "Licitación o concurso público", "Convenio Marco", "Etapa contractual", "#flujo-c-privada"):
         assert texto in html, texto
-    assert "Convenio Marco" not in html  # pendiente: solo en el panel
-    assert "Convenio Marco" in admin_client.get("/admin/recursos/grafico").get_data(as_text=True)
 
 
 def test_seccion_para_proveedores(app, admin_client):

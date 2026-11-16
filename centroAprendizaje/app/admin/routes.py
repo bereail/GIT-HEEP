@@ -962,7 +962,8 @@ def recursos_ficha_roles():
 @admin_bp.route("/recursos/grafico")
 @requiere_admin
 def recursos_grafico():
-    return render_template("recursos/grafico.html", algoritmo=recursos.algoritmo(), **_contexto_recursos())
+    from app.recursos import grafico
+    return render_template("recursos/grafico.html", grafico=grafico.armar(recursos.algoritmo()), **_contexto_recursos())
 
 
 @admin_bp.route("/recursos/proveedores")
