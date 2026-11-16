@@ -34,8 +34,9 @@ systemctl is-active timbo-capacitaciones
 
 echo "== 7. Controles"
 B=https://timboheep.duckdns.org
-for u in / /recursos /recursos/roles /recursos/glosario /recursos/algoritmo /recursos/simulador /recursos/explicame /recursos/sistemas /admin/login; do
+for u in / /recursos /recursos/roles /recursos/glosario /recursos/algoritmo /recursos/explicame /recursos/sistemas /admin/login; do
   echo "$(curl -s -o /dev/null -w '%{http_code}' "$B$u") $u"
 done
+echo "ocultos (tienen que dar 404): $(curl -s -o /dev/null -w "%{http_code}" $B/recursos/simulador) $(curl -s -o /dev/null -w "%{http_code}" $B/recursos/checklists)"
 echo "guía no oficial (tiene que dar 404): $(curl -s -o /dev/null -w '%{http_code}' $B/static/docs/timbo-compras/guia-busqueda-nomenclador-y-solicitud-sipaf.pdf)"
 curl -sI $B/recursos | grep -ciE "content-security-policy|strict-transport" | sed 's/^/encabezados de seguridad: /'
