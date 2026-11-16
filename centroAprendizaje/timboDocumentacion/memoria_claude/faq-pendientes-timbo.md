@@ -1,6 +1,6 @@
 ---
 name: faq-pendientes-timbo
-description: Estado TIMBÓ — 2026-11-16 noche: todo deployado y en main; el detalle está en CLAUDE.md del repo (sección "Estado al 16/11/2026")
+description: Estado TIMBÓ — 2026-11-16 21h: servidor y main en 8291426 (nomenclador pulido, 12 docs oficiales nuevos, chatbot 117/117); todo deployado
 metadata:
   node_type: memory
   type: project
@@ -19,7 +19,11 @@ Al cierre del 2026-11-13 (la usuaria dijo "mañana seguimos"):
 - **2026-11-16: segunda etapa deployada** (Recursos, capacitación en /admin, seguridad S-01..S-10, guía no oficial borrada, garantía de impugnación 3%). `main` y servidor en `835c7f3`. Deploy ahora = `git push origin integracion-deploy:main` + `tr -d '\r' < scripts/deploy_servidor.sh | ssh ... 'sh -s'` (lo corrió la usuaria con `!`). Los avisos "Falta SECRET_KEY/ADMIN_PASSWORD" de los importadores son normales (el env file solo lo recibe el servicio). Siguen pendientes: chmod 600 de la base/backups y nginx (compartido con otros 3 sitios: tocar solo el server block de TIMBÓ), inventario + matriz de trazabilidad, fichas FP, examen profesional.
 - **Deploy hecho el 2026-11-14:** `main` y el servidor están en `2ae098f` (urgencia + chatbot). La app en el servidor está en el subdirectorio `centroAprendizaje/` de `/var/www/timbo-capacitaciones` (ahí van el `git pull`, los scripts con `.venv/bin/python` y el backup de `instance/`).
 - Servidor: https://timboheep.duckdns.org, `ssh -i ~/.ssh/timboheep_ed25519 -p5440 root@138.36.238.175`, app en `/var/www/timbo-capacitaciones`. Procedimiento de deploy en CLAUDE.md del repo (sección "Segunda reconciliación y deploy").
-- Los 10 videos sin subtítulos ya están revisados y volcados (2108bcb, deployado). Clase 01 no tiene transcripción completa (opcional).
+- Los 10 videos sin subtítulos ya están revisados y volcados (2108bcb, deployado). Clase 01 transcripta el 16/11 con faster-whisper "small" (funciona en esta PC si antes se limpia la voz con ffmpeg y vad_filter=False; receta en FAQ_SOPORTE_TIMBO.md 4.1).
+- **2026-11-16 21h, deployado 8291426:** be64c59 (nomenclador: búsqueda sin tildes, Copiar, 25 amarillos sin medida, 437/531/32) y 8291426 (12 documentos oficiales nuevos con OCR de Windows, SIN resuelto con video SDAEZ_4rjZo, chatbot 117/117). La usuaria pidió verlo antes de subir: servidor local corriendo.
+- **2026-11-16 20h: deployado 1c22175 y borradas 451 vistas automáticas** de eventos_uso (con OK de la usuaria; copia en copias/antes_borrar_robots_20261116_2009.sqlite3; después también 123 de IPs de datacenter 158.69.55.x y 104.164.173.118, copia antes_borrar_dudosas_20261116_2012; quedan 198 vistas). Antes, 18h, sin subir: 81bae48 (estadísticas sin robots/curl/headless), 757f8d3+fa72ba3 (PDF llave de acceso en static/descargas), 1c22175 (119 amarillos con mejor código, chatbot 99/99). Propuesto y SIN autorizar: borrar de producción las vistas de robots (≈452 de 769) y de mis controles; cruzar eventos con nginx (script en scratchpad clasificar_vistas.py; IP de la oficina 200.80.180.170).
+- **2026-11-16 noche: deployado `9a000ac`** (incluye 4104690, 060fa86, 3962a65; nomenclador con tarjetas + desplegable + Mostrar todos; 34 rojos → amarillos). Antes:
+- **2026-11-16 17h:** servidor y main en `85d04c6` (revisión del nomenclador, Búsquedas, normativa nueva; migración aplicada). Locales sin subir: `4104690` (nomenclador: una búsqueda + desplegable de estado) y `060fa86` (/admin/inventario, Clase 01, link al catálogo oficial). La usuaria pidió verlos antes de subir. Catálogo WEB oficial completo: botón "Descargar Excel" (output.php?a=catalogo.get_csv, 17.818 ítems, sin bodega). Al reimportar local, correr también importar_equivalencias o la batería da 86/88.
 - Resto de pendientes (urgencia ya hecha; montos anuales; confirmar con Compras/RRHH; consultas abiertas de chats; test flaky; pulido UI) → sección "Pendientes" de CLAUDE.md.
 
 **Why:** retomar sin re-derivar dónde quedó el deploy.

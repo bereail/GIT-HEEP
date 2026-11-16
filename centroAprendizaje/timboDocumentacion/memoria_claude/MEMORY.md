@@ -1,4 +1,4 @@
-- [Estado y pendientes TIMBÓ](faq-pendientes-timbo.md) — 2026-11-15: aa25ab3 (pulido UI) deployado; repo de trabajo y servidor
+- [Estado y pendientes TIMBÓ](faq-pendientes-timbo.md) — 2026-11-16 21h: servidor y main en 8291426 (todo deployado)
 - [Contexto en CLAUDE.md](contexto-en-claude-md.md) — el estado del proyecto se versiona en CLAUDE.md del repo (multi-PC)
 - [Segunda etapa (formación en /admin)](segunda-etapa-admin.md) — criterios, prefijo FP, tandas; criterios de aceptación; seguridad hecha en local, faltan matriz e inventario
 - [Solo contenido oficial](solo-contenido-oficial.md) — regla: nada en el centro que no esté chequeado contra documentación oficial
