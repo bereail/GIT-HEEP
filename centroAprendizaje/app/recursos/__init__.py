@@ -78,6 +78,9 @@ def glosario(terminos_del_portal=()):
             "nota": "Del glosario del tema. Todavía no tiene la fuente oficial revisada.",
         })
     terminos.sort(key=lambda t: _clave_orden(t["termino"]))
+    for t in terminos:
+        # Letra del índice sin tilde: "Área" va con la A.
+        t["letra"] = next((c for c in _clave_orden(t["termino"]) if c.isalnum()), "#").upper()
     categorias = datos["categorias"] + sorted({t["categoria"] for t in terminos} - set(datos["categorias"]))
     return {"terminos": terminos, "categorias": categorias}
 
@@ -101,6 +104,12 @@ def docs_minimos():
 
 
 # Herramientas prácticas: clave en la URL → (sección del JSON, ícono, título corto).
+def revisado_al():
+    """Fecha en que se consultó la normativa oficial, como dd/mm/aaaa."""
+    a, m, d = biblioteca()["consultado"].split("-")
+    return f"{d}/{m}/{a}"
+
+
 # Ocultos por ahora en el sitio público (pedido del 16/11/2026); en /admin siguen.
 OCULTOS_PUBLICO = frozenset({"simulador", "checklists"})
 
@@ -122,3 +131,36 @@ def herramientas():
 @lru_cache(maxsize=None)
 def simulador():
     return _leer("simulador.json")
+
+
+def indice_busqueda():
+    """Entradas de Recursos para el buscador global del portal: páginas,
+    preguntas de "Explicame", términos del diccionario y normativa."""
+    from flask import url_for
+
+    from app.services.buscador import normalizar
+
+    def entrada(kind, titulo, subtitulo, url, texto, peso):
+        return {"kind": kind, "title": titulo, "subtitle": subtitulo, "url": url, "texto": normalizar(texto),
+                "peso": peso, "ref": None, "tema_nombre": "Recursos", "tema_icono": "📚"}
+
+    paginas = [
+        ("Roles: quién hace qué", "recursos_roles", {}, "roles gestor supervisor evaluador permisos usuario rol quien hace que"),
+        ("Diccionario de Compras Públicas", "recursos_glosario", {}, "diccionario glosario terminos siglas significado"),
+        ("Normativa y fuentes oficiales", "recursos_biblioteca", {}, "normativa biblioteca circulares resoluciones decretos leyes fuentes"),
+        ("¿Qué camino sigue una compra?", "recursos_algoritmo", {}, "algoritmo camino circuito procedimiento diagrama etapas compra"),
+        ("Explicame este paso", "recursos_explicame", {}, "explicame dudas preguntas frecuentes etapa"),
+        ("Aprendé Compras Públicas desde cero", "recursos_aprender", {}, "aprender desde cero curso introduccion compras publicas"),
+    ] + [(titulo, "recursos_herramienta", {"clave": clave}, titulo)
+         for clave, (_, _, titulo) in HERRAMIENTAS.items() if clave not in OCULTOS_PUBLICO]
+    indice = [entrada("Recurso", t, "", url_for("ui." + e, **kw), f"{t} {extra}", 2) for t, e, kw, extra in paginas]
+    for p in capacitacion()["explicame"]:
+        indice.append(entrada("Pregunta", p["q"], p["a"], url_for("ui.recursos_explicame", etapa=p["nodo"]),
+                              f"{p['q']} {p['palabras']}", 2.5))
+    for t in glosario()["terminos"]:
+        indice.append(entrada("Diccionario", t["termino"], t["sencilla"], url_for("ui.recursos_glosario", q=t["termino"]),
+                              f"{t['termino']} {t['sencilla']}", 1.5))
+    for d in biblioteca()["documentos"]:
+        indice.append(entrada("Normativa", d["titulo"], d.get("tema", ""), url_for("ui.recursos_biblioteca"),
+                              f"{d['titulo']} {d.get('tema', '')}", 1))
+    return indice

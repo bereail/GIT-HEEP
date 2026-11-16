@@ -164,6 +164,18 @@ document.body.addEventListener('click', (ev) => {
   const imagen = ev.target.closest('.lightbox-trigger');
   if (imagen) abrirLightbox(imagen.dataset.src, imagen.dataset.alt);
 
+  const votoRecurso = ev.target.closest('.js-feedback-recurso');
+  if (votoRecurso) {
+    const { voto } = votoRecurso.dataset;
+    fetch('/recursos/valorar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pagina: location.pathname, voto }),
+    }).catch(() => {});
+    votoRecurso.closest('.feedback-bar').querySelectorAll('.js-feedback-recurso').forEach((b) => (b.disabled = true));
+    mostrarToast(voto === 'si' ? '¡Gracias por tu feedback!' : 'Gracias, lo vamos a revisar.');
+  }
+
   const votoFeedback = ev.target.closest('.js-feedback-tutorial');
   if (votoFeedback) {
     const barra = votoFeedback.closest('.feedback-bar');

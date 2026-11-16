@@ -58,6 +58,7 @@ def resumen(tema_id=None):
     chatbot = base.filter_by(tipo="chatbot")
     chatbot_sin_resultado = chatbot.filter_by(hubo_resultado=False)
     feedback = base.filter_by(tipo="feedback_tutorial")
+    feedback_recursos = base.filter_by(tipo="feedback_recurso")
     feedback_negativo = feedback.filter_by(hubo_resultado=False)
 
     return {
@@ -74,4 +75,6 @@ def resumen(tema_id=None):
         "busquedas_sin_resultado": _top_por_consulta(busquedas_sin_resultado, 15),
         "chatbot_sin_resultado": _top_por_consulta(chatbot_sin_resultado, 15),
         "lecciones_con_feedback_negativo": _top_por_titulo(feedback_negativo, 10),
+        "recursos_utiles": _top_por_titulo(feedback_recursos.filter_by(hubo_resultado=True), 10),
+        "recursos_con_feedback_negativo": _top_por_titulo(feedback_recursos.filter_by(hubo_resultado=False), 10),
     }

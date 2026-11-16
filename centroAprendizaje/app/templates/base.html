@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block titulo %}Centro de Aprendizaje{% endblock %}</title>
-  <link rel="icon" href="data:," />
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
 </head>
 <body
@@ -95,6 +95,13 @@
         {% endfor %}
       {% endwith %}
       {% block contenido %}{% endblock %}
+      {% if request.endpoint and request.endpoint.startswith('ui.recursos') %}
+      <div class="lesson-complete-bar feedback-bar rec-valorar">
+        <span class="text-muted">¿Te sirvió esta página?</span>
+        <button type="button" class="btn btn--ghost btn--sm js-feedback-recurso" data-voto="si">👍 Sí</button>
+        <button type="button" class="btn btn--ghost btn--sm js-feedback-recurso" data-voto="no">👎 No</button>
+      </div>
+      {% endif %}
     </main>
   </div>
 

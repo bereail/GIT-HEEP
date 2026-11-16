@@ -123,3 +123,68 @@ def test_garantia_de_impugnacion_segun_pliego_unico():
     texto = (RAIZ / "scripts" / "content_timbo_compras.json").read_text(encoding="utf-8")
     assert "3% del monto de tu oferta" in texto
     assert "día de gracia" not in texto
+
+
+def test_entrada_por_necesidad_lleva_a_lecciones_que_existen(app):
+    # La base de los tests es de prueba: las lecciones se buscan en el
+    # contenido real que cargan los importadores.
+    import json
+    import re
+
+    html = app.test_client().get("/").get_data(as_text=True)
+    bloque = html.split('class="necesito__opciones"')[1].split("</div>")[0]
+    enlaces = re.findall(r'href="([^"]+)"', bloque)
+    assert len(enlaces) >= 8
+    for url in enlaces:
+        m = re.fullmatch(r"/temas/([\w-]+)/(?:categorias/([\w-]+)/tutoriales/([\w-]+)|equivalencias)", url)
+        assert m, url
+        tema, categoria, tutorial = m.groups()
+        contenido = json.loads((RAIZ / "scripts" / f"content_{tema.replace('-', '_')}.json").read_text(encoding="utf-8"))
+        if categoria:
+            # miHospital usa MODULES/lessons con "id"; los TIMBÓ, categorias/tutoriales con "slug".
+            categorias = contenido.get("categorias") or contenido["MODULES"]
+            cat = next(c for c in categorias if (c.get("slug") or c.get("id")) == categoria)
+            lecciones = cat.get("tutoriales") or cat.get("lessons")
+            assert any((t.get("slug") or t.get("id")) == tutorial for t in lecciones), url
+
+
+def test_buscador_global_encuentra_recursos(app):
+    cliente = app.test_client()
+    tipos = {r["kind"] for r in cliente.get("/buscar.json?q=preadjudicacion").get_json()}
+    assert tipos & {"Diccionario", "Pregunta", "Recurso"}
+    urls = [r["url"] for r in cliente.get("/buscar.json?q=roles supervisor").get_json()]
+    assert any("/recursos/roles" in u for u in urls)
+    assert not any("simulador" in r["url"] or "checklists" in r["url"]
+                   for r in cliente.get("/buscar.json?q=simulador checklist").get_json())
+
+
+def test_valorar_pagina_de_recursos(app):
+    from app.models import EventoUso
+    cliente = app.test_client()
+    assert cliente.post("/recursos/valorar", json={"pagina": "/recursos/roles", "voto": "no"}).status_code == 200
+    cliente.post("/recursos/valorar", json={"pagina": "/admin/algo", "voto": "si"})
+    cliente.post("/recursos/valorar", json=["no"])
+    with app.app_context():
+        votos = EventoUso.query.filter_by(tipo="feedback_recurso").all()
+        assert [(v.titulo, v.hubo_resultado) for v in votos] == [("/recursos/roles", False)]
+
+
+def test_favicon(app):
+    cliente = app.test_client()
+    assert cliente.get("/favicon.ico").status_code == 301
+    assert cliente.get("/static/img/favicon.svg").status_code == 200
+
+
+def test_panel_muestra_la_revision_de_dependencias(app, admin_client):
+    import os
+    ruta = os.path.join(app.instance_path, "auditoria_dependencias.txt")
+    try:
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write("01/12/2026\nFound 1 known vulnerability in 1 package\nflask 3.1.3 GHSA-xxxx")
+        html = admin_client.get("/admin/").get_data(as_text=True)
+        assert "hay librerías con fallas conocidas" in html and "01/12/2026" in html
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write("02/12/2026\nNo known vulnerabilities found")
+        assert "sin fallas de seguridad conocidas" in admin_client.get("/admin/").get_data(as_text=True)
+    finally:
+        os.remove(ruta)

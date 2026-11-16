@@ -143,7 +143,20 @@ def _mover(items_ordenados, item, delta):
 @requiere_admin
 def dashboard():
     temas = Tema.query.order_by(Tema.orden).all()
-    return render_template("admin/dashboard.html", temas=temas)
+    return render_template("admin/dashboard.html", temas=temas, dependencias=_auditoria_dependencias())
+
+
+def _auditoria_dependencias():
+    """Lo último que dejó la revisión mensual de dependencias del servidor
+    (scripts/auditar_dependencias.sh) en instance/auditoria_dependencias.txt:
+    la primera línea es la fecha; el resto, la salida de pip-audit."""
+    ruta = os.path.join(current_app.instance_path, "auditoria_dependencias.txt")
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            fecha, _, detalle = f.read().partition("\n")
+    except OSError:
+        return None
+    return {"fecha": fecha.strip(), "ok": "No known vulnerabilities found" in detalle, "detalle": detalle.strip()}
 
 
 # ------------------------------------------------------------ estadísticas --
@@ -887,7 +900,8 @@ def imagen_eliminar(tema_slug, nombre):
 
 def _contexto_recursos():
     return {"estados": recursos.ESTADOS, "docs": recursos.documentos_por_id(),
-            "layout": "admin/base_admin.html", "prefijo": "admin.", "ocultos": frozenset()}
+            "layout": "admin/base_admin.html", "prefijo": "admin.", "ocultos": frozenset(),
+            "revisado_al": recursos.revisado_al()}
 
 
 def _glosario_completo():

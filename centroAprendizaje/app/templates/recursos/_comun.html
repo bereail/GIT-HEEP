@@ -35,6 +35,7 @@
   <a href="{{ url_for(prefijo ~ 'recursos_herramienta', clave='estados') }}" class="{{ 'is-active' if activo == 'estados' }}">🚦 Estados</a>
     </div>
   </details>
+  <span class="rec-revisado" title="Fecha en que se revisaron las circulares, resoluciones y guías oficiales que usa esta página">🗓️ Revisado con la normativa oficial al {{ revisado_al }}</span>
 </nav>
 {% if prefijo == 'admin.' %}<div class="callout callout--warning rec-borrador">
   <span class="callout__icon">🔒</span>

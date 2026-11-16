@@ -181,11 +181,17 @@ def ver_progreso(tema_slug):
 
 # ------------------------------------------------------- buscador / chatbot --
 
+@ui_bp.route("/favicon.ico")
+def favicon():
+    # Los navegadores lo piden solos aunque la página declare el SVG.
+    return redirect(url_for("static", filename="img/favicon.svg"), 301)
+
+
 @ui_bp.route("/buscar.json")
 def buscar_global_json():
     consulta = request.args.get("q", "")
     temas = Tema.query.filter_by(activo=True).order_by(Tema.orden).all()
-    indice = buscador.construir_indice_global(temas)
+    indice = buscador.construir_indice_global(temas) + recursos.indice_busqueda()
     resultados = buscador.buscar(indice, consulta, limite=15)
     if consulta.strip():
         estadisticas.registrar("busqueda_global", consulta=consulta, hubo_resultado=bool(resultados))
@@ -329,6 +335,19 @@ def chatbot_feedback(tema_slug):
     pregunta = str(datos.get("pregunta", "")).strip()[:190]
     if datos.get("util") is False and pregunta:
         estadisticas.registrar("chatbot", tema=tema, consulta="👎 " + pregunta, hubo_resultado=False)
+    return jsonify({"ok": True})
+
+
+@ui_bp.route("/recursos/valorar", methods=["POST"])
+@csrf.exempt
+@limitar("feedback-recurso", 30, 600)
+def recursos_valorar():
+    # Solo se guarda la dirección de la página (de Recursos) y el voto.
+    datos = _json_objeto()
+    pagina = str(datos.get("pagina") or "").split("?")[0][:80]
+    voto = datos.get("voto")
+    if pagina.startswith("/recursos") and voto in ("si", "no"):
+        estadisticas.registrar("feedback_recurso", titulo=pagina, hubo_resultado=(voto == "si"))
     return jsonify({"ok": True})
 
 
@@ -530,7 +549,7 @@ def _contexto_recursos():
 @ui_bp.app_context_processor
 def _recursos_ocultos():
     # Los menús del sitio no muestran lo que está oculto; en /admin se ve todo.
-    return {"ocultos": recursos.OCULTOS_PUBLICO}
+    return {"ocultos": recursos.OCULTOS_PUBLICO, "revisado_al": recursos.revisado_al()}
 
 
 @ui_bp.route("/recursos")

@@ -64,4 +64,10 @@
   <h2 class="section__title">Lecciones con feedback negativo <span class="text-muted" style="font-weight:400;font-size:13px">— revisar si hay que mejorarlas</span></h2>
   {{ tabla(datos.lecciones_con_feedback_negativo, ["Lección", "👎 Veces"]) }}
 </div>
+
+<div class="section">
+  <h2 class="section__title">Páginas de Recursos: ¿les sirvió? <span class="text-muted" style="font-weight:400;font-size:13px">— el voto de "¿Te sirvió esta página?"</span></h2>
+  {{ tabla(datos.recursos_con_feedback_negativo, ["Página", "👎 Veces"]) }}
+  {{ tabla(datos.recursos_utiles, ["Página", "👍 Veces"]) }}
+</div>
 {% endblock %}

@@ -4,11 +4,30 @@
 {% block contenido %}
 <div class="hero">
   <div class="hero__eyebrow">Centro de Aprendizaje</div>
-  <h1>¿Qué necesitás aprender a usar?</h1>
-  <p class="hero__desc">Elegí un sistema para ver sus tutoriales, resolver dudas con el asistente, o consultar preguntas frecuentes.</p>
+  <h1>¿Qué necesitás hacer hoy?</h1>
+  <p class="hero__desc">Tocá lo que estás buscando. Si no está, escribilo en el buscador de arriba o elegí un sistema más abajo.</p>
 </div>
 
+<section class="necesito">
+  <div class="necesito__opciones">
+    {% for icono, texto, url in [
+      ('🛒', 'Hacer una compra, paso a paso', url_for('ui.ver_tutorial', tema_slug='timbo-compras', categoria_slug='gestion-interna', tutorial_slug='hacer-una-compra')),
+      ('💲', '¿Qué procedimiento va según el monto?', url_for('ui.ver_tutorial', tema_slug='timbo-compras', categoria_slug='gestion-interna', tutorial_slug='montos-y-procedimientos')),
+      ('🔎', '¿Con qué nombre busco un artículo?', url_for('ui.ver_equivalencias', tema_slug='timbo-compras')),
+      ('📦', 'Falta un artículo en el catálogo', url_for('ui.ver_tutorial', tema_slug='timbo-compras', categoria_slug='gestion-interna', tutorial_slug='pedir-alta-articulo')),
+      ('🏢', 'Soy proveedor y quiero venderle al hospital', url_for('ui.ver_tutorial', tema_slug='timbo-compras', categoria_slug='primeros-pasos', tutorial_slug='inscribirse-como-proveedor-rupc')),
+      ('📁', 'Abrir un expediente', url_for('ui.ver_tutorial', tema_slug='timbo-expedientes', categoria_slug='expedientes', tutorial_slug='abrir-expediente')),
+      ('✍️', 'Firmar un documento que me enviaron', url_for('ui.ver_tutorial', tema_slug='timbo-expedientes', categoria_slug='documentos-oficiales', tutorial_slug='firmar-documento-oficial')),
+      ('🗓️', 'Pedir una licencia', url_for('ui.ver_tutorial', tema_slug='timbo-expedientes', categoria_slug='documentos-oficiales', tutorial_slug='pedir-licencia-sjl')),
+      ('🏥', 'Buscar un paciente en miHospital', url_for('ui.ver_tutorial', tema_slug='mihospital', categoria_slug='pacientes', tutorial_slug='buscar-paciente')),
+    ] %}
+    <a class="necesito__opcion" href="{{ url }}"><span aria-hidden="true">{{ icono }}</span>{{ texto }}</a>
+    {% endfor %}
+  </div>
+</section>
+
 {% if temas %}
+<h2 class="section__title necesito__sistemas">O elegí un sistema</h2>
 <div class="card-grid">
   {% for tema in temas %}
   <a class="card card-link" href="{{ url_for('ui.ver_tema', tema_slug=tema.slug) }}">

@@ -6,6 +6,17 @@
   <a class="btn btn--primary btn--sm" href="{{ url_for('admin.tema_nuevo') }}">+ Nuevo tema</a>
 </div>
 
+{% if dependencias %}
+<div class="callout {{ 'callout--tip' if dependencias.ok else 'callout--warning' }}" style="margin-bottom:14px">
+  <span class="callout__icon">{{ '🛡️' if dependencias.ok else '⚠️' }}</span>
+  <div>
+    <b>Dependencias:</b> {{ 'sin fallas de seguridad conocidas' if dependencias.ok else 'hay librerías con fallas conocidas: hay que actualizarlas' }}
+    <span class="text-muted">(revisado el {{ dependencias.fecha }})</span>
+    {% if not dependencias.ok %}<details><summary>Ver detalle</summary><pre style="white-space:pre-wrap;font-size:12px">{{ dependencias.detalle }}</pre></details>{% endif %}
+  </div>
+</div>
+{% endif %}
+
 <div class="admin-list">
   {% for tema in temas %}
   <a class="admin-list-item" href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">

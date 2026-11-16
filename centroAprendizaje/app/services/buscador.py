@@ -144,7 +144,7 @@ def construir_indice(tema):
             "kind": "Glosario",
             "title": termino.termino,
             "subtitle": termino.definicion,
-            "url": url_for("ui.ver_glosario", tema_slug=tema.slug),
+            "url": url_for("ui.recursos_glosario", tema=tema.nombre, q=termino.termino),
             "texto": normalizar(f"{termino.termino} {termino.definicion}"),
             "peso": 1,
             "ref": termino,
