@@ -47,10 +47,10 @@
     <div class="home-card__title">Tengo un problema</div>
     <div class="home-card__desc">Situaciones frecuentes y cómo resolverlas.</div>
   </a>
-  <a class="card card-link" href="{{ url_for('ui.ver_glosario', tema_slug=tema.slug) }}">
+  <a class="card card-link" href="{{ url_for('ui.recursos_glosario', tema=tema.nombre) }}">
     <span class="home-card__icon">📖</span>
     <div class="home-card__title">Glosario</div>
-    <div class="home-card__desc">Términos del sistema, explicados en simple.</div>
+    <div class="home-card__desc">Términos del sistema, explicados en simple, en el diccionario único del centro.</div>
   </a>
   <a class="card card-link" href="{{ url_for('ui.ver_progreso', tema_slug=tema.slug) }}">
     <span class="home-card__icon">📊</span>

@@ -1,4 +1,3 @@
-import re
 import secrets
 from datetime import datetime, timedelta, timezone
 
@@ -12,18 +11,12 @@ from app.models.feedback import CATEGORIAS_FEEDBACK
 from app.seguridad import limitar
 from app.services import buscador, estadisticas, notificaciones
 
-_PRIMERA_LETRA = re.compile(r"[A-ZÁÉÍÓÚÑ]", re.IGNORECASE)
-
 
 # Por debajo de este puntaje (ver buscador.buscar_con_puntaje) el chatbot no
 # responde directo: ofrece opciones "¿Te referís a...?". Equivale a una sola
 # palabra que coincide apenas por su raíz.
 CHATBOT_PUNTAJE_MINIMO = 2
 
-
-def _letra_de_termino(termino):
-    m = _PRIMERA_LETRA.search(termino)
-    return m.group(0).upper() if m else "#"
 
 ui_bp = Blueprint("ui", __name__, template_folder="../templates")
 
@@ -149,21 +142,10 @@ def ver_problemas(tema_slug):
 
 @ui_bp.route("/temas/<tema_slug>/glosario")
 def ver_glosario(tema_slug):
+    # Hay un solo glosario: el Diccionario de Recursos, que junta el de todos
+    # los temas. El enlace viejo de cada tema lleva ahí, ya filtrado.
     tema = _tema_o_404(tema_slug)
-    ordenado = sorted(tema.entradas_glosario, key=lambda t: t.termino.lower())
-    letras = sorted({_letra_de_termino(t.termino) for t in ordenado})
-    primera_de_letra = {
-        t.id for i, t in enumerate(ordenado)
-        if i == 0 or _letra_de_termino(ordenado[i - 1].termino) != _letra_de_termino(t.termino)
-    }
-    return render_template(
-        "glosario.html",
-        tema=tema,
-        entradas=ordenado,
-        letras=letras,
-        primera_de_letra=primera_de_letra,
-        letra_de_termino=_letra_de_termino,
-    )
+    return redirect(url_for("ui.recursos_glosario", tema=tema.nombre))
 
 
 @ui_bp.route("/temas/<tema_slug>/equivalencias")

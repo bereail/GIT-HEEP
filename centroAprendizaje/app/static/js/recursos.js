@@ -57,8 +57,15 @@
     if (destino) { destino.classList.add('dic-resaltado'); setTimeout(() => destino.classList.remove('dic-resaltado'), 1600); }
   });
   // Búsqueda desde otros módulos: ?q=preadjudicación
-  const pedido = new URLSearchParams(location.search).get('q');
+  const params = new URLSearchParams(location.search);
+  const pedido = params.get('q');
   if (pedido) filtro.value = pedido;
+  const tema = params.get('tema');
+  if (tema && categoria && Array.from(categoria.options).some((o) => o.value === tema)) {
+    categoria.value = tema;
+    const todos = document.querySelector('.dic-grupos [data-grupo="todos"]');
+    if (todos) { document.querySelectorAll('.dic-grupos [data-grupo]').forEach((x) => { x.classList.toggle('is-active', x === todos); x.setAttribute('aria-checked', x === todos ? 'true' : 'false'); }); }
+  }
   if (categoria) categoria.addEventListener('change', aplicar);
   aplicar();
 })();
