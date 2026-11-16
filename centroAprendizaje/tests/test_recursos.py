@@ -188,3 +188,11 @@ def test_panel_muestra_la_revision_de_dependencias(app, admin_client):
         assert "sin fallas de seguridad conocidas" in admin_client.get("/admin/").get_data(as_text=True)
     finally:
         os.remove(ruta)
+
+
+def test_ficha_para_asignar_roles(app, admin_client):
+    html = app.test_client().get("/recursos/roles/ficha").get_data(as_text=True)
+    for rol in ("Gestor", "Supervisor", "Evaluador", "Jurisdicción comitente", "administrador local"):
+        assert rol in html
+    assert "/recursos/roles/ficha" in app.test_client().get("/recursos/roles").get_data(as_text=True)
+    assert admin_client.get("/admin/recursos/roles/ficha").status_code == 200

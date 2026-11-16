@@ -6,6 +6,7 @@
 {{ subnav('roles') }}
 <h1 style="margin:8px 0 4px">Roles: quién hace qué</h1>
 <p class="text-muted" style="margin:0 0 6px">Lo esencial primero. El detalle completo está al final, en "Ver más".</p>
+<a class="btn btn--primary btn--sm" href="{{ url_for(prefijo ~ 'recursos_ficha_roles') }}">🖨️ Ficha para asignar roles (para la jefatura)</a>
 
 {# ---------------------------------------------------------- los 5 roles #}
 {% set compras = roles.grupos | selectattr('slug', 'equalto', 'timbo-compras') | first %}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ficha de asignación de roles — TIMBÓ Compras</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}" />
+  <style>
+    :root { --tinta: #1b2333; --suave: #5b6472; --linea: #b9c0cc; --acento: #2456c7; --fondo-acento: #eef3fd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e9ecf1; color: var(--tinta); font: 13px/1.45 Arial, Helvetica, sans-serif; }
+    .barra { max-width: 210mm; margin: 16px auto 0; padding: 0 16px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .barra a, .barra button { font: 600 14px Arial, sans-serif; padding: 9px 16px; border-radius: 8px; border: 1px solid var(--acento); cursor: pointer; text-decoration: none; }
+    .barra button { background: var(--acento); color: #fff; }
+    .barra a { background: #fff; color: var(--acento); }
+    .barra span { color: var(--suave); font-size: 13px; }
+    .hoja { width: 210mm; min-height: 297mm; margin: 12px auto 24px; padding: 14mm 14mm 12mm; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+    h1 { font-size: 19px; margin: 0 0 2px; }
+    .bajada { color: var(--suave); margin: 0 0 12px; }
+    .datos { display: grid; grid-template-columns: 1fr 1fr 150px; gap: 10px 16px; margin-bottom: 12px; }
+    .campo { border-bottom: 1px solid var(--linea); padding-top: 14px; font-size: 11px; color: var(--suave); }
+    .aviso { background: var(--fondo-acento); border-left: 4px solid var(--acento); padding: 7px 10px; margin: 0 0 10px; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--suave); border-bottom: 2px solid var(--tinta); padding: 5px 6px; }
+    td { border-bottom: 1px solid var(--linea); padding: 6px; vertical-align: top; }
+    td.rol { width: 30%; }
+    td.rol b { font-size: 14px; display: block; }
+    td.rol small { color: var(--suave); }
+    td.renglon { height: 30px; }
+    tr.primera td { border-top: 1px solid var(--tinta); }
+    h2 { font-size: 14px; margin: 16px 0 6px; }
+    .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin: 0; }
+    .roles div { padding: 6px 8px; border: 1px solid var(--linea); border-radius: 6px; }
+    .roles b { display: block; }
+    .no { color: var(--suave); font-size: 12px; }
+    .pasos { margin: 0; padding-left: 18px; }
+    .firma { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+    .firma div { border-top: 1px solid var(--tinta); padding-top: 4px; text-align: center; font-size: 11px; color: var(--suave); }
+    .pie { margin-top: 14px; font-size: 10.5px; color: var(--suave); border-top: 1px solid var(--linea); padding-top: 6px; }
+    @media screen and (max-width: 820px) {
+      .hoja { width: auto; min-height: 0; margin: 12px 16px; padding: 16px; }
+      .datos, .roles, .firma { grid-template-columns: 1fr; }
+    }
+    @page { size: A4; margin: 0; }
+    @media print {
+      body { background: #fff; }
+      .barra { display: none; }
+      .hoja { margin: 0; box-shadow: none; width: 210mm; min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="barra">
+  <button type="button" data-imprimir>🖨️ Imprimir o guardar PDF</button>
+  <a href="{{ url_for(prefijo ~ 'recursos_roles') }}">← Volver a Roles</a>
+  <span>Se imprime en una hoja A4.</span>
+</div>
+
+<main class="hoja">
+  <h1>Asignación de roles en TIMBÓ Compras</h1>
+  <p class="bajada">Para completar por la jefatura del servicio o área. Una misma persona puede tener más de un rol.</p>
+
+  <div class="datos">
+    <div class="campo">Hospital / organismo</div>
+    <div class="campo">Servicio o área</div>
+    <div class="campo">Fecha</div>
+  </div>
+
+  <p class="aviso"><b>Importante:</b> los roles son permisos dentro del sistema, no cargos. Cada persona ve solo los procesos de los roles que tiene.</p>
+
+  <table>
+    <thead><tr><th>Rol</th><th>Nombre y apellido</th><th style="width:28%">Sector o cargo</th></tr></thead>
+    <tbody>
+      {% for nombre, que, nota, renglones in [
+        ('Gestor', 'Arma la compra en el sistema.', '', 2),
+        ('Supervisor', 'Controla y aprueba el pliego.', '', 2),
+        ('Evaluador', 'Analiza las ofertas.', 'Hacen falta al menos 3 por compra.', 3),
+        ('Jurisdicción comitente', 'Revisa el pliego.', 'Solo si la compra la necesita otro organismo.', 1),
+      ] %}
+      {% for i in range(renglones) %}
+      <tr class="{{ 'primera' if loop.first }}">
+        {% if loop.first %}<td class="rol" rowspan="{{ renglones }}"><b>{{ nombre }}</b>{{ que }}{% if nota %}<br><small>{{ nota }}</small>{% endif %}</td>{% endif %}
+        <td class="renglon"></td><td class="renglon"></td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Qué hace cada rol</h2>
+  <div class="roles">
+    <div><b>📝 Gestor</b>Crea el proceso con el número de expediente, completa los formularios del pliego y genera las circulares.<span class="no"><br>No aprueba el pliego: eso lo hace el Supervisor.</span></div>
+    <div><b>✅ Supervisor</b>Aprueba o rechaza el pliego, arma el cronograma y la lista de proveedores, y carga los actos firmados.<span class="no"><br>Carga los actos, pero no los firma: los firma la autoridad.</span></div>
+    <div><b>🔍 Evaluador</b>Analiza las ofertas, pide correcciones o mejoras de precio, preadjudica y recibe las impugnaciones.<span class="no"><br>No adjudica: recomienda. Adjudica la autoridad.</span></div>
+    <div><b>🏛️ Jurisdicción comitente</b>Revisa el pliego cuando quien necesita la compra es otro organismo, distinto del que la hace.<span class="no"><br>No aprueba ni publica.</span></div>
+  </div>
+  <p class="no" style="margin:6px 0 0">El <b>Proveedor</b> no se asigna: es la empresa que se registra y presenta su oferta.</p>
+
+  <h2>Cómo sigue</h2>
+  <ol class="pasos">
+    <li>La jefatura completa y firma esta ficha.</li>
+    <li>Cada persona tiene que tener su usuario de TIMBÓ (ID Ciudadana).</li>
+    <li>Los roles se piden ante el <b>administrador local</b> de TIMBÓ del organismo.</li>
+  </ol>
+
+  <div class="firma">
+    <div>Firma y aclaración de la jefatura</div>
+    <div>Recibido por (administrador local)</div>
+  </div>
+
+  <p class="pie">Funciones según la Circular UG TIMBÓ N° 7/2026, puntos 10 y 13. Modelo interno del Centro de Aprendizaje para ordenar el pedido: no es un formulario oficial.</p>
+</main>
+<script src="{{ url_for('static', filename='js/recursos.js') }}"></script>
+</body>
+</html>

@@ -926,6 +926,13 @@ def recursos_roles():
     )
 
 
+@admin_bp.route("/recursos/roles/ficha")
+@requiere_admin
+def recursos_ficha_roles():
+    # Hoja A4 para que la jefatura anote a quién le asigna cada rol.
+    return render_template("recursos/ficha_roles.html", **_contexto_recursos())
+
+
 @admin_bp.route("/recursos/glosario")
 @requiere_admin
 def recursos_glosario():
