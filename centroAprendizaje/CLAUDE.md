@@ -183,7 +183,7 @@ levantarla solo cuando haga falta.
   corre `flask db upgrade` (paso 3b de `scripts/deploy_servidor.sh`).
 - Tests: `tests/test_revision_nomenclador.py`.
 
-### Validación de equivalencias por farmacia (17/11/2026, sin deployar)
+### Validación de equivalencias por farmacia (17/11/2026, deployado en `8a667ee`)
 
 Pedido de la usuaria: que farmacia solo valide los amarillos, rápido y sin
 capacitación. La comparación automática y los colores NO se tocan.

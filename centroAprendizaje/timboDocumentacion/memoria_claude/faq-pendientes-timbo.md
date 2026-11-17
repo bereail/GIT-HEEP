@@ -1,12 +1,14 @@
 ---
 name: faq-pendientes-timbo
-description: Estado TIMBÓ — 2026-11-16 21h: servidor y main en 8291426 (nomenclador pulido, 12 docs oficiales nuevos, chatbot 117/117); todo deployado
+description: Estado TIMBÓ — 2026-11-17: servidor y main en 8a667ee (validación de farmacia en el nomenclador); todo deployado
 metadata:
   node_type: memory
   type: project
   originSessionId: aeb0330e-1d42-4e32-b905-d7b172f63d36
   modified: 2026-11-16T09:44:24.783Z
 ---
+
+- **2026-11-17: deployado `8a667ee`** (validación de farmacia: ✓/✎/✗, lista de a 15, Excel por colores, Excel por persona; migración 8a3c4d2e1f07 aplicada en el servidor, que tiene 0 llaves y 0 observaciones). Esta vez el deploy por ssh lo pudo correr Claude. Ver [[validacion-farmacia]].
 
 Al cierre del 2026-11-13 (la usuaria dijo "mañana seguimos"):
 

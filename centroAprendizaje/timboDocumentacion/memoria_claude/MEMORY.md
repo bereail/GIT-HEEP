@@ -1,4 +1,5 @@
-- [Estado y pendientes TIMBÓ](faq-pendientes-timbo.md) — 2026-11-16 21h: servidor y main en 8291426 (todo deployado)
+- [Estado y pendientes TIMBÓ](faq-pendientes-timbo.md) — 2026-11-17: servidor y main en 8a667ee (todo deployado)
+- [Validación de farmacia](validacion-farmacia.md) — revisión del nomenclador: lista con buscador de a 15, ✓/✎/✗, Excel por colores; cómo mostrarle cambios (servidor de prueba 5001)
 - [Contexto en CLAUDE.md](contexto-en-claude-md.md) — el estado del proyecto se versiona en CLAUDE.md del repo (multi-PC)
 - [Segunda etapa (formación en /admin)](segunda-etapa-admin.md) — criterios, prefijo FP, tandas; criterios de aceptación; seguridad hecha en local, faltan matriz e inventario
 - [Solo contenido oficial](solo-contenido-oficial.md) — regla: nada en el centro que no esté chequeado contra documentación oficial
