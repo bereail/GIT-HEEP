@@ -1977,3 +1977,113 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .inv-tabla th:last-child, .inv-col-estado { width: 210px; }
 @media (max-width: 720px) { .inv-tabla th:last-child, .inv-col-estado { width: 110px; } }
 .inv-estado { white-space: normal; }
+
+/* Validación de equivalencias (pantalla de farmacia, /revision/): lista con
+   buscador como el nomenclador público, con la respuesta en cada tarjeta. */
+.val { max-width: 1000px; margin: 0 auto; }
+.val [hidden] { display: none !important; }
+.val-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 6px 0 10px; }
+.val-tile { display: grid; gap: 4px; justify-items: center; padding: 14px 10px; background: var(--surface); border: 1px solid var(--border); border-top: 4px solid var(--border-strong); border-radius: var(--radius-md); font: inherit; color: var(--text); cursor: pointer; transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); }
+.val-tile:hover { box-shadow: var(--shadow-sm); }
+.val-tile b { font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
+.val-tile span { font-size: 12.5px; color: var(--text-muted); font-weight: 500; }
+.val-tile--pend { border-top-color: #c49000; }
+.val-tile--pend b { color: #9a6c00; }
+.val-tile--ok { border-top-color: var(--success); }
+.val-tile--ok b { color: var(--success); }
+.val-tile.is-active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.val-progreso { height: 6px; border-radius: 999px; background: var(--surface-sunken); overflow: hidden; margin-bottom: 14px; }
+.val-progreso span { display: block; height: 100%; background: var(--success); transition: width var(--dur) var(--ease); }
+.val-controles { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-bottom: 8px; }
+.val-buscar { flex: 1; min-width: 220px; }
+.val-descargar { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.val-descargar:hover { text-decoration: underline; }
+.val-cuenta { font-size: 12.5px; color: var(--text-faint); margin-bottom: 10px; min-height: 1em; }
+.val-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.val-item { background: var(--surface); border: 1px solid var(--border); border-left: 6px solid #c49000; border-radius: var(--radius-sm); padding: 14px 16px; }
+.val-item--si { border-left-color: var(--success); }
+.val-item--no { border-left-color: var(--danger); }
+.val-item--duda { border-left-color: var(--warning); }
+.val-item__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.val-item__label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint); margin-bottom: 4px; }
+.val-item__nombre { font-weight: 650; font-size: 14.5px; line-height: 1.35; }
+.val-item__timbo { font-size: 14.5px; line-height: 1.35; }
+.val-item__interno { display: block; margin-top: 3px; font-size: 12px; color: var(--text-faint); }
+.val-item__codigo { display: inline-block; margin-top: 5px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; color: var(--accent-hover); background: var(--accent-soft); padding: 2px 8px; border-radius: 5px; }
+.val-copiar { margin-left: 6px; vertical-align: middle; background: transparent; border: 1px solid var(--border); border-radius: 5px; padding: 1px 8px; font: inherit; font-size: 11.5px; color: var(--text-muted); cursor: pointer; }
+.val-copiar:hover { border-color: var(--border-strong); color: var(--text); }
+.val-copiar.is-ok { color: var(--success); border-color: currentColor; }
+.val-item__nota { grid-column: 1 / -1; font-size: 12.5px; color: var(--text-faint); line-height: 1.45; border-top: 1px solid var(--border); padding-top: 8px; }
+.val-item__resp { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border-strong); }
+.val-item__pregunta { font-size: 14px; font-weight: 650; margin-bottom: 8px; }
+.val-opciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.val-opcion { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 8px 10px; border-radius: var(--radius-sm); border: 2px solid var(--border); background: var(--surface); font: inherit; font-size: 14.5px; font-weight: 600; color: var(--text); cursor: pointer; transition: border-color var(--dur-fast), background var(--dur-fast); }
+.val-opcion:hover { border-color: var(--border-strong); }
+.val-opcion:focus-visible { outline: 3px solid var(--accent-soft-border); outline-offset: 2px; }
+.val-opcion--si.is-selected { border-color: var(--success); background: var(--success-soft); color: var(--success); }
+.val-opcion--no.is-selected { border-color: var(--danger); background: var(--danger-soft); color: var(--danger); }
+.val-opcion--duda.is-selected { border-color: var(--warning); background: var(--warning-soft); color: var(--warning); }
+.val-estado { font-size: 12.5px; color: var(--text-muted); }
+.val-estado.is-error { color: var(--danger); font-weight: 600; }
+.val-obs { width: 100%; margin-top: 8px; resize: vertical; font: inherit; font-size: 14px; }
+.val-chip { padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.val-chip--si { background: var(--success-soft); color: var(--success); }
+.val-chip--no { background: var(--danger-soft); color: var(--danger); }
+.val-chip--duda { background: var(--warning-soft); color: var(--warning); }
+.val-chip--pendiente { background: var(--surface-sunken); color: var(--text-muted); }
+@media (max-width: 680px) {
+  .val-item { padding: 12px; }
+  .val-item__datos, .val-opciones { grid-template-columns: 1fr; gap: 10px; }
+  .val-opcion { justify-content: flex-start; }
+  .val-tile b { font-size: 22px; }
+}
+/* Farmacia: acciones Confirmar / Editar / No coincide, marca de revisado y páginas */
+.val-item { position: relative; }
+.val-item--si { background: linear-gradient(90deg, var(--success-soft), var(--surface) 45%); }
+.val-item--no { background: linear-gradient(90deg, var(--danger-soft), var(--surface) 45%); }
+.val-item--duda { background: linear-gradient(90deg, var(--warning-soft), var(--surface) 45%); }
+.val-marca { float: right; margin: -2px 0 6px 10px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.val-marca--si { background: var(--success-soft); color: var(--success); border: 1px solid currentColor; }
+.val-marca--no { background: var(--danger-soft); color: var(--danger); border: 1px solid currentColor; }
+.val-marca--duda { background: var(--warning-soft); color: var(--warning); border: 1px solid currentColor; }
+.val-opcion__icono { font-size: 18px; font-weight: 800; line-height: 1; }
+.val-opcion--si .val-opcion__icono { color: var(--success); }
+.val-opcion--no .val-opcion__icono { color: var(--danger); }
+.val-opcion--editar .val-opcion__icono { color: var(--accent); }
+.val-opcion--editar.is-selected { border-color: var(--warning); background: var(--warning-soft); color: var(--warning); }
+.val-opcion.is-selected .val-opcion__icono { color: inherit; }
+/* Ayuda al pasar el mouse: aparece enseguida, arriba del botón. */
+.val-opcion { position: relative; }
+@media (hover: hover) {
+  .val-opcion[data-ayuda]:hover::after {
+    content: attr(data-ayuda); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    width: max-content; max-width: 260px; padding: 7px 10px; border-radius: 6px; background: #1c222b; color: #fff;
+    font-size: 12.5px; font-weight: 500; line-height: 1.35; text-align: center; white-space: normal; z-index: 5; pointer-events: none;
+    box-shadow: var(--shadow-md);
+  }
+}
+.val-estado { min-height: 18px; margin: 6px 0 0; text-align: right; }
+.val-cuenta-fila { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.val-cuenta-fila .val-cuenta { margin: 0; }
+.val-paginas { display: flex; align-items: center; gap: 10px; }
+.val-paginas__texto { font-size: 13px; color: var(--text-muted); font-variant-numeric: tabular-nums; min-width: 92px; text-align: center; }
+.val-paginas .btn { min-height: 38px; }
+.val-pie { display: flex; justify-content: center; margin: 16px 0 8px; }
+@media (max-width: 680px) {
+  .val-marca { float: none; display: inline-block; margin: 0 0 8px; }
+  .val-paginas { width: 100%; justify-content: space-between; }
+}
+/* Resumen del panel (/admin/nomenclador/revision) */
+.val-resumen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 14px 0; }
+.val-resumen a { display: grid; gap: 2px; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); border-top: 4px solid var(--border-strong); background: var(--surface); color: var(--text); text-decoration: none; }
+.val-resumen a b { font-size: 24px; }
+.val-resumen a span { font-size: 13px; color: var(--text-muted); }
+.val-resumen a.is-active { box-shadow: 0 0 0 2px var(--accent); }
+.val-resumen .val-r-si { border-top-color: var(--success); }
+.val-resumen .val-r-no { border-top-color: var(--danger); }
+.val-resumen .val-r-duda { border-top-color: var(--warning); }
+@media (max-width: 720px) { .val-resumen { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Farmacia: campo de "Editar" con su botón Guardar */
+.val-editor { display: flex; gap: 8px; align-items: flex-end; margin-top: 8px; }
+.val-editor .val-obs { flex: 1; margin-top: 0; }
+.val-editor .val-guardar { flex: none; }

@@ -49,9 +49,10 @@ def create_app(test_config=None):
 
     app.register_blueprint(revision_bp)
 
-    from app.models.revision_nomenclador import hora_ar
+    from app.models.revision_nomenclador import codigo_hospital, hora_ar
 
     app.add_template_filter(hora_ar, "hora_ar")
+    app.add_template_filter(codigo_hospital, "codigo_hospital")
 
     @app.template_global()
     def tutoriales_para_js(categoria):

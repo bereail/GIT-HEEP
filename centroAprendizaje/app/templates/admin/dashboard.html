@@ -21,7 +21,7 @@
   <span class="rev-aviso__icono">🔄</span>
   <span class="rev-aviso__texto">
     <b>Revisión del nomenclador</b>
-    <span>{{ revision.observaciones }} observación{{ 'es' if revision.observaciones != 1 }} · {{ revision.revisores }} persona{{ 's' if revision.revisores != 1 }} con acceso{% if revision.ultima %} · última: {{ revision.ultima.actualizado_en | hora_ar }}{% endif %}</span>
+    <span>{{ revision.observaciones }} {{ 'revisión' if revision.observaciones == 1 else 'revisiones' }} · {{ revision.revisores }} persona{{ 's' if revision.revisores != 1 }} con acceso{% if revision.ultima %} · última: {{ revision.ultima.actualizado_en | hora_ar }}{% endif %}</span>
   </span>
   <span class="rev-aviso__ir">Ver observaciones y accesos →</span>
 </a>

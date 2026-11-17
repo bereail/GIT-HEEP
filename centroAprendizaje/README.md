@@ -109,8 +109,8 @@ python run.py
 ```
 
 Sitio público: `http://127.0.0.1:5000/`.
-Panel de administración: `http://127.0.0.1:5000/admin` — contraseña por
-defecto en desarrollo: `admin123` (variable de entorno `ADMIN_PASSWORD`).
+Panel de administración: `http://127.0.0.1:5000/admin` — en local la
+contraseña es siempre `admin123` (la fija `run.py`; el servidor no la usa).
 
 **Antes de desplegar en un servidor real**, definir las variables de
 entorno `SECRET_KEY` y `ADMIN_PASSWORD` con valores propios — los que trae

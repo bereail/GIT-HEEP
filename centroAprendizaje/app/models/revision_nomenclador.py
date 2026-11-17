@@ -34,6 +34,20 @@ def clave_item(nombre_interno):
     return re.sub(r"\s+", " ", sin_tildes).strip().lower()
 
 
+# Respuesta a "¿Son realmente el mismo artículo?". Las observaciones viejas
+# no tienen respuesta (None): cuentan como "sin revisar".
+VALIDACIONES = {"si": "Sí, son equivalentes", "no": "No, son diferentes", "duda": "Tengo dudas"}
+# Color de cada fila en los Excel según la respuesta (como en la pantalla).
+COLOR_EXCEL = {"si": "verde", "no": "rojo", "duda": "naranja", None: "gris"}
+
+
+def codigo_hospital(notas):
+    """El código interno del hospital, que el nomenclador guarda en las notas
+    como "[cod. interno 412]". Si no está, devuelve ""."""
+    m = re.search(r"\[cod\.? interno ([^\]]+)\]", notas or "", re.I)
+    return m.group(1).strip() if m else ""
+
+
 def hash_token(token):
     return hashlib.sha256(token.encode("utf-8")).hexdigest()
 
@@ -55,8 +69,9 @@ class RevisorNomenclador(db.Model):
 
 
 class ObservacionNomenclador(db.Model):
-    """Una observación por revisor y por ítem; si la edita, la versión
-    anterior queda en el historial."""
+    """La revisión de un ítem por un revisor: la respuesta (sí / no / dudas) y
+    una observación opcional. Una por revisor y por ítem; si la cambia, la
+    versión anterior queda en el historial."""
 
     __tablename__ = "observaciones_nomenclador"
     __table_args__ = (db.UniqueConstraint("revisor_id", "clave_item", name="uq_observacion_revisor_item"),)
@@ -65,7 +80,8 @@ class ObservacionNomenclador(db.Model):
     revisor_id = db.Column(db.Integer, db.ForeignKey("revisores_nomenclador.id"), nullable=False, index=True)
     clave_item = db.Column(db.String(300), nullable=False, index=True)
     nombre_item = db.Column(db.String(300), nullable=False)  # cómo se llamaba el ítem al comentarlo
-    texto = db.Column(db.Text, nullable=False)
+    texto = db.Column(db.Text, nullable=False)  # opcional: puede quedar ""
+    validacion = db.Column(db.String(10))  # ver VALIDACIONES; None = sin responder
     creado_en = db.Column(db.DateTime, default=_ahora)
     actualizado_en = db.Column(db.DateTime, default=_ahora)
 
@@ -75,13 +91,14 @@ class ObservacionNomenclador(db.Model):
 
 
 class ObservacionHistorial(db.Model):
-    """Versiones anteriores de una observación (texto y cuándo se guardó)."""
+    """Versiones anteriores de una revisión (respuesta, texto y cuándo se guardó)."""
 
     __tablename__ = "observaciones_nomenclador_historial"
 
     id = db.Column(db.Integer, primary_key=True)
     observacion_id = db.Column(db.Integer, db.ForeignKey("observaciones_nomenclador.id"), nullable=False, index=True)
     texto = db.Column(db.Text, nullable=False)
+    validacion = db.Column(db.String(10))
     guardado_en = db.Column(db.DateTime, nullable=False)
 
     observacion = db.relationship("ObservacionNomenclador", back_populates="historial")

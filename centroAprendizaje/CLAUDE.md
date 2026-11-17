@@ -183,6 +183,45 @@ levantarla solo cuando haga falta.
   corre `flask db upgrade` (paso 3b de `scripts/deploy_servidor.sh`).
 - Tests: `tests/test_revision_nomenclador.py`.
 
+### Validación de equivalencias por farmacia (17/11/2026, sin deployar)
+
+Pedido de la usuaria: que farmacia solo valide los amarillos, rápido y sin
+capacitación. La comparación automática y los colores NO se tocan.
+- **Pantalla `/revision/`** (la llave sigue igual): lista con buscador como
+  el nomenclador público, **de a 15** con flechas (y teclas ← →). Filtros
+  Por revisar / Revisados / Todos. Cada tarjeta: pedido + código interno del
+  hospital (sale de `[cod. interno N]` en las notas), TIMBÓ + código +
+  Copiar, la nota limpia (`nota_visible`, mismas reglas que el público), y
+  tres botones con ayuda al pasar el mouse: **✓ Confirmar**, **✎ Editar**
+  (abre el campo con un mini botón **Guardar**; también guarda al salir) y
+  **✗ No coincide**. Si solo escribe, sin ✓ ni ✗, queda "con dudas". Los
+  revisados se ven teñidos y con la marca del resultado y la fecha. Los
+  guardados van en cola (de a uno), para que no se pisen.
+  La usuaria pidió esta forma después de ver la versión "de a un artículo",
+  que se descartó: prefiere la lista con buscador.
+- **Datos:** columna `validacion` (`si` / `no` / `duda` / NULL) en
+  `observaciones_nomenclador` y en el historial (migración `8a3c4d2e1f07`,
+  solo agrega columnas). Las observaciones viejas quedan sin respuesta =
+  "sin revisar". `/revision/observacion` acepta `validacion` y/o `texto`.
+- **Excel sin dependencias** (`app/services/xlsx.py`, sin openpyxl en el
+  servidor): filas pintadas por color (verde sí, rojo no, naranja dudas,
+  gris sin revisar).
+  - Farmacia: `/revision/mis-revisiones.xlsx`, solo lo suyo, sale de la
+    sesión (no acepta parámetros). Hojas COINCIDENCIAS / NO COINCIDEN /
+    DUDAS (+ SIN RESPUESTA si hay observaciones viejas).
+  - Admin: `/admin/nomenclador/revision/exportar` con 4 hojas
+    (COINCIDENCIAS, NO COINCIDEN, DUDAS, SIN REVISAR) + "YA NO EN AMARILLO"
+    si hay. `?revisor=<id>` = Excel de una sola persona (botón ⬇️ Excel en
+    la tabla de accesos).
+- **Panel:** resumen Total / Confirmados / No coinciden / Con dudas / Sin
+  revisar, que también son filtros (+ "Con observación escrita"). Si dos
+  personas responden distinto, el ítem cuenta como "Con dudas".
+- **Local:** `python run.py` usa siempre la contraseña `admin123` (pedido de
+  la usuaria). El servidor no pasa por ahí (gunicorn `run:app`).
+- Pendiente: el PDF `static/descargas/llave_de_acceso_revision.pdf` todavía
+  explica la pantalla vieja ("Agregar observación"). No hay asignación de
+  artículos por persona: cada llave ve todos los amarillos.
+
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 
 **Reglas nuevas de la usuaria (16/11), además de las de arriba:**

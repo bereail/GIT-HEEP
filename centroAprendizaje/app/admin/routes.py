@@ -146,7 +146,8 @@ def dashboard():
     from app.models.revision_nomenclador import ObservacionNomenclador, RevisorNomenclador
 
     revision = {
-        "observaciones": ObservacionNomenclador.query.filter(ObservacionNomenclador.texto != "").count(),
+        "observaciones": ObservacionNomenclador.query.filter(
+            (ObservacionNomenclador.texto != "") | ObservacionNomenclador.validacion.isnot(None)).count(),
         "revisores": RevisorNomenclador.query.filter_by(activo=True).count(),
         "ultima": ObservacionNomenclador.query.order_by(ObservacionNomenclador.actualizado_en.desc()).first(),
     }
@@ -1093,44 +1094,68 @@ def capacitacion_archivo(nombre):
 
 # ------------------------------------------------- revisión del nomenclador --
 
-def _datos_revision():
-    """Ítems en amarillo con sus observaciones (de todos los revisores), y las
-    observaciones de ítems que ya no están en amarillo (cambiaron de estado o
-    de nombre en el CSV)."""
+# Resultado de cada ítem amarillo: "si", "no", "duda" o "pendiente" (sin
+# respuesta). Si dos revisores respondieron distinto, va a "duda": necesita
+# una segunda mirada.
+RESULTADOS_REVISION = {"si": "Confirmados", "no": "No coinciden", "duda": "Con dudas", "pendiente": "Sin revisar"}
+FILTROS_REVISION = ("todos", *RESULTADOS_REVISION, "con")
+
+
+def _resultado_item(revisiones):
+    respuestas = {o.validacion for o in revisiones if o.validacion}
+    if not respuestas:
+        return "pendiente"
+    return respuestas.pop() if len(respuestas) == 1 else "duda"
+
+
+def _datos_revision(revisor_id=None):
+    """Ítems en amarillo con sus revisiones (de todos los revisores, o de uno
+    solo si se pasa `revisor_id`) y su resultado, y las revisiones de ítems
+    que ya no están en amarillo (cambiaron de estado o de nombre en el CSV)."""
     from app.models import EquivalenciaArticulo
     from app.models.revision_nomenclador import ObservacionNomenclador, clave_item
     from app.revision.routes import items_amarillos
 
     por_clave = {}
-    for o in ObservacionNomenclador.query.order_by(ObservacionNomenclador.actualizado_en.desc()):
-        por_clave.setdefault(o.clave_item, []).append(o)
+    consulta = ObservacionNomenclador.query
+    if revisor_id is not None:
+        consulta = consulta.filter_by(revisor_id=revisor_id)
+    for o in consulta.order_by(ObservacionNomenclador.actualizado_en.desc()):
+        if o.texto or o.validacion:
+            por_clave.setdefault(o.clave_item, []).append(o)
     amarillos = items_amarillos()
     claves_amarillas = {c for c, _ in amarillos}
-    filas = [{"clave": c, "item": e, "observaciones": [o for o in por_clave.get(c, []) if o.texto]} for c, e in amarillos]
+    filas = []
+    for c, e in amarillos:
+        revisiones = por_clave.get(c, [])
+        filas.append({"clave": c, "item": e, "observaciones": revisiones, "resultado": _resultado_item(revisiones),
+                      "desacuerdo": len({o.validacion for o in revisiones if o.validacion}) > 1})
     estado_actual = {clave_item(e.nombre_interno): e.confianza for e in EquivalenciaArticulo.query}
-    huerfanas = [o for c, lista in por_clave.items() if c not in claves_amarillas for o in lista if o.texto]
+    huerfanas = [o for c, lista in por_clave.items() if c not in claves_amarillas for o in lista]
     return filas, huerfanas, estado_actual
 
 
 @admin_bp.route("/nomenclador/revision")
 @requiere_admin
 def nomenclador_revision():
-    from app.models.revision_nomenclador import RevisorNomenclador
+    from app.models.revision_nomenclador import VALIDACIONES, RevisorNomenclador
 
     filas, huerfanas, estado_actual = _datos_revision()
-    filtro = request.args.get("filtro", "con")
-    if filtro not in ("todos", "con", "sin"):
-        filtro = "con"
-    conteo = {"todos": len(filas), "con": sum(1 for f in filas if f["observaciones"]),
-              "sin": sum(1 for f in filas if not f["observaciones"])}
+    filtro = request.args.get("filtro", "todos")
+    if filtro not in FILTROS_REVISION:
+        filtro = "todos"
+    conteo = {clave: sum(1 for f in filas if f["resultado"] == clave) for clave in RESULTADOS_REVISION}
+    conteo["todos"] = len(filas)
+    conteo["con"] = sum(1 for f in filas if any(o.texto for o in f["observaciones"]))
     if filtro == "con":
-        filas = [f for f in filas if f["observaciones"]]
-    elif filtro == "sin":
-        filas = [f for f in filas if not f["observaciones"]]
+        filas = [f for f in filas if any(o.texto for o in f["observaciones"])]
+    elif filtro != "todos":
+        filas = [f for f in filas if f["resultado"] == filtro]
     return render_template(
         "admin/nomenclador_revision.html", filas=filas, huerfanas=huerfanas, estado_actual=estado_actual,
         filtro=filtro, conteo=conteo, revisores=RevisorNomenclador.query.order_by(RevisorNomenclador.nombre).all(),
-        enlace_nuevo=session.pop("enlace_revision_nuevo", None),
+        enlace_nuevo=session.pop("enlace_revision_nuevo", None), resultados=RESULTADOS_REVISION,
+        validaciones=VALIDACIONES,
     )
 
 
@@ -1192,44 +1217,60 @@ def revisor_estado(revisor_id):
 @admin_bp.route("/nomenclador/revision/exportar")
 @requiere_admin
 def nomenclador_revision_exportar():
-    """Las observaciones en CSV para abrir con Excel (separador ";" y BOM UTF-8,
-    así se ven bien las tildes). Respeta el filtro de la pantalla."""
-    import csv
-    import io
-
+    """Excel con toda la revisión, de todos los revisores (o de uno solo, con
+    ?revisor=<id>), en cuatro hojas según el resultado de cada ítem (y una
+    quinta con las revisiones de ítems que ya no están en amarillo, si las
+    hay). Una fila por revisión."""
     from flask import Response
 
-    from app.models.revision_nomenclador import hora_ar
+    import re
 
-    filas, huerfanas, estado_actual = _datos_revision()
-    filtro = request.args.get("filtro", "con")
-    if filtro == "con":
-        filas = [f for f in filas if f["observaciones"]]
-    elif filtro == "sin":
-        filas = [f for f in filas if not f["observaciones"]]
-    estados = {"alta": "Verde", "dudosa": "Amarillo", "sin_match": "Rojo"}
+    from app.models.revision_nomenclador import (
+        COLOR_EXCEL, VALIDACIONES, RevisorNomenclador, clave_item, codigo_hospital, hora_ar,
+    )
+    from app.revision.routes import descripcion_timbo
+    from app.services import xlsx
 
-    salida = io.StringIO()
-    w = csv.writer(salida, delimiter=";")
-    w.writerow(["Estado actual", "Como figura en el pedido", "Código catálogo", "Equivalencia propuesta",
-                "Notas del nomenclador", "Revisor/a", "Observación", "Creada", "Modificada", "Versiones anteriores"])
+    revisor = None
+    if request.args.get("revisor"):
+        revisor = db.session.get(RevisorNomenclador, request.args.get("revisor", type=int) or 0) or abort(404)
+    filas, huerfanas, estado_actual = _datos_revision(revisor.id if revisor else None)
+
+    def versiones(o):
+        return " | ".join(f"{hora_ar(h.guardado_en)}: [{VALIDACIONES.get(h.validacion, 'sin respuesta')}] {h.texto}".rstrip()
+                          for h in o.historial)
+
+    encabezados = ["Código hospital", "Descripción original", "Código TIMBÓ", "Descripción TIMBÓ", "Resultado",
+                   "Observación", "Revisor/a", "Fecha de revisión", "Versiones anteriores"]
+    anchos = [14, 42, 14, 50, 26, 42, 18, 17, 40]
+    hojas = {clave: [] for clave in RESULTADOS_REVISION}
+    colores = {clave: [] for clave in RESULTADOS_REVISION}  # cada fila, del color de su respuesta
     for f in filas:
         e = f["item"]
-        base = ["Amarillo", e.nombre_interno, e.codigo_catalogo or "",
-                " — ".join(x for x in (e.bien_o_servicio, e.item_especifico) if x), e.notas or ""]
+        base = [codigo_hospital(e.notas), e.nombre_interno, e.codigo_catalogo or "", descripcion_timbo(e)]
         if not f["observaciones"]:
-            w.writerow(base + ["", "", "", "", ""])
+            hojas[f["resultado"]].append(base + ["Sin revisar", "", "", "", ""])
+            colores[f["resultado"]].append(COLOR_EXCEL[None])
         for o in f["observaciones"]:
-            w.writerow(base + [o.revisor.nombre, o.texto, hora_ar(o.creado_en), hora_ar(o.actualizado_en),
-                               " | ".join(f"{hora_ar(h.guardado_en)}: {h.texto}" for h in o.historial)])
-    if filtro != "sin":
-        for o in huerfanas:
-            w.writerow([estados.get(estado_actual.get(o.clave_item), "Ya no está en el nomenclador"), o.nombre_item,
-                        "", "", "", o.revisor.nombre, o.texto, hora_ar(o.creado_en), hora_ar(o.actualizado_en),
-                        " | ".join(f"{hora_ar(h.guardado_en)}: {h.texto}" for h in o.historial)])
-    nombre = f"observaciones_nomenclador_{filtro}_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
-    return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
-                    headers={"Content-Disposition": f'attachment; filename="{nombre}"'})
+            resultado = VALIDACIONES.get(o.validacion, "Sin responder")
+            if f["desacuerdo"]:
+                resultado += " (hay respuestas distintas)"
+            hojas[f["resultado"]].append(base + [resultado, o.texto, o.revisor.nombre, hora_ar(o.actualizado_en),
+                                                 versiones(o)])
+            colores[f["resultado"]].append(COLOR_EXCEL[o.validacion])
+    libro = [(nombre, encabezados, hojas[clave], anchos, colores[clave]) for clave, nombre in
+             (("si", "COINCIDENCIAS"), ("no", "NO COINCIDEN"), ("duda", "DUDAS"), ("pendiente", "SIN REVISAR"))]
+    if huerfanas:
+        estados = {"alta": "Ahora en verde", "sin_match": "Ahora en rojo"}
+        libro.append(("YA NO EN AMARILLO", ["Estado actual"] + encabezados[1:2] + encabezados[4:], [
+            [estados.get(estado_actual.get(o.clave_item), "Ya no está en el nomenclador"), o.nombre_item,
+             VALIDACIONES.get(o.validacion, "Sin responder"), o.texto, o.revisor.nombre, hora_ar(o.actualizado_en),
+             versiones(o)] for o in huerfanas], [24, 42, 22, 42, 18, 17, 40],
+            [COLOR_EXCEL[o.validacion] for o in huerfanas]))
+    quien = "_" + (re.sub(r"[^a-z0-9]+", "-", clave_item(revisor.nombre)).strip("-") or str(revisor.id)) if revisor else ""
+    nombre = f"revision_nomenclador{quien}_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.xlsx"
+    return Response(xlsx.libro(libro), mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    headers={"Content-Disposition": f'attachment; filename="{nombre}"', "Cache-Control": "no-store"})
 
 
 # ------------------------------------------------------------- búsquedas --

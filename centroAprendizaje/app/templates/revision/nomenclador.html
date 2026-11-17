@@ -1,53 +1,29 @@
 {% extends "revision/_base.html" %}
 {% block acciones %}<span class="rev-top__usuario">👤 {{ revisor.nombre }} · <a href="{{ url_for('revision.salir') }}">Salir</a></span>{% endblock %}
 {% block contenido %}
-<h1 class="rev-titulo">Ítems para revisar</h1>
-<p class="rev-bajada">Son los artículos en <b>amarillo</b>: tienen una equivalencia que hay que confirmar. Si ves algo para aclarar o corregir, tocá <b>"Agregar observación"</b>, escribilo y tocá <b>Guardar</b>. Se guarda al instante y lo podés cambiar cuando quieras. Lo que escribís no cambia el nomenclador: le llega a quien lo administra.</p>
+<div class="val" id="val" data-csrf="{{ csrf_token() }}" data-url-guardar="{{ url_for('revision.guardar_observacion') }}">
 
-<div class="rev-barra" data-csrf="{{ csrf_token() }}" data-url-guardar="{{ url_for('revision.guardar_observacion') }}">
-  <div class="input-wrap rev-barra__buscar"><span class="input-wrap__icon">🔎</span><input class="input" type="search" id="rev-buscar" placeholder="Buscar un artículo…" aria-label="Buscar un artículo" autocomplete="off" /></div>
-  <div class="rev-filtros" role="radiogroup" aria-label="Qué ítems ver">
-    <button type="button" class="rev-filtro is-active" data-filtro="todos" role="radio" aria-checked="true">Todos <b>{{ items | length }}</b></button>
-    <button type="button" class="rev-filtro" data-filtro="sin" role="radio" aria-checked="false">Sin observación <b id="rev-n-sin">{{ items | length - con_observacion }}</b></button>
-    <button type="button" class="rev-filtro" data-filtro="con" role="radio" aria-checked="false">Con observación <b id="rev-n-con">{{ con_observacion }}</b></button>
+  <h1 class="rev-titulo">Artículos para confirmar</h1>
+  <p class="rev-bajada">Mirá los dos lados y respondé: <b>¿Son realmente el mismo artículo?</b> <b>✓ Confirmar</b> si son el mismo, <b>✗ No coincide</b> si son distintos, o <b>✎ Editar</b> para escribir algo. Se guarda solo.</p>
+
+  <div class="val-tiles" role="radiogroup" aria-label="Qué artículos ver">
+    <button type="button" class="val-tile val-tile--pend is-active" data-filtro="pendientes" role="radio" aria-checked="true"><b id="val-n-pend">{{ items | length - revisados }}</b><span>Por revisar</span></button>
+    <button type="button" class="val-tile val-tile--ok" data-filtro="revisados" role="radio" aria-checked="false"><b id="val-n-rev">{{ revisados }}</b><span>Revisados</span></button>
+    <button type="button" class="val-tile" data-filtro="todos" role="radio" aria-checked="false"><b>{{ items | length }}</b><span>Todos</span></button>
   </div>
+  <div class="val-progreso" aria-hidden="true"><span id="val-barra" style="width: {{ ((100 * revisados / (items | length)) | round | int) if items else 0 }}%"></span></div>
+
+  <div class="val-controles">
+    <div class="input-wrap val-buscar"><span class="input-wrap__icon">🔎</span><input class="input" type="search" id="val-buscar" placeholder="Buscar artículo o código…" aria-label="Buscar artículo o código" autocomplete="off" /></div>
+    <a class="val-descargar" href="{{ url_for('revision.exportar_mias') }}">⬇️ Descargar mis revisiones (Excel)</a>
+  </div>
+  <div class="val-cuenta-fila"><div class="val-cuenta" id="val-cuenta" aria-live="polite"></div>
+  <nav class="val-paginas" aria-label="Páginas" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
+
+  <ol class="val-lista" id="val-lista"></ol>
+  <div class="empty-state" id="val-vacio" hidden></div>
+  <div class="val-pie"><nav class="val-paginas" aria-label="Páginas" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
 </div>
 
-<ol class="rev-lista" id="rev-lista">
-  {% for i in items %}
-  <li class="rev-item estado-amarillo {{ 'tiene-obs' if i.observacion }}" data-clave="{{ i.clave }}" data-buscar="{{ (i.nombre ~ ' ' ~ i.buscar) | lower }}">
-    <div class="rev-item__datos">
-      <div>
-        <div class="rev-item__label">Como figura en el pedido</div>
-        <div class="rev-item__nombre">{{ i.nombre }}</div>
-      </div>
-      <div>
-        <div class="rev-item__label">Equivalencia propuesta</div>
-        <div>{{ i.buscar or '—' }}</div>
-        {% if i.codigo %}<span class="rev-item__codigo">{{ i.codigo }}</span>{% endif %}
-      </div>
-      {% if i.notas %}<div class="rev-item__nota">{{ i.notas }}</div>{% endif %}
-    </div>
-    <div class="rev-obs">
-      <div class="rev-obs__vista" {{ 'hidden' if not i.observacion }}>
-        <span class="rev-obs__chip">✏️ Tu observación</span>
-        <p class="rev-obs__texto">{{ i.observacion }}</p>
-        <span class="rev-obs__fecha">{% if i.actualizado %}Guardada el {{ i.actualizado }}{% endif %}</span>
-      </div>
-      <button type="button" class="btn btn--ghost btn--sm rev-obs__abrir">{{ 'Editar observación' if i.observacion else '+ Agregar observación' }}</button>
-      <div class="rev-obs__editor" hidden>
-        <label class="sr-only" for="obs-{{ loop.index }}">Observación sobre {{ i.nombre }}</label>
-        <textarea class="input rev-obs__campo" id="obs-{{ loop.index }}" rows="3" maxlength="2000" placeholder="Ej.: el código correcto es…, falta aclarar la medida…, está bien.">{{ i.observacion }}</textarea>
-        <div class="rev-obs__botones">
-          <button type="button" class="btn btn--primary btn--sm rev-obs__guardar">Guardar</button>
-          <button type="button" class="btn btn--ghost btn--sm rev-obs__cancelar">Cancelar</button>
-          <span class="rev-obs__estado" role="status"></span>
-        </div>
-      </div>
-    </div>
-  </li>
-  {% endfor %}
-</ol>
-<div class="empty-state" id="rev-vacio" hidden>No hay ítems con ese filtro.</div>
-<div class="rev-mas" id="rev-mas" hidden><span></span> <button type="button" class="btn btn--ghost btn--sm">Ver 40 más</button></div>
+<script type="application/json" id="val-datos">{{ {"items": items, "etiquetas": validaciones} | tojson }}</script>
 {% endblock %}
