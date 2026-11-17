@@ -2538,6 +2538,16 @@
       "verificado": true
     },
     {
+      "slug": "rectificar-caratula-expediente",
+      "situacion": "¿Cómo rectifico o corrijo la carátula de un expediente?",
+      "descripcion": "El expediente ya tiene carátula aprobada (incluso puede que ya le hayas dado vista a otra oficina o persona), pero un dato quedó mal cargado: el motivo, el código de trámite, etc.",
+      "causa": "Las carátulas no se pueden subsanar. El mecanismo de \"Subsanar Documentos\" corrige documentos incorporados al expediente, pero nunca la carátula ni las providencias, que quedan con orden permanente e inalterable (Circular UG TIMBÓ 3/2025, Anexo I, art. 7°).",
+      "solucion": "No hay, en la normativa de TIMBÓ ya revisada, un procedimiento específico para corregir una carátula una vez aprobada. Lo que corresponde es consultarlo directamente con la oficina caratuladora (generalmente la Mesa de Entradas de tu jurisdicción) o con la Unidad de Gestión TIMBÓ, para que indiquen cómo proceder en tu caso puntual — por ejemplo, dejar una providencia aclaratoria dentro del mismo expediente explicando el error, sin modificar el dato original.",
+      "tutorial_categoria_slug": "expedientes",
+      "tutorial_slug": "subsanar-documento",
+      "verificado": true
+    },
+    {
       "slug": "pase-a-la-oficina-equivocada",
       "situacion": "Mandé el expediente a la oficina equivocada",
       "descripcion": "Hiciste un pase y te diste cuenta de que elegiste mal la oficina de destino.",
@@ -2775,6 +2785,20 @@
     }
   ],
   "tareas": [
+    {
+      "slug": "rectificar-caratula-expediente",
+      "pregunta": "¿Cómo rectifico la carátula de un expediente?",
+      "keywords": [
+        "rectificar caratula",
+        "corregir caratula",
+        "error en la caratula",
+        "rectificar expediente",
+        "modificar caratula",
+        "caratula mal cargada"
+      ],
+      "tutorial_categoria_slug": "expedientes",
+      "tutorial_slug": "subsanar-documento"
+    },
     {
       "slug": "crear-id-ciudadana",
       "pregunta": "¿Cómo creo mi ID Ciudadana?",
