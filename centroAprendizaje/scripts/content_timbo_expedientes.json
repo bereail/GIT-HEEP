@@ -2786,20 +2786,6 @@
   ],
   "tareas": [
     {
-      "slug": "rectificar-caratula-expediente",
-      "pregunta": "¿Cómo rectifico la carátula de un expediente?",
-      "keywords": [
-        "rectificar caratula",
-        "corregir caratula",
-        "error en la caratula",
-        "rectificar expediente",
-        "modificar caratula",
-        "caratula mal cargada"
-      ],
-      "tutorial_categoria_slug": "expedientes",
-      "tutorial_slug": "subsanar-documento"
-    },
-    {
       "slug": "crear-id-ciudadana",
       "pregunta": "¿Cómo creo mi ID Ciudadana?",
       "keywords": [
@@ -3415,6 +3401,20 @@
       ],
       "tutorial_categoria_slug": "primeros-pasos",
       "tutorial_slug": "que-es-timbo"
+    },
+    {
+      "slug": "rectificar-caratula-expediente",
+      "pregunta": "¿Cómo rectifico la carátula de un expediente?",
+      "keywords": [
+        "rectificar caratula",
+        "rectifico la caratula",
+        "corregir caratula",
+        "error en la caratula",
+        "modificar caratula",
+        "caratula mal cargada"
+      ],
+      "tutorial_categoria_slug": "expedientes",
+      "tutorial_slug": "subsanar-documento"
     }
   ],
   "quickstart_steps": [
