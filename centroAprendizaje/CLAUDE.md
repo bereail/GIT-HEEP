@@ -218,9 +218,12 @@ capacitación. La comparación automática y los colores NO se tocan.
   personas responden distinto, el ítem cuenta como "Con dudas".
 - **Local:** `python run.py` usa siempre la contraseña `admin123` (pedido de
   la usuaria). El servidor no pasa por ahí (gunicorn `run:app`).
-- Pendiente: el PDF `static/descargas/llave_de_acceso_revision.pdf` todavía
-  explica la pantalla vieja ("Agregar observación"). No hay asignación de
-  artículos por persona: cada llave ve todos los amarillos.
+- Instructivo de la llave (`static/descargas/llave_de_acceso_revision.pdf`,
+  2 páginas: farmacia y administración), rehecho el 17/11 más simple. Su
+  fuente está en `scripts/instructivos/` (HTML + captura; el comando para
+  regenerarlo está en el comentario del HTML).
+- No hay asignación de artículos por persona: cada llave ve todos los
+  amarillos.
 
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 

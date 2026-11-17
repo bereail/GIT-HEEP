@@ -1,0 +1,79 @@
+<!doctype html>
+<!--
+  Fuente del instructivo app/static/descargas/llave_de_acceso_revision.pdf.
+  Para regenerarlo (Chrome o Edge, desde esta carpeta):
+    chrome --headless=new --no-pdf-header-footer --print-to-pdf=../../app/static/descargas/llave_de_acceso_revision.pdf llave_de_acceso_revision.html
+  La captura llave_tarjetas.png es de la pantalla /revision/ con datos reales del nomenclador.
+-->
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>Llave de acceso a la revisión del nomenclador</title>
+<style>
+  @page { size: A4; margin: 13mm 15mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Roboto, Arial, sans-serif; color: #1c222b; font-size: 11pt; line-height: 1.4; }
+  h1 { color: #1e4fa0; font-size: 21pt; margin: 0 0 4px; }
+  .bajada { color: #5b6472; margin: 0 0 14px; }
+  h2 { color: #1e4fa0; font-size: 14pt; margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 2px solid #e3e6ec; }
+  ol.pasos { list-style: none; margin: 0; padding: 0; counter-reset: paso; }
+  ol.pasos > li { position: relative; padding: 0 0 8px 38px; counter-increment: paso; }
+  ol.pasos > li::before { content: counter(paso); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #2456c7; color: #fff; font-weight: 700; font-size: 11pt; display: grid; place-items: center; }
+  .botones { display: flex; gap: 8px; margin: 6px 0 2px; }
+  .boton { flex: 1; border: 2px solid #e3e6ec; border-radius: 8px; padding: 6px 8px; font-size: 10.5pt; }
+  .boton b { display: block; font-size: 11.5pt; }
+  .si b { color: #1b8a4c; } .ed b { color: #2456c7; } .no b { color: #a4312a; }
+  .captura { margin: 6px 0 4px; border: 1px solid #e3e6ec; border-radius: 10px; overflow: hidden; aspect-ratio: 1000 / 600; }
+  .captura img { width: 100%; display: block; }
+  .pie-captura { font-size: 9.5pt; color: #5b6472; margin: 0 0 6px; }
+  .nota { border-left: 5px solid #1b8a4c; background: #e8f6ee; border-radius: 6px; padding: 8px 12px; margin: 10px 0; }
+  .aviso { border-left: 5px solid #c49000; background: #fdf3d7; border-radius: 6px; padding: 8px 12px; margin: 10px 0; }
+  .salto { break-before: page; }
+  table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  td { padding: 6px 8px; border-bottom: 1px solid #e3e6ec; vertical-align: top; }
+  td:first-child { width: 34%; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<h1>🔑 Revisión del nomenclador</h1>
+<p class="bajada">Instructivo para la persona de Farmacia que confirma los artículos en amarillo. No hace falta usuario ni contraseña.</p>
+
+<h2>Para quien revisa</h2>
+<ol class="pasos">
+  <li><b>Abrí tu acceso directo</b> con doble clic (o el enlace que te pasaron). Entrás directo, con tu nombre arriba a la derecha.</li>
+  <li><b>En cada artículo, compará los dos lados</b>: a la izquierda cómo lo pide el hospital y a la derecha cómo está en TIMBÓ. Después tocá:
+    <div class="botones">
+      <div class="boton si"><b>✓ Confirmar</b>son el mismo artículo</div>
+      <div class="boton ed"><b>✎ Editar</b>para escribir una duda o aclaración, y tocá <b>Guardar</b></div>
+      <div class="boton no"><b>✗ No coincide</b>son artículos distintos</div>
+    </div>
+  </li>
+  <li><b>Se guarda solo.</b> El artículo queda marcado con el resultado y la fecha. Si te equivocaste, tocá otra opción.</li>
+  <li><b>Pasá a los siguientes</b> con <b>Siguientes →</b> (se ven de a 15). Arriba ves cuántos te quedan; con <b>Revisados</b> volvés a ver lo que ya hiciste, y el buscador encuentra un artículo por nombre o código.</li>
+</ol>
+
+<div class="captura"><img src="llave_tarjetas.png" alt="Dos artículos: uno ya confirmado y otro con una observación escrita"></div>
+<p class="pie-captura">Arriba, un artículo ya confirmado. Abajo, uno con una observación escrita: falta tocar Guardar.</p>
+
+<div class="nota">Para bajar lo que revisaste, tocá <b>⬇️ Descargar mis revisiones (Excel)</b>. Lo que respondés no cambia el nomenclador: le llega a quien lo administra.</div>
+
+<h2 class="salto">Para quien administra</h2>
+<ol class="pasos">
+  <li><b>Crear la llave:</b> en el panel, <b>🔄 Revisión nomenclador</b> → "Dar acceso a una persona" → escribí el nombre y tocá <b>Crear acceso</b>.</li>
+  <li><b>Pasarla:</b> tocá <b>Descargar acceso directo (Windows)</b> y dale ese archivo a la persona, o <b>Copiar enlace</b> y mandáselo por un mensaje privado.</li>
+  <li><b>Ver el avance:</b> en la misma página están los totales (confirmados, no coinciden, con dudas y sin revisar), que también sirven de filtro.</li>
+  <li><b>Exportar:</b> <b>Exportar la revisión completa (Excel)</b> baja todo, separado en hojas y con colores. El botón <b>⬇️ Excel</b> de cada persona baja solo lo suyo.</li>
+</ol>
+
+<div class="aviso"><b>El enlace se muestra una sola vez.</b> Si lo perdés, generá otro con <b>🔑 Enlace nuevo</b>.</div>
+
+<table>
+  <tr><td>🔑 Enlace nuevo</td><td>Si la llave se perdió o se compartió de más. La anterior deja de funcionar en el momento.</td></tr>
+  <tr><td>⛔ Dar de baja</td><td>Cuando la persona termina. No puede entrar más, pero lo que revisó queda guardado. Se puede volver a activar.</td></tr>
+</table>
+
+<div class="aviso"><b>Quien tenga el enlace puede entrar como esa persona.</b> No lo publiques en grupos ni lo mandes por mail abierto.</div>
+
+</body>
+</html>
