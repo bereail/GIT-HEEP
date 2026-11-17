@@ -218,7 +218,12 @@ def _variantes(palabra):
 
 
 def _vocabulario(indice):
-    return {p for entrada in indice for p in entrada["texto"].split() if len(p) >= 4}
+    # El Nomenclador son miles de nombres de artículos variados, no
+    # vocabulario curado del sitio: si se incluye, un error de tipeo en una
+    # pregunta genérica ("convenio" → "convenccion") puede "corregirse" hacia
+    # el nombre de un artículo cualquiera en vez de quedar sin corregir.
+    return {p for entrada in indice if entrada["kind"] not in ("Nomenclador", "NomencladorAyuda")
+            for p in entrada["texto"].split() if len(p) >= 4}
 
 
 def _corregir_palabras(indice, palabras):
