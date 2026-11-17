@@ -1228,26 +1228,30 @@ def nomenclador_revision_exportar():
     from app.models.revision_nomenclador import (
         COLOR_EXCEL, VALIDACIONES, RevisorNomenclador, clave_item, codigo_hospital, hora_ar,
     )
-    from app.revision.routes import descripcion_timbo
+    from app.revision.routes import bodegas_por_clave, descripcion_timbo
     from app.services import xlsx
 
     revisor = None
     if request.args.get("revisor"):
         revisor = db.session.get(RevisorNomenclador, request.args.get("revisor", type=int) or 0) or abort(404)
     filas, huerfanas, estado_actual = _datos_revision(revisor.id if revisor else None)
+    bodegas_map = bodegas_por_clave()
 
     def versiones(o):
         return " | ".join(f"{hora_ar(h.guardado_en)}: [{VALIDACIONES.get(h.validacion, 'sin respuesta')}] {h.texto}".rstrip()
                           for h in o.historial)
 
-    encabezados = ["Código hospital", "Descripción original", "Código TIMBÓ", "Descripción TIMBÓ", "Resultado",
-                   "Observación", "Revisor/a", "Fecha de revisión", "Versiones anteriores"]
-    anchos = [14, 42, 14, 50, 26, 42, 18, 17, 40]
+    encabezados = ["Código interno", "Código de artículo", "Bodega/centro de pedido", "Descripción original",
+                   "Código TIMBÓ", "Descripción TIMBÓ", "Resultado", "Observación", "Revisor/a",
+                   "Fecha de revisión", "Versiones anteriores"]
+    anchos = [12, 16, 26, 42, 14, 50, 26, 42, 18, 17, 40]
     hojas = {clave: [] for clave in RESULTADOS_REVISION}
     colores = {clave: [] for clave in RESULTADOS_REVISION}  # cada fila, del color de su respuesta
     for f in filas:
         e = f["item"]
-        base = [codigo_hospital(e.notas), e.nombre_interno, e.codigo_catalogo or "", descripcion_timbo(e)]
+        base = [e.codigo_interno or codigo_hospital(e.notas), e.codigo_articulo or "",
+                ", ".join(sorted(bodegas_map.get(f["clave"], ()))), e.nombre_interno, e.codigo_catalogo or "",
+                descripcion_timbo(e)]
         if not f["observaciones"]:
             hojas[f["resultado"]].append(base + ["Sin revisar", "", "", "", ""])
             colores[f["resultado"]].append(COLOR_EXCEL[None])
@@ -1262,7 +1266,7 @@ def nomenclador_revision_exportar():
              (("si", "COINCIDENCIAS"), ("no", "NO COINCIDEN"), ("duda", "DUDAS"), ("pendiente", "SIN REVISAR"))]
     if huerfanas:
         estados = {"alta": "Ahora en verde", "sin_match": "Ahora en rojo"}
-        libro.append(("YA NO EN AMARILLO", ["Estado actual"] + encabezados[1:2] + encabezados[4:], [
+        libro.append(("YA NO EN AMARILLO", ["Estado actual"] + encabezados[3:4] + encabezados[6:], [
             [estados.get(estado_actual.get(o.clave_item), "Ya no está en el nomenclador"), o.nombre_item,
              VALIDACIONES.get(o.validacion, "Sin responder"), o.texto, o.revisor.nombre, hora_ar(o.actualizado_en),
              versiones(o)] for o in huerfanas], [24, 42, 22, 42, 18, 17, 40],

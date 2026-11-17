@@ -32,13 +32,21 @@
 <div class="equiv-controls">
   <div class="input-wrap" style="flex:1;min-width:200px">
     <span class="input-wrap__icon">🔎</span>
-    <input class="input" type="search" id="equiv-buscar" aria-label="Buscar artículo" placeholder="Buscar artículo..." autocomplete="off">
+    <input class="input" type="search" id="equiv-buscar" aria-label="Buscar artículo o código" placeholder="Buscar artículo o código..." autocomplete="off">
   </div>
   {% if origenes|length > 1 %}
   <select class="input" id="equiv-origen" aria-label="Filtrar por pedido" style="max-width:220px">
     <option value="">Todos los pedidos</option>
     {% for o in origenes %}
     <option value="{{ o }}">{{ o }}</option>
+    {% endfor %}
+  </select>
+  {% endif %}
+  {% if bodegas|length > 1 %}
+  <select class="input" id="equiv-bodega" aria-label="Filtrar por bodega o centro de pedido" style="max-width:220px">
+    <option value="">Todas las bodegas</option>
+    {% for b in bodegas %}
+    <option value="{{ b }}">{{ b }}</option>
     {% endfor %}
   </select>
   {% endif %}
@@ -78,7 +86,7 @@
   <span><span class="est-chip estado-amarillo">🟡 Amarillo</span>confirmar antes de usar</span>
   <span><span class="est-chip estado-rojo">🔴 Rojo</span>no está en el catálogo</span>
 </div>
-<div class="equiv-count" id="equiv-count"></div>
+<div class="equiv-count" id="equiv-count">Cargando los {{ total }} artículos...</div>
 <div class="equiv-rows" id="equiv-rows"></div>
 <div class="empty-state" id="equiv-empty" hidden><div class="empty-state__icon">🔎</div>No encontramos ningún artículo con ese filtro.</div>
 <div class="equiv-more" id="equiv-more" hidden></div>
@@ -191,11 +199,12 @@
 
 <script nonce="{{ csp_nonce }}">
 (function () {
-  const DATOS = {{ datos | tojson }};
+  let DATOS = [];
   const LIMITE = 30; // Pocas por vez: lo normal es buscar el artículo, no recorrer la lista.
   let limiteActual = LIMITE;
   let filtroConfianza = '';
   let filtroOrigen = '';
+  let filtroBodega = '';
   let busqueda = '';
 
   function escapeHtml(s) {
@@ -205,9 +214,14 @@
   function sinTildes(s) {
     return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
-  // Se busca en el nombre del pedido, en el del catálogo y en los códigos, sin importar tildes ni el orden de las palabras.
+  // Se busca en el nombre del pedido, en el del catálogo, en los códigos (de catálogo,
+  // de artículo y el interno del hospital) y en la bodega, sin importar tildes ni orden.
   function indice(d) {
-    if (d._t === undefined) d._t = sinTildes([d.nombre, d.bien, d.item, d.codigo, d.notas].filter(Boolean).join(' '));
+    if (d._t === undefined) {
+      d._t = sinTildes([
+        d.nombre, d.bien, d.item, d.codigo, d.notas, d.bodega, d.codigo_articulo, d.codigo_interno,
+      ].filter(Boolean).join(' '));
+    }
     return d._t;
   }
 
@@ -228,8 +242,11 @@
 
   // Las notas vienen de la revisión: se saca lo técnico y lo que ya dice la etiqueta.
   function interno(d) {
-    const m = /\[cod\. interno (\d+)\]/.exec(d.notas || '');
-    return m ? `<span class="equiv-row__interno">Código interno del hospital: ${m[1]}</span>` : '';
+    const partes = [];
+    if (d.bodega) partes.push(`Bodega/centro de pedido: ${escapeHtml(d.bodega)}`);
+    if (d.codigo_interno) partes.push(`cód. interno ${escapeHtml(d.codigo_interno)}`);
+    if (d.codigo_articulo) partes.push(`cód. artículo ${escapeHtml(d.codigo_articulo)}`);
+    return partes.length ? `<span class="equiv-row__interno">${partes.join(' · ')}</span>` : '';
   }
   function nota(d) {
     let n = (d.notas || '')
@@ -273,6 +290,7 @@
   function aplicar() {
     let items = DATOS;
     if (filtroOrigen) items = items.filter(d => d.origen === filtroOrigen);
+    if (filtroBodega) items = items.filter(d => d.bodega === filtroBodega);
     if (filtroConfianza) items = items.filter(d => d.confianza === filtroConfianza);
     if (busqueda) {
       const palabras = sinTildes(busqueda).split(/\s+/).filter(Boolean);
@@ -344,8 +362,10 @@
   document.getElementById('equiv-todos').addEventListener('click', () => {
     busqueda = '';
     filtroOrigen = '';
+    filtroBodega = '';
     document.getElementById('equiv-buscar').value = '';
     if (selOrigen) selOrigen.value = '';
+    if (selBodega) selBodega.value = '';
     elegirEstado('');
   });
 
@@ -353,6 +373,15 @@
   if (selOrigen) {
     selOrigen.addEventListener('change', (e) => {
       filtroOrigen = e.target.value;
+      limiteActual = LIMITE;
+      aplicar();
+    });
+  }
+
+  const selBodega = document.getElementById('equiv-bodega');
+  if (selBodega) {
+    selBodega.addEventListener('change', (e) => {
+      filtroBodega = e.target.value;
       limiteActual = LIMITE;
       aplicar();
     });
@@ -375,8 +404,17 @@
   });
 
 
-  contarYPintar();
-  aplicar();
+  fetch('{{ url_for("ui.equivalencias_json", tema_slug=tema.slug) }}')
+    .then(r => r.json())
+    .then(datos => {
+      DATOS = datos;
+      contarYPintar();
+      aplicar();
+    })
+    .catch(() => {
+      document.getElementById('equiv-count').textContent =
+        'No se pudo cargar el nomenclador. Probá recargar la página.';
+    });
 })();
 </script>
 {% endblock %}

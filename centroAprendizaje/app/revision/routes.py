@@ -65,6 +65,20 @@ def items_amarillos():
     return [(clave, e) for clave, e in por_clave.items()]
 
 
+def bodegas_por_clave():
+    """Bodegas (centros de pedido) que piden cada ítem en amarillo. Un mismo
+    nombre puede repetirse en varias bodegas (es el mismo artículo del
+    catálogo igual), por eso acá sí se juntan todas, no solo la primera."""
+    tema = Tema.query.filter_by(slug=TEMA_NOMENCLADOR).first()
+    if not tema:
+        return {}
+    resultado = {}
+    for e in EquivalenciaArticulo.query.filter_by(tema_id=tema.id, confianza="dudosa"):
+        if e.bodega:
+            resultado.setdefault(clave_item(e.nombre_interno), set()).add(e.bodega)
+    return resultado
+
+
 @revision_bp.route("/acceso", methods=["GET"])
 def acceso():
     return render_template("revision/acceso.html")
@@ -114,17 +128,23 @@ def nomenclador():
     if not revisor:
         return redirect(url_for("revision.acceso"))
     propias = {o.clave_item: o for o in ObservacionNomenclador.query.filter_by(revisor_id=revisor.id)}
+    bodegas_map = bodegas_por_clave()
     items = []
     for clave, e in items_amarillos():
         o = propias.get(clave)
+        bodegas = sorted(bodegas_map.get(clave, ()))
         items.append({
-            "clave": clave, "nombre": e.nombre_interno, "codigo_hospital": codigo_hospital(e.notas),
+            "clave": clave, "nombre": e.nombre_interno,
+            "codigo_hospital": e.codigo_interno or codigo_hospital(e.notas),
             "codigo": e.codigo_catalogo or "", "timbo": descripcion_timbo(e), "nota": nota_visible(e.notas),
+            "bodegas": bodegas,
             "validacion": o.validacion if o else None, "observacion": o.texto if o else "",
             "actualizado": hora_ar(o.actualizado_en) if o else "",
         })
+    todas_las_bodegas = sorted({b for lista in bodegas_map.values() for b in lista})
     return render_template("revision/nomenclador.html", revisor=revisor, items=items,
-                           revisados=sum(1 for i in items if i["validacion"]), validaciones=VALIDACIONES)
+                           revisados=sum(1 for i in items if i["validacion"]), validaciones=VALIDACIONES,
+                           bodegas=todas_las_bodegas)
 
 
 @revision_bp.route("/observacion", methods=["POST"])
@@ -185,19 +205,24 @@ def exportar_mias():
     if not revisor:
         abort(403)
     propias = {o.clave_item: o for o in ObservacionNomenclador.query.filter_by(revisor_id=revisor.id)}
+    bodegas_map = bodegas_por_clave()
     hojas = {"si": [], "no": [], "duda": [], None: []}
     for clave, e in items_amarillos():
         o = propias.get(clave)
         if o and (o.validacion or o.texto):
-            hojas[o.validacion].append([codigo_hospital(e.notas), e.nombre_interno, e.codigo_catalogo or "",
-                                        descripcion_timbo(e), VALIDACIONES.get(o.validacion, "Sin responder"), o.texto,
-                                        hora_ar(o.actualizado_en)])
-    encabezados = ["Código hospital", "Descripción hospital", "Código TIMBÓ", "Descripción TIMBÓ", "Validación",
-                   "Observación", "Fecha de revisión"]
+            hojas[o.validacion].append([
+                e.codigo_interno or codigo_hospital(e.notas), e.codigo_articulo or "",
+                ", ".join(sorted(bodegas_map.get(clave, ()))), e.nombre_interno, e.codigo_catalogo or "",
+                descripcion_timbo(e), VALIDACIONES.get(o.validacion, "Sin responder"), o.texto,
+                hora_ar(o.actualizado_en),
+            ])
+    encabezados = ["Código interno", "Código de artículo", "Bodega/centro de pedido", "Descripción hospital",
+                   "Código TIMBÓ", "Descripción TIMBÓ", "Validación", "Observación", "Fecha de revisión"]
+    anchos = [12, 16, 26, 45, 14, 55, 22, 45, 17]
     nombres = [("si", "COINCIDENCIAS"), ("no", "NO COINCIDEN"), ("duda", "DUDAS")]
     if hojas[None]:  # observaciones de antes, sin respuesta
         nombres.append((None, "SIN RESPUESTA"))
-    contenido = xlsx.libro([(nombre, encabezados, hojas[v], [14, 45, 14, 55, 22, 45, 17], [COLOR_EXCEL[v]] * len(hojas[v]))
+    contenido = xlsx.libro([(nombre, encabezados, hojas[v], anchos, [COLOR_EXCEL[v]] * len(hojas[v]))
                             for v, nombre in nombres])
     nombre = f"mis_revisiones_nomenclador_{hora_ar(_ahora(), '%Y-%m-%d')}.xlsx"
     return Response(contenido, mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",

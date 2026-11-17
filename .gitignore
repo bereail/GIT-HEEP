@@ -1,0 +1,4 @@
+# Fuentes de datos externas usadas para generar el nomenclador y otros
+# materiales de trabajo: son archivos de trabajo local, no se versionan.
+/nomencladorDb/
+/infoTimbo/

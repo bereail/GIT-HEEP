@@ -50,6 +50,9 @@ def importar(ruta_csv=RUTA_CSV, tema_slug=TEMA_SLUG):
                 confianza=(fila.get("confianza") or "sin_match").strip() or "sin_match",
                 origen=(fila.get("origen") or "").strip() or None,
                 notas=(fila.get("notas") or "").strip() or None,
+                bodega=(fila.get("bodega") or "").strip() or None,
+                codigo_articulo=(fila.get("codigo_articulo") or "").strip() or None,
+                codigo_interno=(fila.get("codigo_interno") or "").strip() or None,
             ))
             total += 1
 

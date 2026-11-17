@@ -239,10 +239,11 @@ def test_descarga_de_farmacia_solo_sus_revisiones(app, beto):
     assert list(hojas) == ["COINCIDENCIAS", "NO COINCIDEN", "DUDAS"]
     assert len(hojas["COINCIDENCIAS"]) == 1 and len(hojas["DUDAS"]) == 1  # solo encabezado
     encabezado, *filas = hojas["NO COINCIDEN"]
-    assert encabezado == ["Código hospital", "Descripción hospital", "Código TIMBÓ", "Descripción TIMBÓ",
-                          "Validación", "Observación", "Fecha de revisión"]
+    assert encabezado == ["Código interno", "Código de artículo", "Bodega/centro de pedido", "Descripción hospital",
+                          "Código TIMBÓ", "Descripción TIMBÓ", "Validación", "Observación", "Fecha de revisión"]
     assert len(filas) == 1
-    assert filas[0][:6] == ["412", "Jeringa 5 ml", "38.6.1.1", "Bien — Ítem", "No, son diferentes", "Es otra medida"]
+    assert filas[0][:8] == ["412", "", "", "Jeringa 5 ml", "38.6.1.1", "Bien — Ítem", "No, son diferentes",
+                            "Es otra medida"]
     texto = r.data.decode("latin-1")
     for ajeno in ("De Beto", "Guantes", "Aguja", "Circuito", "Beto"):
         assert ajeno not in str(hojas), ajeno
@@ -332,14 +333,14 @@ def test_exportar_a_excel_en_cuatro_hojas(app, beto, admin_client):
     assert r.headers["Content-Disposition"].endswith('.xlsx"')
     hojas = hojas_xlsx(r.data)
     assert list(hojas) == ["COINCIDENCIAS", "NO COINCIDEN", "DUDAS", "SIN REVISAR", "YA NO EN AMARILLO"]
-    assert hojas["COINCIDENCIAS"][0] == ["Código hospital", "Descripción original", "Código TIMBÓ", "Descripción TIMBÓ",
-                                         "Resultado", "Observación", "Revisor/a", "Fecha de revisión",
-                                         "Versiones anteriores"]
+    assert hojas["COINCIDENCIAS"][0] == ["Código interno", "Código de artículo", "Bodega/centro de pedido",
+                                         "Descripción original", "Código TIMBÓ", "Descripción TIMBÓ", "Resultado",
+                                         "Observación", "Revisor/a", "Fecha de revisión", "Versiones anteriores"]
     fila = hojas["COINCIDENCIAS"][1]
-    assert fila[1] == "Guantes de látex M" and fila[4] == "Sí, son equivalentes" and fila[5] == "Talle; revisar"
-    assert fila[6] == "Ana" and "Primera versión" in fila[8] and "Tengo dudas" in fila[8]
+    assert fila[3] == "Guantes de látex M" and fila[6] == "Sí, son equivalentes" and fila[7] == "Talle; revisar"
+    assert fila[8] == "Ana" and "Primera versión" in fila[10] and "Tengo dudas" in fila[10]
     assert len(hojas["NO COINCIDEN"]) == 1 and len(hojas["DUDAS"]) == 1
-    assert [f[1] for f in hojas["SIN REVISAR"][1:]] == ["Jeringa 5 ml"] and hojas["SIN REVISAR"][1][0] == "412"
+    assert [f[3] for f in hojas["SIN REVISAR"][1:]] == ["Jeringa 5 ml"] and hojas["SIN REVISAR"][1][0] == "412"
     assert hojas["YA NO EN AMARILLO"][1][:2] == ["Ahora en verde", "Aguja 25/8"]
     assert app.test_client().get("/admin/nomenclador/revision/exportar").status_code == 302  # sin login
 
@@ -353,7 +354,7 @@ def test_exportar_excel_de_una_persona(app, beto, admin_client):
     r = admin_client.get("/admin/nomenclador/revision/exportar?revisor=2")
     assert r.status_code == 200 and "beto" in r.headers["Content-Disposition"]
     hojas = hojas_xlsx(r.data)
-    assert [f[1] for f in hojas["NO COINCIDEN"][1:]] == ["Jeringa 5 ml"] and len(hojas["COINCIDENCIAS"]) == 1
+    assert [f[3] for f in hojas["NO COINCIDEN"][1:]] == ["Jeringa 5 ml"] and len(hojas["COINCIDENCIAS"]) == 1
     assert "De Ana" not in str(hojas) and "Ana" not in str(hojas)
     assert admin_client.get("/admin/nomenclador/revision/exportar?revisor=99").status_code == 404
     assert b.get("/admin/nomenclador/revision/exportar?revisor=2").status_code == 302  # farmacia no puede

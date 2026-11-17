@@ -18,25 +18,30 @@
   }
 
   // ------------------------------------------------- validar equivalencias
-  // Lista con buscador, como el nomenclador público, de a 15 por página. En
-  // cada tarjeta: ✓ Confirmar, ✎ Editar (escribir algo) o ✗ No coincide. Se
-  // guarda al tocar; lo escrito, al salir del campo. Si solo escribe algo,
-  // sin confirmar ni rechazar, queda "con dudas".
+  // Dos columnas lado a lado (una debajo de la otra en el celular): a la
+  // izquierda lo que falta revisar, a la derecha lo ya resuelto. Al guardar
+  // una respuesta, la tarjeta se va de "Por revisar" y aparece en
+  // "Revisados" — nunca quedan mezcladas. Cada columna pagina de a 15 y
+  // tiene su propio buscador compartido. Si solo escribe algo, sin
+  // confirmar ni rechazar, queda "con dudas" (y pasa igual a Revisados).
   const raiz = document.getElementById('val');
   if (!raiz) return;
   const datos = JSON.parse(document.getElementById('val-datos').textContent);
   const items = datos.items;
   const porClave = new Map(items.map((i) => [i.clave, i]));
   const $ = (id) => document.getElementById(id);
-  const lista = $('val-lista');
-  const POR_PAGINA = 15;
-  let pagina = 0;
-  let filtro = 'pendientes';
-  let visibles = new Set(); // los que pasan el filtro; un ítem recién respondido no desaparece hasta cambiar el filtro
+  const COLS = {
+    pend: { lista: $('val-lista-pend'), vacio: $('val-vacio-pend'), cuenta: $('val-cuenta-pend'), pagina: 0, visibles: [], porPagina: 15, tarjeta },
+    // "Revisados" es un checklist compacto: entran muchas más filas por pantalla.
+    rev: { lista: $('val-lista-rev'), vacio: $('val-vacio-rev'), cuenta: $('val-cuenta-rev'), pagina: 0, visibles: [], porPagina: 50, tarjeta: tarjetaChecklist },
+  };
 
   const sinTildes = (t) => (t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   const esc = (t) => String(t == null ? '' : t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  items.forEach((i) => { i.indice = sinTildes([i.nombre, i.timbo, i.codigo, i.codigo_hospital].join(' ')); });
+  items.forEach((i) => {
+    i.bodegas = i.bodegas || [];
+    i.indice = sinTildes([i.nombre, i.timbo, i.codigo, i.codigo_hospital].concat(i.bodegas).join(' '));
+  });
 
   function contar() {
     const rev = items.filter((i) => i.validacion).length;
@@ -56,19 +61,18 @@
     return i.validacion ? `<span class="val-marca val-marca--${i.validacion}">${RESULTADO[i.validacion]}${i.actualizado ? ' · ' + esc(i.actualizado) : ''}</span>` : '';
   }
 
-  function tarjeta(i) {
+  function detalle(i) {
     const opciones = ACCIONES.map(([v, icono, texto, ayuda]) => {
       const sel = v === 'editar' ? i.validacion === 'duda' || !!i.observacion : i.validacion === v;
       return `<button type="button" class="val-opcion val-opcion--${v}${sel ? ' is-selected' : ''}" data-accion="${v}" aria-pressed="${sel}" title="${esc(ayuda)}" data-ayuda="${esc(ayuda)}"><span class="val-opcion__icono" aria-hidden="true">${icono}</span> ${texto}</button>`;
     }).join('');
     return `
-      <li class="val-item val-item--${i.validacion || 'pendiente'}" data-clave="${esc(i.clave)}">
-        ${marca(i)}
         <div class="val-item__datos">
           <div>
             <div class="val-item__label">Como figura en el pedido</div>
             <div class="val-item__nombre">${esc(i.nombre)}</div>
-            ${i.codigo_hospital ? `<span class="val-item__interno">Código interno del hospital: ${esc(i.codigo_hospital)}</span>` : ''}
+            ${i.bodegas.length ? `<span class="val-item__interno">Bodega/centro de pedido: ${esc(i.bodegas.join(', '))}</span>` : ''}
+            ${i.codigo_hospital ? `<span class="val-item__interno">Código interno: ${esc(i.codigo_hospital)}</span>` : ''}
           </div>
           <div>
             <div class="val-item__label">En TIMBÓ</div>
@@ -85,44 +89,73 @@
             <button type="button" class="btn btn--primary btn--sm val-guardar" title="Guardar lo escrito">Guardar</button>
           </div>
           <div class="val-estado" role="status"></div>
-        </div>
+        </div>`;
+  }
+
+  function tarjeta(i) {
+    return `
+      <li class="val-item val-item--${i.validacion || 'pendiente'}" data-clave="${esc(i.clave)}">
+        ${marca(i)}
+        ${detalle(i)}
+      </li>`;
+  }
+
+  const ICONO_CHECK = { si: '✓', no: '✗', duda: '✎' };
+
+  // "Revisados" es un checklist compacto, una línea por ítem: solo se
+  // despliega al tocarlo, si hace falta corregir algo.
+  function tarjetaChecklist(i) {
+    return `
+      <li class="val-item val-item--${i.validacion || 'pendiente'} val-item--check" data-clave="${esc(i.clave)}">
+        <button type="button" class="val-check__resumen" aria-expanded="false">
+          <span class="val-check__icono" aria-hidden="true">${ICONO_CHECK[i.validacion] || '·'}</span>
+          <span class="val-check__nombre">${esc(i.nombre)}</span>
+          <span class="val-check__fecha">${esc(i.actualizado || '')}</span>
+          <span class="val-check__flecha" aria-hidden="true">›</span>
+        </button>
+        <div class="val-check__detalle" hidden>${detalle(i)}</div>
       </li>`;
   }
 
   function filtrar() {
     const palabras = sinTildes($('val-buscar').value).split(/\s+/).filter(Boolean);
-    visibles = new Set(items.filter((i) =>
-      (filtro === 'todos' || (filtro === 'revisados') === !!i.validacion) && palabras.every((p) => i.indice.includes(p))
-    ).map((i) => i.clave));
-    pagina = 0;
-    pintar();
+    const selBodega = $('val-bodega');
+    const bodega = selBodega ? selBodega.value : '';
+    const pasaBusqueda = (i) => (!bodega || i.bodegas.includes(bodega)) && palabras.every((p) => i.indice.includes(p));
+    COLS.pend.visibles = items.filter((i) => !i.validacion && pasaBusqueda(i)).map((i) => i.clave);
+    COLS.rev.visibles = items.filter((i) => i.validacion && pasaBusqueda(i)).map((i) => i.clave);
+    COLS.pend.pagina = 0;
+    COLS.rev.pagina = 0;
+    pintar('pend');
+    pintar('rev');
   }
 
-  function pintar() {
-    const ver = items.filter((i) => visibles.has(i.clave));
-    const paginas = Math.max(1, Math.ceil(ver.length / POR_PAGINA));
-    pagina = Math.min(pagina, paginas - 1);
-    const desde = pagina * POR_PAGINA;
-    lista.innerHTML = ver.slice(desde, desde + POR_PAGINA).map(tarjeta).join('');
-    const texto = ver.length ? (desde + 1) + '–' + Math.min(desde + POR_PAGINA, ver.length) + ' de ' + ver.length : '';
-    document.querySelectorAll('.val-paginas').forEach((nav) => {
-      nav.hidden = ver.length <= POR_PAGINA;
+  function pintar(nombreCol) {
+    const col = COLS[nombreCol];
+    const porPagina = col.porPagina;
+    const ver = col.visibles.map((c) => porClave.get(c));
+    const paginas = Math.max(1, Math.ceil(ver.length / porPagina));
+    col.pagina = Math.min(col.pagina, paginas - 1);
+    const desde = col.pagina * porPagina;
+    col.lista.innerHTML = ver.slice(desde, desde + porPagina).map(col.tarjeta).join('');
+    const texto = ver.length ? (desde + 1) + '–' + Math.min(desde + porPagina, ver.length) + ' de ' + ver.length : '';
+    document.querySelectorAll(`.val-paginas[data-col="${nombreCol}"]`).forEach((nav) => {
+      nav.hidden = ver.length <= porPagina;
       nav.querySelector('.val-paginas__texto').textContent = texto;
-      nav.querySelector('[data-mover="-1"]').disabled = pagina === 0;
-      nav.querySelector('[data-mover="1"]').disabled = pagina >= paginas - 1;
+      nav.querySelector('[data-mover="-1"]').disabled = col.pagina === 0;
+      nav.querySelector('[data-mover="1"]').disabled = col.pagina >= paginas - 1;
     });
-    $('val-cuenta').textContent = ver.length ? 'Mostrando ' + texto + '.' : '';
-    const vacio = $('val-vacio');
-    vacio.hidden = ver.length > 0;
-    vacio.textContent = $('val-buscar').value.trim() ? 'No hay artículos con esa búsqueda.'
-      : filtro === 'pendientes' ? '🎉 No quedan artículos por revisar. Si querés cambiar algo, entrá a Revisados.'
+    col.cuenta.textContent = ver.length ? 'Mostrando ' + texto + '.' : '';
+    col.vacio.hidden = ver.length > 0;
+    col.vacio.textContent = $('val-buscar').value.trim() ? 'No hay artículos con esa búsqueda.'
+      : nombreCol === 'pend' ? '🎉 No quedan artículos por revisar.'
       : 'Todavía no revisaste ningún artículo.';
   }
 
-  function mover(delta) {
-    pagina += delta;
-    pintar();
-    $('val-cuenta').scrollIntoView({ block: 'start', behavior: 'smooth' });
+  function mover(nombreCol, delta) {
+    COLS[nombreCol].pagina += delta;
+    pintar(nombreCol);
+    COLS[nombreCol].cuenta.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   // De a un pedido por vez: si escribe y enseguida toca "Confirmar", primero
@@ -133,10 +166,12 @@
     return cola;
   }
 
-  const tarjetaDe = (clave) => lista.querySelector(`[data-clave="${CSS.escape(clave)}"]`);
+  const tarjetaDe = (clave) => COLS.pend.lista.querySelector(`[data-clave="${CSS.escape(clave)}"]`)
+    || COLS.rev.lista.querySelector(`[data-clave="${CSS.escape(clave)}"]`);
 
   async function guardarYa(clave, cambios) {
     const item = porClave.get(clave);
+    const teniaValidacion = !!item.validacion;
     const estadoDe = () => { const li = tarjetaDe(clave); return li ? li.querySelector('.val-estado') : { classList: { add() {}, remove() {} } }; };
     estadoDe().textContent = 'Guardando…';
     estadoDe().classList.remove('is-error');
@@ -153,16 +188,29 @@
       item.observacion = d.texto;
       item.actualizado = d.actualizado;
       contar();
-      // Repinta la tarjeta (marca de revisado, botones) si sigue en pantalla,
-      // sin perder lo que esté escribiendo.
       const li = tarjetaDe(clave);
       if (!li) return;
+      if (!teniaValidacion && item.validacion) {
+        // Pasó de "por revisar" a "revisado": se va con una transición corta
+        // y reaparece del otro lado, en vez de quedarse mezclado.
+        li.classList.add('val-item--saliendo');
+        setTimeout(() => { filtrar(); }, 220);
+        return;
+      }
+      // Se quedó en la misma columna (solo cambió el texto): se repinta en
+      // el lugar, sin perder lo que esté escribiendo.
+      const esChecklist = li.classList.contains('val-item--check');
       const campo = li.querySelector('.val-obs');
       const escribiendo = document.activeElement === campo;
       const abierto = !li.querySelector('.val-editor').hidden;
+      const desplegado = esChecklist && !li.querySelector('.val-check__detalle').hidden;
       const borrador = campo.value;
-      li.outerHTML = tarjeta(item);
+      li.outerHTML = esChecklist ? tarjetaChecklist(item) : tarjeta(item);
       const nuevo = tarjetaDe(clave);
+      if (desplegado) {
+        nuevo.querySelector('.val-check__detalle').hidden = false;
+        nuevo.querySelector('.val-check__resumen').setAttribute('aria-expanded', 'true');
+      }
       const nuevoCampo = nuevo.querySelector('.val-obs');
       if (abierto) nuevo.querySelector('.val-editor').hidden = false;
       if (escribiendo) { nuevoCampo.value = borrador; nuevoCampo.focus(); }
@@ -176,9 +224,16 @@
     }
   }
 
-  lista.addEventListener('click', (ev) => {
+  document.querySelector('.val-cols').addEventListener('click', (ev) => {
     const li = ev.target.closest('.val-item');
     if (!li) return;
+    const resumen = ev.target.closest('.val-check__resumen');
+    if (resumen) {
+      const abrir = li.querySelector('.val-check__detalle').hidden;
+      li.querySelector('.val-check__detalle').hidden = !abrir;
+      resumen.setAttribute('aria-expanded', String(abrir));
+      return;
+    }
     const opcion = ev.target.closest('.val-opcion');
     if (opcion && opcion.dataset.accion === 'editar') {
       li.querySelector('.val-editor').hidden = false;
@@ -216,7 +271,7 @@
     if (!item.validacion && texto) cambios.validacion = 'duda';
     guardar(li, cambios);
   }
-  lista.addEventListener('change', (ev) => {
+  document.querySelector('.val-cols').addEventListener('change', (ev) => {
     if (ev.target.classList.contains('val-obs')) guardarObs(ev.target.closest('.val-item'));
   });
   // Si cierra la pestaña con una observación a medio escribir, igual se guarda.
@@ -227,24 +282,11 @@
     }
   });
 
-  document.querySelectorAll('.val-tile').forEach((t) => t.addEventListener('click', () => {
-    filtro = t.dataset.filtro;
-    document.querySelectorAll('.val-tile').forEach((x) => {
-      x.classList.toggle('is-active', x === t);
-      x.setAttribute('aria-checked', x === t ? 'true' : 'false');
-    });
-    filtrar();
-  }));
   $('val-buscar').addEventListener('input', filtrar);
-  document.querySelectorAll('.val-paginas [data-mover]').forEach((b) => b.addEventListener('click', () => mover(Number(b.dataset.mover))));
-  // Flechas del teclado para pasar de página (si no está escribiendo).
-  document.addEventListener('keydown', (ev) => {
-    if (/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement || {}).tagName || '')) return;
-    const nav = document.querySelector('.val-paginas');
-    if (nav.hidden) return;
-    if (ev.key === 'ArrowRight' && !nav.querySelector('[data-mover="1"]').disabled) mover(1);
-    if (ev.key === 'ArrowLeft' && !nav.querySelector('[data-mover="-1"]').disabled) mover(-1);
-  });
+  if ($('val-bodega')) $('val-bodega').addEventListener('change', filtrar);
+  document.querySelectorAll('.val-paginas [data-mover]').forEach((b) => b.addEventListener('click', () => {
+    mover(b.closest('.val-paginas').dataset.col, Number(b.dataset.mover));
+  }));
 
   contar();
   filtrar();
