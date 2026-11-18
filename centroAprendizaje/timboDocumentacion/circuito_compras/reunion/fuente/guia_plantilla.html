@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reunión con Compras · TIMBÓ</title>
+<style>
+:root{
+  --tinta:#1f2937; --suave:#4b5563; --linea:#e2e8f0; --fondo:#f6f7f9; --papel:#ffffff;
+  --exp:#2f6fde; --exp-f:#e9f1ff; --com:#11936a; --com-f:#e2f6ee; --ext:#d48806; --ext-f:#fff3df;
+  --pend:#c2410c; --pend-f:#fff1e8; --dec:#6a4fd6; --dec-f:#f3efff;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);
+  font:15.5px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+.hoja{max-width:1020px;margin:0 auto;padding:28px 16px 60px}
+header.tapa{background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:26px 26px 20px;
+  border-top:6px solid var(--com)}
+.tapa .pre{font-size:12.5px;font-weight:700;letter-spacing:.08em;color:var(--com);text-transform:uppercase}
+h1{font-size:28px;line-height:1.2;margin:6px 0 8px}
+h2{font-size:21px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+h3{font-size:16.5px;margin:20px 0 8px}
+p{margin:6px 0}
+.sello{display:inline-block;background:var(--pend-f);color:var(--pend);border:1.5px solid var(--pend);
+  border-radius:999px;padding:3px 12px;font-weight:700;font-size:13.5px;margin:6px 6px 0 0}
+.sello.ok{background:var(--com-f);color:#0b6b4d;border-color:var(--com)}
+nav.indice{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+nav.indice a{font-size:13px;text-decoration:none;color:var(--tinta);background:var(--fondo);
+  border:1px solid var(--linea);border-radius:999px;padding:4px 11px}
+nav.indice a:hover{border-color:var(--com)}
+section{background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:22px 24px;margin-top:18px}
+.num{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--tinta);
+  color:#fff;font-size:14px}
+.bajada{color:var(--suave);margin:0 0 12px}
+.grilla{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.tarjeta{border:1px solid var(--linea);border-radius:12px;padding:12px 14px;background:#fff}
+.tarjeta b.t{display:block;font-size:14px;margin-bottom:4px}
+.tarjeta ul{margin:0;padding-left:18px}
+.tarjeta li{margin:2px 0}
+.c-pre{border-top:4px solid var(--dec)} .c-esc{border-top:4px solid var(--exp)} .c-exp{border-top:4px solid var(--com)}
+.c-obt{border-top:4px solid var(--ext)} .c-no{border-top:4px solid var(--pend)}
+.aviso{border-left:5px solid var(--ext);background:var(--ext-f);border-radius:10px;padding:10px 14px;margin:12px 0}
+.aviso.rojo{border-color:var(--pend);background:var(--pend-f)}
+.aviso.verde{border-color:var(--com);background:var(--com-f)}
+.aviso.azul{border-color:var(--exp);background:var(--exp-f)}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;border-radius:6px;padding:1px 7px;vertical-align:1px;white-space:nowrap}
+.chip.exp{background:var(--exp-f);color:#1d4fae;border:1px solid var(--exp)}
+.chip.com{background:var(--com-f);color:#0b6b4d;border:1px solid var(--com)}
+.chip.ext{background:var(--ext-f);color:#8a5800;border:1px solid var(--ext)}
+.chip.pend{background:var(--pend-f);color:var(--pend);border:1px solid var(--pend)}
+.chip.sal{background:#fde8f1;color:#9d174d;border:1px solid #db2777}
+.chip.gen{background:#f1f5f9;color:#334155;border:1px solid #94a3b8}
+.cita{font-size:12.5px;color:var(--suave)}
+.tabla{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--linea);padding:8px 9px;text-align:left;vertical-align:top}
+th{background:#f8fafc;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--suave)}
+td.monto{white-space:nowrap;font-weight:700}
+.preguntas{list-style:none;padding:0;margin:0}
+.preguntas li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--linea)}
+.preguntas input{margin-top:4px;width:17px;height:17px;flex:none}
+.escuchar{font-size:13.5px;color:#1d4fae;background:var(--exp-f);border-radius:10px;padding:8px 12px;margin-top:10px}
+.nota{min-height:30px;border-bottom:1.5px solid #cbd5e1;padding:3px 2px;font-size:14px;color:#0f172a;outline:none}
+.nota:empty::before{content:attr(data-ph);color:#94a3b8;font-size:13px}
+.nota:focus{background:#fffbea}
+td .nota{min-height:24px}
+.fig{margin-top:12px;border:1px solid var(--linea);border-radius:12px;overflow:hidden;background:#fff}
+.fig svg{display:block;width:100%;height:auto}
+.descargas{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.descargas a{font-size:13px;font-weight:600;color:#0b6b4d;text-decoration:none;border:1px solid var(--com);border-radius:8px;padding:4px 10px}
+.pendientes li{margin:6px 0}
+ol.orden{padding-left:20px;margin:6px 0} ol.orden li{margin:4px 0}
+footer{color:var(--suave);font-size:12.5px;margin-top:22px;text-align:center}
+.barra-notas{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--suave);margin-top:12px}
+.barra-notas button{font:inherit;font-size:12.5px;border:1px solid var(--linea);background:#fff;border-radius:8px;padding:3px 10px;cursor:pointer}
+@media (max-width:640px){
+  body{font-size:15px}
+  h1{font-size:23px} h2{font-size:18.5px}
+  section,header.tapa{padding:16px 14px;border-radius:12px}
+  table{font-size:13px} th,td{padding:6px 6px}
+  .fig{overflow-x:auto} .fig.ancho svg{min-width:720px}
+}
+@media print{
+  @page{size:A4;margin:12mm 11mm}
+  body{background:#fff;font-size:11pt}
+  .hoja{max-width:none;padding:0}
+  section,header.tapa{border:none;border-radius:0;padding:0;margin-top:14px}
+  nav.indice,.barra-notas,.descargas{display:none}
+  .salto{break-before:page}
+  .tarjeta,.aviso,tr,.preguntas li{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  .fig{border:none}
+  .fig.alto svg{height:262mm;width:auto;margin:0 auto}
+  .nota{min-height:26px}
+  a{color:inherit;text-decoration:none}
+  .tabla{overflow:visible}
+  table{font-size:9.5pt} th,td{padding:4px 5px} th{font-size:8pt}
+  #b5 table{font-size:8.4pt} #b5 .chip{font-size:7.5pt;white-space:normal}
+  #fuentes table{font-size:8.8pt}
+  footer{margin-top:8px}
+}
+</style>
+</head>
+<body>
+<div class="hoja">
+
+<header class="tapa">
+  <div class="pre">Material personal · Reunión con el Departamento de Compras</div>
+  <h1>TIMBÓ Compras: primera reunión de relevamiento</h1>
+  <p class="bajada">Para abrir antes de la reunión. Dice qué preguntar, qué escuchar, qué explicar y qué todavía no se puede confirmar. Todo lo normativo tiene su fuente oficial; lo que no se pudo verificar dice <span class="chip pend">A CONFIRMAR</span>.</p>
+  <span class="sello">No es una capacitación</span>
+  <span class="sello">Habilitación y capacitación oficial: en espera</span>
+  <span class="sello ok">Normativa revisada al 17/11/2026</span>
+  <nav class="indice">
+    <a href="#rapido">En 2 minutos</a><a href="#recordar">Recordatorios</a><a href="#b1">1 · Conocimiento</a>
+    <a href="#b2">2 · Circuito actual</a><a href="#b3">3 · Qué es TIMBÓ</a><a href="#b4">4 · Roles</a>
+    <a href="#b5">5 · Montos</a><a href="#b6">6 · Papel → digital</a><a href="#circuito">Gráfico del circuito</a>
+    <a href="#quien">Quién hace qué</a><a href="#llevarme">Preguntas a cerrar</a><a href="#pendientes">Pendientes</a><a href="#fuentes">Fuentes</a>
+  </nav>
+  <div class="barra-notas">Podés escribir en los renglones y tildar preguntas: se guarda solo en este navegador.
+    <button type="button" id="borrar">Borrar mis notas</button></div>
+</header>
+
+<!-- ================================================================== -->
+<section id="rapido">
+  <h2><span class="num">⏱</span>La reunión en 2 minutos</h2>
+  <div class="grilla">
+    <div class="tarjeta c-pre"><b class="t">Qué tengo que preguntar</b>
+      <ul><li>Qué saben y qué usaron de TIMBÓ</li><li>Cómo es hoy el circuito, de punta a punta</li><li>Quién hace cada paso (área y persona)</li><li>Quiénes serían Gestor, Supervisor y Evaluadores</li></ul></div>
+    <div class="tarjeta c-esc"><b class="t">Qué tengo que escuchar</b>
+      <ul><li>Pasos que hoy se hacen en papel</li><li>Áreas que nadie nombra (presupuesto, recepción, pagos)</li><li>Dudas y miedos con el sistema</li><li>Procedimientos más frecuentes</li></ul></div>
+    <div class="tarjeta c-exp"><b class="t">Qué tengo que explicar</b>
+      <ul><li>Expediente ≠ TIMBÓ Compras, y cómo se conectan</li><li>Los 5 roles y que un rol no es un cargo</li><li>Desde cuándo es obligatorio</li><li>Por qué hoy no asignamos roles</li></ul></div>
+    <div class="tarjeta c-obt"><b class="t">Qué tengo que llevarme</b>
+      <ul><li>Mapa de quién hace qué</li><li>Candidatos para cada rol</li><li>Quién es el administrador local</li><li>Qué capacitación necesita cada persona</li></ul></div>
+    <div class="tarjeta c-no"><b class="t">Qué todavía no puedo confirmar</b>
+      <ul><li>Si los controles de la URC alcanzan al hospital</li><li>Quién firma cada acto en el hospital</li><li>Quién autoriza dar un rol</li><li>Cómo se vinculan los expedientes en papel</li></ul></div>
+  </div>
+  <h3>Orden sugerido</h3>
+  <ol class="orden">
+    <li><b>Encuadre:</b> es relevamiento; la capacitación oficial llega después (Recordatorios).</li>
+    <li><b>Bloque 1:</b> qué saben de TIMBÓ. <b>Bloque 2:</b> cómo compran hoy. Escuchar mucho, explicar poco.</li>
+    <li><b>Bloque 3 y gráfico del circuito:</b> recién ahí, mostrar cómo queda con TIMBÓ.</li>
+    <li><b>Bloques 4 a 6:</b> roles, montos y transición, en breve.</li>
+    <li><b>Cierre:</b> repasar "Preguntas a cerrar" y acordar los próximos pasos.</li>
+  </ol>
+</section>
+
+<!-- ================================================================== -->
+<section id="recordar">
+  <h2><span class="num">!</span>Recordatorios para mí</h2>
+  <div class="grilla">
+    <div class="aviso rojo"><b>Es una reunión de relevamiento, no de capacitación.</b> Todavía espero la habilitación y la capacitación oficial de Santa Fe.</div>
+    <div class="aviso rojo"><b>No asignar roles hoy.</b> Primero hay que identificar responsabilidades; cada persona tiene que saber qué acciones le tocan.</div>
+    <div class="aviso azul"><b>Expediente electrónico ≠ TIMBÓ Compras.</b> Lo que se firma en Compras se incorpora solo al expediente <span class="cita">(Circ. UG 7/2026, pto 7)</span>.</div>
+    <div class="aviso"><b>Plazos y notificaciones son electrónicos.</b> Los plazos corren con la hora del servidor; los proveedores se notifican en su domicilio digital; al personal le llegan "correos de cortesía", que no son la notificación <span class="cita">(Circ. UG 7/2026, ptos 4 y 5)</span>.</div>
+    <div class="aviso"><b>Cada procedimiento tiene su norma.</b> No todos van por TIMBÓ Compras ni tienen los mismos pasos (ver Bloque 5).</div>
+    <div class="aviso verde"><b>Primero conocer el circuito interno</b> del hospital; después definir la implementación.</div>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<section id="b1">
+  <h2><span class="num">1</span>Conocimiento actual de TIMBÓ</h2>
+  <p class="bajada">Para arrancar. Preguntas abiertas: que hablen ellos.</p>
+  <ul class="preguntas">
+    <li><input type="checkbox" data-k="b1-1"><div>¿Conocen la plataforma TIMBÓ? ¿Usan ya el expediente electrónico?<div class="nota" contenteditable data-k="n-b1-1" data-ph="Anotar…"></div></div></li>
+    <li><input type="checkbox" data-k="b1-2"><div>¿Ya usaron TIMBÓ Compras? ¿En qué procedimiento?<div class="nota" contenteditable data-k="n-b1-2" data-ph="Anotar…"></div></div></li>
+    <li><input type="checkbox" data-k="b1-3"><div>¿Alguien hizo capacitaciones? ¿Cuáles (Aula Virtual, videos oficiales, otra)?<div class="nota" contenteditable data-k="n-b1-3" data-ph="Anotar…"></div></div></li>
+    <li><input type="checkbox" data-k="b1-4"><div>¿Qué módulos conocen (Expedientes, Documentos Oficiales, Atención Virtual, Compras)?<div class="nota" contenteditable data-k="n-b1-4" data-ph="Anotar…"></div></div></li>
+    <li><input type="checkbox" data-k="b1-5"><div>¿Qué tareas ya saben hacer en el sistema?<div class="nota" contenteditable data-k="n-b1-5" data-ph="Anotar…"></div></div></li>
+    <li><input type="checkbox" data-k="b1-6"><div>¿Qué dudas tienen?<div class="nota" contenteditable data-k="n-b1-6" data-ph="Anotar…"></div></div></li>
+    <li><input type="checkbox" data-k="b1-7"><div>¿Qué dificultades anticipan (equipos, conectividad, firma, tiempos, proveedores)?<div class="nota" contenteditable data-k="n-b1-7" data-ph="Anotar…"></div></div></li>
+  </ul>
+  <div class="escuchar"><b>Escuchar:</b> quién ya tiene usuario en TIMBÓ y con qué permisos; si alguien ya hace de "referente"; si hubo procesos que quedaron trabados.</div>
+</section>
+
+<!-- ================================================================== -->
+<section id="b2">
+  <h2><span class="num">2</span>Relevamiento del circuito actual</h2>
+  <p class="bajada">No asumir que todo lo hace Compras. En cada paso: <b>qué área</b>, <b>quién</b> y <b>en qué soporte</b> (papel, expediente o sistema).</p>
+  <div class="tabla"><table>
+    <thead><tr><th style="width:34%">Paso y pregunta</th><th>¿Qué área / quién?</th><th style="width:22%">¿Papel, expediente o sistema?</th></tr></thead>
+    <tbody>
+      <tr><td><b>Inicio de la solicitud</b><br>¿Cómo arranca un pedido? ¿Hay formulario?</td><td><div class="nota" contenteditable data-k="b2-1"></div></td><td><div class="nota" contenteditable data-k="b2-1s"></div></td></tr>
+      <tr><td><b>Área solicitante</b><br>¿Qué servicios piden más? ¿Quién firma el pedido?</td><td><div class="nota" contenteditable data-k="b2-2"></div></td><td><div class="nota" contenteditable data-k="b2-2s"></div></td></tr>
+      <tr><td><b>Elaboración del pedido</b><br>¿Quién arma cantidades y plazos?</td><td><div class="nota" contenteditable data-k="b2-3"></div></td><td><div class="nota" contenteditable data-k="b2-3s"></div></td></tr>
+      <tr><td><b>Especificaciones técnicas</b><br>¿Quién las redacta y quién las revisa?</td><td><div class="nota" contenteditable data-k="b2-4"></div></td><td><div class="nota" contenteditable data-k="b2-4s"></div></td></tr>
+      <tr><td><b>Nomenclador de artículos</b><br>¿Encuentran los artículos en el catálogo? ¿Quién pide las altas? <span class="cita">(alta por formulario CAByS, Res. SCyGB 292/2026)</span></td><td><div class="nota" contenteditable data-k="b2-5"></div></td><td><div class="nota" contenteditable data-k="b2-5s"></div></td></tr>
+      <tr><td><b>Disponibilidad presupuestaria</b><br>¿Quién la verifica e imputa? ¿Interviene alguien de afuera?</td><td><div class="nota" contenteditable data-k="b2-6"></div></td><td><div class="nota" contenteditable data-k="b2-6s"></div></td></tr>
+      <tr><td><b>Procedimiento de contratación</b><br>¿Quién decide si es directa, privada o pública?</td><td><div class="nota" contenteditable data-k="b2-7"></div></td><td><div class="nota" contenteditable data-k="b2-7s"></div></td></tr>
+      <tr><td><b>Pliego</b><br>¿Quién lo arma? ¿Usan el pliego modelo (Circ. SCyGB 05/2026)?</td><td><div class="nota" contenteditable data-k="b2-8"></div></td><td><div class="nota" contenteditable data-k="b2-8s"></div></td></tr>
+      <tr><td><b>Autorizaciones</b><br>¿Quién firma cada acto? ¿Cambia según el monto?</td><td><div class="nota" contenteditable data-k="b2-9"></div></td><td><div class="nota" contenteditable data-k="b2-9s"></div></td></tr>
+      <tr><td><b>Publicación</b><br>¿Quién carga el portal y pide el aviso oficial?</td><td><div class="nota" contenteditable data-k="b2-10"></div></td><td><div class="nota" contenteditable data-k="b2-10s"></div></td></tr>
+      <tr><td><b>Presentación y apertura de ofertas</b><br>¿Cómo es hoy? ¿Quién participa del acto?</td><td><div class="nota" contenteditable data-k="b2-11"></div></td><td><div class="nota" contenteditable data-k="b2-11s"></div></td></tr>
+      <tr><td><b>Evaluación</b><br>¿Hay comisión fija? ¿Quiénes la integran? ¿Cómo se designa?</td><td><div class="nota" contenteditable data-k="b2-12"></div></td><td><div class="nota" contenteditable data-k="b2-12s"></div></td></tr>
+      <tr><td><b>Preadjudicación</b><br>¿Quién redacta y firma el informe? ¿Cómo se comunica?</td><td><div class="nota" contenteditable data-k="b2-13"></div></td><td><div class="nota" contenteditable data-k="b2-13s"></div></td></tr>
+      <tr><td><b>Adjudicación</b><br>¿Quién la dicta? ¿Quién notifica?</td><td><div class="nota" contenteditable data-k="b2-14"></div></td><td><div class="nota" contenteditable data-k="b2-14s"></div></td></tr>
+      <tr><td><b>Recepción de bienes</b><br>¿Quién recibe y quién certifica?</td><td><div class="nota" contenteditable data-k="b2-15"></div></td><td><div class="nota" contenteditable data-k="b2-15s"></div></td></tr>
+      <tr><td><b>Facturación y pago</b><br>¿Por dónde entra la factura? ¿Quién liquida y paga?</td><td><div class="nota" contenteditable data-k="b2-16"></div></td><td><div class="nota" contenteditable data-k="b2-16s"></div></td></tr>
+    </tbody>
+  </table></div>
+  <div class="escuchar"><b>Escuchar:</b> pasos que dependen de una sola persona, demoras repetidas, controles externos que hoy hacen (Ministerio, URC, Tribunal de Cuentas) y cualquier tarea que "hace Compras" pero en realidad es de otra área.</div>
+</section>
+
+<!-- ================================================================== -->
+<section id="b3" class="salto">
+  <h2><span class="num">3</span>Qué es TIMBÓ y qué es TIMBÓ Compras</h2>
+  <p class="bajada">Para explicar en 3 minutos, con el gráfico del circuito a mano.</p>
+  <div class="grilla">
+    <div class="tarjeta"><b class="t">TIMBÓ</b>El sistema de gestión documental electrónica de la Provincia. Incluye el expediente electrónico y sus módulos. <span class="cita">Circ. UG 7/2026, glosario</span></div>
+    <div class="tarjeta"><b class="t"><span class="chip com">COMPRAS</span> TIMBÓ Compras</b>El módulo para licitaciones y concursos de la Ley 12.510. Va <b>desde el pliego particular hasta el informe de preadjudicación</b>. <span class="cita">Circ. UG 7/2026, glosario</span></div>
+    <div class="tarjeta"><b class="t"><span class="chip exp">EXPEDIENTE</span> Expediente electrónico</b>Los documentos firmados, en orden, que forman las actuaciones. Ahí van la etapa preparatoria, la adjudicación y el contrato. <span class="cita">Circ. UG 7/2026, pto 6 y glosario</span></div>
+    <div class="tarjeta"><b class="t">Cómo se conectan</b>Para iniciar un proceso en Compras hace falta el N° de expediente (pto 11). Lo que se firma en Compras se incorpora solo al expediente (pto 7). Lo que el módulo no genera, como la publicidad en diarios, se agrega a mano (pto 8).</div>
+  </div>
+  <h3>Qué etapa va en cada sistema <span class="cita">(Circ. UG 7/2026, pto 6)</span></h3>
+  <div class="tabla"><table>
+    <thead><tr><th>Etapa</th><th>Dónde</th></tr></thead>
+    <tbody>
+      <tr><td>Preparatoria: pedido, imputación, autorización para iniciar</td><td><span class="chip exp">EXPEDIENTE</span></td></tr>
+      <tr><td>Pliego particular, consultas y circulares, apertura, ofertas, evaluación, subsanación y mejora, informe de preadjudicación, impugnaciones</td><td><span class="chip com">TIMBÓ COMPRAS</span></td></tr>
+      <tr><td>Adjudicación y etapa contractual</td><td><span class="chip exp">EXPEDIENTE</span></td></tr>
+      <tr><td>Publicación en el portal web y aviso oficial <span class="cita">(Circ. SCyGB 04/2026)</span>; carga en el SIN y vista al Tribunal de Cuentas <span class="cita">(Circ. UG 9 y 11/2026)</span></td><td><span class="chip ext">FUERA DEL MÓDULO</span></td></tr>
+    </tbody>
+  </table></div>
+  <h3>Qué documentos genera el módulo</h3>
+  <ul>
+    <li>Cada etapa genera <b>documentación oficial firmada electrónicamente</b> que se incorpora sola al expediente <span class="cita">(pto 7)</span>. Los anexos se ven como PDF "embebidos".</li>
+    <li>Al publicar quedan disponibles: Pliego Único, pliego particular, acto que aprobó la contratación y autorizó el llamado, cronograma y nómina de proveedores <span class="cita">(pto 16)</span>.</li>
+    <li>La apertura genera sola el <b>acta de apertura</b> y el <b>cuadro comparativo de precios</b> <span class="cita">(pto 19)</span>.</li>
+    <li>Los subtrámites con los proveedores (subsanación, aclaración, mejora), respondidos o descartados, se incorporan solos al expediente <span class="cita">(pto 21)</span>.</li>
+    <li>El <b>informe de preadjudicación</b> lo firman los evaluadores, en el orden del formulario "Ordenar evaluadores" <span class="cita">(pto 22)</span>.</li>
+  </ul>
+  <div class="aviso azul">La información del proceso solo la ven los usuarios con un rol en ese proceso. Las ofertas quedan encriptadas hasta la apertura <span class="cita">(Circ. UG 7/2026, pto 9)</span>.</div>
+</section>
+
+<!-- ================================================================== -->
+<section id="b4">
+  <h2><span class="num">4</span>Roles y permisos</h2>
+  <p class="bajada">Los 5 roles de TIMBÓ Compras son los de la <b>Circular UG TIMBÓ 7/2026, punto 10</b>. La columna "cuándo" sale de las etapas que nombra esa misma circular.</p>
+  <div class="tabla"><table>
+    <thead><tr><th>Rol</th><th>Qué hace (texto oficial)</th><th>Cuándo interviene</th><th>Relación con los otros</th></tr></thead>
+    <tbody>
+      <tr><td><b>Gestor</b></td><td>Genera la instancia de contratación. Completa los formularios del pliego particular. Genera circulares.</td><td>Al inicio, y mientras el proceso está publicado (circulares)</td><td>El Supervisor aprueba o rechaza los formularios que completa</td></tr>
+      <tr><td><b>Supervisor</b></td><td>Aprueba o rechaza los formularios del PBCP. Confecciona el cronograma y la nómina de proveedores. Carga los actos que aprueban el pliego y autorizan el llamado, los "sin efecto" y la adjudicación.</td><td>Aprobación del pliego, antes de publicar y en la adjudicación</td><td>Revisa lo del Gestor. <b>Carga</b> los actos que firma la autoridad competente</td></tr>
+      <tr><td><b>Evaluador</b></td><td>Evalúa ofertas. Genera subsanación, mejora de precios y aclaración. Preselecciona renglones y oferentes. Organiza a los evaluadores. Preadjudica. Carga el cronograma de impugnaciones. Recibe las impugnaciones.</td><td>Desde la apertura hasta las impugnaciones</td><td>Se designan en el formulario "Evaluadores" del pliego. Firman el informe en el orden fijado</td></tr>
+      <tr><td><b>Jurisdicción comitente</b></td><td>Revisa los pliegos de bases y condiciones particulares.</td><td>Revisión del pliego</td><td>Revisa el pliego que arman Gestor y Supervisor</td></tr>
+      <tr><td><b>Oferente / Proveedor</b></td><td>Accede a los procesos publicados, presenta ofertas, consulta, recibe notificaciones en su domicilio digital e impugna.</td><td>Desde la publicación</td><td>Necesita ID Ciudadana; para participar, inscripción en el RUPC <span class="cita">(Circ. UG 2/2026)</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="aviso verde"><b>Al menos 3 evaluadores</b> en el formulario "Evaluadores" del pliego. Se pueden poner más por complejidad o cuantía, o para cubrir ausencias <span class="cita">(Circ. UG 7/2026, pto 13)</span>.</div>
+  <div class="aviso rojo"><b>Un rol del sistema no es una autoridad.</b> El Supervisor <b>carga</b> los actos, pero quién los <b>firma</b> depende del monto <span class="cita">(Circ. SCyGB 01/2026)</span>. La Comisión Evaluadora actúa según el pliego y su opinión no es vinculante <span class="cita">(Dec. 1104/16, art. 123, texto del Dec. 287/2026)</span>.</div>
+  <h3>Usuarios y permisos</h3>
+  <ul>
+    <li>Los roles se tramitan <b>ante el administrador local de cada jurisdicción</b> <span class="cita">(Circ. UG 1/2026, pto 4; Circ. UG 3/2026, pto 6)</span>.</li>
+    <li>Usuario solo para personal con vínculo vigente con la Provincia; permisos según las tareas que hace cada persona <span class="cita">(Circ. UG 3/2025, art. 4)</span>.</li>
+    <li>El alta o la baja la pide una jefatura no menor a jefe de departamento, o un funcionario, por <b>iTop</b> <span class="cita">(Circ. UG 3/2025, art. 5)</span>.</li>
+    <li>Las credenciales son personales e intransferibles <span class="cita">(Circ. UG 3/2025, art. 2)</span>.</li>
+  </ul>
+  <p class="cita"><span class="chip pend">A CONFIRMAR</span> Quién autoriza que una persona tenga cada rol, si la comisión evaluadora necesita un acto aparte y si una persona puede tener más de un rol: no lo dice ninguna norma relevada.</p>
+</section>
+
+<!-- ================================================================== -->
+<section id="b5" class="salto">
+  <h2><span class="num">5</span>Procedimientos y montos 2026</h2>
+  <p class="bajada">Montos de la <b>Circular SCyGB 01/2026</b> (5/1/2026), que aplica el art. 36 de la Ley de Presupuesto 14.424. Se actualizan cada año. <span class="chip gen">GENERAL</span> para todas las Unidades Operativas de Contrataciones.</p>
+  <div class="tabla"><table>
+    <thead><tr><th>Procedimiento</th><th>Límite 2026</th><th>Fundamento</th><th>Condiciones</th><th>Autorización</th><th>Dónde se tramita</th></tr></thead>
+    <tbody>
+      <tr><td><b>Contratación directa por monto</b><br><span class="cita">En TIMBÓ se llama "Gestión directa – Por monto menor al tope"</span></td><td class="monto">Hasta $5.850.000</td><td>Ley 12.510, art. 116 c.1 y art. 117 · Circ. SCyGB 01/2026</td><td>Que la operación no supere el tope</td><td>Resolución del Subsecretario de Administración o su equivalente</td><td><span class="chip exp">EXPEDIENTE</span> solo digital desde el 7/7/2025 <span class="cita">(Circ. UG 2/2025, pto 2)</span></td></tr>
+      <tr><td><b>Directa por otras causales</b><br><span class="cita">especialización, exclusividad, entre organismos públicos, reparación, compra en origen</span></td><td>Por causal, no por monto</td><td>Ley 12.510, art. 116 c, ap. 4 a 8</td><td>Fundar la causal en el expediente (p. ej., exclusividad con informes técnicos)</td><td><span class="chip pend">A CONFIRMAR</span> si rige el cuadro por monto</td><td><span class="chip exp">EXPEDIENTE</span> <span class="cita">(Circ. UG 2/2025, pto 2)</span></td></tr>
+      <tr><td><b>Directa por urgencia o emergencia, o por desierto</b></td><td>Por causal</td><td>Ley 12.510, art. 116 c, ap. 2 y 3 · Circ. UG 8/2026</td><td>Urgencia objetiva que impida otro procedimiento; desierto: mismas condiciones del llamado original. Mínimo 3 proveedores invitados</td><td>Alcanza con la intervención de la autoridad competente en el sistema o el documento que autoriza, sin acto formal <span class="cita">(art. 4.a)</span></td><td><span class="chip com">TIMBÓ COMPRAS</span> con flexibilizaciones (consultas e impugnaciones se pueden omitir)</td></tr>
+      <tr><td><b>Concurso de precios para locación de inmuebles</b></td><td class="monto">Hasta $29.250.000</td><td>Ley 12.510, art. 140, pto 2 · Circ. SCyGB 01/2026</td><td>Solo alquiler de inmuebles</td><td>Según el cuadro de abajo</td><td><span class="chip pend">A CONFIRMAR</span></td></tr>
+      <tr><td><b>Licitación o concurso privado</b></td><td class="monto">Hasta $58.500.000</td><td>Ley 12.510, art. 116 a · Ley 14.424, art. 36 · Circ. SCyGB 01/2026</td><td>Licitación si se elige por precio; concurso si se elige por factores no económicos <span class="cita">(art. 118)</span></td><td>Según el cuadro de abajo</td><td><span class="chip com">TIMBÓ COMPRAS</span> si es de simple sobre <span class="cita">(Circ. UG 3/2026)</span></td></tr>
+      <tr><td><b>Licitación o concurso público</b></td><td class="monto">Más de $58.500.000</td><td>Ley 12.510, art. 116 (regla general) · Circ. SCyGB 01/2026</td><td>Publicación en el Boletín Oficial y aviso oficial; al menos 10 días corridos entre la última publicación y la apertura <span class="cita">(art. 132, citado en Circ. SCyGB 04/2026)</span></td><td>Decreto</td><td><span class="chip com">TIMBÓ COMPRAS</span> si es de simple sobre</td></tr>
+      <tr><td><b>Cualquier licitación o concurso de etapa múltiple</b></td><td>—</td><td>Circ. UG 8/2026, título II · Res. ME 73/2026, art. 3</td><td>Ofertas en sobres de papel; actas como Documentos Oficiales</td><td>Según monto</td><td><span class="chip exp">EXPEDIENTE + DO</span> hasta que el módulo lo incorpore</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Quién aprueba los actos licitatorios <span class="cita">(Circ. SCyGB 01/2026)</span></h3>
+  <div class="tabla"><table>
+    <thead><tr><th>Monto</th><th>Aprobación</th></tr></thead>
+    <tbody>
+      <tr><td class="monto">Hasta $5.850.000</td><td>Resolución del Subsecretario de Administración o su equivalente</td></tr>
+      <tr><td class="monto">$5.850.000 a $29.250.000</td><td>Resolución <span class="cita">(la circular no dice de quién)</span></td></tr>
+      <tr><td class="monto">$29.250.000 a $58.500.000</td><td>Resolución conjunta con el Ministerio de Economía</td></tr>
+      <tr><td class="monto">Más de $58.500.000</td><td>Decreto</td></tr>
+    </tbody>
+  </table></div>
+  <div class="aviso rojo"><b>A confirmar para el hospital:</b> quién es el "equivalente" del Subsecretario de Administración, de quién es la "Resolución" del segundo tramo, y si el hospital tiene delegadas facultades propias. Ninguna norma relevada lo dice para los hospitales: preguntarlo en la reunión y, si no lo saben, a la mesa de ayuda de TIMBÓ Compras.</div>
+  <p class="cita"><b>Sobre "gestión directa":</b> no es un procedimiento aparte. La Ley 12.510 llama así a la contratación directa (art. 117), y TIMBÓ usa ese nombre para los trámites de directas (Circ. UG 2/2025). Ya no se cobra la tasa retributiva en licitaciones (Ley 14.426, art. 47, citada en la Circ. SCyGB 01/2026).</p>
+</section>
+
+<!-- ================================================================== -->
+<section id="b6">
+  <h2><span class="num">6</span>Del papel al sistema</h2>
+  <div class="tabla"><table>
+    <thead><tr><th>Tema</th><th>Qué dice la norma</th><th>Fuente</th></tr></thead>
+    <tbody>
+      <tr><td><b>Todo digital</b></td><td>Desde el <b>1/7/2026</b> la Administración centralizada y descentralizada gestiona todo por TIMBÓ. No se puede iniciar ninguna gestión en papel por el SIE. <span class="chip gen">GENERAL</span></td><td>Decreto 2518/2025, arts. 1 y 2</td></tr>
+      <tr><td><b>TIMBÓ Compras en Salud</b></td><td>Obligatorio desde el <b>1/4/2026</b> para licitaciones y concursos, públicos y privados, de simple sobre. <span class="chip sal">SALUD</span></td><td>Circ. UG TIMBÓ 3/2026, ptos 2 a 4</td></tr>
+      <tr><td><b>Compras directas</b></td><td>Solo digitales, por expediente, desde el 7/7/2025.</td><td>Circ. UG TIMBÓ 2/2025, pto 2</td></tr>
+      <tr><td><b>Urgencia y desierto</b></td><td>Por TIMBÓ Compras para los procedimientos iniciados desde el día hábil siguiente a la circular (julio de 2026). Los anteriores pueden aplicarla si es posible.</td><td>Circ. UG TIMBÓ 8/2026, arts. 3 y 10</td></tr>
+      <tr><td><b>Procedimientos ya iniciados en papel</b></td><td>"Los trámites ya iniciados en formato papel continuarán su curso bajo la modalidad y soporte vigentes al momento de su comienzo."</td><td>Circ. UG TIMBÓ 3/2026, pto 4 (igual: Circ. UG 1/2026, pto 3)</td></tr>
+      <tr><td><b>Excepciones previstas</b></td><td>Imposibilidad técnica insalvable y acreditada: la UG TIMBÓ puede autorizar otra vía, excepcional y fundada. Etapa múltiple: por expediente + sobres en papel. La URC puede exceptuar gestiones con imposibilidad acreditada o causa objetiva.</td><td>Circ. UG 3/2026, pto 8 · Circ. UG 8/2026 · Res. ME 73/2026, art. 3</td></tr>
+      <tr><td><b>Expedientes anteriores</b></td><td><span class="chip pend">A CONFIRMAR</span> Cómo se vincula un expediente en papel (SIE) con uno electrónico nuevo. El Dec. 2518/25 solo dice que el SIE funcionará con un esquema adaptado que defina la Secretaría de Tecnologías para la Gestión.</td><td>Decreto 2518/2025, art. 2</td></tr>
+    </tbody>
+  </table></div>
+  <div class="aviso">Cuidado al explicarlo: la regla de "sigue como empezó" está en las circulares de TIMBÓ Compras. No hay que extenderla a cualquier trámite en papel sin verificar.</div>
+</section>
+
+<!-- ================================================================== -->
+<section id="circuito" class="salto">
+  <h2><span class="num">◆</span>Gráfico: circuito completo de una compra</h2>
+  <p class="bajada">Tres carriles: <span class="chip ext">otras áreas / externos</span> <span class="chip exp">expediente</span> <span class="chip com">TIMBÓ Compras</span>. En el paso 6 se separan los procedimientos; lo punteado depende del caso o falta confirmar.</p>
+  <div class="fig alto ancho">{{CIRCUITO}}</div>
+  <div class="descargas"><a href="circuito_compra.svg">Descargar SVG</a><a href="circuito_compra.png">Descargar PNG</a></div>
+</section>
+
+<section id="quien" class="salto">
+  <h2><span class="num">◆</span>Gráfico: quién hace qué</h2>
+  <p class="bajada">Las columnas verdes son roles del sistema (los da la norma). Las naranjas son áreas del hospital: los <b>?</b> se completan en la reunión.</p>
+  <div class="fig ancho">{{QUIEN}}</div>
+  <div class="descargas"><a href="quien_hace_que.svg">Descargar SVG</a><a href="quien_hace_que.png">Descargar PNG</a></div>
+</section>
+
+<!-- ================================================================== -->
+<section id="llevarme" class="salto">
+  <h2><span class="num">✓</span>Preguntas que tengo que llevarme respondidas</h2>
+  <div class="tabla"><table>
+    <thead><tr><th style="width:38%">Pregunta</th><th>Respuesta</th></tr></thead>
+    <tbody>
+      <tr><td>¿Quién inicia el expediente? ¿Quién tiene permiso de carátula?</td><td><div class="nota" contenteditable data-k="q1"></div></td></tr>
+      <tr><td>¿Quién carga los pedidos?</td><td><div class="nota" contenteditable data-k="q2"></div></td></tr>
+      <tr><td>¿Quién determina el procedimiento?</td><td><div class="nota" contenteditable data-k="q3"></div></td></tr>
+      <tr><td>¿Quién controla los montos?</td><td><div class="nota" contenteditable data-k="q4"></div></td></tr>
+      <tr><td>¿Quién confecciona los pliegos?</td><td><div class="nota" contenteditable data-k="q5"></div></td></tr>
+      <tr><td>¿Quién tiene facultades de aprobación? ¿Por qué norma?</td><td><div class="nota" contenteditable data-k="q6"></div></td></tr>
+      <tr><td>¿Quiénes serán gestores?</td><td><div class="nota" contenteditable data-k="q7"></div></td></tr>
+      <tr><td>¿Quién será supervisor?</td><td><div class="nota" contenteditable data-k="q8"></div></td></tr>
+      <tr><td>¿Quiénes integrarán la comisión evaluadora? (mínimo 3)</td><td><div class="nota" contenteditable data-k="q9"></div></td></tr>
+      <tr><td>¿Quién administra los usuarios? ¿Quién es el administrador local?</td><td><div class="nota" contenteditable data-k="q10"></div></td></tr>
+      <tr><td>¿Qué áreas necesitan acceso?</td><td><div class="nota" contenteditable data-k="q11"></div></td></tr>
+      <tr><td>¿Qué procedimientos son más frecuentes?</td><td><div class="nota" contenteditable data-k="q12"></div></td></tr>
+      <tr><td>¿Qué circuitos requieren una revisión particular?</td><td><div class="nota" contenteditable data-k="q13"></div></td></tr>
+      <tr><td>¿Qué capacitación necesita cada persona?</td><td><div class="nota" contenteditable data-k="q14"></div></td></tr>
+      <tr><td>¿Hoy interviene la URC o el Ministerio en sus licitaciones?</td><td><div class="nota" contenteditable data-k="q15"></div></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================================================================== -->
+<section id="pendientes">
+  <h2><span class="num">?</span>Pendientes y cuestiones a confirmar</h2>
+  <ul class="pendientes">
+    <li><span class="chip pend">A CONFIRMAR</span> <b>Controles de la URC</b> (pliego y preadjudicación): la Res. ME 73/2026 y la Circ. SCyGB 03/2026 están dirigidas a la Administración Pública Central. ¿Alcanzan al hospital?</li>
+    <li><span class="chip pend">A CONFIRMAR</span> <b>Quién firma cada acto en el hospital</b> según los tramos de la Circ. SCyGB 01/2026, y si hay facultades delegadas.</li>
+    <li><span class="chip pend">A CONFIRMAR</span> <b>Quién autoriza dar un rol</b> de TIMBÓ Compras. La norma solo dice "ante el administrador local".</li>
+    <li><span class="chip pend">A CONFIRMAR</span> Si la <b>comisión evaluadora</b> necesita un acto de designación aparte del formulario "Evaluadores".</li>
+    <li><span class="chip pend">A CONFIRMAR</span> Si una misma persona puede tener más de un rol en el mismo proceso.</li>
+    <li><span class="chip pend">A CONFIRMAR</span> Cómo se vinculan los <b>expedientes en papel</b> anteriores con los electrónicos.</li>
+    <li><span class="chip pend">A CONFIRMAR</span> Qué <b>autorización</b> rige para las directas por causal (no por monto) y para la locación de inmuebles.</li>
+    <li><span class="chip pend">A CONFIRMAR</span> Circuito de <b>recepción, facturación y pago</b> del hospital: no lo regula TIMBÓ Compras.</li>
+    <li><span class="chip pend">EN ESPERA</span> Habilitación desde Santa Fe para la capacitación específica y la gestión de roles.</li>
+    <li><span class="chip gen">AÑO A AÑO</span> Los montos cambian con cada Ley de Presupuesto: revisar la circular de 2027.</li>
+  </ul>
+  <div class="aviso azul"><b>Mesa de ayuda de TIMBÓ Compras</b> <span class="cita">(Circ. SCyGB 03/2026)</span>: timbocompras@santafe.gob.ar · 0342-4506600 / 4506800, internos 39479 y 39480 · WhatsApp +54 9 342 640-0792 · de 8 a 13 h.</div>
+</section>
+
+<!-- ================================================================== -->
+<section id="fuentes" class="salto">
+  <h2><span class="num">§</span>Fuentes oficiales consultadas</h2>
+  <p class="bajada">Releídas el 17/11/2026 desde los sitios oficiales. Si un chat o un tutorial contradice una circular, manda la circular.</p>
+  <div class="tabla"><table>
+    <thead><tr><th>Norma</th><th>Para qué se usó</th><th>Alcance</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/1_Ley-No-12.510-y-Modificatorias-Normas-reglamentarias-y-complementarias-24-04-15.pdf">Ley 12.510</a>, arts. 116 a 118, 132 y 140</td><td>Procedimientos y causales de directa</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/2_Decreto-N%C2%B01.104-2016.pdf">Decreto 1104/2016</a> y <a href="https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf">Pliego Único (Dec. 287/2026)</a></td><td>Comisión evaluadora, impugnaciones</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/boletinoficial/ver.php?seccion=2025/2025-10-07decreto2518.html">Decreto 2518/2025</a></td><td>Todo digital desde el 1/7/2026</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td>Decreto 191/2024</td><td>Crea Territorio 5.0 y la plataforma TIMBÓ. No se leyó el texto: se toma de cómo lo citan la Circ. UG 1/2026, la Circ. UG 9/2026 y la Res. ME 73/2026</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/01/Circular-001-26.pdf">Circ. SCyGB 01/2026</a> (Ley de Presupuesto 14.424, art. 36)</td><td>Montos y aprobación 2026</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf">Circ. SCyGB 03/2026</a> y <a href="https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/Res.-ME-N.%C2%B0-0073-2026.pdf">Res. ME 73/2026</a></td><td>Descentralización y controles de la URC; mesa de ayuda</td><td><span class="chip ext">ADM. CENTRAL</span></td></tr>
+      <tr><td><a href="https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf">Circ. SCyGB 04/2026</a></td><td>Publicación en el portal y aviso oficial</td><td><span class="chip ext">ADM. CENTRAL</span></td></tr>
+      <tr><td><a href="https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf">Res. SCyGB 292/2026</a></td><td>Alta de artículos (CAByS); hospitales: código externo obligatorio</td><td><span class="chip sal">SALUD</span> en parte</td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/01/Circular-01-2026-Implementacion-TIMBO-COMPRAS.pdf">Circ. UG TIMBÓ 1/2026</a> y <a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-03-26.pdf">3/2026</a></td><td>Obligatoriedad (Salud desde 1/4/2026), roles ante el administrador local, transición, contingencia</td><td><span class="chip sal">SALUD</span> (3/2026)</td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/05/CIRCULAR-7-UG-TYC-TIMBO-COMPRAS.pdf">Circ. UG TIMBÓ 7/2026</a></td><td>Términos y condiciones: etapas, roles, 3 evaluadores, documentos, plazos, notificaciones</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-8-26_TIMBO-COMPRAS.pdf">Circ. UG TIMBÓ 8/2026</a></td><td>Directas por urgencia o desierto; etapa múltiple</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-9-2026-UNIDAD-DE-GESTION-TIMBO.pdf">Circ. UG TIMBÓ 9/2026</a>, <a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-10_Determina-fecha-de-entrada-en-vigencia-de-Circular-9.pdf">10/2026</a> y <a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/08/Circular-11_2026-TCP-2.pdf">11/2026</a></td><td>Vista al Tribunal de Cuentas y SIN</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/innovacion-publica/wp-content/uploads/sites/18/2025/08/Circular-2_2025-UNIDAD-DE-GESTION-_TIMBO_-Nuevos-tramites-nativos-digitales.pdf">Circ. UG TIMBÓ 2/2025</a></td><td>Compras directas solo digitales</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/3_2025-Circular-Pautas-Generales-para-la-Gestion-Digital-TIMBO.pdf">Circ. UG TIMBÓ 3/2025</a></td><td>Usuarios, permisos, carátula, iTop</td><td><span class="chip gen">GENERAL</span></td></tr>
+      <tr><td><a href="https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-02-26.pdf">Circ. UG TIMBÓ 2/2026</a></td><td>RUPC como requisito para participar</td><td><span class="chip gen">GENERAL</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="cita">Índices oficiales: <a href="https://www.santafe.gob.ar/ms/timbo/normativas/">normativa de TIMBÓ</a> · <a href="https://compras.santafe.gob.ar/normativas/">normativa de Compras</a> · <a href="https://www.santafe.gov.ar/gestionesdecompras/">portal de gestiones de compra</a>. No se encontró una norma específica del Ministerio de Salud sobre roles o circuito de TIMBÓ Compras en los hospitales.</p>
+</section>
+
+<footer>Material de trabajo personal · versión del 17/11/2026 · gráficos editables en la carpeta <b>fuente</b></footer>
+</div>
+
+<script>
+(function(){
+  var CLAVE = "reunion-compras-timbo:";
+  function leer(k){ try { return localStorage.getItem(CLAVE + k); } catch(e){ return null; } }
+  function guardar(k, v){ try { localStorage.setItem(CLAVE + k, v); } catch(e){} }
+  document.querySelectorAll(".nota[data-k]").forEach(function(n){
+    var v = leer(n.dataset.k); if (v) n.textContent = v;
+    n.addEventListener("input", function(){ guardar(n.dataset.k, n.textContent); });
+  });
+  document.querySelectorAll("input[type=checkbox][data-k]").forEach(function(c){
+    c.checked = leer(c.dataset.k) === "1";
+    c.addEventListener("change", function(){ guardar(c.dataset.k, c.checked ? "1" : "0"); });
+  });
+  var b = document.getElementById("borrar");
+  if (b) b.addEventListener("click", function(){
+    try { Object.keys(localStorage).forEach(function(k){ if (k.indexOf(CLAVE) === 0) localStorage.removeItem(k); }); } catch(e){}
+    document.querySelectorAll(".nota[data-k]").forEach(function(n){ n.textContent = ""; });
+    document.querySelectorAll("input[type=checkbox][data-k]").forEach(function(c){ c.checked = false; });
+  });
+})();
+</script>
+</body>
+</html>

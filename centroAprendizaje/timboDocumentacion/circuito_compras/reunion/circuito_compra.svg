@@ -1,0 +1,277 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420 2880" width="1420" height="2880" font-family="Segoe UI, system-ui, -apple-system, Roboto, Arial, sans-serif" role="img" aria-label="Circuito de una compra en un hospital público de Santa Fe">
+<title>Circuito de una compra en un hospital público de Santa Fe</title>
+<defs>
+  <marker id="c1-punta" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+  </marker>
+  <filter id="c1-sombra" x="-5%" y="-10%" width="110%" height="130%">
+    <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
+<rect width="1420" height="2880" fill="#ffffff"/>
+<text x="40" y="52" font-size="26" font-weight="700" fill="#1f2937" text-anchor="start" >Circuito de una compra en un hospital público de Santa Fe</text>
+<text x="40" y="80" font-size="14" font-weight="400" fill="#4b5563" text-anchor="start" >Camino completo: licitación o concurso de simple sobre (rama C). Las demás ramas se separan en el paso 6.</text>
+<text x="40" y="102" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="start" >Qué etapa va en cada sistema: Circular UG TIMBÓ 7/2026, punto 6. Versión del 17/11/2026.</text>
+<rect x="40" y="118" width="26" height="16" rx="4" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2"/>
+<text x="74" y="131" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >Expediente electrónico</text>
+<rect x="242.4" y="118" width="26" height="16" rx="4" fill="#e2f6ee" stroke="#11936a" stroke-width="2"/>
+<text x="276.4" y="131" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >TIMBÓ Compras</text>
+<rect x="380.0" y="118" width="26" height="16" rx="4" fill="#fff3df" stroke="#d48806" stroke-width="2"/>
+<text x="414.0" y="131" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >Otras áreas / externos</text>
+<rect x="582.4" y="118" width="26" height="16" rx="4" fill="#f3efff" stroke="#6a4fd6" stroke-width="2"/>
+<text x="616.4" y="131" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >Decisión</text>
+<rect x="684.0" y="118" width="26" height="16" rx="4" fill="#fff" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="718.0" y="131" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >Punteado: depende del caso o falta confirmar</text>
+<rect x="160" y="150" width="400" height="2600" rx="14" fill="#fff3df" opacity="0.45"/>
+<rect x="160" y="150" width="400" height="34" rx="10" fill="#d48806"/>
+<text x="360.0" y="172" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.6">ÁREAS DEL HOSPITAL Y ORGANISMOS EXTERNOS</text>
+<rect x="580" y="150" width="400" height="2600" rx="14" fill="#e9f1ff" opacity="0.45"/>
+<rect x="580" y="150" width="400" height="34" rx="10" fill="#2f6fde"/>
+<text x="780.0" y="172" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.6">EXPEDIENTE ELECTRÓNICO TIMBÓ</text>
+<rect x="1000" y="150" width="400" height="2600" rx="14" fill="#e2f6ee" opacity="0.45"/>
+<rect x="1000" y="150" width="400" height="34" rx="10" fill="#11936a"/>
+<text x="1200.0" y="172" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.6">MÓDULO TIMBÓ COMPRAS</text>
+<rect x="20" y="190" width="122" height="504" rx="10" fill="#2f6fde" opacity="0.10"/>
+<rect x="20" y="190" width="6" height="504" rx="3" fill="#2f6fde"/>
+<text x="84" y="430.0" font-size="12" font-weight="700" fill="#2f6fde" text-anchor="middle" >ETAPA</text>
+<text x="84" y="447.0" font-size="12" font-weight="700" fill="#2f6fde" text-anchor="middle" >PREPARATORIA</text>
+<text x="84" y="464.0" font-size="11" font-weight="600" fill="#2f6fde" text-anchor="middle" >por expediente</text>
+<rect x="20" y="704" width="122" height="296" rx="10" fill="#6a4fd6" opacity="0.10"/>
+<rect x="20" y="704" width="6" height="296" rx="3" fill="#6a4fd6"/>
+<text x="84" y="840.0" font-size="12" font-weight="700" fill="#6a4fd6" text-anchor="middle" >ELECCIÓN</text>
+<text x="84" y="857.0" font-size="12" font-weight="700" fill="#6a4fd6" text-anchor="middle" >DEL</text>
+<text x="84" y="874.0" font-size="11" font-weight="600" fill="#6a4fd6" text-anchor="middle" >PROCEDIMIENTO</text>
+<rect x="20" y="1014" width="122" height="1274" rx="10" fill="#11936a" opacity="0.10"/>
+<rect x="20" y="1014" width="6" height="1274" rx="3" fill="#11936a"/>
+<text x="84" y="1639.0" font-size="12" font-weight="700" fill="#11936a" text-anchor="middle" >SELECCIÓN</text>
+<text x="84" y="1656.0" font-size="12" font-weight="700" fill="#11936a" text-anchor="middle" >en TIMBÓ</text>
+<text x="84" y="1673.0" font-size="11" font-weight="600" fill="#11936a" text-anchor="middle" >Compras</text>
+<rect x="20" y="2298" width="122" height="442" rx="10" fill="#2f6fde" opacity="0.10"/>
+<rect x="20" y="2298" width="6" height="442" rx="3" fill="#2f6fde"/>
+<text x="84" y="2507.0" font-size="12" font-weight="700" fill="#2f6fde" text-anchor="middle" >ADJUDICACIÓN</text>
+<text x="84" y="2524.0" font-size="12" font-weight="700" fill="#2f6fde" text-anchor="middle" >Y EJECUCIÓN</text>
+<text x="84" y="2541.0" font-size="11" font-weight="600" fill="#2f6fde" text-anchor="middle" >por expediente</text>
+<rect x="152" y="704" width="1258" height="296" rx="16" fill="#ffffff" stroke="#6a4fd6" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.9"/>
+<path d="M360,252 L360,284" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M360,348 L360,380" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M360,460 L360,478.0 L780,478.0 L780,488" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M780,568 L780,596" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M610.0,640.0 L538.0,640.0" fill="none" stroke="#475569" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#c1-punta)"/>
+<path d="M780,676 L780,710" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<polygon points="780,720 960.0,778 780,838.0 600.0,778" fill="#f3efff" stroke="#6a4fd6" stroke-width="2.2" filter="url(#c1-sombra)"/>
+<circle cx="630" cy="744" r="15" fill="#6a4fd6" stroke="#fff" stroke-width="2.5"/>
+<text x="630" y="749" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >6</text>
+<text x="780" y="764" font-size="14.5" font-weight="700" fill="#4a33a8" text-anchor="middle" >¿Qué procedimiento corresponde?</text>
+<text x="780" y="783" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Según monto estimado y causal</text>
+<text x="780" y="799" font-size="11.5" font-weight="600" fill="#4a33a8" text-anchor="middle" >Ley 12.510 art. 116 · Circ. SCyGB 01/2026</text>
+<path d="M780,838.0 L780,842 M306.0,842 L1254.0,842" stroke="#475569" stroke-width="2.2" fill="none"/>
+<path d="M306.0,842 L306.0,860" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#c1-punta)"/>
+<path d="M622.0,842 L622.0,860" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#c1-punta)"/>
+<path d="M938.0,842 L938.0,860" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#c1-punta)"/>
+<path d="M1254.0,842 L1254.0,860" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#c1-punta)"/>
+<rect x="160.0" y="868" width="292" height="118" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="306.0" y="892" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >A · Directa por monto u otra causal</text>
+<text x="306.0" y="911" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Hasta $5.850.000, o causal del art. 116 c</text>
+<text x="306.0" y="927" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(especialización, exclusividad, etc.)</text>
+<text x="306.0" y="943" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >→ Gestión directa por EXPEDIENTE</text>
+<text x="306.0" y="959" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(Circ. UG 2/2025) · sigue en ⑱</text>
+<rect x="476.0" y="868" width="292" height="118" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="622.0" y="892" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >B · Directa por urgencia o desierto</text>
+<text x="622.0" y="911" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Art. 116 c, ap. 2 y 3</text>
+<text x="622.0" y="927" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >→ TIMBÓ COMPRAS, con flexibilizaciones:</text>
+<text x="622.0" y="943" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >mínimo 3 proveedores invitados</text>
+<text x="622.0" y="959" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(Circ. UG 8/2026)</text>
+<rect x="792.0" y="868" width="292" height="118" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="938.0" y="892" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >C · Licitación o concurso</text>
+<text x="938.0" y="911" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Público o privado, de simple sobre</text>
+<text x="938.0" y="927" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >→ TIMBÓ COMPRAS, camino completo</text>
+<text x="938.0" y="943" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >obligatorio en Salud desde 1/4/2026</text>
+<text x="938.0" y="959" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(Circ. UG 1 y 3/2026)</text>
+<rect x="968.0" y="858" width="108.0" height="20" rx="10" fill="#fff" stroke="#11936a" stroke-width="1.5"/>
+<text x="1022.0" y="872" font-size="10.5" font-weight="700" fill="#0b6b4d" text-anchor="middle" >CAMINO DE ABAJO</text>
+<rect x="1108.0" y="868" width="292" height="118" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1254.0" y="892" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >D · Etapa múltiple</text>
+<text x="1254.0" y="911" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Por EXPEDIENTE + Documentos Oficiales</text>
+<text x="1254.0" y="927" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >ofertas en sobres de papel</text>
+<text x="1254.0" y="943" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >hasta que el módulo lo incorpore</text>
+<text x="1254.0" y="959" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(Circ. UG 8/2026, título II)</text>
+<path d="M622.0,986 L622.0,1016 L1200,1016" stroke="#475569" stroke-width="2.2" fill="none"/>
+<path d="M938.0,986 L938.0,1016 L1200,1016" stroke="#475569" stroke-width="2.2" fill="none"/>
+<path d="M1200,1016 L1200,1034" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#c1-punta)"/>
+<path d="M1200,1098 L1200,1130" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,1210 L1200,1238" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1030.0,1282.0 L538.0,1282.0" fill="none" stroke="#b06f00" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#c1-punta)"/><text x="780.0" y="1274.0" font-size="11.5" font-weight="600" fill="#b06f00" text-anchor="middle" >pase del expediente</text>
+<path d="M1200,1318 L1200,1336.0 L780,1336.0 L780,1346" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M780,1426 L780,1444.0 L1200,1444.0 L1200,1454" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1030.0,1498.0 L538.0,1498.0" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,1534 L1200,1568" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,1632 L1200,1664" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,1744 L1200,1772" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,1852 L1200,1880" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,1944 L1200,1976" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,2056 L1200,2084" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1030.0,2128.0 L538.0,2128.0" fill="none" stroke="#b06f00" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#c1-punta)"/><text x="780.0" y="2120.0" font-size="11.5" font-weight="600" fill="#b06f00" text-anchor="middle" >pase del expediente</text>
+<path d="M1200,2164 L1200,2192" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M1200,2272 L1200,2299.0 L780,2299.0 L780,2318" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M610.0,2362.0 L538.0,2362.0" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M780,2398 L780,2426" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M780,2490 L780,2514.0 L360,2514.0 L360,2530" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<path d="M360,2594 L360,2626" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#c1-punta)"/>
+<rect x="1379" y="1042" width="14" height="1230" rx="7" fill="#ffffff" stroke="#11936a" stroke-width="1.5" stroke-dasharray="3 4"/>
+<text x="1390" y="1657.0" font-size="10.5" font-weight="700" fill="#0b6b4d" text-anchor="middle" transform="rotate(-90 1390 1657.0)">Todo lo firmado en TIMBÓ Compras se incorpora solo al expediente (Circ. UG 7/2026, pto 7)</text>
+<rect x="190.0" y="196" width="340" height="56" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="220" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Necesidad de compra</text>
+<text x="360" y="239" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >La detecta un servicio o área del hospital</text>
+<circle cx="190.0" cy="196" r="15" fill="#d48806" stroke="#fff" stroke-width="2.5"/>
+<text x="190.0" y="201" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >1</text>
+<rect x="190.0" y="292" width="340" height="56" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="316" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Solicitud del servicio</text>
+<text x="360" y="335" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Pedido: qué, cuánto, para cuándo</text>
+<circle cx="190.0" cy="292" r="15" fill="#d48806" stroke="#fff" stroke-width="2.5"/>
+<text x="190.0" y="297" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >2</text>
+<rect x="190.0" y="388" width="340" height="72" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="412" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Documentación técnica y administrativa</text>
+<text x="360" y="431" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Especificaciones · artículo del catálogo</text>
+<text x="360" y="447" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(si falta: alta CAByS, Res. SCyGB 292/26)</text>
+<circle cx="190.0" cy="388" r="15" fill="#d48806" stroke="#fff" stroke-width="2.5"/>
+<text x="190.0" y="393" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >3</text>
+<rect x="610.0" y="496" width="340" height="72" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="780" y="520" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >Inicio del expediente electrónico</text>
+<text x="780" y="539" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Sin N° de expediente no se puede</text>
+<text x="780" y="555" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >iniciar TIMBÓ Compras (Circ. UG 7/26, pto 11)</text>
+<circle cx="610.0" cy="496" r="15" fill="#2f6fde" stroke="#fff" stroke-width="2.5"/>
+<text x="610.0" y="501" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >4</text>
+<rect x="610.0" y="604" width="340" height="72" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="780" y="628" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >Verificación presupuestaria y autorizaciones</text>
+<text x="780" y="647" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Imputación previa y autorización del gasto</text>
+<text x="780" y="663" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Quién lo hace en el hospital: A RELEVAR</text>
+<circle cx="610.0" cy="604" r="15" fill="#2f6fde" stroke="#fff" stroke-width="2.5"/>
+<text x="610.0" y="609" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >5</text>
+<rect x="190.0" y="604" width="340" height="56" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" stroke-dasharray="7 5" filter="url(#c1-sombra)"/>
+<text x="360" y="628" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Área presupuestaria / administrativa</text>
+<text x="360" y="647" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >¿Quién interviene? A RELEVAR</text>
+<rect x="1030.0" y="1042" width="340" height="56" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1066" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Inicio del proceso en TIMBÓ Compras</text>
+<text x="1200" y="1085" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Gestor: genera la instancia de contratación</text>
+<circle cx="1030.0" cy="1042" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1047" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >7</text>
+<rect x="1030.0" y="1138" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1162" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Pliego particular (PBCP)</text>
+<text x="1200" y="1181" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Gestor: completa los formularios</text>
+<text x="1200" y="1197" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >incluye al menos 3 evaluadores (pto 13)</text>
+<circle cx="1030.0" cy="1138" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1143" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >8</text>
+<rect x="1030.0" y="1246" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1270" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Revisión y aprobación del pliego</text>
+<text x="1200" y="1289" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Supervisor: aprueba o rechaza formularios</text>
+<text x="1200" y="1305" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Jurisdicción comitente: revisa el PBCP</text>
+<circle cx="1030.0" cy="1246" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1251" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >9</text>
+<rect x="190.0" y="1246" width="340" height="72" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" stroke-dasharray="7 5" filter="url(#c1-sombra)"/>
+<text x="360" y="1270" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Control de pliegos de la URC</text>
+<text x="360" y="1289" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Adm. Central (Res. ME 73/26; Circ. SCyGB 03/26)</text>
+<text x="360" y="1305" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >¿Aplica al hospital? A CONFIRMAR</text>
+<rect x="453.6" y="1236" width="68.4" height="20" rx="10" fill="#fff" stroke="#d48806" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="487.8" y="1250" font-size="10.5" font-weight="700" fill="#8a5800" text-anchor="middle" >SI APLICA</text>
+<rect x="610.0" y="1354" width="340" height="72" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="780" y="1378" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >Acto: aprueba el pliego y autoriza el llamado</text>
+<text x="780" y="1397" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Lo firma la autoridad competente según monto</text>
+<text x="780" y="1413" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >El Supervisor lo carga en TIMBÓ Compras</text>
+<rect x="906.6" y="1344" width="35.4" height="20" rx="10" fill="#fff" stroke="#2f6fde" stroke-width="1.5"/>
+<text x="924.3000000000001" y="1358" font-size="10.5" font-weight="700" fill="#1d4fae" text-anchor="middle" >ACTO</text>
+<rect x="1030.0" y="1462" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1486" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Publicación del procedimiento</text>
+<text x="1200" y="1505" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Proceso publicado + invitaciones por mail</text>
+<text x="1200" y="1521" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >a la nómina de proveedores (pto 15 y 16)</text>
+<circle cx="1030.0" cy="1462" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1467" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >10</text>
+<rect x="190.0" y="1462" width="340" height="88" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="1486" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Portal web de Compras + aviso oficial</text>
+<text x="360" y="1505" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Carga en el portal con enlace a TIMBÓ;</text>
+<text x="360" y="1521" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >mail a avisosoficiales@ ≥ 3 días antes</text>
+<text x="360" y="1537" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(Circ. SCyGB 04/2026)</text>
+<rect x="1030.0" y="1576" width="340" height="56" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" stroke-dasharray="7 5" filter="url(#c1-sombra)"/>
+<text x="1200" y="1600" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Consultas y circulares</text>
+<text x="1200" y="1619" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Proveedor consulta · Gestor genera circulares</text>
+<circle cx="1030.0" cy="1576" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1581" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >11</text>
+<rect x="1313.4" y="1566" width="48.599999999999994" height="20" rx="10" fill="#fff" stroke="#11936a" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="1337.7" y="1580" font-size="10.5" font-weight="700" fill="#0b6b4d" text-anchor="middle" >SI HAY</text>
+<rect x="1030.0" y="1672" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1696" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Presentación de ofertas</text>
+<text x="1200" y="1715" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Proveedor con ID Ciudadana y RUPC;</text>
+<text x="1200" y="1731" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >solo vale "Oferta presentada" (pto 18)</text>
+<circle cx="1030.0" cy="1672" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1677" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >12</text>
+<rect x="1030.0" y="1780" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1804" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Apertura automática</text>
+<text x="1200" y="1823" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >A la hora fijada: acta y cuadro</text>
+<text x="1200" y="1839" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >comparativo automáticos (pto 19)</text>
+<circle cx="1030.0" cy="1780" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1785" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >13</text>
+<rect x="1030.0" y="1888" width="340" height="56" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="1912" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Evaluación de ofertas</text>
+<text x="1200" y="1931" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Evaluadores: evalúan y preseleccionan</text>
+<circle cx="1030.0" cy="1888" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1893" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >14</text>
+<rect x="1030.0" y="1984" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" stroke-dasharray="7 5" filter="url(#c1-sombra)"/>
+<text x="1200" y="2008" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Subsanación, aclaración o mejora</text>
+<text x="1200" y="2027" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Subtrámites al proveedor; si no responde</text>
+<text x="1200" y="2043" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >a tiempo, queda "descartado" (pto 21)</text>
+<circle cx="1030.0" cy="1984" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="1989" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >15</text>
+<rect x="1260.6" y="1974" width="101.39999999999999" height="20" rx="10" fill="#fff" stroke="#11936a" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="1311.3" y="1988" font-size="10.5" font-weight="700" fill="#0b6b4d" text-anchor="middle" >SI CORRESPONDE</text>
+<rect x="1030.0" y="2092" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="1200" y="2116" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Informe de preadjudicación</text>
+<text x="1200" y="2135" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Firman los evaluadores en el orden</text>
+<text x="1200" y="2151" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >de "Ordenar evaluadores" (pto 22)</text>
+<circle cx="1030.0" cy="2092" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="2097" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >16</text>
+<rect x="190.0" y="2092" width="340" height="72" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" stroke-dasharray="7 5" filter="url(#c1-sombra)"/>
+<text x="360" y="2116" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Control de la preadjudicación (URC)</text>
+<text x="360" y="2135" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Antes del cronograma de impugnación</text>
+<text x="360" y="2151" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >¿Aplica al hospital? A CONFIRMAR</text>
+<rect x="453.6" y="2082" width="68.4" height="20" rx="10" fill="#fff" stroke="#d48806" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="487.8" y="2096" font-size="10.5" font-weight="700" fill="#8a5800" text-anchor="middle" >SI APLICA</text>
+<rect x="1030.0" y="2200" width="340" height="72" rx="12" fill="#e2f6ee" stroke="#11936a" stroke-width="2" stroke-dasharray="7 5" filter="url(#c1-sombra)"/>
+<text x="1200" y="2224" font-size="15" font-weight="700" fill="#0b6b4d" text-anchor="middle" >Impugnaciones</text>
+<text x="1200" y="2243" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >A las ofertas o a la preadjudicación,</text>
+<text x="1200" y="2259" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >con garantía; las recibe el Evaluador</text>
+<circle cx="1030.0" cy="2200" r="15" fill="#11936a" stroke="#fff" stroke-width="2.5"/>
+<text x="1030.0" y="2205" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >17</text>
+<rect x="1254.0" y="2190" width="108.0" height="20" rx="10" fill="#fff" stroke="#11936a" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="1308.0" y="2204" font-size="10.5" font-weight="700" fill="#0b6b4d" text-anchor="middle" >SI SE PRESENTAN</text>
+<rect x="610.0" y="2326" width="340" height="72" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="780" y="2350" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >Adjudicación</text>
+<text x="780" y="2369" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Acto en el expediente: firma la autoridad</text>
+<text x="780" y="2385" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >según monto · el Supervisor lo carga</text>
+<circle cx="610.0" cy="2326" r="15" fill="#2f6fde" stroke="#fff" stroke-width="2.5"/>
+<text x="610.0" y="2331" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >18</text>
+<rect x="906.6" y="2316" width="35.4" height="20" rx="10" fill="#fff" stroke="#2f6fde" stroke-width="1.5"/>
+<text x="924.3000000000001" y="2330" font-size="10.5" font-weight="700" fill="#1d4fae" text-anchor="middle" >ACTO</text>
+<rect x="190.0" y="2326" width="340" height="72" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="2350" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >SIN + vista al Tribunal de Cuentas</text>
+<text x="360" y="2369" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >"Gestión de Visualización" del expediente</text>
+<text x="360" y="2385" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >(Circ. UG 9 y 11/2026)</text>
+<rect x="610.0" y="2434" width="340" height="56" rx="12" fill="#e9f1ff" stroke="#2f6fde" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="780" y="2458" font-size="15" font-weight="700" fill="#1d4fae" text-anchor="middle" >Etapa contractual</text>
+<text x="780" y="2477" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Se resuelve por expediente (pto 6)</text>
+<circle cx="610.0" cy="2434" r="15" fill="#2f6fde" stroke="#fff" stroke-width="2.5"/>
+<text x="610.0" y="2439" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >19</text>
+<rect x="190.0" y="2538" width="340" height="56" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="2562" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Recepción de bienes o servicios</text>
+<text x="360" y="2581" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Quién recibe y certifica: A RELEVAR</text>
+<circle cx="190.0" cy="2538" r="15" fill="#d48806" stroke="#fff" stroke-width="2.5"/>
+<text x="190.0" y="2543" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >20</text>
+<rect x="190.0" y="2634" width="340" height="72" rx="12" fill="#fff3df" stroke="#d48806" stroke-width="2" filter="url(#c1-sombra)"/>
+<text x="360" y="2658" font-size="15" font-weight="700" fill="#8a5800" text-anchor="middle" >Facturación y pago</text>
+<text x="360" y="2677" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >Según el circuito administrativo</text>
+<text x="360" y="2693" font-size="12.5" font-weight="400" fill="#4b5563" text-anchor="middle" >del hospital: A RELEVAR</text>
+<circle cx="190.0" cy="2634" r="15" fill="#d48806" stroke="#fff" stroke-width="2.5"/>
+<text x="190.0" y="2639" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >21</text>
+<line x1="40" y1="2756" x2="1400" y2="2756" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="40" y="2776" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start" >Fuentes: Ley 12.510 (art. 116) · Circ. SCyGB 01, 03 y 04/2026 · Res. ME 73/2026 · Circ. UG TIMBÓ 2/2025, 1, 3, 7, 8, 9 y 11/2026 · Res. SCyGB 292/2026.</text>
+<text x="40" y="2796" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start" >Los controles de la URC están dirigidos a la Administración Pública Central: confirmar si alcanzan al hospital.</text>
+<text x="40" y="2816" font-size="12" font-weight="400" fill="#4b5563" text-anchor="start" >"A RELEVAR": la normativa no dice qué área del hospital lo hace; se completa en la reunión. Montos 2026 (Ley de Presupuesto 14.424, art. 36).</text>
+</svg>

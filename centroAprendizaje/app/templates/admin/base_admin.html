@@ -6,6 +6,7 @@
   <title>{% block titulo %}Panel de administración{% endblock %}</title>
   <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  {% block estilos %}{% endblock %}
 </head>
 <body>
   <header class="admin-topbar">
@@ -20,6 +21,7 @@
     <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.consultas') }}">💬 Consultas</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.capacitacion_inicio') }}">🎓 Capacitación</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.recursos_inicio') }}">📚 Recursos</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('procesos.inicio') }}">🧭 Procesos</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.nomenclador_revision') }}">🔄 Revisión nomenclador</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('ui.portal_inicio') }}" target="_blank" rel="noopener">Ver sitio público ↗</a>
     <form method="post" action="{{ url_for('admin.logout') }}">

@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1004" width="1600" height="1004" font-family="Segoe UI, system-ui, Arial, sans-serif"><defs>
+<marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="pv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6a4fd6"/></marker>
+</defs><rect width="1600" height="1004" fill="#f3f5f9"/>
+<rect width="1600" height="76" fill="#14284b"/>
+<text x="28" y="34" font-size="19" font-weight="700" fill="#fff" text-anchor="start" >🧭 Gestión de procesos · Centro de Aprendizaje</text>
+<text x="28" y="58" font-size="14" font-weight="400" fill="#c7d2e6" text-anchor="start" >Flujo de compras (gráfico de la reunión) · circuito oficial de TIMBÓ, solo con fuente</text>
+<rect x="960" y="22" width="150.0" height="34" rx="9" fill="#2456c7" stroke="#2456c7"/>
+<text x="1035.0" y="44" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" >👁 Ver (reunión)</text>
+<rect x="1120.0" y="22" width="91.2" height="34" rx="9" fill="none" stroke="#41557d"/>
+<text x="1165.6" y="44" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" >✎ Editar</text>
+<rect x="1221.2" y="22" width="108.0" height="34" rx="9" fill="none" stroke="#41557d"/>
+<text x="1275.2" y="44" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" >⇆ Comparar</text>
+<rect x="1339.2" y="22" width="116.4" height="34" rx="9" fill="none" stroke="#41557d"/>
+<text x="1397.4" y="44" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" >🕘 Historial</text>
+<rect x="24" y="96" width="800" height="890" rx="16" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
+<path d="M24,112 a16,16 0 0 1 16,-16 h200 v54 h-216 z" fill="#14284b"/>
+<text x="44" y="132" font-size="20" font-weight="700" fill="#fff" text-anchor="start" >🗺  Vista general</text>
+<text x="264" y="130" font-size="15" font-weight="400" fill="#5b6472" text-anchor="start" >El recorrido de una compra, de punta a punta</text>
+<rect x="254.0" y="164" width="340" height="44" rx="22" fill="#e7f5ec" stroke="#1b7a45" stroke-width="2"/>
+<text x="424.0" y="192" font-size="16" font-weight="700" fill="#1b7a45" text-anchor="middle" >▶  INICIO · Necesidad de compra</text>
+<path d="M424.0,208 L424.0,214" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="144.0" y="220" width="560" height="52" rx="12" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.8"/>
+<circle cx="172.0" cy="246" r="15" fill="#14284b"/><text x="172.0" y="251.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >1</text>
+<text x="198.0" y="243" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Pedido</text>
+<text x="198.0" y="262" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Solicitud y documentación técnica</text>
+<rect x="518.0" y="226" width="172" height="20" rx="10.0" fill="#fff" stroke="#5b6472" stroke-width="1.5"/><text x="604.0" y="239.96" font-size="11" font-weight="700" fill="#5b6472" text-anchor="middle" >¿Dónde? a relevar</text>
+<rect x="518.0" y="248" width="172" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="604.0" y="262.14" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="middle" >? 2 pend. · 👤 a relevar</text>
+<path d="M424.0,272 L424.0,282" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="144.0" y="288" width="560" height="52" rx="12" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.8"/>
+<circle cx="172.0" cy="314" r="15" fill="#14284b"/><text x="172.0" y="319.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >2</text>
+<text x="198.0" y="311" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Expediente y presupuesto</text>
+<text x="198.0" y="330" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Inicio del expediente y presupuesto</text>
+<rect x="518.0" y="294" width="172" height="20" rx="10.0" fill="#fff" stroke="#5b6472" stroke-width="1.5"/><text x="604.0" y="307.96" font-size="11" font-weight="700" fill="#5b6472" text-anchor="middle" >¿Dónde? a relevar (en parte)</text>
+<rect x="518.0" y="316" width="172" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="604.0" y="330.14" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="middle" >? 2 pend. · 👤 a relevar</text>
+<path d="M424.0,340 L424.0,350" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="124.0" y="356" width="600" height="54" rx="12" fill="#f1edff" stroke="#6a4fd6" stroke-width="2"/>
+<circle cx="152.0" cy="383" r="15" fill="#14284b"/><text x="152.0" y="388.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >3</text>
+<text x="178.0" y="380" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >◆  ¿Qué procedimiento corresponde?</text>
+<text x="178.0" y="399" font-size="12" font-weight="400" fill="#5b6472" text-anchor="start" >Según monto y causal · Ley 12.510 art. 116 · montos 2026 (Circ. SCyGB 01/2026)</text>
+<path d="M424.0,410 L424.0,424 M133.0,424 L715.0,424" stroke="#6a4fd6" stroke-width="2.4" fill="none"/>
+<path d="M133.0,424 L133.0,438" stroke="#6a4fd6" stroke-width="2.4" fill="none" marker-end="url(#pv)"/>
+<rect x="43.0" y="444" width="180" height="92" rx="12" fill="#fff" stroke="#6a4fd6" stroke-width="1.8"/>
+<circle cx="63.0" cy="464" r="12" fill="#6a4fd6"/><text x="63.0" y="469" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >A</text>
+<text x="81.0" y="469" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Directa</text>
+<text x="55.0" y="489" font-size="11.5" font-weight="400" fill="#5b6472" text-anchor="start" >monto o causal</text>
+<text x="55.0" y="507" font-size="11.5" font-weight="600" fill="#1f5fbf" text-anchor="start" >📍 Expediente TIMBÓ</text>
+<text x="55.0" y="525" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="start" >? pasos sin documentar</text>
+<path d="M327.0,424 L327.0,438" stroke="#6a4fd6" stroke-width="2.4" fill="none" marker-end="url(#pv)"/>
+<rect x="237.0" y="444" width="180" height="92" rx="12" fill="#fff" stroke="#6a4fd6" stroke-width="1.8"/>
+<circle cx="257.0" cy="464" r="12" fill="#6a4fd6"/><text x="257.0" y="469" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >B</text>
+<text x="275.0" y="469" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Urgencia o desierto</text>
+<text x="249.0" y="489" font-size="11.5" font-weight="400" fill="#5b6472" text-anchor="start" >art. 116 c, ap. 2 y 3</text>
+<text x="249.0" y="507" font-size="11.5" font-weight="600" fill="#1f5fbf" text-anchor="start" >📍 TIMBÓ Compras</text>
+<text x="249.0" y="525" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="start" >se une en la etapa 4</text>
+<path d="M521.0,424 L521.0,438" stroke="#6a4fd6" stroke-width="2.4" fill="none" marker-end="url(#pv)"/>
+<rect x="431.0" y="444" width="180" height="92" rx="12" fill="#fff" stroke="#6a4fd6" stroke-width="3"/>
+<circle cx="451.0" cy="464" r="12" fill="#6a4fd6"/><text x="451.0" y="469" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >C</text>
+<text x="469.0" y="469" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Licitación o concurso</text>
+<text x="443.0" y="489" font-size="11.5" font-weight="400" fill="#5b6472" text-anchor="start" >público o privado · simple sobre</text>
+<text x="443.0" y="507" font-size="11.5" font-weight="600" fill="#1f5fbf" text-anchor="start" >📍 TIMBÓ Compras</text>
+<text x="443.0" y="525" font-size="11.5" font-weight="700" fill="#6a4fd6" text-anchor="start" >camino principal → 4</text>
+<path d="M715.0,424 L715.0,438" stroke="#6a4fd6" stroke-width="2.4" fill="none" marker-end="url(#pv)"/>
+<rect x="625.0" y="444" width="180" height="92" rx="12" fill="#fff" stroke="#6a4fd6" stroke-width="1.8"/>
+<circle cx="645.0" cy="464" r="12" fill="#6a4fd6"/><text x="645.0" y="469" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" >D</text>
+<text x="663.0" y="469" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Etapa múltiple</text>
+<text x="637.0" y="489" font-size="11.5" font-weight="400" fill="#5b6472" text-anchor="start" >sobres en papel</text>
+<text x="637.0" y="507" font-size="11.5" font-weight="600" fill="#1f5fbf" text-anchor="start" >📍 Expediente + papel</text>
+<text x="637.0" y="525" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="start" >se une en la etapa 7</text>
+<path d="M327.0,536 L327.0,552 L424.0,552 M521.0,536 L521.0,552 L424.0,552 M424.0,552 L424.0,566" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="138.0" y="566" width="572" height="64" rx="16" fill="none" stroke="#2456c7" stroke-width="3"/>
+<rect x="144.0" y="572" width="560" height="52" rx="12" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.8"/>
+<circle cx="172.0" cy="598" r="15" fill="#14284b"/><text x="172.0" y="603.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >4</text>
+<text x="198.0" y="595" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Pliego y aprobación</text>
+<text x="198.0" y="614" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Gestor · Supervisor · acto de la autoridad</text>
+<rect x="518.0" y="578" width="172" height="20" rx="10.0" fill="#fff" stroke="#5b6472" stroke-width="1.5"/><text x="604.0" y="591.96" font-size="11" font-weight="700" fill="#5b6472" text-anchor="middle" >¿Dónde? a relevar (en parte)</text>
+<rect x="518.0" y="600" width="172" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="604.0" y="614.14" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="middle" >? 2 pend. · 👤 a relevar</text>
+<path d="M424.0,624 L424.0,630" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="144.0" y="636" width="560" height="52" rx="12" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.8"/>
+<circle cx="172.0" cy="662" r="15" fill="#14284b"/><text x="172.0" y="667.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >5</text>
+<text x="198.0" y="659" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Publicación y ofertas</text>
+<text x="198.0" y="678" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Publicación, portal y ofertas</text>
+<rect x="518.0" y="642" width="172" height="20" rx="10.0" fill="#fff" stroke="#1f5fbf" stroke-width="1.5"/><text x="604.0" y="655.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >TIMBÓ + fuera</text>
+<rect x="518.0" y="664" width="172" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="604.0" y="678.14" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="middle" >👤 a relevar</text>
+<path d="M424.0,688 L424.0,694" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="144.0" y="700" width="560" height="52" rx="12" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.8"/>
+<circle cx="172.0" cy="726" r="15" fill="#14284b"/><text x="172.0" y="731.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >6</text>
+<text x="198.0" y="723" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Evaluación</text>
+<text x="198.0" y="742" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Evaluadores · subsanación · preadjudicación</text>
+<rect x="518.0" y="706" width="172" height="20" rx="10.0" fill="#fff" stroke="#1f5fbf" stroke-width="1.5"/><text x="604.0" y="719.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >En TIMBÓ</text>
+<rect x="518.0" y="728" width="172" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="604.0" y="742.14" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="middle" >? 1 pend.</text>
+<path d="M424.0,752 L424.0,758" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="144.0" y="764" width="560" height="52" rx="12" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.8"/>
+<circle cx="172.0" cy="790" r="15" fill="#14284b"/><text x="172.0" y="795.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >7</text>
+<text x="198.0" y="787" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Adjudicación</text>
+<text x="198.0" y="806" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Acto de la autoridad · Tribunal de Cuentas</text>
+<rect x="518.0" y="770" width="172" height="20" rx="10.0" fill="#fff" stroke="#1f5fbf" stroke-width="1.5"/><text x="604.0" y="783.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >En TIMBÓ</text>
+<rect x="518.0" y="792" width="172" height="20" rx="10.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.5"/><text x="604.0" y="806.14" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ con fuente</text>
+<path d="M424.0,816 L424.0,822" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<rect x="144.0" y="828" width="560" height="52" rx="12" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.8"/>
+<circle cx="172.0" cy="854" r="15" fill="#14284b"/><text x="172.0" y="859.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" >8</text>
+<text x="198.0" y="851" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >Recepción, factura y pago</text>
+<text x="198.0" y="870" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >Reglas del Pliego Único 6.9 a 6.13</text>
+<rect x="518.0" y="834" width="172" height="20" rx="10.0" fill="#fff" stroke="#5b6472" stroke-width="1.5"/><text x="604.0" y="847.96" font-size="11" font-weight="700" fill="#5b6472" text-anchor="middle" >¿Dónde? a relevar</text>
+<rect x="518.0" y="856" width="172" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="604.0" y="870.14" font-size="11.5" font-weight="700" fill="#b85400" text-anchor="middle" >👤 a relevar</text>
+<path d="M424.0,880 L424.0,886" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#p)"/>
+<path d="M805.0,490 L827.0,490 L827.0,790 L710.0,790" stroke="#6a4fd6" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#pv)"/>
+<rect x="304.0" y="892" width="240" height="40" rx="10" fill="#14284b"/>
+<text x="424.0" y="918" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >■  FIN</text>
+<line x1="40" y1="940" x2="808" y2="940" stroke="#e2e8f0"/>
+<rect x="42" y="954" width="18" height="14" rx="4" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.5"/>
+<text x="66" y="966" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >En TIMBÓ</text>
+<rect x="135.6" y="954" width="18" height="14" rx="4" fill="#fdf3e1" stroke="#9a6a1c" stroke-width="1.5"/>
+<text x="159.6" y="966" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >Fuera de TIMBÓ</text>
+<rect x="272.4" y="954" width="18" height="14" rx="4" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.5"/>
+<text x="296.4" y="966" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >¿Dónde? a relevar</text>
+<rect x="430.79999999999995" y="954" width="18" height="14" rx="4" fill="#f1edff" stroke="#6a4fd6" stroke-width="1.5"/>
+<text x="454.79999999999995" y="966" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >Decisión</text>
+<text x="42" y="988" font-size="13" font-weight="700" fill="#1b7a45" text-anchor="start" >✔</text>
+<text x="58" y="988" font-size="12" font-weight="500" fill="#1f2937" text-anchor="start" >Documentado</text>
+<text x="145.3" y="988" font-size="13" font-weight="700" fill="#2456c7" text-anchor="start" >👥</text>
+<text x="161.3" y="988" font-size="12" font-weight="500" fill="#1f2937" text-anchor="start" >Confirmado por el equipo</text>
+<text x="330.5" y="988" font-size="13" font-weight="700" fill="#b85400" text-anchor="start" >◌</text>
+<text x="346.5" y="988" font-size="12" font-weight="500" fill="#1f2937" text-anchor="start" >Pendiente de documentación</text>
+<text x="528.3" y="988" font-size="13" font-weight="700" fill="#b85400" text-anchor="start" >?</text>
+<text x="544.3" y="988" font-size="12" font-weight="500" fill="#1f2937" text-anchor="start" >Pendiente de confirmación</text>
+<text x="719.8" y="988" font-size="13" font-weight="700" fill="#b42318" text-anchor="start" >⚠</text>
+<text x="735.8" y="988" font-size="12" font-weight="500" fill="#1f2937" text-anchor="start" >Sin respaldo</text>
+<rect x="844" y="96" width="732" height="890" rx="16" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
+<path d="M844,112 a16,16 0 0 1 16,-16 h700 a16,16 0 0 1 16,16 v38 h-732 z" fill="#14284b"/>
+<text x="864" y="132" font-size="20" font-weight="700" fill="#fff" text-anchor="start" >🔍  Vista de detalle</text>
+<rect x="1366" y="108" width="190" height="30" rx="15" fill="none" stroke="#c7d2e6" stroke-width="1.5"/>
+<text x="1461" y="128" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle" >✎ Editar esta etapa</text>
+<rect x="844" y="150" width="732" height="70" fill="#f1f3f6"/>
+<circle cx="888" cy="185" r="24" fill="#14284b"/><text x="888" y="193" font-size="22" font-weight="700" fill="#fff" text-anchor="middle" >4</text>
+<text x="926" y="182" font-size="22" font-weight="700" fill="#1f2937" text-anchor="start" >Pliego y aprobación</text>
+<text x="926" y="205" font-size="13" font-weight="500" fill="#5b6472" text-anchor="start" >◀ viene de 3      sigue en 5 ▶</text>
+<rect x="1360" y="172" width="196" height="26" rx="13.0" fill="#fff" stroke="#5b6472" stroke-width="1.5"/><text x="1458.0" y="189.32" font-size="12" font-weight="700" fill="#5b6472" text-anchor="middle" >¿Dónde? a relevar (en parte)</text>
+<text x="868" y="252" font-size="16" font-weight="700" fill="#1f2937" text-anchor="start" >☰  Pasos de la etapa (todos)</text>
+<rect x="864" y="262" width="692" height="70" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.6"/>
+<circle cx="886" cy="282" r="12" fill="#14284b"/><text x="886" y="286.5" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle" >7</text>
+<text x="906" y="283" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Inicio del proceso en TIMBÓ Compras</text>
+<rect x="1444.1" y="269" width="99.89999999999999" height="20" rx="10.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.5"/><text x="1494.05" y="282.78" font-size="10.5" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="906" y="291" width="108.0" height="18" rx="9.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.5"/><text x="960.0" y="303.6" font-size="10" font-weight="700" fill="#1f5fbf" text-anchor="middle" >📍 TIMBÓ Compras</text>
+<text x="1022.0" y="303" font-size="11" font-weight="600" fill="#0b5f61" text-anchor="start" >Gestor (rol TIMBÓ)</text>
+<text x="906" y="324" font-size="10.8" font-weight="400" fill="#5b6472" text-anchor="start" >📚 Circ. UG 7/2026 · Punto 10 · pág. 3</text>
+<rect x="864" y="338" width="692" height="70" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.6"/>
+<circle cx="886" cy="358" r="12" fill="#14284b"/><text x="886" y="362.5" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle" >8</text>
+<text x="906" y="359" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Pliego particular (PBCP)</text>
+<rect x="1444.1" y="345" width="99.89999999999999" height="20" rx="10.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.5"/><text x="1494.05" y="358.78" font-size="10.5" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="906" y="367" width="108.0" height="18" rx="9.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.5"/><text x="960.0" y="379.6" font-size="10" font-weight="700" fill="#1f5fbf" text-anchor="middle" >📍 TIMBÓ Compras</text>
+<text x="1022.0" y="379" font-size="11" font-weight="600" fill="#0b5f61" text-anchor="start" >Gestor (rol TIMBÓ)</text>
+<text x="906" y="400" font-size="10.8" font-weight="400" fill="#5b6472" text-anchor="start" >📚 Circ. UG 7/2026 · Punto 10 · pág. 3 · +1</text>
+<rect x="864" y="414" width="692" height="86" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.6"/>
+<circle cx="886" cy="434" r="12" fill="#14284b"/><text x="886" y="438.5" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle" >9</text>
+<text x="906" y="435" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Revisión y aprobación del pliego</text>
+<rect x="1444.1" y="421" width="99.89999999999999" height="20" rx="10.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.5"/><text x="1494.05" y="434.78" font-size="10.5" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="906" y="443" width="108.0" height="18" rx="9.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.5"/><text x="960.0" y="455.6" font-size="10" font-weight="700" fill="#1f5fbf" text-anchor="middle" >📍 TIMBÓ Compras</text>
+<text x="1022.0" y="455" font-size="11" font-weight="600" fill="#0b5f61" text-anchor="start" >Supervisor (aprueba o rechaza los formularios) (rol TIMBÓ)…</text>
+<text x="906" y="476" font-size="10.8" font-weight="400" fill="#5b6472" text-anchor="start" >📚 Circ. UG 7/2026 · Punto 10 · pág. 3 · +1</text>
+<text x="906" y="494" font-size="10.8" font-weight="600" fill="#6a4fd6" text-anchor="start" >↳ Aprobado → Acto: aprueba el pliego…  ·  Rechazado → Rechazado: qué sigue  ·  Pase del expediente (si… → Control de pliegos de l…</text>
+<rect x="864" y="506" width="692" height="70" rx="10" fill="#fff" stroke="#b85400" stroke-width="1.6" stroke-dasharray="5 3"/>
+<text x="886" y="531" font-size="15" font-weight="700" fill="#b85400" text-anchor="middle" >?</text>
+<text x="906" y="527" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Rechazado: qué sigue</text>
+<rect x="1349.6" y="513" width="194.4" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="1446.8" y="526.78" font-size="10.5" font-weight="700" fill="#b85400" text-anchor="middle" >◌ Pendiente de documentación</text>
+<rect x="906" y="535" width="108.0" height="18" rx="9.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.5"/><text x="960.0" y="547.6" font-size="10" font-weight="700" fill="#1f5fbf" text-anchor="middle" >📍 TIMBÓ Compras</text>
+<text x="1022.0" y="547" font-size="11" font-weight="600" fill="#9a6a1c" text-anchor="start" >👤 a relevar</text>
+<text x="906" y="568" font-size="10.8" font-weight="400" fill="#5b6472" text-anchor="start" >📚 Circ. UG 7/2026 · Punto 10 · pág. 3</text>
+<text x="1540" y="568" font-size="11" font-weight="700" fill="#b85400" text-anchor="end" >⛔ sin salida: falta confirmar qué sigue</text>
+<rect x="864" y="582" width="692" height="70" rx="10" fill="#fff" stroke="#b85400" stroke-width="1.6" stroke-dasharray="5 3"/>
+<text x="886" y="607" font-size="15" font-weight="700" fill="#5b6472" text-anchor="middle" >🔍</text>
+<text x="906" y="603" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Control de pliegos de la URC</text>
+<rect x="1355.9" y="589" width="188.1" height="20" rx="10.0" fill="#fff" stroke="#b85400" stroke-width="1.5" stroke-dasharray="4 3"/><text x="1449.95" y="602.78" font-size="10.5" font-weight="700" fill="#b85400" text-anchor="middle" >? Pendiente de confirmación</text>
+<rect x="906" y="611" width="126.0" height="18" rx="9.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.5"/><text x="969.0" y="623.6" font-size="10" font-weight="700" fill="#1f5fbf" text-anchor="middle" >📍 Expediente TIMBÓ</text>
+<text x="1040.0" y="623" font-size="11" font-weight="600" fill="#0b5f61" text-anchor="start" >Unidad Rectora Central (Dirección General de Contrataciones…</text>
+<text x="906" y="644" font-size="10.8" font-weight="400" fill="#5b6472" text-anchor="start" >📚 Circ. SCyGB 03/2026 · Estado: Aprobar contratación · pág. 1 · +1</text>
+<rect x="864" y="658" width="692" height="86" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.6"/>
+<text x="886" y="683" font-size="15" font-weight="700" fill="#5b6472" text-anchor="middle" >✍</text>
+<text x="906" y="679" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Acto: aprueba el pliego y autoriza el llamado</text>
+<rect x="1444.1" y="665" width="99.89999999999999" height="20" rx="10.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.5"/><text x="1494.05" y="678.78" font-size="10.5" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="906" y="687" width="132.0" height="18" rx="9.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.5"/><text x="972.0" y="699.6" font-size="10" font-weight="700" fill="#5b6472" text-anchor="middle" >📍 ¿Dónde? a relevar</text>
+<text x="1046.0" y="699" font-size="11" font-weight="600" fill="#0b5f61" text-anchor="start" >Autoridad competente según el monto · Supervisor (lo carga…</text>
+<text x="906" y="720" font-size="10.8" font-weight="400" fill="#5b6472" text-anchor="start" >📚 Circ. UG 7/2026 · Punto 10 · pág. 3 · +1</text>
+<text x="906" y="738" font-size="10.8" font-weight="600" fill="#6a4fd6" text-anchor="start" >↳ → sigue en 5</text>
+<rect x="864" y="756" width="692" height="101" rx="12" fill="#fff8ef" stroke="#b85400" stroke-width="1.6"/>
+<text x="880" y="778" font-size="13" font-weight="700" fill="#1f2937" text-anchor="start" >Estado de la etapa:  ✔ 4 documentados  ·  ◌ 1 pendiente de documentación  ·  ? 1 pendiente de confirmación</text>
+<text x="880" y="798" font-size="11.5" font-weight="500" fill="#b85400" text-anchor="start" >◌ Rechazado: qué sigue</text>
+<text x="880" y="815" font-size="11.5" font-weight="500" fill="#b85400" text-anchor="start" >? Control de pliegos de la URC</text>
+<text x="880" y="832" font-size="11.5" font-weight="500" fill="#9a6a1c" text-anchor="start" >👤📍 A relevar quién o dónde: Acto: aprueba el pliego y autoriza el llamado</text></svg>

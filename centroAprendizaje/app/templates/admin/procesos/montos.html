@@ -1,0 +1,73 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Rangos de montos — Procesos{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set activo = 'montos' %}{% include "procesos/_menu.html" %}
+<div class="admin-section-head"><h1 style="margin:0">💲 Rangos de montos</h1></div>
+<p class="text-muted">Los rangos se usan en las flechas de los circuitos para mostrar cuándo cambia el procedimiento o la autorización. Un rango sin fuente documental no puede quedar como verificado. Si dos documentos dicen montos distintos, cargá los dos: el sistema marca la discrepancia y no elige ninguno.</p>
+
+{% if discrepancias %}
+<div class="callout callout--warning"><span class="callout__icon">⚠️</span><div><b>Discrepancias:</b>
+  {% for g in discrepancias %}<br>«{{ g[0].nombre }}»: {% for r in g %}{{ r.condicion or ((r.minimo or 0)|string ~ ' a ' ~ (r.maximo or 'sin tope')|string) }} ({{ docs[r.fuente_doc].titulo if r.fuente_doc in docs else 'sin fuente' }}){{ ' / ' if not loop.last }}{% endfor %}{% endfor %}
+</div></div>
+{% endif %}
+
+<div class="table-wrap"><table class="data-table pe-tabla-texto">
+  <thead><tr><th>Rango</th><th>Mínimo</th><th>Máximo</th><th>Condición</th><th>Autorización</th><th>Fuente</th><th>Vigencia</th><th>Estado</th><th></th></tr></thead>
+  <tbody>
+  {% for r in rangos %}
+  <tr>
+    <td><b>{{ r.nombre }}</b></td>
+    <td class="pe-num">{{ '—' if r.minimo is none else '$' ~ '{:,.0f}'.format(r.minimo).replace(',', '.') }}</td>
+    <td class="pe-num">{{ 'Sin tope' if r.maximo is none else '$' ~ '{:,.0f}'.format(r.maximo).replace(',', '.') }}</td>
+    <td>{{ r.condicion }}</td>
+    <td>{{ r.autorizacion }}</td>
+    <td>{% if r.fuente_doc in docs %}<a href="{{ docs[r.fuente_doc].url }}" target="_blank" rel="noopener">{{ docs[r.fuente_doc].titulo }}</a>{% if r.fuente_punto %}<br><small class="text-muted">{{ r.fuente_punto }}</small>{% endif %}{% else %}<span class="pe-txt-error">SIN RESPALDO DOCUMENTAL</span>{% endif %}</td>
+    <td>{{ r.vigencia_desde.strftime('%d/%m/%Y') if r.vigencia_desde else '—' }}{% if r.vigencia_hasta %} al {{ r.vigencia_hasta.strftime('%d/%m/%Y') }}{% endif %}</td>
+    <td><span class="pe-chip {{ 'pe-chip--ok' if r.estado == 'verificado' else 'pe-chip--pend' }}">{{ estados[r.estado] }}</span></td>
+    <td><a class="btn btn--sm" href="{{ url_for('procesos.montos', editar=r.id) }}#form-rango">Editar</a></td>
+  </tr>
+  {% else %}<tr><td colspan="9">No hay rangos cargados.</td></tr>{% endfor %}
+  </tbody>
+</table></div>
+
+<section class="card" id="form-rango" style="margin-top:18px">
+  <h2 class="section__title" style="margin-top:0">{{ 'Editar «' ~ editar.nombre ~ '»' if editar else 'Agregar un rango' }}</h2>
+  <form method="post" class="admin-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    {% if editar %}<input type="hidden" name="id" value="{{ editar.id }}" />{% endif %}
+    <div class="admin-field"><label for="r-nombre">Nombre</label><input class="input" id="r-nombre" name="nombre" required maxlength="200" value="{{ editar.nombre if editar }}" placeholder="Ej.: Encuadre: contratación directa por monto" /></div>
+    <div class="admin-field-row">
+      <div class="admin-field"><label for="r-min">Importe mínimo (vacío = desde 0)</label><input class="input" id="r-min" name="minimo" inputmode="decimal" value="{{ '' if not editar or editar.minimo is none else editar.minimo|int }}" /></div>
+      <div class="admin-field"><label for="r-max">Importe máximo (vacío = sin tope)</label><input class="input" id="r-max" name="maximo" inputmode="decimal" value="{{ '' if not editar or editar.maximo is none else editar.maximo|int }}" /></div>
+      <div class="admin-field"><label for="r-mon">Moneda</label><input class="input" id="r-mon" name="moneda" maxlength="10" value="{{ editar.moneda if editar else 'ARS' }}" /></div>
+    </div>
+    <div class="admin-field"><label for="r-cond">Condición aplicable</label><textarea class="input" id="r-cond" name="condicion" rows="2">{{ editar.condicion if editar }}</textarea></div>
+    <div class="admin-field"><label for="r-aut">Autorización que corresponde</label><textarea class="input" id="r-aut" name="autorizacion" rows="2">{{ editar.autorizacion if editar }}</textarea></div>
+    <div class="admin-field"><label for="r-doc">Documentación adicional que se necesita</label><textarea class="input" id="r-doc" name="documentacion" rows="2">{{ editar.documentacion if editar }}</textarea></div>
+    <div class="admin-field-row">
+      <div class="admin-field"><label for="r-fuente">Fuente documental (de la biblioteca)</label>
+        <select class="input" id="r-fuente" name="fuente_doc"><option value="">— Sin fuente —</option>
+          {% for id, d in docs.items() %}<option value="{{ id }}" {{ 'selected' if editar and editar.fuente_doc == id }}>{{ d.titulo }}</option>{% endfor %}
+        </select></div>
+      <div class="admin-field"><label for="r-punto">Punto o apartado</label><input class="input" id="r-punto" name="fuente_punto" maxlength="200" value="{{ editar.fuente_punto if editar }}" /></div>
+    </div>
+    <div class="admin-field-row">
+      <div class="admin-field"><label for="r-desde">Vigente desde</label><input class="input" type="date" id="r-desde" name="vigencia_desde" value="{{ editar.vigencia_desde.isoformat() if editar and editar.vigencia_desde }}" /></div>
+      <div class="admin-field"><label for="r-hasta">Vigente hasta (si se sabe)</label><input class="input" type="date" id="r-hasta" name="vigencia_hasta" value="{{ editar.vigencia_hasta.isoformat() if editar and editar.vigencia_hasta }}" /></div>
+      <div class="admin-field"><label for="r-estado">Estado de verificación</label>
+        <select class="input" id="r-estado" name="estado">{% for k, v in estados.items() %}<option value="{{ k }}" {{ 'selected' if (editar and editar.estado == k) or (not editar and k == 'pendiente') }}>{{ v }}</option>{% endfor %}</select></div>
+    </div>
+    <div class="admin-field"><label for="r-motivo">Motivo del cambio (queda en el historial)</label><input class="input" id="r-motivo" name="motivo" maxlength="500" /></div>
+    <button class="btn btn--primary" type="submit">Guardar rango</button>
+    {% if editar %}<a class="btn" href="{{ url_for('procesos.montos') }}">Cancelar</a>{% endif %}
+  </form>
+</section>
+
+<h2 class="section__title">Historial de cambios en los rangos</h2>
+{% if historial %}
+<div class="table-wrap"><table class="data-table pe-tabla-texto"><thead><tr><th>Fecha</th><th>Acción</th><th>Motivo</th></tr></thead>
+<tbody>{% for a in historial %}<tr><td>{{ a.creado | hora_ar }}</td><td>{{ a.accion }} (rango {{ a.entidad_id }})</td><td>{{ a.motivo }}</td></tr>{% endfor %}</tbody></table></div>
+{% else %}<p class="text-muted">Sin cambios desde la carga inicial.</p>{% endif %}
+{% endblock %}

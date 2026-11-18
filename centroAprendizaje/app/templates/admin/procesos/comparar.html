@@ -1,0 +1,78 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Comparación de procedimientos — Procesos{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set activo = 'comparar' %}{% include "procesos/_menu.html" %}
+<div class="admin-section-head">
+  <h1 style="margin:0">⇆ Comparación de procedimientos</h1>
+  <button type="button" class="btn btn--sm no-imprimir" data-imprimir>🖨 Imprimir el informe de diferencias</button>
+</div>
+<div class="callout callout--tip">
+  <span class="callout__icon">⚖️</span>
+  <div>Esta comparación <b>no dice qué está bien o mal</b>. Una diferencia puede responder a un trámite administrativo que va fuera del sistema. Antes de proponer un cambio, revisá su fundamento y sus implicancias. La relación entre los pasos la marcás vos en el editor del circuito del hospital («Comparación con TIMBÓ»).</div>
+</div>
+
+<form method="get" class="pe-fila pe-elegir no-imprimir">
+  <label for="cmp-h">Hospital</label>
+  <select class="input" id="cmp-h" name="hospital" data-autoenviar>{% for x in hospitales %}<option value="{{ x.slug }}" {{ 'selected' if h and x.id == h.id }}>{{ x.nombre }}</option>{% endfor %}</select>
+  <label for="cmp-o">Oficial</label>
+  <select class="input" id="cmp-o" name="oficial" data-autoenviar>{% for x in oficiales %}<option value="{{ x.slug }}" {{ 'selected' if o and x.id == o.id }}>{{ x.nombre }}</option>{% endfor %}</select>
+</form>
+
+{% if not h or not o %}
+<p class="text-muted">Hace falta un circuito del hospital y uno oficial.</p>
+{% else %}
+{% set relevados = filas_hospital | length %}
+{% set coinciden = filas_hospital | selectattr('relacion', 'equalto', 'coincide') | list | length %}
+{% set difieren = filas_hospital | selectattr('relacion', 'equalto', 'difiere') | list | length %}
+{% set fuera = filas_hospital | selectattr('relacion', 'equalto', 'fuera') | list | length %}
+{% set sin_rel = filas_hospital | selectattr('relacion', 'equalto', 'sin_relacion') | list | length %}
+{% set sin_relevar = filas_oficial | rejectattr('hospital') | list | length %}
+<div class="pe-resumen">
+  <div><b>{{ relevados }}</b><span>pasos relevados en el hospital</span></div>
+  <div><b>{{ coinciden }}</b><span>coinciden con un paso oficial</span></div>
+  <div><b>{{ difieren }}</b><span>se hacen distinto</span></div>
+  <div><b>{{ fuera }}</b><span>se hacen fuera de TIMBÓ</span></div>
+  <div><b>{{ sin_rel }}</b><span>sin paso oficial vinculado</span></div>
+  <div><b>{{ sin_relevar }}</b><span>pasos oficiales sin relevar en el hospital</span></div>
+</div>
+
+<h2 class="section__title">Lo que se hace hoy en el hospital</h2>
+{% if filas_hospital %}
+<div class="table-wrap"><table class="data-table pe-tabla-cmp pe-tabla-texto">
+  <thead><tr><th>Paso del hospital</th><th>Soporte · sistema</th><th>Estado</th><th>Relación</th><th>Paso oficial (TIMBÓ)</th><th>Nota</th></tr></thead>
+  <tbody>
+  {% for f in filas_hospital %}{% set n = f.nodo %}
+  <tr>
+    <td><b>{{ tipos[n.tipo][0] }} {{ n.titulo }}</b>{% if n.responsables %}<br><small class="text-muted">{{ n.responsables | map(attribute='quien') | join(', ') }}</small>{% endif %}</td>
+    <td>{{ soportes[n.soporte] }}<br><small class="text-muted">{{ sistemas[n.sistema] }}</small></td>
+    <td><span class="pe-chip pe-color-{{ estados[n.estado][1] }}-soft">{{ estados[n.estado][0] }}</span></td>
+    <td>{{ relaciones.get(f.relacion, 'Sin indicar') }}</td>
+    <td>{% if f.oficial %}{{ f.oficial.titulo }}<br><span class="pe-chip pe-color-{{ estados[f.oficial.estado][1] }}-soft">{{ estados[f.oficial.estado][0] }}</span>{% else %}<span class="text-muted">—</span>{% endif %}</td>
+    <td>{{ f.nota }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% else %}<p class="text-muted">El circuito del hospital todavía está vacío: se arma en las reuniones.</p>{% endif %}
+
+<h2 class="section__title">Cómo está documentado en TIMBÓ</h2>
+<div class="table-wrap"><table class="data-table pe-tabla-cmp pe-tabla-texto">
+  <thead><tr><th>Paso oficial</th><th>Sistema</th><th>Estado de la documentación</th><th>Fuentes</th><th>En el hospital</th></tr></thead>
+  <tbody>
+  {% for f in filas_oficial %}{% set n = f.oficial %}
+  <tr>
+    <td><b>{{ tipos[n.tipo][0] }} {{ n.titulo }}</b></td>
+    <td>{{ sistemas[n.sistema] }}</td>
+    <td><span class="pe-chip pe-color-{{ estados[n.estado][1] }}-soft">{{ estados[n.estado][0] }}</span></td>
+    <td>{% if n.fuentes %}{{ n.fuentes | length }}{% else %}<span class="pe-txt-error">Sin respaldo</span>{% endif %}</td>
+    <td>{% for x in f.hospital %}{{ x.titulo }} <small class="text-muted">({{ relaciones.get((x.correspondencia or {}).get('relacion', ''), 'sin indicar') }})</small>{{ '; ' if not loop.last }}{% else %}<span class="text-muted">No relevado todavía</span>{% endfor %}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="text-muted">Para ver la documentación de cada paso oficial, abrí <a href="{{ url_for('procesos.editor', slug=o.slug) }}">el circuito oficial</a> y tocá «Consultar documentación».</p>
+{% endif %}
+{% endblock %}
+{% block script_pagina %}<script src="{{ url_for('static', filename='js/procesos-informe.js') }}"></script>{% endblock %}

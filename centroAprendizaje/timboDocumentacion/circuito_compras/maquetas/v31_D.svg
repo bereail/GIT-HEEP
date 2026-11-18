@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1004" width="1600" height="1004" font-family="Segoe UI, system-ui, Arial, sans-serif"><defs>
+<marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+<filter id="s" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.08"/></filter>
+</defs><rect width="1600" height="1004" fill="#f3f5f9"/>
+<rect width="1600" height="72" fill="#14284b"/>
+<text x="28" y="33" font-size="21" font-weight="700" fill="#fff" text-anchor="start" >🧭 Circuito de compras</text>
+<text x="28" y="57" font-size="13.5" font-weight="400" fill="#c7d2e6" text-anchor="start" >El hospital se completa en la reunión · la comparación no juzga</text>
+<rect x="760" y="18" width="159.0" height="36" rx="10" fill="none" stroke="#41557d"/>
+<text x="839.5" y="41" font-size="14.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >🏛 Oficial TIMBÓ</text>
+<rect x="929.0" y="18" width="245.0" height="36" rx="10" fill="none" stroke="#41557d"/>
+<text x="1051.5" y="41" font-size="14.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >🏥 Hospital (relevamiento)</text>
+<rect x="1184.0" y="18" width="141.8" height="36" rx="10" fill="#ffffff" stroke="#ffffff"/>
+<text x="1254.9" y="41" font-size="14.5" font-weight="700" fill="#14284b" text-anchor="middle" >⇆ Comparación</text>
+<rect x="1468" y="18" width="108" height="36" rx="10" fill="none" stroke="#41557d"/>
+<text x="1522" y="41" font-size="14.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >✎ Editar</text>
+<rect x="24" y="90" width="640" height="896" rx="18" fill="#fff" stroke="#e3e8ef" stroke-width="1.5"/>
+<text x="48" y="124" font-size="20" font-weight="700" fill="#1f2937" text-anchor="start" >Vista general</text>
+<text x="48" y="146" font-size="13.5" font-weight="400" fill="#5b6472" text-anchor="start" >Tocá una etapa para ver el detalle</text>
+<rect x="194.0" y="166" width="300" height="40" rx="20" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.8"/>
+<text x="344.0" y="192" font-size="16" font-weight="700" fill="#1b7a45" text-anchor="middle" >▶  Inicio</text>
+<path d="M344.0,208 L344.0,216" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="218" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="248" r="18" fill="#14284b"/><text x="80" y="254" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >1</text>
+<text x="112" y="244" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Preparar la compra</text>
+<text x="112" y="264" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Etapa preparatoria por expediente electrónico</text>
+<rect x="530.1" y="240" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="255.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,280 L344.0,288" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="290" width="592" height="60" rx="14" fill="#f1edff" stroke="#6a4fd6" stroke-width="1.5" filter="url(#s)"/>
+<rect x="63" y="303" width="34" height="34" rx="6" fill="#6a4fd6" transform="rotate(45 80 320)"/>
+<text x="80" y="326" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >2</text>
+<text x="112" y="316" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >¿Qué procedimiento corresponde?</text>
+<text x="112" y="336" font-size="12.8" font-weight="400" fill="#6a4fd6" text-anchor="start" >A · B · C · D — tocá para ver las alternativas</text>
+<rect x="530.1" y="312" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="327.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,352 L344.0,360" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="362" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="392" r="18" fill="#14284b"/><text x="80" y="398" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >3</text>
+<text x="112" y="388" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Armar el pliego</text>
+<text x="112" y="408" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Formularios del pliego en TIMBÓ Compras</text>
+<rect x="530.1" y="384" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="399.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,424 L344.0,432" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="434" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="464" r="18" fill="#14284b"/><text x="80" y="470" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >4</text>
+<text x="112" y="460" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Aprobar y autorizar el llamado</text>
+<text x="112" y="480" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Controles, cronograma y acto de la autoridad</text>
+<rect x="530.1" y="456" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="471.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,496 L344.0,504" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="506" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="536" r="18" fill="#14284b"/><text x="80" y="542" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >5</text>
+<text x="112" y="532" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Publicar</text>
+<text x="112" y="552" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Proceso publicado, difusión y consultas</text>
+<rect x="530.1" y="528" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="543.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,568 L344.0,576" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="578" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="608" r="18" fill="#14284b"/><text x="80" y="614" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >6</text>
+<text x="112" y="604" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Recibir y abrir ofertas</text>
+<text x="112" y="624" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Ofertas de los proveedores y apertura automática</text>
+<rect x="530.1" y="600" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="615.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,640 L344.0,648" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="650" width="592" height="60" rx="14" fill="#f5f8ff" stroke="#2456c7" stroke-width="3" filter="url(#s)"/>
+<circle cx="80" cy="680" r="18" fill="#14284b"/><text x="80" y="686" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >7</text>
+<text x="112" y="676" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Evaluar y preadjudicar</text>
+<text x="112" y="696" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Evaluadores, subsanaciones e informe</text>
+<rect x="530.1" y="672" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="687.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,712 L344.0,720" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="722" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="752" r="18" fill="#14284b"/><text x="80" y="758" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >8</text>
+<text x="112" y="748" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Adjudicar</text>
+<text x="112" y="768" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Acto de la autoridad · SIN y Tribunal de Cuentas</text>
+<rect x="530.1" y="744" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="759.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,784 L344.0,792" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="794" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="824" r="18" fill="#14284b"/><text x="80" y="830" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >9</text>
+<text x="112" y="820" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Contrato, recepción y pago</text>
+<text x="112" y="840" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Recepción, certificado, factura y pago</text>
+<rect x="530.1" y="816" width="95.89999999999999" height="22" rx="11.0" fill="#f1f3f6" stroke="#5b6472" stroke-width="1.4" stroke-dasharray="4 3"/><text x="578.0500000000001" y="831.14" font-size="11.5" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin relevar</text>
+<path d="M344.0,856 L344.0,864" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="194.0" y="866" width="300" height="40" rx="12" fill="#14284b"/>
+<text x="344.0" y="892" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >■  Fin</text>
+<text x="48" y="974" font-size="12" font-weight="500" fill="#5b6472" text-anchor="start" >✔ documentado   ? pendiente   ◆ decisión   «En TIMBÓ» / «¿Dónde? a relevar» = dónde pasa</text>
+<rect x="684" y="90" width="892" height="896" rx="18" fill="#fff" stroke="#e3e8ef" stroke-width="1.5"/>
+<text x="712" y="128" font-size="22" font-weight="700" fill="#1f2937" text-anchor="start" >⇆ Comparación · etapa 7 · Evaluar y preadjudicar</text>
+<text x="712" y="152" font-size="13" font-weight="400" fill="#5b6472" text-anchor="start" >Neutral: una diferencia no es un error. Cada fila la marcás vos en la reunión.</text>
+<rect x="712" y="170" width="412" height="40" rx="10" fill="#e2f4f3"/><text x="728" y="196" font-size="15" font-weight="700" fill="#0f7f86" text-anchor="start" >🏛 Oficial TIMBÓ (con fuente)</text>
+<rect x="1140" y="170" width="412" height="40" rx="10" fill="#fdf3e1"/><text x="1156" y="196" font-size="15" font-weight="700" fill="#9a6a1c" text-anchor="start" >🏥 Hospital (lo que cuenta Compras)</text>
+<rect x="712" y="226" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef"/>
+<text x="726" y="248" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Evaluación de ofertas y preselección</text>
+<rect x="726" y="253" width="98.0" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="775.0" y="267.6" font-size="10" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1140" y="226" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef" stroke-dasharray="5 4"/>
+<text x="1154" y="248" font-size="13.5" font-weight="600" fill="#5b6472" text-anchor="start" >Sin relevar todavía</text>
+<text x="1154" y="267" font-size="12" font-weight="700" fill="#2456c7" text-anchor="start" >+ Registrar cómo lo hacen</text>
+<rect x="712" y="286" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef"/>
+<text x="726" y="308" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >¿Subsanar, aclarar o mejorar?</text>
+<rect x="726" y="313" width="98.0" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="775.0" y="327.6" font-size="10" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1140" y="286" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef" stroke-dasharray="5 4"/>
+<text x="1154" y="308" font-size="13.5" font-weight="600" fill="#5b6472" text-anchor="start" >Sin relevar todavía</text>
+<text x="1154" y="327" font-size="12" font-weight="700" fill="#2456c7" text-anchor="start" >+ Registrar cómo lo hacen</text>
+<rect x="712" y="346" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef"/>
+<text x="726" y="368" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Informe de preadjudicación</text>
+<rect x="726" y="373" width="98.0" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="775.0" y="387.6" font-size="10" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1140" y="346" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef" stroke-dasharray="5 4"/>
+<text x="1154" y="368" font-size="13.5" font-weight="600" fill="#5b6472" text-anchor="start" >Sin relevar todavía</text>
+<text x="1154" y="387" font-size="12" font-weight="700" fill="#2456c7" text-anchor="start" >+ Registrar cómo lo hacen</text>
+<rect x="712" y="406" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef"/>
+<text x="726" y="428" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Control de la URC</text>
+<rect x="726" y="433" width="182.0" height="22" rx="11.0" fill="#fff4e8" stroke="#b85400" stroke-width="1.4" stroke-dasharray="4 3"/><text x="817.0" y="447.6" font-size="10" font-weight="700" fill="#b85400" text-anchor="middle" >? Pendiente de confirmación</text>
+<rect x="1140" y="406" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef" stroke-dasharray="5 4"/>
+<text x="1154" y="428" font-size="13.5" font-weight="600" fill="#5b6472" text-anchor="start" >Sin relevar todavía</text>
+<text x="1154" y="447" font-size="12" font-weight="700" fill="#2456c7" text-anchor="start" >+ Registrar cómo lo hacen</text>
+<rect x="712" y="466" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef"/>
+<text x="726" y="488" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Cronograma de impugnación</text>
+<rect x="726" y="493" width="98.0" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="775.0" y="507.6" font-size="10" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1140" y="466" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef" stroke-dasharray="5 4"/>
+<text x="1154" y="488" font-size="13.5" font-weight="600" fill="#5b6472" text-anchor="start" >Sin relevar todavía</text>
+<text x="1154" y="507" font-size="12" font-weight="700" fill="#2456c7" text-anchor="start" >+ Registrar cómo lo hacen</text>
+<rect x="712" y="526" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef"/>
+<text x="726" y="548" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Impugnación a la preadjudicación</text>
+<rect x="726" y="553" width="98.0" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="775.0" y="567.6" font-size="10" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1140" y="526" width="412" height="52" rx="10" fill="#fff" stroke="#e3e8ef" stroke-dasharray="5 4"/>
+<text x="1154" y="548" font-size="13.5" font-weight="600" fill="#5b6472" text-anchor="start" >Sin relevar todavía</text>
+<text x="1154" y="567" font-size="12" font-weight="700" fill="#2456c7" text-anchor="start" >+ Registrar cómo lo hacen</text>
+<text x="712" y="600" font-size="14" font-weight="700" fill="#1f2937" text-anchor="start" >Relación de cada paso del hospital con el oficial (la elegís vos):</text>
+<rect x="712" y="614" width="77.6" height="26" rx="13.0" fill="#fff" stroke="#1b7a45" stroke-width="1.4"/><text x="750.8" y="631.32" font-size="12" font-weight="700" fill="#1b7a45" text-anchor="middle" >Coincide</text>
+<rect x="799.6" y="614" width="135.2" height="26" rx="13.0" fill="#fff" stroke="#b85400" stroke-width="1.4"/><text x="867.2" y="631.32" font-size="12" font-weight="700" fill="#b85400" text-anchor="middle" >Se hace distinto</text>
+<rect x="944.8" y="614" width="178.39999999999998" height="26" rx="13.0" fill="#fff" stroke="#9a6a1c" stroke-width="1.4"/><text x="1034.0" y="631.32" font-size="12" font-weight="700" fill="#9a6a1c" text-anchor="middle" >Se hace fuera de TIMBÓ</text>
+<rect x="1133.1999999999998" y="614" width="221.59999999999997" height="26" rx="13.0" fill="#fff" stroke="#5b6472" stroke-width="1.4"/><text x="1243.9999999999998" y="631.32" font-size="12" font-weight="700" fill="#5b6472" text-anchor="middle" >Sin paso oficial equivalente</text>
+<rect x="708" y="664" width="844" height="150" rx="12" fill="#fff4e8" stroke="#b85400" stroke-width="1.4"/>
+<text x="724" y="690" font-size="14" font-weight="700" fill="#b85400" text-anchor="start" >❓ Consultas pendientes para Santa Fe (salen de los comentarios del circuito oficial)</text>
+<text x="724" y="716" font-size="12.8" font-weight="400" fill="#1f2937" text-anchor="start" >• ¿La Res. ME 73/2026 y la Circ. SCyGB 03/2026 (controles de la URC) alcanzan a los hospitales?</text>
+<text x="724" y="738" font-size="12.8" font-weight="400" fill="#1f2937" text-anchor="start" >• ¿En qué momento revisa la Jurisdicción comitente: antes o después del Supervisor?</text>
+<text x="724" y="760" font-size="12.8" font-weight="400" fill="#1f2937" text-anchor="start" >• Después de un rechazo del Supervisor, ¿el formulario vuelve al Gestor?</text>
+<text x="724" y="782" font-size="12.8" font-weight="400" fill="#1f2937" text-anchor="start" >• ¿Uno o dos diarios para la publicación? (Dec. 1104/16 vs. nota modelo de la Circ. 04/2026)</text>
+<text x="712" y="966" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >El circuito del hospital tiene hoy 0 pasos: se completa en la reunión, nunca por suposición.</text></svg>

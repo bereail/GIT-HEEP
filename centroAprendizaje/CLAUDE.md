@@ -225,6 +225,51 @@ capacitación. La comparación automática y los colores NO se tocan.
 - No hay asignación de artículos por persona: cada llave ve todos los
   amarillos.
 
+## Gestión de procesos y circuitos (deployado el 18/11/2026; solo /admin)
+
+Editor visual en **/admin/procesos** (botón "🧭 Procesos" del panel). Solo
+la administradora edita; el personal de Compras participa mirando la
+pantalla proyectada.
+- **Dos clases de circuito que no se mezclan:** `hospital` (relevamiento;
+  arranca VACÍO, sin pasos supuestos) y `oficial` (TIMBÓ según documentos).
+  El oficial `oficial-timbo-licitacion` se cargó solo con fragmentos
+  textuales de PDFs leídos completos el 17/11 (punto + página del PDF que
+  enlaza la biblioteca). Lo no documentado quedó como bloque "pendiente"
+  (pasos de la directa, qué pasa tras un rechazo del Supervisor, cierre).
+- **Reglas en el servidor** (`app/procesos/logica.py::normalizar`):
+  "Documentado con fuente oficial" exige una fuente verificada; en el
+  oficial no existe "Confirmado por el equipo"; solo se guardan fuentes de
+  la biblioteca o enlaces https. El servidor corrige y avisa (no rechaza el
+  autoguardado).
+- **Datos:** el dibujo es JSON en `procesos_circuitos.borrador`
+  (autoguardado) y en `procesos_versiones` (al "Guardar versión", con la
+  lista de cambios). Recuperar una versión = versión nueva (y antes guarda
+  lo no versionado). Comentarios, rangos de montos, sugerencias y auditoría
+  en tablas aparte. Migración `b7d41c9e3a10` (solo crea tablas).
+- **Carga inicial:** `scripts/sembrar_procesos.py` (en el deploy, paso 4):
+  solo crea lo que falta, nunca pisa. Rangos 2026 = Circ. SCyGB 01/2026.
+- **Editor:** `static/js/procesos-editor.js`, sin librerías (la CSP no deja
+  usar CDN). Atajos: letras para agregar (A actividad, D decisión, X
+  error…), Ctrl+Z/Y, Supr, Ctrl+D, Ctrl+S. Errores = bloques unidos al
+  paso con una flecha "Incidencia"; papel/digital = campo "soporte" y
+  flecha "Digitalización" entre las dos instancias de un documento.
+- **Flujo de compras de la reunión** (`circuito-compra-reunion`, `app/procesos/grafico_reunion.py`): el
+  gráfico de 21 pasos del material de la reunión, editable, con 3 carriles de fondo (`contenido.carriles`,
+  solo visuales). Mismas citas que el oficial; lo del hospital queda «a relevar». A diferencia del gráfico
+  impreso, la rama A no dice «sigue en 18» (no está documentado).
+- **Revisión normativa del circuito (18/11/2026)**: matriz consolidada v5.1 (D1 a D20, estados VERIFICADO /
+  DOCUMENTADO / PENDIENTE / OBSERVADO) y gráfico de capacitación en
+  `timboDocumentacion/circuito_compras/maquetas/` (`circuito_v5_1.html`, `matriz_v5_1.html`; scripts en
+  `fuente/`). La guía de la reunión con Compras está en `circuito_compras/reunion/`. Nada de esto es público.
+  Pendiente: consultas a la SCyGB y a la UG TIMBÓ (lista en la matriz), y recién después sincronizar
+  `algoritmo.json` (alimenta el sitio público) y probar sus consumidores. Las fichas `dec-1247-2008` y
+  `dec-2175-2022` de la biblioteca quedaron SIN subir (la biblioteca es pública): la usuaria decide.
+- Otras pantallas: comparación (la relación la marca la administradora en
+  cada paso del hospital), rangos de montos (con discrepancias), historial,
+  informe imprimible y presentación + registro de sugerencias.
+- Tests: `tests/test_procesos.py` (41). Se ajustó `test_seguridad.py` para
+  que el recorrido de rutas use un número en todo parámetro `<int:...>`.
+
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 
 **Reglas nuevas de la usuaria (16/11), además de las de arriba:**

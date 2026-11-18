@@ -1,0 +1,82 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Informe · {{ c.nombre }}{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--ancho pe-informe{% endblock %}
+{% block contenido %}
+<div class="admin-section-head no-imprimir">
+  <a class="btn btn--sm" href="{{ url_for('procesos.editor', slug=c.slug) }}">← Volver al editor</a>
+  <button type="button" class="btn btn--primary btn--sm" data-imprimir>🖨 Imprimir o guardar como PDF</button>
+</div>
+<header class="pe-informe__cab">
+  <p class="pe-clase-chip pe-clase-chip--{{ c.clase }}">{{ '🏥 Circuito actual del hospital (relevamiento)' if c.clase == 'hospital' else '🏛️ Circuito oficial de TIMBÓ (solo con fuente oficial)' }}</p>
+  <h1>{{ c.nombre }}</h1>
+  {% if c.descripcion %}<p>{{ c.descripcion }}</p>{% endif %}
+  <p class="text-muted">{% if versiones %}Versión {{ versiones[0].numero }} del {{ versiones[0].creado | hora_ar }}{% else %}Sin versiones guardadas{% endif %}{% if c.hay_cambios_sin_version %} · incluye cambios posteriores sin versión{% endif %} · Informe generado desde el Centro de Aprendizaje.</p>
+</header>
+
+<h2>Gráfico</h2>
+<div id="editor" class="pe-editor pe-editor--informe" data-csrf="">
+  <div class="pe-cuerpo">
+    <main class="pe-lienzo-wrap pe-lienzo-wrap--informe"><svg id="lienzo" class="pe-lienzo" role="img" aria-label="Gráfico del circuito"></svg>
+      <div id="lienzo-vacio" class="pe-vacio" hidden><p>El circuito está vacío.</p></div></main>
+  </div>
+  <div id="panel" hidden></div>
+</div>
+<div class="pe-leyenda pe-leyenda--informe">
+  {% for clave, e in estados.items() %}<span class="pe-leyenda__item"><i class="pe-punto pe-color-{{ e[1] }}"></i>{{ e[0] }}</span>{% endfor %}
+</div>
+
+<h2>Pasos, responsables y documentación</h2>
+{% for n in contenido.nodos %}
+<article class="pe-ficha">
+  <h3>{{ tipos[n.tipo][0] }} {{ n.titulo }} <span class="pe-chip pe-color-{{ estados[n.estado][1] }}-soft">{{ estados[n.estado][0] }}</span></h3>
+  <p class="text-muted">{{ tipos[n.tipo][1] }}{% if n.sistema != 'sin_definir' %} · {{ sistemas[n.sistema] }}{% endif %}{% if n.soporte != 'sin_definir' %} · {{ soportes[n.soporte] }}{% endif %}{% if n.sector %} · Sector: {{ n.sector }}{% endif %}</p>
+  {% if n.descripcion %}<p>{{ n.descripcion }}</p>{% endif %}
+  {% if n.responsables %}<p><b>Responsables:</b> {% for r in n.responsables %}{{ funciones[r.funcion] }}: {{ r.quien }}{% if r.perfil_timbo %} (perfil de TIMBÓ){% endif %}{{ '; ' if not loop.last }}{% endfor %}</p>{% endif %}
+  {% if n.documentacion %}<p><b>Documentación necesaria:</b> {{ n.documentacion }}</p>{% endif %}
+  {% if n.condiciones %}<p><b>Condiciones:</b> {{ n.condiciones }}</p>{% endif %}
+  {% if n.resultado %}<p><b>Resultado esperado:</b> {{ n.resultado }}</p>{% endif %}
+  {% if n.documento %}<p><b>Recorrido del documento:</b>
+    {% for k, nombre in [('origen','Se origina'),('completa','Lo completa'),('recibe','Lo recibe'),('revisa','Lo revisa'),('autoriza','Lo autoriza'),('registra','Se registra'),('archiva','Se archiva'),('continua','Sigue')] if n.documento[k] %}{{ nombre }}: {{ n.documento[k] }}{{ ' · ' if not loop.last }}{% endfor %}</p>{% endif %}
+  {% if n.error %}<p><b>Error:</b> {% if n.error.causa %}Causa: {{ n.error.causa }}. {% endif %}{% if n.error.resolucion %}Se resuelve: {{ n.error.resolucion }}.{% endif %}</p>{% endif %}
+  <div class="pe-ficha__fuentes">
+    {% if not n.fuentes %}<p class="pe-sin-respaldo">SIN RESPALDO DOCUMENTAL</p>
+    {% elif not (n.fuentes | selectattr('verificada') | list) %}<p class="pe-sin-verificar">PENDIENTE DE VERIFICACIÓN</p>{% endif %}
+    {% for f in fuentes[n.id] %}
+    <p class="pe-fuente">📎 {% if f.url %}<a href="{{ f.url }}" target="_blank" rel="noopener">{{ f.titulo }}</a>{% else %}{{ f.titulo }}{% endif %}
+      <span class="text-muted">· {{ f.emisor }}{% if f.fecha %} · {{ f.fecha }}{% endif %}{% if f.punto %} · {{ f.punto }}{% endif %}{% if f.pagina %} · pág. {{ f.pagina }}{% endif %}{{ '' if f.verificada else ' · sin verificar' }}</span>
+      {% if f.fragmento %}<br><q>{{ f.fragmento }}</q>{% endif %}</p>
+    {% endfor %}
+  </div>
+  {% for x in comentarios.get(n.id, []) %}<p class="pe-comentario-inf">💬 {{ tipos_comentario[x.tipo] }}{{ ' (resuelto)' if x.resuelto }}: {{ x.texto }}</p>{% endfor %}
+</article>
+{% else %}<p class="text-muted">Sin pasos cargados.</p>{% endfor %}
+
+<h2>Caminos y condiciones</h2>
+{% set titulos = {} %}{% for n in contenido.nodos %}{% set _ = titulos.update({n.id: n.titulo}) %}{% endfor %}
+<div class="table-wrap"><table class="data-table pe-tabla-texto">
+  <thead><tr><th>Desde</th><th>Hasta</th><th>Tipo</th><th>Condición</th><th>Rango de montos</th></tr></thead>
+  <tbody>
+  {% for f in contenido.flechas %}
+  <tr><td>{{ titulos.get(f.desde, '¿?') }}</td><td>{{ titulos.get(f.hasta, '¿?') }}</td><td>{{ tipos_flecha[f.tipo] }}</td><td>{{ f.etiqueta }}</td>
+    <td>{% if f.rango is not none and rangos.get(f.rango) %}{% set r = rangos[f.rango] %}{{ r.nombre }} · {{ r.condicion }}{{ '' if r.estado == 'verificado' else ' (pendiente de validación)' }}{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+
+<h2>Pendientes y revisión de integridad</h2>
+{% if revision %}
+<ul class="pe-revision__lista pe-revision__lista--informe">
+  {% for o in revision %}<li class="pe-rev pe-rev--{{ o.nivel }}"><b>{{ {'error': 'Problema', 'aviso': 'Revisar', 'info': 'Pendiente'}[o.nivel] }}:</b> {{ o.mensaje }}</li>{% endfor %}
+</ul>
+{% else %}<p>La revisión automática no encontró problemas (eso no garantiza que el circuito esté completo).</p>{% endif %}
+{% if comentarios.get('') %}<h2>Comentarios generales</h2>{% for x in comentarios[''] %}<p class="pe-comentario-inf">💬 {{ tipos_comentario[x.tipo] }}: {{ x.texto }}</p>{% endfor %}{% endif %}
+
+<h2>Historial de versiones</h2>
+<div class="table-wrap"><table class="data-table pe-tabla-texto">
+  <thead><tr><th>Versión</th><th>Fecha</th><th>Motivo</th><th>Cambios</th></tr></thead>
+  <tbody>{% for v in versiones %}<tr><td>{{ v.numero }}{{ ' ★' if v.importante }}</td><td>{{ v.creado | hora_ar }}</td><td>{{ v.motivo }}</td><td>{{ v.lista_cambios | length }}</td></tr>{% else %}<tr><td colspan="4">Sin versiones.</td></tr>{% endfor %}</tbody>
+</table></div>
+<script type="application/json" id="procesos-datos" nonce="{{ csp_nonce }}">{{ datos | tojson }}</script>
+{% endblock %}
+{% block script_pagina %}<script src="{{ url_for('static', filename='js/procesos-editor.js') }}"></script><script src="{{ url_for('static', filename='js/procesos-informe.js') }}"></script>{% endblock %}

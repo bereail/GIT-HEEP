@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1004" width="1600" height="1004" font-family="Segoe UI, system-ui, Arial, sans-serif"><defs>
+<marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+<filter id="s" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.08"/></filter>
+</defs><rect width="1600" height="1004" fill="#f3f5f9"/>
+<rect width="1600" height="72" fill="#14284b"/>
+<text x="28" y="33" font-size="21" font-weight="700" fill="#fff" text-anchor="start" >🧭 Circuito de compras</text>
+<text x="28" y="57" font-size="13.5" font-weight="400" fill="#c7d2e6" text-anchor="start" >Circuito oficial de TIMBÓ · solo con fuente · revisión 18/11/2026</text>
+<rect x="760" y="18" width="159.0" height="36" rx="10" fill="#ffffff" stroke="#ffffff"/>
+<text x="839.5" y="41" font-size="14.5" font-weight="700" fill="#14284b" text-anchor="middle" >🏛 Oficial TIMBÓ</text>
+<rect x="929.0" y="18" width="245.0" height="36" rx="10" fill="none" stroke="#41557d"/>
+<text x="1051.5" y="41" font-size="14.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >🏥 Hospital (relevamiento)</text>
+<rect x="1184.0" y="18" width="141.8" height="36" rx="10" fill="none" stroke="#41557d"/>
+<text x="1254.9" y="41" font-size="14.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >⇆ Comparación</text>
+<rect x="1468" y="18" width="108" height="36" rx="10" fill="none" stroke="#41557d"/>
+<text x="1522" y="41" font-size="14.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >✎ Editar</text>
+<rect x="24" y="90" width="640" height="896" rx="18" fill="#fff" stroke="#e3e8ef" stroke-width="1.5"/>
+<text x="48" y="124" font-size="20" font-weight="700" fill="#1f2937" text-anchor="start" >Vista general</text>
+<text x="48" y="146" font-size="13.5" font-weight="400" fill="#5b6472" text-anchor="start" >Tocá una etapa para ver el detalle</text>
+<rect x="194.0" y="166" width="300" height="40" rx="20" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.8"/>
+<text x="344.0" y="192" font-size="16" font-weight="700" fill="#1b7a45" text-anchor="middle" >▶  Inicio</text>
+<path d="M344.0,208 L344.0,216" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="218" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="248" r="18" fill="#14284b"/><text x="80" y="254" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >1</text>
+<text x="112" y="244" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Preparar la compra</text>
+<text x="112" y="264" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Etapa preparatoria por expediente electrónico</text>
+<rect x="553.2" y="224" width="72.8" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="589.6" y="238.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ</text>
+<rect x="526.8" y="250" width="99.19999999999999" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="576.4" y="264.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ con fuente</text>
+<path d="M344.0,280 L344.0,288" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="290" width="592" height="60" rx="14" fill="#f1edff" stroke="#6a4fd6" stroke-width="3" filter="url(#s)"/>
+<rect x="63" y="303" width="34" height="34" rx="6" fill="#6a4fd6" transform="rotate(45 80 320)"/>
+<text x="80" y="326" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >2</text>
+<text x="112" y="316" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >¿Qué procedimiento corresponde?</text>
+<text x="112" y="336" font-size="12.8" font-weight="400" fill="#6a4fd6" text-anchor="start" >A · B · C · D — tocá para ver las alternativas</text>
+<rect x="553.2" y="296" width="72.8" height="22" rx="11.0" fill="#f1edff" stroke="#6a4fd6" stroke-width="1.4"/><text x="589.6" y="310.96" font-size="11" font-weight="700" fill="#6a4fd6" text-anchor="middle" >Decisión</text>
+<rect x="520.2" y="322" width="105.8" height="22" rx="11.0" fill="#fff" stroke="#b85400" stroke-width="1.4" stroke-dasharray="4 3"/><text x="573.1" y="336.96" font-size="11" font-weight="700" fill="#b85400" text-anchor="middle" >? 1 pendiente</text>
+<path d="M344.0,352 L344.0,360" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="362" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="392" r="18" fill="#14284b"/><text x="80" y="398" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >3</text>
+<text x="112" y="388" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Armar el pliego</text>
+<text x="112" y="408" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Formularios del pliego en TIMBÓ Compras</text>
+<rect x="553.2" y="368" width="72.8" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="589.6" y="382.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ</text>
+<rect x="520.2" y="394" width="105.8" height="22" rx="11.0" fill="#fff" stroke="#b85400" stroke-width="1.4" stroke-dasharray="4 3"/><text x="573.1" y="408.96" font-size="11" font-weight="700" fill="#b85400" text-anchor="middle" >? 1 pendiente</text>
+<path d="M344.0,424 L344.0,432" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="434" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="464" r="18" fill="#14284b"/><text x="80" y="470" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >4</text>
+<text x="112" y="460" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Aprobar y autorizar el llamado</text>
+<text x="112" y="480" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Controles, cronograma y acto de la autoridad</text>
+<rect x="434.4" y="440" width="191.6" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="530.1999999999999" y="454.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ · parte a relevar</text>
+<rect x="520.2" y="466" width="105.8" height="22" rx="11.0" fill="#fff" stroke="#b85400" stroke-width="1.4" stroke-dasharray="4 3"/><text x="573.1" y="480.96" font-size="11" font-weight="700" fill="#b85400" text-anchor="middle" >? 1 pendiente</text>
+<rect x="414.0" y="466" width="86.0" height="22" rx="11.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.4" stroke-dasharray="4 3"/><text x="457.0" y="480.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >+1 a sumar</text>
+<path d="M344.0,496 L344.0,504" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="506" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="536" r="18" fill="#14284b"/><text x="80" y="542" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >5</text>
+<text x="112" y="532" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Publicar</text>
+<text x="112" y="552" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Proceso publicado, difusión y consultas</text>
+<rect x="520.2" y="512" width="105.8" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="573.1" y="526.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >TIMBÓ + fuera</text>
+<rect x="526.8" y="538" width="99.19999999999999" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="576.4" y="552.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ con fuente</text>
+<rect x="414.0" y="538" width="86.0" height="22" rx="11.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.4" stroke-dasharray="4 3"/><text x="457.0" y="552.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >+2 a sumar</text>
+<path d="M344.0,568 L344.0,576" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="578" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="608" r="18" fill="#14284b"/><text x="80" y="614" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >6</text>
+<text x="112" y="604" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Recibir y abrir ofertas</text>
+<text x="112" y="624" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Ofertas de los proveedores y apertura automática</text>
+<rect x="553.2" y="584" width="72.8" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="589.6" y="598.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ</text>
+<rect x="526.8" y="610" width="99.19999999999999" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="576.4" y="624.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ con fuente</text>
+<rect x="414.0" y="610" width="86.0" height="22" rx="11.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.4" stroke-dasharray="4 3"/><text x="457.0" y="624.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >+2 a sumar</text>
+<path d="M344.0,640 L344.0,648" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="650" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="680" r="18" fill="#14284b"/><text x="80" y="686" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >7</text>
+<text x="112" y="676" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Evaluar y preadjudicar</text>
+<text x="112" y="696" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Evaluadores, subsanaciones e informe</text>
+<rect x="553.2" y="656" width="72.8" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="589.6" y="670.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ</text>
+<rect x="520.2" y="682" width="105.8" height="22" rx="11.0" fill="#fff" stroke="#b85400" stroke-width="1.4" stroke-dasharray="4 3"/><text x="573.1" y="696.96" font-size="11" font-weight="700" fill="#b85400" text-anchor="middle" >? 1 pendiente</text>
+<rect x="414.0" y="682" width="86.0" height="22" rx="11.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.4" stroke-dasharray="4 3"/><text x="457.0" y="696.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >+3 a sumar</text>
+<path d="M344.0,712 L344.0,720" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="722" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="752" r="18" fill="#14284b"/><text x="80" y="758" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >8</text>
+<text x="112" y="748" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Adjudicar</text>
+<text x="112" y="768" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Acto de la autoridad · SIN y Tribunal de Cuentas</text>
+<rect x="553.2" y="728" width="72.8" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="589.6" y="742.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ</text>
+<rect x="526.8" y="754" width="99.19999999999999" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="576.4" y="768.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ con fuente</text>
+<rect x="414.0" y="754" width="86.0" height="22" rx="11.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.4" stroke-dasharray="4 3"/><text x="457.0" y="768.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >+2 a sumar</text>
+<path d="M344.0,784 L344.0,792" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="48" y="794" width="592" height="60" rx="14" fill="#fff" stroke="#e3e8ef" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="80" cy="824" r="18" fill="#14284b"/><text x="80" y="830" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >9</text>
+<text x="112" y="820" font-size="17.5" font-weight="700" fill="#1f2937" text-anchor="start" >Contrato, recepción y pago</text>
+<text x="112" y="840" font-size="12.8" font-weight="400" fill="#5b6472" text-anchor="start" >Recepción, certificado, factura y pago</text>
+<rect x="434.4" y="800" width="191.6" height="22" rx="11.0" fill="#e2f4f3" stroke="#0f7f86" stroke-width="1.4"/><text x="530.1999999999999" y="814.96" font-size="11" font-weight="700" fill="#0f7f86" text-anchor="middle" >En TIMBÓ · parte a relevar</text>
+<rect x="526.8" y="826" width="99.19999999999999" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="576.4" y="840.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ con fuente</text>
+<rect x="414.0" y="826" width="86.0" height="22" rx="11.0" fill="#e8f0fd" stroke="#1f5fbf" stroke-width="1.4" stroke-dasharray="4 3"/><text x="457.0" y="840.96" font-size="11" font-weight="700" fill="#1f5fbf" text-anchor="middle" >+2 a sumar</text>
+<path d="M344.0,856 L344.0,864" stroke="#94a3b8" stroke-width="2" marker-end="url(#p)"/>
+<rect x="194.0" y="866" width="300" height="40" rx="12" fill="#14284b"/>
+<text x="344.0" y="892" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" >■  Fin</text>
+<text x="48" y="974" font-size="12" font-weight="500" fill="#5b6472" text-anchor="start" >✔ documentado   ? pendiente   ◆ decisión   «En TIMBÓ» / «¿Dónde? a relevar» = dónde pasa</text>
+<rect x="684" y="90" width="892" height="896" rx="18" fill="#fff" stroke="#e3e8ef" stroke-width="1.5"/>
+<rect x="684" y="90" width="892" height="92" rx="18" fill="#f1edff"/><rect x="684" y="160" width="892" height="22" fill="#f1edff"/>
+<rect x="718" y="118" width="36" height="36" rx="6" fill="#6a4fd6" transform="rotate(45 736 136)"/><text x="736" y="142" font-size="18" font-weight="700" fill="#fff" text-anchor="middle" >2</text>
+<text x="776" y="130" font-size="24" font-weight="700" fill="#1f2937" text-anchor="start" >¿Qué procedimiento corresponde?</text>
+<text x="776" y="156" font-size="13" font-weight="500" fill="#5b6472" text-anchor="start" >Regla general: licitación o concurso público; lo demás es excepción (Ley 12.510, art. 116 · pág. 40)</text>
+<rect x="708" y="200" width="844" height="40" rx="10" fill="#f8fafc" stroke="#e3e8ef"/>
+<text x="724" y="225" font-size="12.5" font-weight="600" fill="#1f2937" text-anchor="start" >💲 Se compara el total estimado, con prórrogas; vale si la adjudicación supera hasta 20 % el tope (Dec. 1104/16 art. 116 · pág. 17)</text>
+<rect x="708" y="252" width="844" height="132" rx="14" fill="#fff" stroke="#6a4fd6" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="742" cy="284" r="20" fill="#6a4fd6"/><text x="742" y="291" font-size="18" font-weight="700" fill="#fff" text-anchor="middle" >A</text>
+<text x="776" y="284" font-size="18" font-weight="700" fill="#1f2937" text-anchor="start" >Contratación directa</text>
+<text x="776" y="310" font-size="12.3" font-weight="400" fill="#1f2937" text-anchor="start" >Por monto: hasta $5.850.000 (Circ. SCyGB 01/2026; tope del Dec. 1247/08: no leído) · o por causal (art. 116 c, ap. 4 a 8)</text>
+<text x="776" y="334" font-size="12.5" font-weight="600" fill="#0f7f86" text-anchor="start" >📍 Expediente electrónico (Circ. UG 2/2025) · no va por TIMBÓ Compras</text>
+<rect x="776" y="346" width="257.6" height="22" rx="11.0" fill="#fff4e8" stroke="#b85400" stroke-width="1.4" stroke-dasharray="4 3"/><text x="904.8" y="360.96" font-size="11" font-weight="700" fill="#b85400" text-anchor="middle" >◌ Pasos: pendientes de documentación</text>
+<rect x="1391.0" y="344" width="137.0" height="28" rx="14.0" fill="#fff" stroke="#6a4fd6" stroke-width="1.4"/><text x="1459.5" y="362.68" font-size="13" font-weight="700" fill="#6a4fd6" text-anchor="middle" >Ver recorrido ›</text>
+<rect x="708" y="396" width="844" height="132" rx="14" fill="#fff" stroke="#6a4fd6" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="742" cy="428" r="20" fill="#6a4fd6"/><text x="742" y="435" font-size="18" font-weight="700" fill="#fff" text-anchor="middle" >B</text>
+<text x="776" y="428" font-size="18" font-weight="700" fill="#1f2937" text-anchor="start" >Directa por urgencia o desierto</text>
+<text x="776" y="454" font-size="12.3" font-weight="400" fill="#1f2937" text-anchor="start" >Urgencia: ≥ 3 cotizaciones, informes técnicos y legales (Dec. 1104 art. 116 c.2) · Desierto: sin ofertas o todas inadmisibles (c.3)</text>
+<text x="776" y="478" font-size="12.5" font-weight="600" fill="#0f7f86" text-anchor="start" >📍 TIMBÓ Compras, con flexibilizaciones y mín. 3 invitados (Circ. UG 8/2026) · sigue en la etapa 3</text>
+<rect x="776" y="490" width="105.8" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="828.9" y="504.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1391.0" y="488" width="137.0" height="28" rx="14.0" fill="#fff" stroke="#6a4fd6" stroke-width="1.4"/><text x="1459.5" y="506.68" font-size="13" font-weight="700" fill="#6a4fd6" text-anchor="middle" >Ver recorrido ›</text>
+<rect x="708" y="540" width="844" height="132" rx="14" fill="#fff" stroke="#6a4fd6" stroke-width="3" filter="url(#s)"/>
+<circle cx="742" cy="572" r="20" fill="#6a4fd6"/><text x="742" y="579" font-size="18" font-weight="700" fill="#fff" text-anchor="middle" >C</text>
+<text x="776" y="572" font-size="18" font-weight="700" fill="#1f2937" text-anchor="start" >Licitación o concurso, de simple sobre</text>
+<text x="776" y="598" font-size="12.3" font-weight="400" fill="#1f2937" text-anchor="start" >Privado hasta $58.500.000: ≥ 5 invitaciones (Dec. 1104 art. 121) · Público más de $58.500.000: Boletín Oficial y diarios (art. 132.3)</text>
+<text x="776" y="622" font-size="12.5" font-weight="600" fill="#0f7f86" text-anchor="start" >📍 TIMBÓ Compras, obligatorio en Salud desde el 1/4/2026 (Circ. UG 3/2026) · camino principal</text>
+<rect x="776" y="634" width="297.2" height="22" rx="11.0" fill="#e7f5ec" stroke="#b85400" stroke-width="1.4"/><text x="924.6" y="648.96" font-size="11" font-weight="700" fill="#b85400" text-anchor="middle" >✔ Documentado · ? 1 discrepancia (diarios)</text>
+<rect x="1391.0" y="632" width="137.0" height="28" rx="14.0" fill="#fff" stroke="#6a4fd6" stroke-width="1.4"/><text x="1459.5" y="650.68" font-size="13" font-weight="700" fill="#6a4fd6" text-anchor="middle" >Ver recorrido ›</text>
+<rect x="708" y="684" width="844" height="132" rx="14" fill="#fff" stroke="#6a4fd6" stroke-width="1.5" filter="url(#s)"/>
+<circle cx="742" cy="716" r="20" fill="#6a4fd6"/><text x="742" y="723" font-size="18" font-weight="700" fill="#fff" text-anchor="middle" >D</text>
+<text x="776" y="716" font-size="18" font-weight="700" fill="#1f2937" text-anchor="start" >Etapa múltiple</text>
+<text x="776" y="742" font-size="12.3" font-weight="400" fill="#1f2937" text-anchor="start" >Evaluación en 2 o más fases con preselecciones sucesivas; la selecciona la Unidad Rectora (Dec. 1104 art. 123, texto del Dec. 287/2026)</text>
+<text x="776" y="766" font-size="12.5" font-weight="600" fill="#0f7f86" text-anchor="start" >📍 Expediente + Documentos Oficiales; ofertas en sobres de papel (Circ. UG 8/2026) · sigue en la etapa 8</text>
+<rect x="776" y="778" width="105.8" height="22" rx="11.0" fill="#e7f5ec" stroke="#1b7a45" stroke-width="1.4"/><text x="828.9" y="792.96" font-size="11" font-weight="700" fill="#1b7a45" text-anchor="middle" >✔ Documentado</text>
+<rect x="1391.0" y="776" width="137.0" height="28" rx="14.0" fill="#fff" stroke="#6a4fd6" stroke-width="1.4"/><text x="1459.5" y="794.68" font-size="13" font-weight="700" fill="#6a4fd6" text-anchor="middle" >Ver recorrido ›</text>
+<text x="712" y="834" font-size="12.3" font-weight="400" fill="#5b6472" text-anchor="start" >Montos 2026 (Ley de Presupuesto 14.424). Quién aprueba cada tramo: tabla «Montos y autoridades» de la revisión.</text></svg>

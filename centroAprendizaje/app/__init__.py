@@ -49,6 +49,10 @@ def create_app(test_config=None):
 
     app.register_blueprint(revision_bp)
 
+    from app.procesos.routes import procesos_bp
+
+    app.register_blueprint(procesos_bp)
+
     from app.models.revision_nomenclador import codigo_hospital, hora_ar
 
     app.add_template_filter(hora_ar, "hora_ar")

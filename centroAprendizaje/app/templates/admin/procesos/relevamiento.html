@@ -1,0 +1,59 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Presentación y sugerencias — Procesos{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set activo = 'relevamiento' %}{% include "procesos/_menu.html" %}
+<div class="admin-section-head"><h1 style="margin:0">🗣 Presentación del Centro y registro de sugerencias</h1></div>
+<p class="text-muted">Para mostrar los recursos y escuchar qué necesitan. No es una presentación comercial: lo importante son sus respuestas. Lo que registres queda «Sin evaluar»; nada se implementa solo.</p>
+
+<div class="pe-tarjetas pe-tarjetas--3">
+  {% for clave, t in tarjetas.items() %}
+  <section class="card pe-presentacion">
+    <h2 class="pe-clase__titulo">{{ recursos_s[clave] }}</h2>
+    <p>{{ t.objetivo }}</p>
+    {% if t.url %}<a class="btn btn--sm" href="{{ t.url }}" target="_blank" rel="noopener">Abrir para mostrar ↗</a>{% endif %}
+    <ul class="pe-preguntas">{% for p in t.preguntas %}<li>{{ p }}</li>{% endfor %}</ul>
+  </section>
+  {% endfor %}
+</div>
+
+<section class="card" id="registrar" style="margin-top:18px">
+  <h2 class="section__title" style="margin-top:0">Registrar una respuesta o sugerencia</h2>
+  <form method="post" class="admin-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="admin-field-row">
+      <div class="admin-field"><label for="s-recurso">Sobre</label>
+        <select class="input" id="s-recurso" name="recurso">{% for k, v in recursos_s.items() %}<option value="{{ k }}" {{ 'selected' if k == recurso_activo }}>{{ v }}</option>{% endfor %}</select></div>
+      <div class="admin-field"><label for="s-clase">Clasificación</label>
+        <select class="input" id="s-clase" name="clase">{% for k, v in clases_s.items() %}<option value="{{ k }}">{{ v }}</option>{% endfor %}</select></div>
+      <div class="admin-field"><label for="s-reunion">Reunión</label><input class="input" id="s-reunion" name="reunion" maxlength="120" placeholder="Ej.: Compras 18/11" /></div>
+    </div>
+    <div class="admin-field"><label for="s-pregunta">Pregunta (opcional)</label><input class="input" id="s-pregunta" name="pregunta" maxlength="500" placeholder="Ej.: ¿Qué dificultades encuentran al buscar productos?" /></div>
+    <div class="admin-field"><label for="s-texto">Respuesta o sugerencia</label><textarea class="input" id="s-texto" name="texto" rows="3" required maxlength="4000" placeholder="Lo que dijo el personal, sin nombres propios"></textarea></div>
+    <button class="btn btn--primary" type="submit">Registrar</button>
+  </form>
+</section>
+
+<h2 class="section__title">Registradas</h2>
+<form method="get" class="pe-fila pe-elegir">
+  <label for="f-estado">Estado</label>
+  <select class="input" id="f-estado" name="estado" data-autoenviar><option value="">Todos</option>{% for k, v in estados_s.items() %}<option value="{{ k }}" {{ 'selected' if filtro_estado == k }}>{{ v }}</option>{% endfor %}</select>
+  <label for="f-recurso">Sobre</label>
+  <select class="input" id="f-recurso" name="recurso_filtro" data-autoenviar><option value="">Todos</option>{% for k, v in recursos_s.items() %}<option value="{{ k }}" {{ 'selected' if filtro_recurso == k }}>{{ v }}</option>{% endfor %}</select>
+</form>
+{% for s in sugerencias %}
+<article class="card pe-sugerencia" id="s{{ s.id }}">
+  <p class="text-muted">{{ recursos_s[s.recurso] }} · {{ s.creado | hora_ar }}{% if s.reunion %} · {{ s.reunion }}{% endif %}</p>
+  {% if s.pregunta %}<p><b>{{ s.pregunta }}</b></p>{% endif %}
+  <p>{{ s.texto }}</p>
+  <form method="post" action="{{ url_for('procesos.evaluar_sugerencia', sugerencia_id=s.id) }}" class="pe-fila pe-evaluar">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <select class="input" name="clase" aria-label="Clasificación">{% for k, v in clases_s.items() %}<option value="{{ k }}" {{ 'selected' if s.clase == k }}>{{ v }}</option>{% endfor %}</select>
+    <select class="input" name="estado" aria-label="Estado de evaluación">{% for k, v in estados_s.items() %}<option value="{{ k }}" {{ 'selected' if s.estado == k }}>{{ v }}</option>{% endfor %}</select>
+    <input class="input" name="nota" value="{{ s.nota }}" placeholder="Nota de evaluación (pertinencia, prioridad…)" aria-label="Nota de evaluación" />
+    <button class="btn btn--sm" type="submit">Guardar</button>
+  </form>
+</article>
+{% else %}<p class="text-muted">Todavía no hay sugerencias registradas.</p>{% endfor %}
+{% endblock %}

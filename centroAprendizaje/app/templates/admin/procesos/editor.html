@@ -1,0 +1,140 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}{{ c.nombre }} — Procesos{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--editor{% endblock %}
+{% block contenido %}
+{% set cat = datos.catalogos %}
+<div id="editor" class="pe-editor pe-editor--{{ c.clase }}" data-csrf="{{ csrf_token() }}">
+  <header class="pe-barra">
+    <div class="pe-barra__titulo">
+      <a class="pe-volver" href="{{ url_for('procesos.inicio') }}" title="Volver a la lista de circuitos">←</a>
+      <div>
+        <span class="pe-clase-chip pe-clase-chip--{{ c.clase }}">{{ '🏥 Circuito actual del hospital' if c.clase == 'hospital' else '🏛️ Circuito oficial de TIMBÓ · solo con fuente' }}</span>
+        <h1>{{ c.nombre }}{% if v %} <small>· versión {{ v.numero }} (solo lectura)</small>{% endif %}</h1>
+      </div>
+    </div>
+    <div class="pe-barra__acciones">
+      {% if not v %}
+      <span id="estado-guardado" class="pe-guardado" aria-live="polite" data-accion="guardar-ya" title="Clic para guardar ahora"></span>
+      <button type="button" class="btn btn--sm" data-accion="deshacer" title="Deshacer (Ctrl+Z)">↶ Deshacer</button>
+      <button type="button" class="btn btn--sm" data-accion="rehacer" title="Rehacer (Ctrl+Y)">↷ Rehacer</button>
+      <button type="button" class="btn btn--primary btn--sm" data-accion="version" title="Guardar una versión con su motivo (Ctrl+S)">💾 Guardar versión</button>
+      {% else %}
+      <form method="post" action="{{ url_for('procesos.recuperar_version', slug=c.slug, numero=v.numero) }}" data-confirmar="¿Recuperar la versión {{ v.numero }}? Se guarda como versión nueva y lo actual queda en el historial.">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button class="btn btn--primary btn--sm" type="submit">↺ Recuperar esta versión</button>
+      </form>
+      <a class="btn btn--sm" href="{{ url_for('procesos.editor', slug=c.slug) }}">Ir a la versión actual</a>
+      {% endif %}
+      <span class="pe-separador"></span>
+      <div class="pe-segmento" role="group" aria-label="Nivel de detalle">
+        <button type="button" class="btn btn--sm" data-accion="vista" data-valor="general" title="Lo justo para entender el circuito">Vista general</button>
+        <button type="button" class="btn btn--sm" data-accion="vista" data-valor="detallada" title="Estado, sistema, responsable y fuentes en cada bloque">Vista detallada</button>
+      </div>
+      <button type="button" class="btn btn--sm" data-accion="revision" title="Revisión de integridad">🔎 Revisión <span id="revision-cuenta" class="pe-cuenta"></span></button>
+      <button type="button" class="btn btn--sm" data-accion="pantalla" title="Pantalla completa (para proyectar)">⛶ Pantalla completa</button>
+      <details class="pe-mas">
+        <summary class="btn btn--sm">Más ▾</summary>
+        <div class="pe-mas__menu">
+          {% if not v %}<button type="button" class="pe-link" data-accion="ordenar">↧ Ordenar automáticamente</button>{% endif %}
+          <a href="{{ url_for('procesos.historial', slug=c.slug) }}">🕘 Historial y versiones</a>
+          <a href="{{ url_for('procesos.informe', slug=c.slug) }}" target="_blank" rel="noopener">🖨 Informe para imprimir o PDF</a>
+          <button type="button" class="pe-link" data-accion="svg">⬇ Descargar gráfico (SVG)</button>
+          <button type="button" class="pe-link" data-accion="png">⬇ Descargar gráfico (PNG)</button>
+          <a href="{{ url_for('procesos.exportar_json', slug=c.slug) }}">⬇ Exportar datos (JSON)</a>
+          <a href="{{ url_for('procesos.comparar') }}">⇆ Comparación de procedimientos</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <div class="pe-cuerpo">
+    {% if not v %}
+    <aside class="pe-paleta" aria-label="Agregar bloques">
+      <p class="pe-paleta__titulo">Agregar</p>
+      {% set atajos = {'actividad':'A','decision':'D','etapa':'E','documento':'O','error':'X','pendiente':'P','inicio':'I','fin':'F','autorizacion':'U','verificacion':'V','observacion':'N','condicion':'C','responsable':'R','excepcion':'J'} %}
+      {% for clave in ['inicio','etapa','actividad','decision','condicion','autorizacion','verificacion','documento','responsable','error','excepcion','observacion','pendiente','fin'] %}
+      {% set t = cat.tipos[clave] %}
+      <button type="button" class="pe-paleta__btn" data-accion="agregar" data-tipo="{{ clave }}" title="{{ t.ayuda }} (tecla {{ atajos[clave] }})">
+        <span class="pe-paleta__icono" aria-hidden="true">{{ t.icono }}</span><span>{{ t.nombre }}</span><kbd>{{ atajos[clave] }}</kbd>
+      </button>
+      {% endfor %}
+      <details class="pe-datos-circuito">
+        <summary>⚙ Datos del circuito</summary>
+        <form method="post" action="{{ url_for('procesos.editar_datos', slug=c.slug) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <label for="dc-nombre">Nombre</label>
+          <input class="input" id="dc-nombre" name="nombre" value="{{ c.nombre }}" maxlength="200" required />
+          <label for="dc-desc">Descripción</label>
+          <textarea class="input" id="dc-desc" name="descripcion" rows="4" maxlength="2000">{{ c.descripcion }}</textarea>
+          <button class="btn btn--sm" type="submit">Guardar datos</button>
+        </form>
+      </details>
+    </aside>
+    {% endif %}
+
+    <main class="pe-lienzo-wrap">
+      <svg id="lienzo" class="pe-lienzo" role="application" aria-label="Gráfico del circuito {{ c.nombre }}"></svg>
+      <div id="lienzo-vacio" class="pe-vacio" hidden>
+        <p class="pe-vacio__titulo">El circuito está vacío</p>
+        <p>Empezá con <b>▶ Inicio</b> (tecla <kbd>I</kbd>) y seguí preguntando: <i>«¿Qué pasa después?»</i>. Cada respuesta es un bloque nuevo, que queda conectado debajo del que tengas seleccionado.</p>
+        {% if c.clase == 'hospital' %}<p class="text-muted">Acá va solo lo que cuenta el personal. Si algo no está claro, usá «? Pendiente de confirmación».</p>{% endif %}
+      </div>
+      <div class="pe-zoom" role="group" aria-label="Zoom">
+        <button type="button" class="btn btn--sm" data-accion="zoom-menos" aria-label="Alejar">−</button>
+        <span id="nivel-zoom" class="pe-zoom__nivel">100%</span>
+        <button type="button" class="btn btn--sm" data-accion="zoom-mas" aria-label="Acercar">+</button>
+        <button type="button" class="btn btn--sm" data-accion="ajustar" title="Ver todo el circuito">Ver todo</button>
+      </div>
+      <details class="pe-leyenda" data-recordar>
+        <summary>Leyenda</summary>
+        <div class="pe-leyenda__grupo">
+          {% for clave, e in cat.estados.items() %}
+          <span class="pe-leyenda__item" title="{{ e.ayuda }}"><i class="pe-punto pe-color-{{ e.color }}"></i>{{ e.nombre }}</span>
+          {% endfor %}
+        </div>
+        <div class="pe-leyenda__grupo">
+          <span class="pe-leyenda__item"><i class="pe-linea pe-linea--normal"></i>Sigue</span>
+          <span class="pe-leyenda__item"><i class="pe-linea pe-linea--alternativa"></i>Alternativo</span>
+          <span class="pe-leyenda__item"><i class="pe-linea pe-linea--retorno"></i>Vuelve atrás</span>
+          <span class="pe-leyenda__item"><i class="pe-linea pe-linea--rechazo"></i>Rechazo</span>
+          <span class="pe-leyenda__item"><i class="pe-linea pe-linea--incidencia"></i>Incidencia</span>
+          <span class="pe-leyenda__item"><i class="pe-linea pe-linea--digitalizacion"></i>Digitalización</span>
+          <span class="pe-leyenda__item">📄 Papel · 💻 Digital</span>
+        </div>
+      </details>
+      <div id="avisos" class="pe-avisos" aria-live="polite"></div>
+    </main>
+
+    <aside id="panel" class="pe-panel" aria-label="Detalle del elemento seleccionado"></aside>
+  </div>
+
+  <section id="revision" class="pe-revision" hidden aria-label="Revisión de integridad">
+    <div class="pe-revision__cab">
+      <b>🔎 Revisión de integridad</b>
+      <span class="text-muted">Tocá una observación para ir al bloque.</span>
+      <button type="button" class="btn btn--sm btn--subtle" data-accion="revision" aria-label="Cerrar revisión">✕</button>
+    </div>
+    <ul id="revision-lista" class="pe-revision__lista"></ul>
+  </section>
+
+  {% if not v %}
+  <div id="dialogo-version" class="pe-dialogo" hidden role="dialog" aria-modal="true" aria-labelledby="dv-titulo">
+    <div class="pe-dialogo__caja">
+      <h2 id="dv-titulo">💾 Guardar una versión</h2>
+      <p class="text-muted">Queda en el historial con la lista de cambios. Los cambios ya se autoguardan; la versión es un punto al que podés volver.</p>
+      <label for="version-motivo">Motivo del cambio</label>
+      <textarea id="version-motivo" class="input" rows="3" maxlength="1000" placeholder="Ej.: Reunión con Compras del 18/11: se agregó la recepción de mercadería"></textarea>
+      <label class="pe-check" for="version-importante"><input type="checkbox" id="version-importante" /> Es un cambio importante (se resalta en el historial)</label>
+      <div class="pe-fila">
+        <button type="button" class="btn btn--primary" data-accion="version-ok">Guardar versión</button>
+        <button type="button" class="btn" data-accion="version-cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+<script type="application/json" id="procesos-datos" nonce="{{ csp_nonce }}">{{ datos | tojson }}</script>
+<script type="application/json" id="procesos-revision" nonce="{{ csp_nonce }}">{{ revision | tojson }}</script>
+{% endblock %}
+{% block script_pagina %}<script src="{{ url_for('static', filename='js/procesos-editor.js') }}"></script>{% endblock %}

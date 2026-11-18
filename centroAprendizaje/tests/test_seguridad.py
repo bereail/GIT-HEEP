@@ -35,7 +35,7 @@ def _rutas_admin(app):
     for regla in app.url_map.iter_rules():
         if not regla.rule.startswith("/admin") or regla.endpoint in ("admin.login", "static"):
             continue
-        url = re.sub(r"<(?:int:)?(\w+)>", lambda m: "1" if "id" in m.group(1) else "x", regla.rule)
+        url = re.sub(r"<(int:)?(\w+)>", lambda m: "1" if m.group(1) or "id" in m.group(2) else "x", regla.rule)
         for metodo in sorted(regla.methods - {"HEAD", "OPTIONS"}):
             rutas.append((metodo, url, regla.endpoint))
     return rutas

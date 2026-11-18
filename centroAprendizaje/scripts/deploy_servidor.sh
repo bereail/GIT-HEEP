@@ -27,6 +27,8 @@ echo "== 4. Contenido (en este orden)"
 for s in importar_mihospital importar_timbo_expedientes importar_timbo_compras importar_faq_chats importar_equivalencias; do
   $COMO $PY scripts/$s.py | tail -1
 done
+# Gestión de procesos: solo crea lo que falta (nunca pisa los circuitos).
+$COMO $PY scripts/sembrar_procesos.py | tail -1
 
 echo "== 5. Pruebas antes de reiniciar"
 $COMO $PY scripts/bateria_chatbot.py | tail -1
@@ -41,6 +43,7 @@ B=https://timboheep.duckdns.org
 for u in / /recursos /recursos/roles /recursos/glosario /recursos/algoritmo /recursos/explicame /recursos/sistemas /admin/login; do
   echo "$(curl -s -o /dev/null -w '%{http_code}' "$B$u") $u"
 done
+echo "procesos sin sesión (tiene que dar 302): $(curl -s -o /dev/null -w '%{http_code}' $B/admin/procesos/)"
 echo "ocultos (tienen que dar 404): $(curl -s -o /dev/null -w "%{http_code}" $B/recursos/simulador) $(curl -s -o /dev/null -w "%{http_code}" $B/recursos/checklists)"
 echo "guía no oficial (tiene que dar 404): $(curl -s -o /dev/null -w '%{http_code}' $B/static/docs/timbo-compras/guia-busqueda-nomenclador-y-solicitud-sipaf.pdf)"
 curl -sI $B/recursos | grep -ciE "content-security-policy|strict-transport" | sed 's/^/encabezados de seguridad: /'

@@ -1,0 +1,4112 @@
+{
+ "reunion": {
+  "nodos": [
+   {
+    "id": "r01",
+    "tipo": "inicio",
+    "titulo": "1 · Necesidad de compra",
+    "descripcion": "La detecta un servicio o área del hospital. Quién lo hace en el hospital: a relevar en la reunión.",
+    "x": 95.0,
+    "y": 0.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "fuera",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "r02",
+    "tipo": "actividad",
+    "titulo": "2 · Solicitud del servicio",
+    "descripcion": "Pedido: qué, cuánto, para cuándo. Quién lo hace en el hospital: a relevar en la reunión.",
+    "x": 95.0,
+    "y": 140.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "fuera",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "r03",
+    "tipo": "actividad",
+    "titulo": "3 · Documentación técnica y administrativa",
+    "descripcion": "Especificaciones y artículo del catálogo; si falta el artículo, alta con el formulario CAByS (Res. SCyGB 292/2026). Quién lo hace en el hospital: a relevar en la reunión.",
+    "x": 95.0,
+    "y": 280.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "fuera",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "res-scygb-292-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Anexo I",
+      "pagina": "",
+      "capitulo": "",
+      "fragmento": "",
+      "verificada": false
+     }
+    ]
+   },
+   {
+    "id": "r04",
+    "tipo": "actividad",
+    "titulo": "4 · Inicio del expediente electrónico",
+    "descripcion": "",
+    "x": 535.0,
+    "y": 420.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 11 (Formulario de proceso)",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Para iniciar un proceso de contratación se deberá contar con un número de expediente electrónico de TIMBÓ (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r05",
+    "tipo": "verificacion",
+    "titulo": "5 · Presupuesto y autorizaciones",
+    "descripcion": "Quién lo hace en el hospital: a relevar en la reunión.",
+    "x": 535.0,
+    "y": 560.0,
+    "estado": "pendiente_confirmacion",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "La Res. ME 73/2026 es para la Administración Pública Central: confirmar cómo es en el hospital.",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "res-me-73-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 4°",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "La intervención del Ministerio de Economía, sin perjuicio de lo dispuesto en relación con la Unidad Rectora Central, solo se realizará a los efectos de la imputación previa y/o autorización del gasto de los distintos procedimientos de compras que realicen las distintas Jurisdicciones.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r05b",
+    "tipo": "responsable",
+    "titulo": "Área presupuestaria / administrativa",
+    "descripcion": "¿Quién interviene? A relevar.",
+    "x": 95.0,
+    "y": 560.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "fuera",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "r06",
+    "tipo": "decision",
+    "titulo": "6 · ¿Qué procedimiento corresponde?",
+    "descripcion": "",
+    "x": 535.0,
+    "y": 720.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "ley-12510",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 116",
+      "pagina": "40",
+      "capitulo": "",
+      "fragmento": "Toda compra o venta por cuenta de la Provincia (...) se debe hacer, por regla general, previa licitación o concurso público. No obstante puede contratarse por: a) licitación o concurso privado (...) c) contratación directa, en los siguientes casos (...)",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-1-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Encuadre",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "Hasta $5.850.000 CONTRATACIÓN DIRECTA POR MONTO. (...) LICITACIÓN O CONCURSO PRIVADO hasta $ 58.500.000. LICITACIÓN O CONCURSO PÚBLICO más de $ 58.500.000.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "rA",
+    "tipo": "actividad",
+    "titulo": "A · Directa (por monto o causal)",
+    "descripcion": "Gestión directa por expediente electrónico (no va por TIMBÓ Compras).",
+    "x": 95.0,
+    "y": 900.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-2-2025",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 2 (Compras directas)",
+      "pagina": "8",
+      "capitulo": "",
+      "fragmento": "Los siguientes incisos para la gestión de compras enmarcadas en el Art. 116° de la Ley 12.510 se realizarán de forma exclusivamente digital (...) Gestión directa - Por monto menor al tope; Por especialización; Exclusividad; Entre organismos oficiales del Sector Público; Por reparación de maquinaria; In situ",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "rA2",
+    "tipo": "pendiente",
+    "titulo": "Pasos de la gestión directa",
+    "descripcion": "Falta cargarlos con su fuente. Cómo sigue la directa hasta la adjudicación no está documentado en las fuentes de este gráfico.",
+    "x": 95.0,
+    "y": 1040.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "rB",
+    "tipo": "actividad",
+    "titulo": "B · Directa por urgencia o desierto",
+    "descripcion": "",
+    "x": 535.0,
+    "y": 900.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Mínimo 3 proveedores invitados. Consultas e impugnaciones se pueden reducir u omitir.",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-8-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 3°",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "La tramitación de las contrataciones directas por urgencia o emergencia, y por procedimiento desierto o fracasado, se sustancia íntegramente mediante el Módulo \"TIMBÓ COMPRAS\".",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-8-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 4°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "b) Plazos: pueden reducirse u omitirse los períodos de consultas e impugnaciones (...) d) Invitaciones: la carga mínima es de tres (3) proveedores en el sistema.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "rC",
+    "tipo": "condicion",
+    "titulo": "C · Licitación o concurso",
+    "descripcion": "Público o privado, de simple sobre: obligatorio por TIMBÓ Compras desde el 1/4/2026.",
+    "x": 975.0,
+    "y": 900.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-3-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Puntos 2 a 4",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "(...) Ministerio de Salud. (...) Licitaciones Públicas, Licitaciones Privadas, Concursos Públicos y Concursos Privados, bajo la modalidad de \"simple sobre\" (...) a partir del 1 de abril del año en curso, la utilización será obligatoria para toda la Administración Pública Provincial.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "rD",
+    "tipo": "actividad",
+    "titulo": "D · Etapa múltiple",
+    "descripcion": "Por expediente y Documentos Oficiales; las ofertas se entregan en sobres de papel.",
+    "x": 1310.0,
+    "y": 230.0,
+    "estado": "documentado",
+    "soporte": "papel_y_digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-8-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículos 5° a 8°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "(...) su sustanciación integral se realiza de forma exclusiva a través de los módulos de Expediente Electrónico (EE) y Documentos Oficiales (DO) (...) La recepción de las propuestas (...) se efectúa mediante entrega material de sobres físicos cerrados (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r07",
+    "tipo": "actividad",
+    "titulo": "7 · Inicio del proceso en TIMBÓ Compras",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 1080.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Gestor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Gestor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Gestor: Genera la instancia de contratación. Completa los formularios del pliego de bases y condiciones particulares. Genera circulares.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r08",
+    "tipo": "actividad",
+    "titulo": "8 · Pliego particular (PBCP)",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 1220.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Al menos 3 evaluadores en el formulario «Evaluadores».",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Gestor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Gestor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Gestor: Genera la instancia de contratación. Completa los formularios del pliego de bases y condiciones particulares. Genera circulares.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 13 (Comisión de evaluación)",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Se deberá designar al menos tres (3) evaluadores en el formulario EVALUADORES del pliego de bases y condiciones particulares (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r09",
+    "tipo": "verificacion",
+    "titulo": "9 · Revisión y aprobación del pliego",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 1360.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "autoriza",
+      "quien": "Supervisor (aprueba o rechaza los formularios)",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "revisa",
+      "quien": "Jurisdicción comitente",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Jurisdicción comitente",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Jurisdicción comitente: Revisa los pliegos de bases y condiciones particulares.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r09u",
+    "tipo": "verificacion",
+    "titulo": "Control de pliegos de la URC",
+    "descripcion": "",
+    "x": 95.0,
+    "y": 1360.0,
+    "estado": "pendiente_confirmacion",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Está dirigida a las jurisdicciones de la Administración Pública Central. Si alcanza al hospital está pendiente de confirmar.",
+    "responsables": [
+     {
+      "funcion": "revisa",
+      "quien": "Unidad Rectora Central (Dirección General de Contrataciones y Gestión de Bienes)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-scygb-3-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Estado: Aprobar contratación",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "(...) previo a la emisión del acto administrativo que aprueba la contratación y autoriza el llamado, se deberá remitir para el control de los pliegos, el expediente electrónico (...) El proceso de contratación no podrá aprobarse ni publicarse sin el correspondiente informe de control de la URC (...)",
+      "verificada": true
+     },
+     {
+      "doc": "res-me-73-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 2°",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Instrúyase a la Unidad Rectora Central a efectuar los siguientes controles, que revisten el carácter de obligatorios, sobre las gestiones de Licitación Pública y de Concurso Público que se tramiten en el Módulo \"TIMBÓ COMPRAS\": 1) Control de pliegos; 2) Control de lo resuelto por la comisión de preadjudicación;",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r09a",
+    "tipo": "autorizacion",
+    "titulo": "Acto: aprueba el pliego y autoriza el llamado",
+    "descripcion": "",
+    "x": 535.0,
+    "y": 1500.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "autoriza",
+      "quien": "Autoridad competente según el monto",
+      "perfil_timbo": false
+     },
+     {
+      "funcion": "responsable",
+      "quien": "Supervisor (lo carga en TIMBÓ Compras)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-1-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Aprobación de actos licitatorios",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "Hasta $ 5.850.000 Por Resolución del Subsecretario de Adm. ó su equivalente. Entre $ 5.850.000 y $ 29.250.000 Por Resolución. Entre $ 29.250.000 y $ 58.500.000 Por Resolución Conjunta con el M. de Economía. Más de $ 58.500.000 Por Decreto.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r10",
+    "tipo": "actividad",
+    "titulo": "10 · Publicación del procedimiento",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 1640.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 15 (Publicidad y difusión)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "(...) TIMBÓ COMPRAS envía invitaciones a participar de los procesos a los correos detallados en la nómina de proveedores.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 16 (Proceso publicado)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Los procesos publicados en TIMBÓ COMPRAS se encontrarán disponibles con su correspondiente documentación en la bandeja Participar de un proceso (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r10p",
+    "tipo": "actividad",
+    "titulo": "Portal web de Compras y aviso oficial",
+    "descripcion": "",
+    "x": 95.0,
+    "y": 1640.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "fuera",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "La Circular SCyGB 04/2026 está dirigida a la Administración Pública Central.",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-scygb-4-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Anexo I",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Una vez aprobado el pliego en el ecosistema TIMBO se deberá realizar la publicación en el portal Web de la Provincia. (...) Se debe seleccionar la opción \"Marcar para que se genere enlace con TIMBO.\" y marcar como expediente principal.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-4-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Anexo II",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "(...) a la casilla avisosoficiales@santafe.gob.ar (...) con al menos tres (3) días de antelación (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r11",
+    "tipo": "actividad",
+    "titulo": "11 · Consultas y circulares",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 1780.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "inicia",
+      "quien": "Oferente / Proveedor (consulta)",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "responsable",
+      "quien": "Gestor (circulares)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 17 (Consultas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Para efectuar consultas, recibir circulares aclaratorias o modificatorias, el proveedor deberá haber participado del proceso. (...)",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Gestor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Gestor: Genera la instancia de contratación. Completa los formularios del pliego de bases y condiciones particulares. Genera circulares.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r12",
+    "tipo": "actividad",
+    "titulo": "12 · Presentación de ofertas",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 1920.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Oferente / Proveedor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 18 (Ofertas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Las ofertas se podrán presentar hasta la fecha y hora de apertura (...) Sólo aquellas ofertas que se encuentren en estado oferta presentada serán válidas en la apertura electrónica de ofertas.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r13",
+    "tipo": "actividad",
+    "titulo": "13 · Apertura automática",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 2060.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "TIMBÓ Compras (automático)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 19 (Apertura de ofertas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "La apertura de ofertas se efectuará automáticamente en TIMBÓ COMPRAS (...) En forma electrónica y automática se generará el acta de apertura de ofertas correspondiente y el cuadro comparativo de precios.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r14",
+    "tipo": "actividad",
+    "titulo": "14 · Evaluación de ofertas",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 2200.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Evaluadores",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Evaluador",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Evaluador: Evalúa las ofertas. Genera los trámites de subsanación de defectos, mejora de precios y aclaración y/o documentación complementaria. Preselecciona los renglones y oferentes. Organiza a los evaluadores. Preadjudica. Carga el cronograma de impugnaciones. Recibe las impugnaciones de oferta y preadjudicación.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r15",
+    "tipo": "actividad",
+    "titulo": "15 · Subsanación, aclaración o mejora",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 2340.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Si el proveedor no responde a tiempo, el subtrámite queda «descartado».",
+    "responsables": [
+     {
+      "funcion": "inicia",
+      "quien": "Evaluadores",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "recibe",
+      "quien": "Oferente / Proveedor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 21 (Subsanación, aclaración y/o mejora)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "Los subtrámites de subsanación, aclaración, mejora de precios y/o documentación complementaria (...) Finalizada la fecha y hora límite establecida por el evaluador para cumplimentar con el subtrámite, este pasa a estado descartado.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r16",
+    "tipo": "actividad",
+    "titulo": "16 · Informe de preadjudicación",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 2480.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Evaluadores (firman en el orden de «Ordenar evaluadores»)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 22 (Informe de preadjudicación)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "Sobre el informe de preadjudicación actuarán y firmarán aquellos evaluadores designados en el orden del formulario Ordenar evaluadores.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r16u",
+    "tipo": "verificacion",
+    "titulo": "Control de la preadjudicación (URC)",
+    "descripcion": "",
+    "x": 95.0,
+    "y": 2480.0,
+    "estado": "pendiente_confirmacion",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Está dirigida a las jurisdicciones de la Administración Pública Central. Si alcanza al hospital está pendiente de confirmar.",
+    "responsables": [
+     {
+      "funcion": "revisa",
+      "quien": "Unidad Rectora Central (Dirección General de Contrataciones y Gestión de Bienes)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-scygb-3-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Estado: Cronograma de impugnación",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "(...) previo a completar el formulario de cronograma de impugnación que publica y notifica todo lo actuado en la evaluación, se deberá remitir el expediente electrónico para el control de lo resuelto por la comisión de preadjudicación. (...)",
+      "verificada": true
+     },
+     {
+      "doc": "res-me-73-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 2°",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Instrúyase a la Unidad Rectora Central a efectuar los siguientes controles, que revisten el carácter de obligatorios, sobre las gestiones de Licitación Pública y de Concurso Público que se tramiten en el Módulo \"TIMBÓ COMPRAS\": 1) Control de pliegos; 2) Control de lo resuelto por la comisión de preadjudicación;",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r17",
+    "tipo": "excepcion",
+    "titulo": "17 · Impugnaciones",
+    "descripcion": "",
+    "x": 975.0,
+    "y": 2620.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Dentro de los 2 días de notificados, con la garantía de impugnación.",
+    "responsables": [
+     {
+      "funcion": "inicia",
+      "quien": "Oferente / Proveedor",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "recibe",
+      "quien": "Evaluador",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 20 (Impugnaciones)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Las impugnaciones se presentan a través de TIMBÓ COMPRAS, completando el formulario establecido e integrando la garantía exigida (...)",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "5.1 Preadjudicación. Publicidad e impugnaciones",
+      "pagina": "36",
+      "capitulo": "",
+      "fragmento": "Los oferentes podrán impugnar el informe de preadjudicación dentro de los dos (2) días de notificados (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r18",
+    "tipo": "autorizacion",
+    "titulo": "18 · Adjudicación por expediente electrónico",
+    "descripcion": "",
+    "x": 535.0,
+    "y": 2780.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "autoriza",
+      "quien": "Autoridad competente según el monto",
+      "perfil_timbo": false
+     },
+     {
+      "funcion": "responsable",
+      "quien": "Supervisor (carga el acto en TIMBÓ Compras)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 6 (Etapas del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. El pliego de bases y condiciones particulares, las consultas y circulares, las impugnaciones, el acta de apertura de ofertas, las ofertas presentadas, la evaluación de ofertas, los trámites de subsanación de defectos, mejora de ofertas, documentación aclaratoria y/o complementaria y el informe de preadjudicación serán gestionados a través de TIMBÓ COMPRAS. La adjudicación y etapa contractual serán resueltas por expediente electrónico de TIMBÓ.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-1-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Aprobación de actos licitatorios",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "Hasta $ 5.850.000 Por Resolución del Subsecretario de Adm. ó su equivalente. Entre $ 5.850.000 y $ 29.250.000 Por Resolución. Entre $ 29.250.000 y $ 58.500.000 Por Resolución Conjunta con el M. de Economía. Más de $ 58.500.000 Por Decreto.",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "5.4 Finalización del procedimiento. Adjudicación",
+      "pagina": "38",
+      "capitulo": "",
+      "fragmento": "El dictado del acto de adjudicación, pondrá fin al procedimiento de selección. Deberá ser emitido por la autoridad competente (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r18s",
+    "tipo": "actividad",
+    "titulo": "SIN y vista al Tribunal de Cuentas",
+    "descripcion": "",
+    "x": 95.0,
+    "y": 2780.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "Áreas con funciones de Despacho o responsables de los actos registrables",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-9-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 3°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Los Expedientes Electrónicos (EE) con efecto hacendal sujetos al control preventivo de legalidad serán puestos a disposición del TCP exclusivamente mediante la herramienta de Gestión de Visualización (...)",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-9-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 4°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Las áreas con funciones de Despacho o aquellas responsables de la gestión de actos administrativos registrables serán responsables de administrar la visualización de los EE.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-9-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 5°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La puesta a disposición del TCP no interrumpirá la tramitación administrativa del expediente, el cual continuará su curso conforme al procedimiento correspondiente.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r19",
+    "tipo": "etapa",
+    "titulo": "19 · Etapa contractual",
+    "descripcion": "",
+    "x": 535.0,
+    "y": 2920.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 6 (Etapas del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. El pliego de bases y condiciones particulares, las consultas y circulares, las impugnaciones, el acta de apertura de ofertas, las ofertas presentadas, la evaluación de ofertas, los trámites de subsanación de defectos, mejora de ofertas, documentación aclaratoria y/o complementaria y el informe de preadjudicación serán gestionados a través de TIMBÓ COMPRAS. La adjudicación y etapa contractual serán resueltas por expediente electrónico de TIMBÓ.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r20",
+    "tipo": "actividad",
+    "titulo": "20 · Recepción de bienes o servicios",
+    "descripcion": "Quién lo hace en el hospital: a relevar en la reunión.",
+    "x": 95.0,
+    "y": 3060.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.9 Recepción provisoria",
+      "pagina": "46",
+      "capitulo": "",
+      "fragmento": "La recepción de los bienes y servicios tendrá carácter provisional y los recibos o remitos que se firmen quedarán sujetos a la recepción definitiva.",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.10 Recepción definitiva",
+      "pagina": "46",
+      "capitulo": "",
+      "fragmento": "La recepción definitiva debe ser otorgada en forma expresa por la Jurisdicción o Entidad contratante mediante la emisión de la correspondiente certificación (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r21",
+    "tipo": "actividad",
+    "titulo": "21 · Facturación y pago",
+    "descripcion": "Quién lo hace en el hospital: a relevar en la reunión.",
+    "x": 95.0,
+    "y": 3200.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.12 Facturación",
+      "pagina": "48",
+      "capitulo": "",
+      "fragmento": "Las facturas serán presentadas una vez recibida la documentación de recepción definitiva. (...)",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.13 Pagos",
+      "pagina": "49",
+      "capitulo": "",
+      "fragmento": "El plazo para el pago de las facturas se fijará en el PBCP y se computará a partir del día siguiente a la recepción definitiva de los bienes o servicios correspondientes.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "r99",
+    "tipo": "fin",
+    "titulo": "Fin",
+    "descripcion": "Cuándo se da por cerrado el trámite no está documentado en estas fuentes.",
+    "x": 95.0,
+    "y": 3340.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "rObs",
+    "tipo": "observacion",
+    "titulo": "Lo firmado en Compras va solo al expediente",
+    "descripcion": "",
+    "x": 1340.0,
+    "y": 1080.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 7 (Documentación generada del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Se incorporan al expediente electrónico relacionado al proceso de contratación, de manera automática en las etapas correspondientes.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "nmwliiyt94s9d",
+    "tipo": "actividad",
+    "titulo": "Actividad",
+    "descripcion": "",
+    "x": 720.0,
+    "y": 340.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   }
+  ],
+  "flechas": [
+   {
+    "id": "g01",
+    "desde": "r01",
+    "hasta": "r02",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g02",
+    "desde": "r02",
+    "hasta": "r03",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g03",
+    "desde": "r03",
+    "hasta": "r04",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g04",
+    "desde": "r04",
+    "hasta": "r05",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g05",
+    "desde": "r05",
+    "hasta": "r06",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g06",
+    "desde": "r06",
+    "hasta": "rA",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": 1
+   },
+   {
+    "id": "g07",
+    "desde": "r06",
+    "hasta": "rA",
+    "etiqueta": "Otra causal de directa (art. 116 inc. c, ap. 4 a 8)",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g08",
+    "desde": "r06",
+    "hasta": "rB",
+    "etiqueta": "Urgencia o emergencia, o desierto (art. 116 inc. c, ap. 2 y 3)",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g09",
+    "desde": "r06",
+    "hasta": "rC",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": 3
+   },
+   {
+    "id": "g10",
+    "desde": "r06",
+    "hasta": "rC",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": 4
+   },
+   {
+    "id": "g11",
+    "desde": "r06",
+    "hasta": "rD",
+    "etiqueta": "Etapa múltiple",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g12",
+    "desde": "rA",
+    "hasta": "rA2",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g13",
+    "desde": "rB",
+    "hasta": "r07",
+    "etiqueta": "Con las flexibilizaciones del art. 4",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g14",
+    "desde": "rC",
+    "hasta": "r07",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g15",
+    "desde": "rD",
+    "hasta": "r18",
+    "etiqueta": "La adjudicación también es Documento Oficial (art. 6)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g16",
+    "desde": "r07",
+    "hasta": "r08",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g17",
+    "desde": "r08",
+    "hasta": "r09",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g18",
+    "desde": "r09",
+    "hasta": "r09u",
+    "etiqueta": "Pase del expediente (si aplica)",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g19",
+    "desde": "r09",
+    "hasta": "r09a",
+    "etiqueta": "Aprobado",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g20",
+    "desde": "r09u",
+    "hasta": "r09a",
+    "etiqueta": "Con el informe de la URC",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g21",
+    "desde": "r09a",
+    "hasta": "r10",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g22",
+    "desde": "r09a",
+    "hasta": "r10p",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g23",
+    "desde": "r10",
+    "hasta": "r11",
+    "etiqueta": "Si hay consultas",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g24",
+    "desde": "r10",
+    "hasta": "r12",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g25",
+    "desde": "r11",
+    "hasta": "r12",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g26",
+    "desde": "r10p",
+    "hasta": "r12",
+    "etiqueta": "Al menos 10 días corridos entre la última publicación y la apertura (art. 132, Circ. SCyGB 04/2026)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g27",
+    "desde": "r12",
+    "hasta": "r13",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g28",
+    "desde": "r13",
+    "hasta": "r14",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g29",
+    "desde": "r14",
+    "hasta": "r15",
+    "etiqueta": "Si corresponde",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g30",
+    "desde": "r14",
+    "hasta": "r16",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g31",
+    "desde": "r15",
+    "hasta": "r16",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g32",
+    "desde": "r16",
+    "hasta": "r16u",
+    "etiqueta": "Pase del expediente (si aplica)",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g33",
+    "desde": "r16u",
+    "hasta": "r18",
+    "etiqueta": "Con el informe de la URC",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g34",
+    "desde": "r16",
+    "hasta": "r17",
+    "etiqueta": "Si se presentan",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g35",
+    "desde": "r16",
+    "hasta": "r18",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g36",
+    "desde": "r17",
+    "hasta": "r18",
+    "etiqueta": "Se resuelven junto con la adjudicación (Pliego 5.1)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g37",
+    "desde": "r18",
+    "hasta": "r18s",
+    "etiqueta": "Si corresponde control de legalidad",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "g38",
+    "desde": "r18s",
+    "hasta": "r19",
+    "etiqueta": "El expediente sigue su curso (Circ. UG 9/2026, art. 5)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g39",
+    "desde": "r18",
+    "hasta": "r19",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g40",
+    "desde": "r19",
+    "hasta": "r20",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g41",
+    "desde": "r20",
+    "hasta": "r21",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "g42",
+    "desde": "r21",
+    "hasta": "r99",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   }
+  ],
+  "carriles": [
+   {
+    "titulo": "ÁREAS DEL HOSPITAL Y ORGANISMOS EXTERNOS",
+    "x": -20.0,
+    "w": 460.0,
+    "color": "naranja"
+   },
+   {
+    "titulo": "EXPEDIENTE ELECTRÓNICO TIMBÓ",
+    "x": 420.0,
+    "w": 460.0,
+    "color": "azul"
+   },
+   {
+    "titulo": "MÓDULO TIMBÓ COMPRAS",
+    "x": 860.0,
+    "w": 460.0,
+    "color": "verde"
+   }
+  ]
+ },
+ "oficial": {
+  "nodos": [
+   {
+    "id": "o01",
+    "tipo": "inicio",
+    "titulo": "Inicio: etapa preparatoria",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 0.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 6 (Etapas del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. El pliego de bases y condiciones particulares, las consultas y circulares, las impugnaciones, el acta de apertura de ofertas, las ofertas presentadas, la evaluación de ofertas, los trámites de subsanación de defectos, mejora de ofertas, documentación aclaratoria y/o complementaria y el informe de preadjudicación serán gestionados a través de TIMBÓ COMPRAS. La adjudicación y etapa contractual serán resueltas por expediente electrónico de TIMBÓ.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o02",
+    "tipo": "etapa",
+    "titulo": "Etapa preparatoria por expediente electrónico",
+    "descripcion": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. Qué documentos lleva y quién los arma en el hospital no está documentado acá.",
+    "x": 60.0,
+    "y": 165.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 6 (Etapas del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. El pliego de bases y condiciones particulares, las consultas y circulares, las impugnaciones, el acta de apertura de ofertas, las ofertas presentadas, la evaluación de ofertas, los trámites de subsanación de defectos, mejora de ofertas, documentación aclaratoria y/o complementaria y el informe de preadjudicación serán gestionados a través de TIMBÓ COMPRAS. La adjudicación y etapa contractual serán resueltas por expediente electrónico de TIMBÓ.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o03",
+    "tipo": "condicion",
+    "titulo": "Tener el número de expediente electrónico",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 330.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 11 (Formulario de proceso)",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Para iniciar un proceso de contratación se deberá contar con un número de expediente electrónico de TIMBÓ, siendo entera responsabilidad de los usuarios la información, documentación y/o autorizaciones necesarias para iniciar un procedimiento de selección en cumplimiento de la normativa vigente.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o04",
+    "tipo": "decision",
+    "titulo": "¿Qué procedimiento corresponde?",
+    "descripcion": "Según el monto estimado y la causal. Los montos son de 2026 (Ley de Presupuesto 14.424).",
+    "x": 60.0,
+    "y": 510.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "ley-12510",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 116",
+      "pagina": "40",
+      "capitulo": "",
+      "fragmento": "Toda compra o venta por cuenta de la Provincia (...) se debe hacer, por regla general, previa licitación o concurso público. No obstante puede contratarse por: a) licitación o concurso privado, cuando el valor estimado de la operación no exceda el importe que establezca la Ley de Presupuesto; (...) c) contratación directa, en los siguientes casos (...)",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-1-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Encuadre",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "Hasta $5.850.000 CONTRATACIÓN DIRECTA POR MONTO. (...) LICITACIÓN O CONCURSO PRIVADO hasta $ 58.500.000. LICITACIÓN O CONCURSO PÚBLICO más de $ 58.500.000.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o05",
+    "tipo": "actividad",
+    "titulo": "Gestión directa por expediente",
+    "descripcion": "Las compras directas no están en el alcance de TIMBÓ Compras: van por expediente.",
+    "x": -300.0,
+    "y": 720.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-2-2025",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 2 (Compras directas)",
+      "pagina": "8",
+      "capitulo": "",
+      "fragmento": "Los siguientes incisos para la gestión de compras enmarcadas en el Art. 116° de la Ley 12.510 se realizarán de forma exclusivamente digital a partir de la fecha de circulación de la presente. Compras y contrataciones - Gestión directa - Por monto menor al tope; Por especialización; Exclusividad; Entre organismos oficiales del Sector Público; Por reparación de maquinaria; In situ",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o05b",
+    "tipo": "pendiente",
+    "titulo": "Pasos de la gestión directa",
+    "descripcion": "Falta cargar acá los pasos de la compra directa con su fuente. El Centro tiene una lección armada con la capacitación oficial en video; pasarla a este circuito cita por cita.",
+    "x": -300.0,
+    "y": 900.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "o06",
+    "tipo": "actividad",
+    "titulo": "Directa por urgencia o desierto en TIMBÓ Compras",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 720.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Mínimo 3 proveedores invitados. Consultas e impugnaciones se pueden reducir u omitir.",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-8-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 3°",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "La tramitación de las contrataciones directas por urgencia o emergencia, y por procedimiento desierto o fracasado, se sustancia íntegramente mediante el Módulo \"TIMBÓ COMPRAS\".",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-8-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 4°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "a) Autorización: es suficiente la intervención sistémica de la autoridad competente o la vinculación del documento autorizatorio, sin necesidad de acto administrativo formal. b) Plazos: pueden reducirse u omitirse los períodos de consultas e impugnaciones (...) d) Invitaciones: la carga mínima es de tres (3) proveedores en el sistema.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o07",
+    "tipo": "condicion",
+    "titulo": "Licitación o concurso de simple sobre: obligatorio por TIMBÓ Compras",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 720.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-3-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Puntos 2 a 4",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "La obligatoriedad dispuesta alcanza a los restantes Ministerios (...) Ministerio de Salud. (...) Licitaciones Públicas, Licitaciones Privadas, Concursos Públicos y Concursos Privados, bajo la modalidad de \"simple sobre\" (...) a partir del 1 de abril del año en curso, la utilización será obligatoria para toda la Administración Pública Provincial.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o08",
+    "tipo": "actividad",
+    "titulo": "Etapa múltiple: expediente y Documentos Oficiales",
+    "descripcion": "Las ofertas se entregan en sobres de papel; las actas y la adjudicación son Documentos Oficiales en el expediente.",
+    "x": 740.0,
+    "y": 720.0,
+    "estado": "documentado",
+    "soporte": "papel_y_digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-8-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículos 5° a 8°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Hasta que el Módulo \"TIMBÓ COMPRAS\" incorpore la funcionalidad técnica para gestionar procedimientos de etapa múltiple, su sustanciación integral se realiza de forma exclusiva a través de los módulos de Expediente Electrónico (EE) y Documentos Oficiales (DO) (...) La recepción de las propuestas (...) se efectúa mediante entrega material de sobres físicos cerrados (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o09",
+    "tipo": "actividad",
+    "titulo": "Generar la instancia de contratación",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 930.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Gestor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Gestor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Gestor: Genera la instancia de contratación. Completa los formularios del pliego de bases y condiciones particulares. Genera circulares.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o10",
+    "tipo": "actividad",
+    "titulo": "Completar los formularios del pliego particular (PBCP)",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 1095.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Gestor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Gestor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Gestor: Genera la instancia de contratación. Completa los formularios del pliego de bases y condiciones particulares. Genera circulares.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 12 (Formularios del PByCP)",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "El pliego de bases y condiciones particulares se confecciona completando los formularios estandarizados del TIMBÓ COMPRAS (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o11",
+    "tipo": "condicion",
+    "titulo": "Al menos 3 evaluadores en el formulario «Evaluadores»",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 1260.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 13 (Comisión de evaluación)",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Se deberá designar al menos tres (3) evaluadores en el formulario EVALUADORES del pliego de bases y condiciones particulares (...) Se podrá asignar un número mayor en el caso de ser necesario por la complejidad y cuantía de la contratación o bien para resolver la falta de alguno de ellos (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o13",
+    "tipo": "verificacion",
+    "titulo": "Revisión del pliego particular",
+    "descripcion": "La circular define el rol, pero no en qué momento revisa respecto de la aprobación del Supervisor.",
+    "x": 400.0,
+    "y": 1425.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "revisa",
+      "quien": "Jurisdicción comitente",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Jurisdicción comitente",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Jurisdicción comitente: Revisa los pliegos de bases y condiciones particulares.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o12",
+    "tipo": "decision",
+    "titulo": "¿El Supervisor aprueba los formularios?",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 1605.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "autoriza",
+      "quien": "Supervisor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o12b",
+    "tipo": "pendiente",
+    "titulo": "Qué pasa después de un rechazo",
+    "descripcion": "La Circular UG 7/2026 dice que el Supervisor «aprueba o rechaza» los formularios, pero no dice cómo sigue el trámite después de un rechazo.",
+    "x": 740.0,
+    "y": 1605.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "o14",
+    "tipo": "verificacion",
+    "titulo": "Control de pliegos de la URC (estado «Aprobar contratación»)",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 1800.0,
+    "estado": "pendiente_confirmacion",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Está dirigida a las jurisdicciones de la Administración Pública Central. Si alcanza al hospital está pendiente de confirmar.",
+    "responsables": [
+     {
+      "funcion": "revisa",
+      "quien": "Unidad Rectora Central (Dirección General de Contrataciones y Gestión de Bienes)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-scygb-3-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Estado: Aprobar contratación",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "En este estado del proceso electrónico, con los formularios del pliego de bases y condiciones particulares aprobado por el rol SUPERVISOR, y previo a la emisión del acto administrativo que aprueba la contratación y autoriza el llamado, se deberá remitir para el control de los pliegos, el expediente electrónico con el Pliego de Bases y Condiciones Particulares en formato pdf incorporado. El proceso de contratación no podrá aprobarse ni publicarse sin el correspondiente informe de control de la URC (...)",
+      "verificada": true
+     },
+     {
+      "doc": "res-me-73-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 2°",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Instrúyase a la Unidad Rectora Central a efectuar los siguientes controles, que revisten el carácter de obligatorios, sobre las gestiones de Licitación Pública y de Concurso Público que se tramiten en el Módulo \"TIMBÓ COMPRAS\": 1) Control de pliegos; 2) Control de lo resuelto por la comisión de preadjudicación;",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o15",
+    "tipo": "actividad",
+    "titulo": "Cronograma de fechas y nómina de proveedores",
+    "descripcion": "La circular no dice en qué orden se hace respecto del control de la URC.",
+    "x": 400.0,
+    "y": 1800.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Supervisor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 14 (Cronograma de fechas y nómina)",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "En el cronograma de fechas se determina el día y hora de inicio y fin para realizar las acciones durante la etapa de publicación, la apertura de ofertas y el período para presentar impugnaciones a las ofertas.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o16",
+    "tipo": "autorizacion",
+    "titulo": "Acto que aprueba el pliego y autoriza el llamado",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 1980.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Quién firma depende del monto (Circular SCyGB 01/2026). Quién es el «equivalente» del Subsecretario de Administración en el hospital: a confirmar.",
+    "responsables": [
+     {
+      "funcion": "autoriza",
+      "quien": "Autoridad competente según el monto",
+      "perfil_timbo": false
+     },
+     {
+      "funcion": "responsable",
+      "quien": "Supervisor (lo carga en TIMBÓ Compras)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-1-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Aprobación de actos licitatorios",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "Hasta $ 5.850.000 Por Resolución del Subsecretario de Adm. ó su equivalente. Entre $ 5.850.000 y $ 29.250.000 Por Resolución. Entre $ 29.250.000 y $ 58.500.000 Por Resolución Conjunta con el M. de Economía. Más de $ 58.500.000 Por Decreto.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o17",
+    "tipo": "actividad",
+    "titulo": "Proceso publicado e invitaciones a la nómina",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 2160.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 15 (Publicidad y difusión)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "De manera complementaria y supletoria a la publicidad y difusión obligatoria establecida en la normativa vigente, TIMBÓ COMPRAS envía invitaciones a participar de los procesos a los correos detallados en la nómina de proveedores.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 16 (Proceso publicado)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Los procesos publicados en TIMBÓ COMPRAS se encontrarán disponibles con su correspondiente documentación en la bandeja Participar de un proceso para todos aquellos interesados que cuenten con ID ciudadana.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o18",
+    "tipo": "actividad",
+    "titulo": "Publicación en el portal web y pedido de aviso oficial",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 2160.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "fuera",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "La Circular SCyGB 04/2026 está dirigida a las jurisdicciones de la Administración Pública Central.",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-scygb-4-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Anexo I",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Una vez aprobado el pliego en el ecosistema TIMBO se deberá realizar la publicación en el portal Web de la Provincia. (...) Se debe seleccionar la opción \"Marcar para que se genere enlace con TIMBO.\" y marcar como expediente principal. Si no se seleccionan estas opciones, al proveedor no le aparecerá el botón de OFERTAR en la publicación web del portal de compras.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-4-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Anexo II",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Se deberá enviar un mail, con una nota que contenga el detalle de la publicación (...) a la casilla avisosoficiales@santafe.gob.ar (...) con al menos tres (3) días de antelación (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o19",
+    "tipo": "actividad",
+    "titulo": "Consultas y circulares",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 2340.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "inicia",
+      "quien": "Oferente / Proveedor (consulta)",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "responsable",
+      "quien": "Gestor (circulares)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 17 (Consultas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Para efectuar consultas, recibir circulares aclaratorias o modificatorias, el proveedor deberá haber participado del proceso. Las consultas se efectúan en la bandeja de mis ofertas del TIMBÓ COMPRAS. (...) Las consultas enviadas no indicarán el autor de la consulta.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Gestor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Gestor: Genera la instancia de contratación. Completa los formularios del pliego de bases y condiciones particulares. Genera circulares.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o20",
+    "tipo": "actividad",
+    "titulo": "Presentación de ofertas",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 2400.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Oferente / Proveedor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 18 (Ofertas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Las ofertas se podrán presentar hasta la fecha y hora de apertura (...) La documentación electrónica requerida deberá presentarse en formato PDF, hasta un máximo de 5 MB recomendable. (...) Sólo aquellas ofertas que se encuentren en estado oferta presentada serán válidas en la apertura electrónica de ofertas.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o20e",
+    "tipo": "error",
+    "titulo": "La oferta no quedó en «Oferta presentada»",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 2550.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 18 (Ofertas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Sólo aquellas ofertas que se encuentren en estado oferta presentada serán válidas en la apertura electrónica de ofertas.",
+      "verificada": true
+     }
+    ],
+    "error": {
+     "causa": "El proveedor no confirmó ni envió la oferta antes de la hora de apertura.",
+     "detecta": "",
+     "interviene": "",
+     "resolucion": "No es válida en la apertura electrónica.",
+     "nueva_autorizacion": false,
+     "doc_adicional": false
+    }
+   },
+   {
+    "id": "o21",
+    "tipo": "actividad",
+    "titulo": "Apertura automática",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 2580.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "TIMBÓ Compras (automático)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 19 (Apertura de ofertas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "La apertura de ofertas se efectuará automáticamente en TIMBÓ COMPRAS en la hora y fecha establecida en el cronograma de fechas. En forma electrónica y automática se generará el acta de apertura de ofertas correspondiente y el cuadro comparativo de precios.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o21d",
+    "tipo": "documento",
+    "titulo": "Acta de apertura y cuadro comparativo",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 2730.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 19 (Apertura de ofertas)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "En forma electrónica y automática se generará el acta de apertura de ofertas correspondiente y el cuadro comparativo de precios.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 7 (Documentación generada del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Todas las etapas del proceso de contratación en TIMBÓ COMPRAS generan documentación oficial firmada electrónicamente (...) Se incorporan al expediente electrónico relacionado al proceso de contratación, de manera automática en las etapas correspondientes.",
+      "verificada": true
+     }
+    ],
+    "documento": {
+     "origen": "TIMBÓ Compras (automático)",
+     "completa": "TIMBÓ Compras",
+     "recibe": "",
+     "revisa": "",
+     "autoriza": "",
+     "registra": "Expediente electrónico relacionado (automático)",
+     "archiva": "Expediente electrónico",
+     "continua": "Evaluación de ofertas"
+    }
+   },
+   {
+    "id": "o22",
+    "tipo": "actividad",
+    "titulo": "Evaluación de ofertas y preselección",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 2760.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Evaluadores",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Evaluador",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Evaluador: Evalúa las ofertas. Genera los trámites de subsanación de defectos, mejora de precios y aclaración y/o documentación complementaria. Preselecciona los renglones y oferentes. Organiza a los evaluadores. Preadjudica. Carga el cronograma de impugnaciones. Recibe las impugnaciones de oferta y preadjudicación.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o23",
+    "tipo": "decision",
+    "titulo": "¿Hace falta subsanar, aclarar o mejorar?",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 2940.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Evaluadores",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Evaluador",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Evaluador: Evalúa las ofertas. Genera los trámites de subsanación de defectos, mejora de precios y aclaración y/o documentación complementaria. Preselecciona los renglones y oferentes. Organiza a los evaluadores. Preadjudica. Carga el cronograma de impugnaciones. Recibe las impugnaciones de oferta y preadjudicación.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o24",
+    "tipo": "actividad",
+    "titulo": "Subtrámite al proveedor: subsanación, aclaración o mejora",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 3120.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "inicia",
+      "quien": "Evaluadores",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "recibe",
+      "quien": "Oferente / Proveedor",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 21 (Subsanación, aclaración y/o mejora)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "Los subtrámites de subsanación, aclaración, mejora de precios y/o documentación complementaria que se remitan a los oferentes con motivo de la evaluación de las ofertas se encontrarán disponibles en su bandeja mis ofertas y serán notificados al domicilio digital. (...) Los subtrámites respondidos por el proveedor o descartados se incorporarán automáticamente al expediente electrónico.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o24x",
+    "tipo": "excepcion",
+    "titulo": "Vence el plazo sin respuesta: queda «descartado»",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 3300.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 21 (Subsanación, aclaración y/o mejora)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "Finalizada la fecha y hora límite establecida por el evaluador para cumplimentar con el subtrámite, este pasa a estado descartado.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o25",
+    "tipo": "actividad",
+    "titulo": "Informe de preadjudicación",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 3300.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Evaluadores (firman en el orden de «Ordenar evaluadores»)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 22 (Informe de preadjudicación)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "Sobre el informe de preadjudicación actuarán y firmarán aquellos evaluadores designados en el orden del formulario Ordenar evaluadores.",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "5.1 Preadjudicación. Publicidad e impugnaciones",
+      "pagina": "36",
+      "capitulo": "",
+      "fragmento": "La Comisión Evaluadora (o el órgano que estipule el PBCP) podrá emitir un informe de preadjudicación que contemple el análisis de admisibilidad y conveniencia de las mismas y formule una recomendación no vinculante de adjudicación para la autoridad competente.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o26",
+    "tipo": "verificacion",
+    "titulo": "Control de la preadjudicación de la URC (estado «Cronograma de impugnación»)",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 3480.0,
+    "estado": "pendiente_confirmacion",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Está dirigida a las jurisdicciones de la Administración Pública Central. Si alcanza al hospital está pendiente de confirmar.",
+    "responsables": [
+     {
+      "funcion": "revisa",
+      "quien": "Unidad Rectora Central (Dirección General de Contrataciones y Gestión de Bienes)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-scygb-3-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Estado: Cronograma de impugnación",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "En este estado del proceso electrónico, y previo a completar el formulario de cronograma de impugnación que publica y notifica todo lo actuado en la evaluación, se deberá remitir el expediente electrónico para el control de lo resuelto por la comisión de preadjudicación. El proceso de contratación no podrá avanzar al estado preadjudicado sin el correspondiente informe de control de la URC (...)",
+      "verificada": true
+     },
+     {
+      "doc": "res-me-73-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 2°",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Instrúyase a la Unidad Rectora Central a efectuar los siguientes controles, que revisten el carácter de obligatorios, sobre las gestiones de Licitación Pública y de Concurso Público que se tramiten en el Módulo \"TIMBÓ COMPRAS\": 1) Control de pliegos; 2) Control de lo resuelto por la comisión de preadjudicación;",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o27",
+    "tipo": "actividad",
+    "titulo": "Cronograma de impugnación: publica y notifica lo actuado",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 3660.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Evaluador",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Evaluador",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Evaluador: Evalúa las ofertas. Genera los trámites de subsanación de defectos, mejora de precios y aclaración y/o documentación complementaria. Preselecciona los renglones y oferentes. Organiza a los evaluadores. Preadjudica. Carga el cronograma de impugnaciones. Recibe las impugnaciones de oferta y preadjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 22 (Informe de preadjudicación)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "(...) para los oferentes, en su formulario de oferta y notificada al domicilio digital, en ocasión de pasar el proceso de contratación a estado preadjudicado.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o28",
+    "tipo": "decision",
+    "titulo": "¿Hay impugnaciones a la preadjudicación?",
+    "descripcion": "",
+    "x": 400.0,
+    "y": 3840.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 20.2 (Impugnaciones al informe de preadjudicación)",
+      "pagina": "5",
+      "capitulo": "",
+      "fragmento": "Con el formulario de oferta en estado preadjudicado y con toda la documentación disponible, durante la fecha y hora de inicio y fin de impugnación establecida en el cronograma de impugnación o publicación de la preadjudicación, los oferentes podrán iniciar la impugnación.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o29",
+    "tipo": "excepcion",
+    "titulo": "Impugnación a la preadjudicación",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 4020.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Dentro de los 2 días de notificados, con la garantía de impugnación.",
+    "responsables": [
+     {
+      "funcion": "inicia",
+      "quien": "Oferente / Proveedor",
+      "perfil_timbo": true
+     },
+     {
+      "funcion": "recibe",
+      "quien": "Evaluador",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 20 (Impugnaciones)",
+      "pagina": "4",
+      "capitulo": "",
+      "fragmento": "Las impugnaciones se presentan a través de TIMBÓ COMPRAS, completando el formulario establecido e integrando la garantía exigida en el pliego de bases y condiciones particulares y la normativa vigente aplicable.",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "5.1 Preadjudicación. Publicidad e impugnaciones",
+      "pagina": "36",
+      "capitulo": "",
+      "fragmento": "Los oferentes podrán impugnar el informe de preadjudicación dentro de los dos (2) días de notificados; debiendo para ello, constituir y acompañar la garantía de impugnación pertinente (...)",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "5.1 Preadjudicación. Publicidad e impugnaciones",
+      "pagina": "37",
+      "capitulo": "",
+      "fragmento": "La Comisión Evaluadora analizará las impugnaciones y emitirá un informe respecto del mérito de las mismas (...) todas las impugnaciones serán resueltas por la autoridad competente para aprobar la contratación, en forma simultánea con la adjudicación (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o30",
+    "tipo": "autorizacion",
+    "titulo": "Adjudicación por expediente electrónico",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 4200.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "autoriza",
+      "quien": "Autoridad competente según el monto",
+      "perfil_timbo": false
+     },
+     {
+      "funcion": "responsable",
+      "quien": "Supervisor (carga el acto en TIMBÓ Compras)",
+      "perfil_timbo": true
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 6 (Etapas del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. El pliego de bases y condiciones particulares, las consultas y circulares, las impugnaciones, el acta de apertura de ofertas, las ofertas presentadas, la evaluación de ofertas, los trámites de subsanación de defectos, mejora de ofertas, documentación aclaratoria y/o complementaria y el informe de preadjudicación serán gestionados a través de TIMBÓ COMPRAS. La adjudicación y etapa contractual serán resueltas por expediente electrónico de TIMBÓ.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 10 (Roles) — Supervisor",
+      "pagina": "3",
+      "capitulo": "",
+      "fragmento": "Supervisor: Aprueba o rechaza los formularios del pliego de bases y condiciones particulares. Confecciona el cronograma y la nómina de proveedores. Carga los actos administrativos que aprueban el pliego y autorizan el llamado, los sin efecto y la adjudicación.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-scygb-1-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Aprobación de actos licitatorios",
+      "pagina": "1",
+      "capitulo": "",
+      "fragmento": "Hasta $ 5.850.000 Por Resolución del Subsecretario de Adm. ó su equivalente. Entre $ 5.850.000 y $ 29.250.000 Por Resolución. Entre $ 29.250.000 y $ 58.500.000 Por Resolución Conjunta con el M. de Economía. Más de $ 58.500.000 Por Decreto.",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "5.4 Finalización del procedimiento. Adjudicación",
+      "pagina": "38",
+      "capitulo": "",
+      "fragmento": "El dictado del acto de adjudicación, pondrá fin al procedimiento de selección. Deberá ser emitido por la autoridad competente, dentro del plazo que establezca el PBCP, y deberá recaer sobre la oferta más conveniente. La adjudicación será notificada, dentro de los diez (10) días hábiles administrativos posteriores a su dictado, a todos los oferentes (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o31",
+    "tipo": "actividad",
+    "titulo": "Vista al Tribunal de Cuentas con «Gestión de Visualización»",
+    "descripcion": "",
+    "x": -300.0,
+    "y": 4200.0,
+    "estado": "documentado",
+    "soporte": "digital",
+    "sistema": "expediente",
+    "sector": "Áreas con funciones de Despacho o responsables de los actos registrables",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "Expedientes con efecto hacendal sujetos al control preventivo de legalidad.",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-9-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 3°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Los Expedientes Electrónicos (EE) con efecto hacendal sujetos al control preventivo de legalidad serán puestos a disposición del TCP exclusivamente mediante la herramienta de Gestión de Visualización del Módulo Expedientes de la EGD \"TIMBÓ\".",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-9-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 4°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Las áreas con funciones de Despacho o aquellas responsables de la gestión de actos administrativos registrables serán responsables de administrar la visualización de los EE.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-9-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Artículo 5°",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La puesta a disposición del TCP no interrumpirá la tramitación administrativa del expediente, el cual continuará su curso conforme al procedimiento correspondiente.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o32",
+    "tipo": "etapa",
+    "titulo": "Etapa contractual por expediente electrónico",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 4380.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "expediente",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 6 (Etapas del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "La etapa preparatoria se resuelve por expediente electrónico de TIMBÓ. El pliego de bases y condiciones particulares, las consultas y circulares, las impugnaciones, el acta de apertura de ofertas, las ofertas presentadas, la evaluación de ofertas, los trámites de subsanación de defectos, mejora de ofertas, documentación aclaratoria y/o complementaria y el informe de preadjudicación serán gestionados a través de TIMBÓ COMPRAS. La adjudicación y etapa contractual serán resueltas por expediente electrónico de TIMBÓ.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o33",
+    "tipo": "actividad",
+    "titulo": "Recepción provisoria",
+    "descripcion": "Si se registra en TIMBÓ o fuera de él no está documentado.",
+    "x": 60.0,
+    "y": 4560.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.9 Recepción provisoria",
+      "pagina": "46",
+      "capitulo": "",
+      "fragmento": "La recepción de los bienes y servicios tendrá carácter provisional y los recibos o remitos que se firmen quedarán sujetos a la recepción definitiva.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o34",
+    "tipo": "autorizacion",
+    "titulo": "Recepción definitiva y su certificación",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 4740.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Responsables que designe la jurisdicción (no quienes intervinieron en la adjudicación, salvo imposibilidad material)",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.10 Recepción definitiva",
+      "pagina": "46",
+      "capitulo": "",
+      "fragmento": "La recepción definitiva debe ser otorgada en forma expresa por la Jurisdicción o Entidad contratante mediante la emisión de la correspondiente certificación conforme al modelo aprobado por la Unidad Rectora Central. Cada Jurisdicción o Entidad designará el o los responsables de la certificación (...) esa designación no deberá recaer, salvo imposibilidad material, en quienes hayan intervenido en la adjudicación respectiva (...) En caso de designarse una Comisión, ésta deberá estar integrada por un máximo de tres (3) miembros.",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o34d",
+    "tipo": "documento",
+    "titulo": "Certificado de recepción definitiva",
+    "descripcion": "El Pliego habla de original y dos copias. Si en TIMBÓ es un documento digital no está documentado.",
+    "x": -300.0,
+    "y": 4740.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.11 Certificación de recepción definitiva",
+      "pagina": "48",
+      "capitulo": "",
+      "fragmento": "La certificación se extenderá en original y dos (2) copias remitiéndose de inmediato el original al Servicio Administrativo Financiero de la Jurisdicción o Entidad respectiva ante la cual se tramitan los pagos, el duplicado se entregará al adjudicatario (...) y el triplicado quedará en poder del órgano encargado de la recepción.",
+      "verificada": true
+     }
+    ],
+    "documento": {
+     "origen": "Responsables de la recepción definitiva",
+     "completa": "Responsables de la recepción definitiva",
+     "recibe": "Original: Servicio Administrativo Financiero · Duplicado: adjudicatario",
+     "revisa": "",
+     "autoriza": "",
+     "registra": "",
+     "archiva": "Triplicado: órgano encargado de la recepción",
+     "continua": "Con la factura, para el pago"
+    }
+   },
+   {
+    "id": "o35",
+    "tipo": "actividad",
+    "titulo": "Presentación de facturas",
+    "descripcion": "",
+    "x": 60.0,
+    "y": 4920.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "Factura, orden de compra y duplicado del certificado de recepción definitiva.",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [
+     {
+      "funcion": "responsable",
+      "quien": "Adjudicatario",
+      "perfil_timbo": false
+     }
+    ],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.12 Facturación",
+      "pagina": "48",
+      "capitulo": "",
+      "fragmento": "Las facturas serán presentadas una vez recibida la documentación de recepción definitiva. (...) juntamente con la orden de compra y el duplicado de la certificación de recepción definitiva (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o36",
+    "tipo": "actividad",
+    "titulo": "Pago",
+    "descripcion": "Qué oficina paga y si el trámite va por TIMBÓ no está documentado en estas fuentes.",
+    "x": 60.0,
+    "y": 5100.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "No se paga sin el certificado de recepción definitiva (Pliego 6.11).",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.13 Pagos",
+      "pagina": "49",
+      "capitulo": "",
+      "fragmento": "El plazo para el pago de las facturas se fijará en el PBCP y se computará a partir del día siguiente a la recepción definitiva de los bienes o servicios correspondientes.",
+      "verificada": true
+     },
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.11 Certificación de recepción definitiva",
+      "pagina": "48",
+      "capitulo": "",
+      "fragmento": "No se efectuará pago alguno por la provisión de bienes o servicios, si en la documentación necesaria para tal fin no se adjunta el Certificado de Recepción Definitiva (...)",
+      "verificada": true
+     }
+    ]
+   },
+   {
+    "id": "o36e",
+    "tipo": "error",
+    "titulo": "Factura o documentación observada",
+    "descripcion": "",
+    "x": -300.0,
+    "y": 5100.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "pliego-unico-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "6.13 Pagos",
+      "pagina": "49",
+      "capitulo": "",
+      "fragmento": "El plazo para el pago se interrumpe si la documentación o las facturas presentadas fuesen observadas (...)",
+      "verificada": true
+     }
+    ],
+    "error": {
+     "causa": "La documentación o las facturas presentadas fueron observadas.",
+     "detecta": "",
+     "interviene": "",
+     "resolucion": "El plazo para el pago se interrumpe.",
+     "nueva_autorizacion": false,
+     "doc_adicional": false
+    }
+   },
+   {
+    "id": "o37",
+    "tipo": "fin",
+    "titulo": "Fin",
+    "descripcion": "Cuándo se da por cerrado el trámite no está documentado en estas fuentes.",
+    "x": 60.0,
+    "y": 5280.0,
+    "estado": "pendiente_documentacion",
+    "soporte": "sin_definir",
+    "sistema": "sin_definir",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": []
+   },
+   {
+    "id": "o40",
+    "tipo": "observacion",
+    "titulo": "Lo firmado en TIMBÓ Compras se incorpora solo al expediente",
+    "descripcion": "",
+    "x": 740.0,
+    "y": 930.0,
+    "estado": "documentado",
+    "soporte": "sin_definir",
+    "sistema": "compras",
+    "sector": "",
+    "documentacion": "",
+    "resultado": "",
+    "condiciones": "",
+    "responsables": [],
+    "fuentes": [
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 7 (Documentación generada del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Se incorporan al expediente electrónico relacionado al proceso de contratación, de manera automática en las etapas correspondientes. Los anexos adjuntos se visualizarán como documentos embebidos en formato PDF.",
+      "verificada": true
+     },
+     {
+      "doc": "circ-ug-7-2026",
+      "url": "",
+      "titulo": "",
+      "emisor": "",
+      "fecha": "",
+      "punto": "Punto 8 (Documentación no generada del proceso)",
+      "pagina": "2",
+      "capitulo": "",
+      "fragmento": "Toda aquella documentación de respaldo que no sea posible generar automáticamente por TIMBÓ COMPRAS (constancia de publicidad en diarios, etc.) deberá incorporarse al expediente electrónico relacionado al proceso cuando corresponda.",
+      "verificada": true
+     }
+    ]
+   }
+  ],
+  "flechas": [
+   {
+    "id": "f01",
+    "desde": "o01",
+    "hasta": "o02",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f02",
+    "desde": "o02",
+    "hasta": "o03",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f03",
+    "desde": "o03",
+    "hasta": "o04",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f04",
+    "desde": "o04",
+    "hasta": "o05",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": 1
+   },
+   {
+    "id": "f05",
+    "desde": "o04",
+    "hasta": "o05",
+    "etiqueta": "Otra causal de directa (art. 116 inc. c, ap. 4 a 8)",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f06",
+    "desde": "o04",
+    "hasta": "o06",
+    "etiqueta": "Urgencia o emergencia, o desierto (art. 116 inc. c, ap. 2 y 3)",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f07",
+    "desde": "o04",
+    "hasta": "o07",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": 3
+   },
+   {
+    "id": "f08",
+    "desde": "o04",
+    "hasta": "o07",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": 4
+   },
+   {
+    "id": "f09",
+    "desde": "o04",
+    "hasta": "o08",
+    "etiqueta": "Etapa múltiple",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f10",
+    "desde": "o05",
+    "hasta": "o05b",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f11",
+    "desde": "o06",
+    "hasta": "o09",
+    "etiqueta": "Con las flexibilizaciones del art. 4",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f12",
+    "desde": "o07",
+    "hasta": "o09",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f13",
+    "desde": "o08",
+    "hasta": "o30",
+    "etiqueta": "La adjudicación también es Documento Oficial (art. 6)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f14",
+    "desde": "o09",
+    "hasta": "o10",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f15",
+    "desde": "o10",
+    "hasta": "o11",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f16",
+    "desde": "o11",
+    "hasta": "o13",
+    "etiqueta": "Orden no documentado",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f17",
+    "desde": "o13",
+    "hasta": "o12",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f18",
+    "desde": "o12",
+    "hasta": "o14",
+    "etiqueta": "Aprueba",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f19",
+    "desde": "o12",
+    "hasta": "o12b",
+    "etiqueta": "Rechaza",
+    "tipo": "rechazo",
+    "rango": null
+   },
+   {
+    "id": "f20",
+    "desde": "o12",
+    "hasta": "o15",
+    "etiqueta": "Orden no documentado",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f21",
+    "desde": "o14",
+    "hasta": "o16",
+    "etiqueta": "Con el informe de la URC",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f22",
+    "desde": "o15",
+    "hasta": "o16",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f23",
+    "desde": "o16",
+    "hasta": "o17",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f24",
+    "desde": "o16",
+    "hasta": "o18",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f25",
+    "desde": "o17",
+    "hasta": "o19",
+    "etiqueta": "Si hay consultas",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f26",
+    "desde": "o17",
+    "hasta": "o20",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f27",
+    "desde": "o19",
+    "hasta": "o20",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f28",
+    "desde": "o18",
+    "hasta": "o20",
+    "etiqueta": "Al menos 10 días corridos entre la última publicación y la apertura (art. 132, Circ. SCyGB 04/2026)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f29",
+    "desde": "o20",
+    "hasta": "o20e",
+    "etiqueta": "",
+    "tipo": "incidencia",
+    "rango": null
+   },
+   {
+    "id": "f30",
+    "desde": "o20",
+    "hasta": "o21",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f31",
+    "desde": "o21",
+    "hasta": "o21d",
+    "etiqueta": "Genera",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f32",
+    "desde": "o21",
+    "hasta": "o22",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f33",
+    "desde": "o22",
+    "hasta": "o23",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f34",
+    "desde": "o23",
+    "hasta": "o24",
+    "etiqueta": "Sí",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f35",
+    "desde": "o23",
+    "hasta": "o25",
+    "etiqueta": "No",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f36",
+    "desde": "o24",
+    "hasta": "o24x",
+    "etiqueta": "Si no responde a tiempo",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f37",
+    "desde": "o24",
+    "hasta": "o25",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f38",
+    "desde": "o24x",
+    "hasta": "o25",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f39",
+    "desde": "o25",
+    "hasta": "o26",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f40",
+    "desde": "o26",
+    "hasta": "o27",
+    "etiqueta": "Con el informe de la URC",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f41",
+    "desde": "o27",
+    "hasta": "o28",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f42",
+    "desde": "o28",
+    "hasta": "o29",
+    "etiqueta": "Sí",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f43",
+    "desde": "o28",
+    "hasta": "o30",
+    "etiqueta": "No",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f44",
+    "desde": "o29",
+    "hasta": "o30",
+    "etiqueta": "Se resuelven junto con la adjudicación (Pliego 5.1)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f45",
+    "desde": "o30",
+    "hasta": "o31",
+    "etiqueta": "Si corresponde control de legalidad",
+    "tipo": "alternativa",
+    "rango": null
+   },
+   {
+    "id": "f46",
+    "desde": "o31",
+    "hasta": "o32",
+    "etiqueta": "El expediente sigue su curso (Circ. UG 9/2026, art. 5)",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f47",
+    "desde": "o30",
+    "hasta": "o32",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f48",
+    "desde": "o32",
+    "hasta": "o33",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f49",
+    "desde": "o33",
+    "hasta": "o34",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f50",
+    "desde": "o34",
+    "hasta": "o34d",
+    "etiqueta": "Emite",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f51",
+    "desde": "o34",
+    "hasta": "o35",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f52",
+    "desde": "o35",
+    "hasta": "o36",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   },
+   {
+    "id": "f53",
+    "desde": "o36",
+    "hasta": "o36e",
+    "etiqueta": "",
+    "tipo": "incidencia",
+    "rango": null
+   },
+   {
+    "id": "f54",
+    "desde": "o36",
+    "hasta": "o37",
+    "etiqueta": "",
+    "tipo": "normal",
+    "rango": null
+   }
+  ]
+ },
+ "rangos": {
+  "1": "Encuadre: contratación directa por monto",
+  "2": "Encuadre: concurso de precios para locación de inmuebles",
+  "3": "Encuadre: licitación o concurso privado",
+  "4": "Encuadre: licitación o concurso público",
+  "5": "Aprobación: hasta $5.850.000",
+  "6": "Aprobación: de $5.850.000 a $29.250.000",
+  "7": "Aprobación: de $29.250.000 a $58.500.000",
+  "8": "Aprobación: más de $58.500.000"
+ },
+ "docs": {
+  "circ-ug-7-2026": {
+   "titulo": "Circular UG TIMBÓ N° 7/2026 — Términos y condiciones de uso de TIMBÓ Compras",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/05/CIRCULAR-7-UG-TYC-TIMBO-COMPRAS.pdf"
+  },
+  "circ-ug-1-2026": {
+   "titulo": "Circular UG TIMBÓ N° 1/2026 — Implementación de TIMBÓ Compras",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/01/Circular-01-2026-Implementacion-TIMBO-COMPRAS.pdf"
+  },
+  "circ-ug-3-2026": {
+   "titulo": "Circular UG TIMBÓ N° 3/2026 — Ampliación de TIMBÓ Compras a todos los ministerios",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-03-26.pdf"
+  },
+  "circ-ug-8-2026": {
+   "titulo": "Circular UG TIMBÓ N° 8/2026 — Contrataciones directas por urgencia o desierto",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-8-26_TIMBO-COMPRAS.pdf"
+  },
+  "res-me-73-2026": {
+   "titulo": "Resolución ME N° 73/2026 — Descentralización operativa de licitaciones y concursos públicos",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/Res.-ME-N.%C2%B0-0073-2026.pdf"
+  },
+  "circ-scygb-3-2026": {
+   "titulo": "Circular SCyGB N° 03/2026 — Intervención de la URC del SABS",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf"
+  },
+  "circ-ug-3-2025": {
+   "titulo": "Circular UG TIMBÓ N° 3/2025 — Reglamento general para la gestión digital interna (RGGDITIMBÓ)",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/3_2025-Circular-Pautas-Generales-para-la-Gestion-Digital-TIMBO.pdf"
+  },
+  "circ-ug-2-2026": {
+   "titulo": "Circular UG TIMBÓ N° 2/2026 — Requisitos del RUPC y de participación",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-02-26.pdf"
+  },
+  "res-scygb-110-2026": {
+   "titulo": "Resolución SCyGB N° 110/2026 — Nuevo procedimiento de inscripción en el RUPC",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Resolucion-Proveedores-N%C2%B0-00000110-Nuevo-Procedimiento-Inscripcion-RUPC.pdf"
+  },
+  "res-scygb-260-2026": {
+   "titulo": "Resoluciones SCyGB N° 125, 175, 205 y 260/2026 — Prórrogas de inscripciones RUPC",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/09/RESOLUCION-260.pdf"
+  },
+  "circ-scygb-6-2026": {
+   "titulo": "Circular SCyGB N° 006/2026 — Inscripción en el RUPC (supresión del RBPCME)",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/08/CIRCULAR_006-26_SCYGB.pdf___non-Linux-generated_files-job_287.pdf"
+  },
+  "dec-287-2026": {
+   "titulo": "Decreto N° 287/2026 — Aprueba el Pliego Único y modifica los Decretos 1104/16 y 914/18",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/02/DEC-2026-00000287-APPSF-PE-1.pdf__nux-generated_files-job_1090.pdf"
+  },
+  "pliego-unico-2026": {
+   "titulo": "Pliego Único de Bases y Condiciones Generales (anexo del Dec. 287/2026)",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/Pliego-Unico-de-Bases-y-Condiciones-Generales-para-licitaciones-y-concursos-de-bienes-y-servicios-1.pdf"
+  },
+  "dec-1104-2016": {
+   "titulo": "Decreto N° 1104/2016 — Reglamento del Subsistema de Administración de Bienes y Servicios",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/2_Decreto-N%C2%B01.104-2016.pdf"
+  },
+  "ley-12510": {
+   "titulo": "Ley N° 12.510 — Administración, Eficiencia y Control del Estado",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/1_Ley-No-12.510-y-Modificatorias-Normas-reglamentarias-y-complementarias-24-04-15.pdf"
+  },
+  "circ-scygb-1-2026": {
+   "titulo": "Circular SCyGB N° 01/2026 — Encuadre según la Ley de Presupuesto",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/01/Circular-001-26.pdf"
+  },
+  "circ-scygb-4-2026": {
+   "titulo": "Circular SCyGB N° 04/2026 — Procedimiento de publicación",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-004-26.pdf"
+  },
+  "circ-scygb-4-2025": {
+   "titulo": "Circular SCyGB N° 04/2025 — Registración de las contrataciones en el portal",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/CIRCULAR-4-2025-S.C.-y-G.B.-.-1.pdf"
+  },
+  "circ-scygb-5-2026": {
+   "titulo": "Circular SCyGB N° 05/2026 — Textos para los formularios del PBCP",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/06/CIRCULAR_005-26.pdf___.pdf"
+  },
+  "res-scygb-292-2026": {
+   "titulo": "Resolución SCyGB N° 292/2026 — Procedimiento digital de catalogación",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/10/RES-2026-00000292-APPSF-PEMECSLyT-SbCyGB.pdf"
+  },
+  "infografia-articulos": {
+   "titulo": "¿No encontrás un artículo en TIMBÓ? Resolvelo en 4 pasos",
+   "url": "/static/docs/timbo-compras/como-solicitar-alta-de-articulos.pdf"
+  },
+  "circ-ug-4-2025": {
+   "titulo": "Circular UG TIMBÓ N° 4/2025 — Actos administrativos",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/08/4_2025-Circular-Actos-administrativos.pdf"
+  },
+  "circ-ug-5-2024": {
+   "titulo": "Circular UG TIMBÓ N° 05/2024 — Validación de firma digital",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/11/Circular-05-Validacion-Firma-Digital-3.pdf"
+  },
+  "circ-ug-9-2026": {
+   "titulo": "Circular UG TIMBÓ N° 9/2026 (y 10/2026, que fija su vigencia) — Vista al Tribunal de Cuentas",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-9-2026-UNIDAD-DE-GESTION-TIMBO.pdf"
+  },
+  "circ-ug-11-2026": {
+   "titulo": "Circular UG TIMBÓ N° 11/2026 — Actos al TCP y carga en el SIN",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/08/Circular-11_2026-TCP-2.pdf"
+  },
+  "circ-ug-8-2025": {
+   "titulo": "Circular UG TIMBÓ N° 8/2025 — Publicación en el Boletín Oficial con enlace al SIN",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/12/Circular-N8-2025-UG-timbo-1.pdf"
+  },
+  "videos-app-timbocompras": {
+   "titulo": "Lista de videos \"APP-TimboCompras\" (lado del organismo)",
+   "url": "https://www.youtube.com/playlist?list=PLJKcMr5XTsSe33vph6nNpxnZpu8D3RsBE"
+  },
+  "videos-proveedores": {
+   "titulo": "Lista de videos \"Timbó Compras\" (lado del proveedor) y tutoriales del portal",
+   "url": "https://compras.santafe.gob.ar/tutoriales/"
+  },
+  "mesa-ayuda-compras": {
+   "titulo": "Mesa de ayuda de TIMBÓ Compras",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR-003-26.pdf"
+  },
+  "superados": {
+   "titulo": "Documentos superados que no se usan",
+   "url": "https://compras.santafe.gob.ar/normativas/"
+  },
+  "ley-13861-dec-667-2019": {
+   "titulo": "Ley 13.861 y Decreto N° 667/2019 — Contratación directa con efectores de la economía social y emprendedores (art. 116, inc. c, ap. 9)",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Decreto-N%C2%B0-667-19-art-116-inc-c-apartado-9.pdf"
+  },
+  "dec-122-2025": {
+   "titulo": "Decreto N° 122/2025 — Deja sin efecto el art. 4 del Decreto 914/18",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/DEC-2025-00000122-APPSF-PE.pdf"
+  },
+  "res-101-2019": {
+   "titulo": "Resolución SCyGB N° 101/2019 — Orden de Compra Abierta (OCA)",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-SCyGB-N%C2%B0-101-19-OCA.pdf"
+  },
+  "res-211-2018": {
+   "titulo": "Resolución N° 211/2018 — Convenio Marco",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-N%C2%B0-211-18.pdf"
+  },
+  "locaciones-inmuebles": {
+   "titulo": "Decreto N° 1178/2025 y Circular SCyGB N° 007/2025 — Locación de inmuebles",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/04/CIRCULAR_007_locaciones_1178-25.pdf.pdf"
+  },
+  "intervencion-scygb-directas": {
+   "titulo": "Disposición N° 282/2016, Decreto N° 652/2020 y Resolución SCyGB N° 114/2020 — Intervención de la SCyGB en contrataciones directas",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/D0065220.pdf"
+  },
+  "disp-226-2016": {
+   "titulo": "Disposición N° 226/2016 — Modelos de certificados de recepción definitiva",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/5_Disposicion-N%C2%B0-226.pdf"
+  },
+  "circ-ug-2-2025": {
+   "titulo": "Circular UG TIMBÓ N° 2/2025 — Nuevos trámites nativos digitales",
+   "url": "https://www.santafe.gob.ar/ms/innovacion-publica/wp-content/uploads/sites/18/2025/08/Circular-2_2025-UNIDAD-DE-GESTION-_TIMBO_-Nuevos-tramites-nativos-digitales.pdf"
+  },
+  "video-compras-directas": {
+   "titulo": "Video oficial \"Compras Directas\"",
+   "url": "https://youtu.be/IpayiPYodbU"
+  },
+  "video-capacitacion-compras-directas": {
+   "titulo": "Capacitación \"Compras directas a través de la plataforma digital\" (70 min)",
+   "url": "https://youtu.be/QH7zvgZ7sbQ"
+  },
+  "guias-proveedor": {
+   "titulo": "Guías oficiales para proveedores de TIMBÓ Compras (PDF)",
+   "url": "https://compras.santafe.gob.ar/tutoriales/"
+  },
+  "manual-firmador-web": {
+   "titulo": "Manual de usuario del Sistema Firmador Digital Web (v2.6)",
+   "url": "https://www.santafe.gob.ar/nube/index.php/s/gkeFgzt3xyX5LNS"
+  },
+  "manual-puesto-firma": {
+   "titulo": "Instalación del puesto de trabajo — Firmador Digital Web (v1.13)",
+   "url": "https://www.santafe.gob.ar/nube/index.php/s/HC5MD5nEfats8no"
+  },
+  "res-scygb-228-2018": {
+   "titulo": "Resolución SCyGB N° 228/2018 — Límite de las garantías con pagaré",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Resolucion-SCyGB-228-18-Limite-en-constitucion-de-garantias-por-pagare.pdf"
+  },
+  "compre-santafesino": {
+   "titulo": "Compre Santafesino — Ley 13.505 (modif. Leyes 13.619 y 14.295) y Decreto 549/2019",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/08/Ley_14295.pdf__DF-job_286.pdf"
+  },
+  "circ-ug-4-2024": {
+   "titulo": "Circular UG TIMBÓ N° 04/2024 — Prohibición de solicitar documentación de la que ya dispone el Estado",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/11/Circular-04-Eliminacion-de-requisitos.pdf"
+  },
+  "circ-ug-7-2025": {
+   "titulo": "Circular UG TIMBÓ N° 7/2025 — No pedir documentación que ya tiene el RPJEC",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-7_2025-Prohibicion-de-solicitar-documentacion.pdf"
+  },
+  "circ-ug-10-2026": {
+   "titulo": "Circular UG TIMBÓ N° 10/2026 — Prórroga de la Circular 9/2026",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/07/Circular-10_Determina-fecha-de-entrada-en-vigencia-de-Circular-9.pdf"
+  },
+  "circ-ug-1-2024": {
+   "titulo": "Circular UG TIMBÓ N° 1/2024 — Fin de servicios de correo de la Contratación Directa 02/23",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/05/Circular-1-2024-Unidad-de-Gestion-Timbo.docx.pdf"
+  },
+  "circ-ug-2-2024": {
+   "titulo": "Circular UG TIMBÓ N° 2/2024 — Firma digital de resoluciones ministeriales",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/09/Circular-2-UG.pdf"
+  },
+  "circ-ug-3-2024": {
+   "titulo": "Circular UG TIMBÓ N° 03/2024 — Cronograma de trámites nativos digitales",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2024/11/Circular-03-Tramites-digitales-18_11_2024.docx.pdf"
+  },
+  "circ-ug-1-2025": {
+   "titulo": "Circular UG TIMBÓ N° 1/2025 — Alcance del art. 6 del Decreto 496/25 (SIMPLE)",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/03/CIRCULAR-N1-25-UG-1.pdf"
+  },
+  "circ-ug-5-2025": {
+   "titulo": "Circular UG TIMBÓ N° 5/2025 — Registro digital de tratados, convenios y contratos",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2025/10/Circular-5_2025-Registro-Digital-Convenios.docx.pdf"
+  },
+  "circ-ug-4-2026": {
+   "titulo": "Circular UG TIMBÓ N° 4/2026 — Digitalizar trámites por Atención Virtual",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/03/Circular-4-Nueva-gestion-digital.pdf"
+  },
+  "circ-ug-5-2026": {
+   "titulo": "Circular UG TIMBÓ N° 5/2026 — Sin papel en el Ministerio de Gobierno e Innovación Pública",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/04/Circular-5-2026.pdf"
+  },
+  "circ-ug-6-2026": {
+   "titulo": "Circular UG TIMBÓ N° 6/2026 — Notificaciones y comunicaciones oficiales",
+   "url": "https://www.santafe.gob.ar/ms/timbo/wp-content/uploads/sites/68/2026/04/Circular-6-2026.pdf"
+  },
+  "dec-2233-2016": {
+   "titulo": "Decreto N° 2233/2016 — Montos y funcionarios que aprueban",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/10_Decreto-N%C2%B0-2.233-2016.pdf"
+  },
+  "dec-923-2019": {
+   "titulo": "Decreto N° 923/2019 — Publicidad de licitaciones y concursos públicos",
+   "url": "https://compras.santafe.gob.ar/wp-content/uploads/sites/87/2026/05/D0092319.pdf"
+  },
+  "dec-914-2018": {
+   "titulo": "Decreto N° 914/2018 — RUPC, controles de la URC y sistemas de gestión",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/Decreto-N%C2%B0-914-18.pdf"
+  },
+  "circ-scygb-3-2025": {
+   "titulo": "Circular SCyGB N° 003/2025 (Res. 204/2025) — Certificado de deudores alimentarios (RDAM)",
+   "url": "https://www.santafe.gob.ar/ms/compras/wp-content/uploads/sites/87/2025/10/resolucion-N-204-que-aprueba-la-Circular-N-3-.pdf"
+  }
+ }
+}

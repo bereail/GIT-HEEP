@@ -1,0 +1,52 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Gestión de procesos y circuitos — Panel{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set activo = 'inicio' %}{% include "procesos/_menu.html" %}
+<div class="admin-section-head">
+  <h1 style="margin:0">🧭 Gestión de procesos y circuitos</h1>
+</div>
+<p class="text-muted">Dos clases de circuito que no se mezclan: <b>cómo trabaja hoy el hospital</b> (sale del relevamiento con el personal) y <b>cómo funciona TIMBÓ según documentación oficial</b> (cada dato con su fuente). Solo vos podés editar.</p>
+
+<div class="pe-tarjetas">
+  {% for clase, nombre_clase in clases.items() %}
+  <section class="card pe-clase pe-clase--{{ clase }}">
+    <h2 class="pe-clase__titulo">{{ '🏥' if clase == 'hospital' else '🏛️' }} {{ nombre_clase }}</h2>
+    <p class="text-muted pe-clase__ayuda">
+      {% if clase == 'hospital' %}Lo que cuenta el personal en las reuniones. Puede tener pasos «Confirmados por el equipo», pero eso no los vuelve oficiales.{% else %}Solo lo que dicen los documentos oficiales. Lo que falta queda «Pendiente de documentación»: mejor incompleto que inventado.{% endif %}
+    </p>
+    {% for c in circuitos if c.clase == clase %}
+    <a class="pe-circuito" href="{{ url_for('procesos.editor', slug=c.slug) }}">
+      <b>{{ c.nombre }}</b>
+      <span class="text-muted">{{ resumen[c.id].nodos }} bloque{{ '' if resumen[c.id].nodos == 1 else 's' }}
+        · {{ c.versiones|length }} versión{{ '' if c.versiones|length == 1 else 'es' }}
+        {% if resumen[c.id].errores %}· <span class="pe-txt-error">{{ resumen[c.id].errores }} problema{{ '' if resumen[c.id].errores == 1 else 's' }}</span>{% endif %}
+        {% if resumen[c.id].avisos %}· {{ resumen[c.id].avisos }} para revisar{% endif %}
+      </span>
+    </a>
+    {% else %}
+    <p class="text-muted">Todavía no hay circuitos de esta clase.</p>
+    {% endfor %}
+  </section>
+  {% endfor %}
+</div>
+
+<section class="card pe-form-card" style="margin-top:18px">
+  <h2 class="section__title" style="margin-top:0">Crear un circuito nuevo</h2>
+  <form method="post" action="{{ url_for('procesos.nuevo') }}" class="admin-form pe-form-nuevo">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="admin-field"><label for="nuevo-nombre">Nombre</label>
+      <input class="input" id="nuevo-nombre" name="nombre" required maxlength="200" placeholder="Ej.: Compra de insumos de farmacia" /></div>
+    <div class="admin-field"><label for="nuevo-clase">Clase</label>
+      <select class="input" id="nuevo-clase" name="clase">
+        {% for clase, nombre_clase in clases.items() %}<option value="{{ clase }}">{{ nombre_clase }}</option>{% endfor %}
+      </select></div>
+    <div class="admin-field"><label for="nuevo-desc">Descripción (opcional)</label>
+      <textarea class="input" id="nuevo-desc" name="descripcion" rows="2" maxlength="2000"></textarea></div>
+    <button class="btn btn--primary" type="submit">Crear y abrir el editor</button>
+  </form>
+</section>
+
+<p class="text-muted" style="margin-top:14px">{{ rangos }} rangos de montos cargados · {{ sugerencias }} sugerencias registradas en las reuniones.</p>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Historial · {{ c.nombre }} — Procesos{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/procesos.css') }}" />{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% block contenido %}
+{% set activo = 'inicio' %}{% include "procesos/_menu.html" %}
+<div class="admin-section-head">
+  <h1 style="margin:0">🕘 Historial · {{ c.nombre }}</h1>
+  <a class="btn btn--sm" href="{{ url_for('procesos.editor', slug=c.slug) }}">← Volver al editor</a>
+</div>
+<p class="text-muted">Cada versión guarda el gráfico completo y la lista de cambios (antes y después). Recuperar una versión crea una versión nueva: nunca se borra nada.
+{% if c.hay_cambios_sin_version %}<br><b>Hay cambios autoguardados que todavía no están en una versión.</b>{% endif %}</p>
+
+{% for v in versiones %}
+<details class="card pe-version {{ 'pe-version--importante' if v.importante }}" {{ 'open' if loop.first }}>
+  <summary>
+    <b>Versión {{ v.numero }}</b>{% if v.importante %} <span class="pe-chip pe-chip--pend">Importante</span>{% endif %}
+    · {{ v.creado | hora_ar }} · {{ v.usuario }} · {{ v.lista_cambios | length }} cambio{{ '' if v.lista_cambios|length == 1 else 's' }}
+    {% if v.motivo %}<br><span class="text-muted">Motivo: {{ v.motivo }}</span>{% endif %}
+  </summary>
+  <div class="pe-fila" style="margin:10px 0">
+    <a class="btn btn--sm" href="{{ url_for('procesos.ver_version', slug=c.slug, numero=v.numero) }}">👁 Ver esta versión</a>
+    {% if not loop.first %}
+    <form method="post" action="{{ url_for('procesos.recuperar_version', slug=c.slug, numero=v.numero) }}" data-confirmar="¿Recuperar la versión {{ v.numero }}? Se guarda como versión nueva y lo actual queda en el historial.">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <button class="btn btn--sm" type="submit">↺ Recuperar</button>
+    </form>
+    {% endif %}
+  </div>
+  {% if v.lista_cambios %}
+  <div class="table-wrap"><table class="data-table pe-tabla-cambios pe-tabla-texto">
+    <thead><tr><th>Elemento</th><th>Qué pasó</th><th>Antes</th><th>Después</th></tr></thead>
+    <tbody>
+    {% for ch in v.lista_cambios %}
+      <tr>
+        <td><b>{{ ch.titulo }}</b>{% if ch.campos %}<br><small class="text-muted">{{ ch.campos | join(', ') }}</small>{% endif %}</td>
+        <td>{{ ch.accion }}</td>
+        <td><code class="pe-codigo">{{ ch.antes | truncate(400) }}</code></td>
+        <td><code class="pe-codigo">{{ ch.despues | truncate(400) }}</code></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% endif %}
+</details>
+{% else %}
+<p class="text-muted">Todavía no hay versiones guardadas. En el editor, «💾 Guardar versión» (Ctrl+S).</p>
+{% endfor %}
+
+<h2 class="section__title">Otros movimientos</h2>
+{% if auditoria %}
+<div class="table-wrap"><table class="data-table pe-tabla-texto">
+  <thead><tr><th>Fecha</th><th>Qué</th><th>Detalle</th></tr></thead>
+  <tbody>
+  {% for a in auditoria %}
+    <tr><td>{{ a.creado | hora_ar }}</td><td>{{ a.entidad }} · {{ a.accion }}</td><td>{{ a.despues | truncate(200) }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% else %}<p class="text-muted">Sin movimientos.</p>{% endif %}
+{% endblock %}

@@ -1,0 +1,6 @@
+<nav class="pe-menu no-imprimir" aria-label="Gestión de procesos">
+  <a class="{{ 'is-active' if activo == 'inicio' }}" href="{{ url_for('procesos.inicio') }}">🧭 Circuitos</a>
+  <a class="{{ 'is-active' if activo == 'comparar' }}" href="{{ url_for('procesos.comparar') }}">⇆ Comparación de procedimientos</a>
+  <a class="{{ 'is-active' if activo == 'montos' }}" href="{{ url_for('procesos.montos') }}">💲 Rangos de montos</a>
+  <a class="{{ 'is-active' if activo == 'relevamiento' }}" href="{{ url_for('procesos.relevamiento') }}">🗣 Presentación y sugerencias</a>
+</nav>

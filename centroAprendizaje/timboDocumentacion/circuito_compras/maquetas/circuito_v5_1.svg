@@ -1,0 +1,325 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1720 5424" width="1720" height="5424" font-family="Segoe UI, system-ui, Arial, sans-serif"><title>Circuito de compras · matriz v5.1</title><defs><marker id="pta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker></defs><rect width="1720" height="5424" fill="#ffffff"/><text x="40" y="52" font-size="28" font-weight="700" fill="#1f2937" text-anchor="start" >Circuito de compras · material de capacitación interna</text>
+<text x="40" y="80" font-size="14" font-weight="400" fill="#5b6472" text-anchor="start" >Basado solo en la matriz v5.1 (18/11/2026). No es una interpretación normativa nueva: lo PENDIENTE y lo OBSERVADO se muestra como tal.</text>
+<rect x="40" y="96" width="91.60000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="49" y="111.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO</text>
+<rect x="141.60000000000002" y="96" width="98.96000000000001" height="22" rx="11" fill="#eaf0fd" stroke="#2456c7" stroke-width="1.4"/><text x="150.60000000000002" y="111.5" font-size="11.5" font-weight="700" fill="#2456c7" text-anchor="start" >DOCUMENTADO</text>
+<rect x="250.56000000000003" y="96" width="84.24" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="259.56000000000006" y="111.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE</text>
+<rect x="344.8" y="96" width="84.24" height="22" rx="11" fill="#fdeeee" stroke="#b42318" stroke-width="1.4"/><rect x="347.3" y="98.5" width="79.24" height="17" rx="8.5" fill="none" stroke="#b42318" stroke-width="0.8"/><text x="353.8" y="111.5" font-size="11.5" font-weight="700" fill="#b42318" text-anchor="start" >OBSERVADO</text>
+<text x="445.04" y="112" font-size="12.5" font-weight="400" fill="#5b6472" text-anchor="start" >La franja de color de cada bloque muestra su estado más restrictivo.</text>
+<text x="40" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >◆ decisión</text>
+<text x="136.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >▭ proceso</text>
+<text x="225.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >⬡ 🔍 control</text>
+<text x="328.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >↯ excepción</text>
+<text x="431.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >👤 responsable</text>
+<text x="548.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >▱ formulario</text>
+<text x="658.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >► continúa en</text>
+<text x="775.0" y="136" font-size="12.5" font-weight="600" fill="#5b6472" text-anchor="start" >D1–D20: tocá para ver la ficha</text>
+<rect x="160.0" y="150" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="156" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="176.0" y="176" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >● Inicio · nace la necesidad</text>
+<rect x="174.0" y="186" width="224.08" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="183.0" y="201.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE · quién: a relevar</text>
+<path d="M440,226 L440,266" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="266" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="272" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="292" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Expediente electrónico (etapa preparatoria)</text>
+<rect x="174.0" y="302" width="341.84000000000003" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="317.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 7 ptos 6 y 11 · Dec. 2518/25</text>
+<path d="M440,342 L440,382" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="382" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="388" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="408" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Monto estimado: total con prórrogas</text>
+<a href="#d15"><rect x="174.0" y="418" width="290.32" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="433.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO D15 · Dec. 1104 art. 116.1</text></a>
+<path d="M440,458 L440,498" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<polygon points="440,498 700.0,569.0 440,640 180.0,569.0" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="2.2"/>
+<text x="440" y="552.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >◆ ¿Hay una causal de contratación</text>
+<text x="440" y="572.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >directa?</text>
+<rect x="310" y="584.0" width="179.92000000000002" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="319" y="599.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Ley 116 c</text>
+<rect x="860" y="498" width="820" height="274" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="504" width="6" height="262" rx="3" fill="#b45309"/>
+<text x="876" y="524" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >B · Urgencia o desierto</text>
+<a href="#d1"><rect x="874" y="534" width="319.76" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="883" y="549.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D1 · recorrido en TIMBÓ Compras</text></a>
+<path d="M886,564 h768 l12,12 v52 l-12,12 h-768 l-12,-12 v-52 z" fill="#fbfcfd" stroke="#7d8796" stroke-width="1.6"/>
+<rect x="874" y="570" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="890" y="590" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >🔍 Intervención previa de la SCyGB si supera $29.250.000</text>
+<a href="#d16"><rect x="888" y="600" width="238.8" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="897" y="615.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO D16 · Dec. 652/2020</text></a>
+<rect x="874" y="648" width="792" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="874" y="654" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="890" y="674" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Urgencia: ≥3 cotizaciones · desierto: mismas condiciones</text>
+<rect x="888" y="684" width="363.92" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="897" y="699.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Dec. 1104 art. 116 c · UG 8 art. 4</text>
+<rect x="874" y="732" width="325.00000000000006" height="24" rx="12" fill="#fff" stroke="#b45309" stroke-width="1.5" stroke-dasharray="5 3"/><text x="886" y="748.5" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="start" >► Cómo sigue en TIMBÓ Compras: pendiente (D1)</text>
+<path d="M700,569.0 L854,522" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="705.16" y="533.5" width="143.68" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="777.0" y="549.0" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Urgencia o desierto</text>
+<rect x="860" y="790" width="820" height="190" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="796" width="6" height="178" rx="3" fill="#1b7a45"/>
+<text x="876" y="816" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >A2 · Otra causal · por expediente</text>
+<rect x="874" y="826" width="481.68" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="841.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · causales y trámite digital · Ley 116 c · UG 2/2025</text>
+<path d="M886,856 h768 l12,12 v52 l-12,12 h-768 l-12,-12 v-52 z" fill="#fbfcfd" stroke="#7d8796" stroke-width="1.6"/>
+<rect x="874" y="862" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="890" y="882" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >🔍 Intervención de la SCyGB en ap. 4, 5 y 8</text>
+<a href="#d17"><rect x="888" y="892" width="290.32" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="897" y="907.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D17 · Disp. 282/16 sin leer</text></a>
+<rect x="874" y="940" width="171.0" height="24" rx="12" fill="#fff" stroke="#14284b" stroke-width="1.5"/><text x="886" y="956.5" font-size="12.5" font-weight="700" fill="#14284b" text-anchor="start" >► continúa en: Contrato</text>
+<path d="M820,569.0 L820,814 L854,814" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="643.44" y="802" width="170.56" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="728.72" y="817.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Otra causal (ap. 4 a 8)</text>
+<path d="M700,569.0 L820,569.0" stroke="#64748b" stroke-width="2.2" fill="none"/>
+<path d="M440,640 L440,1020" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="425.28" y="818.0" width="29.44" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="440.0" y="833.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >No</text>
+<polygon points="440,1020 700.0,1068.0 440,1116 180.0,1068.0" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="2.2"/>
+<text x="440" y="1074.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >◆ ¿Es una modalidad especial? (rama E)</text>
+<rect x="860" y="1020" width="820" height="76" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="1026" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="876" y="1046" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >E · Concurso de precios para locación (≤ $29.250.000)</text>
+<rect x="874" y="1056" width="143.12" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="1071.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · tope</text>
+<a href="#d18"><rect x="1023.12" y="1056" width="187.28" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="1032.12" y="1071.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D18 · régimen</text></a>
+<path d="M700,1068.0 L854,1044" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="701.8" y="1044.0" width="150.4" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="777.0" y="1059.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Alquiler de inmueble</text>
+<rect x="860" y="1114" width="820" height="274" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="1120" width="6" height="262" rx="3" fill="#1b7a45"/>
+<text x="876" y="1140" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >D · Etapa múltiple: la selecciona la Unidad Rectora</text>
+<a href="#d2"><rect x="874" y="1150" width="297.68" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="1165.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO D2 · Dec. 287/2026 art. 123</text></a>
+<rect x="874" y="1180" width="792" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="874" y="1186" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="890" y="1206" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Expediente + Documentos Oficiales</text>
+<rect x="888" y="1216" width="216.72" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="897" y="1231.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 8 arts. 5-6</text>
+<rect x="874" y="1264" width="792" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="874" y="1270" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="890" y="1290" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Ofertas en sobres de papel (régimen transitorio)</text>
+<rect x="888" y="1300" width="194.64000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="897" y="1315.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 8 art. 7</text>
+<rect x="1088.64" y="1300" width="356.56" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="1097.64" y="1315.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE · compatibilidad con el Dec. 2518/25</text>
+<rect x="874" y="1348" width="199.00000000000003" height="24" rx="12" fill="#fff" stroke="#14284b" stroke-width="1.5"/><text x="886" y="1364.5" font-size="12.5" font-weight="700" fill="#14284b" text-anchor="start" >► continúa en: Adjudicación</text>
+<path d="M820,1068.0 L820,1138 L854,1138" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="703.92" y="1126" width="110.08000000000001" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="758.96" y="1141.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Etapa múltiple</text>
+<rect x="860" y="1406" width="820" height="76" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="1412" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="876" y="1432" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >E · Convenio Marco</text>
+<a href="#d18"><rect x="874" y="1442" width="246.16" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="883" y="1457.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D18 · normas sin leer</text></a>
+<path d="M820,1068.0 L820,1430 L854,1430" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="703.92" y="1418" width="110.08000000000001" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="758.96" y="1433.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Convenio Marco</text>
+<rect x="860" y="1500" width="820" height="106" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="1506" width="6" height="94" rx="3" fill="#1b7a45"/>
+<text x="876" y="1526" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >E · Subasta (autoriza el Poder Ejecutivo)</text>
+<rect x="874" y="1536" width="179.92000000000002" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="1551.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Ley 116 b</text>
+<rect x="874" y="1566" width="171.0" height="24" rx="12" fill="#fff" stroke="#14284b" stroke-width="1.5"/><text x="886" y="1582.5" font-size="12.5" font-weight="700" fill="#14284b" text-anchor="start" >► continúa en: Contrato</text>
+<path d="M820,1068.0 L820,1524 L854,1524" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="750.96" y="1512" width="63.040000000000006" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="782.48" y="1527.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Subasta</text>
+<path d="M700,1068.0 L820,1068.0" stroke="#64748b" stroke-width="2.2" fill="none"/>
+<path d="M440,1116 L440,1646" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="425.28" y="1369.0" width="29.44" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="440.0" y="1384.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >No</text>
+<polygon points="440,1646 700.0,1707.0 440,1768 180.0,1707.0" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="2.2"/>
+<text x="440" y="1700.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >◆ ¿Cuánto es el monto? (montos 2026)</text>
+<rect x="310" y="1712.0" width="91.60000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="319" y="1727.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO</text>
+<text x="314" y="1752.0" font-size="11.5" font-weight="600" fill="#1b7a45" text-anchor="start" >Circ. SCyGB 01/2026 · Dec. 2233 art. 1</text>
+<rect x="860" y="1646" width="820" height="516" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="860" y="1652" width="6" height="504" rx="3" fill="#1b7a45"/>
+<text x="876" y="1672" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >A · Directa por monto (hasta $5.850.000)</text>
+<rect x="874" y="1682" width="792" height="126" rx="10" fill="#f8fafc" stroke="#d9dee7" stroke-width="1.4"/>
+<text x="890" y="1708" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >▤ Secuencia de formularios</text>
+<a href="#d3"><rect x="888" y="1718" width="282.96" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="897" y="1733.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO D3 · Dec. 1247/08 Anexo I</text></a>
+<path d="M888,1748 h50.6 l9,9 v19 h-59.6 z" fill="#fff" stroke="#14284b" stroke-width="1.3"/><text x="896" y="1766" font-size="12" font-weight="700" fill="#14284b" text-anchor="start" >CD-01</text>
+<text x="951.6" y="1766" font-size="13" font-weight="700" fill="#5b6472" text-anchor="start" >→</text>
+<path d="M967.6,1748 h164.84 l9,9 v19 h-173.84 z" fill="#fff" stroke="#14284b" stroke-width="1.3"/><text x="975.6" y="1766" font-size="12" font-weight="700" fill="#14284b" text-anchor="start" >CD-02 (según el monto)</text>
+<text x="1145.44" y="1766" font-size="13" font-weight="700" fill="#5b6472" text-anchor="start" >→</text>
+<path d="M1161.44,1748 h50.6 l9,9 v19 h-59.6 z" fill="#fff" stroke="#14284b" stroke-width="1.3"/><text x="1169.44" y="1766" font-size="12" font-weight="700" fill="#14284b" text-anchor="start" >CD-03</text>
+<text x="1225.04" y="1766" font-size="13" font-weight="700" fill="#5b6472" text-anchor="start" >→</text>
+<path d="M1241.04,1748 h50.6 l9,9 v19 h-59.6 z" fill="#fff" stroke="#14284b" stroke-width="1.3"/><text x="1249.04" y="1766" font-size="12" font-weight="700" fill="#14284b" text-anchor="start" >CD-04</text>
+<text x="890" y="1788" font-size="12" font-weight="700" fill="#7a2d2d" text-anchor="start" >↳ Rechazo: CD-05</text>
+<rect x="874" y="1816" width="792" height="298" rx="10" fill="#f8fafc" stroke="#d9dee7" stroke-width="1.4"/>
+<text x="890" y="1842" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >▤ Actores y autorizaciones (no confirmados)</text>
+<rect x="888" y="1852" width="764" height="76" rx="20" fill="#f2fbfb" stroke="#0b5f61" stroke-width="1.4"/>
+<rect x="888" y="1858" width="6" height="64" rx="3" fill="#b42318"/>
+<text x="904" y="1878" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >👤 Quién autoriza y quién adjudica</text>
+<a href="#d8"><rect x="902" y="1888" width="312.40000000000003" height="22" rx="11" fill="#fdeeee" stroke="#b42318" stroke-width="1.4"/><rect x="904.5" y="1890.5" width="307.40000000000003" height="17" rx="8.5" fill="none" stroke="#b42318" stroke-width="0.8"/><text x="911" y="1903.5" font-size="11.5" font-weight="700" fill="#b42318" text-anchor="start" >OBSERVADO D8 · fuentes de distinta fecha</text></a>
+<path d="M900,1936 h740 l12,12 v52 l-12,12 h-740 l-12,-12 v-52 z" fill="#fbfcfd" stroke="#7d8796" stroke-width="1.6"/>
+<rect x="888" y="1942" width="6" height="64" rx="3" fill="#b42318"/>
+<text x="904" y="1962" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >🔍 Comunicación al Tribunal de Cuentas</text>
+<a href="#d9"><rect x="902" y="1972" width="312.40000000000003" height="22" rx="11" fill="#fdeeee" stroke="#b42318" stroke-width="1.4"/><rect x="904.5" y="1974.5" width="307.40000000000003" height="17" rx="8.5" fill="none" stroke="#b42318" stroke-width="0.8"/><text x="911" y="1987.5" font-size="11.5" font-weight="700" fill="#b42318" text-anchor="start" >OBSERVADO D9 · fuentes de distinta fecha</text></a>
+<rect x="888" y="2020" width="764" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="888" y="2026" width="6" height="64" rx="3" fill="#b42318"/>
+<text x="904" y="2046" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Soporte (papel / digital) y presupuestos</text>
+<a href="#d10"><rect x="902" y="2056" width="113.68" height="22" rx="11" fill="#fdeeee" stroke="#b42318" stroke-width="1.4"/><rect x="904.5" y="2058.5" width="108.68" height="17" rx="8.5" fill="none" stroke="#b42318" stroke-width="0.8"/><text x="911" y="2071.5" font-size="11.5" font-weight="700" fill="#b42318" text-anchor="start" >OBSERVADO D10</text></a>
+<rect x="1021.6800000000001" y="2056" width="216.72" height="22" rx="11" fill="#eaf0fd" stroke="#2456c7" stroke-width="1.4"/><text x="1030.68" y="2071.5" font-size="11.5" font-weight="700" fill="#2456c7" text-anchor="start" >DOCUMENTADO · video oficial</text>
+<rect x="874" y="2122" width="227.00000000000003" height="24" rx="12" fill="#fff" stroke="#14284b" stroke-width="1.5"/><text x="886" y="2138.5" font-size="12.5" font-weight="700" fill="#14284b" text-anchor="start" >► continúa en: Recepción y pago</text>
+<path d="M700,1707.0 L854,1670" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="715.24" y="1676.5" width="123.52000000000001" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="777.0" y="1692.0" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Hasta $5.850.000</text>
+<path d="M440,1768 L440,1808 M255.0,1808 L625.0,1808" stroke="#64748b" stroke-width="2.2" fill="none"/>
+<path d="M255.0,1808 L255.0,1834" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<path d="M625.0,1808 L625.0,1834" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<text x="247.0" y="1800" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="end" >Hasta $58.500.000</text>
+<text x="633.0" y="1800" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="start" >Más de $58.500.000</text>
+<rect x="80.0" y="1838" width="350.0" height="214" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="80.0" y="1844" width="6" height="202" rx="3" fill="#b45309"/>
+<text x="96.0" y="1864" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >C · Privado (hasta $58.500.000)</text>
+<rect x="94.0" y="1874" width="322.0" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="94.0" y="1880" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="110.0" y="1900" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >≥5 invitaciones fehacientes, 5 días corridos</text>
+<rect x="108.0" y="1910" width="260.88" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="117.0" y="1925.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Dec. 1104 art. 121.1</text>
+<rect x="94.0" y="1958" width="322.0" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="94.0" y="1964" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="110.0" y="1984" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >¿Cuentan las invitaciones de TIMBÓ?</text>
+<a href="#d6"><rect x="108.0" y="1994" width="106.32000000000001" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="117.0" y="2009.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D6</text></a>
+<rect x="450.0" y="1838" width="350.0" height="344" rx="14" fill="#ffffff" stroke="#5b3fc4" stroke-width="2"/>
+<rect x="450.0" y="1844" width="6" height="332" rx="3" fill="#b42318"/>
+<text x="466.0" y="1864" font-size="15" font-weight="700" fill="#5b3fc4" text-anchor="start" >C · Público (más de $58.500.000)</text>
+<rect x="464.0" y="1874" width="322.0" height="122" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="464.0" y="1880" width="6" height="110" rx="3" fill="#1b7a45"/>
+<text x="480.0" y="1900" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Boletín Oficial 2 días</text>
+<rect x="478.0" y="1910" width="91.60000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="487.0" y="1925.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO</text>
+<text x="482.0" y="1950" font-size="11.5" font-weight="600" fill="#1b7a45" text-anchor="start" >Dec. 1104 art. 132.3 · Circ. 04/2026</text>
+<rect x="464.0" y="2004" width="322.0" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="464.0" y="2010" width="6" height="64" rx="3" fill="#b42318"/>
+<text x="480.0" y="2030" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Cantidad de diarios (uno o dos)</text>
+<a href="#d4"><rect x="478.0" y="2040" width="106.32000000000001" height="22" rx="11" fill="#fdeeee" stroke="#b42318" stroke-width="1.4"/><rect x="480.5" y="2042.5" width="101.32000000000001" height="17" rx="8.5" fill="none" stroke="#b42318" stroke-width="0.8"/><text x="487.0" y="2055.5" font-size="11.5" font-weight="700" fill="#b42318" text-anchor="start" >OBSERVADO D4</text></a>
+<rect x="464.0" y="2088" width="322.0" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="464.0" y="2094" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="480.0" y="2114" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >10 días corridos (20 si es internacional)</text>
+<rect x="478.0" y="2124" width="260.88" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="487.0" y="2139.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Dec. 1104 art. 132.3</text>
+<path d="M255.0,2182 L255.0,2204 L625.0,2204 L625.0,2182 M440,2204 L440,2234" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="454" y="2208" width="378.88000000000005" height="22" rx="11" fill="#fff" stroke="#d9dee7"/><text x="462" y="2223" font-size="12" font-weight="600" fill="#5b6472" text-anchor="start" >privado y público comparten el tronco de TIMBÓ Compras</text>
+<rect x="130.0" y="2234" width="620" height="30" rx="8" fill="#14284b"/><text x="440" y="2254" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1">TRONCO DE TIMBÓ COMPRAS</text>
+<rect x="160.0" y="2284" width="560" height="96" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="2290" width="6" height="84" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="2310" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Pliego</text>
+<text x="176.0" y="2332" font-size="12" font-weight="600" fill="#0b5f61" text-anchor="start" >👤 Gestor · rol TIMBÓ</text>
+<rect x="174.0" y="2340" width="194.64000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="2355.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 7 pto 10</text>
+<path d="M440,2380 L440,2416" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<path d="M172.0,2416 h536 l12,12 v72 l-12,12 h-536 l-12,-12 v-72 z" fill="#fbfcfd" stroke="#7d8796" stroke-width="1.6"/>
+<rect x="160.0" y="2422" width="6" height="84" rx="3" fill="#b45309"/>
+<text x="176.0" y="2442" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >🔍 Revisión de la Jurisdicción comitente</text>
+<text x="176.0" y="2464" font-size="12" font-weight="600" fill="#0b5f61" text-anchor="start" >👤 Jurisdicción comitente · rol TIMBÓ</text>
+<rect x="174.0" y="2472" width="135.76" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="2487.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · rol</text>
+<a href="#d13"><rect x="315.76" y="2472" width="172.56" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="324.76" y="2487.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D13 · orden</text></a>
+<path d="M440,2512 L440,2548" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<polygon points="440,2548 700.0,2629.0 440,2710 180.0,2629.0" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="2.2"/>
+<text x="440" y="2602.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >◆ ¿El Supervisor aprueba los</text>
+<text x="440" y="2622.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >formularios?</text>
+<text x="440" y="2642.0" font-size="12" font-weight="600" fill="#0b5f61" text-anchor="middle" >👤 Supervisor · rol TIMBÓ</text>
+<rect x="310" y="2654.0" width="194.64000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="319" y="2669.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 7 pto 10</text>
+<path d="M860,2599.0 h504 l16,16 v60.0 h-520 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="860" y="2605.0" width="6" height="64.0" rx="3" fill="#b45309"/>
+<text x="876" y="2625.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Rechazado: ¿qué sigue?</text>
+<a href="#d12"><rect x="874" y="2635.0" width="113.68" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="883" y="2650.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D12</text></a>
+<path d="M700,2629.0 L854,2623.0" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="762.28" y="2614.0" width="29.44" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="777.0" y="2629.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >No</text>
+<path d="M440,2710 L440,2746" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<path d="M172.0,2746 h536 l12,12 v52 l-12,12 h-536 l-12,-12 v-52 z" fill="#fbfcfd" stroke="#7d8796" stroke-width="1.6"/>
+<rect x="160.0" y="2752" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="176.0" y="2772" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >🔍 Control de pliegos de la URC: «si aplica»</text>
+<a href="#d5"><rect x="174.0" y="2782" width="282.96" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="183.0" y="2797.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D5 · alcance en hospitales</text></a>
+<path d="M440,2822 L440,2858" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="2858" width="560" height="96" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="2864" width="6" height="84" rx="3" fill="#b45309"/>
+<text x="176.0" y="2884" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Cronograma y nómina</text>
+<text x="176.0" y="2906" font-size="12" font-weight="600" fill="#0b5f61" text-anchor="start" >👤 Supervisor · rol TIMBÓ</text>
+<rect x="174.0" y="2914" width="135.76" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="2929.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · rol</text>
+<a href="#d13"><rect x="315.76" y="2914" width="312.40000000000003" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="324.76" y="2929.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D13 · orden respecto de la URC</text></a>
+<path d="M440,2954 L440,2990" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="2990" width="560" height="142" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="2996" width="6" height="130" rx="3" fill="#b42318"/>
+<text x="176.0" y="3016" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Acto que aprueba el pliego y autoriza el llamado</text>
+<text x="176.0" y="3038" font-size="12" font-weight="600" fill="#0b5f61" text-anchor="start" >👤 Firma: OBSERVADO (D7)</text>
+<a href="#d7"><rect x="174.0" y="3046" width="106.32000000000001" height="22" rx="11" fill="#fdeeee" stroke="#b42318" stroke-width="1.4"/><rect x="176.5" y="3048.5" width="101.32000000000001" height="17" rx="8.5" fill="none" stroke="#b42318" stroke-width="0.8"/><text x="183.0" y="3061.5" font-size="11.5" font-weight="700" fill="#b42318" text-anchor="start" >OBSERVADO D7</text></a>
+<text x="178.0" y="3086" font-size="11.5" font-weight="600" fill="#b42318" text-anchor="start" >Dec. 2233 art. 2 y Circ. 01/2026; sin tramos trasladados</text>
+<path d="M440,3132 L440,3168" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="3168" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="3174" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="3194" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >SIN y Tribunal de Cuentas del acto</text>
+<rect x="174.0" y="3204" width="202.0" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="3219.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 11 art. 1</text>
+<path d="M440,3244 L440,3280" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="3280" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="3286" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="3306" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Publicación (privado / público) → Consultas y circulares</text>
+<rect x="174.0" y="3316" width="91.60000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="3331.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO</text>
+<path d="M440,3356 L440,3392" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="3392" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="3398" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="3418" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Ofertas → Apertura automática</text>
+<rect x="174.0" y="3428" width="224.08" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="3443.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 7 ptos 18-19</text>
+<path d="M440,3468 L440,3504" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<polygon points="440,3504 700.0,3565.0 440,3626 180.0,3565.0" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="2.2"/>
+<text x="440" y="3558.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >◆ ¿Impugnan ofertas? (2 días hábiles)</text>
+<rect x="310" y="3570.0" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="319" y="3585.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 4.3</text>
+<path d="M860,3535.0 h504 l16,16 v60.0 h-520 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="860" y="3541.0" width="6" height="64.0" rx="3" fill="#1b7a45"/>
+<text x="876" y="3561.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Impugnación de ofertas</text>
+<rect x="874" y="3571.0" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="3586.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 4.3</text>
+<path d="M700,3565.0 L854,3559.0" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="762.28" y="3550.0" width="29.44" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="777.0" y="3565.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Sí</text>
+<path d="M440,3626 L440,3662" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="3662" width="560" height="328" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="3668" width="6" height="316" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="3688" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Evaluación</text>
+<rect x="174.0" y="3698" width="459.6" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="3713.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 7 pto 21 · Pliego 5.3 · Dec. 1104 art. 133.1</text>
+<rect x="174.0" y="3728" width="532" height="76" rx="8" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="1.4"/>
+<text x="190.0" y="3754" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >◆ ¿Subsanar?</text>
+<rect x="188.0" y="3764" width="91.60000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="3779.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO</text>
+<path d="M174.0,3812 h516 l16,16 v60 h-532 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="174.0" y="3818" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="190.0" y="3838" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Empate → mejora (≤5 %) / sorteo</text>
+<rect x="188.0" y="3848" width="91.60000000000001" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="3863.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO</text>
+<path d="M174.0,3896 h516 l16,16 v60 h-532 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="174.0" y="3902" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="190.0" y="3922" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Desierto → B</text>
+<rect x="188.0" y="3932" width="143.12" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="3947.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · paso</text>
+<a href="#d19"><rect x="337.12" y="3932" width="135.76" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="346.12" y="3947.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D19·D1</text></a>
+<path d="M440,3990 L440,4026" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="4026" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="4032" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="4052" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Preadjudicación</text>
+<rect x="174.0" y="4062" width="290.32" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="4077.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 7 pto 22 · Pliego 5.1</text>
+<path d="M440,4102 L440,4138" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<path d="M172.0,4138 h536 l12,12 v52 l-12,12 h-536 l-12,-12 v-52 z" fill="#fbfcfd" stroke="#7d8796" stroke-width="1.6"/>
+<rect x="160.0" y="4144" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="176.0" y="4164" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >🔍 Control de la preadjudicación de la URC: «si aplica»</text>
+<a href="#d5"><rect x="174.0" y="4174" width="106.32000000000001" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="183.0" y="4189.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D5</text></a>
+<path d="M440,4214 L440,4250" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<polygon points="440,4250 700.0,4321.0 440,4392 180.0,4321.0" fill="#f3f0ff" stroke="#5b3fc4" stroke-width="2.2"/>
+<text x="440" y="4304.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >◆ ¿Impugnan la preadjudicación? (2 días,</text>
+<text x="440" y="4324.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" >garantía 3 %)</text>
+<rect x="310" y="4336.0" width="253.52" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="319" y="4351.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 5.1 y 10.1.3</text>
+<path d="M860,4291.0 h504 l16,16 v60.0 h-520 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="860" y="4297.0" width="6" height="64.0" rx="3" fill="#1b7a45"/>
+<text x="876" y="4317.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Impugnación de la preadjudicación</text>
+<rect x="874" y="4327.0" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="4342.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 5.1</text>
+<path d="M700,4321.0 L854,4315.0" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="762.28" y="4306.0" width="29.44" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="777.0" y="4321.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >Sí</text>
+<path d="M440,4392 L440,4428" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="4428" width="560" height="518" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="4434" width="6" height="506" rx="3" fill="#b45309"/>
+<text x="176.0" y="4454" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Adjudicación</text>
+<rect x="174.0" y="4464" width="532" height="102" rx="20" fill="#f2fbfb" stroke="#0b5f61" stroke-width="1.4"/>
+<rect x="174.0" y="4470" width="6" height="90" rx="3" fill="#b45309"/>
+<text x="190.0" y="4490" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >👤 Firma según monto</text>
+<rect x="188.0" y="4500" width="275.6" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="4515.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · texto Dec. 2233 art. 3</text>
+<rect x="188.0" y="4526" width="297.68" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="197.0" y="4541.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE · equivalente en el hospital</text>
+<rect x="174.0" y="4574" width="532" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="174.0" y="4580" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="190.0" y="4600" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Notificación ≤10 días hábiles</text>
+<rect x="188.0" y="4610" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="4625.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 5.4</text>
+<rect x="174.0" y="4658" width="532" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="174.0" y="4664" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="190.0" y="4684" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >SIN y Tribunal de Cuentas</text>
+<rect x="188.0" y="4694" width="202.0" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="4709.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · UG 11 art. 1</text>
+<rect x="174.0" y="4742" width="532" height="102" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="174.0" y="4748" width="6" height="90" rx="3" fill="#b45309"/>
+<text x="190.0" y="4768" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Publicar en Internet</text>
+<rect x="188.0" y="4778" width="400.72" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="4793.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · público · Ley 132; Dec. 1104 art. 132.4</text>
+<a href="#d11"><rect x="188.0" y="4804" width="187.28" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="197.0" y="4819.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D11 · privado</text></a>
+<rect x="174.0" y="4852" width="532" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="174.0" y="4858" width="6" height="64" rx="3" fill="#1b7a45"/>
+<text x="190.0" y="4878" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="start" >Vale si la adjudicación supera hasta 20 % el máximo</text>
+<a href="#d15"><rect x="188.0" y="4888" width="290.32" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="197.0" y="4903.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO D15 · Dec. 1104 art. 116.1</text></a>
+<path d="M440,4946 L440,4982" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="4982" width="560" height="98" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="4988" width="6" height="86" rx="3" fill="#1b7a45"/>
+<text x="176.0" y="5008" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Contrato: orden de compra (10 días corridos) · garantía de fiel</text>
+<text x="176.0" y="5030" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >cumplimiento (5 días)</text>
+<rect x="174.0" y="5040" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="5055.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 5.6</text>
+<path d="M860,5001.0 h504 l16,16 v60.0 h-520 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="860" y="5007.0" width="6" height="64.0" rx="3" fill="#1b7a45"/>
+<text x="876" y="5027.0" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Se deja sin efecto → siguiente en el orden de mérito</text>
+<rect x="874" y="5037.0" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="5052.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 5.6</text>
+<path d="M720.0,5031.0 L854,5025.0" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/><rect x="748.76" y="5016.0" width="76.48" height="22" rx="11" fill="#fff" stroke="#5b3fc4" stroke-width="1.2"/><text x="787.0" y="5031.5" font-size="12" font-weight="700" fill="#5b3fc4" text-anchor="middle" >No cumple</text>
+<path d="M440,5080 L440,5116" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="160.0" y="5116" width="560" height="76" rx="12" fill="#ffffff" stroke="#d9dee7" stroke-width="1.6"/>
+<rect x="160.0" y="5122" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="176.0" y="5142" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >Recepción provisoria → definitiva y certificado → factura → pago</text>
+<rect x="174.0" y="5152" width="157.84" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="183.0" y="5167.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · reglas</text>
+<rect x="337.84000000000003" y="5152" width="231.44" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="346.84000000000003" y="5167.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE · sistema y soporte</text>
+<path d="M440,5192 L440,5228" stroke="#64748b" stroke-width="2.2" fill="none" marker-end="url(#pta)"/>
+<rect x="330" y="5228" width="220" height="44" rx="12" fill="#14284b"/><text x="440" y="5256" font-size="17" font-weight="700" fill="#fff" text-anchor="middle" >■ FIN</text>
+<text x="860" y="5216" font-size="13" font-weight="700" fill="#5b6472" text-anchor="start" >Fuera de la línea:</text>
+<path d="M860,5228 h624 l16,16 v60 h-640 z" fill="#fffaf5" stroke="#9a6a1c" stroke-width="1.6" stroke-dasharray="7 3"/>
+<rect x="860" y="5234" width="6" height="64" rx="3" fill="#b45309"/>
+<text x="876" y="5254" font-size="15" font-weight="700" fill="#1f2937" text-anchor="start" >↯ Revocación del llamado, en cualquier momento antes del contrato</text>
+<rect x="874" y="5264" width="187.28" height="22" rx="11" fill="#e9f6ee" stroke="#1b7a45" stroke-width="1.4"/><text x="883" y="5279.5" font-size="11.5" font-weight="700" fill="#1b7a45" text-anchor="start" >VERIFICADO · Pliego 5.5</text>
+<a href="#d20"><rect x="1067.28" y="5264" width="393.36" height="22" rx="11" fill="#fff6ea" stroke="#b45309" stroke-width="1.4" stroke-dasharray="4 3"/><text x="1076.28" y="5279.5" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="start" >PENDIENTE D20 · ¿es el «sin efecto» del Supervisor?</text></a>
+<text x="40" y="5394" font-size="13" font-weight="500" fill="#5b6472" text-anchor="start" >D14 (sincronización del mapa público) y el detalle de cada discrepancia están en las fichas complementarias.</text></svg>

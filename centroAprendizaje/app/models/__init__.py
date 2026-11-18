@@ -10,6 +10,14 @@ from app.models.evento_uso import EventoUso
 from app.models.feedback import Feedback, CATEGORIAS_FEEDBACK
 from app.models.equivalencia_articulo import EquivalenciaArticulo, NIVELES_CONFIANZA
 from app.models.revision_nomenclador import ObservacionHistorial, ObservacionNomenclador, RevisorNomenclador
+from app.models.proceso import (
+    AuditoriaProceso,
+    Circuito,
+    CircuitoVersion,
+    ComentarioCircuito,
+    RangoMonto,
+    SugerenciaRelevamiento,
+)
 
 __all__ = [
     "Tema",
@@ -31,4 +39,10 @@ __all__ = [
     "RevisorNomenclador",
     "ObservacionNomenclador",
     "ObservacionHistorial",
+    "Circuito",
+    "CircuitoVersion",
+    "ComentarioCircuito",
+    "RangoMonto",
+    "SugerenciaRelevamiento",
+    "AuditoriaProceso",
 ]
