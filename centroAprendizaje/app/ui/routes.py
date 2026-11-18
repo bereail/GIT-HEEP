@@ -298,8 +298,12 @@ def _buscar_en_otros_temas(tema, consulta, minimo, puntaje_local=0):
     Si la pregunta nombra ese sistema, alcanza con que allá coincida más."""
     mejor = None
     for otro in Tema.query.filter(Tema.activo.is_(True), Tema.id != tema.id).all():
+        # El nomenclador son nombres de artículos del depósito, no contenido
+        # informativo: un nombre de producto que coincide por casualidad
+        # ("pase" con "CAJA PASE 100X100X70") no debe mandar a otro tema.
+        indice = [e for e in buscador.construir_indice(otro) if e["kind"] != "Nomenclador"]
         resultados = buscador.buscar_con_puntaje(
-            buscador.construir_indice(otro), consulta, limite=1, ignorar=_palabras_del_nombre(otro),
+            indice, consulta, limite=1, ignorar=_palabras_del_nombre(otro),
             premiar_titulo_exacto=False,
         )
         minimo_otro = minimo
