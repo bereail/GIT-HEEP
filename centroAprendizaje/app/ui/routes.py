@@ -151,6 +151,22 @@ def ver_glosario(tema_slug):
 @ui_bp.route("/temas/<tema_slug>/equivalencias")
 def ver_equivalencias(tema_slug):
     tema = _tema_o_404(tema_slug)
+    items = EquivalenciaArticulo.query.filter_by(tema_id=tema.id).all()
+    origenes = sorted({e.origen for e in items if e.origen})
+    bodegas = sorted({e.bodega for e in items if e.bodega})
+    actualizado_en = max((e.creado_en for e in items if e.creado_en), default=None)
+    return render_template(
+        "equivalencias.html", tema=tema, total=len(items), origenes=origenes,
+        bodegas=bodegas, actualizado_en=actualizado_en,
+    )
+
+
+@ui_bp.route("/temas/<tema_slug>/equivalencias.json")
+def equivalencias_json(tema_slug):
+    # Son muchos miles de filas (el nomenclador interno completo del
+    # hospital): se sirven aparte, no embebidas en el HTML, para no
+    # bloquear la carga de la página en una conexión mala.
+    tema = _tema_o_404(tema_slug)
     items = EquivalenciaArticulo.query.filter_by(tema_id=tema.id).order_by(
         EquivalenciaArticulo.nombre_interno
     ).all()
@@ -163,14 +179,13 @@ def ver_equivalencias(tema_slug):
             "confianza": e.confianza,
             "origen": e.origen or "",
             "notas": e.notas or "",
+            "bodega": e.bodega or "",
+            "codigo_articulo": e.codigo_articulo or "",
+            "codigo_interno": e.codigo_interno or "",
         }
         for e in items
     ]
-    origenes = sorted({e.origen for e in items if e.origen})
-    actualizado_en = max((e.creado_en for e in items if e.creado_en), default=None)
-    return render_template(
-        "equivalencias.html", tema=tema, datos=datos, origenes=origenes, actualizado_en=actualizado_en
-    )
+    return jsonify(datos)
 
 
 @ui_bp.route("/temas/<tema_slug>/progreso")

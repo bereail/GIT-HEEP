@@ -39,6 +39,9 @@ class EquivalenciaArticulo(db.Model):
     confianza = db.Column(db.String(20), default="dudosa")  # ver NIVELES_CONFIANZA
     origen = db.Column(db.String(200))  # ej. "Pedido 1984 - Microbiología"
     notas = db.Column(db.Text)
+    bodega = db.Column(db.String(100), index=True)  # = centro de pedido (misma tabla en el sistema del HEEP)
+    codigo_articulo = db.Column(db.String(40), index=True)  # código corto del sistema de compras (ej. "M369")
+    codigo_interno = db.Column(db.String(20), index=True)  # id numérico del sistema de compras (ej. "412")
 
     creado_en = db.Column(db.DateTime, default=_ahora)
 

@@ -6,23 +6,39 @@
   <h1 class="rev-titulo">Artículos para confirmar</h1>
   <p class="rev-bajada">Mirá los dos lados y respondé: <b>¿Son realmente el mismo artículo?</b> <b>✓ Confirmar</b> si son el mismo, <b>✗ No coincide</b> si son distintos, o <b>✎ Editar</b> para escribir algo. Se guarda solo.</p>
 
-  <div class="val-tiles" role="radiogroup" aria-label="Qué artículos ver">
-    <button type="button" class="val-tile val-tile--pend is-active" data-filtro="pendientes" role="radio" aria-checked="true"><b id="val-n-pend">{{ items | length - revisados }}</b><span>Por revisar</span></button>
-    <button type="button" class="val-tile val-tile--ok" data-filtro="revisados" role="radio" aria-checked="false"><b id="val-n-rev">{{ revisados }}</b><span>Revisados</span></button>
-    <button type="button" class="val-tile" data-filtro="todos" role="radio" aria-checked="false"><b>{{ items | length }}</b><span>Todos</span></button>
-  </div>
   <div class="val-progreso" aria-hidden="true"><span id="val-barra" style="width: {{ ((100 * revisados / (items | length)) | round | int) if items else 0 }}%"></span></div>
 
   <div class="val-controles">
     <div class="input-wrap val-buscar"><span class="input-wrap__icon">🔎</span><input class="input" type="search" id="val-buscar" placeholder="Buscar artículo o código…" aria-label="Buscar artículo o código" autocomplete="off" /></div>
+    {% if bodegas|length > 1 %}
+    <select class="input" id="val-bodega" aria-label="Filtrar por bodega o centro de pedido" style="max-width:220px">
+      <option value="">Todas las bodegas</option>
+      {% for b in bodegas %}
+      <option value="{{ b }}">{{ b }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
     <a class="val-descargar" href="{{ url_for('revision.exportar_mias') }}">⬇️ Descargar mis revisiones (Excel)</a>
   </div>
-  <div class="val-cuenta-fila"><div class="val-cuenta" id="val-cuenta" aria-live="polite"></div>
-  <nav class="val-paginas" aria-label="Páginas" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
 
-  <ol class="val-lista" id="val-lista"></ol>
-  <div class="empty-state" id="val-vacio" hidden></div>
-  <div class="val-pie"><nav class="val-paginas" aria-label="Páginas" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
+  <div class="val-cols">
+    <section class="val-col" aria-labelledby="val-tit-pend">
+      <h2 class="val-col__tit val-col__tit--pend" id="val-tit-pend"><b id="val-n-pend">{{ items | length - revisados }}</b> Por revisar</h2>
+      <div class="val-cuenta-fila"><div class="val-cuenta" id="val-cuenta-pend" aria-live="polite"></div>
+      <nav class="val-paginas" data-col="pend" aria-label="Páginas de por revisar" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
+      <ol class="val-lista" id="val-lista-pend"></ol>
+      <div class="empty-state" id="val-vacio-pend" hidden></div>
+      <div class="val-pie"><nav class="val-paginas" data-col="pend" aria-label="Páginas de por revisar" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
+    </section>
+    <section class="val-col" aria-labelledby="val-tit-rev">
+      <h2 class="val-col__tit val-col__tit--ok" id="val-tit-rev"><b id="val-n-rev">{{ revisados }}</b> Revisados</h2>
+      <div class="val-cuenta-fila"><div class="val-cuenta" id="val-cuenta-rev" aria-live="polite"></div>
+      <nav class="val-paginas" data-col="rev" aria-label="Páginas de revisados" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
+      <ol class="val-lista" id="val-lista-rev"></ol>
+      <div class="empty-state" id="val-vacio-rev" hidden></div>
+      <div class="val-pie"><nav class="val-paginas" data-col="rev" aria-label="Páginas de revisados" hidden><button type="button" class="btn btn--ghost btn--sm" data-mover="-1" title="Ver los 15 anteriores (flecha ←)">← Anteriores</button><span class="val-paginas__texto"></span><button type="button" class="btn btn--ghost btn--sm" data-mover="1" title="Ver los 15 siguientes (flecha →)">Siguientes →</button></nav></div>
+    </section>
+  </div>
 </div>
 
 <script type="application/json" id="val-datos">{{ {"items": items, "etiquetas": validaciones} | tojson }}</script>

@@ -2538,6 +2538,16 @@
       "verificado": true
     },
     {
+      "slug": "rectificar-caratula-expediente",
+      "situacion": "¿Cómo rectifico o corrijo la carátula de un expediente?",
+      "descripcion": "Ya tenés el expediente caratulado (y puede que ya le hayas dado vista a otra oficina), pero un dato quedó mal: el motivo, el código de trámite, etc.",
+      "causa": "La carátula no se puede corregir ni \"subsanar\". Ese botón solo sirve para documentos cargados dentro del expediente, nunca para la carátula.",
+      "solucion": "No hay un botón para esto. Llamá o escribile a la Mesa de Entradas de tu jurisdicción (la oficina que te dio la carátula) y contales el error — ellos te dicen cómo seguir en tu caso. Una forma habitual es agregar una providencia dentro del mismo expediente que aclare cuál es el dato correcto, sin borrar nada.",
+      "tutorial_categoria_slug": "expedientes",
+      "tutorial_slug": "subsanar-documento",
+      "verificado": true
+    },
+    {
       "slug": "pase-a-la-oficina-equivocada",
       "situacion": "Mandé el expediente a la oficina equivocada",
       "descripcion": "Hiciste un pase y te diste cuenta de que elegiste mal la oficina de destino.",
@@ -3391,6 +3401,20 @@
       ],
       "tutorial_categoria_slug": "primeros-pasos",
       "tutorial_slug": "que-es-timbo"
+    },
+    {
+      "slug": "rectificar-caratula-expediente",
+      "pregunta": "¿Cómo rectifico la carátula de un expediente?",
+      "keywords": [
+        "rectificar caratula",
+        "rectifico la caratula",
+        "corregir caratula",
+        "error en la caratula",
+        "modificar caratula",
+        "caratula mal cargada"
+      ],
+      "tutorial_categoria_slug": "expedientes",
+      "tutorial_slug": "subsanar-documento"
     }
   ],
   "quickstart_steps": [
