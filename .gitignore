@@ -1,4 +1,15 @@
-# Fuentes de datos externas usadas para generar el nomenclador y otros
-# materiales de trabajo: son archivos de trabajo local, no se versionan.
+# Entorno virtual
+.venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+
+# Base de datos local
+instance/
+*.sqlite3
+*.sqlite3.bak
+
+# Fuentes externas de trabajo
 /nomencladorDb/
 /infoTimbo/
