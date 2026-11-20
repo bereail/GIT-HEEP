@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisión de artículos — {{ datos.bodega }}</title>
+<style>
+{{ css|safe }}
+</style>
+</head>
+<body>
+<header class="rs-cabecera">
+  <div class="rs-cabecera__titulo">
+    <p class="rs-etiqueta">Centro de Aprendizaje TIMBÓ · HEEP</p>
+    <h1>Revisión de artículos por servicio</h1>
+    <p class="rs-sub">Bodega: <strong>{{ datos.bodega }}</strong> · {{ datos['items']|length }} artículos · nomenclador del {{ datos.nomencladorActualizado or "—" }}</p>
+  </div>
+  <div class="rs-avance" aria-live="polite">
+    <div class="rs-avance__barra"><span id="rs-avance-relleno"></span></div>
+    <p><strong id="rs-revisados">0</strong> revisados · <strong id="rs-pendientes">0</strong> pendientes</p>
+  </div>
+</header>
+
+<main class="rs-main">
+
+  <section class="rs-panel rs-guardado" aria-labelledby="rs-guardado-titulo">
+    <h2 id="rs-guardado-titulo">💾 Dónde se guarda tu trabajo</h2>
+    <ul class="rs-capas">
+      <li id="rs-capa-navegador"><span class="rs-punto"></span><b>En este navegador:</b> <span class="rs-capa-estado">todavía sin respuestas</span></li>
+      <li id="rs-capa-archivo"><span class="rs-punto"></span><b>Archivo de trabajo en la PC:</b> <span class="rs-capa-estado">sin elegir</span>
+        <button type="button" class="rs-btn rs-btn--chico" id="rs-archivo-nuevo">Crear archivo de trabajo</button>
+        <button type="button" class="rs-btn rs-btn--chico rs-btn--claro" id="rs-archivo-abrir">Abrir uno existente</button>
+        <button type="button" class="rs-btn rs-btn--chico" id="rs-archivo-reconectar" hidden>Reconectar</button>
+      </li>
+      <li id="rs-capa-copia"><span class="rs-punto"></span><b>Copia de seguridad:</b> <span class="rs-capa-estado">nunca descargada</span>
+        <button type="button" class="rs-btn rs-btn--chico" id="rs-exportar">Descargar copia</button>
+        <label class="rs-btn rs-btn--chico rs-btn--claro">Recuperar una copia<input type="file" id="rs-importar" accept=".json,application/json" hidden></label>
+      </li>
+    </ul>
+    <p class="rs-aviso" id="rs-aviso-guardado"></p>
+  </section>
+
+  <div id="rs-alertas" aria-live="assertive"></div>
+
+  <section class="rs-panel rs-ident" aria-labelledby="rs-ident-titulo">
+    <h2 id="rs-ident-titulo">👤 Responsable de la revisión</h2>
+    <div class="rs-campos">
+      <label>Servicio<input type="text" id="rs-servicio" autocomplete="organization" maxlength="120"></label>
+      <label>Bodega<input type="text" value="{{ datos.bodega }}" readonly></label>
+      <label>Nombre <span class="rs-oblig">*</span><input type="text" id="rs-nombre" autocomplete="given-name" maxlength="80"></label>
+      <label>Apellido <span class="rs-oblig">*</span><input type="text" id="rs-apellido" autocomplete="family-name" maxlength="80"></label>
+    </div>
+    <p class="rs-fechas">Inicio: <span id="rs-f-inicio">—</span> · Última modificación: <span id="rs-f-mod">—</span> · Finalización: <span id="rs-f-fin">—</span></p>
+  </section>
+
+  <section class="rs-panel rs-como" aria-labelledby="rs-como-titulo">
+    <h2 id="rs-como-titulo">📋 Cómo se usa</h2>
+    <ol>
+      <li>Completá tu nombre y apellido.</li>
+      <li>Revisá los artículos por sección, en orden: primero los que <b>faltan cargar</b>, después los que <b>necesitan confirmación</b> y al final los que <b>ya existen</b>.</li>
+      <li>En cada artículo elegí un resultado. Si hace falta, escribí una observación. <b>Cada respuesta se guarda sola.</b></li>
+      <li>Podés cerrar y seguir otro día: al abrir este mismo archivo, la planilla retoma donde dejaste.</li>
+      <li>Al terminar, tocá <b>Finalizar revisión</b> para preparar el archivo de devolución.</li>
+    </ol>
+  </section>
+
+  <nav class="rs-secciones" aria-label="Secciones">
+    <button type="button" class="rs-tab rs-tab--1" data-seccion="1"><span class="rs-tab__num">1</span><span class="rs-tab__txt">Artículos que faltan cargar</span><span class="rs-tab__cuenta" data-cuenta="1"></span></button>
+    <button type="button" class="rs-tab rs-tab--2" data-seccion="2"><span class="rs-tab__num">2</span><span class="rs-tab__txt">Artículos que necesitan confirmación</span><span class="rs-tab__cuenta" data-cuenta="2"></span></button>
+    <button type="button" class="rs-tab rs-tab--3" data-seccion="3"><span class="rs-tab__num">3</span><span class="rs-tab__txt">Artículos que ya existen y deben verificarse</span><span class="rs-tab__cuenta" data-cuenta="3"></span></button>
+  </nav>
+
+  <section class="rs-panel rs-instrucciones" id="rs-instrucciones" aria-live="polite"></section>
+
+  <div class="rs-filtros">
+    <input type="search" id="rs-buscar" placeholder="Buscar por nombre o código…" aria-label="Buscar por nombre o código" autocomplete="off">
+    <select id="rs-estado" aria-label="Filtrar por resultado">
+      <option value="">Todos</option>
+      <option value="pendiente">Pendientes</option>
+      <option value="revisado">Revisados</option>
+      <option value="correcto">Correcto / corresponde</option>
+      <option value="no_corresponde">No corresponde</option>
+      <option value="no_necesario">No necesario</option>
+      <option value="aclaracion">Requiere aclaración</option>
+    </select>
+    <button type="button" class="rs-btn rs-btn--claro" id="rs-ir-pendiente">Ir al próximo pendiente</button>
+  </div>
+
+  <p class="rs-resultados" id="rs-resultados"></p>
+  <div id="rs-lista" class="rs-lista"></div>
+
+  <nav class="rs-paginador" aria-label="Páginas">
+    <button type="button" class="rs-btn rs-btn--claro" id="rs-ant" aria-label="Página anterior">←</button>
+    <span id="rs-pagina"></span>
+    <button type="button" class="rs-btn rs-btn--claro" id="rs-sig" aria-label="Página siguiente">→</button>
+  </nav>
+
+  <section class="rs-panel rs-final" aria-labelledby="rs-final-titulo">
+    <h2 id="rs-final-titulo">✅ Finalizar la revisión</h2>
+    <label class="rs-obs-general">Observaciones generales (opcional)<textarea id="rs-obs-general" rows="3" maxlength="4000"></textarea></label>
+    <div id="rs-resumen" class="rs-resumen"></div>
+    <button type="button" class="rs-btn rs-btn--grande" id="rs-finalizar">Finalizar revisión y preparar archivo de devolución</button>
+    <p class="rs-nota">El archivo de devolución queda en tu PC. Cómo se entrega se va a definir más adelante.</p>
+  </section>
+</main>
+
+<div class="rs-modal" id="rs-modal" hidden>
+  <div class="rs-modal__caja" role="dialog" aria-modal="true" aria-labelledby="rs-modal-titulo">
+    <h2 id="rs-modal-titulo"></h2>
+    <div id="rs-modal-cuerpo"></div>
+    <div class="rs-modal__acciones" id="rs-modal-acciones"></div>
+  </div>
+</div>
+
+<script type="application/json" id="rs-datos">{{ datos|tojson }}</script>
+<script>
+{{ js|safe }}
+</script>
+</body>
+</html>

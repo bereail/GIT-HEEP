@@ -2514,7 +2514,7 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Si el bien o el servicio que necesitás no está en el catálogo, se pide el alta. El camino depende de qué sea: los medicamentos y descartables van por Farmacia; todo lo demás, con el formulario CAByS."
+              "text": "Si el bien o el servicio que necesitás no está en el catálogo, se pide el alta. El camino depende de qué sea: los medicamentos y descartables del área Farmacia se piden a través del Servicio de Farmacia del hospital; todo lo demás, con el formulario CAByS."
             },
             {
               "type": "diagram",
@@ -2527,7 +2527,7 @@
               "rows": [
                 [
                   "Medicamentos y productos descartables (área Farmacia)",
-                  "Pedido formal a la Dirección Provincial de Farmacia, que crea el artículo en el sistema SUFYD. De ahí pasa solo a TIMBÓ."
+                  "A través del Servicio de Farmacia de tu hospital (guía oficial del Ministerio de Salud, al final de esta lección)."
                 ],
                 [
                   "Artículos generales y lugares de entrega",
@@ -2605,12 +2605,12 @@
               "type": "multiple-choice",
               "question": "Falta un medicamento en el catálogo. ¿Cómo se pide?",
               "options": [
-                "A la Dirección Provincial de Farmacia",
+                "A través del Servicio de Farmacia del hospital",
                 "Con el formulario CAByS",
                 "Por mail a la mesa de ayuda"
               ],
               "correctIndex": 0,
-              "explanation": "Medicamentos y descartables los da de alta Farmacia (en SUFYD). El CAByS es para artículos generales."
+              "explanation": "La guía del Ministerio de Salud indica que los medicamentos y descartables del área Farmacia se piden a través del Servicio de Farmacia del efector. El CAByS es para los demás bienes y servicios."
             }
           ]
         }
@@ -2872,7 +2872,7 @@
     },
     {
       "termino": "SIPAF",
-      "definicion": "Sistema Informático Provincial de Administración Financiera. De él depende el catálogo (nomenclador) de artículos: si se cae, TIMBÓ Compras no deja cargar artículos.",
+      "definicion": "El sistema financiero de la Provincia. Según la Res. SCyGB 292/2026, la catalogación de bienes y servicios se hace en TIMBÓ Compras y en el módulo de Contrataciones y Gestión de Bienes del SIPAF.",
       "modulo": "Gestión interna"
     },
     {

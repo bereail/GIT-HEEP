@@ -280,9 +280,9 @@
           "pregunta": "No está en el catálogo. Es un medicamento: ¿cómo se pide el alta?",
           "opciones": [
             {
-              "texto": "Por el Servicio de Farmacia del efector, que lo eleva a la Dirección Provincial de Farmacia (SUFYD)",
+              "texto": "Por el Servicio de Farmacia del efector",
               "correcta": true,
-              "explicacion": "Medicamentos y descartables se piden por el Servicio de Farmacia → Dirección Provincial de Farmacia → SUFYD → TIMBÓ.",
+              "explicacion": "Así lo indica la guía del Ministerio de Salud. Lo que pasa después (Dirección Provincial de Farmacia, SUFYD) está pendiente de confirmar.",
               "fuentes": [
                 "infografia-articulos"
               ]

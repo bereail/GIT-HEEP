@@ -1,7 +1,7 @@
 import secrets
 from datetime import datetime, timedelta, timezone
 
-from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, url_for
+from flask import Blueprint, Response, abort, flash, jsonify, redirect, render_template, request, url_for
 
 from app import csrf, recursos
 from app.extensions import db
@@ -9,7 +9,7 @@ from app.models import Categoria, Consulta, EquivalenciaArticulo, Feedback, Mens
 from app.models.consulta import ESTADOS_CONSULTA, TIPOS_CONSULTA
 from app.models.feedback import CATEGORIAS_FEEDBACK
 from app.seguridad import limitar
-from app.services import buscador, estadisticas, notificaciones
+from app.services import buscador, estadisticas, notificaciones, revision_servicio
 
 
 # Por debajo de este puntaje (ver buscador.buscar_con_puntaje) el chatbot no
@@ -158,7 +158,28 @@ def ver_equivalencias(tema_slug):
     return render_template(
         "equivalencias.html", tema=tema, total=len(items), origenes=origenes,
         bodegas=bodegas, actualizado_en=actualizado_en,
+        bodegas_revision=revision_servicio.bodegas_revisables(bodegas),
     )
+
+
+@ui_bp.route("/temas/<tema_slug>/equivalencias/revision-servicio")
+def descargar_revision_servicio(tema_slug):
+    """Planilla HTML para que un servicio revise los artículos de su bodega.
+    Es un archivo autónomo: guarda las respuestas en la PC de quien revisa y
+    no le escribe nada a este servidor."""
+    tema = _tema_o_404(tema_slug)
+    bodega = (request.args.get("bodega") or "").strip()
+    datos = revision_servicio.armar_planilla(tema, bodega)
+    if not datos:
+        abort(404)
+    html = render_template(
+        "revision_servicio/planilla.html", datos=datos,
+        css=revision_servicio.recurso_estatico("css/revision_servicio.css"),
+        js=revision_servicio.recurso_estatico("js/revision_servicio.js"),
+    )
+    respuesta = Response(html, mimetype="text/html")
+    respuesta.headers["Content-Disposition"] = f'attachment; filename="{revision_servicio.nombre_archivo(bodega)}"'
+    return respuesta
 
 
 @ui_bp.route("/temas/<tema_slug>/equivalencias.json")

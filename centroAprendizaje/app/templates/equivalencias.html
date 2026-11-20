@@ -13,6 +13,22 @@
   {% endif %}
 </div>
 
+{% if bodegas_revision %}
+<section class="card equiv-servicios" aria-labelledby="equiv-servicios-titulo">
+  <p class="equiv-howto__title" id="equiv-servicios-titulo">🏥 Servicios: revisión de artículos por servicio</p>
+  <p>Cada servicio puede revisar los artículos de su bodega y dejar documentado su resultado. Elegí la bodega y descargá la planilla: se abre en Chrome, guarda cada respuesta sola y se puede completar en varias sesiones.</p>
+  <form class="equiv-controls" method="get" action="{{ url_for('ui.descargar_revision_servicio', tema_slug=tema.slug) }}">
+    <select class="input" name="bodega" aria-label="Bodega del servicio" required style="max-width:320px">
+      <option value="">Elegí la bodega…</option>
+      {% for b in bodegas_revision %}
+      <option value="{{ b }}">{{ b }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn--primary">Descargar planilla de revisión</button>
+  </form>
+</section>
+{% endif %}
+
 <div class="equiv-summary" id="equiv-summary">
   <button type="button" class="equiv-tile equiv-tile--ok" data-filtro="alta">
     <span class="equiv-tile__num" id="num-alta">—</span>
@@ -73,7 +89,7 @@
   <div class="equiv-steps">
     <div class="equiv-step"><span class="equiv-step__num">1</span><div>Volvé a buscarlo en el <a href="https://www.santafe.gob.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a> con sinónimos o términos más generales.</div></div>
     <div class="equiv-step"><span class="equiv-step__num">2</span><div>Si es <b>medicamento o descartable de Farmacia</b>: pedilo a través del Servicio de Farmacia del efector. Si es <b>otro bien o servicio</b>: pedilo directo en TIMBÓ.</div></div>
-    <div class="equiv-step"><span class="equiv-step__num">3</span><div><b>Farmacia:</b> Servicio de Farmacia → Dirección Provincial de Farmacia → SUFYD → TIMBÓ.<br><b>Otros bienes:</b> en TIMBÓ, Documentos Oficiales → Gestión → Nuevo Documento Oficial → formulario "Timbó Compras: Alta de bienes y servicios CAByS".</div></div>
+    <div class="equiv-step"><span class="equiv-step__num">3</span><div><b>Farmacia:</b> pedilo a través del Servicio de Farmacia del hospital (ver la guía oficial, abajo).<br><b>Otros bienes:</b> en TIMBÓ, Documentos Oficiales → Gestión → Nuevo Documento Oficial → formulario "Timbó Compras: Alta de bienes y servicios CAByS".</div></div>
     <div class="equiv-step"><span class="equiv-step__num">4</span><div>Si estás cargando varios artículos, <b>"Agregar" (en cada línea) solo los suma a la tabla en pantalla, todavía no guarda nada.</b> Para no perder lo cargado si cerrás, tocá el botón <b>"Guardar"</b> general del formulario — vas a ver "Éxito al guardar el formulario como borrador" — y retomalo después desde tu bandeja de pendientes, antes de mandarlo a firmar.</div></div>
   </div>
   <p class="equiv-howto__link">
