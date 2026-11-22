@@ -13,3 +13,7 @@ instance/
 # Fuentes externas de trabajo
 /nomencladorDb/
 /infoTimbo/
+# Historiales de WhatsApp y documentos de trabajo: nunca al repositorio
+/timboDocumentacion/historialWp/
+/timboDocumentacion/dudasPlanteada/*.docx
+/timboDocumentacion/timboComprasTutoriaImg/

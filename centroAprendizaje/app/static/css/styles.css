@@ -2114,3 +2114,62 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .val-editor { display: flex; gap: 8px; align-items: flex-end; margin-top: 8px; }
 .val-editor .val-obs { flex: 1; margin-top: 0; }
 .val-editor .val-guardar { flex: none; }
+
+/* Panel: llaves de la revisión por servicio (/admin/servicios) */
+.sv-llaves { display: flex; flex-direction: column; gap: 12px; }
+.sv-llave { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; background: var(--surface); }
+.sv-llave--baja { opacity: .65; }
+.sv-llave__cab { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
+.sv-llave__nombre { font-size: 1.05rem; }
+.sv-llave__estado { text-align: right; font-size: .9rem; }
+.sv-llave__avance { margin: 10px 0 8px; font-size: .92rem; }
+.sv-barra { height: 8px; border-radius: 6px; background: var(--surface-sunken, #eef1f5); overflow: hidden; margin-bottom: 6px; max-width: 420px; }
+.sv-barra span { display: block; height: 100%; background: var(--accent); }
+.sv-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.sv-chip { font-size: .8rem; padding: 2px 8px; border-radius: 10px; background: var(--surface-sunken, #eef1f5); color: var(--text-muted); }
+.sv-chip--correcto { background: var(--success-soft); color: var(--success); }
+.sv-chip--no_corresponde { background: var(--danger-soft); color: var(--danger); }
+.sv-chip--aclaracion { background: var(--warning-soft); color: var(--warning); }
+.sv-llave__acciones { display: flex; flex-wrap: wrap; gap: 6px; }
+.sv-llave__acciones form { margin: 0; }
+.sv-llave__detalle { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
+.sv-llave__detalle summary { cursor: pointer; color: var(--accent); font-size: .9rem; }
+.sv-llave__detalle form { margin: 10px 0; }
+.sv-bodegas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px 14px; margin: 6px 0 10px; }
+.sv-bodegas label { display: flex; align-items: baseline; gap: 6px; font-size: .92rem; }
+.sv-bodegas label > span:first-of-type { flex: 1; min-width: 0; }
+.sv-bodegas .text-muted { white-space: nowrap; font-size: .82rem; }
+.sv-registro { font-size: .85rem; margin: 6px 0 0; padding-left: 18px; }
+@media (max-width: 640px) { .sv-llave__estado { text-align: left; } }
+.sv-ya { display: block; color: var(--warning); font-weight: 600; }
+.sv-importar { margin: 10px 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: .9rem; }
+.sv-catalogo { padding: 8px 12px; border-radius: 8px; background: var(--surface-sunken); margin: 0 0 6px; }
+.sv-catalogo--ok { background: var(--success-soft); }
+.sv-catalogo--error, .sv-catalogo--alerta { background: var(--danger-soft); color: var(--danger); }
+
+/* «¿Tenés una duda?» en la portada */
+.duda-portal { display: flex; align-items: center; gap: 14px; margin: 18px 0; padding: 14px 18px; border-radius: 12px; border: 2px solid #e0b100; background: #fff8db; color: inherit; text-decoration: none; }
+.duda-portal:hover { background: #fff1b8; }
+.duda-portal__icono { font-size: 1.6rem; }
+.duda-portal b { display: block; font-size: 1.05rem; }
+.duda-portal small { color: #6b5a1f; }
+.duda-portal__ir { margin-left: auto; font-size: 1.3rem; color: #7a5a00; }
+
+/* Sugerencias antes de enviar una consulta */
+.consulta-sug { margin: -6px 0 16px; padding: 12px 14px; border-radius: 10px; background: #fff8db; border: 1px solid #e0b100; }
+.consulta-sug[hidden] { display: none; }
+.consulta-sug__tit { margin: 0 0 6px; font-weight: 600; }
+.consulta-sug a { display: block; padding: 3px 0; }
+.consulta-sug__nota { margin: 6px 0 0; font-size: .85rem; color: #6b5a1f; }
+
+/* Catálogo WEB en /admin/servicios */
+.sv-cat__cab { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.sv-cat__vigente { margin: 0; font-size: 1.02rem; }
+.sv-cat__botones { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.sv-cat__botones form { margin: 0; }
+.sv-cat__cambios { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; padding: 8px 12px; border-radius: 8px; background: var(--surface-sunken); margin: 6px 0; }
+.sv-cat__sub { margin: 14px 0 6px; font-size: 1rem; }
+.sv-cat__lista { margin-top: 10px; }
+.sv-cat__lista > summary { cursor: pointer; }
+.sv-tabla-scroll { max-width: 100%; overflow-x: auto; }
+.sv-tabla-scroll .data-table { font-size: .88rem; }

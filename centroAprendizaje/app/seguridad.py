@@ -155,13 +155,16 @@ def ip_cliente():
     return request.remote_addr or "desconocida"
 
 
-def limitar(accion, maximo, ventana_segundos):
-    """Decorador: más de `maximo` pedidos POST en la ventana → 429."""
+def limitar(accion, maximo, ventana_segundos, por=None):
+    """Decorador: más de `maximo` pedidos POST en la ventana → 429. Cuenta por
+    dirección IP, o por lo que devuelva `por()` (p. ej. la llave del servicio:
+    en el hospital muchas PCs salen a internet con la misma IP)."""
     def decorador(vista):
         @wraps(vista)
         def envoltorio(*args, **kwargs):
             if request.method == "POST":
-                clave = f"{accion}:{ip_cliente()}"
+                quien = (por() if por else None) or ip_cliente()
+                clave = f"{accion}:{quien}"
                 if limitador.bloqueado(clave, maximo, ventana_segundos):
                     abort(429)
                 limitador.registrar(clave, ventana_segundos)

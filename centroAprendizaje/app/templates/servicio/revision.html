@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Revisión de artículos — {{ llave.servicio }}</title>
+<link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/revision_servicio.css') }}">
+</head>
+<body>
+<header class="rs-cabecera">
+  <div class="rs-cabecera__titulo">
+    <h1>Artículos de {{ llave.servicio }}</h1>
+    <p class="rs-sub">Hola, <strong>{{ persona }}</strong> · <a class="rs-enlace-claro" href="{{ url_for('servicio.cambiar_persona') }}">No soy yo</a> · <a class="rs-enlace-claro" href="{{ url_for('servicio.salir') }}">Salir</a>
+      · <a class="rs-duda" href="{{ url_duda() }}" target="_blank" rel="noopener">❓ Tengo una duda</a></p>
+  </div>
+</header>
+
+<main class="rs-main">
+  <div id="rs-alertas" aria-live="assertive"></div>
+  <p class="rs-aviso-enviada" id="rs-aviso-enviada" hidden>📨 Esta revisión ya se envió (<span></span>). Se puede mirar, pero ya no se puede cambiar, deshacer ni revisar nada.
+    <a class="rs-btn rs-btn--chico" href="{{ url_for('servicio.copia') }}" target="_blank" rel="noopener">📄 Ver lo enviado (imprimir o PDF)</a></p>
+
+  {% if catalogo_al %}<p class="rs-catalogo-al">📅 <a href="https://www.santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a> actualizado el <b>{{ catalogo_al }}</b>.</p>{% endif %}
+  <details class="rs-panel rs-como">
+    <summary><b>＋ ¿Cómo se usa?</b> <a class="rs-ver-tutorial" href="{{ url_for('servicio.tutorial') }}" target="_blank" rel="noopener">▶ Tutorial con video</a></summary>
+    <ul class="rs-como-lista">
+      <li class="rs-como-si"><b>Lo que el servicio usa</b> es lo que vas a poder pedir próximamente en TIMBÓ. Va a la izquierda, en verde.</li>
+      <li class="rs-como-no"><b>Lo que no se usa o no es de tu servicio</b> queda fuera: no lo vas a poder pedir más. Va a la derecha, en rojo.</li>
+      <li>Todo se guarda solo. Si te equivocás, tocá <b>↶ Deshacer</b> en ese artículo.</li>
+    </ul>
+    <p class="rs-nota">Bodega{{ 's' if llave.nombres_bodegas | length > 1 }}: {{ llave.nombres_bodegas | join(', ') or '—' }} · {{ total }} artículos · nomenclador del {{ datos.nomencladorActualizado or "—" }} · <a href="{{ url_for('servicio.instructivo') }}" target="_blank" rel="noopener">Quiero saber más</a> · <a href="{{ url_for('servicio.tutorial') }}" target="_blank" rel="noopener">▶ Ver el tutorial paso a paso (con video)</a></p>
+  </details>
+
+{% with en_linea = True %}{% include "revision_servicio/_cuerpo.html" %}{% endwith %}
+
+<script type="application/json" id="rs-datos" nonce="{{ csp_nonce }}">{{ datos|tojson }}</script>
+<script src="{{ url_for('static', filename='js/revision_servicio.js') }}"></script>
+</body>
+</html>

@@ -1389,3 +1389,7 @@ def inventario_exportar():
     nombre = f"inventario_{hora_ar(datetime.now(timezone.utc), '%Y-%m-%d')}.csv"
     return Response("﻿" + salida.getvalue(), mimetype="text/csv; charset=utf-8",
                     headers={"Content-Disposition": f'attachment; filename="{nombre}"'})
+
+
+# Llaves de la revisión por servicio: sus rutas se registran sobre admin_bp.
+from app.admin import servicios  # noqa: E402,F401

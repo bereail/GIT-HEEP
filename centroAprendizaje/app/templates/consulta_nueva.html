@@ -22,13 +22,15 @@
   <label for="mensaje" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu mensaje</label>
   <textarea class="input" id="mensaje" name="mensaje" rows="5" required style="width:100%;resize:vertical;margin-bottom:16px" placeholder="Contanos con el mayor detalle posible qué necesitás.">{% if valores %}{{ valores.get('mensaje', '') }}{% elif contexto %}Sobre: {{ contexto }}
 {% endif %}</textarea>
+  <div class="consulta-sug" id="consulta-sugerencias" hidden aria-live="polite"></div>
 
-  <label for="nombre_contacto" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu nombre (opcional)</label>
-  <input class="input" id="nombre_contacto" name="nombre_contacto" type="text" style="width:100%;margin-bottom:16px" value="{{ valores.get('nombre_contacto', '') if valores else '' }}" placeholder="Para saber a quién responderte" />
+  <label for="nombre_contacto" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu nombre y apellido</label>
+  <input class="input" id="nombre_contacto" name="nombre_contacto" type="text" required maxlength="150" autocomplete="name" style="width:100%;margin-bottom:16px" value="{{ valores.get('nombre_contacto', '') if valores else '' }}" placeholder="Para saber a quién responderte" />
 
-  <label for="email" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu email (opcional)</label>
-  <input class="input" id="email" name="email" type="email" style="width:100%;margin-bottom:20px" value="{{ valores.get('email', '') if valores else '' }}" placeholder="Para avisarte por mail cuando te respondamos" />
+  <label for="email" style="font-weight:600;font-size:13.5px;display:block;margin-bottom:6px">Tu email</label>
+  <input class="input" id="email" name="email" type="email" required maxlength="200" autocomplete="email" style="width:100%;margin-bottom:20px" value="{{ valores.get('email', '') if valores else '' }}" placeholder="Para avisarte por mail cuando te respondamos" />
 
   <button type="submit" class="btn btn--primary">Enviar</button>
 </form>
 {% endblock %}
+{% block script_pagina %}<script src="{{ url_for('static', filename='js/consulta_sugerencias.js') }}" defer></script>{% endblock %}

@@ -11,6 +11,7 @@ import json
 import os
 import re
 import unicodedata
+from collections import defaultdict
 from datetime import datetime, timezone
 
 from app.models import EquivalenciaArticulo
@@ -31,6 +32,11 @@ MOTIVO_POR_CONFIANZA = {
     "dudosa": "La comparación automática encontró un ítem parecido en el Catálogo WEB, pero no idéntico.",
     "alta": "La comparación automática encontró un ítem del Catálogo WEB con las mismas palabras clave y los mismos números (medidas, dosis). Igual hay que verificarlo.",
 }
+# Artículos de la bodega a los que se les propuso el mismo código del Catálogo
+# WEB: se muestran juntos en una card, para comparar cuáles corresponden. Más
+# de MAX_GRUPO no entran en una card; quedan sueltos, con el aviso.
+MAX_GRUPO = 20
+MOTIVO_MISMO_CODIGO = "El mismo código se propuso para {n} artículos de esta bodega: puede corresponder a varios, a uno solo o a ninguno."
 MOTIVO_NO_UTILIZAR = "El Catálogo WEB marca el código propuesto como «NO UTILIZAR»: confirmar con Compras antes de usarlo."
 
 _CARPETA_STATIC = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
@@ -75,18 +81,83 @@ def _item(e):
     return item
 
 
+def _normal(texto):
+    return " ".join(unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().lower().split())
+
+
 def _orden(item):
-    return (item["s"], unicodedata.normalize("NFKD", item["n"]).encode("ascii", "ignore").decode().lower(), item["id"])
+    return (item["s"], _normal(item["n"]), item["id"])
+
+
+def _agrupar(items):
+    """Marca los artículos que comparten código propuesto. En un grupo todos
+    van a la sección más temprana de sus miembros, y `dup` señala los que
+    además tienen el mismo nombre (posible artículo cargado dos veces)."""
+    por_codigo = defaultdict(list)
+    for item in items:
+        if item["cp"]:
+            por_codigo[item["cp"]].append(item)
+    for codigo, miembros in por_codigo.items():
+        if len(miembros) < 2:
+            continue
+        aviso = MOTIVO_MISMO_CODIGO.format(n=len(miembros))
+        for item in miembros:
+            item["m"] = f"{item['m']} {aviso}"
+        if len(miembros) > MAX_GRUPO:
+            continue
+        seccion = min(i["s"] for i in miembros)
+        nombres = defaultdict(int)
+        for item in miembros:
+            nombres[_normal(item["n"])] += 1
+        for item in miembros:
+            item["g"] = codigo
+            item["s"] = seccion
+            item["dup"] = nombres[_normal(item["n"])] > 1
+
+
+def armar_items(tema, bodegas):
+    """Artículos de una o más bodegas, uno por código interno, ordenados en
+    las tres secciones y agrupados por código propuesto. Cada uno lleva `b`
+    (en cuáles de estas bodegas está) y `ob` (en qué otras bodegas del
+    nomenclador figura, para avisar que es compartido)."""
+    bodegas = [b for b in bodegas if b and b not in BODEGAS_EXCLUIDAS]
+    if not bodegas:
+        return [], []
+    filas = EquivalenciaArticulo.query.filter(
+        EquivalenciaArticulo.tema_id == tema.id, EquivalenciaArticulo.bodega.in_(bodegas)).all()
+    por_codigo, en_bodegas = {}, defaultdict(set)
+    for e in filas:
+        clave = e.codigo_interno or f"sin-codigo:{e.id}"
+        por_codigo.setdefault(clave, e)
+        en_bodegas[clave].add(e.bodega)
+    todas = defaultdict(set)
+    codigos = [c for c in por_codigo if not c.startswith("sin-codigo:")]
+    for i in range(0, len(codigos), 500):
+        for cod, bod in (EquivalenciaArticulo.query.with_entities(EquivalenciaArticulo.codigo_interno, EquivalenciaArticulo.bodega)
+                         .filter(EquivalenciaArticulo.tema_id == tema.id,
+                                 EquivalenciaArticulo.codigo_interno.in_(codigos[i:i + 500]))):
+            if bod:
+                todas[cod].add(bod)
+    items = []
+    for clave, e in por_codigo.items():
+        item = _item(e)
+        item["b"] = sorted(en_bodegas[clave])
+        otras = sorted(todas.get(clave, set()) - en_bodegas[clave])
+        if otras:
+            item["ob"] = otras
+        items.append(item)
+    _agrupar(items)
+    items.sort(key=_orden)
+    return items, filas
 
 
 def armar_planilla(tema, bodega):
     """Datos de la planilla de una bodega, o None si no corresponde."""
     if not bodega or bodega in BODEGAS_EXCLUIDAS:
         return None
-    filas = EquivalenciaArticulo.query.filter_by(tema_id=tema.id, bodega=bodega).all()
-    if not filas:
+    items, filas = armar_items(tema, [bodega])
+    if not items:
         return None
-    items = sorted((_item(e) for e in filas), key=_orden)
     actualizado = max((e.creado_en for e in filas if e.creado_en), default=None)
     huella = hashlib.sha256(json.dumps(items, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()[:16]
     return {

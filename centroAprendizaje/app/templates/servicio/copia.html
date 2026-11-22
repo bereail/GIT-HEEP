@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ 'Copia de lo enviado' if llave.enviado_en else 'Borrador de la revisión' }} — {{ llave.servicio }}</title>
+<link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/revision_servicio.css') }}">
+</head>
+<body class="sv-instructivo sv-copia">
+<main class="rs-main">
+  <p class="rs-etiqueta" style="color:#555">Centro de Aprendizaje TIMBÓ · HEEP</p>
+  <h1>{{ 'Copia de lo enviado' if llave.enviado_en else 'Borrador (todavía no se envió)' }} · {{ llave.servicio }}</h1>
+  <p>
+    {% if llave.enviado_en %}Enviada el <b>{{ hora_ar(llave.enviado_en) }}</b> por <b>{{ llave.enviado_por }}</b>. Es solo para mirar: no se puede cambiar.
+    {% else %}Así está la revisión ahora. Todavía se puede cambiar: esto no es lo enviado.{% endif %}
+    Bodega{{ 's' if llave.nombres_bodegas | length > 1 }}: {{ llave.nombres_bodegas | join(', ') }}.
+  </p>
+  <p class="sv-copia__acciones">
+    <button type="button" class="rs-btn" id="sv-imprimir">🖨 Imprimir o guardar en PDF</button>
+    <a class="rs-btn rs-btn--claro" href="{{ url_for('servicio.planilla_final') }}">⬇ Bajar en Excel</a>
+  </p>
+
+  <div class="sv-copia__resumen">
+    {% for g, nombre, nota in grupos_info %}
+    <div class="rs-revfinal-tile rs-rf-{{ g }}"><b>{{ grupos[g] | length }}</b><span>{{ nombre }}</span></div>
+    {% endfor %}
+  </div>
+
+  {% for g, nombre, nota in grupos_info %}
+  <section class="sv-copia__grupo rs-rf-grupo rs-rf-{{ g }}">
+    <h2>{{ nombre }} ({{ grupos[g] | length }})</h2>
+    <p class="rs-nota">{{ nota }}</p>
+    {% if grupos[g] %}
+    <table class="sv-copia__tabla">
+      <thead><tr><th>Artículo</th><th>Código interno</th><th>Qué hay que hacer</th><th>Observación</th></tr></thead>
+      <tbody>
+        {% for f in grupos[g] %}
+        <tr><td>{{ f[3] }}</td><td>{{ f[2] }}</td><td>{{ f[1] }}{% if f[7] %} · aclarar: «{{ f[7] }}»{% endif %}</td><td>{{ f[10] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}<p class="rs-vacio">Ninguno.</p>{% endif %}
+  </section>
+  {% endfor %}
+</main>
+<script nonce="{{ csp_nonce }}">document.getElementById("sv-imprimir").addEventListener("click", function () { window.print(); });</script>
+</body>
+</html>

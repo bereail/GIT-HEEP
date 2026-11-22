@@ -5,7 +5,7 @@ from app.models import Consulta, Feedback, Tema
 
 
 def _crear_consulta(client, **extra):
-    datos = {"tipo": "consulta", "mensaje": "Tengo una duda"}
+    datos = {"tipo": "consulta", "mensaje": "Tengo una duda", "nombre_contacto": "Ana Paz", "email": "ana@ejemplo.com"}
     datos.update(extra)
     resp = client.post("/temas/demo/consultas/nueva", data=datos, follow_redirects=False)
     assert resp.status_code == 302
@@ -129,9 +129,15 @@ def test_usuario_no_accede_a_consultas_de_otro(client):
 def test_consultas_existentes_siguen_accesibles_sin_email(client, app):
     """Simula una consulta creada antes de agregar el campo email (solo
     nombre_contacto) — tiene que seguir funcionando igual que antes."""
-    token = _crear_consulta(client, nombre_contacto="Alguien", email="")
+    from app.models import MensajeConsulta
     with app.app_context():
-        c = Consulta.query.filter_by(token=token).first()
+        tema = Tema.query.filter_by(slug="demo").first()
+        c = Consulta(token="vieja-sin-email-123", tema_id=tema.id, tipo="consulta", nombre_contacto="Alguien")
+        db.session.add(c)
+        db.session.flush()
+        db.session.add(MensajeConsulta(consulta_id=c.id, autor="usuario", cuerpo="Duda vieja"))
+        db.session.commit()
+        token = c.token
         assert c.email is None
     detalle = client.get(f"/consultas/{token}")
     assert detalle.status_code == 200
@@ -159,3 +165,12 @@ def test_admin_cambia_estado_a_en_revision(client, admin_client, app):
         c = Consulta.query.filter_by(token=token).first()
         assert c.estado == "en_revision"
         assert c.estado_label == "En revisión"
+
+
+def test_consulta_exige_nombre_y_email(client, app):
+    for faltante in ({"nombre_contacto": ""}, {"email": ""}, {"email": "no-es-un-mail"}):
+        datos = {"tipo": "consulta", "mensaje": "Duda", "nombre_contacto": "Ana Paz", "email": "ana@ejemplo.com"}
+        datos.update(faltante)
+        assert client.post("/temas/demo/consultas/nueva", data=datos).status_code == 200
+    with app.app_context():
+        assert Consulta.query.count() == 0

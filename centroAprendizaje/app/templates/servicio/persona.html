@@ -1,0 +1,16 @@
+{% extends "servicio/_base.html" %}
+{% block contenido %}
+<section class="card rev-acceso">
+  <h1>{{ llave.servicio }}</h1>
+  <p>Vas a revisar los artículos de: <b>{{ llave.nombres_bodegas | join(', ') or 'ninguna bodega asignada todavía' }}</b>.</p>
+  <p>Antes de empezar, escribí tu nombre y apellido: cada respuesta queda registrada a nombre de quien la da.</p>
+  {% if error %}<p class="text-danger" role="alert">Hacen falta el nombre y el apellido.</p>{% endif %}
+  <form method="post" action="{{ url_for('servicio.persona') }}" style="display:grid;gap:10px;max-width:360px;margin:14px auto 0;text-align:left">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <label>Nombre <input class="input" name="nombre" maxlength="80" autocomplete="given-name" required value="{{ nombre or '' }}" /></label>
+    <label>Apellido <input class="input" name="apellido" maxlength="80" autocomplete="family-name" required value="{{ apellido or '' }}" /></label>
+    <button class="btn btn--primary">Empezar</button>
+  </form>
+  <p class="text-muted" style="margin-top:14px">¿No es tu servicio? <a href="{{ url_for('servicio.salir') }}">Salir</a></p>
+</section>
+{% endblock %}

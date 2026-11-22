@@ -19,6 +19,12 @@
   {% endfor %}
 </div>
 
+<a class="duda-portal" href="{{ url_for('ui.consulta_nueva', tema_slug='timbo-compras') }}">
+  <span class="duda-portal__icono" aria-hidden="true">❓</span>
+  <span><b>¿Tenés una duda?</b><small>Escribila acá y te respondemos. La respuesta la ves en «Mis consultas».</small></span>
+  <span class="duda-portal__ir" aria-hidden="true">→</span>
+</a>
+
 <details class="rec-desplegable">
   <summary class="rec-desplegable__boton">
     <span class="rec-desplegable__icono">📚</span>

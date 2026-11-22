@@ -270,6 +270,114 @@ pantalla proyectada.
 - Tests: `tests/test_procesos.py` (41). Se ajustó `test_seguridad.py` para
   que el recorrido de rutas use un número en todo parámetro `<int:...>`.
 
+## Revisión de artículos por servicio (22/11/2026, SIN deployar ni commitear)
+
+Objetivo (fijado por la usuaria): que **cada servicio termine con su planilla final** de lo que hay
+que cargar en el Catálogo WEB de TIMBÓ, para unificar el nomenclador antes de que las compras pasen
+a TIMBÓ. Ella carga las altas una por una. **Farmacia y Laboratorio no se tocan** (tienen su revisión
+en `/revision/` y ya empezaron): no se ofrecen en el sistema nuevo. La base de compras del hospital ya
+no cambia; solo se actualiza el Catálogo WEB.
+
+- **Llaves de servicios** (`/admin/servicios`, `app/admin/servicios.py`): una llave por servicio con
+  una o más bodegas (la asignación la decide la administradora y queda en el historial de la llave).
+  Al entrar (`/servicio/acceso#token`, blueprint `app/servicio/`) cada persona escribe nombre y
+  apellido. El filtro de bodegas sale SIEMPRE de la llave en el servidor. **Una llave nueva empieza
+  vacía**: para volver a entrar se usa «Enlace nuevo» en la misma llave.
+- **Pantalla** (mismo JS que la planilla descargable, `static/js/revision_servicio.js`, con
+  `DATOS.servidor` = modo en línea): dos preguntas por artículo («¿lo usan?» / «¿es este el de
+  TIMBÓ?»), opción **ítem general** (código + detalle para la observación, caso «remanufactura de
+  tóner»), pendientes al centro, izquierda (rojo) lo que hay que cargar, derecha (verde) lo que no.
+  Deshacer (Ctrl+Z) en todo; nada se borra (historial por respuesta). Repetidos: un artículo en dos
+  bodegas de la llave aparece una vez; los que comparten código propuesto van en una card.
+- **Revisión final** antes de «Terminé»: Hay que cargar / Ya están en TIMBÓ / Quedan fuera / Falta.
+  Los «no coinciden» se deciden ahí (agregar / sé el código / no se usa). El Excel del servicio
+  (`/servicio/planilla-final.xlsx`) y el del panel tienen esas hojas. Criterio único:
+  `clasificar()` en `services/llaves_servicio.py` (y su copia en el JS).
+- **Traer respuestas de Farmacia** a una llave (botón en el panel): solo lee `/revision/`; Sí →
+  Correcto, No → No corresponde (falta decidir), Dudas → Aclaración; nunca pisa.
+- **Comparación diaria con el Catálogo WEB** (`scripts/actualizar_catalogo.py`,
+  `services/catalogo_diario.py`): copia la base, baja el catálogo, si viene raro no lo usa, guarda la
+  copia del día (`instance/catalogo/`, nunca pisa), compara y marca los artículos con códigos que ya
+  no existen o son «NO UTILIZAR» (se ven en el panel y en la tarjeta del servicio). Alerta si baja la
+  cantidad de respuestas. En el servidor se programa con `scripts/servidor/instalar_catalogo_diario.sh`
+  (6:00). Primera corrida local: 17.792 ítems, 43 artículos afectados.
+- Instructivo de una página: `/servicio/instructivo`.
+- Migraciones `d4a7e2b9c1f3` y `e8b3c5d1a2f4`: solo crean tablas / agregan una columna con valor por
+  defecto. Tests: `test_llaves_servicio.py`, `test_catalogo_diario.py`, `test_revision_servicio.py`.
+- Para deployar (con autorización): commit, `git push`, `deploy_servidor.sh` (ya corre
+  `flask db upgrade`), después `instalar_catalogo_diario.sh`.
+- 22/11 mañana (pedidos de la usuaria: «el usuario es ignorante y vago, MUY sencillo»):
+  - Pantalla simple: lo secundario va detrás de un «＋» (cómo se usa, pasos, más datos, observación,
+    más opciones). Avance y «Todo guardado» en la barra amarilla «Pendientes de revisión» del centro.
+  - Colores: izquierda VERDE = se va a poder pedir en TIMBÓ (hay que cargar + ya están); derecha
+    ROJA = queda fuera (no se usa / no es del servicio). En las columnas solo hay «↶ Deshacer».
+  - Resultado nuevo `otro_servicio` («No es de nuestro servicio»): queda fuera; hoja propia en el
+    Excel del panel («NO SON DE ESTE SERVICIO»).
+  - Sección 1 (no están en TIMBÓ): «Sí, se usa» alcanza (= pedir que lo carguen). Sección 2: «Sí, es
+    este» / «No, es otro» (= pedir que lo carguen) / «No sé» + enlace «＋ Ya está en TIMBÓ con otro
+    código» (código + detalle opcional = ítem general). Sección 3: solo para mirar, cuenta como «ya
+    están» sin responder (cliente y `clasificar` del servidor).
+  - Sin repetidos en pantalla: lo respondido sale del centro (también de las cards agrupadas) y la
+    sección 3 no se repite en la columna.
+  - Envío definitivo: botón rojo «Enviar la revisión» (`POST /servicio/enviar`, `{confirmo:true}`).
+    Enviada = todo POST del servicio da 409 y la pantalla queda de solo lectura; solo el admin la
+    reabre (`/admin/servicios/<id>/reabrir`, queda registrado). Migración `f2c6a9d3b8e1` (solo
+    agrega `enviado_en`/`enviado_por`). Aplicada a la base local (copia previa en
+    `instance/antes-de-envio-20261122.sqlite3`). pytest 168/168.
+  - Instructivo con «¿Qué está pasando y por qué?»; el enlace se llama «Quiero saber más».
+- 22/11 (segunda tanda, SIN commit):
+  - Tarjeta de UNA sola pregunta: con código propuesto «✓ Sí, es este / Es otra cosa (= no_corresponde +
+    agregar) / Ya no se usa / No es de nuestro servicio»; sin código «✓ Sí, se usa / Ya no se usa / No es de
+    nuestro servicio». Ya no se pide código de TIMBÓ ni hay «No sé» (las respuestas viejas se muestran).
+    «En TIMBÓ figura como» muestra solo la descripción; el código va en «＋ Más datos». Arriba del nombre:
+    «Así figura hoy en el sistema de compras del hospital».
+  - Ejemplo de artículo general verificado en el catálogo oficial: «LÁMPARA LED» (21.2.1.11) para las
+    lámparas LED de 12 W, 14 W… del hospital. Cards agrupadas: «✓ Sí, es este para todos» / «Ninguno es este».
+  - Columnas: una línea por artículo (✓/✗, nombre, «↶»); al tocarla se abre el detalle. Sin avisos «Listo…»
+    ni «Todo guardado» (solo errores). Aviso «Te faltan N en «…» →» para las otras pestañas.
+  - Revisión final / planilla / Excel en orden y color: cargar (verde), ya están (azul), no se revisaron
+    (amarillo), quedan fuera (rojo). `xlsx.COLORES` suma azul y amarillo.
+  - Envío: un solo camino («Ver la revisión final» → botón rojo «Enviar la revisión»), con aviso «NO se
+    puede cambiar, deshacer ni revisar nada». `/servicio/copia`: copia de solo lectura (imprimir / PDF).
+  - `/servicio/tutorial`: video (`static/video/tutorial_servicio.mp4`, ~1 MB, 15 pasos, sin voz) + capturas
+    (`static/img/tutorial_servicio/`). Se generan con una llave de prueba en una COPIA de la base (scripts en
+    el scratchpad: servidor_prueba.py en el puerto 5078 + cdp_tutorial.mjs + ffmpeg). Voz: solo hay voces de
+    España en la PC; quedó pendiente instalar Español (México).
+  - «❓ Tengo una duda» = el sistema de consultas que ya existía (`/temas/timbo-compras/consultas/nueva`),
+    ahora en el menú y la portada del portal y en la pantalla del servicio (con contexto). Nombre y email
+    OBLIGATORIOS (en todo el sitio). Mientras se escribe, sugiere respuestas ya publicadas (`/buscar.json?origen=consulta`,
+    no cuenta en estadísticas).
+  - Los .js/.css de /static llevan `?v=<mtime>` (`url_defaults` en `create_app`) para que nadie quede con JS/CSS viejo.
+  - Probado en ancho de celular (390 px, sin scroll horizontal). pytest 170/170.
+  - Catálogo diario: la pantalla del servicio muestra «Catálogo WEB actualizado el …»
+    (`catalogo_diario.ultima_actualizacion`). Cada corrida guarda en `detalle` el resumen por servicio
+    (cargar / ya están / no se revisaron / fuera; en /admin/servicios con la diferencia contra la corrida
+    anterior) y «posibles altas ya hechas» (lo que un servicio pidió cargar vs. ítems NUEVOS del catálogo,
+    por palabras en común; solo sugerencia). Aviso en el panel si pasaron más de 26 h sin actualizar.
+  - Horario: cron cada hora (`5 * * * *`) con `actualizar_catalogo.py --diario`, que solo trabaja a las 6 de
+    Argentina (UTC−3 fijo, sin tzdata) y una vez por día. A mano, sin `--diario`, corre siempre. Hay que
+    volver a correr `instalar_catalogo_diario.sh` en el servidor (todavía no se instaló). pytest 172/172.
+  - Eficiencia: cada respuesta busca solo ese artículo (`ls.item_de`), no arma la lista de la bodega
+    (MANTENIMIENTO: 0,4 s → 0,6 ms por clic). Límites: `limitar(..., por=_por_llave)` cuenta por llave en
+    los POST del servicio (en el hospital muchas PCs comparten IP); acceso 60/15 min, persona 120/10 min,
+    «Tengo una duda» 30/10 min. Los de Farmacia (`/revision/`) no se tocaron.
+  - Cada «Catálogo WEB» que ve el servicio enlaza a la página oficial (index.php?a=catalogo.index).
+    pytest 174/174.
+  - /admin/servicios, sección «Catálogo WEB» rehecha: vigente (fecha + ítems), «🔄 Actualizar ahora»
+    (`admin.catalogo_actualizar`: lanza el script en segundo plano con `--ya-marcado`; la marca
+    `instance/catalogo/.en_curso` evita dos a la vez, vale 20 min), «⬇ Bajar el catálogo (CSV)»
+    (`admin.catalogo_descargar`), cambios, tabla por servicio y listas plegadas con scroll propio.
+  - Arreglo: `leer_catalogo` normaliza espacios/saltos de línea (7 ítems con salto de línea daban
+    «cambiados» falsos: \r\n al bajarlo vs \n al leer la copia). pytest 177/177.
+  - Prueba sobre COPIA de la base del servidor (22/11 07:36, `D:\Bere\Copias\timbo-capacitaciones\ahora.sqlite3`,
+    en c3e9a1d4f2b7): las 3 migraciones crean 7 tablas y no cambian ninguna fila de las existentes.
+    bereComputos en Farmacia: 70 ✓ y 864 ✗ (la ✗ mezcla «no es de Informática» y «código equivocado»).
+    Al traerlas: ✓ → «Sí, es este»; ✗ → quedan PENDIENTES en el centro con la nota «En la revisión de Farmacia
+    se marcó ✗» (cliente: `sinDecidirGuardado` — «No sé» y «no corresponde» sin decisión vuelven al centro;
+    la respuesta guardada no se toca).
+  - ANTES DE SUBIR A MAIN: los commits 59071c9..b6109ba traen `timboDocumentacion/historialWp/*.zip`
+    (historiales de WhatsApp), una imagen «…nómina.png» y un .docx: decidir si se sacan.
+
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 
 **Reglas nuevas de la usuaria (16/11), además de las de arriba:**

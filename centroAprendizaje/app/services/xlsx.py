@@ -11,7 +11,8 @@ _NO_XML = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
 
 # Colores de fondo para las filas (los mismos tonos que la pantalla):
 # nombre → (relleno ARGB, índice del estilo en styles.xml).
-COLORES = {"verde": ("FFE8F6EE", 3), "rojo": ("FFFBECEB", 4), "naranja": ("FFFDF1E2", 5), "gris": ("FFF0F2F6", 6)}
+COLORES = {"verde": ("FFE8F6EE", 3), "rojo": ("FFFBECEB", 4), "naranja": ("FFFDF1E2", 5), "gris": ("FFF0F2F6", 6),
+           "azul": ("FFEEF3FA", 7), "amarillo": ("FFFFF8DB", 8)}
 
 
 def _estilos():

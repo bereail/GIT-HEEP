@@ -1,3 +1,4 @@
+import re
 import secrets
 from datetime import datetime, timedelta, timezone
 
@@ -229,7 +230,8 @@ def buscar_global_json():
     temas = Tema.query.filter_by(activo=True).order_by(Tema.orden).all()
     indice = buscador.construir_indice_global(temas) + recursos.indice_busqueda()
     resultados = buscador.buscar(indice, consulta, limite=15)
-    if consulta.strip():
+    # Las sugerencias del formulario de consulta no cuentan como búsquedas.
+    if consulta.strip() and request.args.get("origen") != "consulta":
         estadisticas.registrar("busqueda_global", consulta=consulta, hubo_resultado=bool(resultados))
     return jsonify([
         {
@@ -414,7 +416,7 @@ def _generar_token():
 
 
 @ui_bp.route("/temas/<tema_slug>/consultas/nueva", methods=["GET", "POST"])
-@limitar("consulta-nueva", 5, 600)
+@limitar("consulta-nueva", 30, 600)
 def consulta_nueva(tema_slug):
     tema = _tema_o_404(tema_slug)
     contexto = request.args.get("contexto", "")
@@ -422,16 +424,25 @@ def consulta_nueva(tema_slug):
     if request.method == "POST":
         mensaje = (request.form.get("mensaje") or "").strip()
         tipo = request.form.get("tipo", "consulta")
+        nombre = (request.form.get("nombre_contacto") or "").strip()
+        email = (request.form.get("email") or "").strip()
+        error = None
         if not mensaje or tipo not in TIPOS_CONSULTA:
-            flash("Contanos tu consulta antes de enviarla.", "error")
+            error = "Contanos tu consulta antes de enviarla."
+        elif not nombre:
+            error = "Escribí tu nombre: así sabemos a quién responderle."
+        elif not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+            error = "Escribí un email válido: ahí te avisamos cuando te respondamos."
+        if error:
+            flash(error, "error")
             return render_template("consulta_nueva.html", tema=tema, tipos=TIPOS_CONSULTA, valores=request.form, contexto=contexto)
 
         consulta = Consulta(
             token=_generar_token(),
             tema_id=tema.id,
             tipo=tipo,
-            nombre_contacto=(request.form.get("nombre_contacto") or "").strip() or None,
-            email=(request.form.get("email") or "").strip() or None,
+            nombre_contacto=nombre[:150],
+            email=email[:200],
         )
         db.session.add(consulta)
         db.session.flush()

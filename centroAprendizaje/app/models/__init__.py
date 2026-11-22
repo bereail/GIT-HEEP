@@ -10,6 +10,15 @@ from app.models.evento_uso import EventoUso
 from app.models.feedback import Feedback, CATEGORIAS_FEEDBACK
 from app.models.equivalencia_articulo import EquivalenciaArticulo, NIVELES_CONFIANZA
 from app.models.revision_nomenclador import ObservacionHistorial, ObservacionNomenclador, RevisorNomenclador
+from app.models.revision_servicio import (
+    ActualizacionCatalogo,
+    LlaveBodega,
+    LlaveServicio,
+    NecesidadServicio,
+    RegistroLlaveServicio,
+    RevisionArticuloServicio,
+    RevisionServicioHistorial,
+)
 from app.models.proceso import (
     AuditoriaProceso,
     Circuito,
@@ -39,6 +48,13 @@ __all__ = [
     "RevisorNomenclador",
     "ObservacionNomenclador",
     "ObservacionHistorial",
+    "LlaveServicio",
+    "LlaveBodega",
+    "RegistroLlaveServicio",
+    "RevisionArticuloServicio",
+    "RevisionServicioHistorial",
+    "NecesidadServicio",
+    "ActualizacionCatalogo",
     "Circuito",
     "CircuitoVersion",
     "ComentarioCircuito",

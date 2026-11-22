@@ -1,0 +1,19 @@
+{% extends "servicio/_base.html" %}
+{% block contenido %}
+<section class="card rev-acceso">
+  {% if invalido %}
+    <h1>Este acceso no es válido</h1>
+    <p>El enlace no corresponde a un acceso activo, o fue dado de baja. Pedile un enlace nuevo a quien administra el Centro de Aprendizaje.</p>
+  {% elif salio %}
+    <h1>Saliste de la revisión</h1>
+    <p>Lo que respondiste quedó guardado. Para volver a entrar, abrí de nuevo el enlace de tu servicio.</p>
+  {% else %}
+    <h1 id="sv-acceso-titulo">Entrando…</h1>
+    <p id="sv-acceso-texto">Un momento, estamos verificando el acceso.</p>
+    <form method="post" action="{{ url_for('servicio.acceso_validar') }}" id="sv-acceso-form" hidden>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <input type="hidden" name="token" id="sv-token" />
+    </form>
+  {% endif %}
+</section>
+{% endblock %}

@@ -75,6 +75,8 @@
       {% else %}
         <div class="sidebar__section-title">Centro de Aprendizaje</div>
         <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.portal_inicio' else '' }}" href="{{ url_for('ui.portal_inicio') }}"><span class="nav-link__icon">🏠</span>Inicio</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.consulta_nueva' else '' }}" href="{{ url_for('ui.consulta_nueva', tema_slug='timbo-compras') }}"><span class="nav-link__icon">❓</span>Tengo una duda</a>
+        <a class="nav-link {{ 'is-active' if request.endpoint == 'ui.mis_consultas' else '' }}" href="{{ url_for('ui.mis_consultas') }}"><span class="nav-link__icon">💬</span>Mis consultas</a>
         {% from "recursos/_grupos.html" import grupos_recursos, activo with context %}
         {% set en_recursos = request.endpoint and (request.endpoint.startswith('ui.recursos') or request.endpoint == 'ui.ver_equivalencias') %}
         <details class="nav-grupo" {{ 'open' if en_recursos }}>

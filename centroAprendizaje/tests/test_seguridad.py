@@ -22,7 +22,8 @@ SQLI = "' OR 1=1; DROP TABLE consultas; --"
 
 
 def _nueva_consulta(client, mensaje="Hola"):
-    r = client.post("/temas/demo/consultas/nueva", data={"tipo": "consulta", "mensaje": mensaje})
+    r = client.post("/temas/demo/consultas/nueva", data={"tipo": "consulta", "mensaje": mensaje,
+                                                         "nombre_contacto": "Ana Paz", "email": "ana@ejemplo.com"})
     assert r.status_code == 302
     return r.headers["Location"].split("/consultas/")[1].split("?")[0]
 
@@ -196,7 +197,7 @@ def test_entradas_raras_no_dan_error_500(client):
 # ---------------------------------------------------- límites de pedidos --
 
 def test_spam_de_consultas_se_frena(client):
-    for _ in range(5):
+    for _ in range(30):
         _nueva_consulta(client)
     r = client.post("/temas/demo/consultas/nueva", data={"tipo": "consulta", "mensaje": "otra"})
     assert r.status_code == 429

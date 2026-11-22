@@ -1,0 +1,157 @@
+{# Parte común de la planilla descargable y de la revisión en línea (`en_linea`). #}
+  <nav class="rs-secciones" aria-label="Secciones">
+    <button type="button" class="rs-tab rs-tab--1" data-seccion="1"><span class="rs-tab__num">1</span><span class="rs-tab__txt">No están en TIMBÓ</span><span class="rs-tab__cuenta" data-cuenta="1"></span></button>
+    <button type="button" class="rs-tab rs-tab--2" data-seccion="2"><span class="rs-tab__num">2</span><span class="rs-tab__txt">Confirmar el código</span><span class="rs-tab__cuenta" data-cuenta="2"></span></button>
+    <button type="button" class="rs-tab rs-tab--3" data-seccion="3"><span class="rs-tab__num">3</span><span class="rs-tab__txt">Ya están en TIMBÓ</span><span class="rs-tab__cuenta" data-cuenta="3"></span></button>
+  </nav>
+
+  <section class="rs-panel rs-instrucciones" id="rs-instrucciones" aria-live="polite"></section>
+
+  <div class="rs-trabajo" id="rs-columnas">
+    <aside class="rs-col rs-col--pedir" id="rs-col-pedir" aria-label="Se va a poder pedir en TIMBÓ">
+      <h2>✓ Se va a poder pedir <span class="rs-col__cuenta"></span></h2>
+      <div class="rs-col__lista"></div>
+    </aside>
+
+    <div class="rs-centro">
+      {% if en_linea %}
+      <div class="rs-centro__tit">
+        <h2>⏳ Pendientes de revisión <span class="rs-centro__cuenta" id="rs-centro-cuenta"></span></h2>
+        <div class="rs-avance rs-avance--centro" aria-live="polite">
+          <div class="rs-avance__barra"><span id="rs-avance-relleno"></span></div>
+          <p><strong id="rs-revisados">0</strong> revisados · <strong id="rs-pendientes">0</strong> pendientes <span class="rs-envio" id="rs-envio" aria-live="polite"></span></p>
+        </div>
+      </div>
+      {% else %}
+      <div class="rs-centro__tit"><h2>⏳ Pendientes de revisión <span class="rs-centro__cuenta" id="rs-centro-cuenta"></span></h2></div>
+      {% endif %}
+      <div class="rs-filtros">
+        <input type="search" id="rs-buscar" placeholder="Buscar por nombre o código…" aria-label="Buscar por nombre o código" autocomplete="off">
+        <details class="rs-mas-filtros"><summary>＋ Más opciones</summary>
+        <select id="rs-estado" aria-label="Filtrar por resultado">
+          <option value="">Pendientes al centro, revisados a los costados</option>
+          <option value="todos">Todos como tarjetas</option>
+          <option value="revisado">Solo revisados</option>
+          <option value="no_necesario">No se usa</option>
+          <option value="otro_servicio">No es de este servicio</option>
+          <option value="no_corresponde">No corresponde</option>
+          <option value="aclaracion">Requiere aclaración</option>
+          <option value="correcto">Correcto / corresponde</option>
+        </select>
+        <button type="button" class="rs-btn rs-btn--claro" id="rs-ir-pendiente">Ir al próximo pendiente</button>
+        </details>
+      </div>
+
+      <p class="rs-resultados" id="rs-resultados"></p>
+      <div class="rs-otras" id="rs-otras"></div>
+      <div id="rs-lista" class="rs-lista"></div>
+
+      <nav class="rs-paginador" aria-label="Páginas">
+        <button type="button" class="rs-btn rs-btn--claro" id="rs-ant" aria-label="Página anterior">←</button>
+        <span id="rs-pagina"></span>
+        <button type="button" class="rs-btn rs-btn--claro" id="rs-sig" aria-label="Página siguiente">→</button>
+      </nav>
+
+      <details class="rs-col rs-col--aclaracion" id="rs-col-aclaracion" open>
+        <summary><h2>⚠ Te falta terminar estos <span class="rs-col__cuenta"></span></h2></summary>
+        <div class="rs-col__lista"></div>
+      </details>
+    </div>
+
+    <aside class="rs-col rs-col--ok" id="rs-col-ok" aria-label="Queda fuera de las compras">
+      <h2>✗ Queda fuera <span class="rs-col__cuenta"></span></h2>
+      <div class="rs-col__lista"></div>
+    </aside>
+  </div>
+
+  <details class="rs-panel rs-necesidades" id="rs-nec-caja">
+    <summary><h2 id="rs-nec-titulo">➕ Artículos que el servicio necesita y no están en esta lista <span class="rs-nec-flecha" aria-hidden="true">▾</span></h2></summary>
+    <p>Si el servicio usa o necesita un artículo que no aparece en ninguna de las tres secciones, cargalo acá. Va en el archivo de devolución.</p>
+    <form id="rs-nec-form" class="rs-nec-form" novalidate>
+      <div class="rs-campos">
+        <label class="rs-nec-ancho">Descripción del artículo <span class="rs-oblig">*</span><input type="text" id="rs-nec-desc" maxlength="300" placeholder="Ej.: sonda nasogástrica K30, silicona"></label>
+        <label>Presentación, medida o unidad<input type="text" id="rs-nec-pres" maxlength="200" placeholder="Ej.: x 1 unidad, estéril"></label>
+        <label>Para qué se usa<input type="text" id="rs-nec-uso" maxlength="300"></label>
+        <label>Tipo de artículo
+          <select id="rs-nec-tipo">
+            <option value="">Elegí…</option>
+            <option value="farmacia">Medicamento o descartable de Farmacia</option>
+            <option value="otro">Otro bien o servicio</option>
+            <option value="no_se">No sé</option>
+          </select>
+        </label>
+        <label>¿Lo buscaste en el <a href="https://www.santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a>?
+          <select id="rs-nec-cat">
+            <option value="no_busque">Todavía no lo busqué</option>
+            <option value="no_esta">Lo busqué y no está</option>
+            <option value="esta">Lo busqué y sí está</option>
+          </select>
+        </label>
+        <label id="rs-nec-cod-campo" hidden>Código que encontraste en el catálogo<input type="text" id="rs-nec-cod" maxlength="40"></label>
+        <label class="rs-nec-ancho">Observaciones (opcional)<textarea id="rs-nec-obs" rows="2" maxlength="2000"></textarea></label>
+      </div>
+
+      <div class="rs-nec-orientacion" aria-live="polite">
+        <p data-orienta="no_busque">Antes de pedir el alta, buscalo en el <a href="https://www.santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a> con sinónimos o términos más generales.</p>
+        <p data-orienta="esta">Si ya está en el catálogo, no hace falta pedir que lo agreguen: anotá el código.</p>
+        <p data-orienta="farmacia">Los <b>medicamentos y descartables de Farmacia</b> se piden a través del Servicio de Farmacia del hospital.</p>
+        <p data-orienta="otro">Los <b>otros bienes o servicios</b> se piden en TIMBÓ: Documentos Oficiales → Gestión → Nuevo Documento Oficial → formulario «Timbó Compras: Alta de bienes y servicios CAByS».</p>
+        <p data-orienta="no_se">Queda como pendiente en la devolución: el tipo se va a definir después.</p>
+        <p data-orienta="alta">📎 Guía oficial: <a href="{{ url_for('static', filename='docs/timbo-compras/como-solicitar-alta-de-articulos.pdf', _external=True) }}" target="_blank" rel="noopener">cómo solicitar el alta de artículos</a>.</p>
+        <p class="rs-nota">Quién hace el pedido y quién lo firma en el hospital todavía no está definido. Por ahora, el artículo queda registrado en la devolución.</p>
+      </div>
+
+      <div class="rs-nec-acciones">
+        <button type="submit" class="rs-btn" id="rs-nec-guardar">Agregar a la lista</button>
+        <button type="button" class="rs-btn rs-btn--claro" id="rs-nec-cancelar" hidden>Cancelar edición</button>
+      </div>
+    </form>
+    <p class="rs-resultados" id="rs-nec-cuenta"></p>
+    <div id="rs-nec-lista" class="rs-lista"></div>
+  </details>
+
+  <section class="rs-panel rs-revfinal" id="rs-revfinal" aria-labelledby="rs-revfinal-titulo" hidden>
+    <h2 id="rs-revfinal-titulo">🔎 Revisión final</h2>
+    <p>Mirá cómo quedó todo. Si algo está mal, tocá «↶ Deshacer» en ese artículo y respondelo de nuevo.</p>
+    <div class="rs-planilla-final" id="rs-planilla-final"></div>
+    <div class="rs-resumen" id="rs-revfinal-resumen"></div>
+    <div id="rs-revfinal-grupos"></div>
+    <div class="rs-revfinal__acciones">
+      {% if not en_linea %}<button type="button" class="rs-btn rs-btn--grande" id="rs-revfinal-confirmar">Confirmar y preparar el archivo de devolución</button>{% endif %}
+      {% if en_linea %}<a class="rs-btn rs-btn--claro" href="{{ url_for('servicio.copia') }}" target="_blank" rel="noopener">📄 Ver para imprimir o guardar en PDF</a>
+      {% else %}<button type="button" class="rs-btn rs-btn--claro" id="rs-revfinal-imprimir">🖨 Imprimir o guardar en PDF</button>{% endif %}
+      <button type="button" class="rs-btn rs-btn--claro" id="rs-revfinal-cerrar">Seguir revisando</button>
+    </div>
+    {% if en_linea %}
+    <div class="rs-enviar-caja">
+      <button type="button" class="rs-btn rs-btn--grande rs-btn--rojo rs-enviar">📨 Enviar la revisión</button>
+      <p class="rs-envio-final">⚠ Después de enviarla NO se puede cambiar, deshacer ni revisar nada.</p>
+    </div>
+    {% endif %}
+  </section>
+
+  <section class="rs-panel rs-final" aria-labelledby="rs-final-titulo">
+    <h2 id="rs-final-titulo">✅ ¿Terminaron?</h2>
+    {% if en_linea %}
+    <div hidden><textarea id="rs-obs-general"></textarea><div id="rs-resumen"></div><span id="rs-f-fin"></span></div>
+    <button type="button" class="rs-btn rs-btn--grande" id="rs-finalizar">Ver la revisión final</button>
+    <p class="rs-nota">Ahí ves cómo quedó todo, todavía podés cambiar lo que quieras, y al final está el botón para enviarla.</p>
+    {% else %}
+    <label class="rs-obs-general">Observaciones generales (opcional)<textarea id="rs-obs-general" rows="3" maxlength="4000"></textarea></label>
+    <div id="rs-resumen" class="rs-resumen"></div>
+    <button type="button" class="rs-btn rs-btn--grande" id="rs-finalizar">Revisión final y archivo de devolución</button>
+    <p class="rs-nota">El archivo de devolución queda en tu PC. Cómo se entrega se va a definir más adelante.</p>
+    {% endif %}
+  </section>
+</main>
+
+<button type="button" class="rs-btn rs-deshacer" id="rs-deshacer" hidden></button>
+
+<div class="rs-modal" id="rs-modal" hidden>
+  <div class="rs-modal__caja" role="dialog" aria-modal="true" aria-labelledby="rs-modal-titulo">
+    <h2 id="rs-modal-titulo"></h2>
+    <div id="rs-modal-cuerpo"></div>
+    <div class="rs-modal__acciones" id="rs-modal-acciones"></div>
+  </div>
+</div>
+

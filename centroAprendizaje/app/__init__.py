@@ -20,6 +20,18 @@ def create_app(test_config=None):
 
     app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8 MB por archivo subido
 
+    # Los .js y .css de /static llevan «?v=<fecha de modificación>»: cuando se
+    # deploya un cambio, el navegador baja el nuevo en vez de usar el viejo
+    # guardado (si no, la pantalla puede quedar mezclada).
+    @app.url_defaults
+    def _version_estaticos(endpoint, values):
+        if (endpoint == "static" and "v" not in values
+                and str(values.get("filename", "")).endswith((".js", ".css"))):
+            try:
+                values["v"] = int(os.stat(os.path.join(app.static_folder, values["filename"])).st_mtime)
+            except OSError:
+                pass
+
     # Secretos (SECRET_KEY, ADMIN_PASSWORD) desde variables de entorno, cookies
     # seguras, encabezados HTTP y proxy. Nunca hay contraseña por defecto.
     from app import seguridad
@@ -48,6 +60,10 @@ def create_app(test_config=None):
     from app.revision.routes import revision_bp
 
     app.register_blueprint(revision_bp)
+
+    from app.servicio.routes import servicio_bp
+
+    app.register_blueprint(servicio_bp)
 
     from app.procesos.routes import procesos_bp
 

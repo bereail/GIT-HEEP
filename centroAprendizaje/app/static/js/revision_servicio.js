@@ -15,8 +15,14 @@
   "use strict";
 
   var DATOS = JSON.parse(document.getElementById("rs-datos").textContent);
+  // En línea (llave de servicio): las respuestas se guardan en el Centro y no
+  // en el navegador. Sin `servidor`, es la planilla descargable de siempre.
+  var SERVIDOR = DATOS.servidor || null;
   var ITEMS = DATOS.items;
   var POR_ID = new Map(ITEMS.map(function (i) { return [i.id, i]; }));
+  // Artículos que comparten código propuesto (ver `_agrupar` en el servidor).
+  var GRUPOS = new Map();
+  ITEMS.forEach(function (i) { if (i.g) { if (!GRUPOS.has(i.g)) GRUPOS.set(i.g, []); GRUPOS.get(i.g).push(i); } });
   var CLAVE = DATOS.bodega + "::" + DATOS.versionDatos;
   var PREFIJO_LS = "centro-revision-servicio::";
   var SESION = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
@@ -28,46 +34,53 @@
   var FORMATO_DEVOLUCION = "revision-servicio-devolucion/1";
   var SLUG = DATOS.bodega.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
+  // De izquierda a derecha: de lo que se descarta a lo que se confirma.
+  // «No se usa» va primero porque se decide sin mirar el código: el artículo
+  // queda fuera y no hay que hacer nada más con él.
   var RESULTADOS = {
-    correcto: "Correcto / corresponde",
+    no_necesario: "No se usa",
+    otro_servicio: "No es de este servicio",
     no_corresponde: "No corresponde",
-    no_necesario: "No necesario",
-    aclaracion: "Requiere aclaración"
+    aclaracion: "Requiere aclaración",
+    correcto: "Correcto / corresponde"
   };
-  var AYUDA = {
-    1: { correcto: "Se necesita y no está en el catálogo", no_corresponde: "No es un artículo de este servicio", no_necesario: "El servicio ya no lo usa", aclaracion: "Lo encontré en el catálogo o tengo dudas" },
-    2: { correcto: "El código propuesto es este artículo", no_corresponde: "El código propuesto es otro artículo", no_necesario: "El servicio ya no lo usa", aclaracion: "Tengo dudas" },
-    3: { correcto: "El código propuesto es este artículo", no_corresponde: "El código propuesto es otro artículo", no_necesario: "El servicio ya no lo usa", aclaracion: "Tengo dudas" }
+  var NO_SE_USA = "No se compra más: queda fuera, no hay que hacer nada";
+  var TIPOS_NEC = {
+    farmacia: "Medicamento o descartable de Farmacia",
+    otro: "Otro bien o servicio",
+    no_se: "No sé"
   };
+  var CATALOGO_NEC = {
+    no_busque: "Todavía no lo busqué",
+    no_esta: "Lo busqué y no está",
+    esta: "Lo busqué y sí está"
+  };
+  // Instrucciones de cada sección, en lenguaje simple. En todas, cada artículo
+  // se resuelve con una sola pregunta (ver bloqueRespuesta).
   var INSTRUCCIONES = {
     1: {
-      titulo: "1 · Artículos que faltan cargar",
-      texto: "La comparación automática no encontró estos artículos en el Catálogo WEB de la Provincia.",
+      titulo: "1 · No están en el Catálogo WEB",
+      texto: "Estos artículos todavía no están en TIMBÓ. Si el servicio los usa, se pide que los carguen.",
       pasos: [
-        "Buscá el artículo en el Catálogo WEB (santafe.gob.ar/gestionesdecompras → Catálogo) con otras palabras, sinónimos o un término más general.",
-        "Si lo encontrás, marcá «Requiere aclaración» y anotá el código en observaciones.",
-        "Si no existe y el servicio lo necesita, marcá «Correcto / corresponde».",
-        "Si el servicio ya no lo usa, marcá «No necesario». Si no es de este servicio, «No corresponde»."
+        "Si lo usan, tocá «Sí, se usa» y listo: se pide que lo carguen.",
+        "Si no lo usan, tocá «Ya no se usa». Si no es de tu servicio, «No es de nuestro servicio».",
+        "Si querés aclarar algo, tocá «＋ Agregar una observación»."
       ]
     },
     2: {
-      titulo: "2 · Artículos que necesitan confirmación",
-      texto: "La comparación automática encontró un ítem parecido, pero no idéntico. Que los nombres se parezcan no alcanza: hay que comparar.",
+      titulo: "2 · Hay que confirmar el código",
+      texto: "TIMBÓ propone un artículo parecido. Fijate si es lo mismo que usa el servicio.",
       pasos: [
-        "Compará el artículo con el código propuesto: descripción, presentación, unidad de medida, medidas o calibre, concentración o composición, y uso previsto.",
-        "Si es el mismo artículo, marcá «Correcto / corresponde».",
-        "Si el código propuesto es otra cosa, marcá «No corresponde». Si conocés el código correcto, anotalo en observaciones.",
-        "Si el servicio ya no lo usa, «No necesario». Si tenés dudas, «Requiere aclaración» y explicá cuál."
+        "Si es lo mismo, tocá «✓ Sí, es este».",
+        "Si el servicio lo usa pero TIMBÓ propone algo distinto, tocá «Es otra cosa»: se pide que lo carguen.",
+        "Si en TIMBÓ es un artículo general (ejemplo: «Lámpara LED» para las de 12 W, 14 W…), también es «Sí, es este»: el detalle se aclara al hacer el pedido.",
+        "Si ya no se usa o no es de tu servicio, tocá esa opción."
       ]
     },
     3: {
-      titulo: "3 · Artículos que ya existen y deben verificarse",
-      texto: "La comparación automática encontró un ítem con las mismas palabras clave y los mismos números. Igual hay que verificarlo: puede fallar, por ejemplo, en una medida.",
-      pasos: [
-        "Verificá que el código propuesto sea exactamente este artículo: presentación, unidad, medidas y características.",
-        "Si coincide, «Correcto / corresponde». Si no, «No corresponde» y anotá la diferencia.",
-        "Si el servicio ya no lo usa, «No necesario». Si tenés dudas, «Requiere aclaración»."
-      ]
+      titulo: "3 · Ya están en TIMBÓ",
+      texto: "Estos artículos ya están cargados en TIMBÓ. No tenés que hacer nada: es solo para que los veas.",
+      pasos: []
     }
   };
 
@@ -85,7 +98,7 @@
       inicio: null, modificado: null, finalizado: null,
       guardado: 0, sesion: SESION,
       ultimaCopia: null, cambiosDesdeCopia: 0,
-      respuestas: {}, huerfanas: {}, registro: []
+      respuestas: {}, huerfanas: {}, necesidades: {}, registro: []
     };
   }
 
@@ -103,7 +116,13 @@
   }
 
   function respuesta(id) { return estado.respuestas[id] || null; }
-  function revisado(id) { var r = respuesta(id); return !!(r && r.r); }
+  // La sección 3 (ya están en TIMBÓ) es solo para mirar: cuenta como hecha.
+  function soloVer(i) { return !!i && i.s === 3; }
+  // Lo que quedó sin decidir con pantallas anteriores («No sé», «no corresponde»
+  // sin decir qué hacer, o una ✗ traída de Farmacia) vuelve al centro como
+  // pendiente: se responde con la pregunta nueva. La respuesta guardada no se toca.
+  function sinDecidirGuardado(r) { return !!r && (r.r === "aclaracion" || (r.r === "no_corresponde" && !r.dec)); }
+  function revisado(id) { var r = respuesta(id); return (!!(r && r.r) && !sinDecidirGuardado(r)) || soloVer(POR_ID.get(id)); }
 
   // ------------------------------------------------------ almacenamiento ---
   function abrirDB() {
@@ -167,6 +186,7 @@
   var hayCambiosSinGuardar = false;
 
   function guardar(inmediato) {
+    if (SERVIDOR) { programarServidor(inmediato); return; }
     hayCambiosSinGuardar = true;
     clearTimeout(temporizadorTexto);
     if (inmediato) {
@@ -201,6 +221,56 @@
     }
     programarArchivo();
     pintarGuardado();
+  }
+
+  // ------------------------------------------------------- en el Centro ---
+  // Cada respuesta cambiada se manda sola, en fila. Si falla, queda marcada
+  // para reintentar y se avisa arriba.
+  var sucios = new Set();
+  var tServidor = null;
+  var estadoEnvio = { enviando: 0, error: "" };
+
+  function post(url, cuerpo) {
+    return fetch(url, {
+      method: "POST", credentials: "same-origin", keepalive: true,
+      headers: { "Content-Type": "application/json", "X-CSRFToken": SERVIDOR.csrf },
+      body: JSON.stringify(cuerpo)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (d) {
+        if (r.status === 409 && d.enviado) { SERVIDOR.enviado = d.enviado; marcarEnviada(); }
+        if (r.status === 403) return { ok: false, error: "Tu sesión terminó. Volvé a entrar con tu enlace (lo ya guardado no se pierde)." };
+        return { ok: r.ok && d.ok !== false, error: d.error || (r.ok ? "" : "Error " + r.status), datos: d };
+      });
+    }, function () { return { ok: false, error: "Sin conexión con el Centro." }; });
+  }
+
+  function programarServidor(inmediato) {
+    clearTimeout(tServidor);
+    if (inmediato) enviarSucios(); else tServidor = setTimeout(enviarSucios, 800);
+  }
+
+  function enviarSucios() {
+    var ids = Array.from(sucios); sucios.clear();
+    ids.forEach(function (id) {
+      estadoEnvio.enviando++; pintarEnvio();
+      cola = cola.then(function () {
+        var r = respuesta(id) || {};
+        return post(SERVIDOR.urlRespuesta, { codigo: id, resultado: r.r || null, observacion: r.obs || "", decision: r.dec || null, codigo_correcto: r.cod || "", detalle_timbo: r.det || "" }).then(function (res) {
+          estadoEnvio.enviando--;
+          if (res.ok) { if (estadoEnvio.error && !sucios.size) estadoEnvio.error = ""; if (res.datos.finalizado === null) estado.finalizado = null; }
+          else { sucios.add(id); estadoEnvio.error = res.error; }
+          pintarEnvio();
+        });
+      });
+    });
+  }
+
+  function pintarEnvio() {
+    var e = $("rs-envio"); if (!e) return;
+    e.classList.remove("ok", "error");
+    if (estadoEnvio.error) { e.classList.add("error"); e.textContent = "⚠ " + estadoEnvio.error + " "; var b = elem("button", "rs-btn rs-btn--chico", "Reintentar"); b.type = "button"; b.onclick = function () { estadoEnvio.error = ""; enviarSucios(); }; e.appendChild(b); }
+    else if (estadoEnvio.enviando || sucios.size) e.textContent = "Guardando…";
+    else { e.classList.add("ok"); e.textContent = "✓ Todo guardado en el Centro"; }
   }
 
   // --------------------------------------------------- archivo de trabajo --
@@ -263,7 +333,14 @@
     e.inicio = (obj.fechas || {}).inicio || null; e.modificado = (obj.fechas || {}).ultimaModificacion || null;
     e.guardado = obj.guardado || 0; e.sesion = "devolucion";
     (obj.respuestas || []).forEach(function (r) {
-      if (r.resultado || r.observaciones) e.respuestas[r.codigo_interno] = { r: r.resultado || null, obs: r.observaciones || "", t: r.fecha || e.modificado, hist: r.historial || [] };
+      if (r.resultado || r.observaciones) e.respuestas[r.codigo_interno] = { r: r.resultado || null, obs: r.observaciones || "", dec: r.decision || null, cod: r.codigo_correcto || "", det: r.detalle_timbo || "", t: r.fecha || e.modificado, hist: r.historial || [] };
+    });
+    (obj.necesidades || []).forEach(function (n) {
+      e.necesidades[n.id] = {
+        id: n.id, d: n.descripcion || "", p: n.presentacion || "", u: n.uso || "", tipo: n.tipo || "",
+        cat: n.catalogo || "no_busque", cod: n.codigo_catalogo || "", obs: n.observaciones || "",
+        creado: n.creado || null, t: n.modificado || null, baja: !!n.quitada, hist: n.historial || []
+      };
     });
     return e;
   }
@@ -362,13 +439,21 @@
   }
 
   // ------------------------------------------------- combinar y conflictos --
-  function igual(a, b) { return (a.r || null) === (b.r || null) && (a.obs || "") === (b.obs || ""); }
+  function igual(a, b) {
+    return (a.r || null) === (b.r || null) && (a.obs || "") === (b.obs || "") &&
+      (a.dec || null) === (b.dec || null) && (a.cod || "") === (b.cod || "") && (a.det || "") === (b.det || "");
+  }
   function vacia(a) { return !a || (!a.r && !(a.obs || "").trim()); }
   function fechaDe(a) { return a && a.t ? Date.parse(a.t) || 0 : 0; }
 
   function analizar(otro) {
     var ids = new Set(Object.keys(estado.respuestas).concat(Object.keys(otro.respuestas || {})));
-    var res = { nuevas: [], iguales: 0, conflictos: [], huerfanas: [] };
+    var res = { nuevas: [], iguales: 0, conflictos: [], huerfanas: [], necNuevas: [], necDistintas: [] };
+    Object.keys(otro.necesidades || {}).forEach(function (id) {
+      var mia = (estado.necesidades || {})[id], suya = otro.necesidades[id];
+      if (!mia) res.necNuevas.push(id);
+      else if (JSON.stringify(necComparable(mia)) !== JSON.stringify(necComparable(suya))) res.necDistintas.push(id);
+    });
     ids.forEach(function (id) {
       var mia = estado.respuestas[id], suya = (otro.respuestas || {})[id];
       if (!POR_ID.has(id)) { if (suya && !vacia(suya)) res.huerfanas.push(id); return; }
@@ -396,18 +481,28 @@
       estado.respuestas[id] = ganaSuya ? conHistorial(suya, mia, "reemplazada al combinar con " + origen) : conHistorial(mia, suya, "descartada al combinar con " + origen);
     });
     analisis.huerfanas.forEach(function (id) { estado.huerfanas[id] = otro.respuestas[id]; });
+    // Necesidades: se unen por id. Si las dos versiones difieren, decide el
+    // mismo criterio que para las respuestas; la otra queda en el historial.
+    estado.necesidades = estado.necesidades || {};
+    analisis.necNuevas.forEach(function (id) { estado.necesidades[id] = JSON.parse(JSON.stringify(otro.necesidades[id])); });
+    analisis.necDistintas.forEach(function (id) {
+      var mia = estado.necesidades[id], suya = otro.necesidades[id];
+      var ganaSuya = modo === "suyas" || (modo === "recientes" && fechaDe(suya) > fechaDe(mia));
+      estado.necesidades[id] = ganaSuya ? necConHistorial(suya, mia) : necConHistorial(mia, suya);
+    });
     Object.keys(otro.huerfanas || {}).forEach(function (id) { if (!estado.huerfanas[id]) estado.huerfanas[id] = otro.huerfanas[id]; });
     ["servicio", "nombre", "apellido", "observaciones"].forEach(function (campo) {
       if (!(estado[campo] || "").trim() && (otro[campo] || "").trim()) estado[campo] = otro[campo];
     });
     if (otro.inicio && (!estado.inicio || otro.inicio < estado.inicio)) estado.inicio = otro.inicio;
     if (otro.ultimaCopia && (!estado.ultimaCopia || otro.ultimaCopia > estado.ultimaCopia)) estado.ultimaCopia = otro.ultimaCopia;
-    if (!estado.finalizado && otro.finalizado && !analisis.nuevas.length && !analisis.conflictos.length) estado.finalizado = otro.finalizado;
+    if (!estado.finalizado && otro.finalizado && !analisis.nuevas.length && !analisis.conflictos.length && !analisis.necNuevas.length && !analisis.necDistintas.length) estado.finalizado = otro.finalizado;
     (otro.registro || []).forEach(function (x) { if (x.sesion !== SESION) estado.registro.push(x); });
     estado.registro.sort(function (a, b) { return a.t < b.t ? -1 : 1; });
     if (estado.registro.length > MAX_REGISTRO) estado.registro.splice(0, estado.registro.length - MAX_REGISTRO);
-    if (analisis.nuevas.length || analisis.conflictos.length) estado.modificado = ahora();
-    registrar("combinación con " + origen, analisis.nuevas.length + " nuevas, " + analisis.iguales + " iguales, " + analisis.conflictos.length + " en conflicto (" + modo + "), " + analisis.huerfanas.length + " de artículos que ya no están");
+    var necCambios = analisis.necNuevas.length + analisis.necDistintas.length;
+    if (analisis.nuevas.length || analisis.conflictos.length || necCambios) estado.modificado = ahora();
+    registrar("combinación con " + origen, analisis.nuevas.length + " nuevas, " + analisis.iguales + " iguales, " + analisis.conflictos.length + " en conflicto (" + modo + "), " + analisis.huerfanas.length + " de artículos que ya no están, " + analisis.necNuevas.length + " necesidades nuevas, " + analisis.necDistintas.length + " necesidades distintas");
     persistencia.baseLocal = Math.max(persistencia.baseLocal, otro.guardado || 0);
     estado.guardado = Math.max(estado.guardado || 0, otro.guardado || 0);
     if (origen === "el archivo de trabajo") { persistencia.baseArchivo = Math.max(persistencia.baseArchivo, otro.guardado || 0); persistencia.archivoPausado = false; }
@@ -416,10 +511,14 @@
     var partes = [analisis.nuevas.length + " respuestas recuperadas", analisis.iguales + " ya estaban iguales"];
     if (analisis.conflictos.length) partes.push(analisis.conflictos.length + " diferencias resueltas");
     if (analisis.huerfanas.length) partes.push(analisis.huerfanas.length + " de artículos que ya no están en esta planilla (se conservan aparte)");
+    if (analisis.necNuevas.length) partes.push(analisis.necNuevas.length + " artículos necesarios recuperados");
+    if (analisis.necDistintas.length) partes.push(analisis.necDistintas.length + " artículos necesarios con diferencias resueltas");
     alerta("ok", "Listo: se combinó con " + origen + ". " + partes.join(" · ") + ".");
   }
 
   function combinar(otro, origen) {
+    var antes = JSON.stringify(estado);
+    apilar("combinar con " + origen, function () { var g = estado.guardado; estado = JSON.parse(antes); estado.guardado = g; });
     var distintaVersion = otro.versionDatos && otro.versionDatos !== DATOS.versionDatos;
     var a = analizar(otro);
     if (!a.conflictos.length) { aplicar(otro, a, "recientes", origen); if (distintaVersion) avisoVersion(); return; }
@@ -474,26 +573,236 @@
   // `tipeando`: la observación se está escribiendo. Mientras siga siendo la
   // misma edición (mismo resultado, menos de un minuto) no se suma una
   // versión al historial por cada tecla.
-  function responder(id, r, obs, tipeando) {
+  // `dec` / `cod`: qué hacer con un «no corresponde» (agregar o código
+  // correcto). Si no se pasan, se conservan mientras el resultado no cambie.
+  // Decisiones válidas: «no corresponde» → agregar / código; «correcto» →
+  // ítem general (código + `det`, el detalle para la observación en TIMBÓ).
+  var DECISIONES_VALIDAS = { no_corresponde: ["agregar", "codigo"], correcto: ["general"] };
+  // Una vez enviada la revisión no se puede cambiar nada (solo el
+  // administrador la reabre).
+  function enviada() { return !!(SERVIDOR && SERVIDOR.enviado); }
+  function bloqueada() {
+    if (!enviada()) return false;
+    alerta("error", "La revisión ya se envió y no se puede cambiar. Si hace falta, pedí que la reabran.");
+    return true;
+  }
+
+  function responder(id, r, obs, tipeando, dec, cod, det) {
+    if (bloqueada()) return;
     var previa = estado.respuestas[id];
-    var nueva = { r: r, obs: obs, t: ahora(), hist: previa ? (previa.hist || []).slice() : [] };
+    if (dec === undefined) {
+      var igualR = previa && previa.r === r;
+      dec = igualR ? previa.dec || null : null; cod = igualR ? previa.cod || "" : ""; det = igualR ? previa.det || "" : "";
+    }
+    if ((DECISIONES_VALIDAS[r] || []).indexOf(dec) === -1) dec = null;
+    if (dec !== "codigo" && dec !== "general") cod = "";
+    if (dec !== "general") det = "";
+    var nueva = { r: r, obs: obs, dec: dec || null, cod: cod || "", det: det || "", t: ahora(), hist: previa ? (previa.hist || []).slice() : [] };
     var mismaEdicion = tipeando && previa && previa.r === r && Date.now() - fechaDe(previa) < 60000;
     if (previa && !vacia(previa) && !igual(previa, nueva) && !mismaEdicion) {
-      nueva.hist.push({ r: previa.r || null, obs: previa.obs || "", t: previa.t || null });
+      nueva.hist.push({ r: previa.r || null, obs: previa.obs || "", dec: previa.dec || null, cod: previa.cod || "", det: previa.det || "", t: previa.t || null });
       if (nueva.hist.length > MAX_HISTORIAL) nueva.hist = nueva.hist.slice(-MAX_HISTORIAL);
     }
     estado.respuestas[id] = nueva;
-    if (!estado.inicio) { estado.inicio = nueva.t; registrar("revisión iniciada", ""); }
-    estado.modificado = nueva.t;
+    sucios.add(id);
+    marcarCambio(nueva.t, id, mismaEdicion);
+  }
+
+  // ----------------------------------------------------------- deshacer ---
+  // Toda acción deja cómo volver atrás. Deshacer también queda en el
+  // historial: nada se borra.
+  var pilaDeshacer = [];
+  function apilar(texto, volver) {
+    pilaDeshacer.push({ texto: texto, volver: volver });
+    if (pilaDeshacer.length > 50) pilaDeshacer.shift();
+    pintarDeshacer();
+  }
+  function deshacerUltimo() {
+    if (bloqueada()) return;
+    var a = pilaDeshacer.pop(); if (!a) return;
+    pintarDeshacer();
+    Promise.resolve(a.volver()).then(function () {
+      pintarLista(); pintarNecesidades(); pintarAvance(); guardar(true);
+      if ($("rs-revfinal") && !$("rs-revfinal").hidden) pintarRevisionFinal();
+      alerta("ok", "Se deshizo: " + a.texto + ".");
+    }, function (err) { pilaDeshacer.push(a); pintarDeshacer(); alerta("error", "No se pudo deshacer: " + (err && err.message || err)); });
+  }
+  function pintarDeshacer() {
+    var b = $("rs-deshacer"); if (!b) return;
+    var u = pilaDeshacer[pilaDeshacer.length - 1];
+    b.hidden = !u;
+    if (u) { b.textContent = "↶ Deshacer lo último"; b.title = "Deshacer: " + u.texto + " (Ctrl+Z)"; }
+  }
+  var DECISIONES = { agregar: "hay que agregarlo", codigo: "código correcto" };
+  function decidir(id, dec, cod) {
+    var previa = respuesta(id) || {}, antes = { dec: previa.dec || null, cod: previa.cod || "" };
+    responder(id, previa.r || null, previa.obs || "", false, dec, cod);
+    var item = POR_ID.get(id);
+    apilar((dec ? "«" + DECISIONES[dec] + "»" : "quitar la decisión") + " en " + (item ? item.n : id), function () {
+      var r = respuesta(id) || {}; responder(id, r.r || null, r.obs || "", false, antes.dec, antes.cod);
+    });
+  }
+
+  // Cambia la respuesta completa (resultado y, si corresponde, decisión) y
+  // deja cómo deshacerlo.
+  function cambiarResultado(id, r, obs, texto, dec, cod, det) {
+    var p = respuesta(id) || {};
+    var antes = { r: p.r || null, obs: p.obs || "", dec: p.dec || null, cod: p.cod || "", det: p.det || "" };
+    responder(id, r, obs, false, dec === undefined ? null : dec, cod || "", det || "");
+    var item = POR_ID.get(id);
+    apilar(texto || ((r ? "«" + RESULTADOS[r] + "»" : "quitar el resultado") + " en " + (item ? item.n : id)), function () {
+      responder(id, antes.r, antes.obs, false, antes.dec, antes.cod, antes.det);
+    });
+  }
+
+  function marcarCambio(t, que, mismaEdicion) {
+    if (!estado.inicio) { estado.inicio = t; registrar("revisión iniciada", ""); }
+    estado.modificado = t;
     if (!mismaEdicion) estado.cambiosDesdeCopia = (estado.cambiosDesdeCopia || 0) + 1;
     if (estado.finalizado) {
       estado.finalizado = null;
-      registrar("revisión reabierta", "cambio en " + id);
-      alerta("atencion", "Cambiaste una respuesta después de finalizar: la revisión volvió a quedar abierta. Al terminar, finalizala de nuevo.");
+      registrar("revisión reabierta", "cambio en " + que);
+      alerta("atencion", "Hiciste un cambio después de finalizar: la revisión volvió a quedar abierta. Al terminar, finalizala de nuevo.");
     }
-    if (estado.cambiosDesdeCopia > 0 && estado.cambiosDesdeCopia % AVISO_COPIA_CADA === 0) {
+    if (!SERVIDOR && estado.cambiosDesdeCopia > 0 && estado.cambiosDesdeCopia % AVISO_COPIA_CADA === 0) {
       alerta("atencion", "Llevás " + estado.cambiosDesdeCopia + " cambios desde la última copia de seguridad.", "Descargar copia ahora", exportarCopia);
     }
+  }
+
+  // ---------------------------------------- artículos que no están (5) ---
+  // Artículos que el servicio necesita y no figuran en la planilla. Al quitar
+  // uno queda marcado como quitado (no se borra): así una copia vieja no lo
+  // vuelve a traer al combinar.
+  var necEditando = null;
+
+  function necComparable(n) { return [n.d, n.p, n.u, n.tipo, n.cat, n.cod, n.obs, !!n.baja]; }
+  function necConHistorial(ganadora, perdedora) {
+    var g = JSON.parse(JSON.stringify(ganadora));
+    g.hist = (g.hist || []).slice();
+    if (perdedora) g.hist.push({ version: necComparable(perdedora), t: perdedora.t || null, motivo: "versión distinta al combinar" });
+    if (g.hist.length > MAX_HISTORIAL) g.hist = g.hist.slice(-MAX_HISTORIAL);
+    return g;
+  }
+  function necesidadesActivas() {
+    return Object.keys(estado.necesidades || {}).map(function (k) { return estado.necesidades[k]; })
+      .filter(function (n) { return !n.baja; })
+      .sort(function (a, b) { return (a.creado || "") < (b.creado || "") ? -1 : 1; });
+  }
+  function idNecesidad() { return "n-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7); }
+
+  function leerFormNec() {
+    var cat = $("rs-nec-cat").value;
+    return {
+      d: $("rs-nec-desc").value.trim(), p: $("rs-nec-pres").value.trim(), u: $("rs-nec-uso").value.trim(),
+      tipo: $("rs-nec-tipo").value, cat: cat, cod: cat === "esta" ? $("rs-nec-cod").value.trim() : "",
+      obs: $("rs-nec-obs").value.trim()
+    };
+  }
+  function llenarFormNec(n) {
+    $("rs-nec-desc").value = n ? n.d : ""; $("rs-nec-pres").value = n ? n.p : ""; $("rs-nec-uso").value = n ? n.u : "";
+    $("rs-nec-tipo").value = n ? n.tipo : ""; $("rs-nec-cat").value = n ? n.cat || "no_busque" : "no_busque";
+    $("rs-nec-cod").value = n ? n.cod : ""; $("rs-nec-obs").value = n ? n.obs : "";
+    $("rs-nec-desc").classList.remove("rs-falta");
+    pintarOrientacion();
+  }
+
+  function guardarNecesidad(datos) {
+    var t = ahora();
+    estado.necesidades = estado.necesidades || {};
+    var previa = necEditando ? estado.necesidades[necEditando] : null;
+    var n = Object.assign({ id: previa ? previa.id : idNecesidad(), creado: previa ? previa.creado : t, baja: false, hist: [] }, previa || {}, datos);
+    if (previa) {
+      if (JSON.stringify(necComparable(previa)) === JSON.stringify(necComparable(n))) return previa;
+      n.hist = (previa.hist || []).concat([{ version: necComparable(previa), t: previa.t || null }]).slice(-MAX_HISTORIAL);
+    }
+    n.t = t;
+    estado.necesidades[n.id] = n;
+    registrar(previa ? "artículo necesario editado" : "artículo necesario agregado", n.d);
+    marcarCambio(t, "artículo necesario «" + n.d + "»");
+    return n;
+  }
+
+  function restaurarNecesidad(id) {
+    var n = estado.necesidades[id]; if (!n || !n.baja) return;
+    var t = ahora();
+    n.hist = (n.hist || []).concat([{ version: necComparable(n), t: n.t || null }]).slice(-MAX_HISTORIAL);
+    n.baja = false; n.t = t;
+    registrar("artículo necesario vuelto a poner", n.d);
+    marcarCambio(t, "artículo necesario «" + n.d + "»");
+  }
+
+  // Agregar / editar / quitar, en la planilla o en el Centro. Devuelven una
+  // promesa (en el Centro esperan la respuesta para tener el id).
+  function necGuardar(datos, id) {
+    if (bloqueada()) return Promise.reject(new Error("La revisión ya se envió."));
+    if (!SERVIDOR) { necEditando = id || null; var n = guardarNecesidad(datos); necEditando = null; guardar(true); return Promise.resolve(n.id); }
+    return post(SERVIDOR.urlNecesidad, Object.assign({ id: id || null }, datos)).then(function (res) {
+      if (!res.ok) throw new Error(res.error || "No se pudo guardar.");
+      estado.necesidades = res.datos.necesidades; estado.finalizado = null;
+      return res.datos.id;
+    });
+  }
+  function necBaja(id, quitar) {
+    if (bloqueada()) return Promise.reject(new Error("La revisión ya se envió."));
+    if (!SERVIDOR) { if (quitar) quitarNecesidad(id); else restaurarNecesidad(id); guardar(true); return Promise.resolve(); }
+    return post(SERVIDOR.urlNecesidadQuitar, { id: id, quitar: quitar }).then(function (res) {
+      if (!res.ok) throw new Error(res.error || "No se pudo guardar.");
+      estado.necesidades = res.datos.necesidades; estado.finalizado = null;
+    });
+  }
+  function datosDe(n) { return { d: n.d, p: n.p, u: n.u, tipo: n.tipo, cat: n.cat, cod: n.cod, obs: n.obs }; }
+
+  function quitarNecesidad(id) {
+    var n = estado.necesidades[id]; if (!n || n.baja) return;
+    var t = ahora();
+    n.hist = (n.hist || []).concat([{ version: necComparable(n), t: n.t || null }]).slice(-MAX_HISTORIAL);
+    n.baja = true; n.t = t;
+    registrar("artículo necesario quitado", n.d);
+    marcarCambio(t, "artículo necesario «" + n.d + "»");
+  }
+
+  function pintarOrientacion() {
+    var tipo = $("rs-nec-tipo").value, cat = $("rs-nec-cat").value;
+    var pedirAlta = cat !== "esta";
+    var ver = {
+      no_busque: cat === "no_busque", esta: cat === "esta",
+      farmacia: pedirAlta && tipo === "farmacia", otro: pedirAlta && tipo === "otro", no_se: pedirAlta && tipo === "no_se"
+    };
+    ver.alta = ver.farmacia || ver.otro;
+    document.querySelectorAll("[data-orienta]").forEach(function (p) { p.hidden = !ver[p.dataset.orienta]; });
+    $("rs-nec-cod-campo").hidden = cat !== "esta";
+  }
+
+  function pintarNecesidades() {
+    pintarColumnas();
+    var lista = necesidadesActivas(), cont = $("rs-nec-lista"); cont.textContent = "";
+    $("rs-nec-cuenta").textContent = lista.length ? lista.length + (lista.length === 1 ? " artículo cargado" : " artículos cargados") : "Todavía no cargaste ninguno.";
+    lista.forEach(function (n) {
+      var t = elem("article", "rs-tarjeta rs-nec-item"); t.dataset.nec = n.id;
+      var cab = elem("div", "rs-tarjeta__cab");
+      cab.appendChild(elem("span", "rs-tarjeta__nombre", n.d));
+      if (n.p) cab.appendChild(elem("span", "rs-codigos", n.p));
+      t.appendChild(cab);
+      var partes = ["Tipo: " + (TIPOS_NEC[n.tipo] || "sin elegir"), "Catálogo WEB: " + (CATALOGO_NEC[n.cat] || "—") + (n.cod ? " (" + n.cod + ")" : "")];
+      if (n.u) partes.unshift("Uso: " + n.u);
+      t.appendChild(elem("p", "rs-motivo", partes.join(" · ")));
+      if (n.obs) t.appendChild(elem("p", "", n.obs));
+      var pie = elem("div", "rs-tarjeta__pie");
+      pie.appendChild(elem("span", "rs-guardado-item", "Guardado " + new Date(n.t).toLocaleString()));
+      var acc = elem("span");
+      var ed = elem("button", "rs-borrar", "Editar"); ed.type = "button"; ed.dataset.accion = "editar"; acc.appendChild(ed);
+      var qu = elem("button", "rs-borrar", "Quitar"); qu.type = "button"; qu.dataset.accion = "quitar"; acc.appendChild(qu);
+      pie.appendChild(acc);
+      t.appendChild(pie);
+      cont.appendChild(t);
+    });
+  }
+
+  function terminarEdicionNec() {
+    necEditando = null;
+    llenarFormNec(null);
+    $("rs-nec-guardar").textContent = "Agregar a la lista";
+    $("rs-nec-cancelar").hidden = true;
   }
 
   // -------------------------------------------------------------- vista ---
@@ -502,109 +811,393 @@
   function normal(t) { return (t || "").normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
   var INDICE = new Map(ITEMS.map(function (i) { return [i.id, normal([i.n, i.id, i.ca, i.cp, i.dn].join(" "))]; }));
 
-  function filtrados() {
+  function coincide(i) {
     var palabras = normal(ui.buscar).split(/\s+/).filter(Boolean);
+    if (!palabras.length) return true;
+    var t = INDICE.get(i.id);
+    return palabras.every(function (p) { return t.indexOf(p) !== -1; });
+  }
+
+  // Vista normal (filtro vacío): arriba solo lo pendiente; lo revisado va a
+  // las columnas de abajo.
+  function filtrados() {
     return ITEMS.filter(function (i) {
       if (i.s !== ui.seccion) return false;
-      if (palabras.length) { var t = INDICE.get(i.id); if (!palabras.every(function (p) { return t.indexOf(p) !== -1; })) return false; }
+      if (!coincide(i)) return false;
+      if (soloVer(i)) return true;
       var r = respuesta(i.id), res = r && r.r;
-      if (ui.filtro === "pendiente") return !res;
+      if (!ui.filtro || ui.filtro === "pendiente") return !revisado(i.id);
+      if (ui.filtro === "todos") return true;
       if (ui.filtro === "revisado") return !!res;
       if (ui.filtro) return res === ui.filtro;
       return true;
     });
   }
 
+  // Cada unidad es una card: un artículo suelto o todo su grupo (aunque el
+  // filtro haya encontrado solo a uno de los miembros).
+  function unidades(lista) {
+    var vistos = new Set(), r = [];
+    lista.forEach(function (i) {
+      if (!i.g) { r.push({ items: [i] }); return; }
+      if (vistos.has(i.g)) return;
+      vistos.add(i.g);
+      r.push({ grupo: i.g, items: GRUPOS.get(i.g) });
+    });
+    return r;
+  }
+
   function elem(tag, clase, texto) { var e = document.createElement(tag); if (clase) e.className = clase; if (texto !== undefined) e.textContent = texto; return e; }
+
+  // Botones de respuesta (ver bloqueRespuesta).
+  var abiertos = {};  // id → "si" | "no" | "codigo" | "general" (solo pantalla)
+  function boton(padre, clase, texto, datos, apretado, ayuda) {
+    var b = elem("button", clase, texto); b.type = "button";
+    Object.keys(datos).forEach(function (k) { b.dataset[k] = datos[k]; });
+    b.setAttribute("aria-pressed", apretado ? "true" : "false");
+    if (ayuda) b.title = ayuda;
+    padre.appendChild(b);
+    return b;
+  }
+  // Una sola pregunta por artículo, con todas las respuestas en una fila.
+  // Si TIMBÓ propone un artículo: ¿es lo mismo? Si no propone nada: ¿lo usan?
+  function bloqueRespuesta(i, r, chico) {
+    r = r || {};
+    var cont = elem("div", "rs-pasos" + (chico ? " rs-pasos--chicas" : ""));
+    var conCodigo = r.dec === "codigo" || r.dec === "general";
+    var p = elem("div", "rs-paso");
+    p.appendChild(elem("span", "rs-paso__preg", i.cp ? "¿Es lo mismo que usa el servicio?" : "¿El servicio lo usa?"));
+    var b = elem("div", "rs-paso__botones");
+    if (i.cp) {
+      boton(b, "rs-res rs-ok", "✓ Sí, es este", { r: "correcto" }, r.r === "correcto");
+      boton(b, "rs-res rs-mal", "Es otra cosa", { r: "no_corresponde", dec: "agregar" }, r.r === "no_corresponde" && !!r.dec,
+        "El servicio lo usa, pero TIMBÓ propone algo distinto: se pide que lo carguen");
+    } else {
+      boton(b, "rs-res rs-ok", "✓ Sí, se usa", { r: "correcto" }, r.r === "correcto", "Se pide que lo carguen en TIMBÓ");
+    }
+    boton(b, "rs-res rs-no", "Ya no se usa", { r: "no_necesario" }, r.r === "no_necesario", NO_SE_USA);
+    boton(b, "rs-res rs-no", "No es de nuestro servicio", { r: "otro_servicio" }, r.r === "otro_servicio",
+      "Está en la bodega por error: lo usa otro servicio");
+    p.appendChild(b); cont.appendChild(p);
+    // Respuestas guardadas con la pantalla anterior: se muestran, no se pierden.
+    if (r.r === "aclaracion") cont.appendChild(elem("p", "rs-nota rs-nota--antes", "Guardado antes como «No sé»: elegí una de las opciones."));
+    if (r.r === "no_corresponde" && !r.dec) cont.appendChild(elem("p", "rs-nota rs-nota--antes",
+      (r.persona && /Farmacia/.test(r.persona) ? "En la revisión de Farmacia se marcó ✗" : "Guardado antes como «no corresponde»") + ": elegí una de las opciones."));
+    if (conCodigo) {
+      var pc = elem("div", "rs-paso rs-paso--extra rs-campos-dato");
+      pc.appendChild(elem("span", "", "Guardado antes: en TIMBÓ va como "));
+      pc.appendChild(elem("code", "", r.cod || i.cp || ""));
+      if (r.det) pc.appendChild(elem("span", "", " · al pedir, aclarar: «" + r.det + "»"));
+      cont.appendChild(pc);
+    }
+    return cont;
+  }
+
+  function cajaObs(obs) {
+    var d = elem("details", "rs-obs-caja"); d.open = !!obs.value;
+    d.appendChild(elem("summary", "", "＋ Agregar una observación"));
+    d.appendChild(obs);
+    return d;
+  }
+
+  // «TECLADO — TECLADO EXPANDIDO ESPAÑOL» → «TECLADO EXPANDIDO ESPAÑOL».
+  function nombreTimbo(dn) {
+    var partes = String(dn || "").split(" — ");
+    return partes[partes.length - 1];
+  }
+
+  function tarjetaVer(i) {
+    var t = elem("article", "rs-tarjeta rs-tarjeta--ver"); t.dataset.id = i.id;
+    t.appendChild(elem("p", "rs-origen", "Así figura hoy en el sistema de compras del hospital:"));
+    var cab = elem("div", "rs-tarjeta__cab"); cab.appendChild(elem("span", "rs-tarjeta__nombre", i.n)); t.appendChild(cab);
+    var prop = elem("div", "rs-propuesto");
+    var linea = elem("div"); linea.appendChild(document.createTextNode("En TIMBÓ: ")); linea.appendChild(elem("code", "", i.cp || ""));
+    prop.appendChild(linea); prop.appendChild(elem("div", "", i.dn || "")); t.appendChild(prop);
+    t.appendChild(elem("p", "rs-ver-ok", "✓ Ya está en TIMBÓ. No tenés que hacer nada."));
+    return t;
+  }
 
   function tarjeta(i) {
     var r = respuesta(i.id);
     var t = elem("article", "rs-tarjeta" + (r && r.r ? " r-" + r.r : ""));
-    t.dataset.id = i.id;
+    t.dataset.id = i.id; t.dataset.base = "rs-tarjeta";
+    t.appendChild(elem("p", "rs-origen", "Así figura hoy en el sistema de compras del hospital:"));
     var cab = elem("div", "rs-tarjeta__cab");
     cab.appendChild(elem("span", "rs-tarjeta__nombre", i.n));
-    var cods = elem("span", "rs-codigos");
-    cods.appendChild(document.createTextNode("Código actual: "));
-    cods.appendChild(elem("code", "", i.id));
-    if (i.ca) { cods.appendChild(document.createTextNode(" · artículo ")); cods.appendChild(elem("code", "", i.ca)); }
-    cods.appendChild(document.createTextNode(" · bodega " + DATOS.bodega));
-    cab.appendChild(cods);
     t.appendChild(cab);
+    t.appendChild(elem("p", "rs-nousa-nota", "No se usa: queda fuera de la revisión. No hay que hacer nada más con este artículo."));
+    t.appendChild(elem("p", "rs-otro-nota", "No es de este servicio: queda fuera de tu revisión. Compras lo va a reasignar."));
 
     var prop = elem("div", "rs-propuesto" + (i.cp ? "" : " rs-propuesto--vacio"));
-    prop.appendChild(elem("p", "rs-propuesto__tit", "Nomenclador TIMBÓ (Catálogo WEB)"));
+    prop.appendChild(elem("p", "rs-propuesto__tit", "En TIMBÓ figura como"));
     if (i.cp) {
-      var linea = elem("div");
-      linea.appendChild(document.createTextNode("Código propuesto: "));
-      linea.appendChild(elem("code", "", i.cp));
-      var copiar = elem("button", "rs-copiar", "Copiar"); copiar.type = "button"; copiar.dataset.copiar = i.cp;
-      linea.appendChild(copiar);
-      prop.appendChild(linea);
-      prop.appendChild(elem("div", "", i.dn));
+      prop.appendChild(elem("div", "rs-propuesto__nombre", nombreTimbo(i.dn)));
     } else {
-      prop.appendChild(elem("div", "", "Sin código propuesto: no se encontró un ítem que corresponda."));
+      prop.appendChild(elem("div", "", "No se encontró en el catálogo."));
     }
     t.appendChild(prop);
 
-    var motivo = elem("p", "rs-motivo"); motivo.appendChild(elem("b", "", "Motivo: ")); motivo.appendChild(document.createTextNode(i.m));
-    t.appendChild(motivo);
     if (i.nu) t.appendChild(elem("p", "rs-alerta-item", "⚠ El código propuesto figura en el catálogo como «NO UTILIZAR»."));
-    if (i.nota || i.cd) {
-      var det = elem("details", "rs-detalle"); det.appendChild(elem("summary", "", "Detalle técnico de la comparación"));
-      if (i.nota) det.appendChild(elem("p", "", i.nota));
-      if (i.cd) det.appendChild(elem("p", "", "Candidato descartado por la comparación automática: " + i.cd));
-      t.appendChild(det);
-    }
+    if (i.cc) t.appendChild(elem("p", "rs-alerta-item", "⚠ " + i.cc));
+    var det = elem("details", "rs-detalle"); det.appendChild(elem("summary", "", "＋ Más datos"));
+    var cods = elem("p", "rs-codigos");
+    cods.appendChild(document.createTextNode("Código actual: "));
+    cods.appendChild(elem("code", "", i.id));
+    if (i.ca) { cods.appendChild(document.createTextNode(" · artículo ")); cods.appendChild(elem("code", "", i.ca)); }
+    cods.appendChild(document.createTextNode(" · bodega " + (i.b || [DATOS.bodega]).join(", ")));
+    det.appendChild(cods);
+    if (i.cp) det.appendChild(elem("p", "rs-codigos", "Código en TIMBÓ: " + i.cp + " · " + (i.dn || "")));
+    if (i.ob) det.appendChild(elem("p", "rs-compartido", "También figura en: " + i.ob.join(", ")));
+    det.appendChild(elem("p", "", i.m));
+    if (i.nota) det.appendChild(elem("p", "", i.nota));
+    if (i.cd) det.appendChild(elem("p", "", "Candidato descartado por la comparación automática: " + i.cd));
+    t.appendChild(det);
 
-    var botones = elem("div", "rs-respuestas"); botones.setAttribute("role", "group"); botones.setAttribute("aria-label", "Resultado");
-    Object.keys(RESULTADOS).forEach(function (k) {
-      var b = elem("button", "rs-res"); b.type = "button"; b.dataset.r = k;
-      b.setAttribute("aria-pressed", r && r.r === k ? "true" : "false");
-      b.appendChild(document.createTextNode(RESULTADOS[k]));
-      b.appendChild(elem("small", "", AYUDA[i.s][k]));
-      botones.appendChild(b);
-    });
-    t.appendChild(botones);
+    t.appendChild(bloqueRespuesta(i, r, false));
     var obs = elem("textarea", "rs-obs"); obs.rows = 2; obs.maxLength = 2000; obs.placeholder = "Observaciones (opcional)"; obs.value = r ? r.obs || "" : "";
     obs.setAttribute("aria-label", "Observaciones de " + i.n);
-    t.appendChild(obs);
+    t.appendChild(cajaObs(obs));
     var pie = elem("div", "rs-tarjeta__pie");
-    pie.appendChild(elem("span", "rs-guardado-item", r && r.t ? "Guardado " + new Date(r.t).toLocaleString() : "Sin revisar"));
+    pie.appendChild(elem("span", "rs-guardado-item", r && r.r && r.t ? "Guardado " + new Date(r.t).toLocaleString() : "Sin revisar"));
     var borrar = elem("button", "rs-borrar", "Quitar resultado"); borrar.type = "button"; borrar.hidden = !(r && r.r);
     pie.appendChild(borrar);
     t.appendChild(pie);
     return t;
   }
 
+  function tarjetaGrupo(u) {
+    var primero = u.items[0];
+    var t = elem("article", "rs-tarjeta rs-grupo"); t.dataset.grupo = u.grupo;
+    var prop = elem("div", "rs-propuesto");
+    prop.appendChild(elem("p", "rs-propuesto__tit", "En TIMBÓ figura como"));
+    prop.appendChild(elem("div", "rs-propuesto__nombre", nombreTimbo(primero.dn)));
+    t.appendChild(prop);
+    t.appendChild(elem("p", "rs-motivo", "Estos " + u.items.length + " artículos van al mismo artículo de TIMBÓ. Es normal: en TIMBÓ hay uno solo, general (como «Lámpara LED» para todas las lámparas LED), y el detalle se aclara al hacer el pedido."));
+    if (primero.nu) t.appendChild(elem("p", "rs-alerta-item", "⚠ El código propuesto figura en el catálogo como «NO UTILIZAR»."));
+    t.appendChild(elem("p", "rs-alerta-item rs-aviso-dup", ""));
+    t.appendChild(elem("p", "rs-origen", "Así figuran hoy en el sistema de compras del hospital:"));
+    u.items.forEach(function (i) {
+      // Vista normal: lo ya respondido está al costado, no se repite en la card.
+      if (!ui.filtro && revisado(i.id)) return;
+      var r = respuesta(i.id);
+      var f = elem("div", "rs-fila" + (r && r.r ? " r-" + r.r : "")); f.dataset.id = i.id; f.dataset.base = "rs-fila";
+      var cab = elem("div", "rs-tarjeta__cab");
+      cab.appendChild(elem("span", "rs-tarjeta__nombre", i.n));
+      if (i.dup) cab.appendChild(elem("span", "rs-etiqueta-dup", "Mismo nombre que otro de esta card"));
+      f.appendChild(cab);
+      f.appendChild(elem("p", "rs-nousa-nota", "No se usa: queda fuera. No hay que hacer nada más."));
+      f.appendChild(elem("p", "rs-otro-nota", "No es de este servicio: queda fuera de tu revisión."));
+      var det = elem("details", "rs-detalle"); det.appendChild(elem("summary", "", "＋ Más datos"));
+      var cods = elem("p", "rs-codigos");
+      cods.appendChild(document.createTextNode("Código actual: ")); cods.appendChild(elem("code", "", i.id));
+      if (i.ca) { cods.appendChild(document.createTextNode(" · artículo ")); cods.appendChild(elem("code", "", i.ca)); }
+      if (i.b && i.b.length > 1) cods.appendChild(document.createTextNode(" · bodegas " + i.b.join(", ")));
+      det.appendChild(cods);
+      if (i.ob) det.appendChild(elem("p", "rs-compartido", "También figura en: " + i.ob.join(", ")));
+      if (i.nota) det.appendChild(elem("p", "", i.nota));
+      f.appendChild(det);
+      f.appendChild(bloqueRespuesta(i, r, true));
+      var obs = elem("textarea", "rs-obs"); obs.rows = 1; obs.maxLength = 2000; obs.placeholder = "Observaciones (opcional)"; obs.value = r ? r.obs || "" : "";
+      obs.setAttribute("aria-label", "Observaciones de " + i.n);
+      f.appendChild(cajaObs(obs));
+      var pie = elem("div", "rs-tarjeta__pie");
+      pie.appendChild(elem("span", "rs-guardado-item", r && r.r && r.t ? "Guardado " + new Date(r.t).toLocaleString() : "Sin revisar"));
+      var borrar = elem("button", "rs-borrar", "Quitar resultado"); borrar.type = "button"; borrar.hidden = !(r && r.r);
+      pie.appendChild(borrar);
+      f.appendChild(pie);
+      t.appendChild(f);
+    });
+    var acciones = elem("div", "rs-grupo__todos");
+    var todos = elem("button", "rs-btn rs-todos", "✓ Sí, es este para todos");
+    todos.type = "button"; todos.title = "Marca «Sí, es este» en los artículos de esta card que todavía no tienen respuesta.";
+    acciones.appendChild(todos);
+    var ninguno = elem("button", "rs-btn rs-btn--claro rs-ninguno", "Ninguno es este");
+    ninguno.type = "button"; ninguno.title = "Marca «Es otra cosa» (se pide que los carguen) en los que todavía no tienen respuesta.";
+    acciones.appendChild(ninguno);
+    t.appendChild(acciones);
+    avisoDuplicado(t);
+    return t;
+  }
+
+  // Dos artículos con el mismo nombre marcados como correctos para el mismo
+  // código: puede ser el mismo artículo cargado dos veces. Solo se avisa.
+  function avisoDuplicado(t) {
+    var aviso = t.querySelector(".rs-aviso-dup"); if (!aviso) return;
+    var marcados = GRUPOS.get(t.dataset.grupo).filter(function (i) { var r = respuesta(i.id); return i.dup && r && r.r === "correcto"; });
+    var porNombre = {};
+    marcados.forEach(function (i) { var k = normal(i.n).replace(/\s+/g, " ").trim(); (porNombre[k] = porNombre[k] || []).push(i.id); });
+    var dobles = Object.keys(porNombre).filter(function (k) { return porNombre[k].length > 1; });
+    aviso.hidden = !dobles.length;
+    aviso.textContent = dobles.length ? "⚠ Posible duplicado: los códigos internos " + dobles.map(function (k) { return porNombre[k].join(" y "); }).join("; ") + " tienen el mismo nombre y los marcaste como correctos. Anotá en observaciones si son el mismo artículo." : "";
+  }
+
   function actualizarTarjeta(t, id) {
     var r = respuesta(id);
-    t.className = "rs-tarjeta" + (r && r.r ? " r-" + r.r : "");
-    t.querySelectorAll(".rs-res").forEach(function (b) { b.setAttribute("aria-pressed", r && r.r === b.dataset.r ? "true" : "false"); });
-    t.querySelector(".rs-guardado-item").textContent = r && r.t ? "Guardado " + new Date(r.t).toLocaleString() : "Sin revisar";
+    t.className = t.dataset.base + (r && r.r ? " r-" + r.r : "");
+    var bloque = t.querySelector(".rs-pasos");
+    if (bloque) bloque.replaceWith(bloqueRespuesta(POR_ID.get(id), r, t.classList.contains("rs-fila")));
+    t.querySelector(".rs-guardado-item").textContent = r && r.r && r.t ? "Guardado " + new Date(r.t).toLocaleString() : "Sin revisar";
     t.querySelector(".rs-borrar").hidden = !(r && r.r);
+    var card = t.closest(".rs-grupo"); if (card) avisoDuplicado(card);
+  }
+
+  // Si en esta pestaña quedan pocos (o ninguno), avisa cuántos faltan en las
+  // otras, con un botón para ir: el centro muestra solo la pestaña elegida.
+  var NOMBRES_PESTANA = { 1: "No están en TIMBÓ", 2: "Confirmar el código" };
+  function pintarOtrasPestanas(aca) {
+    var cont = $("rs-otras"); if (!cont) return;
+    cont.textContent = "";
+    if (ui.filtro || ui.buscar) return;
+    [1, 2].filter(function (s) { return s !== ui.seccion; }).forEach(function (s) {
+      var n = ITEMS.filter(function (i) { return i.s === s && !revisado(i.id); }).length;
+      if (!n) return;
+      var b = elem("button", "rs-otras__ir", (aca ? "También te faltan " : "Te faltan ") + n + " en «" + NOMBRES_PESTANA[s] + "» →");
+      b.type = "button"; b.dataset.irSeccion = s;
+      cont.appendChild(b);
+    });
   }
 
   function pintarLista() {
-    var lista = filtrados();
-    var paginas = Math.max(1, Math.ceil(lista.length / POR_PAGINA));
+    var lista = filtrados(), us = unidades(lista);
+    var paginas = Math.max(1, Math.ceil(us.length / POR_PAGINA));
     if (ui.pagina >= paginas) ui.pagina = paginas - 1;
     if (ui.pagina < 0) ui.pagina = 0;
     var cont = $("rs-lista"); cont.textContent = "";
-    var trozo = lista.slice(ui.pagina * POR_PAGINA, (ui.pagina + 1) * POR_PAGINA);
+    var trozo = us.slice(ui.pagina * POR_PAGINA, (ui.pagina + 1) * POR_PAGINA);
     if (!trozo.length) cont.appendChild(elem("div", "rs-vacio", "No hay artículos con este filtro en esta sección."));
-    trozo.forEach(function (i) { cont.appendChild(tarjeta(i)); });
-    $("rs-resultados").textContent = lista.length + " artículos" + (ui.buscar || ui.filtro ? " con este filtro" : " en esta sección");
+    trozo.forEach(function (u) {
+      if (soloVer(u.items[0])) u.items.forEach(function (i) { cont.appendChild(tarjetaVer(i)); });
+      else cont.appendChild(u.grupo ? tarjetaGrupo(u) : tarjeta(u.items[0]));
+    });
+    var tit = document.querySelector(".rs-centro__tit");
+    if (tit) { tit.querySelector("h2").firstChild.textContent = enviada() ? "🔒 Revisión enviada · sin revisar " : ui.seccion === 3 ? "✓ Ya están en TIMBÓ " : "⏳ Pendientes de revisión "; tit.classList.toggle("rs-centro__tit--ver", ui.seccion === 3); }
+    if ($("rs-centro-cuenta")) $("rs-centro-cuenta").textContent = lista.length;
+    if (ui.seccion === 3) { $("rs-resultados").textContent = lista.length + " artículos ya están en TIMBÓ"; }
+    else $("rs-resultados").textContent = lista.length + (ui.filtro ? " artículos con este filtro" : " artículos pendientes en esta sección" + (ui.buscar ? " con esta búsqueda" : "")) ;
+    pintarOtrasPestanas(lista.length);
+    pintarColumnas();
     $("rs-pagina").textContent = "Página " + (ui.pagina + 1) + " de " + paginas;
     $("rs-ant").disabled = ui.pagina === 0;
     $("rs-sig").disabled = ui.pagina >= paginas - 1;
     guardarUi();
   }
 
+  // Lo ya revisado va a un costado: a la izquierda (verde) lo que se va a poder
+  // pedir en TIMBÓ (hay que cargarlo o ya está), a la derecha (rojo) lo que queda
+  // fuera (no se usa / no es del servicio). Lo que tiene dudas queda debajo del centro. Muestra todas
+  // las secciones: la columna izquierda es la planilla final.
+  // Mismo criterio que `clasificar` en el servidor (services/llaves_servicio.py).
+  function clasificar(i, r) {
+    if (!r || !r.r) return soloVer(i) ? "estan" : "falta";
+    if (r.r === "no_necesario" || r.r === "otro_servicio") return "fuera";
+    if (r.r === "aclaracion") return "falta";
+    if (r.r === "correcto") return r.dec === "general" ? "estan" : (i.s === 1 ? "cargar" : "estan");
+    return r.dec === "agregar" ? "cargar" : r.dec === "codigo" ? "estan" : "falta";
+  }
+  function queHacer(i, r) {
+    var c = clasificar(i, r); r = r || {};
+    if (c === "fuera") return r.r === "otro_servicio" ? "No es de este servicio" : "Ya no se usa";
+    if (c === "cargar") return "Pedir el alta" + (r.r === "correcto" ? ": no está en el catálogo" : ": el código propuesto es otro artículo");
+    if (c === "estan") return r.dec === "general" ? "Va en el artículo general " + (r.cod || i.cp || "") + " · al pedir, aclarar: «" + (r.det || "") + "»"
+      : r.dec === "codigo" ? "Ya está con el código " + (r.cod || "—") : "Ya está con el código " + (i.cp || "");
+    if (r && r.r === "no_corresponde") return "No es este código: falta decidir";
+    return r && r.r === "aclaracion" ? "Requiere aclaración" : "Sin revisar";
+  }
+  function ladoDe(i, r) {
+    var c = clasificar(i, r);
+    if (c === "falta") return "rs-col-aclaracion";   // «No sé» y «No es este» sin decidir
+    return c === "fuera" ? "rs-col-ok" : "rs-col-pedir";
+  }
+  var verTodasColumnas = {};
+  function pintarColumnas() {
+    var cont = $("rs-columnas"); if (!cont) return;
+    cont.classList.toggle("rs-sin-lados", !!ui.filtro);
+    if (ui.filtro) return;
+    var porLado = { "rs-col-pedir": [], "rs-col-ok": [], "rs-col-aclaracion": [] };
+    // Los de la sección 3 sin respuesta se ven solo en su pestaña: no se repiten acá.
+    var soloEnPestana = 0;
+    ITEMS.forEach(function (i) {
+      if (!revisado(i.id) || !coincide(i)) return;
+      var r = respuesta(i.id);
+      if (soloVer(i) && !(r && r.r)) { soloEnPestana++; return; }
+      porLado[ladoDe(i, r || {})].push(i);
+    });
+    var nec = necesidadesActivas();
+    Object.keys(porLado).forEach(function (idCol) {
+      var lista = porLado[idCol], extra = idCol === "rs-col-pedir" ? nec : [];
+      var col = $(idCol), cuerpo = col.querySelector(".rs-col__lista"); cuerpo.textContent = "";
+      col.querySelector(".rs-col__cuenta").textContent = lista.length + extra.length + (idCol === "rs-col-pedir" ? soloEnPestana : 0);
+      if (idCol === "rs-col-aclaracion") col.hidden = !lista.length;
+      var max = verTodasColumnas[idCol] ? lista.length : 40;
+      if (idCol === "rs-col-pedir") {
+        // Primero lo que hay que pedir que carguen; después lo que ya está.
+        var yaEsta = function (i) { return clasificar(i, respuesta(i.id)) === "estan"; };
+        lista.sort(function (a, b) { return yaEsta(a) - yaEsta(b); });
+      }
+      var titulo = "";
+      lista.slice(0, max).forEach(function (i) {
+        if (idCol === "rs-col-pedir") {
+          var t = clasificar(i, respuesta(i.id)) === "estan" ? "Ya están en TIMBÓ" : "Hay que pedir que los carguen";
+          if (t !== titulo) { titulo = t; cuerpo.appendChild(elem("h3", "rs-col__sub", t)); }
+        }
+        cuerpo.appendChild(filaCompacta(i));
+      });
+      if (lista.length > max) { var mas = elem("button", "rs-btn rs-btn--claro rs-btn--chico rs-col__mas", "Mostrar los " + lista.length); mas.type = "button"; mas.dataset.col = idCol; cuerpo.appendChild(mas); }
+      extra.forEach(function (n) {
+        var f = elem("div", "rs-compacta rs-compacta--nec");
+        var a = elem("div", "rs-compacta__txt");
+        a.appendChild(elem("b", "", n.d));
+        a.appendChild(elem("span", "rs-chip-decision", "Cargado por el servicio"));
+        if (n.p) a.appendChild(elem("span", "rs-codigos", " " + n.p));
+        f.appendChild(a); cuerpo.appendChild(f);
+      });
+      if (idCol === "rs-col-pedir" && soloEnPestana) cuerpo.appendChild(elem("p", "rs-nota", "＋ " + soloEnPestana + " que ya están en TIMBÓ (pestaña 3)."));
+      else if (!lista.length && !extra.length) cuerpo.appendChild(elem("p", "rs-vacio", "Todavía ninguno."));
+    });
+  }
+  // Una línea por artículo: ícono, nombre y «↶» para deshacer. Al tocarla
+  // se abre el detalle en palabras simples.
+  var lineasAbiertas = new Set();
+  function queDice(i, r, c) {
+    if (c === "cargar") return "Se pide que lo carguen en TIMBÓ.";
+    if (c === "estan") return r.dec === "general" ? "Va en un artículo general de TIMBÓ." : "Ya está en TIMBÓ: no hay que hacer nada.";
+    if (c === "fuera") return r.r === "otro_servicio" ? "No es de este servicio: queda fuera." : "Ya no se usa: queda fuera y no se va a poder pedir.";
+    return r.r === "aclaracion" ? "Quedó como «No sé»: falta responderlo." : "Falta responderlo.";
+  }
+  function filaCompacta(i) {
+    var r = respuesta(i.id) || {};
+    var c = clasificar(i, r);
+    var abierta = lineasAbiertas.has(i.id);
+    var f = elem("div", "rs-compacta rs-linea rs-linea--" + c + " r-" + (r.r || "ver") + (abierta ? " rs-linea--abierta" : "")); f.dataset.id = i.id;
+    var cab = elem("button", "rs-linea__cab"); cab.type = "button"; cab.setAttribute("aria-expanded", abierta ? "true" : "false");
+    cab.appendChild(elem("span", "rs-linea__icono", c === "fuera" ? "✗" : c === "falta" ? "?" : "✓"));
+    cab.appendChild(elem("span", "rs-linea__nombre", i.n));
+    cab.appendChild(elem("span", "rs-linea__flecha", abierta ? "▴" : "▾"));
+    f.appendChild(cab);
+    if (r.r) {
+      var b = elem("button", "rs-borrar rs-volver rs-linea__deshacer", "↶"); b.type = "button";
+      b.title = "Deshacer: vuelve a la lista para responderlo de nuevo"; b.setAttribute("aria-label", "Deshacer " + i.n);
+      f.appendChild(b);
+    }
+    if (abierta) {
+      var d = elem("div", "rs-linea__detalle");
+      d.appendChild(elem("p", "rs-linea__que", queDice(i, r, c)));
+      if (i.cp) d.appendChild(elem("p", "", r.r === "no_corresponde" ? "TIMBÓ proponía «" + nombreTimbo(i.dn) + "», pero es otra cosa."
+        : "En TIMBÓ figura como: " + nombreTimbo(i.dn)));
+      if (r.obs) d.appendChild(elem("p", "", "Observación: «" + r.obs + "»"));
+      if (r.persona) d.appendChild(elem("p", "rs-nota", "Respondió " + r.persona + (r.t ? " · " + new Date(r.t).toLocaleString() : "")));
+      if (r.r) { var bd = elem("button", "rs-btn rs-btn--claro rs-btn--chico rs-volver", "↶ Deshacer"); bd.type = "button"; d.appendChild(bd); }
+      f.appendChild(d);
+    }
+    return f;
+  }
+
   function contar() {
-    var c = { total: ITEMS.length, revisados: 0, correcto: 0, no_corresponde: 0, no_necesario: 0, aclaracion: 0, porSeccion: { 1: [0, 0], 2: [0, 0], 3: [0, 0] } };
+    var c = { total: ITEMS.length, revisados: 0, correcto: 0, no_corresponde: 0, no_necesario: 0, otro_servicio: 0, aclaracion: 0, porSeccion: { 1: [0, 0], 2: [0, 0], 3: [0, 0] } };
     ITEMS.forEach(function (i) {
       var r = respuesta(i.id); c.porSeccion[i.s][1]++;
-      if (r && r.r) { c.revisados++; c[r.r]++; c.porSeccion[i.s][0]++; }
+      if (r && r.r && !sinDecidirGuardado(r)) { c.revisados++; c[r.r]++; c.porSeccion[i.s][0]++; }
+      else if (soloVer(i)) { c.revisados++; c.porSeccion[i.s][0]++; }
     });
     c.pendientes = c.total - c.revisados;
     return c;
@@ -615,27 +1208,32 @@
     $("rs-revisados").textContent = c.revisados; $("rs-pendientes").textContent = c.pendientes;
     $("rs-avance-relleno").style.width = (c.total ? (100 * c.revisados / c.total) : 0).toFixed(1) + "%";
     document.querySelectorAll("[data-cuenta]").forEach(function (s) {
-      var p = c.porSeccion[s.dataset.cuenta]; s.textContent = p[0] + " de " + p[1] + " revisados";
+      var p = c.porSeccion[s.dataset.cuenta];
+      s.textContent = s.dataset.cuenta === "3" ? p[1] + " artículos · solo para mirar" : p[0] + " de " + p[1] + " revisados";
     });
     document.querySelectorAll(".rs-tab").forEach(function (b) { b.classList.toggle("activa", Number(b.dataset.seccion) === ui.seccion); });
     var res = $("rs-resumen"); res.textContent = "";
-    [["Total", c.total], ["Correctos / corresponden", c.correcto], ["No corresponden", c.no_corresponde], ["No necesarios", c.no_necesario], ["Requieren aclaración", c.aclaracion], ["Pendientes", c.pendientes]].forEach(function (x) {
+    [["Total", c.total], ["No se usan", c.no_necesario], ["No son de este servicio", c.otro_servicio], ["No corresponden", c.no_corresponde], ["Requieren aclaración", c.aclaracion], ["Correctos / corresponden", c.correcto], ["Pendientes", c.pendientes], ["Necesarios que no están", necesidadesActivas().length]].forEach(function (x) {
       var d = elem("div"); d.appendChild(elem("b", "", String(x[1]))); d.appendChild(elem("span", "", x[0])); res.appendChild(d);
     });
     function f(v) { return v ? new Date(v).toLocaleString() : "—"; }
-    $("rs-f-inicio").textContent = f(estado.inicio); $("rs-f-mod").textContent = f(estado.modificado); $("rs-f-fin").textContent = f(estado.finalizado);
+    if ($("rs-f-inicio")) { $("rs-f-inicio").textContent = f(estado.inicio); $("rs-f-mod").textContent = f(estado.modificado); }
+    $("rs-f-fin").textContent = f(estado.finalizado);
   }
 
   function pintarInstrucciones() {
     var ins = INSTRUCCIONES[ui.seccion], cont = $("rs-instrucciones"); cont.textContent = "";
-    cont.appendChild(elem("h2", "", ins.titulo));
-    cont.appendChild(elem("p", "", ins.texto));
-    var ol = elem("ol"); ins.pasos.forEach(function (p) { ol.appendChild(elem("li", "", p)); }); cont.appendChild(ol);
+    var d = elem("details"), sum = elem("summary");
+    sum.appendChild(elem("span", "", ins.texto + " "));
+    if (ins.pasos.length) sum.appendChild(elem("b", "rs-mas", "＋ Ver qué hacer"));
+    d.appendChild(sum);
+    var ol = elem("ol"); ins.pasos.forEach(function (p) { ol.appendChild(elem("li", "", p)); }); d.appendChild(ol);
+    cont.appendChild(d);
   }
 
   function pintarIdentificacion() {
     [["rs-servicio", "servicio"], ["rs-nombre", "nombre"], ["rs-apellido", "apellido"], ["rs-obs-general", "observaciones"]].forEach(function (x) {
-      var e = $(x[0]); if (document.activeElement !== e) e.value = estado[x[1]] || "";
+      var e = $(x[0]); if (e && document.activeElement !== e) e.value = estado[x[1]] || "";
     });
   }
 
@@ -645,6 +1243,7 @@
   }
 
   function pintarGuardado() {
+    if (SERVIDOR) { pintarEnvio(); return; }
     var p = persistencia;
     if (p.navegadorOk === null) capa("rs-capa-navegador", estado.guardado ? "ok" : "", estado.guardado ? "con datos de una sesión anterior (guardado n.º " + estado.guardado + ")" : "todavía sin respuestas");
     else if (p.navegadorOk) capa("rs-capa-navegador", "ok", "guardado a las " + p.navegadorHora.toLocaleTimeString() + " (n.º " + estado.guardado + ")" + (p.persistente === true ? " · almacenamiento persistente" : ""));
@@ -672,12 +1271,15 @@
     }
   }
 
-  function pintarTodo() { pintarIdentificacion(); pintarInstrucciones(); pintarAvance(); pintarLista(); pintarGuardado(); }
+  function pintarTodo() { pintarIdentificacion(); pintarInstrucciones(); pintarAvance(); pintarLista(); pintarNecesidades(); pintarOrientacion(); pintarGuardado(); pintarDeshacer(); }
 
-  function guardarUi() { lsGuardar("ui::" + CLAVE, JSON.stringify({ seccion: ui.seccion, pagina: ui.pagina })); }
+  function guardarUi() { if (SERVIDOR) return; lsGuardar("ui::" + CLAVE, JSON.stringify({ seccion: ui.seccion, pagina: ui.pagina })); }
 
   // ------------------------------------------------------------ alertas ---
   function alerta(tipo, texto, textoBoton, accion) {
+    // Los «Listo…» saturan: lo hecho ya se ve en las columnas. Solo se
+    // muestran los avisos (errores, atención) y los que traen un botón.
+    if (tipo === "ok" && !textoBoton) return;
     var cont = $("rs-alertas");
     var a = elem("div", "rs-alerta rs-alerta--" + tipo);
     a.appendChild(elem("span", "", texto));
@@ -694,7 +1296,7 @@
     var c = $("rs-modal-cuerpo"); c.textContent = ""; c.appendChild(cuerpo);
     var acc = $("rs-modal-acciones"); acc.textContent = "";
     botones.forEach(function (b) {
-      var e = elem("button", "rs-btn" + (b.claro ? " rs-btn--claro" : ""), b.texto); e.type = "button";
+      var e = elem("button", "rs-btn" + (b.claro ? " rs-btn--claro" : "") + (b.rojo ? " rs-btn--rojo" : ""), b.texto); e.type = "button";
       e.onclick = function () { $("rs-modal").hidden = true; b.accion(); };
       acc.appendChild(e);
     });
@@ -717,7 +1319,8 @@
       guardado: estado.guardado,
       totales: {
         total: c.total, aprobados: c.correcto, rechazados: c.no_corresponde, noNecesarios: c.no_necesario,
-        requierenAclaracion: c.aclaracion, pendientes: c.pendientes
+        requierenAclaracion: c.aclaracion, pendientes: c.pendientes,
+        necesariosQueNoEstan: necesidadesActivas().length
       },
       porSeccion: { faltanCargar: c.porSeccion[1], necesitanConfirmacion: c.porSeccion[2], existenYVerificar: c.porSeccion[3] },
       observaciones: estado.observaciones,
@@ -726,20 +1329,186 @@
         return {
           codigo_interno: i.id, codigo_articulo: i.ca, descripcion: i.n, seccion: i.s,
           codigo_propuesto: i.cp, descripcion_nomenclador: i.dn, motivo: i.m,
-          resultado: r.r || null, observaciones: r.obs || "", fecha: r.t || null, historial: r.hist || []
+          agrupado_con_mismo_codigo: !!i.g, mismo_nombre_en_el_grupo: !!i.dup,
+          resultado: r.r || null, observaciones: r.obs || "", decision: r.dec || null, codigo_correcto: r.cod || "", detalle_timbo: r.det || "",
+          fecha: r.t || null, historial: r.hist || []
         };
       }),
+      // Incluye las quitadas (con `quitada: true`) para que, al volver a
+      // cargar la devolución, no reaparezcan desde una copia vieja.
+      necesidades: Object.keys(estado.necesidades || {}).map(function (k) { return estado.necesidades[k]; })
+        .sort(function (a, b) { return (a.creado || "") < (b.creado || "") ? -1 : 1; })
+        .map(function (n) {
+          return {
+            id: n.id, descripcion: n.d, presentacion: n.p, uso: n.u,
+            tipo: n.tipo || "", tipo_texto: TIPOS_NEC[n.tipo] || "",
+            catalogo: n.cat, catalogo_texto: CATALOGO_NEC[n.cat] || "", codigo_catalogo: n.cod,
+            observaciones: n.obs, creado: n.creado, modificado: n.t, quitada: !!n.baja, historial: n.hist || []
+          };
+        }),
+      planillaFinal: planillaFinal(),
       respuestasDeArticulosQueYaNoEstan: estado.huerfanas,
       registro: estado.registro
     };
   }
 
-  function finalizar() {
+  function reabrir() {
+    if (SERVIDOR) return post(SERVIDOR.urlFinalizar, { reabrir: true }).then(function (res) { if (!res.ok) throw new Error(res.error); estado.finalizado = null; });
+    estado.finalizado = null; registrar("revisión reabierta", "deshacer finalizar"); guardar(true);
+  }
+
+  // ---------------------------------------------------- revisión final ---
+  // Antes de terminar: todo agrupado por lo que hay que hacer con cada cosa.
+  var GRUPOS_FINALES = [
+    ["cargar", "Hay que cargar en TIMBÓ", "Se pide que los carguen."],
+    ["estan", "Ya están en TIMBÓ", "No hay que hacer nada."],
+    ["falta", "No se revisaron", "Sin respuesta o con dudas."],
+    ["fuera", "Quedan fuera", "No se usan o no son del servicio: no se van a poder pedir."]
+  ];
+  function gruposFinales() {
+    var g = { cargar: [], estan: [], fuera: [], falta: [] };
+    ITEMS.forEach(function (i) { g[clasificar(i, respuesta(i.id))].push(i); });
+    return g;
+  }
+  // Lo que va a la planilla final: lo que hay que cargar y lo que ya está.
+  function planillaFinal() {
+    var filas = [];
+    ITEMS.forEach(function (i) {
+      var r = respuesta(i.id), c = clasificar(i, r);
+      if (c === "cargar" || c === "estan") filas.push({ grupo: c, accion: queHacer(i, r), id: i.id, n: i.n, cp: i.cp || "", cod: r.cod || (c === "estan" ? i.cp || "" : ""), det: r.det || "", obs: r.obs || "" });
+    });
+    necesidadesActivas().forEach(function (n) {
+      filas.push({ grupo: "cargar", accion: "Pedir el alta: lo cargó el servicio", id: "", n: n.d + (n.p ? " — " + n.p : ""), cp: "", cod: n.cod || "", det: "", obs: n.obs || "", tipo: TIPOS_NEC[n.tipo] || "" });
+    });
+    return filas;
+  }
+  function sinDecidir() { return ITEMS.filter(function (i) { var r = respuesta(i.id); return r && r.r === "no_corresponde" && !r.dec; }); }
+
+  function pintarPlanillaFinal() {
+    var cont = $("rs-planilla-final"); if (!cont) return;
+    cont.textContent = "";
+    cont.hidden = !SERVIDOR;
+    if (SERVIDOR) {
+      var a = elem("a", "rs-btn rs-btn--claro rs-btn--chico", "⬇️ Bajar la planilla final (Excel)"); a.href = SERVIDOR.urlPlanillaFinal;
+      cont.appendChild(a);
+      cont.appendChild(elem("span", "rs-nota", " Tiene una hoja por cada bloque de abajo."));
+    }
+  }
+
+  function filaFinal(i, grupo) {
+    var r = respuesta(i.id) || {};
+    var f = elem("div", "rs-compacta"); f.dataset.id = i.id;
+    var a = elem("div", "rs-compacta__txt");
+    a.appendChild(elem("b", "", i.n));
+    a.appendChild(elem("span", "rs-codigos", " cód. " + i.id));
+    a.appendChild(elem("span", "rs-rf-que", queHacer(i, r)));
+    if (r.obs) a.appendChild(elem("span", "rs-compacta__obs", "«" + r.obs + "»"));
+    if (grupo === "falta" && r.r === "no_corresponde") a.appendChild(controlesDecision(i, r));
+    f.appendChild(a);
+    if (r.r) { var b = elem("button", "rs-borrar rs-volver", "↶ Deshacer"); b.type = "button"; f.appendChild(b); }
+    return f;
+  }
+
+  function pintarRevisionFinal() {
+    pintarPlanillaFinal();
+    var g = gruposFinales(), nec = necesidadesActivas();
+    var res = $("rs-revfinal-resumen"); res.textContent = "";
+    GRUPOS_FINALES.forEach(function (x) {
+      var n = g[x[0]].length + (x[0] === "cargar" ? nec.length : 0);
+      var d = elem("div", "rs-revfinal-tile rs-rf-" + x[0]); d.appendChild(elem("b", "", String(n))); d.appendChild(elem("span", "", x[1])); res.appendChild(d);
+    });
+    var cont = $("rs-revfinal-grupos"); cont.textContent = "";
+    GRUPOS_FINALES.forEach(function (x) {
+      var lista = g[x[0]], extra = x[0] === "cargar" ? nec : [];
+      if (x[0] === "falta") {
+        // Primero lo que necesita una decisión, después las dudas y al final lo sin revisar.
+        var orden = function (i) { var r = respuesta(i.id); return r && r.r === "no_corresponde" ? 0 : r && r.r ? 1 : 2; };
+        lista = lista.slice().sort(function (a, b) { return orden(a) - orden(b); });
+      }
+      var det = elem("details", "rs-rf-grupo rs-rf-" + x[0]); det.dataset.grupo = x[0];
+      det.open = x[0] !== "fuera" && !(x[0] === "estan" && lista.length > 30);
+      var sum = elem("summary"); sum.appendChild(elem("b", "", x[1] + " (" + (lista.length + extra.length) + ")")); sum.appendChild(elem("span", "rs-nota", " " + x[2]));
+      if (x[0] === "falta") { var falta = sinDecidir().length; if (falta) sum.appendChild(elem("span", "rs-falta-decidir", " " + falta + " no coinciden y falta decidir.")); }
+      det.appendChild(sum);
+      if (!lista.length && !extra.length) det.appendChild(elem("p", "rs-vacio", "Ninguno."));
+      var max = x[0] === "falta" ? 40 : lista.length;
+      lista.slice(0, max).forEach(function (i) { det.appendChild(filaFinal(i, x[0])); });
+      if (lista.length > max) det.appendChild(elem("p", "rs-nota", "…y " + (lista.length - max) + " más sin revisar."));
+      extra.forEach(function (n) {
+        var f = elem("div", "rs-compacta rs-compacta--nec");
+        var a = elem("div", "rs-compacta__txt");
+        a.appendChild(elem("b", "", n.d + (n.p ? " — " + n.p : "")));
+        a.appendChild(elem("span", "rs-rf-que", "Pedir el alta: lo cargó el servicio" + (n.tipo ? " · " + TIPOS_NEC[n.tipo] : "")));
+        if (n.obs) a.appendChild(elem("span", "rs-compacta__obs", "«" + n.obs + "»"));
+        f.appendChild(a); det.appendChild(f);
+      });
+      cont.appendChild(det);
+    });
+  }
+  function controlesDecision(i, r) {
+    var c = elem("div", "rs-decision"); c.setAttribute("role", "group"); c.setAttribute("aria-label", "Qué hacer con " + i.n);
+    c.appendChild(elem("span", "rs-decision__preg", "¿Qué hacemos?"));
+    [["agregar", "Pedir que lo carguen en TIMBÓ"], ["nousa", "Ya no se usa"]].forEach(function (x) {
+      var b = elem("button", "rs-res rs-dec", x[1]); b.type = "button"; b.dataset.dec = x[0];
+      b.setAttribute("aria-pressed", r.dec === x[0] ? "true" : "false");
+      c.appendChild(b);
+    });
+    // «Sé cuál es el código» solo abre el campo: se guarda con «Guardar».
+    var cod = elem("input", "rs-dec-cod"); cod.type = "text"; cod.maxLength = 40; cod.placeholder = "Escribí el código, ej.: 19.1.283.4"; cod.value = r.cod || "";
+    cod.hidden = true; cod.setAttribute("aria-label", "Código correcto de " + i.n);
+    c.appendChild(cod);
+    var g = elem("button", "rs-btn rs-btn--chico rs-dec-guardar", "Guardar"); g.type = "button"; g.hidden = true;
+    c.appendChild(g);
+    return c;
+  }
+
+  // Botones «agregar / código correcto / no se usa» de un «no corresponde»,
+  // en la columna izquierda o en la revisión final.
+  function manejarDecision(d) {
+    var fila = d.closest("[data-id]"), idd = fila.dataset.id, rr = respuesta(idd) || {};
+    if (d.dataset.dec === "codigo") {
+      var campo = fila.querySelector(".rs-dec-cod"), g = fila.querySelector(".rs-dec-guardar");
+      campo.hidden = g.hidden = false; campo.focus();
+      return;
+    }
+    if (d.dataset.dec === "nousa") cambiarResultado(idd, "no_necesario", rr.obs || "");
+    else decidir(idd, d.dataset.dec, "");
+    pintarLista(); pintarAvance(); guardar(true);
+    if ($("rs-revfinal") && !$("rs-revfinal").hidden) pintarRevisionFinal();
+  }
+  function guardarCodigoDecision(b) {
+    var fila = b.closest("[data-id]"), idd = fila.dataset.id, cod = fila.querySelector(".rs-dec-cod").value.trim();
+    if (!cod) { alerta("error", "Escribí el código del Catálogo WEB."); return; }
+    decidir(idd, "codigo", cod);
+    pintarLista(); pintarAvance(); guardar(true);
+    if ($("rs-revfinal") && !$("rs-revfinal").hidden) pintarRevisionFinal();
+  }
+
+  function abrirRevisionFinal() {
+    var p = $("rs-revfinal"); pintarRevisionFinal(); p.hidden = false;
+    p.scrollIntoView({ block: "start" });
+  }
+
+  function finalizar() { abrirRevisionFinal(); }
+
+  function finalizarConfirmado() {
     var faltan = [];
-    ["rs-nombre", "rs-apellido"].forEach(function (id) { var e = $(id); var vacio = !e.value.trim(); e.classList.toggle("rs-falta", vacio); if (vacio) faltan.push(e); });
+    if (!SERVIDOR) ["rs-nombre", "rs-apellido"].forEach(function (id) { var e = $(id); var vacio = !e.value.trim(); e.classList.toggle("rs-falta", vacio); if (vacio) faltan.push(e); });
     if (faltan.length) { alerta("error", "Para finalizar hacen falta tu nombre y tu apellido."); faltan[0].focus(); faltan[0].scrollIntoView({ block: "center" }); return; }
     var c = contar();
     function hacer() {
+      if (SERVIDOR) {
+        enviarSucios();
+        cola = cola.then(function () { return post(SERVIDOR.urlFinalizar, { observaciones: estado.observaciones || "" }); }).then(function (res) {
+          if (!res.ok) { alerta("error", res.error || "No se pudo finalizar."); return; }
+          estado.finalizado = res.datos.finalizado;
+          apilar("marcar «Terminé»", reabrir);
+          pintarAvance();
+          alerta("ok", "¡Listo! Quedó registrado que el servicio terminó la revisión. Si cambiás algo, se vuelve a abrir.");
+        });
+        return;
+      }
+      apilar("finalizar la revisión", reabrir);
       estado.finalizado = ahora();
       estado.modificado = estado.modificado || estado.finalizado;
       registrar("revisión finalizada", c.revisados + " revisados, " + c.pendientes + " pendientes");
@@ -759,24 +1528,57 @@
     } else hacer();
   }
 
+  function marcarEnviada() {
+    document.body.classList.add("rs-enviada");
+    var a = $("rs-aviso-enviada");
+    if (a) { a.hidden = false; a.querySelector("span").textContent = new Date(SERVIDOR.enviado).toLocaleString() + (SERVIDOR.enviadoPor ? " por " + SERVIDOR.enviadoPor : ""); }
+    pilaDeshacer.length = 0; pintarDeshacer();
+    pintarLista();
+  }
+  function enviarRevision() {
+    if (bloqueada()) return;
+    var c = contar(), falta = sinDecidir().length;
+    var cuerpo = elem("div");
+    cuerpo.appendChild(elem("p", "rs-envio-final", "⚠ Después de enviarla NO vas a poder cambiar, deshacer ni revisar nada."));
+    if (c.pendientes || falta) cuerpo.appendChild(elem("p", "rs-alerta-item", "⚠ Todavía quedan " + c.pendientes + " artículos sin revisar" + (falta ? " y " + falta + " sin decidir" : "") + "."));
+    abrirModal("¿Enviar la revisión?", cuerpo, [
+      { texto: "Todavía no", claro: true, accion: function () {} },
+      { texto: "Sí, enviar definitivamente", rojo: true, accion: function () {
+        enviarSucios();
+        cola = cola.then(function () { return post(SERVIDOR.urlEnviar, { confirmo: true }); }).then(function (res) {
+          if (!res.ok) { alerta("error", res.error || "No se pudo enviar."); return; }
+          SERVIDOR.enviado = res.datos.enviado; SERVIDOR.enviadoPor = res.datos.enviadoPor || ""; estado.finalizado = res.datos.finalizado;
+          marcarEnviada(); pintarAvance();
+          window.scrollTo(0, 0);
+          alerta("ok", "¡Listo! La revisión se envió.");
+        });
+      } }
+    ]);
+  }
+
   // ------------------------------------------------------------ eventos ---
   function irAlProximoPendiente() {
     var orden = [ui.seccion, 1, 2, 3].filter(function (v, i, a) { return a.indexOf(v) === i; });
     for (var k = 0; k < orden.length; k++) {
       var s = orden[k];
-      var lista = ITEMS.filter(function (i) { return i.s === s; });
-      var pos = lista.findIndex(function (i) { return !revisado(i.id); });
+      var us = unidades(ITEMS.filter(function (i) { return i.s === s && !revisado(i.id); }));
+      var pos = us.findIndex(function (u) { return u.items.some(function (i) { return !revisado(i.id); }); });
       if (pos !== -1) {
         ui.seccion = s; ui.buscar = ""; ui.filtro = ""; $("rs-buscar").value = ""; $("rs-estado").value = "";
-        ui.pagina = Math.floor(pos / POR_PAGINA);
+        ui.pagina = 0;
         pintarInstrucciones(); pintarAvance(); pintarLista();
-        var t = document.querySelector('.rs-tarjeta[data-id="' + CSS.escape(lista[pos].id) + '"]');
+        var pendiente = us[pos].items.find(function (i) { return !revisado(i.id); });
+        var t = document.querySelector('[data-id="' + CSS.escape(pendiente.id) + '"]');
         if (t) { t.scrollIntoView({ block: "center" }); t.querySelector(".rs-res").focus(); }
         return;
       }
     }
     alerta("ok", "¡No quedan artículos pendientes!");
   }
+
+  // Engancha un evento solo si el elemento existe (la pantalla en línea no
+  // tiene los controles de guardado de la planilla descargable).
+  function on(id, evento, fn) { var e = $(id); if (e) e.addEventListener(evento, fn); }
 
   function conectarEventos() {
     document.querySelectorAll(".rs-tab").forEach(function (b) {
@@ -790,60 +1592,216 @@
     $("rs-ir-pendiente").addEventListener("click", irAlProximoPendiente);
     document.addEventListener("keydown", function (e) {
       if (!$("rs-modal").hidden || /^(INPUT|TEXTAREA|SELECT)$/.test((e.target || {}).tagName || "")) return;
+      if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) { e.preventDefault(); deshacerUltimo(); return; }
       if (e.key === "ArrowLeft" && !$("rs-ant").disabled) $("rs-ant").click();
       if (e.key === "ArrowRight" && !$("rs-sig").disabled) $("rs-sig").click();
     });
 
     $("rs-lista").addEventListener("click", function (e) {
-      var t = e.target.closest(".rs-tarjeta"); if (!t) return;
-      var id = t.dataset.id;
-      var boton = e.target.closest(".rs-res");
+      var card = e.target.closest(".rs-grupo");
+      if (card && (e.target.closest(".rs-ninguno") || e.target.closest(".rs-todos"))) {
+        var todosSi = !!e.target.closest(".rs-todos");
+        var cambiados = [];
+        GRUPOS.get(card.dataset.grupo).forEach(function (i) {
+          if (revisado(i.id)) return;
+          var fila = card.querySelector('[data-id="' + CSS.escape(i.id) + '"]');
+          var antes = respuesta(i.id);
+          cambiados.push({ id: i.id, obs: antes ? antes.obs || "" : "" });
+          var obsFila = fila ? (fila.querySelector(".rs-obs") || {}).value || "" : "";
+          if (todosSi) responder(i.id, "correcto", obsFila, false, null);
+          else responder(i.id, "no_corresponde", obsFila, false, "agregar");
+        });
+        var marcados = cambiados.length;
+        if (marcados) {
+          apilar((todosSi ? "«sí, es este» en " : "«ninguno es este» en ") + marcados + " artículos", function () { cambiados.forEach(function (x) { responder(x.id, null, x.obs); }); });
+          pintarLista(); pintarAvance(); guardar(true);
+        }
+        alerta(marcados ? "ok" : "atencion", marcados ? "Listo: " + marcados + " artículos marcados. Si te equivocaste, tocá ↶ Deshacer." : "Todos los artículos de esta card ya tienen respuesta.");
+        return;
+      }
+      var t = e.target.closest("[data-id]"); if (!t) return;
+      var id = t.dataset.id, item = POR_ID.get(id);
+      var obsActual = function () { var o = t.querySelector(".rs-obs"); return o ? o.value : ""; };
+      var repintar = function () { if (ui.filtro) actualizarTarjeta(t, id); else pintarLista(); pintarAvance(); guardar(true); };
+      var boton = e.target.closest(".rs-res, .rs-enlace-mas, [data-guardar]");
       if (boton) {
-        var r = respuesta(id);
-        if (r && r.r === boton.dataset.r) return;
-        responder(id, boton.dataset.r, t.querySelector(".rs-obs").value);
-        actualizarTarjeta(t, id); pintarAvance(); guardar(true);
+        var r = respuesta(id) || {};
+        if (boton.dataset.uso === "si") {
+          abiertos[id] = "si";
+          if (r.r === "no_necesario" || r.r === "otro_servicio") cambiarResultado(id, null, obsActual(), "volver a «se usa» en " + item.n);
+          actualizarTarjeta(t, id); pintarAvance(); guardar(true);
+          return;
+        }
+        if (boton.dataset.abrir) {
+          abiertos[id] = abiertos[id] === boton.dataset.abrir && !r.r ? "si" : boton.dataset.abrir;
+          actualizarTarjeta(t, id);
+          var campo = t.querySelector(".rs-in-cod");
+          if (campo && boton.dataset.abrir !== "no") campo.focus();
+          return;
+        }
+        if (boton.dataset.guardar) {
+          var cod = (t.querySelector(".rs-in-cod") || {}).value || "";
+          var det = (t.querySelector(".rs-in-det") || {}).value || "";
+          cod = cod.trim(); det = det.trim();
+          if (!cod) { alerta("error", "Escribí el código de TIMBÓ."); t.querySelector(".rs-in-cod").focus(); return; }
+          if (det) cambiarResultado(id, "correcto", obsActual(), "ítem general en " + item.n, "general", cod, det);
+          else cambiarResultado(id, "no_corresponde", obsActual(), "código " + cod + " en " + item.n, "codigo", cod);
+          delete abiertos[id];
+          repintar();
+          return;
+        }
+        var nuevoR = boton.dataset.r, nuevaDec = boton.dataset.dec || null;
+        if (r.r === nuevoR && (r.dec || null) === nuevaDec) return;
+        cambiarResultado(id, nuevoR, obsActual(), null, nuevaDec);
+        delete abiertos[id];
+        repintar();
         return;
       }
       if (e.target.closest(".rs-borrar")) {
-        responder(id, null, t.querySelector(".rs-obs").value);
-        actualizarTarjeta(t, id); pintarAvance(); guardar(true);
+        delete abiertos[id];
+        cambiarResultado(id, null, obsActual());
+        if (ui.filtro) actualizarTarjeta(t, id); else pintarLista();
+        pintarAvance(); guardar(true);
         return;
       }
       var copiar = e.target.closest(".rs-copiar");
       if (copiar && navigator.clipboard) navigator.clipboard.writeText(copiar.dataset.copiar).then(function () { copiar.textContent = "Copiado"; setTimeout(function () { copiar.textContent = "Copiar"; }, 1200); }, function () {});
     });
+    $("rs-lista").addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" || !e.target.matches(".rs-in-cod, .rs-in-det")) return;
+      e.preventDefault();
+      var b = e.target.closest(".rs-paso").querySelector("[data-guardar]"); if (b) b.click();
+    });
     $("rs-lista").addEventListener("input", function (e) {
       if (!e.target.classList.contains("rs-obs")) return;
-      var t = e.target.closest(".rs-tarjeta"), id = t.dataset.id, r = respuesta(id);
+      var t = e.target.closest("[data-id]"), id = t.dataset.id, r = respuesta(id);
       responder(id, r ? r.r : null, e.target.value, true);
       actualizarTarjeta(t, id); pintarAvance(); guardar(false);
     });
 
+    on("rs-columnas", "click", function (e) {
+      var d = e.target.closest(".rs-dec");
+      if (d && !e.target.closest("#rs-lista")) { manejarDecision(d); return; }
+      var gd = e.target.closest(".rs-dec-guardar");
+      if (gd && !e.target.closest("#rs-lista")) { guardarCodigoDecision(gd); return; }
+      var mas = e.target.closest(".rs-col__mas");
+      if (mas) { verTodasColumnas[mas.dataset.col] = true; pintarColumnas(); return; }
+      var lin = e.target.closest(".rs-linea__cab");
+      if (lin) {
+        var idl = lin.closest("[data-id]").dataset.id;
+        if (lineasAbiertas.has(idl)) lineasAbiertas.delete(idl); else lineasAbiertas.add(idl);
+        pintarColumnas();
+        return;
+      }
+      var v = e.target.closest(".rs-volver"); if (!v) return;
+      var id = v.closest("[data-id]").dataset.id, r = respuesta(id);
+      cambiarResultado(id, null, r ? r.obs || "" : "", "volver a revisar " + (POR_ID.get(id) || { n: id }).n);
+      pintarLista(); pintarAvance(); guardar(true);
+    });
+    on("rs-deshacer", "click", deshacerUltimo);
+
     [["rs-servicio", "servicio"], ["rs-nombre", "nombre"], ["rs-apellido", "apellido"], ["rs-obs-general", "observaciones"]].forEach(function (x) {
-      $(x[0]).addEventListener("input", function (e) {
+      on(x[0], "input", function (e) {
         estado[x[1]] = e.target.value; e.target.classList.remove("rs-falta");
+        if (SERVIDOR) return;  // en línea, las observaciones generales van al finalizar
         if (!estado.inicio) estado.inicio = ahora();
         estado.modificado = ahora(); pintarAvance(); guardar(false);
       });
     });
 
-    $("rs-archivo-nuevo").addEventListener("click", crearArchivo);
-    $("rs-archivo-abrir").addEventListener("click", abrirArchivo);
-    $("rs-archivo-reconectar").addEventListener("click", reconectar);
-    $("rs-exportar").addEventListener("click", exportarCopia);
-    $("rs-importar").addEventListener("change", function (e) { var f = e.target.files[0]; if (f) importarCopia(f); e.target.value = ""; });
-    $("rs-finalizar").addEventListener("click", finalizar);
+    on("rs-archivo-nuevo", "click", crearArchivo);
+    on("rs-archivo-abrir", "click", abrirArchivo);
+    on("rs-archivo-reconectar", "click", reconectar);
+    on("rs-exportar", "click", exportarCopia);
+    on("rs-importar", "change", function (e) { var f = e.target.files[0]; if (f) importarCopia(f); e.target.value = ""; });
+    on("rs-finalizar", "click", finalizar);
+    on("rs-otras", "click", function (e) {
+      var b = e.target.closest("[data-ir-seccion]"); if (!b) return;
+      var tab = document.querySelector('.rs-tab[data-seccion="' + b.dataset.irSeccion + '"]');
+      if (tab) { tab.click(); tab.scrollIntoView({ block: "start" }); }
+    });
+    document.querySelectorAll(".rs-enviar").forEach(function (b) { b.addEventListener("click", enviarRevision); });
+    if (enviada()) marcarEnviada();
+    on("rs-revfinal-confirmar", "click", function () {
+      var falta = sinDecidir().length;
+      if (!falta) { finalizarConfirmado(); return; }
+      abrirModal("Faltan decidir " + falta, elem("p", "", "Hay " + falta + " artículos que no coinciden y todavía no dijiste si hay que agregarlos, cuál es el código correcto o si ya no se usan. Van a quedar fuera de la planilla final."), [
+        { texto: "Decidir ahora", accion: function () { var g = document.querySelector('#rs-revfinal [data-grupo="no"]'); if (g) { g.open = true; g.scrollIntoView({ block: "start" }); } } },
+        { texto: "Terminar igual", claro: true, accion: finalizarConfirmado }
+      ]);
+    });
+    // Enter en el campo del código = Guardar.
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" || !e.target.classList.contains("rs-dec-cod")) return;
+      e.preventDefault(); guardarCodigoDecision(e.target);
+    });
+    on("rs-revfinal-cerrar", "click", function () { $("rs-revfinal").hidden = true; });
+    on("rs-revfinal-imprimir", "click", function () {
+      document.body.classList.add("rs-imprimir-final");
+      window.print();
+      setTimeout(function () { document.body.classList.remove("rs-imprimir-final"); }, 500);
+    });
+    on("rs-revfinal", "click", function (e) {
+      var d = e.target.closest(".rs-dec");
+      if (d) { manejarDecision(d); return; }
+      var gd = e.target.closest(".rs-dec-guardar");
+      if (gd) { guardarCodigoDecision(gd); return; }
+      var v = e.target.closest(".rs-volver"); if (!v) return;
+      var id = v.closest("[data-id]").dataset.id, r = respuesta(id);
+      cambiarResultado(id, null, r ? r.obs || "" : "", "volver a revisar " + (POR_ID.get(id) || { n: id }).n);
+      pintarLista(); pintarAvance(); pintarRevisionFinal(); guardar(true);
+    });
+
+    $("rs-nec-tipo").addEventListener("change", pintarOrientacion);
+    $("rs-nec-cat").addEventListener("change", pintarOrientacion);
+    $("rs-nec-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var datos = leerFormNec();
+      if (!datos.d) { $("rs-nec-desc").classList.add("rs-falta"); $("rs-nec-desc").focus(); alerta("error", "Escribí la descripción del artículo."); return; }
+      var idEditado = necEditando, previa = idEditado ? datosDe(estado.necesidades[idEditado]) : null;
+      necGuardar(datos, idEditado).then(function (id) {
+        if (previa) apilar("editar «" + datos.d + "»", function () { return necGuardar(previa, id); });
+        else apilar("agregar «" + datos.d + "»", function () { return necBaja(id, true); });
+        terminarEdicionNec();
+        pintarNecesidades(); pintarAvance();
+        alerta("ok", previa ? "Cambios guardados." : "Artículo agregado a la lista.");
+      }, function (err) { alerta("error", err.message); });
+    });
+    $("rs-nec-cancelar").addEventListener("click", terminarEdicionNec);
+    $("rs-nec-lista").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-accion]"); if (!b) return;
+      var id = b.closest("[data-nec]").dataset.nec, n = estado.necesidades[id];
+      if (b.dataset.accion === "editar") {
+        necEditando = id; llenarFormNec(n);
+        $("rs-nec-guardar").textContent = "Guardar cambios"; $("rs-nec-cancelar").hidden = false;
+        $("rs-nec-desc").focus(); $("rs-nec-form").scrollIntoView({ block: "center" });
+      } else {
+        abrirModal("¿Quitar este artículo?", elem("p", "", "«" + n.d + "» deja de figurar en la lista. Se puede deshacer y queda en el historial."), [
+          { texto: "Quitar", accion: function () {
+            if (necEditando === id) terminarEdicionNec();
+            necBaja(id, true).then(function () {
+              apilar("quitar «" + n.d + "»", function () { return necBaja(id, false); });
+              pintarNecesidades(); pintarAvance();
+            }, function (err) { alerta("error", err.message); });
+          } },
+          { texto: "Cancelar", claro: true, accion: function () {} }
+        ]);
+      }
+    });
 
     // Si se cierra con texto a medio guardar, la copia sincrónica en
     // localStorage lo conserva; IndexedDB se completa al reabrir.
-    function alSalir() { if (hayCambiosSinGuardar) lsGuardar(CLAVE, JSON.stringify(estado)); }
+    function alSalir() {
+      if (SERVIDOR) { if (sucios.size) enviarSucios(); return; }
+      if (hayCambiosSinGuardar) lsGuardar(CLAVE, JSON.stringify(estado));
+    }
     window.addEventListener("pagehide", alSalir);
     document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") { alSalir(); if (hayCambiosSinGuardar) guardar(true); } });
   }
 
   var canal = null;
   try {
+    if (SERVIDOR) throw new Error("en línea no hace falta");
     canal = new BroadcastChannel(PREFIJO_LS + CLAVE);
     var avisado = false;
     canal.onmessage = function (m) {
@@ -856,6 +1814,13 @@
 
   // -------------------------------------------------------------- inicio ---
   async function iniciar() {
+    if (SERVIDOR) {
+      estado = Object.assign(estadoNuevo(), DATOS.estado || {});
+      ui.seccion = [1, 2, 3].find(function (s) { return DATOS.secciones[s]; }) || 1;
+      conectarEventos();
+      pintarTodo();
+      return;
+    }
     try { persistencia.db = await abrirDB(); } catch (e) { persistencia.db = null; }
     var previo = await leerGuardadoLocal(CLAVE);
     if (previo && previo.bodega === DATOS.bodega) {
@@ -903,6 +1868,19 @@
     // El selector de archivos de Chrome no se puede manejar en una prueba
     // automática: esto conecta un archivo ya elegido por el mismo camino.
     usarArchivo: function (handle) { return conectarArchivo(handle, true); },
+    // Carga o quita un artículo necesario por el mismo camino que el formulario.
+    agregarNecesidad: function (datos) {
+      necEditando = null;
+      var n = guardarNecesidad(Object.assign({ d: "", p: "", u: "", tipo: "", cat: "no_busque", cod: "", obs: "" }, datos));
+      pintarNecesidades(); pintarAvance(); guardar(true);
+      return n.id;
+    },
+    quitarNecesidad: function (id) { quitarNecesidad(id); pintarNecesidades(); pintarAvance(); guardar(true); },
+    deshacer: function () { deshacerUltimo(); },
+    planillaFinal: function () { return planillaFinal(); },
+    decidir: function (id, dec, cod) { decidir(id, dec, cod); pintarLista(); pintarAvance(); guardar(true); },
+    gruposFinales: function () { var g = gruposFinales(), r = {}; Object.keys(g).forEach(function (k) { r[k] = g[k].map(function (i) { return i.id; }); }); return r; },
+    pila: function () { return pilaDeshacer.map(function (a) { return a.texto; }); },
     esperar: function () { return cola; }
   };
 

@@ -1,0 +1,198 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Revisión por servicio — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">🏥 Revisión de artículos por servicio</h1>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.servicios_exportar') }}">⬇️ Excel de todos los servicios</a>
+</div>
+<p class="text-muted" style="margin-top:4px">Cada llave es de un servicio y ve solo los artículos de las bodegas que le asignes. Es aparte de la revisión de Farmacia. Nada se borra: las respuestas quedan con persona, fecha y versiones anteriores.</p>
+
+{% if enlace_nuevo %}
+<div class="callout callout--tip rev-enlace" role="status">
+  <span class="callout__icon">🔑</span>
+  <div>
+    <b>Enlace de acceso para {{ enlace_nuevo.servicio }}.</b> Se muestra una sola vez: copialo ahora.
+    <code class="rev-enlace__url" id="sv-enlace-url">{{ enlace_nuevo.url }}</code>
+    <div class="rev-enlace__botones">
+      <button type="button" class="btn btn--primary btn--sm" data-copiar="sv-enlace-url">📋 Copiar enlace</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-acceso-directo="sv-enlace-url" data-nombre="Revisión {{ enlace_nuevo.servicio }}">⬇️ Descargar acceso directo (Windows)</button>
+      <a class="btn btn--ghost btn--sm" href="{{ url_for('servicio.instructivo') }}" target="_blank" rel="noopener">📄 Instructivo para el servicio (1 página)</a>
+    </div>
+    <p class="text-muted" style="margin:6px 0 0">Quien tenga el enlace puede entrar como ese servicio. Al entrar, cada persona escribe su nombre y apellido. Si el enlace se pierde, generá uno nuevo: el anterior deja de funcionar (las respuestas no se tocan).</p>
+  </div>
+</div>
+{% endif %}
+
+<section class="card rev-admin-bloque">
+  <h2 class="section__title" style="margin-top:0">Llaves de servicios</h2>
+  {% if llaves %}
+  <div class="sv-llaves">
+    {% for ll in llaves %}{% set a = avances[ll.id] %}
+    <article class="sv-llave {{ '' if ll.activo else 'sv-llave--baja' }}">
+      <div class="sv-llave__cab">
+        <div>
+          <b class="sv-llave__nombre">{{ ll.servicio }}</b>
+          <div class="text-muted">Bodega{{ 's' if ll.nombres_bodegas | length > 1 }}: {{ ll.nombres_bodegas | join(', ') or '—' }}</div>
+        </div>
+        <div class="sv-llave__estado">
+          {% if not ll.activo %}<span class="badge badge--neutral">Dada de baja</span>
+          {% elif ll.enviado_en %}<span class="badge badge--verified">Enviada</span>
+          {% elif ll.finalizado_en %}<span class="badge">Terminó (sin enviar)</span>
+          {% elif a.respondidos %}<span class="badge">En curso</span>
+          {% else %}<span class="badge badge--neutral">No empezó</span>{% endif %}
+          <div class="text-muted">
+            {% if ll.enviado_en %}Enviada {{ hora_ar(ll.enviado_en) }} · {{ ll.enviado_por }}<br>
+            {% elif ll.finalizado_en %}{{ hora_ar(ll.finalizado_en) }} · {{ ll.finalizado_por }}<br>{% endif %}
+            Último ingreso: {{ hora_ar(ll.ultimo_acceso) or '—' }}
+          </div>
+        </div>
+      </div>
+      <div class="sv-llave__avance">
+        <div class="sv-barra"><span style="width: {{ (100 * a.respondidos / a.total) | round(1) if a.total else 0 }}%"></span></div>
+        <b>{{ a.respondidos }}</b> de {{ a.total }} revisados{% if a.total %} ({{ (100 * a.respondidos / a.total) | round | int }} %){% endif %}
+        <div class="sv-chips">
+          {% for clave, texto in resultados.items() %}{% if a.por_resultado.get(clave) %}<span class="sv-chip sv-chip--{{ clave }}">{{ texto }}: {{ a.por_resultado[clave] }}</span>{% endif %}{% endfor %}
+          <span class="sv-chip">Faltan en el nomenclador: {{ a.necesidades }}</span>
+        </div>
+      </div>
+      <div class="sv-llave__acciones">
+        <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.servicios_exportar', llave=ll.id) }}">⬇️ Excel</a>
+        {% if ll.enviado_en %}
+        <form method="post" action="{{ url_for('admin.servicio_reabrir', llave_id=ll.id) }}" data-confirmar="¿Reabrir la revisión de {{ ll.servicio }}? El servicio va a poder cambiar respuestas otra vez (no se borra nada).">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">🔓 Reabrir</button>
+        </form>
+        {% endif %}
+        <form method="post" action="{{ url_for('admin.servicio_enlace', llave_id=ll.id) }}" data-confirmar="¿Generar un enlace nuevo para {{ ll.servicio }}? El anterior deja de funcionar y esto no se puede deshacer (las respuestas no se tocan).">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">🔑 Enlace nuevo</button>
+        </form>
+        <form method="post" action="{{ url_for('admin.servicio_estado', llave_id=ll.id) }}" data-confirmar="{{ '¿Dar de baja la llave de ' ~ ll.servicio ~ '? Se puede volver a activar y las respuestas se conservan.' if ll.activo else '¿Volver a activar la llave de ' ~ ll.servicio ~ '?' }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">{{ '⛔ Dar de baja' if ll.activo else '✅ Activar' }}</button>
+        </form>
+      </div>
+      <details class="sv-llave__detalle">
+        <summary>Cambiar bodegas · historial de la llave</summary>
+        <form method="post" action="{{ url_for('admin.servicio_bodegas', llave_id=ll.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <div class="sv-bodegas">
+            {% for b, n in bodegas %}
+            <label><input type="checkbox" name="bodegas" value="{{ b }}" {{ 'checked' if b in ll.nombres_bodegas }}> <span>{{ b }}</span> <span class="text-muted">{{ n }}</span></label>
+            {% endfor %}
+          </div>
+          <button class="btn btn--primary btn--sm">Guardar bodegas</button>
+          <span class="text-muted">Si sacás una bodega, sus respuestas no se borran: vuelven a verse si la asignás de nuevo.</span>
+        </form>
+        {% if revisores_farmacia %}
+        <form method="post" action="{{ url_for('admin.servicio_importar_farmacia', llave_id=ll.id) }}" class="sv-importar" data-confirmar="¿Traer a {{ ll.servicio }} las respuestas de la revisión de Farmacia de la persona elegida? Solo se completan artículos sin respuesta; la revisión de Farmacia no se toca.">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <label><b>Traer respuestas de la revisión de Farmacia</b> (para no empezar de cero):
+            <select name="revisor" class="input" style="max-width:260px;display:inline-block">
+              {% for rv in revisores_farmacia %}<option value="{{ rv.id }}">{{ rv.nombre }} ({{ rv.observaciones | selectattr('validacion') | list | length }} respuestas)</option>{% endfor %}
+            </select>
+          </label>
+          <button class="btn btn--ghost btn--sm">Traer respuestas</button>
+          <span class="text-muted">Sí → Correcto · No → No corresponde (después se decide si se agrega o qué código va) · Dudas → Requiere aclaración. Solo artículos de las bodegas de esta llave.</span>
+        </form>
+        {% endif %}
+        <ul class="sv-registro text-muted">
+          {% for x in ll.registro[:30] %}<li>{{ hora_ar(x.en) }} — {{ x.accion }}{% if x.detalle %}: {{ x.detalle }}{% endif %}</li>{% endfor %}
+        </ul>
+      </details>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}<p class="text-muted">Todavía no hay llaves de servicios.</p>{% endif %}
+</section>
+
+<section class="card rev-admin-bloque">
+  <h2 class="section__title" style="margin-top:0">Crear una llave</h2>
+  <form method="post" action="{{ url_for('admin.servicio_crear') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <label for="sv-servicio"><b>Servicio</b></label>
+    <input class="input" id="sv-servicio" name="servicio" maxlength="120" placeholder="Ej.: Informática" required style="max-width:360px;display:block;margin-top:4px" />
+    <p style="margin:12px 0 4px"><b>Bodegas que va a revisar</b> <span class="text-muted">(una o más; Farmacia y Laboratorio no se ofrecen: tienen su propia revisión)</span></p>
+    <div class="sv-bodegas">
+      {% for b, n in bodegas %}
+      <label><input type="checkbox" name="bodegas" value="{{ b }}"> <span>{{ b }}{% if llaves_por_bodega.get(b) %} <small class="sv-ya">ya tiene llave: {{ llaves_por_bodega[b] | join(', ') }}</small>{% endif %}</span> <span class="text-muted">{{ n }} art.</span></label>
+      {% endfor %}
+    </div>
+    <p class="text-muted" style="margin:8px 0">Qué bodega corresponde a cada servicio lo decidís vos: queda registrado en el historial de la llave y se puede cambiar.</p>
+    <p class="text-muted" style="margin:0 0 8px">⚠ Una llave nueva empieza vacía: las respuestas quedan en cada llave. Para que un servicio vuelva a entrar con lo que ya hizo, usá «🔑 Enlace nuevo» en su llave.</p>
+    <button class="btn btn--primary btn--sm">Crear llave</button>
+  </form>
+</section>
+
+<section class="card rev-admin-bloque sv-cat">
+  <h2 class="section__title" style="margin-top:0">Catálogo WEB</h2>
+  <div class="sv-cat__cab">
+    <p class="sv-cat__vigente">📅 {% if ultima_ok %}Catálogo vigente: <b>{{ hora_ar(ultima_ok.en) }}</b> · {{ '{:,}'.format(ultima_ok.items).replace(',', '.') }} ítems{% else %}Todavía no se bajó el catálogo.{% endif %}</p>
+    <div class="sv-cat__botones">
+      {% if catalogo_en_curso %}<span class="badge">⏳ Actualizando… recargá en un minuto</span>
+      {% else %}<form method="post" action="{{ url_for('admin.catalogo_actualizar') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--primary btn--sm">🔄 Actualizar ahora</button></form>{% endif %}
+      {% if ultima_ok %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.catalogo_descargar') }}">⬇ Bajar el catálogo (CSV)</a>{% endif %}
+      <a class="btn btn--ghost btn--sm" href="https://www.santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Abrir el Catálogo WEB ↗</a>
+    </div>
+  </div>
+  <p class="text-muted" style="margin:2px 0 8px">Se actualiza solo todos los días a las 6 de la mañana (hora de Argentina). Con «Actualizar ahora» se baja y se compara en el momento.</p>
+  {% if corridas %}
+  {% set c = corridas[0] %}
+  {% if c.estado != 'ok' %}<p class="sv-catalogo sv-catalogo--{{ c.estado }}"><b>{{ {'error': '✗ La última actualización falló', 'alerta': '⚠ Alerta'}[c.estado] }} ({{ hora_ar(c.en) }}).</b> {{ c.mensaje }}</p>{% endif %}
+  {% if atrasado %}<p class="sv-catalogo sv-catalogo--error"><b>⚠ Hace más de un día que no se actualiza.</b> Revisar en el servidor que esté programado (<code>/etc/cron.d/timbo-catalogo</code>).</p>{% endif %}
+  {% if ultima_ok %}
+  <div class="sv-cat__cambios">
+    <span><b>{{ ultima_ok.nuevos }}</b> ítems nuevos</span><span><b>{{ ultima_ok.quitados }}</b> quitados</span>
+    <span><b>{{ ultima_ok.cambiados }}</b> con otro texto</span><span><b>{{ ultima_ok.no_utilizar }}</b> pasaron a «NO UTILIZAR»</span>
+    <small class="text-muted">desde la actualización anterior</small>
+  </div>
+  {% set rs = detalle_catalogo.get('resumen_servicios') %}
+  {% if rs %}
+  <h3 class="sv-cat__sub">Cómo está cada servicio</h3>
+  <div class="sv-tabla-scroll"><table class="data-table">
+    <thead><tr><th>Servicio</th><th>Hay que cargar</th><th>Ya están</th><th>No se revisaron</th><th>Quedan fuera</th></tr></thead>
+    <tbody>{% for serv, n in rs.items() %}{% set a = resumen_anterior.get(serv, {}) %}<tr><td>{{ serv }}</td>
+      {% for k in ('cargar', 'estan', 'falta', 'fuera') %}<td>{{ n.get(k, 0) }}{% if a and a.get(k, 0) != n.get(k, 0) %} <small class="text-muted">({{ '%+d' | format(n.get(k, 0) - a.get(k, 0)) }})</small>{% endif %}</td>{% endfor %}
+    </tr>{% endfor %}</tbody>
+  </table></div>
+  <p class="text-muted" style="margin:4px 0 0">Entre paréntesis, cuánto cambió desde la actualización anterior.</p>
+  {% endif %}
+  {% set pa = detalle_catalogo.get('posibles_altas') or [] %}
+  <details class="sv-cat__lista" {{ 'open' if pa }}>
+    <summary><b>Posibles altas ya hechas ({{ pa | length }})</b> <span class="text-muted">— lo que un servicio pidió cargar y podría estar entre los ítems nuevos. Hay que confirmarlo.</span></summary>
+    {% if pa %}<div class="sv-tabla-scroll"><table class="data-table">
+      <thead><tr><th>Servicio</th><th>Artículo del hospital</th><th>Ítem nuevo del catálogo</th></tr></thead>
+      <tbody>{% for x in pa %}<tr><td>{{ x.servicio }}</td><td>{{ x.articulo }} <small class="text-muted">{{ x.codigo_interno }}</small></td><td>{{ x.codigo }} — {{ x.item }}</td></tr>{% endfor %}</tbody>
+    </table></div>{% else %}<p class="text-muted">Ninguna por ahora.</p>{% endif %}
+  </details>
+  <details class="sv-cat__lista">
+    <summary><b>Artículos para revisar de nuevo ({{ ultima_ok.afectados }})</b> <span class="text-muted">— usan un código que ya no existe o es «NO UTILIZAR». Las respuestas no se tocan.</span></summary>
+    {% if detalle_catalogo.get('afectados') %}<div class="sv-tabla-scroll"><table class="data-table">
+      <thead><tr><th>Artículo</th><th>Código</th><th>Qué pasó</th></tr></thead>
+      <tbody>{% for a in detalle_catalogo['afectados'][:300] %}<tr><td>{{ a.articulo }} <small class="text-muted">{{ a.codigo_interno }} · {{ a.donde }}</small></td><td>{{ a.codigo }}</td><td>{{ a.aviso }}</td></tr>{% endfor %}</tbody>
+    </table></div>{% else %}<p class="text-muted">Ninguno.</p>{% endif %}
+  </details>
+  {% endif %}
+  <details class="sv-cat__lista"><summary><b>Actualizaciones anteriores</b></summary>
+    <ul class="sv-registro">{% for x in corridas %}<li>{{ hora_ar(x.en) }} — {{ {'ok': '✓', 'error': '✗', 'alerta': '⚠'}[x.estado] }} {{ x.mensaje }}</li>{% endfor %}</ul>
+  </details>
+  {% endif %}
+</section>
+
+<section class="card rev-admin-bloque">
+  <h2 class="section__title" style="margin-top:0">Diferencias entre servicios ({{ diferencias | length }})</h2>
+  <p class="text-muted" style="margin-top:0">Artículos compartidos donde un servicio dijo que el código corresponde y otro que no. «No se usa» no cuenta como diferencia: cada servicio usa cosas distintas.</p>
+  {% if diferencias %}
+  <table class="data-table">
+    <thead><tr><th>Código interno</th><th>Artículo</th><th>Código propuesto</th><th>Qué respondió cada servicio</th></tr></thead>
+    <tbody>
+      {% for lista in diferencias %}
+      <tr>
+        <td>{{ lista[0].codigo_interno }}</td>
+        <td>{{ lista[0].nombre_item }}</td>
+        <td>{{ lista[0].codigo_propuesto or '—' }}</td>
+        <td>{% for r in lista %}<div><b>{{ nombres.get(r.llave_id, '?') }}</b>: {{ resultados[r.resultado] }} <span class="text-muted">({{ r.persona }})</span>{% if r.observacion %} — «{{ r.observacion }}»{% endif %}</div>{% endfor %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="text-muted">No hay diferencias.</p>{% endif %}
+</section>
+{% endblock %}

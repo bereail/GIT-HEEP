@@ -59,59 +59,13 @@
       <li>Completá tu nombre y apellido.</li>
       <li>Revisá los artículos por sección, en orden: primero los que <b>faltan cargar</b>, después los que <b>necesitan confirmación</b> y al final los que <b>ya existen</b>.</li>
       <li>En cada artículo elegí un resultado. Si hace falta, escribí una observación. <b>Cada respuesta se guarda sola.</b></li>
+      <li>Si el servicio necesita un artículo que no está en la lista, cargalo en <b>Artículos que el servicio necesita</b>, al final.</li>
       <li>Podés cerrar y seguir otro día: al abrir este mismo archivo, la planilla retoma donde dejaste.</li>
       <li>Al terminar, tocá <b>Finalizar revisión</b> para preparar el archivo de devolución.</li>
     </ol>
   </section>
 
-  <nav class="rs-secciones" aria-label="Secciones">
-    <button type="button" class="rs-tab rs-tab--1" data-seccion="1"><span class="rs-tab__num">1</span><span class="rs-tab__txt">Artículos que faltan cargar</span><span class="rs-tab__cuenta" data-cuenta="1"></span></button>
-    <button type="button" class="rs-tab rs-tab--2" data-seccion="2"><span class="rs-tab__num">2</span><span class="rs-tab__txt">Artículos que necesitan confirmación</span><span class="rs-tab__cuenta" data-cuenta="2"></span></button>
-    <button type="button" class="rs-tab rs-tab--3" data-seccion="3"><span class="rs-tab__num">3</span><span class="rs-tab__txt">Artículos que ya existen y deben verificarse</span><span class="rs-tab__cuenta" data-cuenta="3"></span></button>
-  </nav>
-
-  <section class="rs-panel rs-instrucciones" id="rs-instrucciones" aria-live="polite"></section>
-
-  <div class="rs-filtros">
-    <input type="search" id="rs-buscar" placeholder="Buscar por nombre o código…" aria-label="Buscar por nombre o código" autocomplete="off">
-    <select id="rs-estado" aria-label="Filtrar por resultado">
-      <option value="">Todos</option>
-      <option value="pendiente">Pendientes</option>
-      <option value="revisado">Revisados</option>
-      <option value="correcto">Correcto / corresponde</option>
-      <option value="no_corresponde">No corresponde</option>
-      <option value="no_necesario">No necesario</option>
-      <option value="aclaracion">Requiere aclaración</option>
-    </select>
-    <button type="button" class="rs-btn rs-btn--claro" id="rs-ir-pendiente">Ir al próximo pendiente</button>
-  </div>
-
-  <p class="rs-resultados" id="rs-resultados"></p>
-  <div id="rs-lista" class="rs-lista"></div>
-
-  <nav class="rs-paginador" aria-label="Páginas">
-    <button type="button" class="rs-btn rs-btn--claro" id="rs-ant" aria-label="Página anterior">←</button>
-    <span id="rs-pagina"></span>
-    <button type="button" class="rs-btn rs-btn--claro" id="rs-sig" aria-label="Página siguiente">→</button>
-  </nav>
-
-  <section class="rs-panel rs-final" aria-labelledby="rs-final-titulo">
-    <h2 id="rs-final-titulo">✅ Finalizar la revisión</h2>
-    <label class="rs-obs-general">Observaciones generales (opcional)<textarea id="rs-obs-general" rows="3" maxlength="4000"></textarea></label>
-    <div id="rs-resumen" class="rs-resumen"></div>
-    <button type="button" class="rs-btn rs-btn--grande" id="rs-finalizar">Finalizar revisión y preparar archivo de devolución</button>
-    <p class="rs-nota">El archivo de devolución queda en tu PC. Cómo se entrega se va a definir más adelante.</p>
-  </section>
-</main>
-
-<div class="rs-modal" id="rs-modal" hidden>
-  <div class="rs-modal__caja" role="dialog" aria-modal="true" aria-labelledby="rs-modal-titulo">
-    <h2 id="rs-modal-titulo"></h2>
-    <div id="rs-modal-cuerpo"></div>
-    <div class="rs-modal__acciones" id="rs-modal-acciones"></div>
-  </div>
-</div>
-
+{% include "revision_servicio/_cuerpo.html" %}
 <script type="application/json" id="rs-datos">{{ datos|tojson }}</script>
 <script>
 {{ js|safe }}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cómo revisar los artículos de tu servicio</title>
+<link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/revision_servicio.css') }}">
+</head>
+<body class="sv-instructivo">
+<main class="rs-main">
+  <p class="rs-etiqueta" style="color:#555">Centro de Aprendizaje TIMBÓ · HEEP</p>
+  <h1>Cómo revisar los artículos de tu servicio</h1>
+  <section class="sv-instr-porque">
+    <h2>¿Qué está pasando y por qué?</h2>
+    <p>Las compras del hospital dejan el sistema interno y pasan a hacerse por <b>TIMBÓ</b>, el sistema de compras de la Provincia. En TIMBÓ solo se puede pedir lo que está en el <b><a href="https://www.santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a></b> oficial.</p>
+    <p>Por eso hace falta saber, servicio por servicio, qué artículos se siguen usando:</p>
+    <ul>
+      <li><b>Lo que el servicio usa</b> se va a poder pedir en TIMBÓ. Si todavía no está en el catálogo, se pide que lo carguen.</li>
+      <li><b>Lo que ya no se usa o no es del servicio</b> queda fuera y no se carga.</li>
+    </ul>
+    <p>Nadie conoce mejor que el servicio lo que usa. Si esta revisión está bien hecha, después vas a encontrar en TIMBÓ lo que necesitás.</p>
+  </section>
+
+
+  <ol class="sv-pasos-instr">
+    <li>
+      <h2>Entrá con el enlace de tu servicio</h2>
+      <p>Abrilo en Chrome o Edge. La primera vez escribí tu nombre y apellido: tus respuestas quedan a tu nombre.</p>
+    </li>
+    <li>
+      <h2>En cada artículo, tocá una opción</h2>
+      <ul>
+        <li><b>✓ Sí, es este</b> (o <b>✓ Sí, se usa</b>): el servicio lo usa y es lo que propone TIMBÓ.</li>
+        <li><b>Es otra cosa</b>: el servicio lo usa, pero TIMBÓ propone algo distinto. Se pide que lo carguen.</li>
+        <li><b>Ya no se usa</b> o <b>No es de nuestro servicio</b>: queda fuera.</li>
+      </ul>
+      <p>Algunos artículos de tu servicio <b>ya están cargados en TIMBÓ</b>: son los de la pestaña <b>«Ya están en TIMBÓ»</b>. No hay que hacer nada con ellos, están ahí solo para que los veas.</p>
+      <div class="sv-instr-general">
+        <p><b>Un artículo general en vez de muchos.</b> En TIMBÓ no hace falta un artículo por cada modelo.</p>
+        <p>Ejemplo: hoy hay «Lámpara LED 12 W rosca E27», «Lámpara LED 14 W luz día»… En TIMBÓ hay una sola: <b>«Lámpara LED»</b>. Cuando hagas el pedido, aclarás los vatios y la rosca.</p>
+        <p>Si TIMBÓ te propone ese artículo general, la respuesta es <b>«Sí, es este»</b>.</p>
+      </div>
+    </li>
+    <li>
+      <h2>Mirá cómo se va armando</h2>
+      <p>A la <b>izquierda (verde)</b> queda lo que el servicio usa: lo va a poder pedir en TIMBÓ. A la <b>derecha (rojo)</b>, lo que no se usa o no es del servicio: queda fuera y no se va a poder pedir más. Si te equivocás, tocá <b>↶ Deshacer</b>.</p>
+      <p>Si el servicio usa algo que <b>no está en la lista</b>, cargalo al final, en «Artículos que el servicio necesita».</p>
+    </li>
+    <li>
+      <h2>Cuando terminen: revisión final y envío</h2>
+      <p>Tocá <b>«Ver la revisión final»</b>: vas a ver <b>lo que hay que cargar</b> (verde), <b>lo que ya está</b> (azul), <b>lo que no se revisó</b> (amarillo) y <b>lo que queda fuera</b> (rojo). Ahí todavía podés cambiar lo que quieras.</p>
+      <p>Cuando esté todo bien, tocá el botón rojo <b>«Enviar la revisión»</b>.</p>
+      <p class="sv-instr-alerta">⚠ Después de enviarla <b>NO</b> se puede cambiar, deshacer ni revisar nada.</p>
+    </li>
+  </ol>
+
+  <p class="sv-instr-nota">¿Dudas? Tocá <a href="{{ url_duda() }}"><b>❓ Tengo una duda</b></a> y escribila, o consultá a quien te pasó el enlace. Hasta que la envíes, podés cambiar lo que quieras.</p>
+  <p class="sv-instr-nota">▶ Hay un <a href="{{ url_for('servicio.tutorial') }}">tutorial paso a paso con video</a>.</p>
+  <p class="sv-instr-imprimir"><button type="button" class="rs-btn rs-btn--claro" id="sv-imprimir">🖨 Imprimir</button></p>
+</main>
+<script nonce="{{ csp_nonce }}">document.getElementById("sv-imprimir").addEventListener("click", function () { window.print(); });</script>
+</body>
+</html>

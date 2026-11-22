@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Tutorial paso a paso</title>
+<link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/revision_servicio.css') }}">
+</head>
+<body class="sv-instructivo">
+<main class="rs-main sv-tutorial">
+  <p class="rs-etiqueta" style="color:#555">Centro de Aprendizaje TIMBÓ · HEEP</p>
+  <h1>Tutorial paso a paso</h1>
+  <p>Cómo revisar los artículos de tu servicio, con un ejemplo. Primero el video; abajo, los mismos pasos con imágenes.</p>
+  {% if hay_video %}
+  <video class="sv-tutorial__video" controls preload="metadata" src="{{ url_for('static', filename='video/tutorial_servicio.mp4') }}"></video>
+  {% endif %}
+  <ol class="sv-tutorial__pasos">
+    {% for p in pasos %}
+    <li>
+      <p class="sv-tutorial__texto"><span class="sv-tutorial__num">{{ loop.index }}</span>{{ p.texto }}</p>
+      <img src="{{ url_for('static', filename='img/tutorial_servicio/paso' ~ p.n ~ '.png') }}" alt="Paso {{ loop.index }}: {{ p.texto }}" loading="lazy">
+    </li>
+    {% endfor %}
+  </ol>
+  <p class="sv-instr-nota">¿Dudas? Tocá <a href="{{ url_duda() }}"><b>❓ Tengo una duda</b></a>. También está el <a href="{{ url_for('servicio.instructivo') }}">instructivo para imprimir</a>.</p>
+</main>
+</body>
+</html>

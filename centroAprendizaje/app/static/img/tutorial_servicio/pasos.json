@@ -1,0 +1,62 @@
+[
+ {
+  "n": "01",
+  "texto": "Entrá con el enlace de tu servicio. La primera vez, escribí tu nombre y apellido."
+ },
+ {
+  "n": "02",
+  "texto": "Así se ve la pantalla. En el centro, en amarillo, está lo que falta revisar."
+ },
+ {
+  "n": "03",
+  "texto": "Si el servicio lo usa, tocá «✓ Sí, se usa». Listo: se pide que lo carguen."
+ },
+ {
+  "n": "04",
+  "texto": "Pasa a la izquierda, en verde: se va a poder pedir en TIMBÓ."
+ },
+ {
+  "n": "05",
+  "texto": "Si ya no se usa, tocá «Ya no se usa»."
+ },
+ {
+  "n": "06",
+  "texto": "Si no es de tu servicio, tocá «No es de nuestro servicio»."
+ },
+ {
+  "n": "07",
+  "texto": "Los dos van a la derecha, en rojo: quedan fuera y no se van a poder pedir más."
+ },
+ {
+  "n": "08",
+  "texto": "En «Confirmar el código», TIMBÓ propone un artículo. Si es lo mismo que usan, tocá «✓ Sí, es este»."
+ },
+ {
+  "n": "09",
+  "texto": "Si TIMBÓ propone otra cosa (acá, un «flotante mecánico»), tocá «Es otra cosa»: se pide que lo carguen."
+ },
+ {
+  "n": "10",
+  "texto": "Varios parecidos van a un solo artículo de TIMBÓ. Si es el correcto, tocá «Sí, es este para todos»."
+ },
+ {
+  "n": "11",
+  "texto": "¿Te equivocaste? Tocá «↶ Deshacer» y el artículo vuelve a quedar para responder."
+ },
+ {
+  "n": "12",
+  "texto": "En «Ya están en TIMBÓ» no tenés que hacer nada: son solo para mirar."
+ },
+ {
+  "n": "13",
+  "texto": "¿Terminaron? Tocá «Ver la revisión final»."
+ },
+ {
+  "n": "14",
+  "texto": "En la revisión final ves: en verde lo que se carga, en azul lo que ya está, en amarillo lo no revisado y en rojo lo que queda fuera."
+ },
+ {
+  "n": "15",
+  "texto": "Si está todo bien, tocá el botón rojo «Enviar la revisión». ⚠ Después NO se puede cambiar, deshacer ni revisar nada."
+ }
+]
