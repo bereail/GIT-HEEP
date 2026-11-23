@@ -1,0 +1,79 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Control final — {{ llave.servicio }}{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">🔎 Control final antes de pedir altas</h1>
+  <a class="btn btn--primary btn--sm" href="{{ url_for('admin.servicio_control_altas', llave_id=llave.id, xlsx=1) }}">⬇️ Bajar la planilla (Excel)</a>
+</div>
+<p style="margin-top:6px"><b>{{ llave.servicio }}</b> · Bodega: {{ llave.nombres_bodegas | join(', ') }}
+  {% if llave.enviado_en %}· enviada el {{ hora_ar(llave.enviado_en) }} por {{ llave.enviado_por }}{% else %}· <b>todavía no la enviaron</b>{% endif %}</p>
+
+<section class="card rev-admin-bloque">
+  <p style="margin-top:0">Vuelve a mirar los <b>{{ r.filas | length }}</b> artículos de «Hay que cargar» contra el
+    <a href="https://www.santafe.gov.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB</a>
+    para no pedir el alta de algo que ya existe ni pedir dos veces lo mismo. Solo mira: no cambia ninguna respuesta.</p>
+  <p class="text-muted">Catálogo usado: <b>{{ catalogo_al or r.catalogo }}</b> ({{ r.catalogo_items | numero_ar }} ítems).
+    {% if r.comparado_con %}Desde que se envió la revisión aparecieron <b>{{ r.nuevos | numero_ar }}</b> ítems nuevos.{% endif %}
+    Para controlar con el catálogo de este momento, primero tocá «Actualizar ahora».</p>
+  <div class="ca-botones">
+    {% if en_curso %}<span class="badge">⏳ Actualizando el catálogo… recargá en un minuto</span>
+    {% else %}
+    <form method="post" action="{{ url_for('admin.catalogo_actualizar') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">🔄 Actualizar ahora</button>
+    </form>{% endif %}
+  </div>
+  <div class="ca-resumen">
+    {% for k in orden %}<a class="ca-chip ca--{{ estados[k][1] }}" href="#ca-{{ k }}"><b>{{ r.cuenta[k] }}</b> {{ estados[k][0] }}</a>{% endfor %}
+    <span class="ca-chip ca--{{ 'amarillo' if r.revisar_estan else 'gris' }}"><b>{{ r.revisar_estan | length }}</b> de «Ya están en TIMBÓ» con un código que dejó de servir</span>
+  </div>
+  {% if r.falta %}<p class="ca-alerta">⚠ Quedan <b>{{ r.falta }}</b> artículos sin revisar en este servicio: la lista puede estar incompleta.</p>{% endif %}
+  <p class="text-muted" style="margin-bottom:0">Rubro, subrubro, elemento y objeto del gasto son <b>sugerencias</b> tomadas del ítem más parecido: confirmalos antes de pedir el alta.</p>
+</section>
+
+{% if r.grupos %}
+<section class="card rev-admin-bloque ca-seccion ca-borde--azul" id="ca-grupos">
+  <h2 class="section__title" style="margin-top:0">Se pueden pedir como uno solo ({{ r.grupos | length }})</h2>
+  <p class="text-muted">Artículos de la lista que se parecen entre sí: en vez de pedir el alta de cada uno, se puede pedir uno genérico (el modelo, color o medida va en la observación). Si el genérico ya existe en el Catálogo WEB, no hace falta pedir el alta.</p>
+  <div class="sv-tabla-scroll"><table class="data-table ca-tabla">
+    <thead><tr><th>Nombre genérico sugerido</th><th>Artículos que junta</th><th>¿Ya existe en el Catálogo WEB?</th></tr></thead>
+    <tbody>{% for g in r.grupos %}
+      <tr>
+        <td><b>{{ g.nombre }}</b><br><span class="text-muted">{{ g.miembros | length }} artículos</span></td>
+        <td>{% for m in g.miembros %}<div>{{ m }}</div>{% endfor %}</td>
+        <td>{% for e in g.existentes %}<div class="ca-parecido">{{ e.texto }}</div>{% else %}<span class="text-muted">No: habría que pedir el alta del genérico.</span>{% endfor %}</td>
+      </tr>{% endfor %}
+    </tbody>
+  </table></div>
+</section>
+{% endif %}
+
+{% for k in orden %}{% set lista = r.filas | selectattr('estado', 'equalto', k) | list %}{% if lista %}
+<section class="card rev-admin-bloque ca-seccion ca-borde--{{ estados[k][1] }}" id="ca-{{ k }}">
+  <h2 class="section__title" style="margin-top:0">{{ estados[k][0] }} ({{ lista | length }})</h2>
+  <div class="sv-tabla-scroll"><table class="data-table ca-tabla">
+    <thead><tr><th>Artículo del hospital</th><th>Parecidos en el Catálogo WEB</th><th>Sugerencia para la grilla</th></tr></thead>
+    <tbody>{% for f in lista %}
+      <tr>
+        <td><b>{{ f.nombre }}</b><br><span class="text-muted">Cód. {{ f.codigo or '—' }} · {{ f.accion }}</span>
+          {% if f.observacion %}<br><i>«{{ f.observacion }}»</i>{% endif %}
+          {% if f.repetido_con %}<br><span class="ca-rep">Repetido con: {{ f.repetido_con | join(' · ') }}</span>{% endif %}</td>
+        <td>{% for p in f.parecidos %}<div class="ca-parecido">{% if p.nuevo %}<span class="badge">NUEVO</span> {% endif %}{{ p.texto }} <span class="text-muted">({{ p.pct }} %)</span></div>{% else %}<span class="text-muted">Nada parecido</span>{% endfor %}</td>
+        <td>{% if f.sugerencia %}{{ f.sugerencia.rubro }}<br>{{ f.sugerencia.subrubro }}<br>{{ f.sugerencia.elemento }}<br><span class="text-muted">Obj. gasto {{ f.sugerencia.objeto }} · de {{ f.sugerencia.desde }}</span>{% else %}<span class="text-muted">—</span>{% endif %}</td>
+      </tr>{% endfor %}
+    </tbody>
+  </table></div>
+</section>
+{% endif %}{% endfor %}
+
+{% if r.revisar_estan %}
+<section class="card rev-admin-bloque ca-seccion ca-borde--amarillo">
+  <h2 class="section__title" style="margin-top:0">«Ya están en TIMBÓ» con un código que dejó de servir ({{ r.revisar_estan | length }})</h2>
+  <div class="sv-tabla-scroll"><table class="data-table ca-tabla">
+    <thead><tr><th>Artículo del hospital</th><th>Código en TIMBÓ</th><th>Aviso</th></tr></thead>
+    <tbody>{% for e in r.revisar_estan %}<tr><td>{{ e.nombre }} <span class="text-muted">(cód. {{ e.codigo }})</span></td><td>{{ e.codigo_timbo }}</td><td>{{ e.aviso }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+{% endif %}
+
+<p><a href="{{ url_for('admin.servicios') }}">← Volver a la revisión por servicio</a></p>
+{% endblock %}

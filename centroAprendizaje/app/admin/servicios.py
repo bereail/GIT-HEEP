@@ -164,6 +164,30 @@ def catalogo_descargar():
     return send_file(ruta, mimetype="text/csv", as_attachment=True, download_name=os.path.basename(ruta))
 
 
+@admin_bp.route("/servicios/<int:llave_id>/control-altas")
+@requiere_admin
+def servicio_control_altas(llave_id):
+    """Control final antes de pedir las altas: vuelve a mirar «Hay que cargar»
+    contra la última copia del Catálogo WEB. Solo lee. Con ?xlsx=1, el Excel."""
+    from flask import current_app
+
+    from app.services import catalogo_diario, control_altas
+    llave = _llave_o_404(llave_id)
+    resultado = control_altas.control(llave, current_app.instance_path)
+    if resultado is None:
+        flash("Todavía no hay ninguna copia del Catálogo WEB: tocá «Actualizar ahora» y probá de nuevo.", "error")
+        return redirect(url_for("admin.servicios"))
+    if request.args.get("xlsx"):
+        nombre = re.sub(r"[^A-Za-z0-9_-]+", "_", llave.servicio) or "servicio"
+        return Response(xlsx.libro(control_altas.libro(resultado, llave.servicio)),
+                        mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        headers={"Content-Disposition": f'attachment; filename="control-altas-{nombre}.xlsx"'})
+    act = catalogo_diario.ultima_actualizacion()
+    return render_template("admin/control_altas.html", llave=llave, r=resultado, estados=control_altas.ESTADOS, hora_ar=ls.hora_ar,
+                           orden=control_altas.ORDEN_ESTADOS, catalogo_al=ls.hora_ar(act.en) if act else "",
+                           en_curso=catalogo_diario.en_curso(current_app.instance_path))
+
+
 @admin_bp.route("/servicios/<int:llave_id>/reabrir", methods=["POST"])
 @requiere_admin
 def servicio_reabrir(llave_id):

@@ -58,6 +58,7 @@
       </div>
       <div class="sv-llave__acciones">
         <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.servicios_exportar', llave=ll.id) }}">⬇️ Excel</a>
+        <a class="btn {{ 'btn--primary' if ll.enviado_en else 'btn--ghost' }} btn--sm" href="{{ url_for('admin.servicio_control_altas', llave_id=ll.id) }}">🔎 Control final antes de pedir altas</a>
         {% if ll.enviado_en %}
         <form method="post" action="{{ url_for('admin.servicio_reabrir', llave_id=ll.id) }}" data-confirmar="¿Reabrir la revisión de {{ ll.servicio }}? El servicio va a poder cambiar respuestas otra vez (no se borra nada).">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="btn btn--ghost btn--sm">🔓 Reabrir</button>
