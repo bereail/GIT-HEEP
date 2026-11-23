@@ -428,6 +428,16 @@ no cambia; solo se actualiza el Catálogo WEB.
   manual semanal. Farmacia va por su circuito (SUFYD), tema aparte. Quién firma en cada servicio lo pide
   ella. «Cód. Sistema Externo» del catálogo: probablemente SUFYD, falta confirmarlo con la Unidad Rectora.
 
+## «Timbó paso a paso» (23/11/2026, deployado en `8ee7e9d`)
+
+Copia del curso oficial del Aula Virtual (course/view.php?id=1486, edición 2026_2) en `/timbo-paso-a-paso`
+(`templates/curso_timbo.html`, datos en `app/recursos/curso_timbo.json`, PDF y portada en
+`static/docs/timbo-paso-a-paso/`). Videos y Genially quedan como enlaces (igual que en el curso). Chequeos de
+lectura y evaluación final con `quiz.js`, textuales de las revisiones de la usuaria, con la respuesta correcta
+oficial. No se copiaron foros (mensajes de terceros) ni la encuesta. El curso pide login: se bajó desde el Chrome
+de la usuaria. Menú del portal: Inicio, Recursos, Timbó paso a paso, Mis consultas, Tengo una duda (al final,
+pedido de la usuaria). Si cambia la edición del curso, rehacer el JSON y los PDF.
+
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 
 **Reglas nuevas de la usuaria (16/11), además de las de arriba:**
