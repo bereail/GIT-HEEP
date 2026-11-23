@@ -189,3 +189,31 @@ def test_inconsistencias_detecta_contradicciones_y_huerfanos():
     llave = SimpleNamespace(nombres_bodegas=["INFORMATICA"])
     avisos = {a["tipo"]: a for a in ca.inconsistencias(llave, items, respuestas, {"cargar": []}, None)}
     assert "contradiccion" in avisos and "pantalla_anterior" in avisos and "huerfano" in avisos
+
+
+def test_marcar_pedidos_y_se_ven_en_el_nomenclador(admin_client, client, app, monkeypatch):
+    from app.extensions import db
+    from app.models import EquivalenciaArticulo, Tema
+    from app.models.revision_servicio import LlaveServicio, PedidoAlta
+
+    with app.app_context():
+        tema = Tema(slug="timbo-compras", nombre="TIMBÓ Compras", orden=1)
+        db.session.add(tema)
+        db.session.flush()
+        db.session.add(EquivalenciaArticulo(tema_id=tema.id, nombre_interno="Impresora térmica", confianza="sin_match",
+                                            bodega="INFORMATICA", codigo_interno="9"))
+        llave = LlaveServicio(servicio="INFORMATICA", token_hash="z" * 64)
+        db.session.add(llave)
+        db.session.commit()
+        llave_id = llave.id
+    grupos = {"cargar": [fila("9", "Impresora térmica")], "estan": [], "fuera": [], "falta": []}
+    monkeypatch.setattr(ls, "planilla_final", lambda llave, tema=None: grupos)
+    url = f"/admin/servicios/{llave_id}/pedidos"
+    admin_client.post(url, data={"articulo": ["Impresora térmica", "Algo que no está en la lista"], "sdo": "SDO-1",
+                                 "nombre": "Berenice Solohaga"})
+    admin_client.post(url, data={"articulo": ["Impresora térmica"], "sdo": "SDO-2", "nombre": "Berenice Solohaga"})
+    with app.app_context():
+        pedidos = PedidoAlta.query.all()
+        assert [(p.nombre, p.sdo, p.codigo_interno) for p in pedidos] == [("Impresora térmica", "SDO-2", "9")]
+    datos = client.get("/temas/timbo-compras/equivalencias.json").get_json()
+    assert "Alta pedida en TIMBÓ el" in datos[0]["pedido"] and "SDO-2" in datos[0]["pedido"]

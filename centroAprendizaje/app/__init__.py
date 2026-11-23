@@ -26,7 +26,8 @@ def create_app(test_config=None):
     @app.url_defaults
     def _version_estaticos(endpoint, values):
         if (endpoint == "static" and "v" not in values
-                and str(values.get("filename", "")).endswith((".js", ".css"))):
+                and (str(values.get("filename", "")).endswith((".js", ".css"))
+                     or str(values.get("filename", "")).startswith(("video/", "img/tutorial_servicio/")))):
             try:
                 values["v"] = int(os.stat(os.path.join(app.static_folder, values["filename"])).st_mtime)
             except OSError:

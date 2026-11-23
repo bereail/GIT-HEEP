@@ -198,10 +198,16 @@ def equivalencias_json(tema_slug):
     items = EquivalenciaArticulo.query.filter_by(tema_id=tema.id).order_by(
         EquivalenciaArticulo.nombre_interno
     ).all()
+    from app.models.revision_nomenclador import hora_ar
+    from app.models.revision_servicio import PedidoAlta
     from app.services import catalogo_diario
     catalogo = catalogo_diario.catalogo_vigente(current_app.instance_path)
+    pedidos = {}
+    for pa in PedidoAlta.query.filter(PedidoAlta.codigo_interno != ""):
+        pedidos[pa.codigo_interno] = f"Alta pedida en TIMBÓ el {hora_ar(pa.pedido_en, '%d/%m/%Y')}" + (f" ({pa.sdo})" if pa.sdo else "")
     datos = [
         {
+            "pedido": pedidos.get(e.codigo_interno or "", ""),
             "aviso": catalogo_diario.aviso_codigo(e.codigo_catalogo, catalogo) if e.confianza != "sin_match" else "",
             "nombre": e.nombre_interno,
             "codigo": e.codigo_catalogo or "",

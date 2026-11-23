@@ -182,3 +182,23 @@ class ActualizacionCatalogo(db.Model):
     afectados = db.Column(db.Integer, nullable=False, default=0)  # artículos del hospital con un código que cambió
     respuestas = db.Column(db.Integer, nullable=False, default=0)  # cuántas respuestas había (control de pérdida)
     detalle = db.Column(db.Text, nullable=False, default="{}")  # JSON con las listas
+
+
+class PedidoAlta(db.Model):
+    """Un artículo cuya alta ya se pidió en TIMBÓ (Formulario Timbó Compras
+    CAByS), marcado por la administración después de la revisión final. Nunca
+    se borra: si se vuelve a marcar, se actualiza el SDO y la fecha."""
+
+    __tablename__ = "pedidos_alta"
+    __table_args__ = (db.UniqueConstraint("llave_id", "nombre", name="uq_pedido_alta_llave_nombre"),)
+
+    id = db.Column(db.Integer, primary_key=True)
+    llave_id = db.Column(db.Integer, db.ForeignKey("llaves_servicio.id"), nullable=False, index=True)
+    codigo_interno = db.Column(db.String(40), nullable=False, default="", index=True)
+    nombre = db.Column(db.String(500), nullable=False)
+    sdo = db.Column(db.String(60), nullable=False, default="")
+    pedido_por = db.Column(db.String(120), nullable=False, default="")
+    pedido_en = db.Column(db.DateTime, nullable=False, default=_ahora)
+    codigo_asignado = db.Column(db.String(40), nullable=False, default="")  # el que da la Unidad Rectora
+
+    llave = db.relationship("LlaveServicio")

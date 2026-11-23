@@ -43,6 +43,10 @@
     <span class="equiv-tile__num" id="num-sinmatch">—</span>
     <span class="equiv-tile__label">🔴 Hay que pedir que se agreguen</span>
   </button>
+  <button type="button" class="equiv-tile equiv-tile--pedido" data-filtro="pedido">
+    <span class="equiv-tile__num" id="num-pedido">—</span>
+    <span class="equiv-tile__label">📨 Se pidieron para cargar</span>
+  </button>
 </div>
 <div class="equiv-todos-wrap"><button type="button" class="equiv-todos" id="equiv-todos">Mostrar todos</button></div>
 
@@ -72,6 +76,7 @@
     <option value="alta">🟢 Listos para cargar</option>
     <option value="dudosa">🟡 Confirmar antes de usar</option>
     <option value="sin_match">🔴 No está en el catálogo</option>
+    <option value="pedido">📨 Se pidieron para cargar</option>
   </select>
 </div>
 
@@ -118,7 +123,7 @@
 .equiv-actualizado{font-size:12.5px;color:var(--text-faint);margin:10px 0 0;}
 .equiv-aviso-total{margin:10px 0 0;padding:8px 12px;border-radius:8px;background:#fff8db;border:1px solid #e0b100;font-size:13.5px;}
 .equiv-row__aviso{margin-top:6px;padding:4px 8px;border-radius:6px;background:#fff8db;color:#7a5a00;font-size:12.5px;font-weight:600;}
-.equiv-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 6px;}
+.equiv-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 6px;}
 .equiv-todos-wrap{display:flex;justify-content:flex-end;margin:0 0 10px;}
 .equiv-todos{background:none;border:1px solid var(--border);border-radius:999px;padding:3px 12px;font:inherit;font-size:12.5px;color:var(--text-muted);cursor:pointer;}
 .equiv-todos:hover{color:var(--accent);border-color:var(--accent);}
@@ -137,6 +142,9 @@
 .equiv-tile--ok{border-top:4px solid #1b8a4c;}
 .equiv-tile--warn{border-top:4px solid #c49000;}
 .equiv-tile--pend{border-top:4px solid #b42318;}
+.equiv-tile--pedido{border-top:4px solid #3b6fb6;}
+.equiv-tile--pedido .equiv-tile__num{color:#2b5797;}
+.estado-pedido{background:#eef3fa;color:#2b5797;border:1px solid #9db6dc;}
 .equiv-tile--warn .equiv-tile__num{color:#9a6c00;}
 .equiv-rows .equiv-row{border-left-width:6px;border-left-color:var(--est,var(--border));}
 .equiv-row__estado{grid-column:1/-1;}
@@ -205,7 +213,7 @@
 .equiv-fab-ayuda__icon{font-size:16px;line-height:1;}
 
 @media (max-width:620px){
-  .equiv-summary{gap:6px;}
+  .equiv-summary{gap:6px;grid-template-columns:repeat(2,1fr);}
   .equiv-tile{padding:10px 6px;}
   .equiv-tile__num{font-size:20px;}
   .equiv-tile__label{font-size:11px;}
@@ -255,7 +263,8 @@
   };
   function chip(d) {
     const e = ESTADOS[d.confianza];
-    return e ? `<div class="equiv-row__estado"><span class="est-chip ${e[0]}">${e[1]}</span></div>` : '';
+    const pedido = d.pedido ? ` <span class="est-chip estado-pedido">📨 ${escapeHtml(d.pedido)}</span>` : '';
+    return e ? `<div class="equiv-row__estado"><span class="est-chip ${e[0]}">${e[1]}</span>${pedido}</div>` : '';
   }
   function clase(d) { return (ESTADOS[d.confianza] || ['estado-gris'])[0]; }
 
@@ -311,7 +320,8 @@
     let items = DATOS;
     if (filtroOrigen) items = items.filter(d => d.origen === filtroOrigen);
     if (filtroBodega) items = items.filter(d => d.bodega === filtroBodega);
-    if (filtroConfianza) items = items.filter(d => d.confianza === filtroConfianza);
+    if (filtroConfianza === 'pedido') items = items.filter(d => d.pedido);
+    else if (filtroConfianza) items = items.filter(d => d.confianza === filtroConfianza);
     if (busqueda) {
       const palabras = sinTildes(busqueda).split(/\s+/).filter(Boolean);
       items = items.filter(d => {
@@ -359,6 +369,7 @@
     document.getElementById('num-alta').textContent = porEstado.alta;
     document.getElementById('num-dudosa').textContent = porEstado.dudosa;
     document.getElementById('num-sinmatch').textContent = porEstado.sin_match;
+    document.getElementById('num-pedido').textContent = DATOS.filter(d => d.pedido).length;
   }
 
   document.getElementById('equiv-summary').addEventListener('click', (e) => {

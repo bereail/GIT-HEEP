@@ -26,3 +26,13 @@ document.addEventListener('click', (ev) => {
   a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
 });
+
+// <button data-tildar-todos="id-de-lista"> → tilda las casillas de la lista
+// que todavía no estaban marcadas como pedidas.
+document.addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-tildar-todos]');
+  if (!b) return;
+  const lista = document.getElementById(b.dataset.tildarTodos);
+  if (!lista) return;
+  lista.querySelectorAll('input[type=checkbox]:not([data-ya])').forEach((c) => { c.checked = true; });
+});

@@ -187,6 +187,7 @@ def servicio_control_altas(llave_id):
 
     from flask import current_app
 
+    from app.models.revision_servicio import PedidoAlta
     from app.services import catalogo_diario, control_altas
     llave = _llave_o_404(llave_id)
     copia = catalogo_diario.ultima_copia(current_app.instance_path)
@@ -215,7 +216,9 @@ def servicio_control_altas(llave_id):
     return render_template("admin/control_altas.html", llave=llave, r=resultado, estados=control_altas.ESTADOS, hora_ar=ls.hora_ar,
                            orden=control_altas.ORDEN_ESTADOS, catalogo_al=ls.hora_ar(act.en) if act else "",
                            en_curso=actualizando, vieja=vieja, guardadas=_planillas_guardadas(llave),
-                           aprobaciones=[g for g in llave.registro if g.accion == "revisión final aprobada"])
+                           aprobaciones=[g for g in llave.registro if g.accion == "revisión final aprobada"],
+                           pedidos={pa.nombre: pa for pa in PedidoAlta.query.filter_by(llave_id=llave.id)},
+                           para_cargar=control_altas.ESTADOS_PARA_CARGAR)
 
 
 def _carpeta_altas():
@@ -268,6 +271,40 @@ def servicio_aprobar_altas(llave_id):
     db.session.commit()
     return send_file(ruta, as_attachment=True, download_name=os.path.basename(ruta),
                      mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
+
+@admin_bp.route("/servicios/<int:llave_id>/pedidos", methods=["POST"])
+@requiere_admin
+def servicio_marcar_pedidos(llave_id):
+    """Marca los artículos cuya alta ya se pidió en TIMBÓ (con el N° de SDO).
+    Solo se aceptan artículos que están en «Hay que cargar» de esta llave.
+    Nunca se borra: si ya estaba marcado, se actualiza el SDO."""
+    from app.models.revision_servicio import PedidoAlta
+    llave = _llave_o_404(llave_id)
+    persona = " ".join((request.form.get("nombre") or "").split())[:120]
+    sdo = " ".join((request.form.get("sdo") or "").split())[:60]
+    elegidos = set(request.form.getlist("articulo"))
+    volver = redirect(url_for("admin.servicio_control_altas", llave_id=llave.id) + "#ca-pedidos")
+    if len(persona) < 3 or not elegidos:
+        flash("Tildá al menos un artículo y escribí tu nombre y apellido.", "error")
+        return volver
+    validos = {f[3]: f[2] for f in ls.planilla_final(llave)["cargar"]}
+    existentes = {pa.nombre: pa for pa in PedidoAlta.query.filter_by(llave_id=llave.id)}
+    marcados = 0
+    for nombre in elegidos:
+        if nombre not in validos:
+            continue
+        pa = existentes.get(nombre) or PedidoAlta(llave_id=llave.id, nombre=nombre, codigo_interno=validos[nombre] or "")
+        pa.sdo = sdo or pa.sdo
+        pa.pedido_por = persona
+        pa.pedido_en = ls.ahora()
+        db.session.add(pa)
+        marcados += 1
+    ls.registrar(llave, "altas pedidas en TIMBÓ", f"{marcados} artículos{f' (SDO {sdo})' if sdo else ''}, por {persona}")
+    db.session.commit()
+    flash(f"Listo: {marcados} artículos quedaron como «Se pidieron para cargar»"
+          f"{f' (SDO {sdo})' if sdo else ''}. Se ven en la página del Nomenclador.", "ok")
+    return volver
 
 
 @admin_bp.route("/servicios/altas/<archivo>")

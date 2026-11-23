@@ -124,5 +124,33 @@
   {% endif %}
 </section>
 
+<section class="card rev-admin-bloque ca-seccion ca-borde--azul" id="ca-pedidos">
+  <h2 class="section__title" style="margin-top:0">📨 Marcar lo que ya pediste</h2>
+  <details class="ca-explica">
+    <summary>Qué pasa al marcar</summary>
+    <ol>
+      <li>Tildá los artículos que ya cargaste en el Formulario Timbó Compras (CAByS) y poné el N° de SDO.</li>
+      <li>Quedan como <b>«Se pidieron para cargar»</b>: se ven en la página del Nomenclador (tarjeta propia y en cada artículo) y quedan registrados en la llave.</li>
+      <li>No se borra nada: si volvés a marcar uno, se actualiza el SDO y la fecha.</li>
+    </ol>
+  </details>
+  {% set candidatos = r.filas | selectattr('estado', 'in', para_cargar) | list %}
+  {% if candidatos %}
+  <form method="post" action="{{ url_for('admin.servicio_marcar_pedidos', llave_id=llave.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <p><button type="button" class="btn btn--ghost btn--sm" data-tildar-todos="ca-pedidos-lista">Tildar todos los que faltan</button></p>
+    <ul class="ca-pedidos" id="ca-pedidos-lista">{% for f in candidatos %}{% set pa = pedidos.get(f.nombre) %}
+      <li><label><input type="checkbox" name="articulo" value="{{ f.nombre }}" {% if pa %}data-ya="1"{% endif %}> {{ f.nombre }}</label>
+        {% if pa %}<span class="badge">📨 Pedido el {{ hora_ar(pa.pedido_en) }}{% if pa.sdo %} · {{ pa.sdo }}{% endif %}</span>{% endif %}</li>
+    {% endfor %}</ul>
+    <div class="ca-aprobar">
+      <label>N° de SDO <input name="sdo" maxlength="60" placeholder="SDO-2026…"></label>
+      <label>Tu nombre y apellido <input name="nombre" required minlength="3" maxlength="120" autocomplete="name"></label>
+      <button class="btn btn--primary">📨 Marcar como pedidos</button>
+    </div>
+  </form>
+  {% else %}<p class="text-muted">No hay artículos para pedir.</p>{% endif %}
+</section>
+
 <p><a href="{{ url_for('admin.servicios') }}">← Volver a la revisión por servicio</a></p>
 {% endblock %}

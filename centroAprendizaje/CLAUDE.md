@@ -412,6 +412,13 @@ no cambia; solo se actualiza el Catálogo WEB.
   otra cosa). Sin tarjetas agrupadas (`unidades()` devuelve una por artículo). NUNCA volver a una pantalla
   donde una respuesta pueda leerse como del artículo de TIMBÓ. El tutorial (video y capturas) todavía muestra
   la pantalla anterior: hay que regenerarlo.
+- 23/11: «Se pidieron para cargar»: tabla `pedidos_alta` (migración `a7d3e5f9c2b4`, solo crea la tabla; probada
+  en copia del servidor: 0 filas cambiadas). En la revisión final, «📨 Marcar lo que ya pediste» (artículos de
+  «Hay que cargar» + N° de SDO + nombre; nunca borra, re-marcar actualiza). Se ven en el Nomenclador (4ª tarjeta y
+  filtro «Se pidieron para cargar», chip por artículo). Tutorial (video + 15 capturas) regenerado con la pantalla de
+  dos preguntas (scratchpad: servidor_prueba.py 5078 + cdp_tutorial.mjs + ffmpeg); video y capturas del tutorial
+  llevan `?v=mtime`. Revisión final: 25,6 s → 4,5 s con 6.128 artículos (índices); no relanza una descarga fallida
+  antes de 1 h; solo se aprueba con catálogo de menos de 6 h; planillas `altas-<id llave>-<servicio>-<fecha>.xlsx`.
 - 23/11: en Informática, 44 artículos de laboratorio/odontología (bodega INFORMATICA compartida con
   FARMACIA+MICROBIOLOGIA/ODONTOLOGIA en la base de compras) quedaron en «Hay que cargar» como «Es otra cosa»;
   la usuaria los corrigió a mano. La usuaria va a reabrir/empezar de cero Informática con la pantalla nueva.

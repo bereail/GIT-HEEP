@@ -9,7 +9,7 @@
  },
  {
   "n": "03",
-  "texto": "Si el servicio lo usa, tocá «✓ Sí, se usa». Listo: se pide que lo carguen."
+  "texto": "Primero: ¿en el servicio usan ESTE artículo (el de arriba, del hospital)? Si lo usan, tocá «✓ Sí, lo usamos». Acá ya está: se pide que lo carguen."
  },
  {
   "n": "04",
@@ -17,7 +17,7 @@
  },
  {
   "n": "05",
-  "texto": "Si ya no se usa, tocá «Ya no se usa»."
+  "texto": "Si ya no lo usan, tocá «Ya no lo usamos»."
  },
  {
   "n": "06",
@@ -29,15 +29,15 @@
  },
  {
   "n": "08",
-  "texto": "En «Confirmar el código», TIMBÓ propone un artículo. Si es lo mismo que usan, tocá «✓ Sí, es este»."
+  "texto": "En «Confirmar el código», primero la misma pregunta: ¿usan este artículo del hospital? Si lo usan, tocá «✓ Sí, lo usamos»."
  },
  {
   "n": "09",
-  "texto": "Si TIMBÓ propone otra cosa (acá, un «flotante mecánico»), tocá «Es otra cosa»: se pide que lo carguen."
+  "texto": "Aparece la pregunta 2: ¿es lo mismo que el artículo de TIMBÓ? Si es lo mismo, tocá «✓ Sí, es lo mismo»."
  },
  {
   "n": "10",
-  "texto": "Varios parecidos van a un solo artículo de TIMBÓ. Si es el correcto, tocá «Sí, es este para todos»."
+  "texto": "Si lo usan pero TIMBÓ propone otra cosa (acá, un «flotante mecánico»), tocá «No, es otra cosa»: se pide que lo carguen."
  },
  {
   "n": "11",

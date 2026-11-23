@@ -2247,3 +2247,5 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .ca-aprobar label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
 .ca-aprobar input { padding: 8px 10px; border: 1px solid var(--border, #c9ced6); border-radius: 8px; min-width: 260px; }
 .ca-guardadas { margin: 0; padding-left: 18px; }
+.ca-pedidos { list-style: none; padding: 0; margin: 0 0 8px; max-height: 360px; overflow-y: auto; }
+.ca-pedidos li { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; padding: 4px 0; border-top: 1px solid var(--border, #e3e6eb); }
