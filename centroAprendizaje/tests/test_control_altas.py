@@ -66,7 +66,8 @@ def test_control_clasifica_y_no_toca_nada(tmp_path, monkeypatch):
                         ["INFORMATICA", "Usar el código propuesto", "8", "Mouse", "", "19.1.5.2", "19.1.5.2"] + [""] * 6],
               "fuera": [], "falta": []}
     monkeypatch.setattr(ls, "planilla_final", lambda llave, tema=None: grupos)
-    llave = SimpleNamespace(enviado_en=envio, servicio="INFORMATICA")
+    monkeypatch.setattr(ls, "items_de", lambda llave, tema=None: ([], []))
+    llave = SimpleNamespace(enviado_en=envio, servicio="INFORMATICA", revisiones=[], nombres_bodegas=["INFORMATICA"])
 
     r = ca.control(llave, inst)
     estado = {f["codigo"]: f["estado"] for f in r["filas"]}
@@ -79,8 +80,8 @@ def test_control_clasifica_y_no_toca_nada(tmp_path, monkeypatch):
     assert all(p["codigo"] != "19.1.5.3" for f in r["filas"] for p in f["parecidos"])
     assert {e["codigo"] for e in r["revisar_estan"]} == {"6", "7"}
     hojas = ca.libro(r, "INFORMATICA")
-    assert [h[0] for h in hojas] == ["PARA PEDIR EL ALTA", "SE PUEDEN PEDIR COMO UNO", "YA ESTÁN - REVISAR CÓDIGO",
-                                    "CÓMO SE HIZO"]
+    assert [h[0] for h in hojas] == ["PARA PEDIR EL ALTA", "REVISAR (POSIBLES ERRORES)", "SE PUEDEN PEDIR COMO UNO",
+                                    "YA ESTÁN - REVISAR CÓDIGO", "CÓMO SE HIZO"]
     assert all(len(f) == len(ca.ENCABEZADOS) for f in hojas[0][2])
 
 
@@ -100,6 +101,7 @@ def test_pantalla_del_control_y_excel(admin_client, app, tmp_path, monkeypatch):
     guardar(str(tmp_path / "catalogo"), "catalogo_20261123-060000.csv", VIEJO, time.time())
     grupos = {"cargar": [fila("2", "Mouse óptico USB")], "estan": [], "fuera": [], "falta": []}
     monkeypatch.setattr(ls, "planilla_final", lambda llave, tema=None: grupos)
+    monkeypatch.setattr(ls, "items_de", lambda llave, tema=None: ([], []))
     r = admin_client.get(f"/admin/servicios/{llave_id}/control-altas")
     assert r.status_code == 200 and "Puede que ya exista" in r.get_data(as_text=True)
     r = admin_client.get(f"/admin/servicios/{llave_id}/control-altas?xlsx=1")
@@ -119,3 +121,65 @@ def test_agrupa_parecidos_en_un_generico():
     assert len(grupos) == 1 and len(grupos[0]["miembros"]) == 3
     assert grupos[0]["nombre"] == "CARTUCHO EPSON NEGRO"
     assert grupos[0]["existentes"][0]["codigo"] == "19.1.36.74"
+
+
+def test_aprobar_guarda_la_planilla_y_lo_registra(admin_client, app, tmp_path, monkeypatch):
+    from app.extensions import db
+    from app.models.revision_servicio import LlaveServicio
+
+    with app.app_context():
+        llave = LlaveServicio(servicio="INFORMATICA", token_hash="y" * 64, enviado_en=datetime(2026, 11, 23, 10, 0),
+                              enviado_por="Ana Paz")
+        db.session.add(llave)
+        db.session.commit()
+        llave_id = llave.id
+    monkeypatch.setattr(cd, "carpeta_catalogo", lambda instancia: str(tmp_path / "catalogo"))
+    guardar(str(tmp_path / "catalogo"), "catalogo_20261123-060000.csv", VIEJO, time.time())
+    grupos = {"cargar": [fila("2", "Mouse óptico USB"), fila("9", "Impresora térmica de etiquetas")],
+              "estan": [], "fuera": [], "falta": []}
+    monkeypatch.setattr(ls, "planilla_final", lambda llave, tema=None: grupos)
+    monkeypatch.setattr(ls, "items_de", lambda llave, tema=None: ([], []))
+    monkeypatch.setattr(app, "instance_path", str(tmp_path))
+    url = f"/admin/servicios/{llave_id}/aprobar-altas"
+    assert admin_client.post(url, data={"nombre": ""}).status_code == 302          # sin nombre no aprueba
+    assert not (tmp_path / "altas").exists()
+    r = admin_client.post(url, data={"nombre": "Berenice Solohaga"})
+    assert r.status_code == 200 and r.data[:2] == b"PK"
+    guardadas = os.listdir(tmp_path / "altas")
+    assert len(guardadas) == 1
+    admin_client.post(url, data={"nombre": "Berenice Solohaga"})
+    assert len(os.listdir(tmp_path / "altas")) == 2                                 # nunca pisa
+    assert admin_client.get(f"/admin/servicios/altas/{guardadas[0]}").status_code == 200
+    assert admin_client.get("/admin/servicios/altas/..%2Finstance.xlsx").status_code == 404
+    with app.app_context():
+        ll = db.session.get(LlaveServicio, llave_id)
+        assert sum(1 for g in ll.registro if g.accion == "revisión final aprobada") == 2
+
+
+def test_libro_de_carga_va_en_el_orden_del_formulario():
+    resultado = {"catalogo": "c.csv", "filas": [
+        {"estado": "limpio", "nombre": "Impresora térmica", "codigo": "9", "parecidos": [], "repetido_con": [],
+         "sugerencia": {"rubro": "19 - INFORMATICA", "subrubro": "19.1 - EQUIPOS", "elemento": "19.1.106 IMPRESORA",
+                        "objeto": "4.3.6.0 Equipo", "desde": "19.1.106.1"}},
+        {"estado": "puede_existir", "nombre": "Mouse", "codigo": "2", "parecidos": [{"texto": "19.1.5.2 — MOUSE"}],
+         "repetido_con": [], "sugerencia": None}]}
+    hojas = ca.libro_carga(resultado, "INFORMATICA", "Ana Paz", "23/11/2026")
+    assert [h[0] for h in hojas] == ["PASO A PASO", "GRILLA PARA CARGAR", "NO SE CARGAN", "APROBACIÓN"]
+    grilla = hojas[1][2]
+    assert len(grilla) == 1 and grilla[0][1:5] == ["19", "19.1", "19.1.106 IMPRESORA", "Impresora térmica — Cód. externo: 9"]
+    assert grilla[0][5:9] == ["4", "3", "6", "0"]
+    assert hojas[2][2][0][0] == "Mouse"
+
+
+def test_inconsistencias_detecta_contradicciones_y_huerfanos():
+    from datetime import datetime as dt
+    def item(id_, n, cp="", ob=None, s=2):
+        return {"id": id_, "n": n, "cp": cp, "dn": "X — PROCESADOR", "ob": ob, "s": s}
+    def resp(res, dec=None, fecha=dt(2026, 11, 23)):
+        return SimpleNamespace(resultado=res, decision=dec, actualizado_en=fecha, codigo_correcto="", codigo_propuesto="1.1")
+    items = [item("1", "PC MINI INTEL I3", cp="19.1.3.2"), item("2", "PC MINI INTEL I3", cp="19.1.3.2"),
+             item("3", "Agar sangre", ob=["INFORMATICA"])]
+    respuestas = {"1": resp("no_necesario"), "2": resp("correcto"), "3": resp("otro_servicio")}
+    llave = SimpleNamespace(nombres_bodegas=["INFORMATICA"])
+    avisos = {a["tipo"]: a for a in ca.inconsistencias(llave, items, respuestas, {"cargar": []}, None)}
+    assert "contradiccion" in avisos and "pantalla_anterior" in avisos and "huerfano" in avisos

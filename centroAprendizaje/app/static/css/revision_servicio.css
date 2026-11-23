@@ -483,3 +483,8 @@ body.rs-enviada .rs-otras, body.rs-enviada .rs-grupo__todos { display: none !imp
 .rs-terminaste p { margin: 8px 0 14px; }
 .rs-terminaste--parte { background: #fff; border-style: dashed; }
 .rs-terminaste--parte b { font-size: 1.1rem; }
+
+/* Dos preguntas: 1) ¿lo usan? (nombrando el artículo del hospital) 2) ¿es lo mismo que el de TIMBÓ? */
+.rs-paso__nombre { font-weight: 800; }
+.rs-paso--2 { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--rs-borde); }
+.rs-paso--falta { background: #fff8db; border: 1px solid #e0b100; border-radius: 8px; padding: 10px; }

@@ -130,6 +130,22 @@ def servicio_estado(llave_id):
 def catalogo_actualizar():
     """Baja el Catálogo WEB y compara ahora (lo mismo que la corrida diaria),
     en segundo plano: tarda alrededor de un minuto."""
+    from flask import current_app
+
+    from app.services import catalogo_diario
+    volver = request.form.get("volver", "")
+    destino = volver if volver.startswith("/admin/") else url_for("admin.servicios")
+    if catalogo_diario.en_curso(current_app.instance_path):
+        flash("Ya se está actualizando. Recargá la página en un minuto.", "ok")
+        return redirect(destino)
+    _lanzar_actualizacion()
+    flash("Se está bajando el Catálogo WEB y comparando. Tarda alrededor de un minuto: después recargá la página.", "ok")
+    return redirect(destino)
+
+
+def _lanzar_actualizacion():
+    """Lanza la actualización del catálogo en segundo plano (la marca evita
+    que corran dos a la vez)."""
     import os
     import subprocess
     import sys
@@ -137,9 +153,6 @@ def catalogo_actualizar():
     from flask import current_app
 
     from app.services import catalogo_diario
-    if catalogo_diario.en_curso(current_app.instance_path):
-        flash("Ya se está actualizando. Recargá la página en un minuto.", "ok")
-        return redirect(url_for("admin.servicios"))
     raiz = os.path.dirname(current_app.root_path)
     os.makedirs(catalogo_diario.carpeta_catalogo(current_app.instance_path), exist_ok=True)
     log = open(os.path.join(catalogo_diario.carpeta_catalogo(current_app.instance_path), "actualizar.log"), "a", encoding="utf-8")
@@ -147,8 +160,6 @@ def catalogo_actualizar():
     catalogo_diario.marca_en_curso(current_app.instance_path)   # desde ya: un segundo clic no lanza otra
     subprocess.Popen([sys.executable, os.path.join(raiz, "scripts", "actualizar_catalogo.py"), "--ya-marcado"], cwd=raiz,
                      stdout=log, stderr=subprocess.STDOUT, **opciones)
-    flash("Se está bajando el Catálogo WEB y comparando. Tarda alrededor de un minuto: después recargá la página.", "ok")
-    return redirect(url_for("admin.servicios"))
 
 
 @admin_bp.route("/servicios/catalogo/descargar")
@@ -167,12 +178,23 @@ def catalogo_descargar():
 @admin_bp.route("/servicios/<int:llave_id>/control-altas")
 @requiere_admin
 def servicio_control_altas(llave_id):
-    """Control final antes de pedir las altas: vuelve a mirar «Hay que cargar»
-    contra la última copia del Catálogo WEB. Solo lee. Con ?xlsx=1, el Excel."""
+    """Revisión final automática antes de pedir las altas: vuelve a mirar «Hay
+    que cargar» contra la última copia del Catálogo WEB y busca fallas. Solo
+    lee las respuestas. Si la copia del catálogo tiene más de 6 horas, la
+    actualiza sola (en segundo plano). Con ?xlsx=1, el Excel."""
+    import os
+    import time
+
     from flask import current_app
 
     from app.services import catalogo_diario, control_altas
     llave = _llave_o_404(llave_id)
+    copia = catalogo_diario.ultima_copia(current_app.instance_path)
+    vieja = not copia or time.time() - os.path.getmtime(copia) > 6 * 3600
+    actualizando = catalogo_diario.en_curso(current_app.instance_path)
+    if vieja and not actualizando and not request.args.get("xlsx") and not current_app.testing:
+        _lanzar_actualizacion()
+        actualizando = True
     resultado = control_altas.control(llave, current_app.instance_path)
     if resultado is None:
         flash("Todavía no hay ninguna copia del Catálogo WEB: tocá «Actualizar ahora» y probá de nuevo.", "error")
@@ -185,7 +207,73 @@ def servicio_control_altas(llave_id):
     act = catalogo_diario.ultima_actualizacion()
     return render_template("admin/control_altas.html", llave=llave, r=resultado, estados=control_altas.ESTADOS, hora_ar=ls.hora_ar,
                            orden=control_altas.ORDEN_ESTADOS, catalogo_al=ls.hora_ar(act.en) if act else "",
-                           en_curso=catalogo_diario.en_curso(current_app.instance_path))
+                           en_curso=actualizando, vieja=vieja, guardadas=_planillas_guardadas(llave),
+                           aprobaciones=[g for g in llave.registro if g.accion == "revisión final aprobada"])
+
+
+def _carpeta_altas():
+    import os
+
+    from flask import current_app
+    return os.path.join(current_app.instance_path, "altas")
+
+
+def _planillas_guardadas(llave):
+    import glob
+    import os
+    prefijo = "altas-" + (re.sub(r"[^A-Za-z0-9_-]+", "_", llave.servicio) or "servicio") + "-"
+    return sorted((os.path.basename(a) for a in glob.glob(os.path.join(_carpeta_altas(), prefijo + "*.xlsx"))), reverse=True)
+
+
+@admin_bp.route("/servicios/<int:llave_id>/aprobar-altas", methods=["POST"])
+@requiere_admin
+def servicio_aprobar_altas(llave_id):
+    """La administradora miró la revisión final y la aprueba: queda registrado
+    quién y cuándo, se GUARDA la planilla de carga (nunca pisa una anterior) y
+    se descarga."""
+    import os
+    from datetime import datetime
+
+    from flask import current_app, send_file
+
+    from app.services import catalogo_diario, control_altas
+    llave = _llave_o_404(llave_id)
+    nombre = " ".join((request.form.get("nombre") or "").split())[:120]
+    if len(nombre) < 3:
+        flash("Escribí tu nombre y apellido para aprobar.", "error")
+        return redirect(url_for("admin.servicio_control_altas", llave_id=llave.id))
+    resultado = control_altas.control(llave, current_app.instance_path)
+    if resultado is None:
+        flash("Todavía no hay ninguna copia del Catálogo WEB: tocá «Actualizar ahora» y probá de nuevo.", "error")
+        return redirect(url_for("admin.servicios"))
+    ahora = datetime.now()
+    fecha = ls.hora_ar(ls.ahora())
+    os.makedirs(_carpeta_altas(), exist_ok=True)
+    seguro = re.sub(r"[^A-Za-z0-9_-]+", "_", llave.servicio) or "servicio"
+    ruta = catalogo_diario.ruta_libre(os.path.join(_carpeta_altas(), f"altas-{seguro}-{ahora:%Y%m%d-%H%M%S}.xlsx"))
+    with open(ruta, "wb") as f:
+        f.write(xlsx.libro(control_altas.libro_carga(resultado, llave.servicio, nombre, fecha)))
+    ls.registrar(llave, "revisión final aprobada", f"por {nombre}; planilla de carga {os.path.basename(ruta)} "
+                 f"(catálogo {resultado['catalogo']})")
+    db.session.commit()
+    return send_file(ruta, as_attachment=True, download_name=os.path.basename(ruta),
+                     mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
+
+@admin_bp.route("/servicios/altas/<archivo>")
+@requiere_admin
+def servicio_planilla_altas(archivo):
+    """Una planilla de carga guardada (solo nombres generados por el sistema)."""
+    import os
+
+    from flask import send_file
+    if not re.fullmatch(r"altas-[A-Za-z0-9_-]+-\d{8}-\d{6}(-\d+)?\.xlsx", archivo):
+        abort(404)
+    ruta = os.path.join(_carpeta_altas(), archivo)
+    if not os.path.isfile(ruta):
+        abort(404)
+    return send_file(ruta, as_attachment=True, download_name=archivo,
+                     mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 
 @admin_bp.route("/servicios/<int:llave_id>/reabrir", methods=["POST"])

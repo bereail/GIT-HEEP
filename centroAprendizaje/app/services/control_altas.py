@@ -253,6 +253,106 @@ def agrupar(filas, buscador, catalogo):
     return grupos
 
 
+# Bodegas que no dicen de qué servicio es un artículo (están en casi todos).
+BODEGAS_GENERALES = {"FARMACIA", "DEPOSITO", "IMPRENTA", "COMPRAS"}
+# Desde esta fecha la pantalla pregunta primero por el artículo del hospital.
+PANTALLA_DOS_PREGUNTAS = "2026-11-24"
+
+
+def _normal(texto):
+    return " ".join(sorted(palabras(texto) | medida(texto)))
+
+
+def inconsistencias(llave, items, respuestas, grupos, buscador):
+    """Fallas posibles en la revisión de un servicio. Solo avisa: decide una
+    persona. Cada aviso: {tipo, titulo, ayuda, filas: [(artículo, detalle)]}."""
+    from app.services.llaves_servicio import clasificar
+    avisos = []
+    grupo_de = {}
+    for i in items:
+        grupo_de[i["id"]] = clasificar(i, respuestas.get(i["id"]))[0]
+    por_id = {i["id"]: i for i in items}
+    mios = set(llave.nombres_bodegas)
+
+    def agregar(tipo, titulo, ayuda, filas):
+        if filas:
+            avisos.append({"tipo": tipo, "titulo": titulo, "ayuda": ayuda, "filas": filas})
+
+    # 1. Mismo artículo (mismo nombre) con respuestas que no cierran.
+    por_nombre = defaultdict(list)
+    for i in items:
+        por_nombre[_normal(i["n"])].append(i)
+    filas = []
+    for lista in por_nombre.values():
+        destinos = {grupo_de[i["id"]] for i in lista} - {"falta"}
+        if len(lista) > 1 and len(destinos) > 1:
+            filas.append((lista[0]["n"], " · ".join(f"cód. {i['id']}: {_GRUPO_TEXTO[grupo_de[i['id']]]}" for i in lista)))
+    agregar("contradiccion", "Mismo artículo con respuestas distintas",
+            "Tienen el mismo nombre pero uno quedó para pedir y otro fuera (o al revés). Revisá cuál vale.", filas)
+
+    # 2. Quedan fuera, pero se parecen mucho a algo que el servicio sí usa.
+    usados = [i for i in items if grupo_de[i["id"]] in ("cargar", "estan")]
+    clave_usados = [(i, _clave(i["n"])) for i in usados]
+    filas = []
+    for i in items:
+        if grupo_de[i["id"]] != "fuera":
+            continue
+        k = _clave(i["n"])
+        parecido = next((u for u, ku in clave_usados if len(k & ku) >= 2 and len(k & ku) >= 0.6 * len(k)), None)
+        if parecido:
+            filas.append((i["n"], f"Quedó fuera, pero «{parecido['n']}» sí se usa"))
+    agregar("fuera_parecido", "Quedó fuera algo parecido a lo que sí usan",
+            "Puede estar bien (otro modelo que ya no se compra) o ser un error: si lo usan, hay que corregirlo.", filas)
+
+    # 3. Respondido con la pantalla anterior: «Ya no se usa» / «No es de nuestro
+    # servicio» cuando la tarjeta mostraba el artículo de TIMBÓ (caso PC MINI).
+    filas = []
+    for i in items:
+        r = respuestas.get(i["id"])
+        if (r and r.resultado in ("no_necesario", "otro_servicio") and i.get("cp")
+                and r.actualizado_en and r.actualizado_en.strftime("%Y-%m-%d") < PANTALLA_DOS_PREGUNTAS):
+            filas.append((i["n"], f"«{_GRUPO_TEXTO['fuera']}» — la tarjeta mostraba «{(i.get('dn') or '').split(' — ')[-1]}» de TIMBÓ"))
+    agregar("pantalla_anterior", "Quedaron fuera con la pantalla anterior",
+            "Se respondieron cuando la tarjeta podía confundir el artículo del hospital con el de TIMBÓ. "
+            "Confirmá que de verdad no los usan.", filas)
+
+    # 4. Lo van a pedir, pero también figura en bodegas de otros servicios.
+    filas = []
+    for i in items:
+        if grupo_de[i["id"]] in ("cargar", "estan") and respuestas.get(i["id"]):
+            otras = set(i.get("ob") or []) - BODEGAS_GENERALES - mios
+            if otras:
+                filas.append((i["n"], "También figura en " + ", ".join(sorted(otras))))
+    agregar("otro_servicio", "Lo usan, pero también es de otro servicio",
+            "Puede ser compartido (está bien) o haber quedado en la lista por error.", filas)
+
+    # 5. «No es de nuestro servicio» y no está en la bodega de ningún otro.
+    filas = []
+    for i in items:
+        r = respuestas.get(i["id"])
+        if r and r.resultado == "otro_servicio" and not (set(i.get("ob") or []) - BODEGAS_GENERALES - mios):
+            filas.append((i["n"], "No figura en la bodega de ningún otro servicio"))
+    agregar("huerfano", "«No es de nuestro servicio», pero nadie más lo tiene",
+            "Si ningún servicio lo pide, desaparece. Hay que avisar a Compras a qué servicio va.", filas)
+
+    # 6. Para pedir el alta, pero parecido a algo que ya está en TIMBÓ en el mismo servicio.
+    estan = [(i, _clave(i["n"])) for i in items if grupo_de[i["id"]] == "estan"]
+    filas = []
+    for f in grupos["cargar"]:
+        k = _clave(f[3])
+        par = next((e for e, ke in estan if len(k & ke) >= 2 and len(k & ke) >= 0.6 * len(k)), None)
+        if par:
+            r = respuestas.get(par["id"])
+            codigo = (r.codigo_correcto or r.codigo_propuesto) if r else par.get("cp", "")
+            filas.append((f[3], f"Parecido a «{par['n']}», que ya está en TIMBÓ con {codigo or par.get('cp', '')}"))
+    agregar("como_otro", "Para pedir el alta, pero parecido a algo que ya está en TIMBÓ",
+            "Quizás sirva el mismo código (como ítem general, con el detalle en la observación).", filas)
+    return avisos
+
+
+_GRUPO_TEXTO = {"cargar": "Hay que cargar", "estan": "Ya está en TIMBÓ", "fuera": "Queda fuera", "falta": "Sin revisar"}
+
+
 def objeto_del_gasto(texto):
     """«2.9.6.0 Repuestos y accesor.» → inciso, principal, parcial, subparcial."""
     m = re.match(r"\s*(\d+)\.(\d+)\.(\d+)\.(\d+)", texto or "")
@@ -307,6 +407,9 @@ def control(llave, instancia, tema=None):
                            if base else None)
     filas.sort(key=lambda f: (ORDEN_ESTADOS.index(f["estado"]), f["nombre"].lower()))
     grupos_genericos = agrupar(filas, buscador, catalogo)
+    items, _ = ls.items_de(llave, tema)
+    respuestas = {r.codigo_interno: r for r in llave.revisiones}
+    avisos = inconsistencias(llave, items, respuestas, grupos, buscador)
 
     revisar_estan = []
     for f in grupos["estan"]:
@@ -326,7 +429,7 @@ def control(llave, instancia, tema=None):
     return {"catalogo": os.path.basename(vigente), "catalogo_items": len(catalogo),
             "comparado_con": os.path.basename(anterior) if anterior and anterior != vigente else "",
             "nuevos": len(nuevos), "filas": filas, "cuenta": cuenta, "revisar_estan": revisar_estan,
-            "grupos": grupos_genericos,
+            "grupos": grupos_genericos, "avisos": avisos,
             "ya_estan": len(grupos["estan"]), "fuera": len(grupos["fuera"]), "falta": len(grupos["falta"])}
 
 
@@ -363,10 +466,102 @@ def libro(resultado, servicio):
     agrupados = [[g["nombre"], len(g["miembros"]), " | ".join(g["miembros"]), ", ".join(g["codigos"]),
                   " | ".join(f"{e['texto']}" for e in g["existentes"]) or "No: habría que pedir el alta del genérico"]
                  for g in resultado["grupos"]]
+    revisar = [[a["titulo"], art, det] for a in resultado["avisos"] for art, det in a["filas"]]
     return [("PARA PEDIR EL ALTA", ENCABEZADOS, filas, ANCHOS, colores),
+            ("REVISAR (POSIBLES ERRORES)", ["Qué revisar", "Artículo", "Detalle"], revisar, [44, 50, 70],
+             ["amarillo"] * len(revisar)),
             ("SE PUEDEN PEDIR COMO UNO", ["Nombre genérico sugerido", "Cuántos", "Artículos que junta",
                                          "Códigos del hospital", "¿Ya existe en el Catálogo WEB?"], agrupados,
              [30, 9, 80, 24, 70], ["azul" if g["existentes"] else "verde" for g in resultado["grupos"]]),
             ("YA ESTÁN - REVISAR CÓDIGO", ["Código del hospital", "Artículo", "Código en TIMBÓ", "Aviso"], estan,
              [14, 44, 16, 44], ["amarillo"] * len(estan)),
             ("CÓMO SE HIZO", ["Dato", "Valor"], como, [40, 90], None)]
+
+
+# ----------------------------------------------- planilla de carga aprobada ---
+# Paso a paso del Formulario Timbó Compras (CAByS), tal como lo indica la «Guía
+# de Uso: Procedimiento de Búsqueda en Nomenclador TIMBÓ y Solicitud de
+# Artículos Faltantes» (rev1) y el Anexo I de la norma.
+URL_NORMA = "https://www.santafe.gov.ar/normativa/item.php?id=369305&cod=72930e70e764e81edafb5c3c72169792"
+PASO_A_PASO = [
+    ("Antes", "", "Esta planilla ya pasó la revisión final automática y la aprobación. Solo van los artículos GENERALES "
+                  "(fuera del área Farmacia). Medicamentos y descartables de Farmacia se piden a la Dirección Provincial de Farmacia (SUFYD)."),
+    ("PASO 1", "1", "Ingresar a la plataforma de gestión digital TIMBÓ."),
+    ("PASO 1", "2", "Seleccionar el módulo Documentos oficiales, apartado Gestión."),
+    ("PASO 1", "3", "Presionar el botón Nuevo Documento Oficial."),
+    ("PASO 1", "3a", "Usuario Productor (*): seleccionar la opción que corresponda."),
+    ("PASO 1", "3b", "Tipo de Documento (*): elegir «Timbó Compras: Alta de bienes y servicios CAByS»."),
+    ("PASO 1", "3c", "Mensaje para el Productor: {referencia}"),
+    ("PASO 1", "3d", "Hacer clic en Guardar para generar el formulario inicial."),
+    ("PASO 1", "3e", "Ir a la bandeja de Pendientes: buscar el número de SDO en estado «Producir Documento Oficial», "
+                     "tocar los tres puntitos y elegir Documento oficial. Anotá el N° de SDO en la hoja GRILLA."),
+    ("PASO 2", "4", "Fecha (*): la fecha de la solicitud (DD/MM/AAAA)."),
+    ("PASO 2", "5", "Jurisdicción/Oficina (*): nombre completo del organismo que pide el alta."),
+    ("PASO 2", "6", "Solicitante (*): nombre y apellido de quien confecciona la solicitud."),
+    ("PASO 2", "7", "Email de contacto (*): correo institucional (ahí llega la notificación)."),
+    ("PASO 2", "8", "Teléfono: interno o línea directa."),
+    ("PASO 3", "9", "En Bienes y servicios, clic en «+ Nueva línea» (una vez por cada fila de la hoja GRILLA)."),
+    ("PASO 3", "10", "Copiar cada columna de la fila en su campo, en este orden: Rubro/especie, Subrubro/familia, Elemento, "
+                     "Nombre o descripción/ítem específico (*), Objeto del gasto (Inciso, Partida principal, parcial y subparcial), "
+                     "Unidad de medida, Marca (o guiones), Aporta documentación (Sí/No)."),
+    ("PASO 3", "10*", "Hospitales: el código externo va OBLIGATORIAMENTE en «Nombre o descripción». En la grilla ya está agregado "
+                      "como «Cód. externo: …» (qué código usar está a confirmar con la Unidad Rectora)."),
+    ("PASO 3", "11", "Presionar Agregar. Marcar la fila como «cargada» en la hoja GRILLA."),
+    ("PASO 4", "12-14", "Lugares de entrega: solo si también se pide un lugar de entrega nuevo; si no, dejarlo vacío."),
+    ("PASO 4", "Guardar", "Presionar Guardar: aparece «Éxito al guardar el formulario como borrador»."),
+    ("PASO 4", "15", "Referencia: {referencia}"),
+    ("PASO 4", "16", "Destinatario: Carolina Retamar y/o Maximiliano Sodero."),
+    ("PASO 4", "17", "Adjuntar documentos (si en alguna fila se puso «Sí»): «+ Subir documento»."),
+    ("PASO 4", "18", "Firma conjunta: tiene que firmarlo la persona responsable del área."),
+    ("PASO 5", "19-22", "Acciones → Enviar a Firmar → comentario (ej.: «Envío para su firma») → Continuar → Confirmar."),
+    ("PASO 6", "", "La persona responsable busca el formulario en su bandeja de Pendientes, elige EVALUAR y firma."),
+    ("Después", "", "La Unidad Rectora Central evalúa y, si lo aprueba, asigna el código en el catálogo SIPAF y avisa por email. "
+                    "Anotá el código nuevo en la hoja GRILLA."),
+    ("Norma", "", URL_NORMA),
+]
+
+ESTADOS_PARA_CARGAR = ("limpio", "otra_medida", "repetido", "sin_buscar")
+ENCABEZADOS_GRILLA = ["N°", "Rubro / especie", "Subrubro / familia", "Elemento", "Nombre o descripción / ítem específico (*)",
+                      "Inciso", "Partida principal", "Partida parcial", "Partida subparcial", "Unidad de medida", "Marca",
+                      "Aporta documentación", "Control", "N° de SDO", "¿Cargada?", "Código asignado por la Unidad Rectora"]
+ANCHOS_GRILLA = [5, 10, 11, 30, 52, 8, 9, 9, 10, 14, 12, 12, 34, 18, 10, 18]
+
+
+def _codigo(texto):
+    """«19 - INFORMATICA» → «19»; «19.1 - EQUIPOS…» → «19.1»."""
+    return (texto or "").split(" - ")[0].strip()
+
+
+def libro_carga(resultado, servicio, aprobado_por, fecha):
+    """Excel listo para cargar en el Formulario Timbó Compras (CAByS)."""
+    referencia = f"Alta de bienes para el Hospital — servicio {servicio}"
+    pasos = [[a, b, c.format(referencia=f"«{referencia}»")] for a, b, c in PASO_A_PASO]
+    grilla, colores, ya_existen = [], [], []
+    vistos_repetidos = set()
+    for f in resultado["filas"]:
+        if f["estado"] not in ESTADOS_PARA_CARGAR:
+            ya_existen.append([f["nombre"], f["codigo"], ESTADOS[f["estado"]][0],
+                               " | ".join(p["texto"] for p in f["parecidos"])])
+            continue
+        if f["estado"] == "repetido":
+            clave = tuple(sorted([f["nombre"]] + f["repetido_con"]))
+            if clave in vistos_repetidos:
+                ya_existen.append([f["nombre"], f["codigo"], "Repetido: se pide una sola vez (ver la otra fila)", ""])
+                continue
+            vistos_repetidos.add(clave)
+        s = f["sugerencia"] or {}
+        nombre = f["nombre"] + (f" — Cód. externo: {f['codigo']}" if f["codigo"] else "")
+        grilla.append([len(grilla) + 1, _codigo(s.get("rubro")), _codigo(s.get("subrubro")),
+                       s.get("elemento", ""), nombre] + objeto_del_gasto(s.get("objeto", "")) +
+                      ["", "", "No", ESTADOS[f["estado"]][0] + ("" if s else " — sin sugerencia de rubro: completar"), "", "", ""])
+        colores.append("verde" if s else "amarillo")
+    portada = [["Servicio", servicio], ["Aprobado por", aprobado_por], ["Fecha de aprobación", fecha],
+               ["Catálogo WEB usado", resultado["catalogo"]], ["Filas para cargar", len(grilla)],
+               ["No se cargan (ya existen o repetidos)", len(ya_existen)],
+               ["Importante", "Rubro, subrubro, elemento y objeto del gasto son sugerencias del ítem más parecido del "
+                              "Catálogo WEB: confirmalos al cargar. Unidad de medida y marca, completalas vos."]]
+    return [("PASO A PASO", ["Paso", "N°", "Qué hacer"], pasos, [10, 8, 120], None),
+            ("GRILLA PARA CARGAR", ENCABEZADOS_GRILLA, grilla, ANCHOS_GRILLA, colores),
+            ("NO SE CARGAN", ["Artículo", "Código del hospital", "Por qué", "Qué hay en el Catálogo WEB"], ya_existen,
+             [46, 14, 50, 90], ["azul"] * len(ya_existen)),
+            ("APROBACIÓN", ["Dato", "Valor"], portada, [36, 90], None)]

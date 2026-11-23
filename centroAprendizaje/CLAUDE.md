@@ -393,6 +393,28 @@ no cambia; solo se actualiza el Catálogo WEB.
     ⚠ por fila (y total) si el código ya no existe o es «NO UTILIZAR» en el catálogo del día
     (`catalogo_diario.aviso_codigo`).
   - Portada del portal: el recuadro «Tengo una duda» va debajo de Recursos.
+- **PROCEDIMIENTO FIJO (23/11, pedido de la usuaria): toda revisión enviada pasa por la «Revisión final
+  automática» antes de pedir altas** (`/admin/servicios/<id>/control-altas`, `services/control_altas.py`):
+  1) catálogo al día (si la copia tiene más de 6 h la actualiza sola); 2) «Hay que cargar» contra el catálogo
+  por palabras (PEN DRIVE = PENDRIVE, plurales, tipeos con difflib que empiecen igual, genéricos sin medida) y
+  aparte la medida → aparecio / puede_existir / repetido / otra_medida / sin_buscar / limpio; 3) grupos que se
+  pueden pedir como UNO genérico (y si el genérico ya existe); 4) `inconsistencias()`: mismo nombre con
+  respuestas distintas, fuera parecido a lo que sí usan, respuestas con la pantalla anterior (antes de
+  `PANTALLA_DOS_PREGUNTAS`), compartidos con otros servicios, «no es nuestro» que nadie más tiene, altas
+  parecidas a algo que ya está; 5) la administradora aprueba (nombre) → registro en la llave + planilla
+  guardada en `instance/altas/` (nunca pisa) con PASO A PASO (pasos 1-22 de la guía oficial CAByS), GRILLA
+  PARA CARGAR (orden de la ventana «Solicitud de alta de bien o servicio», «Cód. externo: …» en el nombre),
+  NO SE CARGAN y APROBACIÓN. Solo lee respuestas.
+- **Caso PC MINI (23/11, gravísimo para la usuaria):** «PC MINI CX INTEL I3» (muy usado) quedó «Ya no se usa»:
+  la tarjeta mostraba «PROCESADOR INTEL PENTIUM III» de TIMBÓ y estaba agrupada con otro artículo. Arreglo:
+  la tarjeta pregunta 1) «¿En el servicio usan «<artículo del hospital>»?» (Sí, lo usamos / Ya no lo usamos /
+  No es de nuestro servicio) y recién si lo usan 2) «¿Es lo mismo que «<TIMBÓ>»?» (Sí, es lo mismo / No, es
+  otra cosa). Sin tarjetas agrupadas (`unidades()` devuelve una por artículo). NUNCA volver a una pantalla
+  donde una respuesta pueda leerse como del artículo de TIMBÓ. El tutorial (video y capturas) todavía muestra
+  la pantalla anterior: hay que regenerarlo.
+- 23/11: en Informática, 44 artículos de laboratorio/odontología (bodega INFORMATICA compartida con
+  FARMACIA+MICROBIOLOGIA/ODONTOLOGIA en la base de compras) quedaron en «Hay que cargar» como «Es otra cosa»;
+  la usuaria los corrigió a mano. La usuaria va a reabrir/empezar de cero Informática con la pantalla nueva.
 - Pendientes ofrecidos (esperan el sí de la usuaria): botón «⬇ Planilla para pedir altas (CAByS)» en
   admin (sin repetidos, rechequeo contra el catálogo, columnas en el orden de la grilla del formulario
   Timbó Compras CAByS, seguimiento por expediente); mail si falla la actualización del catálogo; control

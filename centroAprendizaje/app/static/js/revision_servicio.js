@@ -834,17 +834,11 @@
     });
   }
 
-  // Cada unidad es una card: un artículo suelto o todo su grupo (aunque el
-  // filtro haya encontrado solo a uno de los miembros).
+  // Cada artículo en su propia card: juntar artículos distintos en una card
+  // (por tener el mismo código propuesto) llevaba a responder por error
+  // (23/11/2026). Los que comparten código se avisan dentro de la card.
   function unidades(lista) {
-    var vistos = new Set(), r = [];
-    lista.forEach(function (i) {
-      if (!i.g) { r.push({ items: [i] }); return; }
-      if (vistos.has(i.g)) return;
-      vistos.add(i.g);
-      r.push({ grupo: i.g, items: GRUPOS.get(i.g) });
-    });
-    return r;
+    return lista.map(function (i) { return { items: [i] }; });
   }
 
   function elem(tag, clase, texto) { var e = document.createElement(tag); if (clase) e.className = clase; if (texto !== undefined) e.textContent = texto; return e; }
@@ -859,26 +853,42 @@
     padre.appendChild(b);
     return b;
   }
-  // Una sola pregunta por artículo, con todas las respuestas en una fila.
-  // Si TIMBÓ propone un artículo: ¿es lo mismo? Si no propone nada: ¿lo usan?
+  // Primero SIEMPRE se pregunta por el artículo del hospital, nombrándolo
+  // («¿En el servicio usan «PC MINI…»?»); recién si lo usan, si es lo mismo
+  // que el de TIMBÓ. Así «Ya no lo usamos» nunca puede leerse como si fuera
+  // del artículo de TIMBÓ (pasó con el PC MINI, 23/11/2026: quedó fuera
+  // siendo muy usado).
+  function pregunta(antes, nombre, despues) {
+    var e = elem("span", "rs-paso__preg");
+    e.appendChild(document.createTextNode(antes));
+    e.appendChild(elem("b", "rs-paso__nombre", "«" + nombre + "»"));
+    e.appendChild(document.createTextNode(despues));
+    return e;
+  }
   function bloqueRespuesta(i, r, chico) {
     r = r || {};
     var cont = elem("div", "rs-pasos" + (chico ? " rs-pasos--chicas" : ""));
     var conCodigo = r.dec === "codigo" || r.dec === "general";
+    var decidido = r.r === "correcto" || (r.r === "no_corresponde" && !!r.dec);
+    var usa = decidido || abiertos[i.id] === "si";
     var p = elem("div", "rs-paso");
-    p.appendChild(elem("span", "rs-paso__preg", i.cp ? "¿Es lo mismo que usa el servicio?" : "¿El servicio lo usa?"));
+    p.appendChild(pregunta("1. ¿En el servicio usan ", i.n, "?"));
     var b = elem("div", "rs-paso__botones");
-    if (i.cp) {
-      boton(b, "rs-res rs-ok", "✓ Sí, es este", { r: "correcto" }, r.r === "correcto");
-      boton(b, "rs-res rs-mal", "Es otra cosa", { r: "no_corresponde", dec: "agregar" }, r.r === "no_corresponde" && !!r.dec,
-        "El servicio lo usa, pero TIMBÓ propone algo distinto: se pide que lo carguen");
-    } else {
-      boton(b, "rs-res rs-ok", "✓ Sí, se usa", { r: "correcto" }, r.r === "correcto", "Se pide que lo carguen en TIMBÓ");
-    }
-    boton(b, "rs-res rs-no", "Ya no se usa", { r: "no_necesario" }, r.r === "no_necesario", NO_SE_USA);
+    if (i.cp) boton(b, "rs-res rs-ok", "✓ Sí, lo usamos", { uso: "si" }, usa);
+    else boton(b, "rs-res rs-ok", "✓ Sí, lo usamos", { r: "correcto" }, r.r === "correcto", "Se pide que lo carguen en TIMBÓ");
+    boton(b, "rs-res rs-no", "Ya no lo usamos", { r: "no_necesario" }, r.r === "no_necesario", NO_SE_USA);
     boton(b, "rs-res rs-no", "No es de nuestro servicio", { r: "otro_servicio" }, r.r === "otro_servicio",
       "Está en la bodega por error: lo usa otro servicio");
     p.appendChild(b); cont.appendChild(p);
+    if (i.cp && usa) {
+      var p2 = elem("div", "rs-paso rs-paso--2" + (decidido ? "" : " rs-paso--falta"));
+      p2.appendChild(pregunta("2. ¿Es lo mismo que ", nombreTimbo(i.dn), " de TIMBÓ?"));
+      var b2 = elem("div", "rs-paso__botones");
+      boton(b2, "rs-res rs-ok", "✓ Sí, es lo mismo", { r: "correcto" }, r.r === "correcto");
+      boton(b2, "rs-res rs-mal", "No, es otra cosa", { r: "no_corresponde", dec: "agregar" }, r.r === "no_corresponde" && !!r.dec,
+        "Lo usan, pero en TIMBÓ es otro artículo: se pide que lo carguen");
+      p2.appendChild(b2); cont.appendChild(p2);
+    }
     // Respuestas guardadas con la pantalla anterior: se muestran, no se pierden.
     if (r.r === "aclaracion") cont.appendChild(elem("p", "rs-nota rs-nota--antes", "Guardado antes como «No sé»: elegí una de las opciones."));
     if (r.r === "no_corresponde" && !r.dec) cont.appendChild(elem("p", "rs-nota rs-nota--antes",
@@ -939,7 +949,9 @@
 
     if (i.nu) t.appendChild(elem("p", "rs-alerta-item", "⚠ El código propuesto figura en el catálogo como «NO UTILIZAR»."));
     if (i.cc) t.appendChild(elem("p", "rs-alerta-item", "⚠ " + i.cc));
+    var otrosMismo = i.g && GRUPOS.get(i.g) ? GRUPOS.get(i.g).length - 1 : 0;
     var det = elem("details", "rs-detalle"); det.appendChild(elem("summary", "", "＋ Más datos"));
+    if (otrosMismo) det.appendChild(elem("p", "", "Hay " + otrosMismo + (otrosMismo === 1 ? " artículo más" : " artículos más") + " del hospital con este mismo artículo de TIMBÓ. Respondé cada uno por separado."));
     var cods = elem("p", "rs-codigos");
     cods.appendChild(document.createTextNode("Código actual: "));
     cods.appendChild(elem("code", "", i.id));
