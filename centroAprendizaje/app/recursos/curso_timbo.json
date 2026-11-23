@@ -1,0 +1,563 @@
+{
+ "titulo": "Timbó, paso a paso. Hacia una administración pública 100% digital",
+ "edicion": "2026_2",
+ "fuente": "https://www.santafe.gob.ar/aulavirtual/course/view.php?id=1486",
+ "copiado_al": "2026-11-23",
+ "bienvenida": [
+  {
+   "tipo": "video",
+   "titulo": "Bienvenidos",
+   "youtube": "02ID0PMT2-Q"
+  },
+  {
+   "tipo": "pdf",
+   "titulo": "Programa",
+   "archivo": "programa-del-curso.pdf"
+  }
+ ],
+ "modulos": [
+  {
+   "slug": "introductorio",
+   "titulo": "Módulo Introductorio",
+   "materiales": [
+    {
+     "tipo": "genially",
+     "titulo": "Sin miedo al cambio",
+     "url": "https://view.genially.com/67e6c8464c145a66a83b61ca/interactive-content-11-sin-miedo-al-cambio"
+    },
+    {
+     "tipo": "genially",
+     "titulo": "Gobierno Digital",
+     "url": "https://view.genially.com/67f3ed8b1089389658332668/interactive-content-12-gobierno-digital"
+    },
+    {
+     "tipo": "genially",
+     "titulo": "Material de lectura",
+     "url": "https://view.genially.com/67fe58769b3dc41e5ceab94c/interactive-content-13-material-de-lectura-complementaria"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "Normativas",
+     "archivo": "highlight-de-normativas.pdf"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 1",
+   "preguntas": [
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué se entiende por innovación en el sector público?",
+     "options": [
+      "Implementar únicamente nuevas tecnologías en la administración pública.",
+      "Introducir ideas nuevas que generen valor público, mejorando la eficiencia y la calidad de los servicios.",
+      "Copiar modelos de gestión del sector privado.",
+      "Reducir el personal estatal para disminuir costos."
+     ],
+     "correctIndex": 1
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Cuál es uno de los principales motivos para innovar dentro del Estado?",
+     "options": [
+      "Aumentar el control político sobre la gestión.",
+      "Eliminar todos los procedimientos formales.",
+      "Responder a nuevas necesidades sociales y mejorar los servicios públicos.",
+      "Centralizar la toma de decisiones."
+     ],
+     "correctIndex": 2
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué característica distingue a la firma digital respecto de la firma electrónica?",
+     "options": [
+      "Es más rápida de obtener.",
+      "Se utiliza para aceptar condiciones en un sitio web.",
+      "Utiliza métodos criptográficos que aseguran autenticidad y exclusividad.",
+      "No tiene validez jurídica en documentos oficiales."
+     ],
+     "correctIndex": 2
+    }
+   ]
+  },
+  {
+   "slug": "modulo-2",
+   "titulo": "Módulo 2: Sin Miedo a Timbó. Timbó, de principio a fin",
+   "materiales": [
+    {
+     "tipo": "video",
+     "titulo": "¿Qué es TIMBO?",
+     "youtube": "alWHBV5ScQ4"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "Carga de Usuarios y Oficinas",
+     "archivo": "carga-de-oficinas-y-usuarios.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "Trámites y Procedimientos Internos",
+     "archivo": "tramites-y-procedimientos-internos.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "Trámites y Procedimientos Externos",
+     "archivo": "tramites-y-procedimientos-externos.pdf"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 2",
+   "preguntas": [
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué es TIMBÓ y cuál es su objetivo principal?",
+     "options": [
+      "TIMBÓ es un ecosistema digital de aplicaciones que implementará toda la Administración Pública Provincial como única plataforma para la tramitación digital de todas sus gestiones administrativas.",
+      "TIMBÓ es un software para el manejo de redes sociales destinado a la comunicación entre ciudadanos y funcionarios.",
+      "TIMBÓ es un programa educativo que enseña a los ciudadanos y funcionarios sobre cómo utilizar herramientas tecnológicas en la Provincia de Santa Fe.",
+      "TIMBÓ es un programa que genera la creación de trámites virtuales solamente para la ciudadanía y su entorno."
+     ],
+     "correctIndex": 0
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué tipos de datos se necesitan para loguearse en la plataforma TIMBÓ?",
+     "options": [
+      "Se necesita el CUIL, IUP, EMAIL y la clave que se utiliza para visualizar el recibo de sueldo.",
+      "Puedes ingresar directamente a la plataforma únicamente con el link.",
+      "Se necesita el IUP, EMAIL, CUIL y un PDF del recibo de sueldo.",
+      "Se necesita el DNI, nombre de usuario asignado por el área de Recursos Humanos, una clave enviada por WhatsApp y validación biométrica."
+     ],
+     "correctIndex": 0
+    },
+    {
+     "type": "multiple-choice",
+     "question": "Si un organismo desea modificar un procedimiento administrativo externo en Timbó, ¿qué paso es indispensable?",
+     "options": [
+      "Implementar el cambio y luego informar a la Secretaría de Gestión Pública.",
+      "Crear un nuevo procedimiento en lugar de modificar el existente.",
+      "Comunicar las modificaciones verbalmente a la Secretaría de Gestión Pública.",
+      "Informar y obtener la aprobación de la Secretaría de Gestión Pública."
+     ],
+     "correctIndex": 3
+    }
+   ]
+  },
+  {
+   "slug": "modulo-3",
+   "titulo": "Módulo 3: Seguridad de la información para la administración pública",
+   "materiales": [
+    {
+     "tipo": "genially",
+     "titulo": "Material de lectura",
+     "url": "https://view.genially.com/680ba8237b978275fef832a9/interactive-content-21-seguridad-de-la-informacion"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 3",
+   "preguntas": [
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué tipo de información puede ser solicitada por cualquier persona, física o jurídica, sin necesidad de justificar su pedido?",
+     "options": [
+      "Información personal",
+      "Información confidencial o clasificada",
+      "Información pública",
+      "Datos biométricos"
+     ],
+     "correctIndex": 2
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Cuál es la principal diferencia entre la seguridad de la información y la ciberseguridad?",
+     "options": [
+      "La seguridad de la información solo se ocupa de datos físicos, mientras que la ciberseguridad solo de datos digitales.",
+      "La ciberseguridad se enfoca en la protección de la información en dispositivos interconectados, mientras que la seguridad de la información abarca todos los medios (físicos y digitales).",
+      "La seguridad de la información es un concepto más reciente que la ciberseguridad.",
+      "La ciberseguridad se centra en proteger a las personas, mientras que la seguridad de la información se centra en las organizaciones."
+     ],
+     "correctIndex": 1
+    },
+    {
+     "type": "multiple-choice",
+     "question": "El Phishing se basa en una técnica de ingeniería social para obtener información sensible. ¿Cuál de los siguientes es un ejemplo común de este ataque?",
+     "options": [
+      "Un software malicioso que encripta archivos para pedir un rescate.",
+      "Una llamada telefónica de un supuesto familiar que pide datos personales.",
+      "Sobrecargar un servidor con tráfico masivo para dejarlo inoperativo.",
+      "Un correo electrónico fraudulento que simula ser de una entidad bancaria para solicitar tus datos."
+     ],
+     "correctIndex": 3
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Por qué el texto recomienda no guardar contraseñas en el navegador web?",
+     "options": [
+      "Porque se vuelven menos seguras si se guardan.",
+      "Porque no se pueden modificar una vez guardadas.",
+      "Porque un ciberdelincuente que acceda al dispositivo podría verlas y acceder a las cuentas.",
+      "Porque solo se pueden guardar contraseñas de sitios oficiales."
+     ],
+     "correctIndex": 2
+    }
+   ]
+  },
+  {
+   "slug": "modulo-4",
+   "titulo": "Módulo 4: Manos a la obra ¿Cómo gestionar Expedientes Electrónicos?",
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "¿Cómo gestionar EE?",
+     "archivo": "como-gestionar-expedientes-electronicos.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "¿Cómo gestionar la visualización?",
+     "archivo": "como-gestionar-la-visualizacion-de-un-ee.pdf"
+    },
+    {
+     "tipo": "video",
+     "titulo": "Gestión de Expedientes y Documentos",
+     "youtube": "qVf-yyXoE0k"
+    },
+    {
+     "tipo": "video",
+     "titulo": "¿Cómo visualizar un Expediente?",
+     "youtube": "cIxZoNUAbHc"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 4",
+   "preguntas": [
+    {
+     "type": "multiple-choice",
+     "question": "¿Cuáles de todos estos es un requisito para escribir un MOTIVO al momento de iniciar una solicitud de caratulación?",
+     "options": [
+      "Que tenga un máximo de 400 caracteres.",
+      "Que lo escriba el usuario que solicita la caratula y no la oficina caratuladora.",
+      "Que evite las abreviaturas para facilitar la búsqueda.",
+      "Todas las anteriores."
+     ],
+     "correctIndex": 3
+    },
+    {
+     "type": "multiple-choice",
+     "question": "A la hora de subir el PDF de tu expediente electrónico, ¿cuál de los siguientes campos es obligatorio para adjuntar un archivo?",
+     "options": [
+      "Tu nombre personal y la fecha de carga del archivo.",
+      "Únicamente tu nombre personal.",
+      "El título del archivo y una breve referencia.",
+      "Únicamente la fecha de carga."
+     ],
+     "correctIndex": 2
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Para qué sirve la opción \"Guarda Temporal\" en el sistema de expedientes?",
+     "options": [
+      "Para archivar definitivamente un expediente cerrado.",
+      "Para enviar un expediente a otra jurisdicción.",
+      "Para separar momentáneamente los expedientes de la pestaña Gestión, generalmente mientras se espera un documento faltante.",
+      "Para eliminar expedientes que ya no se utilizarán."
+     ],
+     "correctIndex": 2
+    },
+    {
+     "type": "multiple-choice",
+     "question": "A la hora de consultar un expediente, ¿cuáles son los criterios que podes buscar?",
+     "options": [
+      "Por N° de expediente.",
+      "Los expedientes iniciados por vos.",
+      "Los expedientes tramitados y caratulados por vos.",
+      "Todas las anteriores."
+     ],
+     "correctIndex": 3
+    }
+   ]
+  },
+  {
+   "slug": "modulo-5",
+   "titulo": "Módulo 5: Manos a la obra ¿Cómo gestionar Documentos Oficiales?",
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "¿Cómo gestionar Documentos Oficiales (DDOO)?",
+     "archivo": "como-gestionar-documentos-oficiales.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "Tipos y clases de Documentos Oficiales",
+     "archivo": "tipos-y-clases-de-documentos-oficiales.pdf"
+    },
+    {
+     "tipo": "video",
+     "titulo": "Tutorial Complementario",
+     "youtube": "qVf-yyXoE0k"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 5",
+   "preguntas": [
+    {
+     "type": "multiple-choice",
+     "question": "Si tengo un archivo hecho en mi PC y quiero usarlo, ¿qué tipo de documento necesito?",
+     "options": [
+      "Importado",
+      "Libre",
+      "Prellenado",
+      "Escrito"
+     ],
+     "correctIndex": 0
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Cuál de las siguientes afirmaciones es verdadera sobre un Documento Oficial en la plataforma?",
+     "options": [
+      "Se puede eliminar después de ser firmado.",
+      "Se genera automáticamente al escribirlo.",
+      "Se confecciona según sus propiedades, no solo por su nombre.",
+      "Todos los usuarios pueden aprobarlo sin restricciones."
+     ],
+     "correctIndex": 2
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué significa que un documento sea “Reservado” en la plataforma?",
+     "options": [
+      "Que se puede enviar por correo electrónico.",
+      "Que sólo lo pueden ver y elaborar usuarios autorizados.",
+      "Que se puede visualizar sin firma.",
+      "Que debe contener archivos embebidos."
+     ],
+     "correctIndex": 1
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué ocurre cuando se “embebe” un archivo en un documento oficial?",
+     "options": [
+      "El archivo se transforma en texto editable.",
+      "Se pierde el formato original del archivo adjunto.",
+      "El archivo queda visible solo al abrir el PDF descargado.",
+      "El archivo se imprime junto al documento automáticamente."
+     ],
+     "correctIndex": 2
+    }
+   ]
+  },
+  {
+   "slug": "modulo-6",
+   "titulo": "Módulo 6: Actos Administrativos Registrables",
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "¿Cómo gestionar Actos Administrativos Registrables?",
+     "archivo": "como-gestionar-actos-administrativos-registrables.pdf"
+    },
+    {
+     "tipo": "video",
+     "titulo": "¿Cómo lo hacemos?",
+     "youtube": "htvuudJzMbg"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 6",
+   "preguntas": [
+    {
+     "type": "true-false",
+     "question": "Un acto administrativo registrable es una decisión de la administración pública provincial que debe asentarse en un registro oficial para que sea válida y reconocida legalmente. Por ejemplo: decretos, resoluciones, disposiciones.",
+     "answer": true
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Qué permiso permite a un usuario revisar y firmar un Acto Administrativo Registrable (AAR)?",
+     "options": [
+      "Permiso de Seguimiento.",
+      "Permiso de Firmante.",
+      "Permiso de Gestor.",
+      "Permiso de Protocolo."
+     ],
+     "correctIndex": 1
+    },
+    {
+     "type": "true-false",
+     "question": "El Permiso de seguimiento por organismo puede ser otorgado como único o bien en conjunto con los permisos de Gestor y/o Firmante.",
+     "answer": true
+    }
+   ]
+  },
+  {
+   "slug": "modulo-7",
+   "titulo": "Módulo 7: Atención Virtual",
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "¿Cómo trabajar en Atención Virtual (AV)?",
+     "archivo": "como-trabajar-en-atencion-virtual.pdf"
+    },
+    {
+     "tipo": "video",
+     "titulo": "Instructivo en Atención Virtual",
+     "youtube": "ZippZTO_onI"
+    },
+    {
+     "tipo": "video",
+     "titulo": "Consultar un Expediente",
+     "youtube": "M2AUtzccRyI"
+    }
+   ],
+   "chequeo": "Chequeo de lectura 7",
+   "preguntas": [
+    {
+     "type": "true-false",
+     "question": "“La Atención Virtual es un servicio en línea disponible las 24 horas, que permite a cualquier ciudadano registrado con ID Ciudadana realizar trámites de manera digital, sin necesidad de concurrir físicamente a una oficina”",
+     "answer": true
+    },
+    {
+     "type": "multiple-choice",
+     "question": "¿Desde donde puede acceder a un trámite la ciudadanía? Indique la opción que corresponda:",
+     "options": [
+      "Desde el portal de Atención Virtual Ciudadana.",
+      "Desde el portal de trámites.",
+      "Desde el buscador de la página de inicio del portal oficial del Gobierno de la Provincia de Santa Fe.",
+      "Todas las anteriores."
+     ],
+     "correctIndex": 3
+    },
+    {
+     "type": "true-false",
+     "question": "“La finalización simple de un trámite se da cuando el agente comunica por mensaje que el trámite está concluido y adjunta, si corresponde, un Documento Oficial (DO). El ciudadano recibirá un correo que informa la resolución y podrá descargar el documento oficial de constancia. Esto se verá reflejado en en la pestaña Finalizado (resueltos o cancelados)”.",
+     "answer": true
+    }
+   ]
+  }
+ ],
+ "evaluacion": [
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué se entiende por innovación en el sector público?",
+   "options": [
+    "Implementar únicamente nuevas tecnologías en la administración pública.",
+    "Desarrollar e implementar ideas nuevas que generen valor público, mejoren la calidad de los servicios y la participación democrática.",
+    "Copiar modelos de gestión exitosos del sector privado y adaptarlos a las necesidades del sector público.",
+    "Reducir el personal estatal para disminuir costos."
+   ],
+   "correctIndex": 1
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué es el Domicilio digital?",
+   "options": [
+    "Una bandeja de notificaciones electrónicas que registra las comunicaciones oficiales.",
+    "Un trámite de carácter obligatorio que deben realizar exclusivamente las personas jurídicas que necesiten interactuar con el Estado provincial.",
+    "Un conjunto de datos asociados de forma lógica a otros datos electrónicos, usado para identificar al emisor y expresar voluntad sobre un documento.",
+    "Una solución tecnológica, segura y confiable para firmar digitalmente documentos electrónicos de forma remota."
+   ],
+   "correctIndex": 0
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué es TIMBÓ y cuál es su objetivo principal?",
+   "options": [
+    "Un software diseñado para manejar redes sociales, destinado a la comunicación entre ciudadanos y funcionarios.",
+    "Un programa educativo que enseña a los ciudadanos y funcionarios cómo utilizar herramientas tecnológicas en la provincia de Santa Fe.",
+    "Un programa que crea trámites virtuales y es de uso exclusivo para la ciudadanía.",
+    "Un ecosistema digital de aplicaciones que implementará toda la Administración Pública Provincial como única plataforma para la tramitación digital de todas sus gestiones administrativas."
+   ],
+   "correctIndex": 3
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué datos se necesitan para iniciar sesión en TIMBÓ?",
+   "options": [
+    "CUIL, IUP o CORREO ELECTRÓNICO y clave (la misma que se utiliza para visualizar el recibo de sueldo)..",
+    "Nombre de usuario y contraseña (ambos se crean la primera vez que se accede a la plataforma).",
+    "La plataforma no necesita usuario ni contraseña.",
+    "Se necesita el CUIL, IUP o CORREO ELECTRÓNICO y PDF del último recibo de sueldo."
+   ],
+   "correctIndex": 0
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué caracteriza a la Información pública?",
+   "options": [
+    "Es información restringida a un grupo limitado de personas debido a su carácter sensible, secreto, estratégico o privado.",
+    "Es todo tipo de información (texto, imagen, audio) que esté en poder del Estado o haya sido producida, obtenida o financiada con recursos públicos.",
+    "Son datos (nombre, apellido, número de documento) vinculados con una persona física, que permiten identificarla.",
+    "Es toda información que necesita de una justificación formal para ser solicitada."
+   ],
+   "correctIndex": 1
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué se entiende por Ingeniería social?",
+   "options": [
+    "Es un tipo de software malicioso que encripta los archivos de un sistema y los hace inaccesibles.",
+    "Es una técnica de fraude que utiliza llamadas telefónicas para obtener información confidencial o inducir a las víctimas a realizar acciones que comprometan su seguridad.",
+    "Se refiere a técnicas de manipulación que son usadas por los ciberdelincuentes para obtener información privada y confidencial de los usuarios.",
+    "Son aspectos sociales, ambientales y de diseño que sirven para la implementación de proyectos sostenibles que contemplen la protección de los recursos naturales."
+   ],
+   "correctIndex": 2
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Cuál de las siguientes opciones se puede realizar cuando un Expediente se encuentra en Guarda Temporal?",
+   "options": [
+    "Incorporar documentos",
+    "Rehabilitar el expediente para luego incorporar documentos",
+    "El ciudadanos puede seguir presentado documentación en Atención Virtual",
+    "Ninguna de las anteriores, no se puede realizar ninguna acción cuando el Expediente se encuentra en Guarda Temporal"
+   ],
+   "correctIndex": 1
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Cuáles de los siguientes criterios pueden utilizarse para buscar un expediente?",
+   "options": [
+    "Por número de expediente",
+    "Expedientes iniciados por mí",
+    "Expedientes tramitados y caratulados por mí",
+    "Todas las anteriores"
+   ],
+   "correctIndex": 3
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué caracteriza a un Documento oficial de tipo “Documento Libre”?",
+   "options": [
+    "Indica que el documento debe confeccionarse por completo. La producción del documento será similar a utilizar un procesador de texto como word o writer.",
+    "Indica que el documento se generará al importar un archivo desde la computadora.",
+    "Es un documento que tiene un formato predefinido y permite completar la información solicitada en un formulario.",
+    "Es un tipo de documento que solo pueden elaborar y ver aquellos usuarios que tengan autorización."
+   ],
+   "correctIndex": 0
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué es la Referencia o Motivo?",
+   "options": [
+    "Es una opción disponible en algunos tipos de documentos y sirve para establecer quiénes son las personas que avalarán que el documento se oficialice.",
+    "Es un paso obligatorio en la confección de todos los documentos. Debe ser fácil de identificar para facilitar la búsqueda de Documentos Oficiales dentro de Timbó.",
+    "Es una opción que está disponible en algunos tipos de documentos y permite adjuntar un archivo comprobante.",
+    "Es una opción que sirve para otorgar el permiso de vista a uno o varios expedientes."
+   ],
+   "correctIndex": 1
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué acciones habilita el permiso de firmante de un Acto Administrativo Registrable?",
+   "options": [
+    "El usuario firmante es quien firma el acto administrativo que emite la Unidad de Organización.",
+    "El usuario firmante es quien carga toda la información del acto administrativo que emite la Unidad de Organización.",
+    "El usuario firmante es quien realiza seguimientos detallados solicitados por un superior.",
+    "El usuario firmante es quien determina qué Actos Administrativos son registrables y cuáles no."
+   ],
+   "correctIndex": 0
+  },
+  {
+   "type": "multiple-choice",
+   "question": "¿Qué se entiende por “Atención virtual”?",
+   "options": [
+    "Es un entorno que contiene escenas y objetos simulados y de apariencia real.",
+    "Es un servicio online que prestan algunas dependencias estatales de lunes a viernes, desde las 7:00 hasta las 13:00.",
+    "Es un servicio disponible las 24 horas, que permite a cualquier ciudadano registrado realizar trámites de manera digital.",
+    "Es un servicio de mensajería online que sirve para realizar trámites de manera más eficiente."
+   ],
+   "correctIndex": 2
+  }
+ ],
+ "certificado_url": "https://www.santafe.gob.ar/formacionrrhh/capacitacion/index.php"
+}

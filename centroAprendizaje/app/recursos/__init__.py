@@ -212,6 +212,13 @@ def simulador():
     return _leer("simulador.json")
 
 
+@lru_cache(maxsize=None)
+def curso_timbo():
+    # Copia del curso oficial «Timbó, paso a paso» del Aula Virtual (texto,
+    # PDF y preguntas tal cual); los PDF están en static/docs/timbo-paso-a-paso.
+    return _leer("curso_timbo.json")
+
+
 def indice_busqueda():
     """Entradas de Recursos para el buscador global del portal: páginas,
     preguntas de "Explicame", términos del diccionario y normativa."""

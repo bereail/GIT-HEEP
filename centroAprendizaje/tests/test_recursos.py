@@ -242,3 +242,22 @@ def test_formularios_con_link_oficial(app):
     assert por_frase["Timbó Compras: Alta de bienes y servicios CAByS"] == "https://tramites.santafe.gob.ar/"
     assert por_frase["CD-01"] == "https://tramites.santafe.gob.ar/"
     assert por_frase["Pliego Único"].startswith("https://compras.santafe.gob.ar/")
+
+
+def test_curso_timbo_paso_a_paso(app):
+    curso = recursos.curso_timbo()
+    carpeta = RAIZ / "app" / "static" / "docs" / "timbo-paso-a-paso"
+    materiales = curso["bienvenida"] + [m for mod in curso["modulos"] for m in mod["materiales"]]
+    for m in materiales:
+        if m["tipo"] == "pdf":
+            assert (carpeta / m["archivo"]).is_file(), m["archivo"]
+    for p in [p for mod in curso["modulos"] for p in mod["preguntas"]] + curso["evaluacion"]:
+        assert p["type"] in ("multiple-choice", "true-false"), p
+        if p["type"] == "multiple-choice":
+            assert 0 <= p["correctIndex"] < len(p["options"]), p["question"]
+    cliente = app.test_client()
+    r = cliente.get("/timbo-paso-a-paso")
+    assert r.status_code == 200
+    html = r.get_data(as_text=True)
+    assert "Chequeo de lectura 7" in html and "programa-del-curso.pdf" in html
+    assert "/timbo-paso-a-paso" in cliente.get("/").get_data(as_text=True)

@@ -2249,3 +2249,28 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .ca-guardadas { margin: 0; padding-left: 18px; }
 .ca-pedidos { list-style: none; padding: 0; margin: 0 0 8px; max-height: 360px; overflow-y: auto; }
 .ca-pedidos li { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; padding: 4px 0; border-top: 1px solid var(--border, #e3e6eb); }
+
+/* Timbó paso a paso (copia del curso del Aula Virtual) */
+.ct-portada { display: block; max-width: 100%; height: auto; margin: 0 0 16px; border-radius: var(--radius-md); border: 1px solid var(--border); }
+.ct-materiales { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.ct-material { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); text-decoration: none; }
+.ct-material:hover { border-color: var(--accent-soft-border); background: var(--accent-soft); }
+.ct-material small { display: block; color: var(--text-muted); font-size: 12px; }
+.ct-material__icono { font-size: 1.4rem; }
+.ct-modulo { margin-bottom: 10px; padding: 0; }
+.ct-modulo > summary { list-style: none; display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; font-weight: 600; }
+.ct-modulo > summary::-webkit-details-marker { display: none; }
+.ct-modulo[open] > summary { border-bottom: 1px solid var(--border); }
+.ct-modulo[open] .ct-modulo__flecha { transform: rotate(180deg); }
+.ct-modulo > .ct-materiales, .ct-modulo > .ct-chequeo { padding: 14px 16px; }
+.ct-modulo__n { flex: none; display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 13px; }
+.ct-modulo__titulo { flex: 1; }
+.ct-modulo__flecha { margin-left: auto; transition: transform .15s; }
+.ct-chequeo h3 { margin: 0 0 4px; font-size: 15px; }
+.ct-chequeo .quiz-panel { margin-top: 10px; }
+.ct-resultado { margin: 12px 0 0; font-weight: 600; }
+.ct-resultado[hidden] { display: none; }
+.ct-fin h2 { margin: 0 0 8px; font-size: 18px; }
+.ct-fin p { margin: 0; }
+.duda-portal.ct-portal { border-color: var(--accent-soft-border); background: var(--accent-soft); }
+.duda-portal.ct-portal:hover { background: #dde7fb; }

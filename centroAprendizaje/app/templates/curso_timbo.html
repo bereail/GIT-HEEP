@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block titulo %}Timbó paso a paso{% endblock %}
+{% macro material(m) -%}
+  {% if m.tipo == 'pdf' %}
+  <a class="ct-material" href="{{ url_for('static', filename='docs/timbo-paso-a-paso/' ~ m.archivo) }}" target="_blank" rel="noopener"><span class="ct-material__icono" aria-hidden="true">📄</span><span>{{ m.titulo }}<small>PDF</small></span></a>
+  {% elif m.tipo == 'video' %}
+  <a class="ct-material" href="https://www.youtube.com/watch?v={{ m.youtube }}" target="_blank" rel="noopener"><span class="ct-material__icono" aria-hidden="true">▶️</span><span>{{ m.titulo }}<small>Video en YouTube ↗</small></span></a>
+  {% else %}
+  <a class="ct-material" href="{{ m.url }}" target="_blank" rel="noopener"><span class="ct-material__icono" aria-hidden="true">✨</span><span>{{ m.titulo }}<small>Presentación interactiva (Genially) ↗</small></span></a>
+  {% endif %}
+{%- endmacro %}
+{% block contenido %}
+<div class="hero">
+  <div class="hero__eyebrow">Curso oficial · Gobierno de Santa Fe</div>
+  <h1>🎓 Timbó paso a paso</h1>
+  <p class="hero__desc">{{ curso.titulo }}. Acá tenés el mismo material del curso del Aula Virtual, para repasar o consultar cuando lo necesites.</p>
+</div>
+
+<img class="ct-portada" src="{{ url_for('static', filename='docs/timbo-paso-a-paso/portada-curso.png') }}" alt="Portada del curso Timbó, paso a paso">
+
+<div class="callout callout--tip"><span class="callout__icon">🏅</span><div>Para obtener el <b>certificado</b>, tenés que hacer el curso en el <a href="{{ curso.fuente }}" target="_blank" rel="noopener">Aula Virtual de la Provincia ↗</a>. Esta página es una copia del material (edición {{ curso.edicion }}, copiada el {{ curso.copiado_al[8:] }}/{{ curso.copiado_al[5:7] }}/{{ curso.copiado_al[:4] }}).</div></div>
+
+<section class="rec-bloque">
+  <h2 class="section__title">Bienvenida</h2>
+  <div class="ct-materiales">{% for m in curso.bienvenida %}{{ material(m) }}{% endfor %}</div>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">Módulos</h2>
+  {% for mod in curso.modulos %}
+  <details class="card ct-modulo" id="{{ mod.slug }}">
+    <summary><span class="ct-modulo__n">{{ loop.index }}</span><span class="ct-modulo__titulo">{{ mod.titulo }}</span><span class="ct-modulo__flecha" aria-hidden="true">▾</span></summary>
+    <div class="ct-materiales">{% for m in mod.materiales %}{{ material(m) }}{% endfor %}</div>
+    <div class="ct-chequeo">
+      <h3>✅ {{ mod.chequeo }}</h3>
+      <p class="text-muted">{{ mod.preguntas | length }} preguntas. Tocá una respuesta y te decimos si es correcta.</p>
+      <div class="quiz-panel" data-ct-quiz="{{ mod.slug }}"></div>
+      <p class="ct-resultado" data-ct-resultado="{{ mod.slug }}" hidden></p>
+    </div>
+  </details>
+  {% endfor %}
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">Evaluación final</h2>
+  <details class="card ct-modulo" id="evaluacion">
+    <summary><span class="ct-modulo__n">📝</span><span class="ct-modulo__titulo">Evaluación ({{ curso.evaluacion | length }} preguntas)</span><span class="ct-modulo__flecha" aria-hidden="true">▾</span></summary>
+    <div class="ct-chequeo">
+      <p class="text-muted">Es para practicar: acá no queda registrada. La que vale para el certificado se hace en el Aula Virtual.</p>
+      <div class="quiz-panel" data-ct-quiz="evaluacion"></div>
+      <p class="ct-resultado" data-ct-resultado="evaluacion" hidden></p>
+    </div>
+  </details>
+</section>
+
+<section class="rec-bloque">
+  <div class="card ct-fin">
+    <h2>🙌 ¡Felicitaciones!</h2>
+    <p>Para recibir el certificado tenés que formar parte del Sector Público Provincial, <a href="{{ curso.certificado_url }}" target="_blank" rel="noopener">registrarte en el Sitio de Formación ↗</a> y aprobar la evaluación final en el <a href="{{ curso.fuente }}" target="_blank" rel="noopener">Aula Virtual ↗</a>. El certificado aparece en tu historial formativo.</p>
+  </div>
+</section>
+{% endblock %}
+{% block script_pagina %}
+<script nonce="{{ csp_nonce }}" type="module">
+  import { renderizarQuiz } from "{{ url_for('static', filename='js/quiz.js') }}";
+  const preguntas = {};
+  {% for mod in curso.modulos %}preguntas[{{ mod.slug | tojson }}] = {{ mod.preguntas | tojson }};
+  {% endfor %}preguntas.evaluacion = {{ curso.evaluacion | tojson }};
+  document.querySelectorAll('[data-ct-quiz]').forEach((caja) => {
+    const clave = caja.dataset.ctQuiz;
+    const resultado = document.querySelector(`[data-ct-resultado="${clave}"]`);
+    renderizarQuiz(caja, preguntas[clave], (bien, total) => {
+      resultado.hidden = false;
+      resultado.textContent = bien === total ? `🎉 ¡Todas bien! ${bien} de ${total}.` : `Respondiste bien ${bien} de ${total}. Repasá el material y volvé a intentar recargando la página.`;
+    });
+  });
+</script>
+{% endblock %}
