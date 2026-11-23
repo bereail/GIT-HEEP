@@ -135,7 +135,12 @@ class Buscador:
             self.datos[codigo] = (p, medida(texto), fila[2], palabras(fila[3]) | set(_pares(fila[3])))
             for w in p:
                 self.indice[w].add(codigo)
-        self.vocabulario = [w for w in self.indice if len(w) >= 6]
+        # Para los tipeos: palabras largas agrupadas por sus 3 primeras letras
+        # (solo se compara con las que empiezan igual: mucho más rápido).
+        self.vocabulario = defaultdict(list)
+        for w in self.indice:
+            if len(w) >= 6:
+                self.vocabulario[w[:3]].append(w)
         self._parecidas = {}
 
     def parecidas(self, w):
@@ -145,8 +150,7 @@ class Buscador:
             return set()
         if w not in self._parecidas:
             import difflib
-            self._parecidas[w] = {v for v in difflib.get_close_matches(w, self.vocabulario, n=5, cutoff=0.8)
-                                  if v != w and v[:3] == w[:3]}   # tienen que empezar igual
+            self._parecidas[w] = set(difflib.get_close_matches(w, self.vocabulario.get(w[:3], []), n=5, cutoff=0.8)) - {w}
         return self._parecidas[w]
 
     def buscar(self, nombre):
@@ -291,14 +295,12 @@ def inconsistencias(llave, items, respuestas, grupos, buscador):
             "Tienen el mismo nombre pero uno quedó para pedir y otro fuera (o al revés). Revisá cuál vale.", filas)
 
     # 2. Quedan fuera, pero se parecen mucho a algo que el servicio sí usa.
-    usados = [i for i in items if grupo_de[i["id"]] in ("cargar", "estan")]
-    clave_usados = [(i, _clave(i["n"])) for i in usados]
+    usados = _Indice([i for i in items if grupo_de[i["id"]] in ("cargar", "estan")])
     filas = []
     for i in items:
         if grupo_de[i["id"]] != "fuera":
             continue
-        k = _clave(i["n"])
-        parecido = next((u for u, ku in clave_usados if len(k & ku) >= 2 and len(k & ku) >= 0.6 * len(k)), None)
+        parecido = usados.parecido(i["n"])
         if parecido:
             filas.append((i["n"], f"Quedó fuera, pero «{parecido['n']}» sí se usa"))
     agregar("fuera_parecido", "Quedó fuera algo parecido a lo que sí usan",
@@ -336,11 +338,10 @@ def inconsistencias(llave, items, respuestas, grupos, buscador):
             "Si ningún servicio lo pide, desaparece. Hay que avisar a Compras a qué servicio va.", filas)
 
     # 6. Para pedir el alta, pero parecido a algo que ya está en TIMBÓ en el mismo servicio.
-    estan = [(i, _clave(i["n"])) for i in items if grupo_de[i["id"]] == "estan"]
+    estan = _Indice([i for i in items if grupo_de[i["id"]] == "estan"])
     filas = []
     for f in grupos["cargar"]:
-        k = _clave(f[3])
-        par = next((e for e, ke in estan if len(k & ke) >= 2 and len(k & ke) >= 0.6 * len(k)), None)
+        par = estan.parecido(f[3])
         if par:
             r = respuestas.get(par["id"])
             codigo = (r.codigo_correcto or r.codigo_propuesto) if r else par.get("cp", "")
@@ -348,6 +349,28 @@ def inconsistencias(llave, items, respuestas, grupos, buscador):
     agregar("como_otro", "Para pedir el alta, pero parecido a algo que ya está en TIMBÓ",
             "Quizás sirva el mismo código (como ítem general, con el detalle en la observación).", filas)
     return avisos
+
+
+class _Indice:
+    """Artículos indexados por palabra, para buscar «el primero que comparte al
+    menos 2 palabras y el 60 % de las del buscado» sin comparar con todos."""
+
+    def __init__(self, items):
+        self.items = items
+        self.claves = [_clave(i["n"]) for i in items]
+        self.por_palabra = defaultdict(list)
+        for n, k in enumerate(self.claves):
+            for w in k:
+                self.por_palabra[w].append(n)
+
+    def parecido(self, nombre):
+        k = _clave(nombre)
+        cuenta = defaultdict(int)
+        for w in k:
+            for n in self.por_palabra.get(w, ()):
+                cuenta[n] += 1
+        buenos = sorted(n for n, c in cuenta.items() if c >= 2 and c >= 0.6 * len(k))
+        return self.items[buenos[0]] if buenos else None
 
 
 _GRUPO_TEXTO = {"cargar": "Hay que cargar", "estan": "Ya está en TIMBÓ", "fuera": "Queda fuera", "falta": "Sin revisar"}

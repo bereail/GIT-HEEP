@@ -151,6 +151,12 @@ def test_aprobar_guarda_la_planilla_y_lo_registra(admin_client, app, tmp_path, m
     assert len(os.listdir(tmp_path / "altas")) == 2                                 # nunca pisa
     assert admin_client.get(f"/admin/servicios/altas/{guardadas[0]}").status_code == 200
     assert admin_client.get("/admin/servicios/altas/..%2Finstance.xlsx").status_code == 404
+    assert guardadas[0].startswith(f"altas-{llave_id}-INFORMATICA-")
+    viejo = time.time() - 7 * 3600                                                 # catálogo viejo: no aprueba
+    for a in os.listdir(tmp_path / "catalogo"):
+        os.utime(tmp_path / "catalogo" / a, (viejo, viejo))
+    assert admin_client.post(url, data={"nombre": "Berenice Solohaga"}).status_code == 302
+    assert len(os.listdir(tmp_path / "altas")) == 2
     with app.app_context():
         ll = db.session.get(LlaveServicio, llave_id)
         assert sum(1 for g in ll.registro if g.accion == "revisión final aprobada") == 2

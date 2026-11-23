@@ -192,7 +192,14 @@ def servicio_control_altas(llave_id):
     copia = catalogo_diario.ultima_copia(current_app.instance_path)
     vieja = not copia or time.time() - os.path.getmtime(copia) > 6 * 3600
     actualizando = catalogo_diario.en_curso(current_app.instance_path)
-    if vieja and not actualizando and not request.args.get("xlsx") and not current_app.testing:
+    # Si el último intento (aunque haya fallado) fue hace menos de una hora, no
+    # se relanza solo: así una descarga que falla no se repite en cada visita.
+    from datetime import datetime, timedelta, timezone
+
+    from app.models.revision_servicio import ActualizacionCatalogo
+    ultimo = ActualizacionCatalogo.query.order_by(ActualizacionCatalogo.en.desc()).first()
+    reciente = bool(ultimo and ultimo.en and datetime.now(timezone.utc).replace(tzinfo=None) - ultimo.en.replace(tzinfo=None) < timedelta(hours=1))
+    if vieja and not actualizando and not reciente and not request.args.get("xlsx") and not current_app.testing:
         _lanzar_actualizacion()
         actualizando = True
     resultado = control_altas.control(llave, current_app.instance_path)
@@ -221,7 +228,7 @@ def _carpeta_altas():
 def _planillas_guardadas(llave):
     import glob
     import os
-    prefijo = "altas-" + (re.sub(r"[^A-Za-z0-9_-]+", "_", llave.servicio) or "servicio") + "-"
+    prefijo = f"altas-{llave.id}-" + (re.sub(r"[^A-Za-z0-9_-]+", "_", llave.servicio) or "servicio") + "-"
     return sorted((os.path.basename(a) for a in glob.glob(os.path.join(_carpeta_altas(), prefijo + "*.xlsx"))), reverse=True)
 
 
@@ -242,15 +249,18 @@ def servicio_aprobar_altas(llave_id):
     if len(nombre) < 3:
         flash("Escribí tu nombre y apellido para aprobar.", "error")
         return redirect(url_for("admin.servicio_control_altas", llave_id=llave.id))
+    # Se aprueba SIEMPRE con el catálogo al día (copia de menos de 6 horas).
+    import time
+    copia = catalogo_diario.ultima_copia(current_app.instance_path)
+    if not copia or time.time() - os.path.getmtime(copia) > 6 * 3600:
+        flash("La copia del Catálogo WEB tiene más de 6 horas: tocá «Actualizar ahora», esperá un minuto y aprobá de nuevo.", "error")
+        return redirect(url_for("admin.servicio_control_altas", llave_id=llave.id))
     resultado = control_altas.control(llave, current_app.instance_path)
-    if resultado is None:
-        flash("Todavía no hay ninguna copia del Catálogo WEB: tocá «Actualizar ahora» y probá de nuevo.", "error")
-        return redirect(url_for("admin.servicios"))
     ahora = datetime.now()
     fecha = ls.hora_ar(ls.ahora())
     os.makedirs(_carpeta_altas(), exist_ok=True)
     seguro = re.sub(r"[^A-Za-z0-9_-]+", "_", llave.servicio) or "servicio"
-    ruta = catalogo_diario.ruta_libre(os.path.join(_carpeta_altas(), f"altas-{seguro}-{ahora:%Y%m%d-%H%M%S}.xlsx"))
+    ruta = catalogo_diario.ruta_libre(os.path.join(_carpeta_altas(), f"altas-{llave.id}-{seguro}-{ahora:%Y%m%d-%H%M%S}.xlsx"))
     with open(ruta, "wb") as f:
         f.write(xlsx.libro(control_altas.libro_carga(resultado, llave.servicio, nombre, fecha)))
     ls.registrar(llave, "revisión final aprobada", f"por {nombre}; planilla de carga {os.path.basename(ruta)} "
@@ -267,7 +277,7 @@ def servicio_planilla_altas(archivo):
     import os
 
     from flask import send_file
-    if not re.fullmatch(r"altas-[A-Za-z0-9_-]+-\d{8}-\d{6}(-\d+)?\.xlsx", archivo):
+    if not re.fullmatch(r"altas-\d+-[A-Za-z0-9_-]+-\d{8}-\d{6}(-\d+)?\.xlsx", archivo):
         abort(404)
     ruta = os.path.join(_carpeta_altas(), archivo)
     if not os.path.isfile(ruta):
