@@ -14,6 +14,36 @@
   {% endfor %}
 </nav>
 
+{% set m = metricas %}
+<section class="card rev-admin-bloque rev-metricas" aria-label="Avance de la revisión">
+  <div class="rev-avance">
+    <div class="rev-avance__txt"><b>{{ m.pct }} %</b> revisado · <b>{{ m.revisados | numero_ar }}</b> de {{ m.total | numero_ar }} · faltan <b>{{ m.faltan | numero_ar }}</b></div>
+    <div class="rev-avance__barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ m.pct }}"><span style="width: {{ m.pct }}%"></span></div>
+    <p class="text-muted" style="margin:4px 0 0">{% if m.ritmo %}En los últimos 7 días se revisaron {{ m.ritmo | numero_ar }} por día{% if m.dias_restantes %}: a este ritmo faltan unos <b>{{ m.dias_restantes | numero_ar }} días</b>{% endif %}.{% else %}En los últimos 7 días no se revisó nada.{% endif %}</p>
+  </div>
+  <div class="rev-graficos">
+    <div class="rev-grafico">
+      <h3>Cómo se reparten las respuestas</h3>
+      <div class="rev-apilada">{% for k, n, p in m.reparto %}{% if n %}<span class="rev-apilada__{{ k }}" style="flex: {{ n }}" title="{{ resultados[k] }}: {{ n }}"></span>{% endif %}{% endfor %}</div>
+      <ul class="rev-leyenda">{% for k, n, p in m.reparto %}<li><i class="rev-apilada__{{ k }}"></i>{{ resultados[k] }} <b>{{ n | numero_ar }}</b> <span class="text-muted">({{ p | numero_ar }} %)</span></li>{% endfor %}</ul>
+    </div>
+    <div class="rev-grafico">
+      <h3>Revisados por día (últimas 2 semanas)</h3>
+      <div class="rev-columnas">{% for dia, n in m.serie %}<div class="rev-columna" title="{{ dia }}: {{ n }}"><span class="rev-columna__n">{{ n or '' }}</span><span class="rev-columna__barra" style="height: {{ (100 * n / m.max_dia) | round(1) }}%"></span><span class="rev-columna__dia">{{ dia[:2] }}</span></div>{% endfor %}</div>
+    </div>
+  </div>
+  <h3 class="rev-personas__tit">Avance de cada persona <small class="text-muted">— su total son los amarillos de las bodegas donde trabajó</small></h3>
+  <div class="rev-personas">
+    {% for p in m.personas %}
+    <div class="rev-persona">
+      <div class="rev-persona__cab"><b>{{ p.nombre }}</b><span class="text-muted">{{ p.bodegas | join(', ') }}</span></div>
+      <div class="rev-persona__barra"><span style="width: {{ p.pct }}%"></span></div>
+      <div class="rev-persona__txt"><b>{{ p.hechos | numero_ar }}</b> hechos de {{ p.total | numero_ar }} · faltan <b>{{ p.faltan | numero_ar }}</b> · {{ p.pct }} %{% if p.ultima %}<span class="text-muted"> · última vez: {{ p.ultima }}</span>{% endif %}</div>
+    </div>
+    {% else %}<p class="text-muted">Todavía nadie revisó.</p>{% endfor %}
+  </div>
+</section>
+
 {% if enlace_nuevo %}
 <div class="callout callout--tip rev-enlace" role="status">
   <span class="callout__icon">🔑</span>
@@ -71,7 +101,7 @@
   <a class="rev-filtro {{ 'is-active' if filtro == 'con' }}" href="{{ url_for('admin.nomenclador_revision', filtro='con') }}">Con observación escrita <b>{{ conteo.con }}</b></a>
 </nav>
 
-<ol class="rev-lista">
+<ol class="rev-lista" start="{{ (pagina - 1) * 10 + 1 }}">
   {% for f in filas %}{% set e = f.item %}
   <li class="rev-item estado-amarillo {{ 'tiene-obs' if f.observaciones }}">
     <div class="rev-item__datos">
@@ -100,6 +130,13 @@
   <li class="empty-state">No hay ítems con este filtro.</li>
   {% endfor %}
 </ol>
+{% if paginas > 1 %}
+<nav class="rev-paginas" aria-label="Páginas">
+  {% if pagina > 1 %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.nomenclador_revision', filtro=filtro, pagina=pagina - 1) }}" aria-label="Página anterior">←</a>{% else %}<span class="btn btn--ghost btn--sm" aria-disabled="true">←</span>{% endif %}
+  <span>Página {{ pagina }} de {{ paginas }} <small class="text-muted">({{ total_filas }} ítems)</small></span>
+  {% if pagina < paginas %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.nomenclador_revision', filtro=filtro, pagina=pagina + 1) }}" aria-label="Página siguiente">→</a>{% else %}<span class="btn btn--ghost btn--sm" aria-disabled="true">→</span>{% endif %}
+</nav>
+{% endif %}
 
 {% if huerfanas %}
 <section class="rev-admin-bloque">

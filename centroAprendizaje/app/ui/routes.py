@@ -2,7 +2,7 @@ import re
 import secrets
 from datetime import datetime, timedelta, timezone
 
-from flask import Blueprint, Response, abort, flash, jsonify, redirect, render_template, request, url_for
+from flask import Blueprint, Response, abort, current_app, flash, jsonify, redirect, render_template, request, url_for
 
 from app import csrf, recursos
 from app.extensions import db
@@ -156,9 +156,15 @@ def ver_equivalencias(tema_slug):
     origenes = sorted({e.origen for e in items if e.origen})
     bodegas = sorted({e.bodega for e in items if e.bodega})
     actualizado_en = max((e.creado_en for e in items if e.creado_en), default=None)
+    from app.models.revision_nomenclador import hora_ar
+    from app.services import catalogo_diario
+    act = catalogo_diario.ultima_actualizacion()
+    catalogo = catalogo_diario.catalogo_vigente(current_app.instance_path)
+    con_aviso = sum(1 for e in items if e.confianza != "sin_match" and catalogo_diario.aviso_codigo(e.codigo_catalogo, catalogo))
     return render_template(
         "equivalencias.html", tema=tema, total=len(items), origenes=origenes,
         bodegas=bodegas, actualizado_en=actualizado_en,
+        catalogo_al=hora_ar(act.en) if act else "", con_aviso=con_aviso,
         bodegas_revision=revision_servicio.bodegas_revisables(bodegas),
     )
 
@@ -192,8 +198,11 @@ def equivalencias_json(tema_slug):
     items = EquivalenciaArticulo.query.filter_by(tema_id=tema.id).order_by(
         EquivalenciaArticulo.nombre_interno
     ).all()
+    from app.services import catalogo_diario
+    catalogo = catalogo_diario.catalogo_vigente(current_app.instance_path)
     datos = [
         {
+            "aviso": catalogo_diario.aviso_codigo(e.codigo_catalogo, catalogo) if e.confianza != "sin_match" else "",
             "nombre": e.nombre_interno,
             "codigo": e.codigo_catalogo or "",
             "bien": e.bien_o_servicio or "",

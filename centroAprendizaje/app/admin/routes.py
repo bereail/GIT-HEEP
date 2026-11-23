@@ -1101,6 +1101,59 @@ RESULTADOS_REVISION = {"si": "Confirmados", "no": "No coinciden", "duda": "Con d
 FILTROS_REVISION = ("todos", *RESULTADOS_REVISION, "con")
 
 
+def _metricas_revision(filas, conteo, dias=14):
+    """Avance y gráficos simples del panel de revisión (solo lectura)."""
+    from collections import Counter, defaultdict
+    from datetime import datetime, timedelta, timezone
+
+    from app.models.revision_nomenclador import hora_ar
+
+    total = conteo["todos"]
+    revisados = total - conteo.get("pendiente", 0)
+    # Por persona: nadie tiene una lista asignada, así que su total son los
+    # amarillos de las bodegas donde trabajó (las que tienen al menos 5 de sus
+    # respuestas, o la que más tiene).
+    amarillos_por_bodega = Counter(f["item"].bodega or "—" for f in filas)
+    hechos = defaultdict(Counter)
+    ultima = {}
+    for f in filas:
+        for o in f["observaciones"]:
+            if o.validacion:
+                nombre = o.revisor.nombre
+                hechos[nombre][f["item"].bodega or "—"] += 1
+                momento = o.actualizado_en or o.creado_en
+                if momento and (nombre not in ultima or momento > ultima[nombre]):
+                    ultima[nombre] = momento
+    personas = []
+    for nombre, por_bodega in hechos.items():
+        bodegas = [b for b, n in por_bodega.items() if n >= 5] or [por_bodega.most_common(1)[0][0]]
+        hechas = sum(por_bodega[b] for b in bodegas)
+        total_p = sum(amarillos_por_bodega[b] for b in bodegas)
+        personas.append({"nombre": nombre, "bodegas": sorted(bodegas), "hechos": sum(por_bodega.values()),
+                         "total": total_p, "faltan": max(total_p - hechas, 0),
+                         "pct": round(100 * hechas / total_p) if total_p else 0,
+                         "ultima": hora_ar(ultima.get(nombre), "%d/%m/%Y") if ultima.get(nombre) else ""})
+    personas.sort(key=lambda p: -p["hechos"])
+    por_persona = Counter({p["nombre"]: p["hechos"] for p in personas})
+    hoy = datetime.now(timezone.utc)
+    claves = [hora_ar(hoy - timedelta(days=d), "%d/%m") for d in range(dias - 1, -1, -1)]
+    por_dia = Counter(hora_ar(o.actualizado_en or o.creado_en, "%d/%m") for f in filas for o in f["observaciones"]
+                      if o.validacion)
+    serie = [(k, por_dia.get(k, 0)) for k in claves]
+    ultimos7 = sum(n for _, n in serie[-7:])
+    ritmo = ultimos7 / 7
+    return {
+        "total": total, "revisados": revisados, "faltan": total - revisados,
+        "pct": round(100 * revisados / total) if total else 0,
+        "reparto": [(k, conteo.get(k, 0), round(100 * conteo.get(k, 0) / total, 1) if total else 0)
+                    for k in ("si", "no", "duda", "pendiente")],
+        "personas": personas,
+        "por_persona": por_persona.most_common(), "max_persona": max(por_persona.values(), default=1),
+        "serie": serie, "max_dia": max((n for _, n in serie), default=0) or 1,
+        "ritmo": round(ritmo), "dias_restantes": round((total - revisados) / ritmo) if ritmo else None,
+    }
+
+
 def _resultado_item(revisiones):
     respuestas = {o.validacion for o in revisiones if o.validacion}
     if not respuestas:
@@ -1147,12 +1200,19 @@ def nomenclador_revision():
     conteo = {clave: sum(1 for f in filas if f["resultado"] == clave) for clave in RESULTADOS_REVISION}
     conteo["todos"] = len(filas)
     conteo["con"] = sum(1 for f in filas if any(o.texto for o in f["observaciones"]))
+    metricas = _metricas_revision(filas, conteo)
     if filtro == "con":
         filas = [f for f in filas if any(o.texto for o in f["observaciones"])]
     elif filtro != "todos":
         filas = [f for f in filas if f["resultado"] == filtro]
+    por_pagina = 10
+    paginas = max(1, -(-len(filas) // por_pagina))
+    pagina = min(max(request.args.get("pagina", 1, type=int), 1), paginas)
+    total_filas = len(filas)
+    filas = filas[(pagina - 1) * por_pagina:pagina * por_pagina]
     return render_template(
         "admin/nomenclador_revision.html", filas=filas, huerfanas=huerfanas, estado_actual=estado_actual,
+        pagina=pagina, paginas=paginas, total_filas=total_filas, metricas=metricas,
         filtro=filtro, conteo=conteo, revisores=RevisorNomenclador.query.order_by(RevisorNomenclador.nombre).all(),
         enlace_nuevo=session.pop("enlace_revision_nuevo", None), resultados=RESULTADOS_REVISION,
         validaciones=VALIDACIONES,

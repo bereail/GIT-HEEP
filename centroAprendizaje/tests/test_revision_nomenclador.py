@@ -392,3 +392,18 @@ def test_hora_de_argentina():
 
     from app.models.revision_nomenclador import hora_ar
     assert hora_ar(datetime(2026, 11, 16, 17, 47)) == "16/11/2026 14:47"
+
+
+def test_panel_de_revision_muestra_de_a_diez(app, nomenclador, admin_client):
+    from app.extensions import db
+    from app.models import EquivalenciaArticulo, Tema
+    with app.app_context():
+        tema = Tema.query.filter_by(slug="timbo-compras").first()
+        for k in range(25):
+            db.session.add(EquivalenciaArticulo(tema_id=tema.id, nombre_interno=f"Articulo extra {k:02d}", confianza="dudosa",
+                                                bodega="FARMACIA", codigo_catalogo="1.1.1.1", bien_o_servicio="X"))
+        db.session.commit()
+    html = admin_client.get("/admin/nomenclador/revision").get_data(as_text=True)
+    assert html.count('class="rev-item ') == 10 and "Página 1 de" in html
+    html = admin_client.get("/admin/nomenclador/revision?pagina=99").get_data(as_text=True)
+    assert "rev-item " in html and "Página 99" not in html      # se queda en la última página

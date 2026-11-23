@@ -2173,3 +2173,40 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .sv-cat__lista > summary { cursor: pointer; }
 .sv-tabla-scroll { max-width: 100%; overflow-x: auto; }
 .sv-tabla-scroll .data-table { font-size: .88rem; }
+
+/* Paginado de la revisión en /admin/nomenclador/revision */
+.rev-paginas { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 14px 0; }
+.rev-paginas [aria-disabled="true"] { opacity: .4; pointer-events: none; }
+
+/* Métricas de la revisión (admin) */
+.rev-metricas { margin-top: 12px; }
+.rev-avance__txt { font-size: 1.05rem; margin-bottom: 6px; }
+.rev-avance__barra { height: 14px; border-radius: 99px; background: var(--surface-sunken); overflow: hidden; }
+.rev-avance__barra span { display: block; height: 100%; background: var(--success, #2e7d4f); border-radius: 99px; }
+.rev-graficos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 16px; }
+.rev-grafico h3 { font-size: .95rem; margin: 0 0 8px; }
+.rev-apilada { display: flex; height: 22px; border-radius: 6px; overflow: hidden; background: var(--surface-sunken); }
+.rev-apilada__si { background: #2e7d4f; } .rev-apilada__no { background: #c0392b; }
+.rev-apilada__duda { background: #e0a100; } .rev-apilada__pendiente { background: #c9ced6; }
+.rev-leyenda { list-style: none; padding: 0; margin: 8px 0 0; font-size: .88rem; }
+.rev-leyenda li { margin: 2px 0; } .rev-leyenda i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+.rev-barra { display: grid; grid-template-columns: minmax(80px, 1fr) 2fr auto; gap: 8px; align-items: center; font-size: .88rem; margin: 4px 0; }
+.rev-barra__nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rev-barra__pista { height: 10px; border-radius: 99px; background: var(--surface-sunken); overflow: hidden; }
+.rev-barra__pista span { display: block; height: 100%; background: #3b6fb6; }
+.rev-columnas { display: flex; align-items: flex-end; gap: 3px; height: 130px; }
+.rev-columna { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
+.rev-columna__barra { width: 100%; background: #3b6fb6; border-radius: 3px 3px 0 0; min-height: 1px; }
+.rev-columna__n { font-size: .7rem; color: var(--text-muted, #666); }
+.rev-columna__dia { font-size: .7rem; color: var(--text-muted, #666); margin-top: 2px; }
+
+/* Métricas v2: personas a todo el ancho */
+.rev-graficos { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.rev-personas__tit { font-size: .95rem; margin: 20px 0 8px; }
+.rev-personas { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.rev-persona { border: 1px solid var(--border, #e3e6eb); border-radius: 10px; padding: 10px 12px; background: #fff; }
+.rev-persona__cab { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+.rev-persona__cab span { font-size: .8rem; text-align: right; }
+.rev-persona__barra { height: 10px; border-radius: 99px; background: var(--surface-sunken); overflow: hidden; }
+.rev-persona__barra span { display: block; height: 100%; min-width: 3px; background: #3b6fb6; border-radius: 99px; }
+.rev-persona__txt { font-size: .85rem; margin-top: 6px; }

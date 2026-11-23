@@ -74,6 +74,13 @@ def create_app(test_config=None):
     app.add_template_filter(hora_ar, "hora_ar")
     app.add_template_filter(codigo_hospital, "codigo_hospital")
 
+    def numero_ar(valor):
+        """17934 → «17.934»; 0.3 → «0,3» (formato argentino)."""
+        if isinstance(valor, float) and not valor.is_integer():
+            return f"{valor:,.1f}".replace(",", "\x00").replace(".", ",").replace("\x00", ".")
+        return f"{int(valor or 0):,}".replace(",", ".")
+    app.add_template_filter(numero_ar, "numero_ar")
+
     @app.template_global()
     def tutoriales_para_js(categoria):
         """Lista mínima [{slug}, ...] que progreso.js necesita para calcular

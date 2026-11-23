@@ -270,7 +270,7 @@ pantalla proyectada.
 - Tests: `tests/test_procesos.py` (41). Se ajustó `test_seguridad.py` para
   que el recorrido de rutas use un número en todo parámetro `<int:...>`.
 
-## Revisión de artículos por servicio (22/11/2026, SIN deployar ni commitear)
+## Revisión de artículos por servicio (22/11/2026, deployado en `25e8b4c`)
 
 Objetivo (fijado por la usuaria): que **cada servicio termine con su planilla final** de lo que hay
 que cargar en el Catálogo WEB de TIMBÓ, para unificar el nomenclador antes de que las compras pasen
@@ -377,6 +377,27 @@ no cambia; solo se actualiza el Catálogo WEB.
     la respuesta guardada no se toca).
   - ANTES DE SUBIR A MAIN: los commits 59071c9..b6109ba traen `timboDocumentacion/historialWp/*.zip`
     (historiales de WhatsApp), una imagen «…nómina.png» y un .docx: decidir si se sacan.
+- Deploy 22/11: `25e8b4c` en el servidor (migraciones aplicadas, chatbot 117/117).
+  `instalar_catalogo_diario.sh` instalado (primera copia: 17.792 ítems). Si da «set: Illegal option -»,
+  el .sh quedó con CRLF: `.gitattributes` fuerza LF para `*.sh`.
+- 23/11: borradas las llaves de prueba test, test2, comprasAnaEmi y cris (local y servidor, copia previa
+  `instance/antes-de-borrar-llaves-20261123-093712.sqlite3` en el servidor). Quedan Claudia, bereComputos
+  y rodriAnatoPatologica.
+- 23/11 (commit siguiente a `25e8b4c`):
+  - `/admin/nomenclador/revision` (Farmacia): lista de a 10 con páginas y sección de métricas
+    (`_metricas_revision` en `admin/routes.py`): barra total revisados/faltan, reparto Sí/No/Duda/Pendiente
+    con %, revisados por día (14 días), ritmo y días estimados, y una tarjeta por persona (hechos, total,
+    faltan, %, última vez). Nadie tiene lista asignada: el total de cada persona son los amarillos de las
+    bodegas donde tiene ≥5 respuestas (o la que más tiene). Filtro de plantilla `numero_ar` (17.934; 0,3).
+  - Página pública de equivalencias: «Equivalencias cargadas el … · Catálogo WEB verificado el …» y aviso
+    ⚠ por fila (y total) si el código ya no existe o es «NO UTILIZAR» en el catálogo del día
+    (`catalogo_diario.aviso_codigo`).
+  - Portada del portal: el recuadro «Tengo una duda» va debajo de Recursos.
+- Pendientes ofrecidos (esperan el sí de la usuaria): botón «⬇ Planilla para pedir altas (CAByS)» en
+  admin (sin repetidos, rechequeo contra el catálogo, columnas en el orden de la grilla del formulario
+  Timbó Compras CAByS, seguimiento por expediente); mail si falla la actualización del catálogo; control
+  manual semanal. Farmacia va por su circuito (SUFYD), tema aparte. Quién firma en cada servicio lo pide
+  ella. «Cód. Sistema Externo» del catálogo: probablemente SUFYD, falta confirmarlo con la Unidad Rectora.
 
 ## Estado al 16/11/2026 (deployado: servidor y `main` al día)
 

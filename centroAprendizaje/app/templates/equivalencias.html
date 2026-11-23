@@ -9,7 +9,8 @@
   <p class="hero__desc">¿Con qué nombre pido esto en TIMBÓ? Acá traducimos el nombre libre de cada artículo (como se pide en el sistema interno del hospital) al código del Catálogo WEB oficial de la Provincia.</p>
   <p class="equiv-actualizado">¿Necesitás el catálogo completo (unos 17.800 ítems)? Bajalo del <a href="https://www.santafe.gob.ar/gestionesdecompras/site/index.php?a=catalogo.index" target="_blank" rel="noopener">Catálogo WEB oficial</a> con el botón «Descargar Excel».</p>
   {% if actualizado_en %}
-  <p class="equiv-actualizado">Última actualización: {{ actualizado_en.strftime('%d/%m/%Y') }}</p>
+  <p class="equiv-actualizado">Equivalencias cargadas el {{ actualizado_en.strftime('%d/%m/%Y') }}{% if catalogo_al %} · Catálogo WEB verificado el <b>{{ catalogo_al }}</b> (se verifica solo todos los días){% endif %}.</p>
+  {% if con_aviso %}<p class="equiv-aviso-total">⚠ <b>{{ con_aviso }}</b> artículos tienen un código que ya no existe o que ahora figura como «NO UTILIZAR» en el Catálogo WEB. Están marcados con ⚠: no los uses sin revisarlos.</p>{% endif %}
   {% endif %}
 </div>
 
@@ -115,6 +116,8 @@
 <style>
 #equiv-aclaracion-dudosa[hidden],#equiv-aclaracion-sinmatch[hidden]{display:none;}
 .equiv-actualizado{font-size:12.5px;color:var(--text-faint);margin:10px 0 0;}
+.equiv-aviso-total{margin:10px 0 0;padding:8px 12px;border-radius:8px;background:#fff8db;border:1px solid #e0b100;font-size:13.5px;}
+.equiv-row__aviso{margin-top:6px;padding:4px 8px;border-radius:6px;background:#fff8db;color:#7a5a00;font-size:12.5px;font-weight:600;}
 .equiv-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 6px;}
 .equiv-todos-wrap{display:flex;justify-content:flex-end;margin:0 0 10px;}
 .equiv-todos{background:none;border:1px solid var(--border);border-radius:999px;padding:3px 12px;font:inherit;font-size:12.5px;color:var(--text-muted);cursor:pointer;}
@@ -298,6 +301,7 @@
           <div class="equiv-row__label">Buscar en TIMBÓ como</div>
           <div class="equiv-row__buscar">${escapeHtml(txt)}</div>
           ${d.codigo ? `<span class="equiv-row__codigo">${escapeHtml(d.codigo)}</span><button type="button" class="equiv-copiar" data-codigo="${escapeHtml(d.codigo)}">Copiar</button>` : ''}
+          ${d.aviso ? `<div class="equiv-row__aviso">⚠ ${escapeHtml(d.aviso)}</div>` : ''}
         </div>
         ${nota(d)}
       </div>`;
