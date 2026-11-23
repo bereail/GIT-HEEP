@@ -476,3 +476,10 @@ body.rs-enviada .rs-otras, body.rs-enviada .rs-grupo__todos { display: none !imp
 }
 .rs-catalogo-al { margin: 0 0 10px; font-size: .88rem; color: var(--rs-suave); }
 .rs-nota--antes { color: #7a5a00; background: #fff8db; border-radius: 6px; padding: 4px 8px; }
+
+/* Cartel cuando no quedan pendientes */
+.rs-terminaste { padding: 28px 20px; text-align: center; background: #e9f7ee; border: 2px solid #2e8b57; border-radius: var(--rs-radio); color: #1d5e3a; }
+.rs-terminaste b { display: block; font-size: 1.35rem; }
+.rs-terminaste p { margin: 8px 0 14px; }
+.rs-terminaste--parte { background: #fff; border-style: dashed; }
+.rs-terminaste--parte b { font-size: 1.1rem; }

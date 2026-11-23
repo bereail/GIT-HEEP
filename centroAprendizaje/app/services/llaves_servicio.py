@@ -140,13 +140,23 @@ def codigos_de(llave, tema=None):
 
 
 def avance(llave, tema=None):
-    codigos = codigos_de(llave, tema)
-    respondidas = [r for r in llave.revisiones if r.resultado and r.codigo_interno in codigos]
+    """Mismo criterio que la pantalla del servicio: revisado = todo lo que no
+    cae en «falta» (los de «Ya están en TIMBÓ» sin tocar cuentan, porque el
+    servicio solo los mira; «no sé» o «no coincide» sin decidir, no)."""
+    items, _ = items_de(llave, tema)
+    por_id = {r.codigo_interno: r for r in llave.revisiones}
     cuenta = defaultdict(int)
-    for r in respondidas:
-        cuenta[r.resultado] += 1
-    return {"total": len(codigos), "respondidos": len(respondidas), "por_resultado": dict(cuenta),
-            "necesidades": sum(1 for n in llave.necesidades if not n.quitada_en)}
+    revisados = solo_mirar = 0
+    for item in items:
+        r = por_id.get(item["id"])
+        if clasificar(item, r)[0] != "falta":
+            revisados += 1
+        if r and r.resultado:
+            cuenta[r.resultado] += 1
+        elif item["s"] == 3:
+            solo_mirar += 1
+    return {"total": len(items), "respondidos": revisados, "por_resultado": dict(cuenta),
+            "solo_mirar": solo_mirar, "necesidades": sum(1 for n in llave.necesidades if not n.quitada_en)}
 
 
 # ------------------------------------------------------------ respuestas ---

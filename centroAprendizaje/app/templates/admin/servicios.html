@@ -52,6 +52,7 @@
         <b>{{ a.respondidos }}</b> de {{ a.total }} revisados{% if a.total %} ({{ (100 * a.respondidos / a.total) | round | int }} %){% endif %}
         <div class="sv-chips">
           {% for clave, texto in resultados.items() %}{% if a.por_resultado.get(clave) %}<span class="sv-chip sv-chip--{{ clave }}">{{ texto }}: {{ a.por_resultado[clave] }}</span>{% endif %}{% endfor %}
+          {% if a.solo_mirar %}<span class="sv-chip">Ya estaban en TIMBÓ (solo para mirar): {{ a.solo_mirar }}</span>{% endif %}
           <span class="sv-chip">Faltan en el nomenclador: {{ a.necesidades }}</span>
         </div>
       </div>

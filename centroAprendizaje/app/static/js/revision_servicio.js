@@ -1057,6 +1057,28 @@
     });
   }
 
+  // Cuando no queda nada en la pestaña: «¡Terminaste!» si no queda nada en
+  // ninguna, o «Listo esta parte» si faltan en otra (el botón para ir lo pone
+  // pintarOtrasPestanas).
+  function cartelSinPendientes() {
+    var quedan = ITEMS.filter(function (i) { return !revisado(i.id); }).length;
+    var c = elem("div", "rs-terminaste" + (quedan ? " rs-terminaste--parte" : ""));
+    if (quedan) {
+      c.appendChild(elem("b", "", "Listo esta parte"));
+      c.appendChild(elem("p", "", "No quedan artículos para revisar acá. Te faltan " + quedan + " en otra pestaña."));
+      return c;
+    }
+    c.appendChild(elem("b", "", "¡Terminaste! No quedan más artículos para revisar."));
+    if (enviada()) c.appendChild(elem("p", "", "Tu revisión ya fue enviada."));
+    else if ($("rs-finalizar")) {
+      c.appendChild(elem("p", "", "Último paso: mirá la revisión final y enviala."));
+      var b = elem("button", "rs-btn rs-btn--grande", "Ver la revisión final"); b.type = "button";
+      b.addEventListener("click", function () { $("rs-finalizar").click(); });
+      c.appendChild(b);
+    }
+    return c;
+  }
+
   function pintarLista() {
     var lista = filtrados(), us = unidades(lista);
     var paginas = Math.max(1, Math.ceil(us.length / POR_PAGINA));
@@ -1064,7 +1086,7 @@
     if (ui.pagina < 0) ui.pagina = 0;
     var cont = $("rs-lista"); cont.textContent = "";
     var trozo = us.slice(ui.pagina * POR_PAGINA, (ui.pagina + 1) * POR_PAGINA);
-    if (!trozo.length) cont.appendChild(elem("div", "rs-vacio", "No hay artículos con este filtro en esta sección."));
+    if (!trozo.length) cont.appendChild(ui.filtro || ui.buscar ? elem("div", "rs-vacio", "No hay artículos con este filtro en esta sección.") : cartelSinPendientes());
     trozo.forEach(function (u) {
       if (soloVer(u.items[0])) u.items.forEach(function (i) { cont.appendChild(tarjetaVer(i)); });
       else cont.appendChild(u.grupo ? tarjetaGrupo(u) : tarjeta(u.items[0]));
@@ -1129,11 +1151,10 @@
       col.querySelector(".rs-col__cuenta").textContent = lista.length + extra.length + (idCol === "rs-col-pedir" ? soloEnPestana : 0);
       if (idCol === "rs-col-aclaracion") col.hidden = !lista.length;
       var max = verTodasColumnas[idCol] ? lista.length : 40;
-      if (idCol === "rs-col-pedir") {
-        // Primero lo que hay que pedir que carguen; después lo que ya está.
-        var yaEsta = function (i) { return clasificar(i, respuesta(i.id)) === "estan"; };
-        lista.sort(function (a, b) { return yaEsta(a) - yaEsta(b); });
-      }
+      // Lo último que se respondió va arriba de todo. En la verde, primero lo
+      // que hay que pedir que carguen y después lo que ya está.
+      var yaEsta = idCol === "rs-col-pedir" ? function (i) { return clasificar(i, respuesta(i.id)) === "estan"; } : function () { return false; };
+      lista.sort(function (a, b) { return (yaEsta(a) - yaEsta(b)) || (fechaDe(respuesta(b.id)) - fechaDe(respuesta(a.id))); });
       var titulo = "";
       lista.slice(0, max).forEach(function (i) {
         if (idCol === "rs-col-pedir") {
