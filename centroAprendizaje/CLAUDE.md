@@ -36,7 +36,7 @@ borrada con copia previa). La usuaria **APROBÓ la revisión final de la llave �
   Esquema de soporte, Canva) y el programa completo; los módulos 2-7 figuran con sus temas y «🔒». Cuando la usuaria
   apruebe cada evaluación en el Aula, bajar el material nuevo desde su Chrome (los «nube/…/s/<token>» se bajan con
   curl `/download`; los del aula, con fetch en la pestaña: usar el enlace de `mod/resource/view.php`, el de la página
-  devuelve un «Aviso» HTML) y sumarlo al JSON. NUNCA hacer las evaluaciones por ella (son su certificación).
+  devuelve un «Aviso» HTML) y sumarlo al JSON. NUNCA hacer las evaluaciones en su lugar (son su certificación).
 - Reglas: ssh/push/deploy los corre la usuaria con `!`; nada de commits/deploy sin su ok; no tocar Farmacia ni
   Laboratorio; nunca perder datos (copias antes de borrar).
 
