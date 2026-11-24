@@ -422,6 +422,14 @@ no cambia; solo se actualiza el Catálogo WEB.
 - 23/11: en Informática, 44 artículos de laboratorio/odontología (bodega INFORMATICA compartida con
   FARMACIA+MICROBIOLOGIA/ODONTOLOGIA en la base de compras) quedaron en «Hay que cargar» como «Es otra cosa»;
   la usuaria los corrigió a mano. La usuaria va a reabrir/empezar de cero Informática con la pantalla nueva.
+- 24/11: la pestaña 3 «Ya están en TIMBÓ» ya no es solo para mirar: cada tarjeta tiene «¿Está mal? Corregilo
+  acá» con «No es lo mismo» (no_corresponde+agregar → «Hay que cargar») y «No es de nuestro servicio»
+  (otro_servicio → fuera), más «Quitar corrección». Motivo: en «informaica» «PC DE ESCRITORIO» tenía 11.2.3.6
+  ESCRITORIO (un mueble) y 14 de laboratorio/odontología figuraban como de Informática, sin poder corregirse.
+  La revisión final avisa «Corregidos en «Ya están en TIMBÓ»» y «otro servicio» ahora incluye los de la pestaña
+  3 sin tocar. También (d373709): un ítem genérico del catálogo cuyas palabras están todas en el artículo cuenta
+  100% (CABLE UTP para un cable UTP de marca). Llave vieja «informatica» reemplazada por «informaica»: se borra con
+  el script del scratchpad `borrar_llave_informatica.py` (ensayo sin «aplicar»; con «aplicar» hace copia antes).
 - Pendientes ofrecidos (esperan el sí de la usuaria): botón «⬇ Planilla para pedir altas (CAByS)» en
   admin (sin repetidos, rechequeo contra el catálogo, columnas en el orden de la grilla del formulario
   Timbó Compras CAByS, seguimiento por expediente); mail si falla la actualización del catálogo; control

@@ -223,3 +223,16 @@ def test_generico_que_cubre_el_articulo():
     catalogo = {"12.2.17.2": ["12 - COM", "12.2 - X", "12.2.17", "CABLE UTP", "2.9.6.0 Rep.", "12.2.17.2", "CABLE UTP", ""]}
     h = ca.Buscador(catalogo).buscar("Cable utp Furukawa Interior Gigalan Cat 6 x 305 Mts")
     assert h[0]["codigo"] == "12.2.17.2" and h[0]["pct"] == 100
+
+
+def test_avisa_lo_corregido_y_lo_ajeno_en_ya_estan():
+    from datetime import datetime as dt
+    items = [{"id": "1", "n": "PC DE ESCRITORIO", "cp": "11.2.3.6", "dn": "X — ESCRITORIO", "ob": None, "s": 3},
+             {"id": "2", "n": "Tween 20", "cp": "5.1.1.1", "dn": "X — TWEEN", "ob": ["LABORATORIO"], "s": 3}]
+    respuestas = {"1": SimpleNamespace(resultado="no_corresponde", decision="agregar", actualizado_en=dt(2026, 11, 24),
+                                       codigo_correcto="", codigo_propuesto="11.2.3.6")}
+    llave = SimpleNamespace(nombres_bodegas=["INFORMATICA"])
+    avisos = {a["tipo"]: a for a in ca.inconsistencias(llave, items, respuestas, {"cargar": []}, None)}
+    assert avisos["corregido_estan"]["filas"][0][0] == "PC DE ESCRITORIO"
+    assert avisos["otro_servicio"]["filas"][0][0] == "Tween 20"
+    assert ls.clasificar(items[0], respuestas["1"])[0] == "cargar"

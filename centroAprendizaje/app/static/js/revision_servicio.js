@@ -79,7 +79,7 @@
     },
     3: {
       titulo: "3 · Ya están en TIMBÓ",
-      texto: "Estos artículos ya están cargados en TIMBÓ. No tenés que hacer nada: es solo para que los veas.",
+      texto: "Estos artículos ya están cargados en TIMBÓ. No tenés que hacer nada, salvo que alguno esté mal: si el artículo de TIMBÓ es otra cosa o no es de tu servicio, abrí «¿Está mal? Corregilo acá» en esa tarjeta.",
       pasos: []
     }
   };
@@ -923,7 +923,27 @@
     var prop = elem("div", "rs-propuesto");
     var linea = elem("div"); linea.appendChild(document.createTextNode("En TIMBÓ: ")); linea.appendChild(elem("code", "", i.cp || ""));
     prop.appendChild(linea); prop.appendChild(elem("div", "", i.dn || "")); t.appendChild(prop);
-    t.appendChild(elem("p", "rs-ver-ok", "✓ Ya está en TIMBÓ. No tenés que hacer nada."));
+    // Si el artículo de TIMBÓ no es el mismo (pasó con «PC DE ESCRITORIO» →
+    // ESCRITORIO, un mueble) o no es del servicio, se puede corregir acá.
+    var r = respuesta(i.id) || {};
+    if (r.r === "no_corresponde" && r.dec === "agregar") {
+      t.classList.add("rs-tarjeta--corregida");
+      t.appendChild(elem("p", "rs-ver-corregido", "Marcaste que no es lo mismo: va a «Hay que pedir que los carguen»."));
+    } else if (r.r === "otro_servicio") {
+      t.classList.add("rs-tarjeta--corregida");
+      t.appendChild(elem("p", "rs-ver-corregido", "Marcaste que no es de tu servicio: queda fuera de tu revisión."));
+    } else {
+      t.appendChild(elem("p", "rs-ver-ok", "✓ Ya está en TIMBÓ. No tenés que hacer nada."));
+    }
+    var d = elem("details", "rs-ver-corregir"); d.open = !!r.r;
+    d.appendChild(elem("summary", "", "¿Está mal? Corregilo acá"));
+    var b = elem("div", "rs-paso__botones");
+    boton(b, "rs-res rs-mal", "No es lo mismo", { r: "no_corresponde", dec: "agregar" }, r.r === "no_corresponde" && r.dec === "agregar",
+      "Lo usan, pero el artículo de TIMBÓ es otra cosa: se pide que lo carguen");
+    boton(b, "rs-res rs-no", "No es de nuestro servicio", { r: "otro_servicio" }, r.r === "otro_servicio",
+      "Está en la bodega por error: lo usa otro servicio");
+    if (r.r) { var q = elem("button", "rs-borrar", "Quitar corrección"); q.type = "button"; b.appendChild(q); }
+    d.appendChild(b); t.appendChild(d);
     return t;
   }
 
@@ -1242,7 +1262,7 @@
     $("rs-avance-relleno").style.width = (c.total ? (100 * c.revisados / c.total) : 0).toFixed(1) + "%";
     document.querySelectorAll("[data-cuenta]").forEach(function (s) {
       var p = c.porSeccion[s.dataset.cuenta];
-      s.textContent = s.dataset.cuenta === "3" ? p[1] + " artículos · solo para mirar" : p[0] + " de " + p[1] + " revisados";
+      s.textContent = s.dataset.cuenta === "3" ? p[1] + " artículos · mirá si alguno está mal" : p[0] + " de " + p[1] + " revisados";
     });
     document.querySelectorAll(".rs-tab").forEach(function (b) { b.classList.toggle("activa", Number(b.dataset.seccion) === ui.seccion); });
     var res = $("rs-resumen"); res.textContent = "";
@@ -1655,7 +1675,7 @@
       var t = e.target.closest("[data-id]"); if (!t) return;
       var id = t.dataset.id, item = POR_ID.get(id);
       var obsActual = function () { var o = t.querySelector(".rs-obs"); return o ? o.value : ""; };
-      var repintar = function () { if (ui.filtro) actualizarTarjeta(t, id); else pintarLista(); pintarAvance(); guardar(true); };
+      var repintar = function () { if (ui.filtro && !soloVer(item)) actualizarTarjeta(t, id); else pintarLista(); pintarAvance(); guardar(true); };
       var boton = e.target.closest(".rs-res, .rs-enlace-mas, [data-guardar]");
       if (boton) {
         var r = respuesta(id) || {};
@@ -1693,7 +1713,7 @@
       if (e.target.closest(".rs-borrar")) {
         delete abiertos[id];
         cambiarResultado(id, null, obsActual());
-        if (ui.filtro) actualizarTarjeta(t, id); else pintarLista();
+        if (ui.filtro && !soloVer(item)) actualizarTarjeta(t, id); else pintarLista();
         pintarAvance(); guardar(true);
         return;
       }

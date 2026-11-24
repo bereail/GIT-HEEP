@@ -327,7 +327,9 @@ def inconsistencias(llave, items, respuestas, grupos, buscador):
     # 4. Lo van a pedir, pero también figura en bodegas de otros servicios.
     filas = []
     for i in items:
-        if grupo_de[i["id"]] in ("cargar", "estan") and respuestas.get(i["id"]):
+        # También los de «Ya están en TIMBÓ» sin tocar: el servicio solo los
+        # miraba y podían ser de otro (caso de los de laboratorio en Informática).
+        if grupo_de[i["id"]] in ("cargar", "estan") and (respuestas.get(i["id"]) or i["s"] == 3):
             otras = set(i.get("ob") or []) - BODEGAS_GENERALES - mios
             if otras:
                 filas.append((i["n"], "También figura en " + ", ".join(sorted(otras))))
@@ -354,6 +356,17 @@ def inconsistencias(llave, items, respuestas, grupos, buscador):
             filas.append((f[3], f"Parecido a «{par['n']}», que ya está en TIMBÓ con {codigo or par.get('cp', '')}"))
     agregar("como_otro", "Para pedir el alta, pero parecido a algo que ya está en TIMBÓ",
             "Quizás sirva el mismo código (como ítem general, con el detalle en la observación).", filas)
+
+    # 7. Corregidos por el servicio en «Ya están en TIMBÓ» (el código propuesto
+    # era otra cosa, como «PC DE ESCRITORIO» → ESCRITORIO, un mueble).
+    filas = []
+    for i in items:
+        r = respuestas.get(i["id"])
+        if i["s"] == 3 and r and r.resultado in ("no_corresponde", "otro_servicio"):
+            que = "No es lo mismo: pasa a pedir el alta" if r.resultado == "no_corresponde" else "No es de este servicio"
+            filas.append((i["n"], f"{que} · TIMBÓ proponía {i.get('cp', '')} «{(i.get('dn') or '').split(' — ')[-1]}»"))
+    agregar("corregido_estan", "Corregidos en «Ya están en TIMBÓ»",
+            "El servicio dijo que el código que parecía seguro no corresponde. Confirmalo antes de pedir.", filas)
     return avisos
 
 
