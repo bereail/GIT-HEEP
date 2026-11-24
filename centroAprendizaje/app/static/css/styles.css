@@ -2226,6 +2226,16 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .ca-tabla th:nth-child(1), .ca-tabla td:nth-child(1) { width: 34%; }
 .ca-tabla th:nth-child(2), .ca-tabla td:nth-child(2) { width: 42%; }
 .ca-tabla { table-layout: fixed; width: 100%; }
+.ca-tabla--editable th:nth-child(1), .ca-tabla--editable td:nth-child(1) { width: 16%; }
+.ca-tabla--editable th:nth-child(2), .ca-tabla--editable td:nth-child(2) { width: 17%; }
+.ca-tabla--editable th:nth-child(3), .ca-tabla--editable td:nth-child(3) { width: 17%; }
+.ca-tabla--editable th:nth-child(4), .ca-tabla--editable td:nth-child(4) { width: 26%; }
+.ca-tabla--editable th:nth-child(5), .ca-tabla--editable td:nth-child(5) { width: 24%; }
+.ca-tabla--editable td:nth-child(4), .ca-tabla--editable td:nth-child(5) { white-space: normal; overflow-wrap: normal; }
+.ca-editable { display: flex; flex-direction: column; gap: 6px; }
+.ca-editable input, .ca-editable select { width: 100%; padding: 6px 8px; border: 1px solid var(--border, #c9ced6); border-radius: 6px; font-size: .85rem; box-sizing: border-box; }
+.ca-editable label { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; font-size: .85rem; font-weight: 600; white-space: normal; }
+.ca-editable label input[type="checkbox"] { width: auto; }
 .ca-seccion { border-left: 6px solid; }
 .ca-borde--verde { border-left-color: #2e8b57; }
 .ca-borde--azul { border-left-color: #3b6fb6; }

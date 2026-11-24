@@ -1,0 +1,134 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Comparar archivos (local) — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">📤 Comparar archivos a mano (solo local)</h1>
+</div>
+<p class="text-muted" style="margin-top:4px">
+  Para cuando ya tenés el Catálogo WEB y la planilla de «Revisión final automática» (sin aprobar) bajados a tu PC,
+  y querés rehacer la comparación sin depender de la base en vivo ni de la descarga automática. Solo lee los dos
+  archivos: no toca el servidor real ni la base. Esto se prueba acá en local; cuando esté listo se sube la réplica
+  exacta al servidor.
+</p>
+
+<section class="card rev-admin-bloque ca-seccion">
+  <h2 class="section__title" style="margin-top:0">1) Subí los dos archivos</h2>
+  <details class="ca-explica">
+    <summary>De dónde sale cada uno</summary>
+    <ol>
+      <li><b>Catálogo WEB (CSV):</b> botón «⬇ Bajar el catálogo (CSV)» en Admin → Revisión por servicio, o el que
+        bajes directo del sitio oficial.</li>
+      <li><b>Excel de la revisión:</b> botón «⬇️ Bajar la planilla (Excel)» de la pantalla «Revisión final
+        automática» de ese servicio (la hoja «PARA PEDIR EL ALTA», sin aprobar todavía).</li>
+    </ol>
+  </details>
+  <form method="post" enctype="multipart/form-data" class="ca-aprobar">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="accion" value="comparar" />
+    <label>Nombre del servicio (para el nombre del archivo final)
+      <input name="servicio" maxlength="120" value="{{ servicio }}" placeholder="informática"></label>
+    <label>Catálogo WEB (.csv) <input type="file" name="catalogo" accept=".csv" required></label>
+    <label>Excel de la revisión (.xlsx) <input type="file" name="excel" accept=".xlsx" required></label>
+    <button class="btn btn--primary">🔎 Comparar</button>
+  </form>
+</section>
+
+{% if resultado %}
+{% set r = resultado %}
+<form method="post">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+<input type="hidden" name="accion" value="generar" />
+<input type="hidden" name="token" value="{{ token }}" />
+
+<section class="card rev-admin-bloque ca-seccion" style="margin-top:16px">
+  <h2 class="section__title" style="margin-top:0">2) Resultado</h2>
+  <p class="text-muted">Catálogo subido: <b>{{ r.catalogo }}</b> ({{ r.catalogo_items | numero_ar }} ítems) ·
+    {{ r.filas | length }} artículos comparados.</p>
+  <p class="ca-alerta" style="background:var(--surface-sunken)">Esta comparación no sabe qué apareció en el
+    catálogo después de ningún envío puntual (no hay fecha de envío en un Excel suelto): si algo de la lista se dio
+    de alta hace poco, puede aparecer como «ya existe» en vez de «apareció después».</p>
+  <div class="ca-resumen">
+    {% for k in orden %}<a class="ca-chip ca--{{ estados[k][1] }}" href="#ca-{{ k }}"><b>{{ r.cuenta[k] }}</b> {{ estados[k][0] }}</a>{% endfor %}
+    <a class="ca-chip ca--azul" href="#ca-grupos"><b>{{ r.grupos | length }}</b> grupos que se pueden pedir como uno</a>
+  </div>
+</section>
+
+{% if r.grupos %}
+<section class="card rev-admin-bloque ca-seccion ca-borde--azul" id="ca-grupos">
+  <details open>
+  <summary><h2 class="section__title" style="display:inline;margin:0">Se pueden pedir como uno solo ({{ r.grupos | length }})</h2></summary>
+  <div class="sv-tabla-scroll"><table class="data-table ca-tabla">
+    <thead><tr><th>Nombre genérico sugerido</th><th>Artículos que junta</th><th>¿Ya existe en el Catálogo WEB?</th></tr></thead>
+    <tbody>{% for g in r.grupos %}
+      <tr>
+        <td><b>{{ g.nombre }}</b><br><span class="text-muted">{{ g.miembros | length }} artículos</span></td>
+        <td>{% for m in g.miembros %}<div>{{ m }}</div>{% endfor %}</td>
+        <td>{% for e in g.existentes %}<div class="ca-parecido">{{ e.texto }}</div>{% else %}<span class="text-muted">No: habría que pedir el alta del genérico.</span>{% endfor %}</td>
+      </tr>{% endfor %}
+    </tbody>
+  </table></div>
+  </details>
+</section>
+{% endif %}
+
+{% for k in orden %}{% set lista = r.filas | selectattr('estado', 'equalto', k) | list %}{% if lista %}
+{% set editable = k in para_cargar %}
+<section class="card rev-admin-bloque ca-seccion ca-borde--{{ estados[k][1] }}" id="ca-{{ k }}">
+  <details {% if editable or k == 'puede_existir' %}open{% endif %}>
+  <summary><h2 class="section__title" style="display:inline;margin:0">{{ estados[k][0] }} ({{ lista | length }})</h2>
+    {% if editable %}<span class="text-muted"> — estos van a la GRILLA PARA CARGAR, completá lo que falte</span>{% else %}<span class="text-muted"> — quedan afuera, no se piden</span>{% endif %}</summary>
+  <div class="sv-tabla-scroll"><table class="data-table ca-tabla{% if editable %} ca-tabla--editable{% endif %}">
+    <thead><tr><th>Artículo</th><th>Parecidos en el Catálogo WEB</th><th>Rubro / Subrubro / Elemento / Objeto del gasto</th>{% if editable %}<th>Unidad / Marca / Aporta doc.</th><th>¿Ya la cargaste?</th>{% endif %}</tr></thead>
+    <tbody>{% for f in lista %}{% set clave = f.codigo or f.nombre %}{% set s = f.sugerencia or {} %}{% set obj = objeto_del_gasto(s.get('objeto', '')) %}
+      <tr>
+        <td><b>{{ f.nombre }}</b><br><span class="text-muted">Cód. {{ f.codigo or '—' }}</span>
+          {% if f.observacion %}<br><i>«{{ f.observacion }}»</i>{% endif %}
+          {% if f.repetido_con %}<br><span class="ca-rep">Repetido con: {{ f.repetido_con | join(' · ') }}</span>{% endif %}</td>
+        <td>{% for p in f.parecidos %}<div class="ca-parecido">{{ p.texto }} <span class="text-muted">({{ p.pct }} %)</span></div>{% else %}<span class="text-muted">Nada parecido</span>{% endfor %}</td>
+        {% if editable %}
+        <td class="ca-editable">
+          <input name="rubro__{{ clave }}" placeholder="Rubro/especie" maxlength="120" value="{{ s.get('rubro', '') }}">
+          <input name="subrubro__{{ clave }}" placeholder="Subrubro/familia" maxlength="120" value="{{ s.get('subrubro', '') }}">
+          <input name="elemento__{{ clave }}" placeholder="Elemento" maxlength="120" value="{{ s.get('elemento', '') }}">
+          <div style="display:flex;gap:4px">
+            <input name="inciso__{{ clave }}" placeholder="Inc." maxlength="3" style="width:46px" value="{{ obj[0] }}">
+            <input name="principal__{{ clave }}" placeholder="P.pr." maxlength="3" style="width:46px" value="{{ obj[1] }}">
+            <input name="parcial__{{ clave }}" placeholder="P.pa." maxlength="3" style="width:46px" value="{{ obj[2] }}">
+            <input name="subparcial__{{ clave }}" placeholder="Sub." maxlength="3" style="width:46px" value="{{ obj[3] }}">
+          </div>
+          {% if not s %}<span class="ca-rep">Sin sugerencia: completá vos</span>{% endif %}
+        </td>
+        <td class="ca-editable">
+          <input name="unidad__{{ clave }}" placeholder="Unidad de medida" maxlength="40">
+          <input name="marca__{{ clave }}" placeholder="Marca (o guion)" maxlength="60">
+          <select name="aporta__{{ clave }}">
+            <option value="No" selected>Aporta doc.: No</option>
+            <option value="Sí">Aporta doc.: Sí</option>
+          </select>
+        </td>
+        <td class="ca-editable">
+          <label><input type="checkbox" name="cargada__{{ clave }}" value="1"> Ya cargada</label>
+          <input name="sdo__{{ clave }}" placeholder="N° de SDO" maxlength="60">
+        </td>
+        {% else %}
+        <td>{% if f.sugerencia %}{{ f.sugerencia.rubro }}<br>{{ f.sugerencia.subrubro }}<br>{{ f.sugerencia.elemento }}<br><span class="text-muted">Obj. gasto {{ f.sugerencia.objeto }} · de {{ f.sugerencia.desde }}</span>{% else %}<span class="text-muted">—</span>{% endif %}</td>
+        {% endif %}
+      </tr>{% endfor %}
+    </tbody>
+  </table></div>
+  </details>
+</section>
+{% endif %}{% endfor %}
+
+<section class="card rev-admin-bloque ca-seccion ca-borde--verde">
+  <h2 class="section__title" style="margin-top:0">3) Generar la planilla de carga (prueba local)</h2>
+  <p class="text-muted">Baja el mismo formato <b>GRILLA PARA CARGAR</b> que usás para cargar en TIMBÓ, con lo que
+    completaste arriba (unidad, marca, aporta documentación, ¿ya la cargaste?, N° de SDO) y filtrada (sin los que ya
+    existen ni los repetidos). <b>Esto NO queda registrado en ningún lado</b> — es solo para esta prueba local. La
+    aprobación real, la que sí queda registrada, se hace en el servidor real, en la pantalla de siempre.</p>
+  <label>Tu nombre y apellido <input name="aprobado_por" required minlength="3" maxlength="120" autocomplete="name"></label>
+  <button class="btn btn--primary">⬇️ Generar y bajar la planilla de prueba</button>
+</section>
+</form>
+{% endif %}
+{% endblock %}

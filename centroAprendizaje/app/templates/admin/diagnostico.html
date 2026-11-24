@@ -1,0 +1,72 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Diagnóstico (local) — Panel de administración{% endblock %}
+{% block contenido %}
+<div class="admin-section-head">
+  <h1 style="margin:0">🩺 Diagnóstico de respuestas guardadas</h1>
+</div>
+<p class="text-muted" style="margin-top:4px">
+  Solo lee la base: no cambia nada. Pensado para mirar, en tu PC, una COPIA de la base de producción antes de tocar
+  el servidor real. Si esto se abre apuntando a esa copia, los números de abajo son los de producción al momento
+  de bajarla.
+</p>
+
+<section class="card rev-admin-bloque ca-seccion">
+  <h2 class="section__title" style="margin-top:0">Historial de «Actualizar catálogo» (últimas {{ historial|length }} corridas)</h2>
+  <p class="text-muted">Cada corrida controla que la cantidad de respuestas guardadas no haya bajado respecto de la anterior. Acá se ve el número exacto de cada una, aunque haya salido «ok».</p>
+  <div class="sv-tabla-scroll"><table class="data-table">
+    <thead><tr><th>Fecha</th><th>Estado</th><th>Respuestas</th><th>Diferencia</th><th>Ítems del catálogo</th><th>Mensaje</th></tr></thead>
+    <tbody>
+      {% for h in historial %}
+      <tr{% if h.delta is not none and h.delta < 0 %} class="sv-catalogo--alerta"{% endif %}>
+        <td>{{ hora_ar(h.c.en) }}</td>
+        <td>{{ {'ok': '✓ ok', 'error': '✗ error', 'alerta': '⚠ alerta'}[h.c.estado] }}</td>
+        <td><b>{{ h.c.respuestas }}</b></td>
+        <td>{% if h.delta is none %}—{% elif h.delta < 0 %}<b style="color:#b00020">{{ h.delta }}</b>{% elif h.delta > 0 %}+{{ h.delta }}{% else %}0{% endif %}</td>
+        <td>{{ h.c.items }}</td>
+        <td>{{ h.c.mensaje }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">Todavía no hay ninguna corrida registrada en esta base.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+
+<section class="card rev-admin-bloque ca-seccion" style="margin-top:16px">
+  <h2 class="section__title" style="margin-top:0">Conteo actual</h2>
+  <div class="sv-cat__cambios">
+    <span><b>{{ total_revisiones }}</b> revisiones de servicio</span>
+    <span><b>{{ total_necesidades }}</b> necesidades de servicio</span>
+    <span><b>{{ total_observaciones }}</b> observaciones del nomenclador (Farmacia)</span>
+    <span><b>{{ total_respuestas }}</b> total (lo que compara «Actualizar catálogo»)</span>
+  </div>
+</section>
+
+<section class="card rev-admin-bloque ca-seccion" style="margin-top:16px">
+  <h2 class="section__title" style="margin-top:0">Por servicio</h2>
+  <div class="sv-tabla-scroll"><table class="data-table">
+    <thead><tr><th>Servicio</th><th>Revisiones de artículos</th><th>Necesidades cargadas</th></tr></thead>
+    <tbody>
+      {% for servicio, revisiones, necesidades in por_servicio %}
+      <tr><td>{{ servicio }}</td><td>{{ revisiones }}</td><td>{{ necesidades }}</td></tr>
+      {% else %}
+      <tr><td colspan="3">No hay llaves de servicio en esta base.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+
+<section class="card rev-admin-bloque ca-seccion" style="margin-top:16px">
+  <h2 class="section__title" style="margin-top:0">Por revisor de nomenclador (Farmacia)</h2>
+  <div class="sv-tabla-scroll"><table class="data-table">
+    <thead><tr><th>Revisor</th><th>Observaciones</th></tr></thead>
+    <tbody>
+      {% for nombre, cantidad in por_revisor %}
+      <tr><td>{{ nombre }}</td><td>{{ cantidad }}</td></tr>
+      {% else %}
+      <tr><td colspan="2">No hay revisores de nomenclador en esta base.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+{% endblock %}
