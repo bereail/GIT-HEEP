@@ -132,7 +132,7 @@ class Buscador:
             if "NO UTILIZAR" in texto.upper():
                 continue
             p = palabras(texto) | set(_pares(texto))
-            self.datos[codigo] = (p, medida(texto), fila[2], palabras(fila[3]) | set(_pares(fila[3])))
+            self.datos[codigo] = (p, medida(texto), fila[2], palabras(fila[3]) | set(_pares(fila[3])), palabras(texto))
             for w in p:
                 self.indice[w].add(codigo)
         # Para los tipeos: palabras largas agrupadas por sus 3 primeras letras
@@ -168,7 +168,7 @@ class Buscador:
             candidatos |= self.indice.get(w, set())
         lista = []
         for c in candidatos:
-            q, mq, _, en_elemento = self.datos[c]
+            q, mq, _, en_elemento, solas = self.datos[c]
             cubiertas = {w for w in p if w in q or variantes[w] & q}
             for junta, partes in pares.items():
                 if junta in q:
@@ -181,7 +181,13 @@ class Buscador:
             # EPSON va con «IMPRESORA MULTIFUNCION», no con «TINTA PARA IMPRESORA».
             del_elemento = len({w for w in p if w in en_elemento}
                                | {w for j, partes in pares.items() if j in en_elemento for w in partes})
-            lista.append((len(cubiertas) / len(p), m <= mq or not mq, len(q - p), c, del_elemento))
+            puntaje = len(cubiertas) / len(p)
+            # Ítem GENÉRICO: todas sus palabras están en el artículo («CABLE UTP»
+            # para «Cable utp Furukawa Interior Gigalan Cat 6»): puede servir.
+            juntas_art = {w for j, partes in pares.items() for w in partes if j in q}
+            if len(solas) >= 2 and solas <= (p | juntas_art) and not mq:
+                puntaje = 1.0
+            lista.append((puntaje, m <= mq or not mq, len(q - p), c, del_elemento))
         # A igual parecido, primero el elemento con más ítems parecidos (PEN
         # DRIVE de informática antes que PEN DRIVE PARA ELECCIONES).
         por_elemento = defaultdict(int)

@@ -217,3 +217,9 @@ def test_marcar_pedidos_y_se_ven_en_el_nomenclador(admin_client, client, app, mo
         assert [(p.nombre, p.sdo, p.codigo_interno) for p in pedidos] == [("Impresora térmica", "SDO-2", "9")]
     datos = client.get("/temas/timbo-compras/equivalencias.json").get_json()
     assert "Alta pedida en TIMBÓ el" in datos[0]["pedido"] and "SDO-2" in datos[0]["pedido"]
+
+
+def test_generico_que_cubre_el_articulo():
+    catalogo = {"12.2.17.2": ["12 - COM", "12.2 - X", "12.2.17", "CABLE UTP", "2.9.6.0 Rep.", "12.2.17.2", "CABLE UTP", ""]}
+    h = ca.Buscador(catalogo).buscar("Cable utp Furukawa Interior Gigalan Cat 6 x 305 Mts")
+    assert h[0]["codigo"] == "12.2.17.2" and h[0]["pct"] == 100
