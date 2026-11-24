@@ -12,7 +12,7 @@ real** (falta: mergear a `main` y correr `scripts/deploy_servidor.sh` por ssh, c
 deploy ya documentado en este archivo). Seguir desde acá:
 
 - **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
-  Firmante Carolina Analia Milagros Retamar (CUIL 27282388052). Estado actual: esperando su firma (Paso 6 de
+  Firmante Carolina Analia Milagros Retamar. Estado actual: esperando su firma (Paso 6 de
   `PASO_A_PASO`). Después evalúa la Unidad Rectora Central y asigna el código SIPAF — anotar cuando llegue el mail.
 - **5 artículos cargados** (marcados «Se pidieron para cargar» en el Nomenclador, con ese mismo N° de SDO):
   - fuente atx 500w o superior (cód. 19024) → 19 / 19.1 / **19.1.78 FUENTE DE ALIMENTACION** (ya existía en 300W,
