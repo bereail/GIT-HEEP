@@ -261,3 +261,13 @@ def test_curso_timbo_paso_a_paso(app):
     html = r.get_data(as_text=True)
     assert "Chequeo de lectura 7" in html and "programa-del-curso.pdf" in html
     assert "/timbo-paso-a-paso" in cliente.get("/").get_data(as_text=True)
+
+
+def test_curso_administrador_local_solo_en_admin(app, admin_client):
+    anonimo = app.test_client()
+    assert anonimo.get("/admin/capacitacion/administrador-local").status_code in (302, 401, 403)
+    r = admin_client.get("/admin/capacitacion/administrador-local")
+    assert r.status_code == 200 and "Administrador Local" in r.get_data(as_text=True)
+    assert admin_client.get("/admin/capacitacion/administrador-local/m1-introduccion.pdf").status_code == 200
+    assert admin_client.get("/admin/capacitacion/administrador-local/..%2Fcapacitacion.json").status_code == 404
+    assert anonimo.get("/admin/capacitacion/administrador-local/m1-introduccion.pdf").status_code != 200

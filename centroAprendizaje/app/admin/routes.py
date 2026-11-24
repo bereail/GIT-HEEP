@@ -1092,6 +1092,23 @@ def capacitacion_archivo(nombre):
     return send_from_directory(recursos.ARCHIVOS, nombre, as_attachment=True)
 
 
+@admin_bp.route("/capacitacion/administrador-local")
+@requiere_admin
+def curso_admin_local():
+    return render_template("admin/curso_admin_local.html", curso=recursos.curso_admin_local())
+
+
+@admin_bp.route("/capacitacion/administrador-local/<nombre>")
+@requiere_admin
+def curso_admin_local_archivo(nombre):
+    curso = recursos.curso_admin_local()
+    permitidos = {curso["programa"]["archivo"]} | {m["archivo"] for mod in curso["modulos"]
+                                                   for m in mod.get("materiales", []) if m["tipo"] == "pdf"}
+    if nombre not in permitidos:
+        abort(404)
+    return send_from_directory(os.path.join(recursos.ARCHIVOS, "admin-local"), nombre)
+
+
 # ------------------------------------------------- revisión del nomenclador --
 
 # Resultado de cada ítem amarillo: "si", "no", "duda" o "pendiente" (sin

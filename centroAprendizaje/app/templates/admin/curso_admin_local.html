@@ -1,0 +1,51 @@
+{% extends "admin/base_admin.html" %}
+{% block titulo %}Administrador Local de Timbó{% endblock %}
+{% block shell_clase %}admin-shell--ancho{% endblock %}
+{% macro material(m) -%}
+  {% if m.tipo == 'pdf' %}
+  <a class="ct-material" href="{{ url_for('admin.curso_admin_local_archivo', nombre=m.archivo) }}" target="_blank" rel="noopener"><span class="ct-material__icono" aria-hidden="true">📄</span><span>{{ m.titulo }}<small>PDF</small></span></a>
+  {% else %}
+  <a class="ct-material" href="{{ m.url }}" target="_blank" rel="noopener"><span class="ct-material__icono" aria-hidden="true">✨</span><span>{{ m.titulo }}<small>{{ m.detalle }}</small></span></a>
+  {% endif %}
+{%- endmacro %}
+{% block contenido %}
+<div class="callout callout--warning rec-borrador"><span class="callout__icon">🔒</span><div><b>Privado.</b> Solo se ve en el panel; no está publicado.</div></div>
+<div class="hero">
+  <div class="hero__eyebrow">Curso oficial · Aula Virtual de la Provincia</div>
+  <h1>🛡️ Administrador Local de Timbó</h1>
+  <p class="hero__desc">{{ curso.titulo }} — «{{ curso.subtitulo }}». Copia del material para repasar y consultar.</p>
+</div>
+
+<div class="callout callout--tip"><span class="callout__icon">🏅</span><div>El <b>certificado</b> se obtiene haciendo el curso y sus evaluaciones en el <a href="{{ curso.fuente }}" target="_blank" rel="noopener">Aula Virtual ↗</a>. Copiado el {{ curso.copiado_al[8:] }}/{{ curso.copiado_al[5:7] }}/{{ curso.copiado_al[:4] }}. Dicta: {{ curso.dicta }}.</div></div>
+
+<section class="rec-bloque">
+  <h2 class="section__title">Cómo funciona el curso</h2>
+  <div class="ct-materiales">{{ material({'tipo': 'pdf', 'titulo': curso.programa.titulo, 'archivo': curso.programa.archivo}) }}</div>
+  <ul class="al-lista">{% for t in curso.como_funciona %}<li>{{ t }}</li>{% endfor %}</ul>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">Módulos</h2>
+  {% for mod in curso.modulos %}
+  <details class="card ct-modulo" id="{{ mod.slug }}" {% if mod.disponible and loop.first %}open{% endif %}>
+    <summary><span class="ct-modulo__n">{{ loop.index }}</span><span class="ct-modulo__titulo">{{ mod.titulo }}{% if not mod.disponible %} <small class="al-bloqueado">🔒 se habilita al aprobar el módulo anterior</small>{% endif %}</span><span class="ct-modulo__flecha" aria-hidden="true">▾</span></summary>
+    <div class="al-cuerpo">
+    {% if mod.disponible %}
+    <div class="ct-materiales">{% for m in mod.materiales %}{{ material(m) }}{% endfor %}</div>
+    {% if mod.resumen %}
+    <h3 class="al-sub">Lo clave del módulo (resumido de los documentos oficiales: ante la duda, vale el PDF)</h3>
+    <div class="al-tarjetas">
+      {% for r in mod.resumen %}<div class="al-tarjeta"><b>{{ r.titulo }}</b><p>{{ r.texto }}</p></div>{% endfor %}
+    </div>
+    {% endif %}
+    <p class="text-muted">📝 {{ mod.evaluacion }}</p>
+    {% else %}
+    <p class="text-muted">Temas del programa (el material se va a sumar cuando se habilite en el Aula Virtual):</p>
+    <ul class="al-lista">{% for t in mod.temas %}<li>{{ t }}</li>{% endfor %}</ul>
+    {% endif %}
+    </div>
+  </details>
+  {% endfor %}
+  <p class="text-muted">🎓 {{ curso.evaluacion_final }}</p>
+</section>
+{% endblock %}

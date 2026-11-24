@@ -17,6 +17,7 @@
       <a class="btn btn--primary" href="{{ url_for('admin.capacitacion_primera_clase') }}">📋 Guía de la capacitadora</a>
       {% for a in pc.archivos %}<a class="btn btn--ghost" href="{{ url_for('admin.capacitacion_archivo', nombre=a.nombre) }}">{{ a.icono }} {{ a.titulo }}</a>{% endfor %}
       <a class="btn btn--ghost" href="{{ url_for('admin.capacitacion_participantes') }}">🧾 Material para participantes</a>
+      <a class="btn btn--ghost" href="{{ url_for('admin.curso_admin_local') }}">🛡️ Curso de Administrador Local</a>
       <a class="btn btn--ghost" href="{{ url_for('admin.capacitacion_algoritmo') }}">🧭 ¿Qué camino sigue una compra?</a>
       <a class="btn btn--ghost" href="{{ url_for('admin.capacitacion_modo') }}">👩‍🏫 Modo capacitadora</a>
       <a class="btn btn--ghost" href="{{ url_for('admin.recursos_simulador') }}">🎯 Simulador</a>

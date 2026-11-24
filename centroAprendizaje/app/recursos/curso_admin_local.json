@@ -1,0 +1,51 @@
+{
+ "titulo": "Curso de Administrador Local de Timbó 2026 - 1° Edición - UGD",
+ "subtitulo": "Administrador de timbó paso a paso",
+ "fuente": "https://www.santafe.gob.ar/aulavirtual/course/view.php?id=1427",
+ "copiado_al": "2026-11-24",
+ "dicta": "Departamento de Capacitación Informática · Dirección Provincial de Coordinación Tecnológica Interjurisdiccional · Subsecretaría de Programas y Proyectos · Secretaría de Tecnologías para la Gestión",
+ "programa": {"titulo": "Programa del curso", "archivo": "programa-del-curso.pdf"},
+ "como_funciona": [
+  "Siete módulos. Cada uno termina con un cuestionario de evaluación que habilita el contenido siguiente.",
+  "Después de aprobar cada cuestionario, actualizar la página (F5) para ver lo nuevo.",
+  "Cada cuestionario se hace de corrido: una vez empezado no se puede pausar ni cerrar para seguir después, porque el sistema lo da por terminado. Conviene una conexión estable.",
+  "Al aprobar todos los módulos se recibe un certificado oficial de Administrador/a Local de Timbó."
+ ],
+ "modulos": [
+  {
+   "slug": "modulo-1",
+   "titulo": "Módulo 1: Introducción a Timbó",
+   "disponible": true,
+   "temas": ["Introducción", "Esquema de soporte", "Presentación (Canva)", "Evaluación Módulo 1"],
+   "materiales": [
+    {"tipo": "pdf", "titulo": "1. Introducción", "archivo": "m1-introduccion.pdf"},
+    {"tipo": "pdf", "titulo": "2. Esquema de Soporte", "archivo": "m1-esquema-de-soporte.pdf"},
+    {"tipo": "enlace", "titulo": "3. Presentación (Canva)", "url": "https://www.canva.com/design/DAG1xffQLbQ/XdDiy0H-EXldXuARQyjwYw/view", "detalle": "Presentación interactiva en Canva ↗"}
+   ],
+   "evaluacion": "4. Evaluación Módulo 1: se hace en el Aula Virtual. Intentos ilimitados; se aprueba con 60 %. Antes hay que haber revisado los 3 materiales.",
+   "resumen": [
+    {"titulo": "La Unidad de Gestión (UG)", "texto": "La crea el Decreto 191/2024, que implementa Timbó como Plataforma de Gestión Digital provincial. La integran secretarías del Ministerio de Gobierno e Innovación Pública y del Ministerio de Economía. Diseña, diagrama y sigue la implementación; coordina el despliegue, aprueba lineamientos y reingenierías de trámites, dicta circulares obligatorias para toda la Administración Pública y reporta el avance al Poder Ejecutivo."},
+    {"titulo": "Promotores de Innovación (PI)", "texto": "Referentes del programa «Territorio 5.0» en cada jurisdicción. Implementan las líneas estratégicas (despapelización, digitalización de procesos, simplificación, participación ciudadana, mejora continua). A través de ellos se articulan las definiciones y criterios de implementación de Timbó con la Unidad de Gestión."},
+    {"titulo": "Administradores/as Locales (AL)", "texto": "Los despliega en el territorio la Secretaría de Tecnologías para la Gestión. Perfil técnico, en su mayoría de las sectoriales de informática o áreas de IT. Brindan asesoramiento y soporte técnico local sobre la plataforma, gestionan oficinas, vinculan usuarios y asignan permisos; acompañan a los PI y a las autoridades locales y se mantienen actualizados con las novedades del sistema."},
+    {"titulo": "Unidad de Gestión Digital de STG (UGD)", "texto": "Departamento de la Dirección Provincial de Programas y Proyectos (STG). Conduce la administración técnica central de Timbó, estandariza procesos y métricas, define criterios técnicos, capacita y da soporte a los referentes informáticos, coordina despliegues y notificaciones y da soporte a las demás áreas de la UG."},
+    {"titulo": "Quién resuelve qué", "texto": "Definiciones político-administrativas, lineamientos de implementación o criterios de gestión → Promotores de Innovación. Temas técnicos u operativos (crear y gestionar oficinas, asignar usuarios, permisos, aspectos técnicos de firma digital o electrónica, infraestructura) → Unidad de Gestión Digital (UGD–STG)."},
+    {"titulo": "El AL es el primer nivel de soporte", "texto": "Acompaña a los usuarios finales, recibe y evalúa sus consultas, orienta en el uso y resuelve lo operativo o administrativo del organismo. Los usuarios finales NO se contactan directo con la UGD–STG: todo pasa por el Administrador Local, que si corresponde hace de nexo con los niveles centrales."},
+    {"titulo": "Herramientas del AL", "texto": "iTop: sistema formal de tickets para registrar, seguir y escalar incidencias que necesitan un nivel superior. Canal de WhatsApp «Timbó – Soporte y Novedades»: no es para atender casos individuales, sino para mantener informada a la comunidad de AL (novedades, avisos de último momento, articulación con la UGD)."},
+    {"titulo": "Escalamiento", "texto": "Usuarios finales → 1. Área de IT / Sectorial Informática (soporte técnico) → por iTop: 2. Unidad de Gestión Digital (UGD–STG) → 3. Área de desarrollo (DEIM) → 4. Áreas de Infraestructura. Aparte, la Secretaría de Gestión Pública (Subsecretaría de Innovación) acompaña la implementación: definición de procesos, implementación, formación de usuarios finales y acompañamiento."}
+   ]
+  },
+  {"slug": "modulo-2", "titulo": "Módulo 2: Firma Digital", "disponible": false,
+   "temas": ["Presentación Firma Digital", "Procedimientos para la instalación del puesto de firma digital (Moorea): instalador Windows, Linux y Mac", "Tokens vigentes y requisitos", "Firmador Web y validación de documentos: solicitar Firma Digital, consultar estado de certificado (ONTI), cómo firmar electrónicamente con el firmador web", "Evaluación Módulo 2"]},
+  {"slug": "modulo-3", "titulo": "Módulo 3: ITOP", "disponible": false,
+   "temas": ["Introducción a ITOP", "Procedimientos en ITOP", "Solicitud de Alta como Administrador Local Timbó vía ITOP", "Solución de Acceso a Servicios de STG (capacitación e ITOP)", "Evaluación Módulo 3"]},
+  {"slug": "modulo-4", "titulo": "Módulo 4: Gestión de Oficinas", "disponible": false,
+   "temas": ["Oficinas en Timbó", "Cómo gestionar oficinas en Timbó", "Evaluación Módulo 4"]},
+  {"slug": "modulo-5", "titulo": "Módulo 5: Asignación de Usuarios", "disponible": false,
+   "temas": ["Gestión de Usuarios", "Cambio de rama ID Ciudadana", "Autoregistro: Introducción", "Autoregistro: Permisos", "Autoregistro: Agente que solicita el permiso", "Autoregistro: Administrador Local", "Autoregistro: Evaluador", "Autoregistro: Supervisor", "Evaluación Módulo 5"]},
+  {"slug": "modulo-6", "titulo": "Módulo 6: Gestión de Permisos de Usuarios", "disponible": false,
+   "temas": ["Cómo gestionar permisos de usuarios", "Tabla de permisos en Timbó", "Evaluación Módulo 6"]},
+  {"slug": "modulo-7", "titulo": "Módulo 7: Desarrollo de formulario y servicios (introductorio)", "disponible": false,
+   "temas": ["Workbench – Generación de formularios para Timbó", "Evaluación Módulo 7"]}
+ ],
+ "evaluacion_final": "Evaluación General Final del Curso de Administrador Local Timbó (en el Aula Virtual)."
+}

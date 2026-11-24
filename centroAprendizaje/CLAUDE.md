@@ -29,6 +29,14 @@ borrada con copia previa). La usuaria **APROBÓ la revisión final de la llave �
   del área → Acciones → Enviar a Firmar. Qué código externo usar: a confirmar con la Unidad Rectora.
 - Al terminar: en la misma página de la revisión final, «📨 Marcar lo que ya pediste» con el N° de SDO (se ve en
   el Nomenclador como «Se pidieron para cargar»). Cuando la Unidad Rectora asigne códigos, anotarlos.
+- 24/11 tarde: la usuaria pidió sumar el **Curso de Administrador Local de Timbó** (Aula Virtual id=1427, 7 módulos
+  que se desbloquean aprobando cada evaluación). Hecho SOLO en /admin (privado, sin deploy hasta su ok):
+  `/admin/capacitacion/administrador-local` (botón en Capacitación), datos en `app/recursos/curso_admin_local.json`,
+  PDF en `app/recursos/archivos/admin-local/` (se bajan solo con sesión de admin). Hoy está el Módulo 1 (Introducción,
+  Esquema de soporte, Canva) y el programa completo; los módulos 2-7 figuran con sus temas y «🔒». Cuando la usuaria
+  apruebe cada evaluación en el Aula, bajar el material nuevo desde su Chrome (los «nube/…/s/<token>» se bajan con
+  curl `/download`; los del aula, con fetch en la pestaña: usar el enlace de `mod/resource/view.php`, el de la página
+  devuelve un «Aviso» HTML) y sumarlo al JSON. NUNCA hacer las evaluaciones por ella (son su certificación).
 - Reglas: ssh/push/deploy los corre la usuaria con `!`; nada de commits/deploy sin su ok; no tocar Farmacia ni
   Laboratorio; nunca perder datos (copias antes de borrar).
 

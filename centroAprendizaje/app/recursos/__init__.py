@@ -95,6 +95,12 @@ def capacitacion():
 ARCHIVOS = os.path.join(CARPETA, "archivos")
 
 
+def curso_admin_local():
+    # Copia del curso de Administrador Local de Timbó del Aula Virtual (solo
+    # en /admin). Los PDF están en archivos/admin-local y se bajan con sesión.
+    return _leer("curso_admin_local.json")
+
+
 @lru_cache(maxsize=None)
 def algoritmo():
     return _leer("algoritmo.json")

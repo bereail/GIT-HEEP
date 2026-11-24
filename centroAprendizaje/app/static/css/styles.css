@@ -2274,3 +2274,13 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .ct-fin p { margin: 0; }
 .duda-portal.ct-portal { border-color: var(--accent-soft-border); background: var(--accent-soft); }
 .duda-portal.ct-portal:hover { background: #dde7fb; }
+
+/* Curso de Administrador Local (solo /admin) */
+.al-cuerpo { padding: 0 16px 14px; }
+.al-cuerpo .ct-materiales { padding: 0; }
+.al-lista { margin: 8px 0 0; padding-left: 20px; line-height: 1.6; }
+.al-bloqueado { font-weight: 400; color: #6b7280; font-size: .85rem; margin-left: 6px; }
+.al-sub { margin: 16px 0 8px; font-size: 1rem; }
+.al-tarjetas { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.al-tarjeta { border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px 12px; background: #fafafa; }
+.al-tarjeta p { margin: 6px 0 0; font-size: .92rem; line-height: 1.45; }
