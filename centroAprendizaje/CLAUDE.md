@@ -3,6 +3,35 @@
 Contexto para retomar el trabajo desde cualquier PC. El detalle técnico está
 en `README.md`; acá va lo que no se deduce del código.
 
+## ▶ PUNTO DE RETOMA (24/11/2026) — leer primero
+
+Estado: servidor, `main` y `nomenclador-capacitacion` al día (deploy de 20e0061 OK; llave vieja «informatica»
+borrada con copia previa). La usuaria **APROBÓ la revisión final de la llave «informaica»** (Informática) y ahora
+**está cargando las altas en TIMBÓ, paso a paso, con ayuda de Claude**. Seguir desde ahí:
+
+- La planilla aprobada está en el servidor (`instance/altas/altas-<id>-informaica-<fecha>.xlsx`) y se baja
+  desde Admin → Servicios → «🔎 Revisión final automática» → informaica → «Planillas guardadas». Hojas: PASO A
+  PASO (pasos de la guía oficial CAByS rev1, ver `PASO_A_PASO` en `app/services/control_altas.py`), GRILLA PARA
+  CARGAR, NO SE CARGAN, APROBACIÓN. Pedirle a la usuaria que pegue la hoja GRILLA para ayudar línea por línea.
+- Altas reales a pedir (revisión manual del 23/11, Catálogo WEB de 17.792 ítems): PC MINI CX INTEL I3 10110U
+  (elemento 19.1.25 COMPUTADORA PERSONAL, rubro 19, subrubro 19.1, obj. gasto 4.3.6.0), Combo actualización
+  micro+mother+memoria (no existe como combo; existen 19.1.79 MOTHERBOARD, 19.1.3 PROCESADOR, 19.1.48 MEMORIAS:
+  decide la usuaria), conector VGA-HDMI (no existe; 12.2.99.1 es CABLE HDMI), Servicio Mensual CM Digital (una
+  sola vez: 22285 y 22286 son el mismo). Más «PC DE ESCRITORIO» si la corrigió («No es lo mismo»: TIMBÓ le daba
+  11.2.3.6 ESCRITORIO, un mueble).
+- NO se piden (ya existen genéricos): pendrive 64 GB → 19.1.143.1; cable UTP → 12.2.17.2; Ubiquiti U6PRO →
+  19.1.94.2 ACCESS POINT; fuente ATX → 19.1.78.3.
+- Formulario: Documentos oficiales → Gestión → Nuevo Documento Oficial → tipo «Timbó Compras: Alta de bienes y
+  servicios CAByS» → Guardar → Pendientes (SDO en «Producir Documento Oficial») → ⋮ → Documento oficial → datos
+  (fecha, jurisdicción/oficina, solicitante, email, teléfono) → «+ Nueva línea» por ítem (Rubro, Subrubro,
+  Elemento, Nombre con «Cód. externo: …» OBLIGATORIO en hospitales, Objeto del gasto, Unidad, Marca, Aporta doc.)
+  → Guardar → Referencia → Destinatario Carolina Retamar y/o Maximiliano Sodero → firma conjunta del responsable
+  del área → Acciones → Enviar a Firmar. Qué código externo usar: a confirmar con la Unidad Rectora.
+- Al terminar: en la misma página de la revisión final, «📨 Marcar lo que ya pediste» con el N° de SDO (se ve en
+  el Nomenclador como «Se pidieron para cargar»). Cuando la Unidad Rectora asigne códigos, anotarlos.
+- Reglas: ssh/push/deploy los corre la usuaria con `!`; nada de commits/deploy sin su ok; no tocar Farmacia ni
+  Laboratorio; nunca perder datos (copias antes de borrar).
+
 ## Qué es
 
 Portal de capacitación y soporte interno para hospitales de Santa Fe.
