@@ -5,8 +5,11 @@ en `README.md`; acá va lo que no se deduce del código.
 
 ## ▶ PUNTO DE RETOMA (24/11/2026, tarde) — leer primero
 
-Estado: servidor, `main` y `nomenclador-capacitacion` al día. **La carga de altas de Informática en TIMBÓ ya se
-hizo y quedó enviada a firmar.** Seguir desde acá:
+Estado: **la carga de altas de Informática en TIMBÓ ya se hizo y quedó enviada a firmar.** Las herramientas
+nuevas (`/admin/diagnostico`, `/admin/comparar-manual`) y este mismo CLAUDE.md están commiteados y **pusheados**
+a `origin/nomenclador-capacitacion` (commits `36ae509` y `335a2ec`) — **pero todavía NO deployados al servidor
+real** (falta: mergear a `main` y correr `scripts/deploy_servidor.sh` por ssh, como el resto del circuito de
+deploy ya documentado en este archivo). Seguir desde acá:
 
 - **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
   Firmante Carolina Analia Milagros Retamar (CUIL 27282388052). Estado actual: esperando su firma (Paso 6 de
