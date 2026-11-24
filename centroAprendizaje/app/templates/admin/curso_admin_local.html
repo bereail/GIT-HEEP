@@ -31,7 +31,14 @@
     <summary><span class="ct-modulo__n">{{ loop.index }}</span><span class="ct-modulo__titulo">{{ mod.titulo }}{% if not mod.disponible %} <small class="al-bloqueado">🔒 se habilita al aprobar el módulo anterior</small>{% endif %}</span><span class="ct-modulo__flecha" aria-hidden="true">▾</span></summary>
     <div class="al-cuerpo">
     {% if mod.disponible %}
-    <div class="ct-materiales">{% for m in mod.materiales %}{{ material(m) }}{% endfor %}</div>
+    <div class="ct-materiales">{% for m in mod.materiales if m.tipo != 'video' %}{{ material(m) }}{% endfor %}</div>
+    {% for m in mod.materiales if m.tipo == 'video' %}
+    <figure class="al-video">
+      <video controls preload="metadata" src="{{ url_for('admin.curso_admin_local_archivo', nombre=m.archivo) }}"></video>
+      <figcaption>🎬 {{ m.titulo }}</figcaption>
+    </figure>
+    {% endfor %}
+    {% if mod.aviso %}<p class="text-muted">⚠️ {{ mod.aviso }}</p>{% endif %}
     {% if mod.resumen %}
     <h3 class="al-sub">Lo clave del módulo (resumido de los documentos oficiales: ante la duda, vale el PDF)</h3>
     <div class="al-tarjetas">

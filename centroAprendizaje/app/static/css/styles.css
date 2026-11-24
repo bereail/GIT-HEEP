@@ -2294,3 +2294,6 @@ a:hover .gfx-caja rect, a:focus .gfx-caja rect { stroke-width: 3.5; }
 .al-tarjetas { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
 .al-tarjeta { border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px 12px; background: #fafafa; }
 .al-tarjeta p { margin: 6px 0 0; font-size: .92rem; line-height: 1.45; }
+.al-video { margin: 12px 0; }
+.al-video video { width: 100%; max-width: 720px; border-radius: 10px; background: #000; }
+.al-video figcaption { font-size: .9rem; margin-top: 4px; }

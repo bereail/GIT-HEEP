@@ -4,7 +4,10 @@
  "fuente": "https://www.santafe.gob.ar/aulavirtual/course/view.php?id=1427",
  "copiado_al": "2026-11-24",
  "dicta": "Departamento de Capacitación Informática · Dirección Provincial de Coordinación Tecnológica Interjurisdiccional · Subsecretaría de Programas y Proyectos · Secretaría de Tecnologías para la Gestión",
- "programa": {"titulo": "Programa del curso", "archivo": "programa-del-curso.pdf"},
+ "programa": {
+  "titulo": "Programa del curso",
+  "archivo": "programa-del-curso.pdf"
+ },
  "como_funciona": [
   "Siete módulos. Cada uno termina con un cuestionario de evaluación que habilita el contenido siguiente.",
   "Después de aprobar cada cuestionario, actualizar la página (F5) para ver lo nuevo.",
@@ -16,36 +19,306 @@
    "slug": "modulo-1",
    "titulo": "Módulo 1: Introducción a Timbó",
    "disponible": true,
-   "temas": ["Introducción", "Esquema de soporte", "Presentación (Canva)", "Evaluación Módulo 1"],
+   "temas": [
+    "Introducción",
+    "Esquema de soporte",
+    "Presentación (Canva)",
+    "Evaluación Módulo 1"
+   ],
    "materiales": [
-    {"tipo": "pdf", "titulo": "1. Introducción", "archivo": "m1-introduccion.pdf"},
-    {"tipo": "pdf", "titulo": "2. Esquema de Soporte", "archivo": "m1-esquema-de-soporte.pdf"},
-    {"tipo": "enlace", "titulo": "3. Presentación (Canva)", "url": "https://www.canva.com/design/DAG1xffQLbQ/XdDiy0H-EXldXuARQyjwYw/view", "detalle": "Presentación interactiva en Canva ↗"}
+    {
+     "tipo": "pdf",
+     "titulo": "1. Introducción",
+     "archivo": "m1-introduccion.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Esquema de Soporte",
+     "archivo": "m1-esquema-de-soporte.pdf"
+    },
+    {
+     "tipo": "enlace",
+     "titulo": "3. Presentación (Canva)",
+     "url": "https://www.canva.com/design/DAG1xffQLbQ/XdDiy0H-EXldXuARQyjwYw/view",
+     "detalle": "Presentación interactiva en Canva ↗"
+    }
    ],
    "evaluacion": "4. Evaluación Módulo 1: se hace en el Aula Virtual. Intentos ilimitados; se aprueba con 60 %. Antes hay que haber revisado los 3 materiales.",
    "resumen": [
-    {"titulo": "La Unidad de Gestión (UG)", "texto": "La crea el Decreto 191/2024, que implementa Timbó como Plataforma de Gestión Digital provincial. La integran secretarías del Ministerio de Gobierno e Innovación Pública y del Ministerio de Economía. Diseña, diagrama y sigue la implementación; coordina el despliegue, aprueba lineamientos y reingenierías de trámites, dicta circulares obligatorias para toda la Administración Pública y reporta el avance al Poder Ejecutivo."},
-    {"titulo": "Promotores de Innovación (PI)", "texto": "Referentes del programa «Territorio 5.0» en cada jurisdicción. Implementan las líneas estratégicas (despapelización, digitalización de procesos, simplificación, participación ciudadana, mejora continua). A través de ellos se articulan las definiciones y criterios de implementación de Timbó con la Unidad de Gestión."},
-    {"titulo": "Administradores/as Locales (AL)", "texto": "Los despliega en el territorio la Secretaría de Tecnologías para la Gestión. Perfil técnico, en su mayoría de las sectoriales de informática o áreas de IT. Brindan asesoramiento y soporte técnico local sobre la plataforma, gestionan oficinas, vinculan usuarios y asignan permisos; acompañan a los PI y a las autoridades locales y se mantienen actualizados con las novedades del sistema."},
-    {"titulo": "Unidad de Gestión Digital de STG (UGD)", "texto": "Departamento de la Dirección Provincial de Programas y Proyectos (STG). Conduce la administración técnica central de Timbó, estandariza procesos y métricas, define criterios técnicos, capacita y da soporte a los referentes informáticos, coordina despliegues y notificaciones y da soporte a las demás áreas de la UG."},
-    {"titulo": "Quién resuelve qué", "texto": "Definiciones político-administrativas, lineamientos de implementación o criterios de gestión → Promotores de Innovación. Temas técnicos u operativos (crear y gestionar oficinas, asignar usuarios, permisos, aspectos técnicos de firma digital o electrónica, infraestructura) → Unidad de Gestión Digital (UGD–STG)."},
-    {"titulo": "El AL es el primer nivel de soporte", "texto": "Acompaña a los usuarios finales, recibe y evalúa sus consultas, orienta en el uso y resuelve lo operativo o administrativo del organismo. Los usuarios finales NO se contactan directo con la UGD–STG: todo pasa por el Administrador Local, que si corresponde hace de nexo con los niveles centrales."},
-    {"titulo": "Herramientas del AL", "texto": "iTop: sistema formal de tickets para registrar, seguir y escalar incidencias que necesitan un nivel superior. Canal de WhatsApp «Timbó – Soporte y Novedades»: no es para atender casos individuales, sino para mantener informada a la comunidad de AL (novedades, avisos de último momento, articulación con la UGD)."},
-    {"titulo": "Escalamiento", "texto": "Usuarios finales → 1. Área de IT / Sectorial Informática (soporte técnico) → por iTop: 2. Unidad de Gestión Digital (UGD–STG) → 3. Área de desarrollo (DEIM) → 4. Áreas de Infraestructura. Aparte, la Secretaría de Gestión Pública (Subsecretaría de Innovación) acompaña la implementación: definición de procesos, implementación, formación de usuarios finales y acompañamiento."}
+    {
+     "titulo": "La Unidad de Gestión (UG)",
+     "texto": "La crea el Decreto 191/2024, que implementa Timbó como Plataforma de Gestión Digital provincial. La integran secretarías del Ministerio de Gobierno e Innovación Pública y del Ministerio de Economía. Diseña, diagrama y sigue la implementación; coordina el despliegue, aprueba lineamientos y reingenierías de trámites, dicta circulares obligatorias para toda la Administración Pública y reporta el avance al Poder Ejecutivo."
+    },
+    {
+     "titulo": "Promotores de Innovación (PI)",
+     "texto": "Referentes del programa «Territorio 5.0» en cada jurisdicción. Implementan las líneas estratégicas (despapelización, digitalización de procesos, simplificación, participación ciudadana, mejora continua). A través de ellos se articulan las definiciones y criterios de implementación de Timbó con la Unidad de Gestión."
+    },
+    {
+     "titulo": "Administradores/as Locales (AL)",
+     "texto": "Los despliega en el territorio la Secretaría de Tecnologías para la Gestión. Perfil técnico, en su mayoría de las sectoriales de informática o áreas de IT. Brindan asesoramiento y soporte técnico local sobre la plataforma, gestionan oficinas, vinculan usuarios y asignan permisos; acompañan a los PI y a las autoridades locales y se mantienen actualizados con las novedades del sistema."
+    },
+    {
+     "titulo": "Unidad de Gestión Digital de STG (UGD)",
+     "texto": "Departamento de la Dirección Provincial de Programas y Proyectos (STG). Conduce la administración técnica central de Timbó, estandariza procesos y métricas, define criterios técnicos, capacita y da soporte a los referentes informáticos, coordina despliegues y notificaciones y da soporte a las demás áreas de la UG."
+    },
+    {
+     "titulo": "Quién resuelve qué",
+     "texto": "Definiciones político-administrativas, lineamientos de implementación o criterios de gestión → Promotores de Innovación. Temas técnicos u operativos (crear y gestionar oficinas, asignar usuarios, permisos, aspectos técnicos de firma digital o electrónica, infraestructura) → Unidad de Gestión Digital (UGD–STG)."
+    },
+    {
+     "titulo": "El AL es el primer nivel de soporte",
+     "texto": "Acompaña a los usuarios finales, recibe y evalúa sus consultas, orienta en el uso y resuelve lo operativo o administrativo del organismo. Los usuarios finales NO se contactan directo con la UGD–STG: todo pasa por el Administrador Local, que si corresponde hace de nexo con los niveles centrales."
+    },
+    {
+     "titulo": "Herramientas del AL",
+     "texto": "iTop: sistema formal de tickets para registrar, seguir y escalar incidencias que necesitan un nivel superior. Canal de WhatsApp «Timbó – Soporte y Novedades»: no es para atender casos individuales, sino para mantener informada a la comunidad de AL (novedades, avisos de último momento, articulación con la UGD)."
+    },
+    {
+     "titulo": "Escalamiento",
+     "texto": "Usuarios finales → 1. Área de IT / Sectorial Informática (soporte técnico) → por iTop: 2. Unidad de Gestión Digital (UGD–STG) → 3. Área de desarrollo (DEIM) → 4. Áreas de Infraestructura. Aparte, la Secretaría de Gestión Pública (Subsecretaría de Innovación) acompaña la implementación: definición de procesos, implementación, formación de usuarios finales y acompañamiento."
+    }
    ]
   },
-  {"slug": "modulo-2", "titulo": "Módulo 2: Firma Digital", "disponible": false,
-   "temas": ["Presentación Firma Digital", "Procedimientos para la instalación del puesto de firma digital (Moorea): instalador Windows, Linux y Mac", "Tokens vigentes y requisitos", "Firmador Web y validación de documentos: solicitar Firma Digital, consultar estado de certificado (ONTI), cómo firmar electrónicamente con el firmador web", "Evaluación Módulo 2"]},
-  {"slug": "modulo-3", "titulo": "Módulo 3: ITOP", "disponible": false,
-   "temas": ["Introducción a ITOP", "Procedimientos en ITOP", "Solicitud de Alta como Administrador Local Timbó vía ITOP", "Solución de Acceso a Servicios de STG (capacitación e ITOP)", "Evaluación Módulo 3"]},
-  {"slug": "modulo-4", "titulo": "Módulo 4: Gestión de Oficinas", "disponible": false,
-   "temas": ["Oficinas en Timbó", "Cómo gestionar oficinas en Timbó", "Evaluación Módulo 4"]},
-  {"slug": "modulo-5", "titulo": "Módulo 5: Asignación de Usuarios", "disponible": false,
-   "temas": ["Gestión de Usuarios", "Cambio de rama ID Ciudadana", "Autoregistro: Introducción", "Autoregistro: Permisos", "Autoregistro: Agente que solicita el permiso", "Autoregistro: Administrador Local", "Autoregistro: Evaluador", "Autoregistro: Supervisor", "Evaluación Módulo 5"]},
-  {"slug": "modulo-6", "titulo": "Módulo 6: Gestión de Permisos de Usuarios", "disponible": false,
-   "temas": ["Cómo gestionar permisos de usuarios", "Tabla de permisos en Timbó", "Evaluación Módulo 6"]},
-  {"slug": "modulo-7", "titulo": "Módulo 7: Desarrollo de formulario y servicios (introductorio)", "disponible": false,
-   "temas": ["Workbench – Generación de formularios para Timbó", "Evaluación Módulo 7"]}
+  {
+   "slug": "modulo-2",
+   "titulo": "Módulo 2: Firma Digital",
+   "disponible": true,
+   "temas": [
+    "Presentación Firma Digital",
+    "Procedimientos para la instalación del puesto de firma digital (Moorea): instalador Windows, Linux y Mac",
+    "Tokens vigentes y requisitos",
+    "Firmador Web y validación de documentos: solicitar Firma Digital, consultar estado de certificado (ONTI), cómo firmar electrónicamente con el firmador web",
+    "Evaluación Módulo 2"
+   ],
+   "materiales": [
+    {
+     "tipo": "enlace",
+     "titulo": "1. Presentación Firma Digital (Canva)",
+     "url": "https://www.canva.com/design/DAG7l8urypQ/68J5Iseiof72wHbPdJwBhQ/view",
+     "detalle": "Firma digital vs. electrónica y marco legal ↗"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Instalación del puesto de firma en Linux (Moorea)",
+     "archivo": "m2-instalacion-linux.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Instalación del puesto de firma en Mac (Moorea)",
+     "archivo": "m2-instalacion-mac.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "3. Tokens vigentes y requisitos",
+     "archivo": "m2-tokens-vigentes.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "4. Preguntas frecuentes (Sectoriales de Informática)",
+     "archivo": "m2-preguntas-frecuentes.pdf"
+    },
+    {
+     "tipo": "enlace",
+     "titulo": "4. Consultar estado del certificado (ONTI)",
+     "url": "https://pki.jgm.gov.ar/app/CertificateAuthority/CertificatePublicKeyRequest.aspx",
+     "detalle": "Sitio oficial de ONTI ↗"
+    },
+    {
+     "tipo": "video",
+     "titulo": "4. ¿Cómo firmar electrónicamente? (firmador web)",
+     "archivo": "m2-como-firmar-electronicamente.mp4"
+    }
+   ],
+   "aviso": "Los enlaces del Aula Virtual al instalador de Windows y al driver del token LM-CryptoID dan «Recurso compartido no encontrado» en la Nube (revisado el 24/11/2026). Pedirlos a firmadigital@santafe.gov.ar.",
+   "evaluacion": "5. Evaluación Módulo 2: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
+   "resumen": [
+    {
+     "titulo": "Firma digital ≠ firma electrónica",
+     "texto": "La firma electrónica no reemplaza a la firma hológrafa (manuscrita). La firma digital sí, y además tiene valor probatorio, establecido por la Ley 25.506."
+    },
+    {
+     "titulo": "Qué necesita quien pide la firma",
+     "texto": "Antes: hacer la solicitud de certificado en AC-ONTI con los datos tal cual el DNI, eligiendo como Autoridad de Registro «Poder ejecutivo de la Provincia de Santa Fe», y confirmar el correo dentro de las 24 h (si no, caduca). Después: sacar turno y presentarse ante el Oficial de Registro con DNI (o pasaporte) vigente y el token."
+    },
+    {
+     "titulo": "Qué aporta la Sectorial de Informática",
+     "texto": "Token homologado, asesoramiento sobre la solicitud del certificado y el turno en la Oficina de Registro, y soporte técnico. Las dudas de la Sectorial van a la Unidad de Gestión Digital – Firma Digital: firmadigital@santafe.gov.ar (con motivo, sistema operativo y versión 32/64 bits, y datos del referente técnico)."
+    },
+    {
+     "titulo": "El token",
+     "texto": "Dispositivo criptográfico donde se guardan el certificado y las claves. Un pendrive no sirve. Cada organismo compra los suyos; la Secretaría puede prestar uno en comodato, por tiempo limitado y según disponibilidad. Debe cumplir FIPS 140-2 nivel 2 o superior, soportar RSA de 2048 bits y estar homologado por NIST. Los drivers los da el proveedor."
+    },
+    {
+     "titulo": "Modelos vigentes (al 18/09/2025)",
+     "texto": "ePass 2003 (#3202 y #3799, ya históricos: solo particulares, hasta 18/6/2026 y 16/01/2028), Safenet eToken 5110+ (FIPS 140-2 #4479 y 140-3 #4480: oficiales de registro hasta 21/09/2026, particulares hasta 21/09/2029) y mToken CryptoID LM FIPS 140-3 (#4845: oficiales hasta 20/10/2029, particulares hasta 20/10/2032)."
+    },
+    {
+     "titulo": "Certificado: validez y renovación",
+     "texto": "Dura 2 años (puede ser menos si vence antes el certificado intermedio de ONTI). No se renueva: se revoca el vigente y se gestiona uno nuevo, cuando el usuario quiera. La vigencia se consulta en el sitio de ONTI."
+    },
+    {
+     "titulo": "Token perdido o clave olvidada",
+     "texto": "La clave es personal y no se blanquea. Si se olvida, se agotan los intentos o se pierde el token, hay que revocar el certificado: con el PIN de revocación del mail de emisión (remitente acap@pki.gob.ar) en el sitio de ONTI, o, sin PIN, presencialmente en la Oficina de Registro con DNI y turno. Revocar es personal. Se publica en el listado de revocados dentro de las 24 h."
+    },
+    {
+     "titulo": "Puesto de firma (Moorea)",
+     "texto": "Se instala el driver del token y Java 11, y el componente «mooreasigner», que Timbó ofrece descargar la primera vez que se firma digitalmente. Tiene que estar abierto cada vez que se firma. Se puede firmar desde cualquier PC compatible con el token, con los drivers y la configuración del aplicativo."
+    }
+   ]
+  },
+  {
+   "slug": "modulo-3",
+   "titulo": "Módulo 3: ITOP",
+   "disponible": true,
+   "temas": [
+    "Introducción a ITOP",
+    "Procedimientos en ITOP",
+    "Solicitud de Alta como Administrador Local Timbó vía ITOP",
+    "Solución de Acceso a Servicios de STG (capacitación e ITOP)",
+    "Evaluación Módulo 3"
+   ],
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "1. Introducción a ITOP (Guía de usuario iTop Portal)",
+     "archivo": "m3-introduccion-itop.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Cómo enviar un incidente o requerimiento de Timbó en iTop",
+     "archivo": "m3-enviar-incidente-o-requerimiento.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "3. Solicitar alta como Administrador Local en iTop",
+     "archivo": "m3-solicitar-alta-al.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "4. Solucionar el acceso a servicios STG (iTop y capacitación Timbó)",
+     "archivo": "m3-solucion-acceso-servicios.pdf"
+    }
+   ],
+   "evaluacion": "5. Evaluación Módulo 3: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
+   "resumen": [
+    {
+     "titulo": "Entrar a iTop",
+     "texto": "Portal: app.santafe.gob.ar/itop/portal. Usuario: CUIL, email o IUP, con la misma contraseña de la Intranet Provincial."
+    },
+    {
+     "titulo": "Cargar un ticket",
+     "texto": "«Nueva Solicitud» → «STG - Servicios PGD Timbó» → «Timbó - Configuración» (ABM de reparticiones, ABM de usuarios) o «Timbó - Soporte» (asistencia, incidente en la plataforma, problemas de acceso, configuración de equipo para firma digital, proceso de trámite)."
+    },
+    {
+     "titulo": "Impacto y urgencia",
+     "texto": "Impacto: un departamento (afecta a toda la organización), un servicio (por ejemplo se cayó un enlace) o una persona (por ejemplo una PC no funciona). Urgencia: crítica, alta, media o baja, según gravedad e impacto. Además: asunto breve y descripción con el síntoma y lo que ya se hizo."
+    },
+    {
+     "titulo": "Qué tiene que tener el ticket",
+     "texto": "1) Título claro (ej.: «Error al firmar el expediente en la instancia de Producción»). 2) Qué intentaba hacer, qué pasó y qué esperaba. 3) Pasos numerados para reproducirlo (y el video si el usuario lo mandó). 4) Capturas de pantalla completa con navegador, URL, fecha y hora de la PC y el mensaje de error, sin recortar. 5) Nro. de EE / DDOO / instancia."
+    },
+    {
+     "titulo": "Pedir el alta como Administrador Local",
+     "texto": "En iTop: Gestión de Trámites Digitales (Timbó) → Administración TIMBO → ABM de usuarios y permisos de usuario. Asunto: «Alta un Administrador Local». En la descripción: organismo a administrar, código del organismo y, del nuevo AL, CUIL, apellido y nombre y oficina actual."
+    },
+    {
+     "titulo": "Sin acceso a iTop o a la capacitación de Timbó",
+     "texto": "Lo gestionan solo las áreas de soporte, no los usuarios finales. Mail a Teleproceso (STG), teleproceso@santafe.gov.ar, asunto «Solicitud de acceso a red para iTop y entorno de capacitación TIMBÓ - Organismo: …», con organismo y código de oficina, contacto técnico, ubicación, servicios a habilitar (app.santafe.gob.ar/itsm y ctramites.santafe.gob.ar) y detalle del problema (DNS, timeout, proxy, VPN…, con fecha, hora y segmento de red). Opcional: capturas y pruebas (ping, tracert, nslookup)."
+    }
+   ]
+  },
+  {
+   "slug": "modulo-4",
+   "titulo": "Módulo 4: Gestión de Oficinas",
+   "disponible": true,
+   "temas": [
+    "Oficinas en Timbó",
+    "Cómo gestionar oficinas en Timbó",
+    "Evaluación Módulo 4"
+   ],
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "1. Oficinas en Timbó",
+     "archivo": "m4-oficinas-en-timbo.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Cómo gestionar oficinas en Timbó",
+     "archivo": "m4-como-gestionar-oficinas.pdf"
+    }
+   ],
+   "evaluacion": "3. Evaluación Módulo 4: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
+   "resumen": [
+    {
+     "titulo": "La oficina es la unidad básica",
+     "texto": "No hay usuarios sueltos: todos pertenecen al menos a una oficina, y uno puede estar en varias. La oficina define qué expedientes se ven en la bandeja y en qué circuitos se interviene. Principio clave: los expedientes pertenecen a las oficinas, no a las personas."
+    },
+    {
+     "titulo": "Cómo diseñar la estructura",
+     "texto": "Árbol jerárquico, pero funcional: refleja cómo se trabaja de verdad, no necesariamente el organigrama formal. Principios: funcionalidad antes que formalidad, minimalismo (empezar simple), estabilidad y coherencia en los nombres. Conviene un relevamiento previo (hay una planilla de Relevamiento de Oficinas opcional)."
+    },
+    {
+     "titulo": "Lo que no se puede cambiar",
+     "texto": "Las oficinas no se eliminan, solo se desactivan. No se cambia el nombre ni se mueven ramas. Para reorganizar hay que crear la estructura nueva a mano, hacer los pases de expedientes y reasignar usuarios: por eso se planifica antes."
+    },
+    {
+     "titulo": "Gestión por jerarquía",
+     "texto": "Los usuarios de una oficina pueden ver el contenido de los expedientes de sus oficinas inferiores, pero no actuar sobre ellos (ni pases ni cambios de estado): solo actúan donde el expediente está asignado."
+    },
+    {
+     "titulo": "Alta de oficina, paso a paso",
+     "texto": "Timbó (ID Ciudadana) → Administrador Local → Gestión de Oficinas → «Nuevo Trámite» → «Alta de Oficina». Se define Oficina Padre Superior e Inferior (no se pueden cambiar después), el nombre (tampoco), y el nombre corto se completa solo. Código identificador, institución, SAF y SAFOP quedan vacíos salvo indicación. Luego datos complementarios y «Guardar». El rol de AL se pide solo por ticket de iTop a la UGD."
+    },
+    {
+     "titulo": "Atributos de la oficina",
+     "texto": "¿Permite asignación de usuarios? casi siempre Sí. ¿Oficina formal? Sí si tiene resolución o decreto de creación. ¿Permite caratular? Sí solo si aprueba solicitudes de caratulación (cualquiera puede pedirla). ¿Actos administrativos? No, salvo indicación (si es Sí, el código identificador es obligatorio). Mail: institucional, no uno personal, porque recibe todas las notificaciones."
+    },
+    {
+     "titulo": "Activas, inactivas y menú ⋮",
+     "texto": "El AL ve todas las oficinas, incluso de otros organismos, pero solo modifica las de su ámbito. Menú de tres puntos: Acciones (modificar, desactivar), Previsualizar e Historial (quién, qué, cuándo). Desactivar solo si no tiene oficinas hijas ni usuarios, con comentario. Las inactivas se reactivan con «Activar oficina», también con comentario."
+    },
+    {
+     "titulo": "Exportar e historial",
+     "texto": "«Exportar Bandeja» descarga el listado de oficinas activas. El Historial de Oficinas muestra las importaciones de rama y las desactivaciones masivas."
+    }
+   ]
+  },
+  {
+   "slug": "modulo-5",
+   "titulo": "Módulo 5: Asignación de Usuarios",
+   "disponible": false,
+   "temas": [
+    "Gestión de Usuarios",
+    "Cambio de rama ID Ciudadana",
+    "Autoregistro: Introducción",
+    "Autoregistro: Permisos",
+    "Autoregistro: Agente que solicita el permiso",
+    "Autoregistro: Administrador Local",
+    "Autoregistro: Evaluador",
+    "Autoregistro: Supervisor",
+    "Evaluación Módulo 5"
+   ]
+  },
+  {
+   "slug": "modulo-6",
+   "titulo": "Módulo 6: Gestión de Permisos de Usuarios",
+   "disponible": false,
+   "temas": [
+    "Cómo gestionar permisos de usuarios",
+    "Tabla de permisos en Timbó",
+    "Evaluación Módulo 6"
+   ]
+  },
+  {
+   "slug": "modulo-7",
+   "titulo": "Módulo 7: Desarrollo de formulario y servicios (introductorio)",
+   "disponible": false,
+   "temas": [
+    "Workbench – Generación de formularios para Timbó",
+    "Evaluación Módulo 7"
+   ]
+  }
  ],
  "evaluacion_final": "Evaluación General Final del Curso de Administrador Local Timbó (en el Aula Virtual)."
 }

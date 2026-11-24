@@ -268,6 +268,13 @@ def test_curso_administrador_local_solo_en_admin(app, admin_client):
     assert anonimo.get("/admin/capacitacion/administrador-local").status_code in (302, 401, 403)
     r = admin_client.get("/admin/capacitacion/administrador-local")
     assert r.status_code == 200 and "Administrador Local" in r.get_data(as_text=True)
-    assert admin_client.get("/admin/capacitacion/administrador-local/m1-introduccion.pdf").status_code == 200
+    # Cada PDF y video del curso existe y se sirve con su tipo.
+    curso = recursos.curso_admin_local()
+    archivos = [curso["programa"]["archivo"]] + [m["archivo"] for mod in curso["modulos"]
+                                                 for m in mod.get("materiales", []) if "archivo" in m]
+    for nombre in archivos:
+        r = admin_client.get(f"/admin/capacitacion/administrador-local/{nombre}")
+        assert r.status_code == 200 and r.mimetype in ("application/pdf", "video/mp4"), nombre
+        r.close()
     assert admin_client.get("/admin/capacitacion/administrador-local/..%2Fcapacitacion.json").status_code == 404
     assert anonimo.get("/admin/capacitacion/administrador-local/m1-introduccion.pdf").status_code != 200

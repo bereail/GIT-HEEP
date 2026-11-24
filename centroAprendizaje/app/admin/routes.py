@@ -1103,7 +1103,7 @@ def curso_admin_local():
 def curso_admin_local_archivo(nombre):
     curso = recursos.curso_admin_local()
     permitidos = {curso["programa"]["archivo"]} | {m["archivo"] for mod in curso["modulos"]
-                                                   for m in mod.get("materiales", []) if m["tipo"] == "pdf"}
+                                                   for m in mod.get("materiales", []) if m["tipo"] in ("pdf", "video")}
     if nombre not in permitidos:
         abort(404)
     return send_from_directory(os.path.join(recursos.ARCHIVOS, "admin-local"), nombre)
