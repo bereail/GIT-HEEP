@@ -3,34 +3,49 @@
 Contexto para retomar el trabajo desde cualquier PC. El detalle técnico está
 en `README.md`; acá va lo que no se deduce del código.
 
-## ▶ PUNTO DE RETOMA (24/11/2026) — leer primero
+## ▶ PUNTO DE RETOMA (24/11/2026, tarde) — leer primero
 
-Estado: servidor, `main` y `nomenclador-capacitacion` al día (deploy de 20e0061 OK; llave vieja «informatica»
-borrada con copia previa). La usuaria **APROBÓ la revisión final de la llave «informaica»** (Informática) y ahora
-**está cargando las altas en TIMBÓ, paso a paso, con ayuda de Claude**. Seguir desde ahí:
+Estado: servidor, `main` y `nomenclador-capacitacion` al día. **La carga de altas de Informática en TIMBÓ ya se
+hizo y quedó enviada a firmar.** Seguir desde acá:
 
-- La planilla aprobada está en el servidor (`instance/altas/altas-<id>-informaica-<fecha>.xlsx`) y se baja
-  desde Admin → Servicios → «🔎 Revisión final automática» → informaica → «Planillas guardadas». Hojas: PASO A
-  PASO (pasos de la guía oficial CAByS rev1, ver `PASO_A_PASO` en `app/services/control_altas.py`), GRILLA PARA
-  CARGAR, NO SE CARGAN, APROBACIÓN. Pedirle a la usuaria que pegue la hoja GRILLA para ayudar línea por línea.
-- Altas reales a pedir (revisión manual del 23/11, Catálogo WEB de 17.792 ítems): PC MINI CX INTEL I3 10110U
-  (elemento 19.1.25 COMPUTADORA PERSONAL, rubro 19, subrubro 19.1, obj. gasto 4.3.6.0), Combo actualización
-  micro+mother+memoria (no existe como combo; existen 19.1.79 MOTHERBOARD, 19.1.3 PROCESADOR, 19.1.48 MEMORIAS:
-  decide la usuaria), conector VGA-HDMI (no existe; 12.2.99.1 es CABLE HDMI), Servicio Mensual CM Digital (una
-  sola vez: 22285 y 22286 son el mismo). Más «PC DE ESCRITORIO» si la corrigió («No es lo mismo»: TIMBÓ le daba
-  11.2.3.6 ESCRITORIO, un mueble).
-- NO se piden (ya existen genéricos): pendrive 64 GB → 19.1.143.1; cable UTP → 12.2.17.2; Ubiquiti U6PRO →
-  19.1.94.2 ACCESS POINT; fuente ATX → 19.1.78.3.
-- Formulario: Documentos oficiales → Gestión → Nuevo Documento Oficial → tipo «Timbó Compras: Alta de bienes y
-  servicios CAByS» → Guardar → Pendientes (SDO en «Producir Documento Oficial») → ⋮ → Documento oficial → datos
-  (fecha, jurisdicción/oficina, solicitante, email, teléfono) → «+ Nueva línea» por ítem (Rubro, Subrubro,
-  Elemento, Nombre con «Cód. externo: …» OBLIGATORIO en hospitales, Objeto del gasto, Unidad, Marca, Aporta doc.)
-  → Guardar → Referencia → Destinatario Carolina Retamar y/o Maximiliano Sodero → firma conjunta del responsable
-  del área → Acciones → Enviar a Firmar. Qué código externo usar: a confirmar con la Unidad Rectora.
-- Al terminar: en la misma página de la revisión final, «📨 Marcar lo que ya pediste» con el N° de SDO (se ve en
-  el Nomenclador como «Se pidieron para cargar»). Cuando la Unidad Rectora asigne códigos, anotarlos.
-- Reglas: ssh/push/deploy los corre la usuaria con `!`; nada de commits/deploy sin su ok; no tocar Farmacia ni
-  Laboratorio; nunca perder datos (copias antes de borrar).
+- **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
+  Firmante Carolina Analia Milagros Retamar (CUIL 27282388052). Estado actual: esperando su firma (Paso 6 de
+  `PASO_A_PASO`). Después evalúa la Unidad Rectora Central y asigna el código SIPAF — anotar cuando llegue el mail.
+- **5 artículos cargados** (marcados «Se pidieron para cargar» en el Nomenclador, con ese mismo N° de SDO):
+  - fuente atx 500w o superior (cód. 19024) → 19 / 19.1 / **19.1.78 FUENTE DE ALIMENTACION** (ya existía en 300W,
+    300W≠500W: se pide la nueva medida dentro del mismo elemento). Obj. gasto 2.9.3.0.
+  - Combo Actualizacion +Micro+ Mother + Memoria + Gabinete (cód. 19681) → 19 / 19.1 / **19.1.79 MOTHERBOARD**
+    (no existe como combo; aproximación elegida por la usuaria entre MOTHERBOARD/19.1.3 PROCESADOR/19.1.48
+    MEMORIAS). Obj. gasto 4.3.6.0. Ojo: el cód. 19613 (mismo nombre) había quedado «fuera» — revisar si es
+    duplicado del 19681 (aviso de `inconsistencias()`, sin resolver).
+  - conector VGA-HDMI (cód. 18649) → 12 / 12.2 / **12.2.99 CABLE HDMI** (no existe tal cual, aproximación: un
+    conector no es lo mismo que un cable). Obj. gasto 2.9.9.2.
+  - PC MINI CX INTEL I3 10110U+8G+SSD240GB (cód. 21428) → 19 / 19.1 / **19.1.25 COMPUTADORA PERSONAL**. Obj.
+    gasto 4.3.6.0. (Investigado y confirmado el 23/11, el más seguro de los 5.)
+  - Sevicio Mensual CM Digital (cód. 22285) → **503 - SERVICIOS TECNICOS Y PROFESIONALES / 503.4 - SERV. DE
+    INFORMATICA Y SISTEMAS COMPUTARIZADOS / 503.4.25 ALQUILER DE SOFTWARE, SOPORTE Y SUSCRIPCION** (mismo patrón
+    que los ítems ya existentes «ABONO MENSUAL SISTEMA DE FACTURACIÓN/LABORATORIO» bajo ese elemento). Obj. gasto
+    3.4.6.0. Qué es "CM Digital" puntualmente: sin confirmar con la usuaria, era un rubro de SERVICIO (503), no de
+    bien (19), ojo si se repite el patrón con otro artículo así. Cód. 22286 era el mismo ítem: no se pidió aparte.
+- **NO se pidió** (ya existen genéricos, confirmado 23-24/11): pendrive 64 GB → 19.1.143.1 (mismo nombre, misma
+  medida); cable UTP → 12.2.17.2 (ídem); Ubiquiti U6PRO → 19.1.94.2 ACCESS POINT (el buscador automático NO lo
+  detecta solo, cero palabras en común — es un caso a mano, no de `control_altas.Buscador`).
+- **Herramientas nuevas (solo en local, `python run.py`, nunca en el servidor real — ver `_solo_local` en
+  `app/admin/diagnostico.py`)**, útiles para la próxima vez que haya que aprobar altas de otro servicio:
+  - `/admin/diagnostico`: historial de `ActualizacionCatalogo.respuestas` corrida por corrida (no solo cuando hay
+    alerta) + desglose por servicio y por revisor de Farmacia. Para investigar antes de asumir que una alerta de
+    pérdida de datos es grave.
+  - `/admin/comparar-manual`: subís el Catálogo WEB (CSV) + el Excel de «Revisión final automática» (sin
+    aprobar) y rehace toda la comparación sin tocar la base ni el servidor, con Rubro/Subrubro/Elemento/Objeto del
+    gasto editables fila por fila (`control_altas.comparar`, `filas_desde_excel`, `leer_catalogo_subido`,
+    `libro_carga(..., extra=...)`).
+- **Caso resuelto (24/11): alerta de -979 respuestas NO fue pérdida de datos.** Fue el borrado intencional de la
+  llave vieja duplicada «informatica» (ver más abajo, 24/11), con copia de seguridad previa en el servidor. Antes
+  de asumir que una alerta así es grave, mirar `/admin/diagnostico` y el `git log` de esa ventana horaria.
+- Reglas: ssh/push/deploy los corre la usuaria con `!` (o Claude por SSH para LEER, nunca para escribir en la
+  base real sin pedir permiso); nada de commits/deploy sin su ok; no tocar Farmacia ni Laboratorio; nunca perder
+  datos (copias antes de borrar); nunca cargar ni confirmar nada en el formulario real de TIMBÓ — eso siempre lo
+  hace la usuaria a mano, Claude solo le pasa los datos ya resueltos.
 
 ## Qué es
 
