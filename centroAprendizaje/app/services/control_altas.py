@@ -401,19 +401,12 @@ def objeto_del_gasto(texto):
     return list(m.groups()) if m else ["", "", "", ""]
 
 
-def control(llave, instancia, tema=None):
-    """Devuelve el resultado del control para una llave (ver el docstring)."""
-    vigente = cd.ultima_copia(instancia)
-    if not vigente:
-        return None
-    catalogo = leer_completo(vigente)
-    buscador = Buscador(catalogo)
-    anterior = copia_anterior_a(instancia, llave.enviado_en)
-    nuevos = set(catalogo) - set(leer_completo(anterior)) if anterior and anterior != vigente else set()
-
-    grupos = ls.planilla_final(llave, tema)
-    filas = [{"codigo": f[2], "nombre": f[3], "accion": f[1], "propuesto": f[5], "observacion": f[10],
-              "repetido_con": []} for f in grupos["cargar"]]
+def _comparar_nucleo(filas_entrada, catalogo, buscador, nuevos=frozenset()):
+    """El corazón de la comparación: para cada artículo a pedir, busca contra
+    el catálogo (ya leído e indexado) y decide su estado. No necesita llave
+    ni base: lo usan tanto `control()` (con los datos de la llave) como
+    `comparar()` (con archivos subidos a mano, ver `comparar_subido`)."""
+    filas = [dict(f, repetido_con=[]) for f in filas_entrada]
     for a in range(len(filas)):
         for b in range(a + 1, len(filas)):
             if _repetidos(filas[a]["nombre"], filas[b]["nombre"]):
@@ -449,6 +442,38 @@ def control(llave, instancia, tema=None):
                            if base else None)
     filas.sort(key=lambda f: (ORDEN_ESTADOS.index(f["estado"]), f["nombre"].lower()))
     grupos_genericos = agrupar(filas, buscador, catalogo)
+    return filas, grupos_genericos
+
+
+def comparar(filas_entrada, catalogo, catalogo_nombre=""):
+    """Igual que `control()`, pero sin llave ni base: para un Catálogo WEB y
+    una lista de artículos a pedir ([{codigo, nombre, accion, propuesto,
+    observacion}, ...]) ya leídos de archivos subidos a mano. No tiene forma
+    de saber qué apareció en el catálogo DESPUÉS de un envío puntual (no hay
+    fecha de envío) ni los avisos que dependen de toda la revisión del
+    servicio (ésos solo salen de `control()`, con la base real)."""
+    buscador = Buscador(catalogo)
+    filas, grupos_genericos = _comparar_nucleo(filas_entrada, catalogo, buscador)
+    cuenta = {k: sum(1 for f in filas if f["estado"] == k) for k in ORDEN_ESTADOS}
+    return {"catalogo": catalogo_nombre, "catalogo_items": len(catalogo), "comparado_con": "", "nuevos": 0,
+            "filas": filas, "cuenta": cuenta, "revisar_estan": [], "grupos": grupos_genericos, "avisos": [],
+            "ya_estan": 0, "fuera": 0, "falta": 0}
+
+
+def control(llave, instancia, tema=None):
+    """Devuelve el resultado del control para una llave (ver el docstring)."""
+    vigente = cd.ultima_copia(instancia)
+    if not vigente:
+        return None
+    catalogo = leer_completo(vigente)
+    buscador = Buscador(catalogo)
+    anterior = copia_anterior_a(instancia, llave.enviado_en)
+    nuevos = set(catalogo) - set(leer_completo(anterior)) if anterior and anterior != vigente else set()
+
+    grupos = ls.planilla_final(llave, tema)
+    filas_entrada = [{"codigo": f[2], "nombre": f[3], "accion": f[1], "propuesto": f[5], "observacion": f[10]}
+                     for f in grupos["cargar"]]
+    filas, grupos_genericos = _comparar_nucleo(filas_entrada, catalogo, buscador, nuevos)
     items, _ = ls.items_de(llave, tema)
     respuestas = {r.codigo_interno: r for r in llave.revisiones}
     avisos = inconsistencias(llave, items, respuestas, grupos, buscador)
@@ -482,6 +507,44 @@ ENCABEZADOS = ["Control", "Rubro / especie (sugerido)", "Subrubro / familia (sug
                "Sugerencia tomada del ítem", "Parecidos en el Catálogo WEB", "Posible repetido con",
                "Qué respondió el servicio", "Observación del servicio", "N° de trámite (SDO)", "Estado del pedido"]
 ANCHOS = [34, 24, 26, 30, 44, 8, 9, 9, 10, 14, 14, 12, 14, 16, 60, 36, 34, 34, 22, 18]
+
+
+def filas_desde_excel(datos):
+    """Lee la hoja «PARA PEDIR EL ALTA» de un Excel ya generado por `libro()`
+    (el de «Revisión final automática», sin aprobar) y arma la lista de
+    artículos a pedir para `comparar()`. `datos` son los bytes del archivo."""
+    import io as _io
+
+    import openpyxl
+    wb = openpyxl.load_workbook(_io.BytesIO(datos), data_only=True)
+    if "PARA PEDIR EL ALTA" not in wb.sheetnames:
+        raise ValueError("No es un Excel de «Revisión final automática»: falta la hoja «PARA PEDIR EL ALTA».")
+    ws = wb["PARA PEDIR EL ALTA"]
+    filas = []
+    for fila in ws.iter_rows(min_row=2, values_only=True):
+        nombre = (fila[4] or "").strip() if len(fila) > 4 else ""
+        if not nombre:
+            continue
+        filas.append({"codigo": (fila[12] or "").strip() if len(fila) > 12 else "", "nombre": nombre,
+                      "accion": "", "propuesto": "", "observacion": (fila[17] or "") if len(fila) > 17 else ""})
+    return filas
+
+
+def leer_catalogo_subido(datos):
+    """Catálogo WEB a partir de los bytes de un CSV subido a mano (mismo
+    formato que descarga `/admin/servicios/catalogo/descargar`). `leer_completo`
+    espera una ruta de archivo: lo escribimos en un temporal y lo borramos
+    enseguida."""
+    import os as _os
+    import tempfile
+    texto = datos.decode("utf-8-sig")
+    fd, ruta = tempfile.mkstemp(suffix=".csv")
+    try:
+        with _os.fdopen(fd, "w", encoding="utf-8", newline="") as f:
+            f.write(texto)
+        return leer_completo(ruta)
+    finally:
+        _os.remove(ruta)
 
 
 def libro(resultado, servicio):
@@ -574,8 +637,20 @@ def _codigo(texto):
     return (texto or "").split(" - ")[0].strip()
 
 
-def libro_carga(resultado, servicio, aprobado_por, fecha):
-    """Excel listo para cargar en el Formulario Timbó Compras (CAByS)."""
+def clave_fila(f):
+    """Identificador estable de una fila de `resultado["filas"]" para guardar
+    ediciones manuales (unidad, marca, ¿cargada?, etc.): el código del
+    hospital si lo tiene, si no el nombre."""
+    return f["codigo"] or f["nombre"]
+
+
+def libro_carga(resultado, servicio, aprobado_por, fecha, extra=None):
+    """Excel listo para cargar en el Formulario Timbó Compras (CAByS).
+    `extra` (opcional): {clave_fila(f): {unidad, marca, aporta, cargada, sdo,
+    rubro, subrubro, elemento, inciso, principal, parcial, subparcial}} con lo
+    que se haya completado o corregido a mano (ver `/admin/comparar-manual`).
+    Lo que venga en `extra` manda por sobre la sugerencia automática."""
+    extra = extra or {}
     referencia = f"Alta de bienes para el Hospital — servicio {servicio}"
     pasos = [[a, b, c.format(referencia=f"«{referencia}»")] for a, b, c in PASO_A_PASO]
     grilla, colores, ya_existen = [], [], []
@@ -592,11 +667,20 @@ def libro_carga(resultado, servicio, aprobado_por, fecha):
                 continue
             vistos_repetidos.add(clave)
         s = f["sugerencia"] or {}
+        e = extra.get(clave_fila(f), {})
+        objeto_auto = objeto_del_gasto(s.get("objeto", ""))
+        rubro = _codigo(e.get("rubro")) or _codigo(s.get("rubro"))
+        subrubro = _codigo(e.get("subrubro")) or _codigo(s.get("subrubro"))
+        elemento = e.get("elemento") or s.get("elemento", "")
+        objeto = [e.get("inciso") or objeto_auto[0], e.get("principal") or objeto_auto[1],
+                 e.get("parcial") or objeto_auto[2], e.get("subparcial") or objeto_auto[3]]
+        completo = bool(rubro and subrubro and elemento)
         nombre = f["nombre"] + (f" — Cód. externo: {f['codigo']}" if f["codigo"] else "")
-        grilla.append([len(grilla) + 1, _codigo(s.get("rubro")), _codigo(s.get("subrubro")),
-                       s.get("elemento", ""), nombre] + objeto_del_gasto(s.get("objeto", "")) +
-                      ["", "", "No", ESTADOS[f["estado"]][0] + ("" if s else " — sin sugerencia de rubro: completar"), "", "", ""])
-        colores.append("verde" if s else "amarillo")
+        grilla.append([len(grilla) + 1, rubro, subrubro, elemento, nombre] + objeto +
+                      [e.get("unidad", ""), e.get("marca", ""), e.get("aporta", "No"),
+                       ESTADOS[f["estado"]][0] + ("" if completo else " — sin rubro/subrubro/elemento: completar"),
+                       e.get("sdo", ""), "Sí" if e.get("cargada") else "", ""])
+        colores.append("verde" if completo else "amarillo")
     portada = [["Servicio", servicio], ["Aprobado por", aprobado_por], ["Fecha de aprobación", fecha],
                ["Catálogo WEB usado", resultado["catalogo"]], ["Filas para cargar", len(grilla)],
                ["No se cargan (ya existen o repetidos)", len(ya_existen)],

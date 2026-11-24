@@ -24,6 +24,8 @@
     <a class="btn btn--ghost btn--sm" href="{{ url_for('procesos.inicio') }}">🧭 Procesos</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.nomenclador_revision') }}">🔄 Revisión nomenclador</a>
     <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.servicios') }}">🏥 Revisión por servicio</a>
+    {% if config.DEBUG %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.diagnostico') }}">🩺 Diagnóstico (local)</a>
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('admin.comparar_manual') }}">📤 Comparar archivos (local)</a>{% endif %}
     <a class="btn btn--ghost btn--sm" href="{{ url_for('ui.portal_inicio') }}" target="_blank" rel="noopener">Ver sitio público ↗</a>
     <form method="post" action="{{ url_for('admin.logout') }}">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />

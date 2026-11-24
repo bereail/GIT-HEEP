@@ -1453,3 +1453,9 @@ def inventario_exportar():
 
 # Llaves de la revisión por servicio: sus rutas se registran sobre admin_bp.
 from app.admin import servicios  # noqa: E402,F401
+
+# Diagnóstico de pérdida de datos (solo local): ídem.
+from app.admin import diagnostico  # noqa: E402,F401
+
+# Comparación final subiendo archivos a mano (solo local): ídem.
+from app.admin import comparar_manual  # noqa: E402,F401
