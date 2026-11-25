@@ -268,15 +268,19 @@
     },
     {
      "titulo": "Alta de oficina, paso a paso",
-     "texto": "Timbó (ID Ciudadana) → Administrador Local → Gestión de Oficinas → «Nuevo Trámite» → «Alta de Oficina». Se define Oficina Padre Superior e Inferior (no se pueden cambiar después), el nombre (tampoco), y el nombre corto se completa solo. Código identificador, institución, SAF y SAFOP quedan vacíos salvo indicación. Luego datos complementarios y «Guardar». El rol de AL se pide solo por ticket de iTop a la UGD."
+     "texto": "Timbó (ID Ciudadana) → Administrador Local → Gestión de Oficinas → «Nuevo Trámite» → «Alta de Oficina». Se define Oficina Padre Superior e Inferior (no se pueden cambiar después), el nombre (tampoco), y el nombre corto se completa solo. Código identificador, institución, SAF y SAFOP quedan vacíos salvo indicación: el código identificador solo es obligatorio si la oficina tiene habilitado «¿Permite generar actos administrativos?». Luego datos complementarios y «Guardar» (pide confirmar: «Esta acción no se puede deshacer»); al guardar, el sistema crea la oficina y la incorpora de forma permanente a la estructura organizacional. El rol de AL se pide solo por ticket de iTop a la UGD."
     },
     {
      "titulo": "Atributos de la oficina",
-     "texto": "¿Permite asignación de usuarios? casi siempre Sí. ¿Oficina formal? Sí si tiene resolución o decreto de creación. ¿Permite caratular? Sí solo si aprueba solicitudes de caratulación (cualquiera puede pedirla). ¿Actos administrativos? No, salvo indicación (si es Sí, el código identificador es obligatorio). Mail: institucional, no uno personal, porque recibe todas las notificaciones."
+     "texto": "¿Permite asignación de usuarios? casi siempre Sí. ¿Oficina formal? Sí si tiene resolución o decreto de creación (en ese caso se puede indicar la norma correspondiente, pero no es un dato obligatorio). ¿Permite caratular? Sí solo si aprueba solicitudes de caratulación (cualquiera puede pedirla). ¿Actos administrativos? No, salvo indicación (si es Sí, el código identificador es obligatorio). Mail: institucional, no uno personal, porque recibe todas las notificaciones."
+    },
+    {
+     "titulo": "Las solapas de Gestión de Oficinas",
+     "texto": "Son 5: Oficinas activas (listado completo y vigente; el AL ve todas, incluso de otros organismos o jurisdicciones, pero solo crea, modifica o desactiva las de su propio ámbito), Oficinas inactivas, Historial de Oficinas (importaciones de rama), Trámites de importación rama de oficinas y Trámites de desactivación masiva de oficinas. No existe una solapa de oficinas «borradas»: nada se elimina del sistema, solo se desactiva."
     },
     {
      "titulo": "Activas, inactivas y menú ⋮",
-     "texto": "El AL ve todas las oficinas, incluso de otros organismos, pero solo modifica las de su ámbito. Menú de tres puntos: Acciones (modificar, desactivar), Previsualizar e Historial (quién, qué, cuándo). Desactivar solo si no tiene oficinas hijas ni usuarios, con comentario. Las inactivas se reactivan con «Activar oficina», también con comentario."
+     "texto": "Menú de tres puntos: Acciones (modificar, desactivar), Previsualizar e Historial (quién, qué, cuándo). Desactivar solo si no tiene oficinas hijas ni usuarios, con comentario. Las inactivas se reactivan desde Acciones → «Activar oficina», también con comentario que fundamente la reactivación; confirmada, la oficina vuelve a la solapa Oficinas activas."
     },
     {
      "titulo": "Exportar e historial",
