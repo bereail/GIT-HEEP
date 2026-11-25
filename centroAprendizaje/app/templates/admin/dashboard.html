@@ -26,6 +26,15 @@
   <span class="rev-aviso__ir">Ver observaciones y accesos →</span>
 </a>
 
+<a class="card rev-aviso" href="{{ url_for('admin.curso_admin_local') }}">
+  <span class="rev-aviso__icono">🛡️</span>
+  <span class="rev-aviso__texto">
+    <b>Administrador Local <span class="badge badge--neutral">no público</span></b>
+    <span>Curso de Administrador Local de Timbó — privado, solo se ve acá en el panel.</span>
+  </span>
+  <span class="rev-aviso__ir">Ver el curso →</span>
+</a>
+
 <div class="admin-list">
   {% for tema in temas %}
   <a class="admin-list-item" href="{{ url_for('admin.tema_detalle', tema_slug=tema.slug) }}">
