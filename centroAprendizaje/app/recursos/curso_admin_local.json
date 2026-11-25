@@ -421,10 +421,52 @@
   {
    "slug": "modulo-7",
    "titulo": "Módulo 7: Desarrollo de formulario y servicios (introductorio)",
-   "disponible": false,
+   "disponible": true,
    "temas": [
     "Workbench – Generación de formularios para Timbó",
     "Evaluación Módulo 7"
+   ],
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "1. Desarrollo de formularios",
+     "archivo": "m7-desarrollo-de-formularios.pdf"
+    }
+   ],
+   "evaluacion": "2. Evaluación Módulo 7: Se hace en el Aula Virtual. Antes hay que haber revisado el material del módulo.",
+   "resumen": [
+    {
+     "titulo": "Cuándo hace falta un formulario",
+     "texto": "Para cargar información en TIMBÓ hay tres tipos de documentos: libres e importados (no necesitan desarrollo, se usan los que ya existen; si falta uno con la función que se necesita, se pide por ticket de iTop) y formularios, que sí hay que diseñar cuando no existe uno. La diferencia es que un formulario se crea cuando después hace falta analizar los datos cargados."
+    },
+    {
+     "titulo": "El Workbench",
+     "texto": "Quien tiene permiso para desarrollar entra a https://cworkbench.santafe.gob.ar/, la herramienta donde se arman los formularios, servicios y flujos de los trámites de TIMBÓ (el manual solo cubre catálogos y servicios, que es lo que se usa para diseñar formularios)."
+    },
+    {
+     "titulo": "Crear un formulario nuevo",
+     "texto": "Dentro de Catálogos, los formularios se concentran en la carpeta «Documentos Oficiales». El nombre que se le pone al crearlo es el que después ve el sistema. Hay que elegir tipo «Formulario» y definir el ID (el acrónimo, que no se puede cambiar después): se arma con la primera letra de cada palabra del nombre, sin contar pronombres ni conectores (de, los, la, el, y, etc.) — por ejemplo, «Solicitud de Artículos e Insumos» → SAI. Es una convención fija, para que cualquiera que sume al equipo lo siga haciendo igual."
+    },
+    {
+     "titulo": "Los 4 botones generales",
+     "texto": "Configuración (la ruedita): ahí se completan Código, Nombre y Descripción, y si hace falta se activa «permite generar PDF»; se confirma con Guardar. Acciones: pensado para exportar/importar el formulario entre versiones, por ahora no se usa. Previsualizar: muestra cómo va quedando el diseño. Guardar: guarda los cambios."
+    },
+    {
+     "titulo": "Área de diseño: grupos y componentes",
+     "texto": "Para armar el formulario se agregan «grupos» de componentes desde el panel izquierdo. A cada grupo hay que ponerle un ID (y, si tiene título visible, el mismo texto en ID y en Título) para poder referenciarlo después. Un grupo se puede mostrar como grilla/tabla: ahí conviene poner nombres «Custom» (por ejemplo «Agregar Datos» en vez de «Edición de Grilla») y se puede definir mínimo y máximo de filas y si se numeran."
+    },
+    {
+     "titulo": "Tipos de componentes disponibles",
+     "texto": "Texto corto/largo (valor inicial, mínimos/máximos, mensajes de ayuda o error, obligatoriedad), Moneda y Decimal (con cantidad de decimales y límites), Combo (se carga con servicios creados previamente), Check, Email (valida el formato), Leyenda (texto fijo, sin carga), Checklist Box (con opción de radio button), Número, y Fecha/Hora. «Búsqueda» todavía no se usó en la práctica."
+    },
+    {
+     "titulo": "Validaciones condicionales",
+     "texto": "Un campo o grupo puede mostrarse solo si se cumple una condición, escrita en «apariencia» con la fórmula instance.identificadorgrupo.identificadorcomponente==\"valor\" (por ejemplo, para mostrar un textarea solo cuando se eligió «No conformidad»)."
+    },
+    {
+     "titulo": "Servicios y paso a producción",
+     "texto": "Para los combos se reutilizan los servicios que ya existen; crear uno nuevo se pide por iTop (o, si está autorizado, se puede crear uno mismo con una explicación previa, ordenando los ítems alfabéticamente y los ID numéricamente, con el mismo valor en ID y Orden). Antes de subir cualquier formulario o servicio a producción hay que completar una planilla de control (qué formularios/servicios se usan en cada trámite, en qué entorno y a qué trámite corresponden) y generar un PDF estático con esa información para el ticket de iTop del pase a producción — sin la planilla completa, no se sube nada."
+    }
    ]
   }
  ],
