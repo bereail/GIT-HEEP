@@ -291,7 +291,7 @@
   {
    "slug": "modulo-5",
    "titulo": "Módulo 5: Asignación de Usuarios",
-   "disponible": false,
+   "disponible": true,
    "temas": [
     "Gestión de Usuarios",
     "Cambio de rama ID Ciudadana",
@@ -302,6 +302,67 @@
     "Autoregistro: Evaluador",
     "Autoregistro: Supervisor",
     "Evaluación Módulo 5"
+   ],
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "1. Cómo gestionar usuarios",
+     "archivo": "m5-asignacion-de-usuarios.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Cambio de rama en ID Ciudadana",
+     "archivo": "m5-cambio-de-rama-id-ciudadana.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "3. Autorregistro: Manual del Administrador Local",
+     "archivo": "m5-autorregistro-administrador-local.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "4. Autorregistro: Manual del Supervisor",
+     "archivo": "m5-autorregistro-supervisor.pdf"
+    }
+   ],
+   "evaluacion": "5. Evaluación Módulo 5: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
+   "resumen": [
+    {
+     "titulo": "Requisitos para asignar usuarios",
+     "texto": "Los usuarios a asignar deben estar previamente registrados en ID Ciudadana (hace falta su CUIL). La estructura de oficinas del organismo debe estar cargada y activa. Quien asigna necesita el rol de Administrador Local para el organismo correspondiente, habilitado en su ámbito de responsabilidad — conforme a la Circular N.º 03/25 de la Unidad de Gestión (RGGD-TIMBÓ)."
+    },
+    {
+     "titulo": "Toda persona necesita una oficina",
+     "texto": "Los usuarios pueden formar parte de TIMBÓ únicamente cuando están vinculados al menos a una oficina: no se puede incorporar a nadie al sistema sin asociarlo a una unidad orgánica. Un mismo usuario puede ser asignado a una o más oficinas, según las funciones que cumpla."
+    },
+    {
+     "titulo": "Titular, integrante y auxiliar",
+     "texto": "Al asignar, el usuario se define como titular de la oficina (el responsable administrativo) o como integrante de la misma. Aparte, con el interruptor ¿Es auxiliar? se marca si cumple funciones auxiliares (por ejemplo, un pasante o contratado) — es un dato adicional, no la otra opción frente a «integrante»."
+    },
+    {
+     "titulo": "Asignar un usuario, paso a paso",
+     "texto": "Administrador Local → Asignación de usuarios → «Nuevo Trámite» (tres opciones: Asignación de usuario, Importación masiva de usuarios, Desasignar Usuarios de una Oficina). Se ingresa el CUIL: el sistema autocompleta nombre y apellido desde ID Ciudadana, o avisa «Usuario no encontrado» si no está registrado. En «Agregar Oficina» la selección es en dos instancias: primero el nivel superior del organismo (la rama principal, para acotar el listado) y después la oficina específica — activa y con «permite agregar usuarios» habilitado. Al Guardar, el sistema pide una confirmación final."
+    },
+    {
+     "titulo": "Reasignar y desasignar",
+     "texto": "Para reasignar (sumar otra oficina o cambiar de oficina) se usa el menú contextual (⋮ → Acciones) desde la bandeja de Asignación de usuarios. Para desasignar hay dos modalidades: el menú contextual desde la solapa Usuarios Activos, o «Nuevo Trámite» → «Desasignar Usuarios de una Oficina». Desasignar no elimina al usuario del sistema ni afecta sus otras oficinas; si era la única a la que estaba asociado, el usuario pasa automáticamente a figurar como Inactivo."
+    },
+    {
+     "titulo": "Cambio de rama en ID Ciudadana",
+     "texto": "Si un usuario está en más de un organismo, al entrar a TIMBÓ el sistema le pide confirmar en cuál oficina quiere operar — para cambiar, hay que cerrar sesión y volver a entrar. Para cambiar el organismo de base del perfil: ID Ciudadana → Perfil → «Administración Pública» → «Organismo» → elegir el organismo → Aceptar."
+    },
+    {
+     "titulo": "Autorregistro: los dos roles",
+     "texto": "El autorregistro es otra forma de incorporar usuarios, con dos roles que puede tomar el mismo Administrador Local o delegar: Evaluador de Autorregistro (aprueba o rechaza solicitudes en una única oficina) y Supervisor de Autorregistro (aprueba, rechaza o redirige solicitudes en toda una rama de oficinas bajo su jurisdicción). Requiere ser AL de una rama y tener el permiso «Administrador Local de Autorregistro», que se pide por ticket de iTop a la Unidad de Gestión Digital."
+    },
+    {
+     "titulo": "Delegar el permiso con responsabilidad",
+     "texto": "Al delegar la capacidad de resolver solicitudes de autorregistro también se transfieren las responsabilidades de incorporar personas a una oficina; cada acción queda en el historial de auditoría. Antes de otorgar el permiso conviene asegurarse de que el delegado entienda que necesita la aprobación del funcionario responsable de esas oficinas. Al asignarlo, «Nivel Superior» y «Nivel» se refieren a la rama y la oficina sobre las que opera el permiso — no al nivel de revista de la persona."
+    },
+    {
+     "titulo": "Resolver una solicitud de autorregistro",
+     "texto": "Desde Autorregistro → pestaña «En curso» → menú ⋮ → Acciones: Autorizar solicitud (da el alta), Rechazar solicitud (finaliza sin otorgar el alta — se usa si el agente no corresponde a la oficina o los datos no son válidos; pasa a «Rechazadas» y se notifica al agente) o Revisar solicitud."
+    }
    ]
   },
   {
