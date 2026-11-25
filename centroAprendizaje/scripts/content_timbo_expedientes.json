@@ -2474,6 +2474,18 @@
       "termino": "Firmador Digital Web",
       "definicion": "Herramienta gratuita de la Provincia (santafe.gob.ar/firma) para firmar PDF con la ID Ciudadana y validar firmas.",
       "modulo": "Firma y seguridad"
+    },
+    {
+      "termino": "Oficina (unidad organizativa)",
+      "definicion": "La unidad organizativa básica de TIMBÓ: define qué expedientes se ven en la bandeja y en qué circuitos se interviene. Todo usuario pertenece al menos a una oficina (puede estar en varias). Los expedientes pertenecen a las oficinas, no a las personas.",
+      "modulo": "Administrador Local",
+      "uso": "Se crea y gestiona desde Administrador Local → Gestión de Oficinas (requiere ese rol, que se pide por ticket de iTop a la Unidad de Gestión Digital)."
+    },
+    {
+      "termino": "Código identificador de oficina",
+      "definicion": "Código de una oficina. Por defecto queda vacío; solo es obligatorio si la oficina tiene habilitada la opción «¿Permite generar actos administrativos?».",
+      "modulo": "Administrador Local",
+      "uso": "Se completa, si corresponde, en el alta o la modificación de la oficina (Administrador Local → Gestión de Oficinas)."
     }
   ],
   "situaciones": [
@@ -2801,6 +2813,40 @@
       "descripcion": "Dudas sobre el Registro de Tratados, Convenios y Contratos.",
       "solucion": "Mandalo apenas esté firmado a tecnicalegislativa@santafe.gov.ar. Si se firmó en papel, digitalizalo y mandalo igual. Técnica Legislativa lo registra y te avisa por correo o por Comunicaciones Oficiales (Circular UG TIMBÓ 5/2025).",
       "categoria_libre": "Convenios",
+      "verificado": true
+    },
+    {
+      "slug": "como-dar-de-alta-una-oficina",
+      "situacion": "¿Cómo doy de alta una oficina nueva en TIMBÓ?",
+      "descripcion": "Sos Administrador/a Local y necesitás crear una oficina nueva en la estructura del organismo.",
+      "solucion": "Entrá con tu ID Ciudadana → Administrador Local → Gestión de Oficinas → «Nuevo Trámite» → «Alta de Oficina». Definí la Oficina Padre Superior e Inferior (no se pueden cambiar después) y el nombre (tampoco): el nombre corto se completa solo. El código identificador, institución, SAF y SAFOP quedan vacíos salvo indicación (el código solo es obligatorio si la oficina permite generar actos administrativos). Completá los atributos (¿permite asignación de usuarios?, ¿oficina formal?, ¿permite caratular?, ¿permite actos administrativos?) y los datos complementarios, y guardá: el sistema pide confirmar porque no se puede deshacer, y la oficina queda incorporada de forma permanente a la estructura.",
+      "categoria_libre": "Administrador Local",
+      "verificado": true
+    },
+    {
+      "slug": "no-puedo-cambiar-nombre-o-rama-de-oficina",
+      "situacion": "No puedo cambiar el nombre de una oficina ni moverla de rama",
+      "descripcion": "Como Administrador/a Local, intentás renombrar una oficina ya creada o moverla a otra parte del organigrama y el sistema no lo permite.",
+      "causa": "No es un error: una vez creada, el sistema no permite modificar el nombre de una oficina ni alterar su ubicación en la jerarquía.",
+      "solucion": "Si hace falta un cambio estructural (por ejemplo, sumar una oficina intermedia), hay que crear la nueva estructura a mano, hacer los pases correspondientes de los expedientes y reasignar a los usuarios involucrados: el sistema no lo hace automáticamente. Por eso conviene planificar bien la estructura antes de cargarla.",
+      "categoria_libre": "Administrador Local",
+      "verificado": true
+    },
+    {
+      "slug": "desactivar-o-reactivar-una-oficina",
+      "situacion": "¿Cómo desactivo o vuelvo a activar una oficina?",
+      "descripcion": "Una oficina dejó de usarse, o necesitás reactivar una que estaba dada de baja.",
+      "solucion": "Las oficinas nunca se eliminan, solo se desactivan. Desde Gestión de Oficinas → Oficinas activas → menú ⋮ → Acciones → Desactivar oficina (solo si no tiene oficinas hijas ni usuarios asignados), con un comentario del motivo. Para reactivarla: Oficinas inactivas → menú ⋮ → Acciones → Activar oficina, también con un comentario; al confirmar, vuelve a la solapa Oficinas activas.",
+      "categoria_libre": "Administrador Local",
+      "verificado": true
+    },
+    {
+      "slug": "veo-oficinas-de-otros-organismos",
+      "situacion": "Veo oficinas de otros organismos, pero no puedo modificarlas",
+      "descripcion": "En la solapa Oficinas activas aparecen oficinas que no son de tu organismo.",
+      "causa": "No es un error: la vista de Oficinas activas es general y muestra todas las oficinas del sistema, incluso de otros organismos o jurisdicciones.",
+      "solucion": "Solo vas a poder crear, modificar o desactivar las oficinas que estén dentro de tu propio ámbito de responsabilidad (el que se definió al otorgarte el rol de Administrador Local). Las demás se ven, pero no se pueden intervenir.",
+      "categoria_libre": "Administrador Local",
       "verificado": true
     }
   ],
