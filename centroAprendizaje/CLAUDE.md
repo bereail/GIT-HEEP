@@ -3,13 +3,12 @@
 Contexto para retomar el trabajo desde cualquier PC. El detalle técnico está
 en `README.md`; acá va lo que no se deduce del código.
 
-## ▶ PUNTO DE RETOMA (24/11/2026, tarde) — leer primero
+## ▶ PUNTO DE RETOMA (25/11/2026) — leer primero
 
-Estado: **la carga de altas de Informática en TIMBÓ ya se hizo y quedó enviada a firmar.** Las herramientas
-nuevas (`/admin/diagnostico`, `/admin/comparar-manual`) y este mismo CLAUDE.md están commiteados y **pusheados**
-a `origin/nomenclador-capacitacion` (commits `36ae509` y `335a2ec`) — **pero todavía NO deployados al servidor
-real** (falta: mergear a `main` y correr `scripts/deploy_servidor.sh` por ssh, como el resto del circuito de
-deploy ya documentado en este archivo). Seguir desde acá:
+Estado: **todo commiteado, pusheado y deployado** (`main`, `nomenclador-capacitacion` y el servidor en `55da77c`).
+La carga de altas de Informática en TIMBÓ ya se hizo y quedó enviada a firmar. Las herramientas
+`/admin/diagnostico` y `/admin/comparar-manual` están deployadas pero solo funcionan en local (`_solo_local`).
+Seguir desde acá:
 
 - **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
   Firmante Carolina Analia Milagros Retamar. Estado actual: esperando su firma (Paso 6 de
@@ -45,14 +44,16 @@ deploy ya documentado en este archivo). Seguir desde acá:
 - **Caso resuelto (24/11): alerta de -979 respuestas NO fue pérdida de datos.** Fue el borrado intencional de la
   llave vieja duplicada «informatica» (ver más abajo, 24/11), con copia de seguridad previa en el servidor. Antes
   de asumir que una alerta así es grave, mirar `/admin/diagnostico` y el `git log` de esa ventana horaria.
-- 24/11 tarde: la usuaria pidió sumar el **Curso de Administrador Local de Timbó** (Aula Virtual id=1427, 7 módulos
-  que se desbloquean aprobando cada evaluación). Hecho SOLO en /admin (privado, sin deploy hasta su ok):
-  `/admin/capacitacion/administrador-local` (botón en Capacitación), datos en `app/recursos/curso_admin_local.json`,
-  PDF en `app/recursos/archivos/admin-local/` (se bajan solo con sesión de admin). Hoy está el Módulo 1 (Introducción,
-  Esquema de soporte, Canva) y el programa completo; los módulos 2-7 figuran con sus temas y «🔒». Cuando la usuaria
-  apruebe cada evaluación en el Aula, bajar el material nuevo desde su Chrome (los «nube/…/s/<token>» se bajan con
-  curl `/download`; los del aula, con fetch en la pestaña: usar el enlace de `mod/resource/view.php`, el de la página
-  devuelve un «Aviso» HTML) y sumarlo al JSON. NUNCA hacer las evaluaciones en su lugar (son su certificación).
+- **Curso de Administrador Local de Timbó** (Aula Virtual id=1427, 7 módulos que se desbloquean aprobando cada
+  evaluación). SOLO en /admin: `/admin/capacitacion/administrador-local` (botón en Capacitación), datos en
+  `app/recursos/curso_admin_local.json`, archivos en `app/recursos/archivos/admin-local/` (solo con sesión de admin;
+  la lista blanca sale del JSON, tipos `pdf` y `video`). Deployado en `55da77c` con **módulos 1 a 4** (Introducción,
+  Firma Digital con el video mp4, ITOP, Oficinas) y resúmenes «Lo clave del módulo». **Faltan 5, 6 y 7**: cuando se
+  habiliten, entrar al curso en el Chrome de la usuaria (tiene que tener sesión iniciada), listar los enlaces de cada
+  `mod/page/view.php`, pedir permiso de descarga con nombre y tamaño, bajar los «nube/…/s/<token>» con curl
+  `/download`, leerlos con `pdftotext` (si es imagen, en el visor de la Nube) y sumarlos al JSON. Enlaces del
+  Módulo 2 rotos en la Nube (instalador Windows y driver LM-CryptoID): avisado en la página. NUNCA hacer las
+  evaluaciones en su lugar (son su certificación): si pregunta, decir qué dice el material sin marcar V/F.
 - Reglas: ssh/push/deploy los corre la usuaria con `!` (o Claude por SSH para LEER, nunca para escribir en la
   base real sin pedir permiso); nada de commits/deploy sin su ok; no tocar Farmacia ni Laboratorio; nunca perder
   datos (copias antes de borrar); nunca cargar ni confirmar nada en el formulario real de TIMBÓ — eso siempre lo
