@@ -84,9 +84,16 @@ def _url_tutorial(tutorial: Tutorial):
     )
 
 
-def construir_indice(tema):
+def construir_indice(tema, con_nomenclador=True):
     """Arma el índice de búsqueda para un único tema. Nunca mezcla contenido
-    de otro tema."""
+    de otro tema.
+
+    `con_nomenclador=False` se usa para el chequeo de derivación a otro tema
+    (`_buscar_en_otros_temas`): ese chequeo igual descarta después toda
+    entrada "Nomenclador", así que ni vale la pena traer de la base los
+    miles de artículos del Nomenclador de TIMBÓ Compras (27.000+) para cada
+    mensaje que llega a otro tema — hacerlo igual volvía lento a cualquier
+    chatbot que no fuera el de Compras."""
     entradas = []
 
     for tarea in tema.tareas:
@@ -150,7 +157,7 @@ def construir_indice(tema):
             "ref": termino,
         })
 
-    if tema.equivalencias_articulos:
+    if con_nomenclador and tema.equivalencias_articulos:
         # Entrada sintetica con peso alto para preguntas en lenguaje natural
         # sobre el Nomenclador en si ("no encuentro el articulo", "como pido
         # un articulo nuevo"). Sin esto, esas consultas no matchean ningun
@@ -172,7 +179,7 @@ def construir_indice(tema):
             "ref": tema,
         })
 
-    for equivalencia in tema.equivalencias_articulos:
+    for equivalencia in (tema.equivalencias_articulos if con_nomenclador else ()):
         # Solo nombre/bien/item especifico: las notas son texto libre largo
         # y meterlas ensuciaria el ranking con coincidencias de palabras
         # sueltas sin relacion real con lo que se busca.

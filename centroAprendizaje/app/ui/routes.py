@@ -338,8 +338,9 @@ def _buscar_en_otros_temas(tema, consulta, minimo, puntaje_local=0):
     for otro in Tema.query.filter(Tema.activo.is_(True), Tema.id != tema.id).all():
         # El nomenclador son nombres de artículos del depósito, no contenido
         # informativo: un nombre de producto que coincide por casualidad
-        # ("pase" con "CAJA PASE 100X100X70") no debe mandar a otro tema.
-        indice = [e for e in buscador.construir_indice(otro) if e["kind"] != "Nomenclador"]
+        # ("pase" con "CAJA PASE 100X100X70") no debe mandar a otro tema. Por
+        # eso ni se cargan sus miles de artículos acá (con_nomenclador=False).
+        indice = buscador.construir_indice(otro, con_nomenclador=False)
         resultados = buscador.buscar_con_puntaje(
             indice, consulta, limite=1, ignorar=_palabras_del_nombre(otro),
             premiar_titulo_exacto=False,
