@@ -368,11 +368,54 @@
   {
    "slug": "modulo-6",
    "titulo": "Módulo 6: Gestión de Permisos de Usuarios",
-   "disponible": false,
+   "disponible": true,
    "temas": [
     "Cómo gestionar permisos de usuarios",
     "Tabla de permisos en Timbó",
     "Evaluación Módulo 6"
+   ],
+   "materiales": [
+    {
+     "tipo": "pdf",
+     "titulo": "1. Gestión de permisos de usuarios",
+     "archivo": "m6-gestion-de-permisos.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "2. Tabla de permisos en Timbó",
+     "archivo": "m6-tabla-de-permisos.pdf"
+    }
+   ],
+   "evaluacion": "3. Evaluación Módulo 6: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
+   "resumen": [
+    {
+     "titulo": "Qué hace el módulo",
+     "texto": "Permisos de Usuarios está en el menú del Administrador Local y permite otorgar, modificar o dar de baja permisos, según las bandejas y roles disponibles. En la mayoría de los casos, con asignar al usuario a una oficina y a una bandeja alcanza: adquiere automáticamente los permisos del rol «Santa Fe» para operar como usuario estándar. La gestión específica de permisos solo hace falta cuando las funciones del usuario lo requieran (Circular N.º 03/25 de la Unidad de Gestión, RGGD-TIMBÓ)."
+    },
+    {
+     "titulo": "Requisitos previos",
+     "texto": "Los usuarios sobre los que se gestionarán permisos deben estar previamente creados y asignados a al menos una oficina. Quien hace la operación necesita permisos de Administrador Local para gestionar permisos dentro de su organismo y ámbito de responsabilidad. Las bandejas sobre las que se otorgan permisos tienen que estar activas y disponibles."
+    },
+    {
+     "titulo": "Independiente de la asignación a oficinas",
+     "texto": "Los permisos se gestionan de forma independiente de la asignación del usuario a oficinas (no «de forma conjunta»). La bandeja Permisos de Usuarios tiene tres solapas: Usuarios Activos (con permisos vigentes en al menos una bandeja), Usuarios Inactivos (sin permisos activos) y Nuevo Trámite (para asignar permisos nuevos)."
+    },
+    {
+     "titulo": "Otorgar un permiso, paso a paso",
+     "texto": "Nuevo Trámite → «Alta de permisos de usuarios» → Iniciar. Se identifica al usuario por CUIL (el sistema valida si ya tiene permisos activos o es una asignación nueva). Después se completan Bandeja (sobre qué bandeja del sistema se otorga) y Rol (el que corresponde a esa bandeja — la disponibilidad de roles depende de la bandeja elegida y de las configuraciones vigentes). Guardar pide una confirmación final; confirmado, el permiso queda activo."
+    },
+    {
+     "titulo": "Modificar un permiso",
+     "texto": "Desde Usuarios Activos → menú ⋮ → Acciones se ve el listado de bandejas y permisos del usuario. Desde ahí se puede cambiar el rol asignado en una bandeja O incorporar permisos nuevos (son dos vías, no una sola). Hay que confirmar para que quede registrado."
+    },
+    {
+     "titulo": "Dar de baja un permiso",
+     "texto": "Desde Usuarios Activos → menú ⋮ → Acciones, se ubica el permiso, se lo marca para eliminar y se Guarda (pide confirmación). La baja revoca ese permiso puntual sin eliminar al usuario del sistema ni afectar sus otros permisos activos. Si al usuario no le queda ningún permiso activo, pasa a la solapa Usuarios Inactivos de este módulo."
+    },
+    {
+     "titulo": "Tabla de permisos: lo más usado para Administrador Local",
+     "texto": "Según la tabla de referencia: Gestión de Oficinas (rol Administrador Local de Oficinas) crea/edita/deshabilita oficinas; Asignación de Usuarios (Administrador Local de Asignación de Usuarios) asigna y desasigna usuarios de una o más oficinas; Permisos de Usuarios (Administrador Local de Permisos de Usuarios) otorga y edita permisos; Autorregistro (Administrador Local Autorregistro) habilita a otro usuario como Evaluador o Supervisor de Autorregistro. El rol «Santa Fe» (nivel usuario) es el que cubre Expedientes, Documentos Oficiales, Comunicaciones Oficiales y Listas de Usuarios para el uso diario."
+    }
    ]
   },
   {
