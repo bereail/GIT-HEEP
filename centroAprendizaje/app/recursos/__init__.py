@@ -219,6 +219,13 @@ def simulador():
 
 
 @lru_cache(maxsize=None)
+def simulador_timbo():
+    # Réplica de pantallas de TIMBÓ (Bandeja de trámites) relevadas el
+    # 25/11/2026 + la Guía de Proceso oficial. Solo en /admin.
+    return _leer("simulador_timbo.json")
+
+
+@lru_cache(maxsize=None)
 def curso_timbo():
     # Copia del curso oficial «Timbó, paso a paso» del Aula Virtual (texto,
     # PDF y preguntas tal cual); los PDF están en static/docs/timbo-paso-a-paso.

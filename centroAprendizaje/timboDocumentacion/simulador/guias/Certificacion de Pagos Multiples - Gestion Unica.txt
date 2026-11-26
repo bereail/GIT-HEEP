@@ -1,0 +1,222 @@
+
+=== Página 1 ===
+Certificación de pagos - Compras
+y Contrataciones
+Introducción.
+Objetivo. Definir y estandarizar el procedimiento para la certificación de
+pagos -compra de bienes y prestación de servicios-, su conformidad de
+recepción definitiva (y técnica cuando correspondiera), su liquidación y pago
+a proveedores por medio de expedientes electrónicos (EE) por medio de la
+plataforma TIMBÓ.
+Alcance. El procedimiento se aplica a todos los trámites de certificación y
+pago de compras de bienes y contratación de servicios tramitados por medio
+de la plataforma TIMBÓ y a aquellos de pago mensual para períodos
+correspondientes al mes de enero 2026, aunque la gestión de contratación se
+hubiera realizado en formato papel.
+
+=== Página 2 ===
+Tipos de Certificación de Pago de Gestión Directa.
+A.​
+De pago único. Refiere a aquellas gestiones cuya tramitación, norma
+legal y pago total de la contratación se realizan en el mismo expediente, sea a
+un proveedor o varios. Ejemplo: Gestión Directa para compra de escritorio.
+B.​
+De pago múltiple. Refiere a aquellas gestiones cuya tramitación y
+norma legal se realizan por medio de un expediente y los pagos son parciales
+y se realizan por uno o varios expedientes adicionales, no necesariamente
+periódicos. Ejemplo: Pagos por porcentaje de entrega o realización de
+servicio.
+C.​
+De pago sucesivo. Refiere a aquellas gestiones cuya tramitación y
+norma legal se realizan por medio de un expediente y los pagos se realizan
+por expedientes adicionales periódicos. Ejemplo: pago mensual de provisión
+de bidones de agua.
+
+=== Página 3 ===
+A. Certificación de Pago Único -
+Gestión Única.
+Paso a Paso.
+El siguiente proceso pretende reflejar un reporte de las actuaciones que
+componen el trámite y sus estadíos básicos. La situación precedentemente
+mencionada, no obsta de que el tramitante deba y/o pueda generar otras
+iteraciones que determine por motivos de consulta, revisión, devolución,
+sujeción a la normativa vigente u otro aspecto que considere pertinente.
+Nota: El siguiente procedimiento se realiza sobre el mismo expediente de
+gestión de compra directa.
+1.​ [Área de Compras o análogo jurisdiccional] - Notificación. Una vez
+emitida la norma legal de adjudicación de compra o contratación de
+servicios, vincular y pasar expediente al Área Solicitante.
+2.​ [Área Solicitante] - Documentación. Generar los siguientes
+documentos oficiales:
+2.1. Certificado de Recepción Definitiva. Generar a través de
+Documentos Oficiales, completar los campos, luego:
+
+=== Página 4 ===
+2.1.1. Referencia. Colocar referencia (ejemplo: CRD de
+…)
+2.1.2. Destinatarios. Agregar destinatarios, incluyendo el
+área solicitante misma para conocer el estado de la
+firma.
+2.1.3. Adjuntar Documentos. Agregar toda la
+documentación respaldatoria que se crea pertinente.
+2.1.4. Firma Conjunta. Poner a la firma de la autoridad
+competente del área con cargo no menor a Director
+Provincial.
+
+=== Página 5 ===
+2.b. Factura. Cargar como Documento Oficial (Tipo NOIFC), luego:
+2.1.1. Referencia. Colocar referencia (ejemplo: Factura
+N° … )
+2.1.2. Destinatarios. Agregar destinatarios, incluyendo el
+área solicitante misma para conocer el estado de la
+firma.
+2.1.3. Adjuntar Documentos. Agregar toda la
+documentación respaldatoria que se crea pertinente.
+(Constancia de inscripción ARCA, Constancia de
+Inscripción IIBB, Constancia de Cumplimiento Fiscal API,
+Formulario 1276 API, entre otros)
+2.1.4. Firma Conjunta. Poner a la firma de la autoridad
+competente del área con cargo no menor a Director
+Provincial.
+3.​ [Área Solicitante] - Documentación. Firmados los documentos por
+la autoridad correspondiente, vincular al expediente con número de
+Documento Oficial.
+
+=== Página 6 ===
+4.​ [Área correspondiente - SAF/DGA] - Subproceso: Liquidación.
+Diligenciar expediente por las áreas que se consideren pertinentes a
+los fines de completar la liquidación.
+5.​ [Área correspondiente - SAF/DGA] - Subproceso: Pago. Diligenciar
+expediente por las áreas que se consideren pertinentes a los fines
+de completar el pago.
+6.​ [Área correspondiente - SAF/DGA] - Subproceso: Rendición de
+Cuentas. Diligenciar expediente por las áreas que se consideren
+pertinentes a los fines de completar la rendición de cuentas.
+
+=== Página 7 ===
+B. Certificación de Pagos
+Múltiples - Gestión Única.
+Paso a Paso.
+El siguiente proceso pretende reflejar un reporte de las actuaciones que
+componen el trámite y sus estadíos básicos. La situación precedentemente
+mencionada, no obsta de que el tramitante deba y/o pueda generar otras
+iteraciones que determine por motivos de consulta, revisión, devolución,
+sujeción a la normativa vigente u otro aspecto que considere pertinente.
+Nota: El siguiente procedimiento se realiza sobre un nuevo expediente. Cada
+expediente de pago debe ser vinculado al expediente original.
+1.​ [Área Solicitante] - Caratulación. Caratular expediente bajo tema:
+“Certificación de Pagos Múltiples - Gestión Única - Compras y
+Contrataciones”. Referenciar el mismo con el número de expediente
+que dió origen a la norma legal por la cual se adjudica el bien o el
+servicio que se está pagando.
+2.​ [Área Solicitante] - Documentación. Generar los siguientes
+documentos oficiales:
+2.1. Certificado de Recepción Definitiva. Generar a través de
+Documentos Oficiales, completar los campos, luego:
+
+=== Página 8 ===
+2.1.1. Referencia. Colocar referencia (ejemplo: CRD de
+…)
+2.1.2. Destinatarios. Agregar destinatarios, incluyendo el
+área solicitante misma para conocer el estado de la
+firma.
+2.1.3. Adjuntar Documentos. Agregar toda la
+documentación respaldatoria que se crea pertinente.
+2.1.4. Firma Conjunta. Poner a la firma de la autoridad
+competente del área con cargo no menor a Director
+Provincial.
+
+=== Página 9 ===
+2.b. Factura. Cargar como Documento Oficial (Tipo NOIFC), luego:
+2.1.1. Referencia. Colocar referencia (ejemplo: Factura
+N° … )
+2.1.2. Destinatarios. Agregar destinatarios, incluyendo el
+área solicitante misma para conocer el estado de la
+firma.
+2.1.3. Adjuntar Documentos. Agregar toda la
+documentación respaldatoria que se crea pertinente.
+2.1.4. Firma Conjunta. Poner a la firma de la autoridad
+competente del área con cargo no menor a Director
+Provincial.
+3.​ [Área Solicitante] - Documentación. Firmados los documentos por
+la autoridad correspondiente, vincular al expediente con número de
+Documento Oficial.
+4.​ [Área correspondiente - SAF/DGA] - Subproceso: Liquidación.
+Diligenciar expediente por las áreas que se consideren pertinentes a
+los fines de completar la liquidación.
+
+=== Página 10 ===
+5.​ [Área correspondiente - SAF/DGA] - Subproceso: Pago. Diligenciar
+expediente por las áreas que se consideren pertinentes a los fines
+de completar el pago.
+6.​ [Área correspondiente - SAF/DGA] - Subproceso: Rendición de
+Cuentas. Diligenciar expediente por las áreas que se consideren
+pertinentes a los fines de completar la rendición de cuentas.
+
+=== Página 11 ===
+C. Certificación de Pagos
+Mensualizados/Periódicos -
+Gestión Única.
+Paso a Paso.
+Nota: El siguiente procedimiento se realiza sobre un nuevo expediente. Cada
+expediente de pago debe ser vinculado al expediente original.
+1.​ [Área Solicitante] - Caratulación. Caratular expediente bajo tema:
+“Certificación de Pagos Mensualizados/Periódicos - Gestión
+Única - Compras y Contrataciones”. Colocar como referencia del
+mismo el número de expediente que dió origen a la norma legal por
+la cual se adjudica el bien o el servicio que se está pagando.
+Sugerencia: N° Expte origen - Nombre del Proveedor - Tipo y N° de
+acto administrativo que dio origen al acto
+2.​ [Área Solicitante] - Documentación. Generar los siguientes
+documentos oficiales:
+2.1. Certificado de Recepción Definitiva. Generar a través de
+Documentos Oficiales, completar los campos, luego:
+
+=== Página 12 ===
+2.1.1. Referencia. Colocar referencia (ejemplo: CRD de
+…)
+2.1.2. Destinatarios. Agregar destinatarios, incluyendo el
+área solicitante misma para conocer el estado de la
+firma.
+2.1.3. Adjuntar Documentos. Agregar toda la
+documentación respaldatoria que se crea pertinente.
+2.1.4. Firma Conjunta. Poner a la firma de la autoridad
+competente del área con cargo no menor a Director
+Provincial.
+
+=== Página 13 ===
+2.b. Factura. Cargar como Documento Oficial (Tipo NOIFC), luego:
+2.1.1. Referencia. Colocar referencia (ejemplo: Factura
+N° … )
+2.1.2. Destinatarios. Agregar destinatarios, incluyendo el
+área solicitante misma para conocer el estado de la
+firma.
+2.1.3. Adjuntar Documentos. Agregar toda la
+documentación respaldatoria que se crea pertinente.
+2.1.4. Firma Conjunta. Poner a la firma de la autoridad
+competente del área con cargo no menor a Director
+Provincial.
+3.​ [Área Solicitante] - Documentación. Firmados los documentos por
+la autoridad correspondiente, vincular al expediente con número de
+Documento Oficial.
+4.​ [Área correspondiente - SAF/DGA] - Subproceso: Liquidación.
+Diligenciar expediente por las áreas que se consideren pertinentes a
+los fines de completar la liquidación.
+
+=== Página 14 ===
+5.​ [Área correspondiente - SAF/DGA] - Subproceso: Pago. Diligenciar
+expediente por las áreas que se consideren pertinentes a los fines
+de completar el pago.
+6.​ [Área correspondiente - SAF/DGA] - Subproceso: Rendición de
+Cuentas. Diligenciar expediente por las áreas que se consideren
+pertinentes a los fines de completar la rendición de cuentas.
+
+=== Página 15 ===
+Información de contacto
+●​ Por consultas sobre la gestión de expedientes electrónicos:
+Correo electrónico: innovacionsgp@santafe.gob.ar
+Whatsapp: 341-3147277 (solo mensajes de texto)
+Teléfono: interno 31753-54 (desde la ciudad de Santa Fe)
+342-4506600 - interno 31753-54 (desde otra localidad)
+●​ Por sugerencias sobre procedimientos administrativos:
+Correo electrónico: procesosdigitales@santafe.gob.ar

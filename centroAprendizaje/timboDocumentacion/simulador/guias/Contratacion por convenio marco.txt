@@ -1,0 +1,82 @@
+
+=== Página 1 ===
+Compras y contrataciones -
+Contratación por convenio marco
+El siguiente proceso pretende reflejar un reporte de las actuaciones que
+componen el trámite y sus estadíos básicos. La situación precedentemente
+mencionada, no obsta de que el tramitante deba y/o pueda generar otras
+iteraciones que determine por motivos de consulta, revisión, devolución,
+sujeción a la normativa vigente u otro aspecto que considere pertinente.
+Paso a Paso
+Nota: Éste procedimiento se lleva a cabo luego de haber aprobado una
+solicitud de reserva con el organismo rector.
+1.​ [Solicitante] - Solicitar carátula. Código del trámite: “Contratación por
+convenio marco”.
+2.​ [Mesa de Entradas y Salidas jurisdiccionales] - Caratular. Verificar
+consistencia de datos y aceptar carátula.
+
+=== Página 2 ===
+3.​ [Solicitante] - Solicitar contratación de servicio. Incorporar nota de
+solicitud y documentación correspondiente:
+3.a. Nota de Inicio (firmada por el funcionario), al Secretario
+de Coordinación Administrativa y Financiera del Ministerio de
+Gobierno e Innovación Pública, indicando la contratación a
+realizar y el motivo.
+3.b. Solicitud de Reserva Aprobada descargada a través del
+sistema SIPAF.(Opcional: Correo electrónico que autoriza la
+operación) .
+3.c. Foja cero del procedimiento.
+3.d. Constancia de cumplimiento fiscal.
+3.e. Certificado negativo de deudor alimentario.
+4.​ [Autoridad superior] - Brindar conformidad. La persona responsable
+de la Secretaría autoriza el pago.
+5.​ [Dirección General de Administración o análogo jurisdiccional] -
+Registrar.
+Subproceso.
+Incorporar
+documento
+de
+compromiso
+preventivo.
+6.​ [Mesa de entradas Secretaría de Hacienda] - 00.01.14.06.03 - Brindar
+conformidad. Subproceso.
+7.​ [Dirección General de Administración o análogo jurisdiccional] -
+Tomar conocimiento y provisionar.
+8.​ [Solicitante] - Confeccionar resolución.
+
+=== Página 3 ===
+9.​ [Dirección General de Administración o análogo jurisdiccional]  -
+Gestionar acto administrativo registrable. Gestionar firmas de la norma
+legal.
+9.a. [Despacho] - Iniciar cadena de firma
+9.b. [Secretario de Comunicaciones] - Firma.
+9.c. [Despacho] - Protocolizar Norma. Incorporar resolución
+al expediente.
+10.​[Despacho] - Remitir actuaciones a la Delegación Fiscal. Subproceso.
+11.​[Despacho]  - Remitir actuaciones para el pago.
+12.​[Dirección General de Administración o análogo jurisdiccional] -
+Generar orden de provisión. Sobre la reserva en SIPAF e incorporar
+documentación del proveedor:
+12.a. Orden de provisión (firma del funcionario).
+12.b. Factura del proveedor (firma del funcionario).
+12.c. Legajo impositivo.
+12.d. CRD (firma del funcionario).
+13.​[Autoridad a cargo] - 00.01.06.01 - Provisionar.
+14.​[Dirección General de Administración o análogo jurisdiccional] -
+Procesar pago. Subproceso.
+15.​[SAF/DGA
+Jurisdiccional]
+-
+00.01.08.02.03.04.05.
+Subproceso
+Revisión y rendición de cuentas.
+
+=== Página 4 ===
+Información de contacto
+●​ Por consultas sobre la gestión de expedientes electrónicos:
+Correo electrónico: innovacionsgp@santafe.gob.ar
+Whatsapp: 341-3147277 (solo mensajes de texto)
+Teléfono: interno 31753-54 (desde la ciudad de Santa Fe)
+342-4506600 - interno 31753-54 (desde otra localidad)
+●​ Por sugerencias sobre procedimientos administrativos:
+Correo electrónico: procesosdigitales@santafe.gob.ar

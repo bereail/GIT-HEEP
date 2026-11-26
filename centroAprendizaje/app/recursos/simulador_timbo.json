@@ -1,0 +1,3715 @@
+{
+ "relevado_al": "2026-11-25",
+ "fuente": "https://tramites.santafe.gob.ar",
+ "aviso": "Simulador de práctica. Pantallas copiadas de TIMBÓ (Bandeja de trámites) el 25/11/2026; datos de prueba inventados. Nada de lo que hagas acá llega a TIMBÓ.",
+ "usuario": {
+  "nombre": "USUARIO DE PRÁCTICA",
+  "email": "practica@ejemplo.test"
+ },
+ "usuarios_practica": [
+  "AGENTE DE PRÁCTICA UNO",
+  "AGENTE DE PRÁCTICA DOS",
+  "AGENTE DE PRÁCTICA TRES"
+ ],
+ "tramites": [
+  {
+   "nombre": "STGTICS0001 - Comité Tics Dto 657/2009"
+  },
+  {
+   "nombre": "Personal de asistencia técnica y autoridades superiores - nombramiento - Recursos Humanos"
+  },
+  {
+   "nombre": "Asignación de mayores funciones - Recursos Humanos"
+  },
+  {
+   "nombre": "Programa Brigadier - Solicitud - Transferencias"
+  },
+  {
+   "nombre": "Programa Brigadier - Otorgamiento - Transferencias"
+  },
+  {
+   "nombre": "Contratación por convenio marco - Compras y Contrataciones",
+   "guia": "convenio-marco"
+  },
+  {
+   "nombre": "Gestión Directa - Por Reparación de Maquinaria - Compras y Contrataciones",
+   "guia": "gd-reparacion-maquinaria"
+  },
+  {
+   "nombre": "Gestión Directa - Por Especialización - Compras y Contrataciones",
+   "guia": "gd-especializacion"
+  },
+  {
+   "nombre": "Alta de Proveedores - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Gestión Directa - Ley 14237 Estado de Emergencia en Seguridad Pública - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Gestión Directa - Por Monto Menor al Tope - Compras y Contrataciones",
+   "guia": "gd-monto-menor-tope"
+  },
+  {
+   "nombre": "Partidas especiales - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Gestión Directa - Entre Organismos Oficiales del Sector Público - Compras y Contrataciones",
+   "guia": "gd-entre-organismos"
+  },
+  {
+   "nombre": "Gestión Directa - Exclusividad - Compras y Contrataciones",
+   "guia": "gd-exclusividad"
+  },
+  {
+   "nombre": "Gestión Directa - In Situ - Compras y Contrataciones",
+   "guia": "gd-in-situ"
+  },
+  {
+   "nombre": "Baja de Garantías por Adjudicación - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Pedido de devolución de póliza - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Vencimiento de contrato - Comunicación - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Renegociación de precios - Convenio Marco - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Cambio de bien/producto ofertado - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Locación de inmuebles - Renovación de Alquileres - Compras y Contrataciones",
+   "guia": "alquiler-renovacion"
+  },
+  {
+   "nombre": "Locación de inmuebles - Nuevo Alquiler - Compras y Contrataciones",
+   "guia": "alquiler-nuevo"
+  },
+  {
+   "nombre": "GCyC - Gestión de Compras y Contrataciones"
+  },
+  {
+   "nombre": "Pedido de Informes a Seguridad Vial - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Gestión Directa - Ley 14241 Estado de Emergencia Social, Educativa y Sanitaria - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Certificación de Pagos Mensualizados/Periódicos - Gestión Única - Compras y Contrataciones",
+   "guia": "cert-pagos-mensualizados"
+  },
+  {
+   "nombre": "Certificación de Pagos Múltiples - Gestión Única - Compras y Contraciones",
+   "guia": "cert-pagos-multiples"
+  },
+  {
+   "nombre": "Contratos: Prórroga de plazos - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Contratos - Ampliaciones y Adicionales - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Licitación/Concurso Público - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Licitación/Concurso Privado - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Reconocimiento y pago de intereses a proveedores - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Autorización de gastos por habilitación - Compras y Contrataciones"
+  },
+  {
+   "nombre": "Publicación en medios - Compras y Contrataciones"
+  }
+ ],
+ "oficinas_superiores": [
+  "PE - Poder Ejecutivo - 00.01",
+  "SP - Secretaría Privada - 00.01.01",
+  "SG - Secretaría General - 00.01.02",
+  "SVI - Secretaría de Vinculación Institucional - 00.01.03",
+  "SCoop - Secretaría de Cooperación - 00.01.04",
+  "SDH - Secretaría de Derechos Humanos - 00.01.05",
+  "MS - Ministerio de Salud - 00.01.19"
+ ],
+ "oficinas_inferiores": {
+  "MS - Ministerio de Salud - 00.01.19": [
+   {
+    "nombre": "MS-DGD-ME - Mesa de Movimientos - 00.01.19.07.01.01.01",
+    "codigo": true,
+    "superior": "Dirección General Despacho - 00.01.19.07.01.01",
+    "direccion": "",
+    "telefono": ""
+   },
+   {
+    "nombre": "Mesa de Entradas - Secretaria de Administración - 00.01.19.03.06",
+    "codigo": false
+   },
+   {
+    "nombre": "Hospital Escuela \"Eva Perón\" - 00.01.19.12.01.17",
+    "codigo": false
+   }
+  ]
+ },
+ "tipos_documento": [
+  {
+   "nombre": "Comité Tics Mayoría Simple",
+   "sigla": "CTMS",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Doc. Importado",
+   "sigla": "DI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Doc. Importado Firma Conjunta",
+   "sigla": "DIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Justificaciones y Licencias",
+   "sigla": "SJL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Certificación de servicios prestados",
+   "sigla": "CSERV",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Actualización reporte fichaje",
+   "sigla": "ACAYA",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Acta Importada",
+   "sigla": "ACTI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Acta Importada Firma Conjunta",
+   "sigla": "ACTIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Acta Libre",
+   "sigla": "ACTL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Acta Libre Firma Conjunta",
+   "sigla": "ACTLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Antecedente Importado",
+   "sigla": "ANTI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Autorización Libre",
+   "sigla": "AUTL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Autorización Libre Firma Conjunta",
+   "sigla": "AUTLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Certificado Notificable Importado",
+   "sigla": "CERT",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Certificado Importado Firma Conjunta",
+   "sigla": "CERTFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Compras Menores Libre Firma Conjunta",
+   "sigla": "CMLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Comprobante Importado",
+   "sigla": "COMP",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Contrato y/o Convenio Importado",
+   "sigla": "CON",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Contrato y/o Convenio Libre Firma Conjunta",
+   "sigla": "CONLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Constancia Importada",
+   "sigla": "CONS",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Croquis Importado",
+   "sigla": "CROQ",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Declaración Jurada Importada",
+   "sigla": "DECJU",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Doc Libre",
+   "sigla": "DL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Doc Libre Firma Conjunta",
+   "sigla": "DLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Documentación a Presentar Importada",
+   "sigla": "DOCPR",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Escritura Importada Firma Conjunta",
+   "sigla": "ESCFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Ficha Técnica Importada Firma Conjunta",
+   "sigla": "FTFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Constancia Habilitación Libre Firma Conjunta",
+   "sigla": "CHLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Constancia Habilitación Municipal Importada",
+   "sigla": "CHMUN",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Informe Libre",
+   "sigla": "IFL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Informe Importado",
+   "sigla": "INFI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Informe Libre Firma Conjunta",
+   "sigla": "INFLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Legalización Importada",
+   "sigla": "LEGI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Legalización Libre Firma Conjunta",
+   "sigla": "LEGLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Licencia de conducir Importada",
+   "sigla": "LICI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Nota Importada",
+   "sigla": "NOI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Nota Libre Firma Conjunta",
+   "sigla": "NOLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Oficio Libre Firma Conjunta",
+   "sigla": "OFLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Ordenanza Importada Firma Conjunta",
+   "sigla": "ORDIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Partida Importada",
+   "sigla": "PAR",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Pasaporte Importado",
+   "sigla": "PAS",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Permiso de Circulación Importado",
+   "sigla": "PCI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Planilla Anexa Importada",
+   "sigla": "PAI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Planilla Anexa Importada Firma Conjunta",
+   "sigla": "PAIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Plano Importado",
+   "sigla": "PLA",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Plano Importado Firma Conjunta",
+   "sigla": "PLAFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Poder Importado",
+   "sigla": "POD",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Poder Libre Firma Conjunta",
+   "sigla": "PODLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Póliza Importada",
+   "sigla": "POLI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Presupuesto Importado",
+   "sigla": "PRES",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Proyecto Libre Firma Conjunta",
+   "sigla": "PROLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Recibo Importado",
+   "sigla": "RECI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Reclamo Importado",
+   "sigla": "RECLA",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Solicitud Importada",
+   "sigla": "SOI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Solicitud Libre",
+   "sigla": "SOL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud Libre Firma Conjunta",
+   "sigla": "SOLFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Tarjeta Verde Importada",
+   "sigla": "TVI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Verificación Técnica Vehicular Importada",
+   "sigla": "VTV",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Circular",
+   "sigla": "CIR",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Mensaje",
+   "sigla": "MSJE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Libre",
+   "sigla": "NOL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud constancia de actividad industrial",
+   "sigla": "DJCAI",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Datos de la Cooperativa o Mutual",
+   "sigla": "DJCOOP",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud de reconocimiento de servicios",
+   "sigla": "F11",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Reconocimiento de servicios Afiliado Fallecido",
+   "sigla": "F11F",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Importada Firma Conjunta",
+   "sigla": "NOIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Solicitud Permiso Circulac. Carretón Agrícola",
+   "sigla": "SPCCA",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud permiso Circ. Dimensiones Excedidas",
+   "sigla": "SPCDE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud Permiso Circ. Máquina/Tren",
+   "sigla": "SPCMA",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Permiso circulación carretón agrícola-DPV",
+   "sigla": "PCCA",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Permiso circulación dimensiones excedidas-DPV",
+   "sigla": "PCDE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Permiso circulación maquinaria agrícola-DPV",
+   "sigla": "PCMA",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Libre Comunicable",
+   "sigla": "NOLC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud Permiso Circulación Rutas Nacionales",
+   "sigla": "SPCRN",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Permiso de Circulación de Rutas Nacionales",
+   "sigla": "PCRN",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CD01-Solicitud de contratación directa",
+   "sigla": "CD01",
+   "conjunta": true,
+   "importado": false,
+   "descripcion": "Solicitud de contratación directa"
+  },
+  {
+   "nombre": "CD02-Solicitud de presupuesto",
+   "sigla": "CD02",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CD03-Evaluación de propuestas y adjudicación",
+   "sigla": "CD03",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "CD04-Orden de Provisión",
+   "sigla": "CD04",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Circular Especial Libre",
+   "sigla": "CIREL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CERTIFICADO DE RECEPCION DEFINITIVA",
+   "sigla": "CRDBS",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Certificado Especial Firma Conjunta",
+   "sigla": "CERESP",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Certificado de Recepción Definitiva LIF",
+   "sigla": "CRD",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Requerimiento servicio técnico",
+   "sigla": "RST",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Informe de Ejecución de soporte técnico",
+   "sigla": "IEST",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Registro de Productores Mineros",
+   "sigla": "RPM",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Respuesta Comunicable Libre",
+   "sigla": "RCL",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Conformidad",
+   "sigla": "CONF",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud de Compras Menores",
+   "sigla": "SCM",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Documento Importado F.Conjunta No comunicable",
+   "sigla": "DOIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Convenio Importado Firma Conjunta",
+   "sigla": "CONIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Resolución Importada Especial Firma Conjunta",
+   "sigla": "RESIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Disposición Especial F. Conjunta Comunicable",
+   "sigla": "DISPFC",
+   "conjunta": true,
+   "importado": false
+  },
+  {
+   "nombre": "Registro de Convenio",
+   "sigla": "RDC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CUAD modificación de cuota/servicio",
+   "sigla": "CUADCS",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CUAD reclamos afiliados",
+   "sigla": "CUADRE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Presentación Proy. Convención Reformadora",
+   "sigla": "PP-CR",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Libre Reservada",
+   "sigla": "NLR",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Importada Reservada",
+   "sigla": "NIR",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Comunicación TIMBO",
+   "sigla": "CT",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Usucapión: informe técnico catastral",
+   "sigla": "ITC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "modificaciones al contrato social",
+   "sigla": "srl",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Notificación",
+   "sigla": "NLCE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Importada Comunicable Externa",
+   "sigla": "NICE",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Informe preliminar de admisibilidad RPJEC",
+   "sigla": "VUI",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Informe Importado Firma Conjunta",
+   "sigla": "IIFC",
+   "conjunta": true,
+   "importado": true
+  },
+  {
+   "nombre": "Circular Importada",
+   "sigla": "CIRI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Informe Especial Reservado",
+   "sigla": "IER",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Certificado de Conformidad",
+   "sigla": "CC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Contrataciones artísticas y conexas.",
+   "sigla": "CAyC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Certificación de bienes y servicios",
+   "sigla": "CLFC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Alta-Baja Personal Suplente de Coro y Orquesta",
+   "sigla": "PSCyO",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CIRCULAR ESPECIAL IMPORTADA",
+   "sigla": "CEI",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud de reconocimiento médico",
+   "sigla": "SRM",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Doc.Importado Especial Reservado y Comunicable",
+   "sigla": "IERC",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Certificación de bienes y servicios Importado",
+   "sigla": "CIBYS",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Alta y Baja del personal - Horas Cátedras-",
+   "sigla": "Abphc",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Orden de provisión",
+   "sigla": "OPIC",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Notificación reservada",
+   "sigla": "NRLCE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Disposición Reservada",
+   "sigla": "DISPRE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Certificado de Comprobantes y Pagos",
+   "sigla": "CCP",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Presentacion de Comprobantes",
+   "sigla": "PCOM",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "CE",
+   "sigla": "CE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Nota Firma Digital",
+   "sigla": "NFD",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Solicitud de ayudas directas - Accionar",
+   "sigla": "SAD",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Compras: Alta de bienes y servicios",
+   "sigla": "CAByS",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Programa de Ayudas Económicas de Emergencia",
+   "sigla": "PAEE",
+   "conjunta": false,
+   "importado": false
+  },
+  {
+   "nombre": "Respuesta al Tribunal de Cuentas Importado",
+   "sigla": "RTCI",
+   "conjunta": false,
+   "importado": true
+  },
+  {
+   "nombre": "Respuesta al Tribunal de Cuentas Libre",
+   "sigla": "RTCL",
+   "conjunta": false,
+   "importado": false
+  }
+ ],
+ "guias": {
+  "gd-monto-menor-tope": {
+   "titulo": "Gestión Directa - Por Monto Menor al Tope",
+   "encabezado": "Compras y Contrataciones - Gestión Directa - Por Monto Menor al Tope",
+   "intro": [
+    "El presente procedimiento se enmarca en lo dispuesto en el “Manual de Procedimiento para la Gestión de Contrataciones Directas” (Anexo I - Decreto 1247/2008).",
+    "En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el expediente nativo digital ya conformado en caso de existir. Luego, iniciar el proceso en el punto 3.",
+    "Por el contrario, de encontrarse en formato papel, iniciar la renovación como un expediente nuevo digital, referenciando el anterior dentro de las actuaciones que lo componen cada vez que se considere necesario.",
+    "Los archivos CD-01 “Solicitud de Contratación Directa”, CD-02 “Solicitud de Presupuesto”, CD-03 “Evaluación de Propuestas y Adjudicación”, CD-04 “Orden de Provisión” pueden ser generados a partir del módulo de Documentos Oficiales o cargando en formato .pdf las plantillas ya existentes.",
+    "El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o cargando en formato .pdf las plantillas ya existentes.",
+    "El siguiente proceso pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "esquema_paso3": [
+    [
+     "Documento Incorporado",
+     "Nota de solicitud",
+     "Nota de solicitud"
+    ],
+    [
+     "Documento Incorporado",
+     "Ficha técnica",
+     "Ficha técnica"
+    ],
+    [
+     "Documento Informativo",
+     "Presupuesto de referencia",
+     "Presupuesto de Referencia 1"
+    ],
+    [
+     "Documento Oficial",
+     "Solicitud de contratación directa",
+     "CD-01"
+    ]
+   ],
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitud de Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema \"Compras y Contrataciones - Gestión Directa - por Monto Menor al Tope\".",
+     "items": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratulación",
+     "texto": "Caratular.",
+     "items": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Carga de documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente.",
+      "CD-01 - Solicitud de contratación directa (Referencia sugerida: CD-01) u cualquier otra plantilla autorizada en formato .pdf como documento incorporado.",
+      "Fichas técnicas o autorizaciones excepcionales generadas por los organismos oficiales que corresponda.",
+      "Presupuestos de referencia para respaldar los montos citados debidamente numerados. (Referencia sugerida: Presupuesto de Referencia 1, Presupuesto de Referencia 2, Presupuesto de Referencia 3, …)."
+     ],
+     "nota": "Luego, realizar pase. (Ver esquema en la página siguiente)",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente",
+     "nombre": "Evaluación",
+     "texto": "Evaluar lo recibido e incorporar de considerar las aclaraciones necesarias. Para su continuidad providenciar al SAF/DGA jurisdiccional.",
+     "items": [],
+     "nota": "Nota: el presente paso es opcional a criterio de la autoridad jurisdiccional.",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Informe de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto (Referencia sugerida: Informe de Presupuesto)."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización/Rechazo",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar CD-05 - Notificación de Rechazo (Referencia sugerida: CD-05) y archivar.",
+     "items": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Solicitud de Presupuestos",
+     "texto": "Registrar e vincular/incorporar:",
+     "items": [
+      "Compromiso Preventivo de Pago SIPAF (Referencia sugerida: PCP N°…).",
+      "Gestión de Compra SIPAF (Referencia sugerida: GC N°…).",
+      "CD-02 - Solicitud de Presupuesto (Referencia sugerida: CD-02).",
+      "Constancias de invitación enviadas por correo electrónico (captura o descarga en formato pdf) y presupuestos presentados."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área Solicitante",
+     "nombre": "Evaluación y Adjudicación",
+     "texto": "Completar e Incorporar:",
+     "items": [
+      "CD-03 - Evaluación de Propuestas y Adjudicación (Referencia sugerida: CD-03).",
+      "Proyecto de Acto Administrativo como documento informativo al área de despacho para la firma del logístico jurisdicción o similar con firma delegada."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Dirección General de Despacho o similar",
+     "nombre": "Acto Administrativo Registrable",
+     "texto": "Colocar acto administrativo a la firma del Logístico Jurisdiccional o similar con firma delegada.",
+     "items": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Logístico Jurisdiccional o similar",
+     "nombre": "Firma de Acto Administrativo Registrable",
+     "texto": "Firmar.",
+     "items": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 11,
+     "area": "Dirección General de Despacho o similar",
+     "nombre": "Acto Administrativo",
+     "texto": "Firmado el Acto Administrativo Registrable, vincular y pasar para su continuidad.",
+     "items": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 12,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Acto de Adjudicación",
+     "texto": "Incorporar:",
+     "items": [
+      "Constancia de notificación al TCP.",
+      "Constancia de Notificación al adjudicatario. (Captura de pantalla del correo electrónico ó descarga en PDF)"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 13,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Provisión",
+     "texto": "Enviar al proveedor e incorporar:",
+     "items": [
+      "CD-04 - Orden de Provisión (Referencia sugerida: CD-04) remitiendo copia al proveedor.",
+      "Documento de Provisión SIPAF (Referencia sugerida: PR N°…).",
+      "Enviar a guarda temporal en caso de que el pago no se gestione en el mismo expediente."
+     ],
+     "nota": "Nota: Para los expedientes de contrataciones o compras únicas se continúa con la gestión del pago descrita a continuación.",
+     "etapa": "compra"
+    },
+    {
+     "n": 14,
+     "area": "Área Solicitante/Beneficiaria",
+     "nombre": "Gestión de pago. Comprobantes",
+     "texto": "Proveído el bien/servicio, incorporar la siguiente documentación:",
+     "items": [
+      "Factura/s (o comprobante fiscal equivalente) firmado por el proveedor - (Recurso: Firmador Web GSF).",
+      "Certificado de recepción definitiva (CRD) con la relación de gastos.",
+      "Certificado negativo del Registro de Deudores Alimentarios.",
+      "Declaración jurada de actividades y alícuotas (Formulario 1276 API).",
+      "CBU, en caso de corresponder, para poder realizar el pago."
+     ],
+     "nota": "Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley 14.256) Inscripción en ARCA, Constancia de pago IIBB, Constancia de cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la factura.",
+     "etapa": "pago"
+    },
+    {
+     "n": 15,
+     "area": "Responsable político del área solicitante",
+     "nombre": "Refrenda documentación",
+     "texto": "Validar la documentación y solicitar la gestión de pago desde la providencia del pase.",
+     "items": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 16,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización",
+     "texto": "Considerar lo recibido y pasar autorizando la liquidación y pago al proveedor.",
+     "items": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 17,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Registro en SIPAF",
+     "texto": "Registrar en SIPAF, descargar e Incorporar al expediente:",
+     "items": [
+      "Certificado de entrega.",
+      "PCP de Devengado."
+     ],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 18,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Pago",
+     "texto": "",
+     "items": [
+      "Documento de Pago (DP).",
+      "Comprobante de Transferencia Bancaria.",
+      "Constancia de retenciones.",
+      "Balance de inversión."
+     ],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 19,
+     "area": "Rendición de cuentas - DGA Jurisdiccional",
+     "nombre": "Control",
+     "texto": "Efectuar la revisiva de la gestión de pago e incorporar la constancia documental correspondiente.",
+     "items": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 20,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Vista al TCP",
+     "texto": "Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal.",
+     "items": [],
+     "nota": "",
+     "etapa": "pago"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: innovacionsgp@santafe.gob.ar — Whatsapp 341 3147277 (solo mensajes de texto) — Teléfono: interno 31753/54 (desde la ciudad de Santa Fe), 342 4506600 - interno 31753/54 (desde otra localidad).",
+    "Por sugerencias sobre procedimientos administrativos: procesosdigitales@santafe.gob.ar"
+   ],
+   "nota_previa": ""
+  },
+  "gd-reparacion-maquinaria": {
+   "titulo": "Gestión Directa - Por Reparación de Maquinaria",
+   "encabezado": "Gestión Directa - Por Reparación de Maquinaria",
+   "intro": [
+    "El presente procedimiento se enmarca en el artículo 116° inciso c) apartado 7 de la Ley N° 12.510 y su Decreto reglamentario N° 1104/16.",
+    "En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el expediente nativo digital ya conformado en caso de existir. Luego, iniciar el proceso en el punto 3.",
+    "Por el contrario, de encontrarse en formato papel, iniciar la renovación como un expediente nuevo digital, referenciando el anterior dentro de las actuaciones que lo componen cada vez que se considere necesario.",
+    "El archivo CA-02 ‘’Pedido de cotización’’ (Este formulario no está aprobado por ninguna norma) pueden ser generados a partir del módulo de Documentos",
+    "Oficiales o cargando en formato .pdf las plantillas ya existentes.",
+    "El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento",
+    "Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o cargando en formato .pdf las plantillas ya existentes. (Téngase presente que este formulario es del procedimiento de CD x monto)",
+    "El siguiente procedimiento pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones - Gestión Directa - por Reparación de Maquinarias”.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa - Logístico Jurisdiccional) o equivalente.",
+      "Fichas técnicas o autorizaciones excepcionales generadas por los organismos oficiales que corresponda.",
+      "Informe técnico de área competente que determine la exigencia del desarme, traslado, o examen previo como condición imprescindible y resultare más oneroso en caso de adoptarse otro procedimiento de selección."
+     ],
+     "esquema": [
+      "Nota de solicitud",
+      "Nota de solicitud",
+      "Ficha técnica",
+      "Ficha técnica",
+      "Informe Tecnico",
+      "Informe Tecnico"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes - 00.01.14.02.01",
+     "nombre": "Elaborar Informe de control",
+     "texto": "En el caso de que el monto de la contratación supere el cincuenta por ciento (50%) del valor que fije anualmente la Ley de presupuesto para los procedimientos privados, se debe Elaborar el informe de control pudiendo formular todas las observaciones que se requieran.Comentario: (Este cambio es por lo dispuesto El artículo 1 del Decreto 652/20 establece la intervención de la URC “previo a la solicitud de cotización para el inciso 7”)",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Área Solicitante",
+     "nombre": "Incorporar documentación",
+     "texto": "Controlar documentación e incorporar:",
+     "items": [
+      "CA-02 - Pedido de Cotización (Referencia sugerida: CA-02) u cualquier otra plantilla autorizada en formato .pdf como documento incorporado.",
+      "Constancia de invitación enviada por correo electrónico.",
+      "Oferta presentada.",
+      "Luego, realizar pase."
+     ],
+     "esquema": [
+      "Informe de Presupuesto",
+      "Informe de Presupuesto",
+      "Constancia de invitación",
+      "Constancia de invitación",
+      "Oferta",
+      "Oferta"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto (Referencia sugerida: Informe de Presupuesto)."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar CD-05 - Notificación de Rechazo (Referencia sugerida: CD-05) y archivar.",
+     "items": [],
+     "esquema": [
+      "Informe de Presupuesto",
+      "Informe de Presupuesto",
+      "Notificación de Rechazo",
+      "CD-05"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Realizar Solicitud de Presupuestos",
+     "texto": "Registrar e incorporar:",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF).",
+      "Formulario foja cero."
+     ],
+     "esquema": [
+      "Solicitud de compra SIPAF",
+      "SC-SIPAF",
+      "Compromiso Preventivo SIPAF",
+      "PCP-P N°…",
+      "Formulario foja cero",
+      "Formulario foja cero"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar:",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente.",
+      "Constancia de notificación al HTCP",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Documento incorporado",
+      "Acto Adjudicación",
+      "Acto Adjudicación"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar Orden de Provisión o Contrato. Enviar y notificar al proveedor e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF)",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF) continúa con la gestión del pago descrita a continuación. Documento incorporado"
+     ],
+     "esquema": [
+      "Orden de provisión o Contrato",
+      "Orden de provisión o Contrato",
+      "Documento informativo",
+      "Provisión SIPAF",
+      "PR SIPAF",
+      "Compromiso definitivo SIPAF",
+      "PCP-D SIPAF"
+     ],
+     "nota": "Nota: Para los expedientes de contrataciones o compras únicas se",
+     "etapa": "compra"
+    },
+    {
+     "n": 11,
+     "area": "Área Solicitante/Beneficiaria",
+     "nombre": "Gestión de pago",
+     "texto": "Comprobantes. Proveído el bien/servicio, incorporar la siguiente documentación:",
+     "items": [
+      "Factura/s (o comprobante fiscal equivalente) firmado por el proveedor - (Recurso: Firmador Web GSF).",
+      "Certificado de recepción definitiva (CRD) con la relación de gastos.",
+      "Certificado negativo del Registro de Deudores Alimentarios.",
+      "Declaración jurada de actividades y alícuotas (Formulario 1276 API).",
+      "CBU, en caso de corresponder, para poder realizar el pago. 14.256): Inscripción en ARCA, Constancia de pago IIBB, Constancia de cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la factura."
+     ],
+     "esquema": [],
+     "nota": "Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley",
+     "etapa": "pago"
+    },
+    {
+     "n": 12,
+     "area": "Responsable político del área solicitante",
+     "nombre": "Refrenda documentación",
+     "texto": "Validar la documentación y solicitar la gestión de pago desde la providencia del pase.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 13,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización",
+     "texto": "Considerar lo recibido y pasar autorizando la liquidación y pago al proveedor.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 14,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Registro en SIPAF",
+     "texto": "Registrar en SIPAF, descargar e Incorporar al expediente:",
+     "items": [
+      "Certificado de entrega.",
+      "PCP de Devengado."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 15,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Pago",
+     "texto": "",
+     "items": [
+      "Documento de Pago (DP).",
+      "Comprobante de Transferencia Bancaria.",
+      "Constancia de retenciones.",
+      "Balance de inversión."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 16,
+     "area": "Rendición de cuentas - DGA Jurisdiccional",
+     "nombre": "Control",
+     "texto": "Efectuar la revisiva de la gestión de pago e incorporar la constancia documental correspondiente.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 17,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Vista al TCP",
+     "texto": "Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal. Certificación de Pago Único A los fines de dar cumplimiento al procedimiento de Certificación de Pago Único – Gestión Única, se solicita acceder al instructivo con el paso a paso correspondiente, contenido en el siguiente documento: Click Aquí.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "gd-in-situ": {
+   "titulo": "Gestión Directa - In Situ",
+   "encabezado": "Gestión Directa - In Situ",
+   "intro": [
+    "El presente procedimiento se enmarca en el artículo 116° inciso c) apartado 8 de la Ley N° 12.510 y su Decreto reglamentario N° 1104/16.",
+    "En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el expediente nativo digital ya conformado en caso de existir. Luego, iniciar el proceso en el punto 3.",
+    "Por el contrario, de encontrarse en formato papel, iniciar la renovación como un expediente nuevo digital, referenciando el anterior dentro de las actuaciones que lo componen cada vez que se considere necesario.",
+    "El archivo CA-02 ‘’Pedido de cotización’’ (Este formulario no está aprobado por ninguna norma) pueden ser generados a partir del módulo de Documentos",
+    "Oficiales o cargando en formato .pdf las plantillas ya existentes.",
+    "El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento",
+    "Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o cargando en formato .pdf las plantillas ya existentes. (Téngase presente que este formulario es del procedimiento de CD x monto)",
+    "El siguiente procedimiento pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones - Gestión Directa - por In situ”.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente.",
+      "CA–02 - Pedido de Cotización (Referencia sugerida: CA–02) u cualquier otra plantilla autorizada en formato .pdf como documento incorporado.",
+      "Fichas técnicas o autorizaciones excepcionales generadas por los organismos oficiales que corresponda. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Nota de solicitud",
+      "Nota de solicitud",
+      "Ficha técnica",
+      "Ficha técnica",
+      "Informe Tecnico",
+      "Informe Tecnico",
+      "Constancia de invitación",
+      "Oferta",
+      "Constancia de invitación",
+      "Oferta",
+      "Pedido de Cotización",
+      "CA–02"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto (Referencia sugerida: Informe de Presupuesto)."
+     ],
+     "esquema": [
+      "Informe de Presupuesto",
+      "Informe de Presupuesto"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar CD-05 - Notificación de Rechazo (Referencia sugerida: CD-05) y archivar.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes",
+     "nombre": "Elaborar Informe de control",
+     "texto": "Elaborar el informe de control pudiendo formular todas las observaciones que se requieran.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Realizar Solicitud de Presupuestos",
+     "texto": "Registrar e incorporar:",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF)."
+     ],
+     "esquema": [
+      "Notificación de Rechazo",
+      "CD-05",
+      "Solicitud de compra SIPAF",
+      "SC-SIPAF",
+      "Compromiso Preventivo SIPAF",
+      "PCP-P N°…"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar/Vincular:",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar Orden de Provisión o Contrato. Enviar y notificar al proveedor e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF).",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF). continúa con la gestión del pago descrita a continuación. Documento incorporado"
+     ],
+     "esquema": [
+      "Orden de provisión o Contrato",
+      "Orden de provisión o Contrato",
+      "Documento informativo",
+      "Provisión SIPAF",
+      "PR SIPAF",
+      "Compromiso definitivo SIPAF",
+      "PCP-D SIPAF",
+      "Documento incorporado",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario"
+     ],
+     "nota": "Nota: Para los expedientes de contrataciones o compras únicas se",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área Solicitante/Beneficiaria",
+     "nombre": "Gestión de pago",
+     "texto": "Comprobantes. Proveído el bien/servicio, incorporar la siguiente documentación:",
+     "items": [
+      "Factura/s (o comprobante fiscal equivalente) firmado por el proveedor - (Recurso: Firmador Web GSF).",
+      "Certificado de recepción definitiva (CRD) con la relación de gastos.",
+      "Certificado negativo del Registro de Deudores Alimentarios.",
+      "Declaración jurada de actividades y alícuotas (Formulario 1276 API).",
+      "CBU, en caso de corresponder, para poder realizar el pago. 14.256): Inscripción en ARCA, Constancia de pago IIBB, Constancia de cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la factura."
+     ],
+     "esquema": [],
+     "nota": "Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley",
+     "etapa": "pago"
+    },
+    {
+     "n": 11,
+     "area": "Responsable político del área solicitante",
+     "nombre": "Refrenda documentación",
+     "texto": "Validar la documentación y solicitar la gestión de pago desde la providencia del pase.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 12,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización",
+     "texto": "Considerar lo recibido y pasar autorizando la liquidación y pago al proveedor.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 13,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Registro en SIPAF",
+     "texto": "Registrar en SIPAF, descargar e Incorporar al expediente:",
+     "items": [
+      "Certificado de entrega.",
+      "PCP de Devengado."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 14,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Pago",
+     "texto": "",
+     "items": [
+      "Documento de Pago (DP).",
+      "Comprobante de Transferencia Bancaria.",
+      "Constancia de retenciones.",
+      "Balance de inversión."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 15,
+     "area": "Rendición de cuentas - DGA Jurisdiccional",
+     "nombre": "Control",
+     "texto": "Efectuar la revisiva de la gestión de pago e incorporar la constancia documental correspondiente.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 16,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Vista al TCP",
+     "texto": "Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal. Certificación de Pago Único A los fines de dar cumplimiento al procedimiento de Certificación de Pago Único – Gestión Única, se solicita acceder al instructivo con el paso a paso correspondiente, contenido en el siguiente documento: Click Aquí.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "gd-exclusividad": {
+   "titulo": "Gestión Directa - Exclusividad",
+   "encabezado": "Gestión Directa - Exclusividad",
+   "intro": [
+    "El presente procedimiento se enmarca en el artículo 116° inciso c) apartado 5 de la Ley N° 12.510 y su Decreto reglamentario N° 1104/16.",
+    "En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el expediente nativo digital ya conformado en caso de existir. Luego, iniciar el proceso en el punto 3.",
+    "Por el contrario, de encontrarse en formato papel, iniciar la renovación como un expediente nuevo digital, referenciando el anterior dentro de las actuaciones que lo componen cada vez que se considere necesario.",
+    "El archivo CA-02 ‘’Pedido de cotización’’ (Este formulario no está aprobado por ninguna norma) pueden ser generados a partir del módulo de Documentos",
+    "Oficiales o cargando en formato .pdf las plantillas ya existentes.",
+    "El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento",
+    "Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o cargando en formato .pdf las plantillas ya existentes. (Téngase presente que este formulario es del procedimiento de CD x monto)",
+    "El siguiente procedimiento pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones - Gestión Directa - por Exclusividad”.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente.",
+      "CA–02 - Pedido de Cotización (Referencia sugerida: CA–02) u cualquier otra plantilla autorizada en formato .pdf como documento incorporado.",
+      "Fichas técnicas o autorizaciones excepcionales generadas por los organismos oficiales que corresponda. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Nota de solicitud",
+      "Nota de solicitud",
+      "Ficha técnica",
+      "Ficha técnica",
+      "Informe Tecnico",
+      "Informe Tecnico",
+      "Constancia de invitación",
+      "Oferta",
+      "Constancia de invitación",
+      "Oferta",
+      "Pedido de Cotización",
+      "CA–02"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto (Referencia sugerida: Informe de Presupuesto)."
+     ],
+     "esquema": [
+      "Informe de Presupuesto",
+      "Informe de Presupuesto"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar CD-05 - Notificación de Rechazo (Referencia sugerida: CD-05) y archivar.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes",
+     "nombre": "Elaborar Informe de control",
+     "texto": "Elaborar el informe de control pudiendo formular todas las observaciones que se requieran.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Realizar Solicitud de Presupuestos",
+     "texto": "Registrar e incorporar:",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF)."
+     ],
+     "esquema": [
+      "Notificación de Rechazo",
+      "CD-05",
+      "Solicitud de compra SIPAF",
+      "SC-SIPAF",
+      "Compromiso Preventivo SIPAF",
+      "PCP-P N°…"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar/Vincular",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar Orden de Provisión o Contrato. Enviar y notificar al proveedor e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF).",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF). continúa con la gestión del pago descrita a continuación. Documento incorporado"
+     ],
+     "esquema": [
+      "Orden de provisión o Contrato",
+      "Orden de provisión o Contrato",
+      "Documento informativo",
+      "Provisión SIPAF",
+      "PR SIPAF",
+      "Compromiso definitivo SIPAF",
+      "PCP-D SIPAF",
+      "Documento incorporado",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario"
+     ],
+     "nota": "Nota: Para los expedientes de contrataciones o compras únicas se",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área Solicitante/Beneficiaria",
+     "nombre": "Gestión de pago",
+     "texto": "Comprobantes. Proveído el bien/servicio, incorporar la siguiente documentación:",
+     "items": [
+      "Factura/s (o comprobante fiscal equivalente) firmado por el proveedor - (Recurso: Firmador Web GSF).",
+      "Certificado de recepción definitiva (CRD) con la relación de gastos.",
+      "Certificado negativo del Registro de Deudores Alimentarios.",
+      "Declaración jurada de actividades y alícuotas (Formulario 1276 API).",
+      "CBU, en caso de corresponder, para poder realizar el pago. 14.256): Inscripción en ARCA, Constancia de pago IIBB, Constancia de cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la factura."
+     ],
+     "esquema": [],
+     "nota": "Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley",
+     "etapa": "pago"
+    },
+    {
+     "n": 11,
+     "area": "Responsable político del área solicitante",
+     "nombre": "Refrenda documentación",
+     "texto": "Validar la documentación y solicitar la gestión de pago desde la providencia del pase.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 12,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización",
+     "texto": "Considerar lo recibido y pasar autorizando la liquidación y pago al proveedor.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 13,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Registro en SIPAF",
+     "texto": "Registrar en SIPAF, descargar e Incorporar al expediente:",
+     "items": [
+      "Certificado de entrega.",
+      "PCP de Devengado."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 14,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Pago",
+     "texto": "",
+     "items": [
+      "Documento de Pago (DP).",
+      "Comprobante de Transferencia Bancaria.",
+      "Constancia de retenciones.",
+      "Balance de inversión."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 15,
+     "area": "Rendición de cuentas - DGA Jurisdiccional",
+     "nombre": "Control",
+     "texto": "Efectuar la revisiva de la gestión de pago e incorporar la constancia documental correspondiente.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 16,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Vista al TCP",
+     "texto": "Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal. Certificación de Pago Único A los fines de dar cumplimiento al procedimiento de Certificación de Pago Único – Gestión Única, se solicita acceder al instructivo con el paso a paso correspondiente, contenido en el siguiente documento: Click Aquí.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "gd-especializacion": {
+   "titulo": "Gestión Directa - Por Especialización",
+   "encabezado": "Gestión Directa - Por Especialización",
+   "intro": [
+    "El presente procedimiento se enmarca en el artículo 116° inciso c) apartado 4 de la Ley N° 12.510 y su Decreto reglamentario N° 1104/16.",
+    "En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el expediente nativo digital ya conformado en caso de existir. Luego, iniciar el proceso en el punto 3.",
+    "Por el contrario, de encontrarse en formato papel, iniciar la renovación como un expediente nuevo digital, referenciando el anterior dentro de las actuaciones que lo componen cada vez que se considere necesario.",
+    "El archivo CA-02 ‘’Pedido de cotización’’ (Este formulario no esta aprobado por ninguna norma) pueden ser generados a partir del módulo de Documentos",
+    "Oficiales o cargando en formato .pdf las plantillas ya existentes.",
+    "El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento",
+    "Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o cargando en formato .pdf las plantillas ya existentes. (Téngase presente que este formulario es del procedimiento de CD x monto)",
+    "El siguiente procedimiento pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones - Gestión Directa - por especialización”.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente.",
+      "CA–02 - Pedido de Cotización (Referencia sugerida: CA–02) u cualquier otra plantilla autorizada en formato .pdf como documento incorporado.",
+      "Fichas técnicas o autorizaciones excepcionales generadas por los organismos oficiales que corresponda.",
+      "Informe técnico del área competente que determine que no existen sustitutos convenientes y consigne las razones de la conveniencia.",
+      "Documentación que acredite la especialización para la prestación del servicio o ejecución de la obra.",
+      "Antecedentes que acrediten la capacidad artística, técnica o científica del ejecutor.",
+      "Constancia de invitación enviada por correo electrónico",
+      "Oferta presentada. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Nota de solicitud",
+      "Nota de solicitud",
+      "Ficha técnica",
+      "Ficha técnica",
+      "Informe Tecnico",
+      "Informe Tecnico",
+      "Doc. acreditando la",
+      "especialización",
+      "Doc. acreditando la",
+      "especialización",
+      "Antecedentes de capacidad",
+      "Antecedentes de capacidad",
+      "Constancia de invitación Oferta",
+      "Constancia de invitación",
+      "Oferta",
+      "Pedido de Cotización",
+      "CA–02"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto (Referencia sugerida: Informe de Presupuesto)."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar CD-05 - Notificación de Rechazo (Referencia sugerida: CD-05) y archivar.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes",
+     "nombre": "Elaborar Informe de control",
+     "texto": "Elaborar el informe de control pudiendo formular todas las observaciones que se requieran.",
+     "items": [],
+     "esquema": [
+      "Informe de Presupuesto",
+      "Informe de Presupuesto",
+      "Notificación de Rechazo",
+      "CD-05"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Realizar Solicitud de Presupuestos",
+     "texto": "Registrar e incorporar:",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF)",
+      "Formulario foja cero"
+     ],
+     "esquema": [
+      "Solicitud de compra SIPAF",
+      "SC-SIPAF",
+      "Compromiso Preventivo SIPAF",
+      "PCP-P N°…",
+      "Formulario foja cero",
+      "Formulario foja cero"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar/Vincular",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente.",
+      "Constancia de notificación al HTCP",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Documento incorporado",
+      "Acto Adjudicación",
+      "Acto Adjudicación"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar Orden de Provisión o Contrato. Enviar y notificar al proveedor e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF)",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF) continúa con la gestión del pago descrita a continuación. Documento incorporado"
+     ],
+     "esquema": [
+      "Orden de provisión o Contrato",
+      "Orden de provisión o Contrato",
+      "Documento informativo",
+      "Provisión SIPAF",
+      "PR SIPAF",
+      "Compromiso definitivo SIPAF",
+      "PCP-D SIPAF"
+     ],
+     "nota": "Nota: Para los expedientes de contrataciones o compras únicas se",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área Solicitante/Beneficiaria",
+     "nombre": "Gestión de pago",
+     "texto": "Comprobantes. Proveído el bien/servicio, incorporar la siguiente documentación:",
+     "items": [
+      "Factura/s (o comprobante fiscal equivalente) firmado por el proveedor - (Recurso: Firmador Web GSF).",
+      "Certificado de recepción definitiva (CRD) con la relación de gastos.",
+      "Certificado negativo del Registro de Deudores Alimentarios.",
+      "Declaración jurada de actividades y alícuotas (Formulario 1276 API).",
+      "CBU, en caso de corresponder, para poder realizar el pago. 14.256): Inscripción en ARCA, Constancia de pago IIBB, Constancia de cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la factura."
+     ],
+     "esquema": [],
+     "nota": "Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley",
+     "etapa": "pago"
+    },
+    {
+     "n": 11,
+     "area": "Responsable político del área solicitante",
+     "nombre": "Refrenda documentación",
+     "texto": "Validar la documentación y solicitar la gestión de pago desde la providencia del pase.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 12,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización",
+     "texto": "Considerar lo recibido y pasar autorizando la liquidación y pago al proveedor.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 13,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Registro en SIPAF",
+     "texto": "Registrar en SIPAF, descargar e Incorporar al expediente:",
+     "items": [
+      "Certificado de entrega.",
+      "PCP de Devengado."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 14,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Pago",
+     "texto": "",
+     "items": [
+      "Documento de Pago (DP).",
+      "Comprobante de Transferencia Bancaria.",
+      "Constancia de retenciones.",
+      "Balance de inversión."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 15,
+     "area": "Rendición de cuentas - DGA Jurisdiccional",
+     "nombre": "Control",
+     "texto": "Efectuar la revisiva de la gestión de pago e incorporar la constancia documental correspondiente.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 16,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Vista al TCP",
+     "texto": "Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal. Certificación de Pago Único A los fines de dar cumplimiento al procedimiento de Certificación de Pago Único – Gestión Única, se solicita acceder al instructivo con el paso a paso correspondiente, contenido en el siguiente documento: Click Aquí.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "gd-entre-organismos": {
+   "titulo": "Gestión Directa - Entre Organismos Oficiales del Sector Público",
+   "encabezado": "Gestión Directa - Entre Organismos Oficiales del Sector Público",
+   "intro": [
+    "El presente procedimiento se enmarca en el artículo 116° inciso c) apartado 6 de la Ley N° 12.510 y su Decreto reglamentario N° 1104/16.",
+    "En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el expediente nativo digital ya conformado en caso de existir. Luego, iniciar el proceso en el punto 3.",
+    "Por el contrario, de encontrarse en formato papel, iniciar la renovación como un expediente nuevo digital, referenciando el anterior dentro de las actuaciones que lo componen cada vez que se considere necesario.",
+    "El archivo CA-02 ‘’Pedido de cotización’’ (Este formulario no está aprobado por ninguna norma) pueden ser generados a partir del módulo de Documentos",
+    "Oficiales o cargando en formato .pdf las plantillas ya existentes.",
+    "El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento",
+    "Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o cargando en formato .pdf las plantillas ya existentes. (Téngase presente que este formulario es del procedimiento de CD x monto)",
+    "El siguiente procedimiento pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones - Gestión Directa - Entre Organismos”.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente.",
+      "CA–02 - Pedido de Cotización (Referencia sugerida: CA–02) u cualquier otra plantilla autorizada en formato .pdf como documento incorporado.",
+      "Constancia de invitación Oferta.",
+      "Informe técnico del área competente que determine que no existen sustitutos convenientes y consigne las razones de la conveniencia.",
+      "Antecedentes de contrataciones anteriores similares con el Organismo propuesto, otros organismos oficiales o proveedores del rubro, en el caso de corresponder.",
+      "Presupuestos o relevamientos de los valores de mercado de bienes o servicios similares.",
+      "Oferta presentada.",
+      "Luego, realizar pase."
+     ],
+     "esquema": [
+      "Nota de solicitud",
+      "Nota de solicitud",
+      "Ficha técnica",
+      "Ficha técnica",
+      "Informe Tecnico",
+      "Informe Tecnico",
+      "Antecedentes similares",
+      "Antecedentes similares",
+      "Relevamiento de mercado",
+      "Relevamiento de mercado",
+      "Constancia de invitación",
+      "Oferta",
+      "Constancia de invitación",
+      "Oferta",
+      "Pedido de Cotización",
+      "CA–02"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto (Referencia sugerida: Informe de Presupuesto)."
+     ],
+     "esquema": [
+      "Informe de Presupuesto",
+      "Informe de Presupuesto"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar CD-05 - Notificación de Rechazo (Referencia sugerida: CD-05) y archivar.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes",
+     "nombre": "Elaborar Informe de media de mercado",
+     "texto": "Elaborar el informe de control pudiendo formular todas las observaciones que se requieran.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Registrar e incorporar:",
+     "texto": "",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF).",
+      "Formulario foja cero."
+     ],
+     "esquema": [
+      "Notificación de Rechazo",
+      "CD-05",
+      "Solicitud de compra SIPAF",
+      "SC-SIPAF",
+      "Compromiso Preventivo SIPAF",
+      "PCP-P N°…",
+      "Formulario foja cero",
+      "Formulario foja cero"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar/Vincular",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de notificación al",
+      "HTCP",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Constancia de Notificación al",
+      "adjudicatario",
+      "Documento oficial",
+      "Acto de adjudicación",
+      "Acto de adjudicación"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar Orden de Provisión o Contrato. Enviar y notificar al proveedor e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF).",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF). Documento incorporado"
+     ],
+     "esquema": [
+      "Orden de provisión o Contrato",
+      "Orden de provisión o Contrato",
+      "Documento informativo",
+      "Provisión SIPAF",
+      "PR SIPAF",
+      "Compromiso definitivo SIPAF",
+      "PCP-D SIPAF"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Recepcionar y Pagar",
+     "texto": "Incorporar/Vincular:",
+     "items": [
+      "Facturas de compra.",
+      "Certificado de Recepción Definitiva.",
+      "Compromiso devengado SIPAF (PCP-DO SIPAF).",
+      "Certificado de Entrega SIPAF (CE SIPAF N° …)."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 11,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Archivar",
+     "texto": "Comunicar y archivar.",
+     "items": [],
+     "esquema": [
+      "Facturas de compra",
+      "Facturas de compra",
+      "Certificado de Entrega SIPAF",
+      "CE SIPAF",
+      "Compromiso devengado SIPAF",
+      "PCP-DO SIPAF",
+      "Certificado de Recepción",
+      "Definitiva",
+      "Certificado de Recepción",
+      "Definitiva"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 12,
+     "area": "Área Solicitante/Beneficiaria",
+     "nombre": "Gestión de pago",
+     "texto": "Comprobantes. Proveído el bien/servicio, incorporar la siguiente documentación:",
+     "items": [
+      "Factura/s (o comprobante fiscal equivalente) firmado por el proveedor - (Recurso: Firmador Web GSF).",
+      "Certificado de recepción definitiva (CRD) con la relación de gastos.",
+      "Certificado negativo del Registro de Deudores Alimentarios.",
+      "Declaración jurada de actividades y alícuotas (Formulario 1276 API).",
+      "CBU, en caso de corresponder, para poder realizar el pago. 14.256): Inscripción en ARCA, Constancia de pago IIBB, Constancia de cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la factura."
+     ],
+     "esquema": [],
+     "nota": "Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley",
+     "etapa": "pago"
+    },
+    {
+     "n": 13,
+     "area": "Responsable político del área solicitante",
+     "nombre": "Refrenda documentación",
+     "texto": "Validar la documentación y solicitar la gestión de pago desde la providencia del pase.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 14,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorización",
+     "texto": "Considerar lo recibido y pasar autorizando la liquidación y pago al proveedor.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 15,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Registro en SIPAF",
+     "texto": "Registrar en SIPAF, descargar e Incorporar al expediente:",
+     "items": [
+      "Certificado de entrega.",
+      "PCP de Devengado."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 16,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Pago",
+     "texto": "",
+     "items": [
+      "Documento de Pago (DP).",
+      "Comprobante de Transferencia Bancaria.",
+      "Constancia de retenciones.",
+      "Balance de inversión."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 17,
+     "area": "Rendición de cuentas - DGA Jurisdiccional",
+     "nombre": "Control",
+     "texto": "Efectuar la revisiva de la gestión de pago e incorporar la constancia documental correspondiente.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    },
+    {
+     "n": 18,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Vista al TCP",
+     "texto": "Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal. Certificación de Pago Único A los fines de dar cumplimiento al procedimiento de Certificación de Pago Único – Gestión Única, se solicita acceder al instructivo con el paso a paso correspondiente, contenido en el siguiente documento: Click Aquí.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "pago"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "convenio-marco": {
+   "titulo": "Contratación por convenio marco",
+   "encabezado": "Contratación por convenio marco",
+   "intro": [
+    "El siguiente proceso pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "Nota: Éste procedimiento se lleva a cabo luego de haber aprobado una solicitud de reserva con el organismo rector.",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Solicitante",
+     "nombre": "Solicitar carátula",
+     "texto": "Código del trámite: “Contratación por convenio marco”.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas y Salidas jurisdiccionales",
+     "nombre": "Caratular",
+     "texto": "Verificar consistencia de datos y aceptar carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Solicitante",
+     "nombre": "Solicitar contratación de servicio",
+     "texto": "Incorporar nota de solicitud y documentación correspondiente:",
+     "items": [
+      "3.a. Nota de Inicio (firmada por el funcionario), al Secretario de Coordinación Administrativa y Financiera del Ministerio de Gobierno e Innovación Pública, indicando la contratación a realizar y el motivo.",
+      "3.b. Solicitud de Reserva Aprobada descargada a través del sistema SIPAF.(Opcional: Correo electrónico que autoriza la operación) .",
+      "3.c. Foja cero del procedimiento.",
+      "3.d. Constancia de cumplimiento fiscal.",
+      "3.e. Certificado negativo de deudor alimentario."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Autoridad superior",
+     "nombre": "Brindar conformidad",
+     "texto": "La persona responsable de la Secretaría autoriza el pago.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Dirección General de Administración o análogo jurisdiccional",
+     "nombre": "Registrar",
+     "texto": "Subproceso. Incorporar documento de compromiso preventivo.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Mesa de entradas Secretaría de Hacienda - 00.01.14.06.03",
+     "nombre": "Brindar conformidad",
+     "texto": "Subproceso.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Dirección General de Administración o análogo jurisdiccional",
+     "nombre": "Tomar conocimiento y provisionar",
+     "texto": "",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Solicitante",
+     "nombre": "Confeccionar resolución",
+     "texto": "",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Dirección General de Administración o análogo jurisdiccional",
+     "nombre": "Gestionar acto administrativo registrable",
+     "texto": "Gestionar firmas de la norma legal.",
+     "items": [
+      "9.a. [Despacho] - Iniciar cadena de firma",
+      "9.b. [Secretario de Comunicaciones] - Firma.",
+      "9.c. [Despacho] - Protocolizar Norma. Incorporar resolución al expediente."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Despacho",
+     "nombre": "Remitir actuaciones a la Delegación Fiscal",
+     "texto": "Subproceso.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 11,
+     "area": "Despacho",
+     "nombre": "Remitir actuaciones para el pago",
+     "texto": "",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 12,
+     "area": "Dirección General de Administración o análogo jurisdiccional",
+     "nombre": "Generar orden de provisión",
+     "texto": "Sobre la reserva en SIPAF e incorporar documentación del proveedor:",
+     "items": [
+      "12.a. Orden de provisión (firma del funcionario).",
+      "12.b. Factura del proveedor (firma del funcionario).",
+      "12.c. Legajo impositivo.",
+      "12.d. CRD (firma del funcionario)."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 13,
+     "area": "Autoridad a cargo - 00.01.06.01",
+     "nombre": "Provisionar",
+     "texto": "",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 14,
+     "area": "Dirección General de Administración o análogo jurisdiccional",
+     "nombre": "Procesar pago",
+     "texto": "Subproceso.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 15,
+     "area": "SAF/DGA Jurisdiccional - 00.01.08.02.03.04.05",
+     "nombre": "Subproceso Revisión y rendición de cuentas",
+     "texto": "",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "alquiler-nuevo": {
+   "titulo": "Locación de inmuebles - Nuevo Alquiler",
+   "encabezado": "Locación de inmuebles - Nuevo Alquiler",
+   "intro": [
+    "El siguiente proceso pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones – Nueva Locación de inmueblesˮ.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota de solicitud de alquiler del organismo dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente , informando detalle y características del Inmueble a alquilar tales como ubicación, superficie, fundamento de la exclusividad y encuadre legal, etc. Debe estar firmada por área solicitante y Secretario/Subsecretario/ logístico o equivalente.",
+      "Informe fundado de las jurisdicciones, organismos o entidades que justifique la necesidad de la contratación y la razonabilidad del precio en el marco del Decreto N°1178/25 firmado por funcionario con facultades de acuerdo al Decreto N°877/90.",
+      "Pedido de Cotización de por lo menos 2 inmobiliarias, tasaciones o informes de cámaras inmobiliarias, publicaciones de la búsqueda en Boletín Oficial y diarios de mayor circulación . Todas podrán servir como evidencia de un relevamiento inmobiliario y constancia del resultado del Relevamiento Inmobiliario.",
+      "Informe de existencia de inmueble : Cada Jurisdicción o Entidad deberán solicitar a la Unidad Rectora Central el Informe de Existencia de Inmueble.",
+      "Documentación a solicitar al locador si correspondiera, y anexar al expediente digital: 1) Propuesta en original firmada informando canon locativo pretendido, plazos y demás condiciones necesarias. 2) Copia certificada del Título de propiedad o escritura que avale la titularidad del inmueble. Si el locador es una Persona Jurídica deberá adjuntar fotocopia certificada del estatuto y Acta actualizada de la Comisión directiva donde conste quienes lo conforman que tengan las facultades para suscribir contrato de locación respectivo. 3) Toda otra documentación necesaria que cada jurisdicción solicita por la naturaleza de la contratación a saber: Último pago del Impuesto Inmobiliario o copia de resolución de la exención del pago del impuesto inmobiliario. Constancia de cumplimiento Fiscal, informe de dominio del Registro de la Propiedad, Planos del Inmueble, Certificado de Deudores morosos alimentarios, etc. Recordar que, conforme al principio de interoperabilidad y simplificación administrativa consagrados en la Ley Provincial N° 14.256 y Decreto N° 496, no deberá requerirse al locador aquella documentación o información que obre en poder del Estado o que pueda ser obtenida por los organismos intervinientes a través de los sistemas y aplicativos provinciales disponibles. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Nota de solicitud del alquiler.",
+      "Nota de solicitud de alquiler.",
+      "Informe fundado.",
+      "Informe fundado.",
+      "Pedido de Cotización y constancia",
+      "del relevamiento inmobiliario.",
+      "Pedido de Cotización y constancia del",
+      "relevamiento inmobiliario.",
+      "Informe de Existencia de",
+      "Inmueble.",
+      "Informe de Existencia de Inmueble.",
+      "Documentación del locador.",
+      "Documentación del locador.",
+      "Informe de inspección del estado",
+      "del inmueble.",
+      "Informe de inspección del estado del",
+      "inmueble."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Dirección de Catastro económico dependiente del Servicio de Catastro e Información Territorial",
+     "nombre": "Ministerio de Economía - Elaborar o Controlar documentación, y elaborar un informe e incorporar al expediente:",
+     "texto": "",
+     "items": [
+      "Informe de la valuación de tasación del Inmueble y el Valor locativo. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Informe de Valuación por organismo",
+      "oficial.",
+      "Informe de valuación por organismo",
+      "oficial."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes",
+     "nombre": "Elaborar Informe de control",
+     "texto": "Elaborar informes de control e incorporarlos al expediente.",
+     "items": [
+      "Informe del Área de Gestión de Bienes Inmuebles de la Subsecretaría de Contrataciones y Gestión de Bienes en cumplimiento al Decreto N°914/16 y Resolución SCYGB N°57/19 .",
+      "Informe de razonabilidad del Área de Innovación y Control de la Subsecretaría de Contrataciones y Gestión de Bienes en cumplimiento al art N°2 del Decreto N°1178/25.",
+      "Dictamen jurídico del área de legales de la Subsecretaría de Contrataciones y Gestión de Bienes Luego, realizar pase."
+     ],
+     "esquema": [
+      "Informe de Gestión de Bienes",
+      "Inmuebles.",
+      "Informe de Gestión de Bienes",
+      "Inmuebles.",
+      "Razonabilidad.",
+      "Razonabilidad.",
+      "Dictamen Jurídico.",
+      "Dictamen Jurídico."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto."
+     ],
+     "esquema": [
+      "Informe de Presupuesto.",
+      "Informe de Presupuesto."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar Notificación de Rechazo y archivar.",
+     "items": [],
+     "esquema": [
+      "Notificación de Rechazo.",
+      "Notificación de Rechazo."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Solicitud de Presupuestos",
+     "texto": "Registrar e incorporar:",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF)."
+     ],
+     "esquema": [
+      "Solicitud de compra SIPAF.",
+      "SC-SIPAF.",
+      "Compromiso Preventivo SIPAF.",
+      "PCP-P N°…"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar/Vincular:",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente (Resolución Conjunta con el Ministerio de Economía) en el marco del decreto 1178/25.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al HTCP.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al",
+      "adjudicatario.",
+      "Constancia de Notificación al",
+      "adjudicatario."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar el Contrato de Alquiler, Enviar y notificar al locador y solicitar poliza de seguro de Incendio e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF).",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF). Documento incorporado"
+     ],
+     "esquema": [
+      "Contrato de alquiler.",
+      "Contrato de alquiler.",
+      "Póliza de Seguro de Incendio.",
+      "Póliza de Seguro.",
+      "Documento informativo",
+      "Provisión SIPAF.",
+      "PR SIPAF.",
+      "Compromiso definitivo SIPAF.",
+      "PCP-D SIPAF.",
+      "Documento incorporado",
+      "Constancia de notificación al HTCP.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al",
+      "adjudicatario.",
+      "Constancia de Notificación al",
+      "adjudicatario."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 11,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Recepcionar y Pagar",
+     "texto": "Incorporar/Vincular:",
+     "items": [
+      "Facturas de Servicios de alquiler.",
+      "Certificado de Recepción Definitiva.",
+      "Compromiso devengado SIPAF (PCP-DO SIPAF).",
+      "Certificado de Entrega SIPAF (CE SIPAF N° …)."
+     ],
+     "esquema": [
+      "Facturas de Servicio de alquiler.",
+      "Facturas de Servicio de alquiler.",
+      "Certificado de Entrega SIPAF.",
+      "CE SIPAF.",
+      "Compromiso devengado SIPAF.",
+      "PCP-DO SIPAF.",
+      "Certificado de Recepción Definitiva.",
+      "Certificado de Recepción Definitiva.",
+      "Comunicar y archivar.",
+      "Diagrama de Proceso"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "alquiler-renovacion": {
+   "titulo": "Locación de inmuebles - Renovación de Alquileres",
+   "encabezado": "Locación de inmuebles - Renovación de Alquileres",
+   "intro": [
+    "El siguiente proceso pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente."
+   ],
+   "nota_previa": "",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Solicitar Carátula",
+     "texto": "Solicitar carátula a la mesa de entradas correspondiente a la jurisdicción bajo tema “Compras y Contrataciones– Locación de inmuebles: Renovación de Alquileres.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Mesa de Entradas de la Jurisdicción",
+     "nombre": "Caratular",
+     "texto": "Carátula",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Cargar documentación",
+     "texto": "Vincular/Incorporar al expediente:",
+     "items": [
+      "Nota de solicitud de alquiler del organismo dirigida a la Secretaría/Subsecretaría de Coordinación Técnica y Administrativa (Logístico Jurisdiccional) o equivalente, informando detalle y características del Inmueble a alquilar tales como ubicación, superficie, fundamento de la exclusividad y encuadre legal, etc. Debe estar firmada por área solicitante y Secretario/Subsecretario/ logístico o equivalente.",
+      "Informe fundado de las jurisdicciones, organismos o entidades que justifique la necesidad de la contratación y la razonabilidad del precio en el marco del Decreto N°1178/25 firmado por funcionario con facultades de acuerdo al Decreto N°877/90.",
+      "Pedido de Cotización de por lo menos 2 inmobiliarias, tasaciones o informes de cámaras inmobiliarias, publicaciones de la búsqueda en Boletín Oficial y diarios de mayor circulación. Todas podrán servir como evidencia de un relevamiento inmobiliario y constancia del resultado del Relevamiento Inmobiliario.",
+      "Informe de existencia de inmueble: Cada Jurisdicción o Entidad deberán solicitar a la Unidad Rectora Central el Informe de Existencia de Inmueble.",
+      "Documentación a solicitar al locador si correspondiera, y anexar al expediente digital: 1) Propuesta en original firmada informando canon locativo pretendido, plazos y demás condiciones necesarias. 2) Si el locador es una Persona Jurídica deberá adjuntar fotocopia certificada del estatuto y Acta actualizada de la Comisión directiva donde conste quienes lo conforman que tengan las facultades para suscribir contrato de locación respectivo. 3) Toda otra documentación necesaria que cada jurisdicción solicita por la naturaleza de la contratación a saber: Último pago del Impuesto Inmobiliario o copia de resolución de la exención del pago del impuesto inmobiliario. Constancia de cumplimiento Fiscal, informe de dominio del Registro de la Propiedad, Certificado de Deudores morosos alimentarios, etc. Recordar que, conforme al principio de interoperabilidad y simplificación administrativa consagrados en la Ley Provincial N° 14.256 y Decreto N° 496, no deberá requerirse al locador aquella documentación o información que obre en poder del Estado o que pueda ser obtenida por los organismos intervinientes a través de los sistemas y aplicativos provinciales disponibles. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Nota de solicitud del alquiler.",
+      "Nota de solicitud de alquiler.",
+      "Informe fundado.",
+      "Informe fundado.",
+      "Pedido de Cotización y",
+      "constancia del relevamiento",
+      "inmobiliario.",
+      "Pedido de Cotización y constancia",
+      "del relevamiento inmobiliario.",
+      "Informe de Existencia de",
+      "Inmueble.",
+      "Informe de Existencia de Inmueble.",
+      "Documentación del locador.",
+      "Documentación del locador."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Dirección de Catastro económico dependiente del Servicio de Catastro e Información Territorial - Ministerio de Economía",
+     "nombre": "Elaborar o Controlar documentación, y elaborar un informe e incorporar al expediente :",
+     "texto": "",
+     "items": [
+      "Informe de la valuación de tasación del Inmueble y el Valor locativo. Luego, realizar pase."
+     ],
+     "esquema": [
+      "Informe de Valuación por organismo",
+      "oficial.",
+      "Informe de valuación por organismo",
+      "oficial."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Subsecretaría de Contrataciones y Gestión de Bienes",
+     "nombre": "Elaborar Informe de control",
+     "texto": "Elaborar informes de control e incorporarlos al expediente.",
+     "items": [
+      "Informe del Área de Gestión de Bienes Inmuebles de la Subsecretaría de Contrataciones y Gestión de Bienes en cumplimiento al Decreto N°914/16 y Resolución SCYGB N°57/19 .",
+      "Informe de razonabilidad del Área de Innovación y Control de la Subsecretaría de Contrataciones y Gestión de Bienes en cumplimiento al art N°2 del Decreto N°1178/25.",
+      "Dictamen jurídico del área de legales de la Subsecretaría de Contrataciones y Gestión de Bienes Luego, realizar pase."
+     ],
+     "esquema": [
+      "Informe de Gestión de Bienes",
+      "Inmuebles",
+      "Informe de Gestión de Bienes",
+      "Inmuebles",
+      "Razonabilidad",
+      "Razonabilidad",
+      "Dictamen Jurídico",
+      "Dictamen Jurídico"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Elaborar Informe de control de presupuesto",
+     "texto": "Controlar documentación, elaborar e incorporar:",
+     "items": [
+      "Informe de Presupuesto."
+     ],
+     "esquema": [
+      "Informe de Presupuesto.",
+      "Informe de Presupuesto."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 7,
+     "area": "Sec. de Coordinación Administrativa o análogo",
+     "nombre": "Autorizar/Rechazar",
+     "texto": "Considerar lo recibido y realizar pase autorizando la continuidad de las actuaciones. Caso contrario incorporar Notificación de Rechazo y archivar.",
+     "items": [],
+     "esquema": [
+      "Notificación de Rechazo.",
+      "Notificación de Rechazo."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 8,
+     "area": "Área correspondiente de Servicio Administrativo Financiero Jurisdiccional",
+     "nombre": "Realizar Solicitud de Presupuestos",
+     "texto": "Registrar e incorporar:",
+     "items": [
+      "Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P N°…).",
+      "Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF)."
+     ],
+     "esquema": [
+      "Solicitud de compra SIPAF.",
+      "SC-SIPAF.",
+      "Compromiso Preventivo SIPAF.",
+      "PCP-P N°…"
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 9,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Realizar Acto de Adjudicación",
+     "texto": "Incorporar/Vincular:",
+     "items": [
+      "Acto administrativo de adjudicación firmado por autoridad competente (Resolución Conjunta con el Ministerio de Economía) en el marco del decreto 1178/25.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al adjudicatario. Documento incorporado"
+     ],
+     "esquema": [
+      "Constancia de notificación al HTCP.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al",
+      "adjudicatario.",
+      "Constancia de Notificación al",
+      "adjudicatario."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 10,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Confeccionar y enviar",
+     "texto": "Confeccionar el Contrato de Alquiler, Enviar y notificar al locador y solicitar poliza de seguro de Incendio e incorporar:",
+     "items": [
+      "Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D SIPAF).",
+      "Provisión SIPAF. (Referencia sugerida: PR SIPAF). Documento incorporado"
+     ],
+     "esquema": [
+      "Contrato de alquiler.",
+      "Contrato de alquiler.",
+      "Póliza de Seguro de Incendio.",
+      "Póliza de Seguro.",
+      "Documento informativo",
+      "Provisión SIPAF.",
+      "PR SIPAF.",
+      "Compromiso definitivo SIPAF.",
+      "PCP-D SIPAF.",
+      "Documento incorporado",
+      "Constancia de notificación al HTCP.",
+      "Constancia de notificación al HTCP.",
+      "Constancia de Notificación al",
+      "adjudicatario.",
+      "Constancia de Notificación al",
+      "adjudicatario."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 11,
+     "area": "Área correspondiente del SAF - DGA Jurisdiccional",
+     "nombre": "Recepcionar y Pagar",
+     "texto": "Incorporar/Vincular:",
+     "items": [
+      "Facturas de Servicios de alquiler.",
+      "Certificado de Recepción Definitiva.",
+      "Compromiso devengado SIPAF (PCP-DO SIPAF).",
+      "Certificado de Entrega SIPAF (CE SIPAF N° …)."
+     ],
+     "esquema": [
+      "Facturas de Servicio de alquiler.",
+      "Facturas de Servicio de alquiler.",
+      "Certificado de Entrega SIPAF.",
+      "CE SIPAF.",
+      "Compromiso devengado SIPAF.",
+      "PCP-DO SIPAF.",
+      "Certificado de Recepción Definitiva.",
+      "Certificado de Recepción Definitiva.",
+      "Comunicar y archivar."
+     ],
+     "nota": "",
+     "etapa": "compra"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "cert-pago-unico": {
+   "titulo": "Certificación de Pago Único - Gestión Única",
+   "encabezado": "Certificación de Pago Único - Gestión Única",
+   "intro": [],
+   "nota_previa": ". El siguiente proceso pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente. Nota: El siguiente procedimiento se realiza sobre el mismo expediente de gestión de compra directa.",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área de Compras o análogo jurisdiccional",
+     "nombre": "Notificación",
+     "texto": "Una vez emitida la norma legal de adjudicación de compra o contratación de servicios, vincular y pasar expediente al Área Solicitante.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Área Solicitante",
+     "nombre": "Documentación",
+     "texto": "Generar los siguientes documentos oficiales:",
+     "items": [
+      "2.1. Certificado de Recepción Definitiva. Generar a través de Documentos Oficiales, completar los campos, luego:",
+      "2.1.1. Referencia. Colocar referencia (ejemplo: CRD de …)",
+      "2.1.2. Destinatarios. Agregar destinatarios, incluyendo el área solicitante misma para conocer el estado de la firma.",
+      "2.1.3. Adjuntar Documentos. Agregar toda la documentación respaldatoria que se crea pertinente.",
+      "2.1.4. Firma Conjunta. Poner a la firma de la autoridad competente del área con cargo no menor a Director Provincial.",
+      "2.b. Factura. Cargar como Documento Oficial (Tipo NOIFC), luego:",
+      "2.1.1. Referencia. Colocar referencia (ejemplo: Factura N° … )",
+      "2.1.2. Destinatarios. Agregar destinatarios, incluyendo el área solicitante misma para conocer el estado de la firma.",
+      "2.1.3. Adjuntar Documentos. Agregar toda la documentación respaldatoria que se crea pertinente. (Constancia de inscripción ARCA, Constancia de Inscripción IIBB, Constancia de Cumplimiento Fiscal API, Formulario 1276 API, entre otros)",
+      "2.1.4. Firma Conjunta. Poner a la firma de la autoridad competente del área con cargo no menor a Director Provincial."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Documentación",
+     "texto": "Firmados los documentos por la autoridad correspondiente, vincular al expediente con número de Documento Oficial.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Liquidación",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar la liquidación.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Pago",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar el pago.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Rendición de Cuentas",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar la rendición de cuentas.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "cert-pagos-multiples": {
+   "titulo": "Certificación de Pagos Múltiples - Gestión Única",
+   "encabezado": "Certificación de Pagos Múltiples - Gestión Única",
+   "intro": [],
+   "nota_previa": ". El siguiente proceso pretende reflejar un reporte de las actuaciones que componen el trámite y sus estadíos básicos. La situación precedentemente mencionada, no obsta de que el tramitante deba y/o pueda generar otras iteraciones que determine por motivos de consulta, revisión, devolución, sujeción a la normativa vigente u otro aspecto que considere pertinente. Nota: El siguiente procedimiento se realiza sobre un nuevo expediente. Cada expediente de pago debe ser vinculado al expediente original.",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Caratulación",
+     "texto": "Caratular expediente bajo tema: “Certificación de Pagos Múltiples - Gestión Única - Compras y Contrataciones”. Referenciar el mismo con el número de expediente que dió origen a la norma legal por la cual se adjudica el bien o el servicio que se está pagando.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Área Solicitante",
+     "nombre": "Documentación",
+     "texto": "Generar los siguientes documentos oficiales:",
+     "items": [
+      "2.1. Certificado de Recepción Definitiva. Generar a través de Documentos Oficiales, completar los campos, luego:",
+      "2.1.1. Referencia. Colocar referencia (ejemplo: CRD de …)",
+      "2.1.2. Destinatarios. Agregar destinatarios, incluyendo el área solicitante misma para conocer el estado de la firma.",
+      "2.1.3. Adjuntar Documentos. Agregar toda la documentación respaldatoria que se crea pertinente.",
+      "2.1.4. Firma Conjunta. Poner a la firma de la autoridad competente del área con cargo no menor a Director Provincial.",
+      "2.b. Factura. Cargar como Documento Oficial (Tipo NOIFC), luego:",
+      "2.1.1. Referencia. Colocar referencia (ejemplo: Factura N° … )",
+      "2.1.2. Destinatarios. Agregar destinatarios, incluyendo el área solicitante misma para conocer el estado de la firma.",
+      "2.1.3. Adjuntar Documentos. Agregar toda la documentación respaldatoria que se crea pertinente.",
+      "2.1.4. Firma Conjunta. Poner a la firma de la autoridad competente del área con cargo no menor a Director Provincial."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Documentación",
+     "texto": "Firmados los documentos por la autoridad correspondiente, vincular al expediente con número de Documento Oficial.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Liquidación",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar la liquidación.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Pago",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar el pago.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Rendición de Cuentas",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar la rendición de cuentas.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  },
+  "cert-pagos-mensualizados": {
+   "titulo": "Certificación de Pagos Mensualizados/Periódicos - Gestión Única",
+   "encabezado": "Certificación de Pagos Mensualizados/Periódicos - Gestión Única",
+   "intro": [],
+   "nota_previa": ". Nota: El siguiente procedimiento se realiza sobre un nuevo expediente. Cada expediente de pago debe ser vinculado al expediente original.",
+   "pasos": [
+    {
+     "n": 1,
+     "area": "Área Solicitante",
+     "nombre": "Caratulación",
+     "texto": "Caratular expediente bajo tema: “Certificación de Pagos Mensualizados/Periódicos - Gestión Única - Compras y Contrataciones”. Colocar como referencia del mismo el número de expediente que dió origen a la norma legal por la cual se adjudica el bien o el servicio que se está pagando. Sugerencia: N° Expte origen - Nombre del Proveedor - Tipo y N° de acto administrativo que dio origen al acto",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 2,
+     "area": "Área Solicitante",
+     "nombre": "Documentación",
+     "texto": "Generar los siguientes documentos oficiales:",
+     "items": [
+      "2.1. Certificado de Recepción Definitiva. Generar a través de Documentos Oficiales, completar los campos, luego:",
+      "2.1.1. Referencia. Colocar referencia (ejemplo: CRD de …)",
+      "2.1.2. Destinatarios. Agregar destinatarios, incluyendo el área solicitante misma para conocer el estado de la firma.",
+      "2.1.3. Adjuntar Documentos. Agregar toda la documentación respaldatoria que se crea pertinente.",
+      "2.1.4. Firma Conjunta. Poner a la firma de la autoridad competente del área con cargo no menor a Director Provincial.",
+      "2.b. Factura. Cargar como Documento Oficial (Tipo NOIFC), luego:",
+      "2.1.1. Referencia. Colocar referencia (ejemplo: Factura N° … )",
+      "2.1.2. Destinatarios. Agregar destinatarios, incluyendo el área solicitante misma para conocer el estado de la firma.",
+      "2.1.3. Adjuntar Documentos. Agregar toda la documentación respaldatoria que se crea pertinente.",
+      "2.1.4. Firma Conjunta. Poner a la firma de la autoridad competente del área con cargo no menor a Director Provincial."
+     ],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 3,
+     "area": "Área Solicitante",
+     "nombre": "Documentación",
+     "texto": "Firmados los documentos por la autoridad correspondiente, vincular al expediente con número de Documento Oficial.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 4,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Liquidación",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar la liquidación.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 5,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Pago",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar el pago.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    },
+    {
+     "n": 6,
+     "area": "Área correspondiente - SAF/DGA",
+     "nombre": "Subproceso: Rendición de Cuentas",
+     "texto": "Diligenciar expediente por las áreas que se consideren pertinentes a los fines de completar la rendición de cuentas.",
+     "items": [],
+     "esquema": [],
+     "nota": "",
+     "etapa": "compra"
+    }
+   ],
+   "contacto": [
+    "Por consultas sobre la gestión de expedientes electrónicos: Correo electrónico: innovacionsgp@santafe.gob.ar Whatsapp: 341-3147277 (solo mensajes de texto) Teléfono: interno 31753-54 (desde la ciudad de Santa Fe) 342-4506600 - interno 31753-54 (desde otra localidad)",
+    "Por sugerencias sobre procedimientos administrativos: Correo electrónico: procesosdigitales@santafe.gob.ar"
+   ]
+  }
+ },
+ "nota_tipos_documento": "Lista completa de tipos de Documento Oficial disponibles para el usuario relevado (129), en el orden de TIMBÓ, 25/11/2026. «conjunta» = firma conjunta (por el nombre o, en CD01/CD03, por el ícono de grupo).",
+ "biblioteca": [
+  {
+   "nombre": "Gestión Directa - Por Monto Menor al Tope",
+   "descripcion": "Se realiza la adquisición, compra o contratación de bienes o servicios de la Administración Pública Provincial.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:gd-monto-menor-tope"
+  },
+  {
+   "nombre": "Gestión Directa - Por Reparación de Maquinaria",
+   "descripcion": "Se realiza la compra o contratación de bienes o servicios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:gd-reparacion-maquinaria"
+  },
+  {
+   "nombre": "Gestión Directa - In Situ",
+   "descripcion": "Se realiza la compra o contratación de bienes o servicios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:gd-in-situ"
+  },
+  {
+   "nombre": "Gestión Directa - Exclusividad",
+   "descripcion": "Se realiza la compra o contratación de bienes o servicios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:gd-exclusividad"
+  },
+  {
+   "nombre": "Gestión Directa - Por Especialización",
+   "descripcion": "Se realiza la compra o contratación de bienes o servicios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:gd-especializacion"
+  },
+  {
+   "nombre": "Gestión Directa - Entre Organismos Oficiales del Sector Público",
+   "descripcion": "Se realiza la compra o contratación de bienes o servicios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:gd-entre-organismos"
+  },
+  {
+   "nombre": "Contratación por convenio marco",
+   "descripcion": "Se realiza la compra o contratación de bienes o servicios con los proveedores con los que existe un convenio marco.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:convenio-marco"
+  },
+  {
+   "nombre": "Locación de inmuebles - Nuevo Alquiler",
+   "descripcion": "Permite gestionar la locación de un inmueble para uso del Estado provincial.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:alquiler-nuevo"
+  },
+  {
+   "nombre": "Locación de inmuebles - Renovación de Alquileres",
+   "descripcion": "Permite gestionar la renovación de un inmueble alquilado en uso del Estado provincial.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:alquiler-renovacion"
+  },
+  {
+   "nombre": "Certificación de Pagos Múltiples - Gestión Única",
+   "descripcion": "Expediente para certificación de pagos múltiples.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:cert-pagos-multiples"
+  },
+  {
+   "nombre": "Certificación de Pagos Mensualizados/Periódicos - Gestión Única",
+   "descripcion": "Expediente para certificación de pagos mensualizados/periódicos.",
+   "tipo": "Expediente Electrónico",
+   "guia": "guia:cert-pagos-mensualizados"
+  },
+  {
+   "nombre": "Certificación de Pagos",
+   "descripcion": "Certificación y pago de compras de bienes y contratación de servicios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:interno"
+  },
+  {
+   "nombre": "Licitación/Concurso Privado",
+   "descripcion": "Gestión de Licitaciones y Concursos Privados.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:interno"
+  },
+  {
+   "nombre": "Licitación/Concurso Público",
+   "descripcion": "Gestión de licitaciones y concursos públicos.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:interno"
+  },
+  {
+   "nombre": "Contratos - Ampliaciones y Adicionales",
+   "descripcion": "Contratos - Ampliaciones y Adicionales. Procedimiento administrativo de uso común a toda la Administración Pública Provincial.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:jurisdiccional"
+  },
+  {
+   "nombre": "Gestión Directa - Ley 14237 Estado de Emergencia en Seguridad Pública",
+   "descripcion": "Gestión Directa - Ley 14237 Estado de Emergencia en Seguridad Pública.",
+   "tipo": "Expediente Electrónico",
+   "guia": "no_leida"
+  },
+  {
+   "nombre": "Gestión Directa - Ley 14241 Estado de Emergencia Social, Educativa y Sanitaria",
+   "descripcion": "Gestión Directa - Ley 14241 Estado de Emergencia Social, Educativa y Sanitaria.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:jurisdiccional"
+  },
+  {
+   "nombre": "Redeterminación de precios",
+   "descripcion": "Redeterminación de precios.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:jurisdiccional"
+  },
+  {
+   "nombre": "Autorización de gastos por habilitación",
+   "descripcion": "Autorización de gastos por habilitación. Compras y contrataciones.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:jurisdiccional"
+  },
+  {
+   "nombre": "Reconocimiento y pago de intereses a proveedores",
+   "descripcion": "Reconocimiento y pago de intereses a proveedores. Compras y contrataciones.",
+   "tipo": "Expediente Electrónico",
+   "guia": "generica:jurisdiccional"
+  }
+ ],
+ "guias_genericas": {
+  "interno": {
+   "titulo": "Procedimiento Interno Jurisdiccional",
+   "texto": [
+    "El procedimiento administrativo que ud. ha seleccionado reúne las características de interno y jurisdiccional. Esto significa que inicia y finaliza dentro de la administración pública provincial y no excede los límites de su jurisdicción ministerial/organismo descentralizado/empresa del estado.",
+    "Si ud. considera que por alguna razón especial este procedimiento administrativo amerita del desarrollo de un documento procedimental (con el “paso a paso” o con aclaraciones específicas) para ser incorporado al módulo Biblioteca de Procedimientos Administrativos EGD TIMBÓ, comuníquese por correo electrónico a procesosdigitales@santafe.gob.ar, con la siguiente información:"
+   ],
+   "pedido": [
+    "Oficina TIMBÓ de inicio.",
+    "Oficina TIMBÓ caratuladora.",
+    "Breve descripción del procedimiento administrativo.",
+    "Resumen del circuito administrativo.",
+    "Otras oficinas involucradas.",
+    "Si requiere documentos o formularios específicos.",
+    "Procedimiento de rendición (si lo requiere).",
+    "Otros datos de relevancia."
+   ]
+  },
+  "jurisdiccional": {
+   "titulo": "Procedimiento Administrativo Jurisdiccional",
+   "texto": [
+    "El procedimiento administrativo que usted ha seleccionado es de carácter jurisdiccional. Esto significa que no excede los límites de su jurisdicción ministerial/organismo descentralizado/empresa del estado.",
+    "Si considera que por alguna razón especial este procedimiento administrativo amerita del desarrollo de un documento procedimental (con el “paso a paso” o con aclaraciones específicas) para ser incorporado en lugar de este documento, comuníquese por correo electrónico a procesosdigitales@santafe.gob.ar, con la siguiente información:"
+   ],
+   "pedido": [
+    "Oficina TIMBÓ de inicio.",
+    "Oficina TIMBÓ caratuladora.",
+    "Breve descripción del procedimiento administrativo.",
+    "Resumen del circuito administrativo.",
+    "Otras oficinas involucradas.",
+    "Si requiere documentos o formularios específicos.",
+    "Procedimiento de rendición (si lo requiere).",
+    "Otros datos de relevancia."
+   ]
+  }
+ },
+ "palabras_clave": [
+  "ActualizaciónNormativa",
+  "Acuerdos",
+  "ArchivoGeneralDeLaProvincia",
+  "AsuntosPenales",
+  "Autorizaciones",
+  "BoletínOficial",
+  "CJyP",
+  "ColegiosYConsejosProfesionales",
+  "Comisiones",
+  "ComitéTics",
+  "ComprasYContrataciones",
+  "ComunicaciónParlamentaria",
+  "ConstanciaDeRegistros",
+  "Contratos",
+  "ConvenioRRII",
+  "Convenios",
+  "Cultura",
+  "DIPAI",
+  "Declaraciones",
+  "DefensaDelConsumidor",
+  "Denuncia",
+  "DerechosHumanos",
+  "DesarrolloProductivo",
+  "Docentes",
+  "EPE",
+  "EstablecimientosEducativos",
+  "Farmacias",
+  "FuerzasDeSeguridad",
+  "GestionesAdministrativas",
+  "GestiónDeBienes"
+ ],
+ "consulta_ee_tipos": [
+  "Numero de Expediente",
+  "Expedientes Iniciados por Mi",
+  "Expedientes Tramitados por Mi",
+  "Expedientes Caratulados por Mi",
+  "Expedientes Caratulados en mi Repartición",
+  "Expedientes Caratulados en mi Jerarquía"
+ ],
+ "consulta_do_tipos": [
+  "Numero de Documento Oficial",
+  "Documentos Firmados por Mi",
+  "Documentos Firmados por Mi Repartición",
+  "Por referencia del Documento Oficial"
+ ],
+ "tipos_actuacion": [
+  "AA",
+  "ACTA",
+  "ANT",
+  "AOF",
+  "CA",
+  "CC",
+  "CD",
+  "CE",
+  "CEI",
+  "CERESP",
+  "CERT",
+  "CF",
+  "CFImp",
+  "CIREL",
+  "CM",
+  "CON",
+  "CONE",
+  "CPR",
+  "CPU",
+  "DEC",
+  "DISIMP",
+  "DISPRE",
+  "DO",
+  "DOC",
+  "DOCADM",
+  "DOCFIN",
+  "DOCLEG",
+  "DOCPE",
+  "EE",
+  "EOF",
+  "FORM",
+  "FT",
+  "GCR",
+  "IER",
+  "IERC",
+  "IF",
+  "IMPOF",
+  "IMPPre",
+  "IPre",
+  "LA",
+  "LCA",
+  "LG",
+  "LPR",
+  "LPU",
+  "MP",
+  "MSJ",
+  "NORMA",
+  "NOTA",
+  "NP",
+  "OE",
+  "OF",
+  "OFI",
+  "OPE",
+  "PER",
+  "PLA",
+  "PLANO",
+  "PROY",
+  "PRV",
+  "PV",
+  "RECON",
+  "RES",
+  "RESIMP",
+  "RTCI",
+  "RTCL",
+  "SOLIC",
+  "SRyO",
+  "SUB"
+ ]
+}

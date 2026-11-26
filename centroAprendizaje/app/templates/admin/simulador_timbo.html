@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Simulador de TIMBÓ — práctica</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/simulador_timbo.css') }}">
+</head>
+<body>
+  <div class="sim-franja" role="note">
+    <b>SIMULADOR · entorno de práctica, no es TIMBÓ.</b>
+    <span>Nada de lo que hagas acá se envía. Datos de prueba inventados.</span>
+    <button type="button" class="sim-franja__btn" data-sim="panel">🎯 Práctica</button>
+    <a class="sim-franja__btn" href="{{ url_for('admin.capacitacion_inicio') }}">✕ Salir</a>
+  </div>
+
+  <div class="tb-app">
+    <nav class="tb-nav" aria-label="Menú">
+      <button type="button" class="tb-nav__menu" data-sim="menu" aria-label="menu"><i class="tb-ico" data-ico="menu"></i></button>
+      <ul class="tb-nav__iconos" id="tb-iconos"></ul>
+    </nav>
+    <div class="tb-cortina" id="tb-cortina" hidden></div>
+    <aside class="tb-menu" id="tb-menu" hidden>
+      <div class="tb-menu__cab">
+        <button type="button" class="tb-nav__menu" data-sim="menu" aria-label="menu"><i class="tb-ico" data-ico="menu"></i></button>
+        <span class="tb-marca tb-marca--clara"><span class="tb-marca__sf">Santa Fe<small>PROVINCIA</small></span><span class="tb-marca__sep"></span><span class="tb-marca__timbo">timbó</span></span>
+      </div>
+      <div id="tb-menu-cuerpo"></div>
+    </aside>
+
+    <div class="tb-main">
+      <header class="tb-header">
+        <span class="tb-marca"><span class="tb-marca__sf">Santa Fe<small>PROVINCIA</small></span><span class="tb-marca__sep"></span><span class="tb-marca__timbo">timbó</span></span>
+        <span class="tb-header__sistema">Bandeja de trámites</span>
+        <button type="button" class="tb-usuario" data-usuario><i class="tb-ico tb-ico--naranja" data-ico="cuenta"></i>{{ sim.usuario.nombre }}<i class="tb-ico tb-ico--chico" data-ico="abajo"></i></button>
+      </header>
+      <main id="tb-vista" class="tb-vista"></main>
+    </div>
+  </div>
+
+  <aside class="sim-panel" id="sim-panel" hidden aria-label="Práctica"></aside>
+  <div class="tb-modal-fondo" id="tb-modal" hidden></div>
+
+  <script type="application/json" id="sim-datos" nonce="{{ csp_nonce }}">{{ sim | tojson }}</script>
+  <script src="{{ url_for('static', filename='js/simulador_timbo.js') }}"></script>
+</body>
+</html>

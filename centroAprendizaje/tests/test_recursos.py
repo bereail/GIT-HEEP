@@ -278,3 +278,32 @@ def test_curso_administrador_local_solo_en_admin(app, admin_client):
         r.close()
     assert admin_client.get("/admin/capacitacion/administrador-local/..%2Fcapacitacion.json").status_code == 404
     assert anonimo.get("/admin/capacitacion/administrador-local/m1-introduccion.pdf").status_code != 200
+
+
+def test_simulador_timbo_solo_en_admin(app, admin_client):
+    anonimo = app.test_client()
+    assert anonimo.get("/admin/capacitacion/simulador-timbo").status_code in (302, 401, 403)
+    r = admin_client.get("/admin/capacitacion/simulador-timbo")
+    html = r.get_data(as_text=True)
+    assert r.status_code == 200 and "no es TIMBÓ" in html and 'id="sim-datos"' in html
+    # La guía oficial tiene 20 pasos numerados del 1 al 20, cada uno con su área.
+    sim = recursos.simulador_timbo()
+    pasos = sim["guias"]["gd-monto-menor-tope"]["pasos"]
+    assert [p["n"] for p in pasos] == list(range(1, 21))
+    assert all(p["area"] and p["nombre"] for p in pasos)
+    # Todo trámite con guía apunta a una guía que existe.
+    assert all(t["guia"] in sim["guias"] for t in sim["tramites"] if "guia" in t)
+    # Biblioteca: los 20 procedimientos de Compras, cada uno con una guía que el simulador sabe mostrar.
+    assert len(sim["biblioteca"]) == 20 and len(sim["tipos_documento"]) == 129
+    for b in sim["biblioteca"]:
+        clase, _, valor = b["guia"].partition(":")
+        assert clase in ("guia", "generica", "paginas", "no_leida"), b
+        if clase == "guia":
+            assert valor in sim["guias"]
+        if clase == "generica":
+            assert valor in sim["guias_genericas"]
+    # Cada guía transcripta tiene sus pasos numerados en orden y con área responsable.
+    assert len(sim["guias"]) == 12
+    for clave, g in sim["guias"].items():
+        assert [p["n"] for p in g["pasos"]] == list(range(1, len(g["pasos"]) + 1)), clave
+        assert all(p["area"] and p["nombre"] for p in g["pasos"]), clave

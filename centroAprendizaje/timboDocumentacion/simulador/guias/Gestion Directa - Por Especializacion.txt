@@ -1,0 +1,241 @@
+
+=== Página 1 ===
+Compras y Contrataciones - Gestión
+Directa - Por Especialización
+El presente procedimiento se enmarca en el artículo 116° inciso c) apartado 4
+de la Ley N° 12.510 y su Decreto reglamentario N° 1104/16.
+En caso de tratarse de una renovación de servicio, se deberá trabajar sobre el
+expediente nativo digital ya conformado en caso de existir. Luego, iniciar el
+proceso en el punto 3.
+Por el contrario, de encontrarse en formato papel, iniciar la renovación como
+un expediente nuevo digital, referenciando el anterior dentro de las
+actuaciones que lo componen cada vez que se considere necesario.
+El archivo CA-02 ‘’Pedido de cotización’’ (Este formulario no esta aprobado
+por ninguna norma) pueden ser generados a partir del módulo de Documentos
+Oficiales o cargando en formato .pdf las plantillas ya existentes.
+El CD-05 “Notificación de Rechazo” puede ser elaborado como Documento
+Oficial de tipo “Doc. Importado” o “Acta Libre” a preferencia del usuario o
+cargando en formato .pdf las plantillas ya existentes. (Téngase presente que
+este formulario es del procedimiento de CD x monto)
+El siguiente procedimiento pretende reflejar un reporte de las actuaciones que
+componen el trámite y sus estadíos básicos. La situación precedentemente
+mencionada, no obsta de que el tramitante deba y/o pueda generar otras
+iteraciones que determine por motivos de consulta, revisión, devolución,
+sujeción a la normativa vigente u otro aspecto que considere pertinente.
+
+=== Página 2 ===
+Paso a Paso
+1.​ [Área Solicitante] - Solicitar Carátula. Solicitar carátula a la mesa
+de entradas correspondiente a la jurisdicción bajo tema “Compras y
+Contrataciones - Gestión Directa - por especialización”.
+2.​ [Mesa de Entradas de la Jurisdicción] - Caratular. Carátula.
+3.​ [Área Solicitante] - Cargar documentación. Vincular/Incorporar al
+expediente:
+Documento Incorporado
+Referencia
+Nota de solicitud
+Nota de solicitud
+Ficha técnica
+Ficha técnica
+Informe Tecnico
+Informe Tecnico
+Doc. acreditando la
+especialización
+Doc. acreditando la
+especialización
+Antecedentes de capacidad
+Antecedentes de capacidad
+Constancia de invitación Oferta
+Constancia de invitación
+Oferta
+Pedido de Cotización
+CA–02
+
+=== Página 3 ===
+○​ Nota dirigida a la Secretaría/Subsecretaría de Coordinación
+Técnica
+y
+Administrativa
+(Logístico
+Jurisdiccional)
+o
+equivalente.
+○​ CA–02 - Pedido de Cotización (Referencia sugerida: CA–02) u
+cualquier otra plantilla autorizada en formato .pdf como
+documento incorporado.
+○​ Fichas técnicas o autorizaciones excepcionales generadas
+por los organismos oficiales que corresponda.
+○​ Informe técnico del área competente que determine que no
+existen sustitutos convenientes y consigne las razones de la
+conveniencia.
+○​ Documentación que acredite la especialización para la
+prestación del servicio o ejecución de la obra.
+○​ Antecedentes que acrediten la capacidad artística, técnica o
+científica del ejecutor.
+○​ Constancia de invitación enviada por correo electrónico
+○​ Oferta presentada.
+Luego, realizar pase.
+
+=== Página 4 ===
+4.​ [Área correspondiente del SAF - DGA Jurisdiccional] - Elaborar
+Informe de control de presupuesto. Controlar documentación,
+elaborar e incorporar:
+○​ Informe de Presupuesto (Referencia sugerida: Informe de
+Presupuesto).
+5.​ [Sec.
+de
+Coordinación
+Administrativa
+o
+análogo]
+-
+Autorizar/Rechazar.
+Considerar
+lo
+recibido y realizar pase
+autorizando la continuidad de las actuaciones. Caso contrario
+incorporar CD-05 - Notificación de Rechazo (Referencia sugerida:
+CD-05) y archivar.
+6.​ [Subsecretaría de Contrataciones y Gestión de Bienes] - Elaborar
+Informe de control. Elaborar el informe de control pudiendo
+formular todas las observaciones que se requieran.
+Documento Incorporado
+Referencia
+Informe de Presupuesto
+Informe de Presupuesto
+Documento Oficial
+Referencia
+Notificación de Rechazo
+CD-05
+
+=== Página 5 ===
+7.​ [Área correspondiente de Servicio Administrativo Financiero
+Jurisdiccional] - Realizar Solicitud de Presupuestos. Registrar e
+incorporar:
+○​ Compromiso Preventivo SIPAF (Referencia sugerida: PCP-P
+N°…).
+○​ Solicitud de compra SIPAF (Referencia sugerida: SC-SIPAF)
+○​ Formulario foja cero
+Documento Informativo
+Referencia
+Solicitud de compra SIPAF
+SC-SIPAF
+Compromiso Preventivo SIPAF
+PCP-P N°…
+Formulario foja cero
+Formulario foja cero
+
+=== Página 6 ===
+8.​ [Área correspondiente del SAF - DGA Jurisdiccional] - Realizar
+Acto de Adjudicación. Incorporar/Vincular
+○​ Acto administrativo de adjudicación firmado por autoridad
+competente.
+○​ Constancia de notificación al HTCP
+○​ Constancia de Notificación al adjudicatario.
+Documento incorporado
+Referencia
+Constancia de notificación al
+HTCP
+Constancia de notificación al
+HTCP
+Constancia de Notificación al
+adjudicatario
+Constancia de Notificación al
+adjudicatario
+Documento incorporado
+Referencia
+Acto Adjudicación
+Acto Adjudicación
+
+=== Página 7 ===
+9.​ [Área
+correspondiente
+del
+SAF
+-
+DGA
+Jurisdiccional]
+-
+Confeccionar y enviar.Confeccionar Orden de Provisión o Contrato.
+Enviar y notificar al proveedor e incorporar:
+○​ Compromiso definitivo SIPAF. (Referencia sugerida: PCP-D
+SIPAF)
+○​ Provisión SIPAF. (Referencia sugerida: PR SIPAF)
+Nota: Para los expedientes de contrataciones o compras únicas se
+continúa con la gestión del pago descrita a continuación.​
+​
+​
+​
+​
+Documento incorporado
+Referencia
+Orden de provisión o Contrato
+Orden de provisión o Contrato
+Documento informativo
+Referencia
+Provisión SIPAF
+PR SIPAF
+Compromiso definitivo SIPAF
+PCP-D SIPAF
+
+=== Página 8 ===
+Gestión de Pago
+10.​[Área Solicitante/Beneficiaria] - Gestión de pago. Comprobantes.
+Proveído el bien/servicio, incorporar la siguiente documentación:
+○​ Factura/s (o comprobante fiscal equivalente) firmado por el
+proveedor - (Recurso: Firmador Web GSF).
+○​ Certificado de recepción definitiva (CRD) con la relación de
+gastos.
+○​ Certificado negativo del Registro de Deudores Alimentarios.
+○​ Declaración jurada de actividades y alícuotas (Formulario
+1276 API).
+○​ CBU, en caso de corresponder, para poder realizar el pago.
+Nota: Es responsabilidad del área solicitante, acreditar (Art. 26 - Ley
+14.256): Inscripción en ARCA, Constancia de pago IIBB, Constancia de
+cumplimiento fiscal (RG API Nº 019/11), Constatación del CAE de la
+factura.
+11.​[Responsable
+político
+del
+área
+solicitante]
+-
+Refrenda
+documentación. Validar la documentación y solicitar la gestión de
+pago desde la providencia del pase.
+12.​[Sec. de Coordinación Administrativa o análogo] - Autorización.
+Considerar lo recibido y pasar autorizando la liquidación y pago al
+proveedor.​
+
+=== Página 9 ===
+13.​[Área correspondiente del SAF - DGA Jurisdiccional] - Registro en
+SIPAF. Registrar en SIPAF, descargar e Incorporar al expediente:
+○​ Certificado de entrega.
+○​ PCP de Devengado.
+14.​[Área correspondiente del SAF - DGA Jurisdiccional] - Pago.
+○​ Documento de Pago (DP).
+○​ Comprobante de Transferencia Bancaria.
+○​ Constancia de retenciones.
+○​ Balance de inversión.
+15.​[Rendición de cuentas - DGA Jurisdiccional] - Control. Efectuar la
+revisiva de la gestión de pago e incorporar la constancia
+documental correspondiente.
+16.​[Área correspondiente del SAF - DGA Jurisdiccional] - Vista al
+TCP. Otorgar vista al TCP. Finalizado, enviar a Guarda Temporal.
+Certificación de Pago Único
+A los fines de dar cumplimiento al procedimiento de Certificación
+de Pago Único – Gestión Única, se solicita acceder al instructivo
+con el paso a paso correspondiente, contenido en el siguiente
+documento: Click Aquí.
+
+=== Página 10 ===
+
+=== Página 11 ===
+Información de contacto
+●​ Por consultas sobre la gestión de expedientes electrónicos:
+Correo electrónico: innovacionsgp@santafe.gob.ar
+Whatsapp: 341-3147277 (solo mensajes de texto)
+Teléfono: interno 31753-54 (desde la ciudad de Santa Fe)
+342-4506600 - interno 31753-54 (desde otra localidad)
+●​ Por sugerencias sobre procedimientos administrativos:
+Correo electrónico: procesosdigitales@santafe.gob.ar

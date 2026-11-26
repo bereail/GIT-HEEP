@@ -10,6 +10,34 @@ La carga de altas de Informática en TIMBÓ ya se hizo y quedó enviada a firmar
 `/admin/diagnostico` y `/admin/comparar-manual` están deployadas pero solo funcionan en local (`_solo_local`).
 Seguir desde acá:
 
+- **Simulador de TIMBÓ (25/11, SIN commit, solo local)**: réplica de la «Bandeja de trámites» para practicar, en
+  `/admin/capacitacion/simulador-timbo` (botón «🖥️ Simulador de TIMBÓ» en Capacitación). Archivos:
+  `templates/admin/simulador_timbo.html` (página aparte, sin base_admin), `static/js/simulador_timbo.js`,
+  `static/css/simulador_timbo.css`, datos en `app/recursos/simulador_timbo.json`. Pantallas relevadas en el Chrome de
+  la usuaria (solo mirar, formularios descartados sin guardar): Tablero de Inicio, menú lateral, Expedientes ›
+  Solicitud de caratulación (formulario completo, con los errores reales «La Oficina seleccionada no posee Código de
+  Identificación.» y «Este campo es requerido»), Expedientes › Gestión, Documentos oficiales › Gestión + formulario
+  (tipos CD01-CD04). La «Guía de Proceso» oficial (botón dentro de TIMBÓ, 20 pasos) quedó transcripta en
+  `timboDocumentacion/simulador/guia_proceso_gd_monto_menor_tope.md`. 4 ejercicios con puntaje (carátula, CD-01,
+  quién hace cada paso, en qué paso va cada documento); resultados en localStorage. Lo no visto queda «no relevado»
+  (la bandeja de expedientes estaba vacía: falta ver un expediente por dentro: actuaciones, vincular, pase).
+  Siempre con franja «SIMULADOR · no es TIMBÓ», sin logos oficiales ni pantalla de login. Test:
+  `test_simulador_timbo_solo_en_admin`.
+  Segunda tanda (25/11 noche, pedido «revelá todo lo posible»): relevados TODOS los menús (detalle en
+  `timboDocumentacion/simulador/relevamiento.md`) y sumados al simulador: Consulta y Visibilidad de expedientes,
+  Gestión de visualización (+ sus 2 formularios), Consulta de documentos oficiales, Comunicaciones Internas/Externas,
+  Listas de destinatarios, Biblioteca de Procedimientos (los 20 de Compras con su guía), Consulta de usuarios,
+  Autorregistro, Apoderamientos, bandejas del Tablero, menú de usuario, «Externo» (persona física/jurídica), menú ⋮ e
+  Historial de un documento oficial, los 129 tipos de Documento Oficial. Sin ver: un expediente por dentro (el usuario
+  no tiene ninguno a la vista, ni en Consulta), el organigrama, «Ver Flujo» (quedó cargando). Guías largas de la Biblioteca: bajadas con su
+  permiso (25/11, quedan en D:\Bere\Downloads, con marca de agua de su CUIL: NO van al repo) y pasadas a texto con
+  PyMuPDF descartando las líneas rotadas (la marca de agua); textos limpios en `timboDocumentacion/simulador/guias/`.
+  Son 12 guías con paso a paso en el simulador (monto menor al tope, reparación, in situ, exclusividad,
+  especialización, entre organismos, convenio marco, alquiler nuevo y renovación, y certificación de pagos A/B/C:
+  las tres vienen en un mismo PDF). Ejercicios 3, 4 y 5 (quién hace cada paso, en qué paso va cada documento, ordenar
+  los pasos) se hacen con cualquiera de ellas. Licitación Privada y Pública NO tienen guía (genérica). Truco del navegador: si la pestaña de TIMBÓ queda en
+  segundo plano Chrome no la dibuja (las capturas fallan); en la Biblioteca el menú ⋮ necesita clic real y, tras
+  cerrar el visor, el primer clic se pierde.
 - **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
   Firmante Carolina Analia Milagros Retamar. Estado actual: esperando su firma (Paso 6 de
   `PASO_A_PASO`). Después evalúa la Unidad Rectora Central y asigna el código SIPAF — anotar cuando llegue el mail.

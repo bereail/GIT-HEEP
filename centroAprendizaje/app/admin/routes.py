@@ -1092,6 +1092,12 @@ def capacitacion_archivo(nombre):
     return send_from_directory(recursos.ARCHIVOS, nombre, as_attachment=True)
 
 
+@admin_bp.route("/capacitacion/simulador-timbo")
+@requiere_admin
+def simulador_timbo():
+    return render_template("admin/simulador_timbo.html", sim=recursos.simulador_timbo())
+
+
 @admin_bp.route("/capacitacion/administrador-local")
 @requiere_admin
 def curso_admin_local():
