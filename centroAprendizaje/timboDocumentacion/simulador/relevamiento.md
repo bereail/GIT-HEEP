@@ -137,12 +137,25 @@ Fuente: https://tramites.santafe.gob.ar
 ## Menú del usuario (botón con el nombre arriba a la derecha): «Cerrar sesión».
 
 ## Documento oficial ya enviado (tarjeta en «Iniciados por mi»)
-- Menú ⋮: «Ver Flujo» (device_hub; diálogo «Flujo» que se quedó en «CARGANDO», pie «Versión: 2.0.2») · «Guía de
-  proceso» (info) · «Previsualizar» (remove_red_eye) · «Historial» (history).
+- Menú ⋮: «Ver Flujo» (device_hub) · «Guía de proceso» (info) · «Previsualizar» (remove_red_eye) · «Historial»
+  (history).
 - «Historial» (panel a la derecha, de lo más nuevo a lo más viejo; cada entrada: usuario + fecha y hora):
   «Completó el formulario / Realizó la acción: Enviar a Producir» → «Realizó la acción: Enviar a Firmar» (con el
   texto "Enviar a Firmar ") → «Realizó la acción: Notificar firmante». Estadío que muestra la tarjeta: «Firmar
   Documento Oficial». Pie: número SDO, botón descargar y «Cerrar».
+- **«Ver Flujo» (26/11, ya cargó: antes se quedaba en «CARGANDO»)**: diálogo «Flujo», pie «Versión: 2.0.2», diagrama
+  BPMN de solo lectura (sin zoom táctil probado, control de línea de tiempo abajo a la derecha). Nodos, de izquierda
+  a derecha: 🏠 inicio → «Iniciar Documento Oficial» (ícono documento) → «Producir Documento Oficial» (círculo) →
+  gateway (rombo ▷) que abre dos ramas:
+  - Rama de arriba (gris, NO transitada en este documento): vuelve a un ícono de sobre (✉) que conecta con «Revisar
+    Documento Oficial» (círculo vacío); de ahí sale otro gateway hacia un sobre → ✕ (fin, rechazo) con un pin de
+    ubicación (📍) verde debajo, sin tooltip visible.
+  - Rama de abajo (verde, es la que siguió este expediente): gateway → sobre rosa (notificación) → «Firmar
+    Documento Oficial» (con ✔ azul, recuadro verde: es el paso actual, pendiente) → gateway → «Evaluar Firma»
+    (círculo) → gateway final: sobre → ✔ (fin, aprobado) arriba, o sobre → ✕ (fin, firma rechazada) abajo.
+  - El color verde en las líneas marca el camino ya recorrido por este expediente puntual (se saltó «Revisar
+    Documento Oficial»); el gris son ramas del proceso que no se usaron. No se probó con otro documento que sí
+    pase por «Revisar».
 
 ## Solicitud de caratulación: variantes
 - «Externo» agrega «* Persona física / Persona jurídica» (radios). Los campos siguientes no se pudieron ver.

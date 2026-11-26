@@ -316,16 +316,36 @@
     },
     {
      "tipo": "pdf",
-     "titulo": "3. Autorregistro: Manual del Administrador Local",
+     "titulo": "3. Autorregistro: Introducción",
+     "archivo": "m5-autorregistro-introduccion.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "4. Autorregistro: Permisos",
+     "archivo": "m5-autorregistro-permisos.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "5. Autorregistro: Manual del Agente",
+     "archivo": "m5-autorregistro-agente.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "6. Autorregistro: Manual del Administrador Local",
      "archivo": "m5-autorregistro-administrador-local.pdf"
     },
     {
      "tipo": "pdf",
-     "titulo": "4. Autorregistro: Manual del Supervisor",
+     "titulo": "7. Autorregistro: Manual del Evaluador",
+     "archivo": "m5-autorregistro-evaluador.pdf"
+    },
+    {
+     "tipo": "pdf",
+     "titulo": "8. Autorregistro: Manual del Supervisor",
      "archivo": "m5-autorregistro-supervisor.pdf"
     }
    ],
-   "evaluacion": "5. Evaluación Módulo 5: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
+   "evaluacion": "9. Evaluación Módulo 5: Se hace en el Aula Virtual. Antes hay que haber revisado los materiales del módulo.",
    "resumen": [
     {
      "titulo": "Requisitos para asignar usuarios",

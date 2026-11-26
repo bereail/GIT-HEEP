@@ -29,7 +29,9 @@ Seguir desde acá:
   Listas de destinatarios, Biblioteca de Procedimientos (los 20 de Compras con su guía), Consulta de usuarios,
   Autorregistro, Apoderamientos, bandejas del Tablero, menú de usuario, «Externo» (persona física/jurídica), menú ⋮ e
   Historial de un documento oficial, los 129 tipos de Documento Oficial. Sin ver: un expediente por dentro (el usuario
-  no tiene ninguno a la vista, ni en Consulta), el organigrama, «Ver Flujo» (quedó cargando). Guías largas de la Biblioteca: bajadas con su
+  no tiene ninguno a la vista, ni en Consulta), el organigrama. «Ver Flujo» ya se vio (26/11, detalle en
+  `timboDocumentacion/simulador/relevamiento.md`): diagrama BPMN de solo lectura, con el camino recorrido marcado en
+  verde. Guías largas de la Biblioteca: bajadas con su
   permiso (25/11, quedan en D:\Bere\Downloads, con marca de agua de su CUIL: NO van al repo) y pasadas a texto con
   PyMuPDF descartando las líneas rotadas (la marca de agua); textos limpios en `timboDocumentacion/simulador/guias/`.
   Son 12 guías con paso a paso en el simulador (monto menor al tope, reparación, in situ, exclusividad,
@@ -41,9 +43,11 @@ Seguir desde acá:
   **FALTA en el simulador (26/11; no se vio en TIMBÓ, no inventar):** 1) un expediente por dentro (pases, vincular
   documentos, firmas): su usuario no tiene ninguno a la vista, ni compartido; es lo más importante para practicar una
   compra completa (si consigue acceso, aunque sea en modo vista, relevarlo); 2) los campos de un trámite «Externo»
-  después de elegir persona física/jurídica; 3) el dibujo de «Ver Flujo» (quedó cargando); 4) el organigrama de
-  oficinas (solo están las 3 probadas); 5) la guía de la Ley 14237 (no se abrió); 6) Licitación Privada y Pública no
-  tienen paso a paso oficial (solo la genérica).
+  después de elegir persona física/jurídica; 3) el organigrama de oficinas (solo están las 3 probadas); 4) la guía
+  de la Ley 14237 (no se abrió); 5) Licitación Privada y Pública no tienen paso a paso oficial (solo la genérica).
+  «Ver Flujo» ya no está pendiente (26/11): se vio el diagrama BPMN completo, queda relevado pero sin sumar todavía
+  como gráfico al simulador (solo en `relevamiento.md`; si se quiere que se vea en el simulador, hay que diseñarlo
+  a mano como los gráficos de `app/procesos/`, porque TIMBÓ no expone el SVG/XML del diagrama).
 - **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
   Firmante Carolina Analia Milagros Retamar. Estado actual: esperando su firma (Paso 6 de
   `PASO_A_PASO`). Después evalúa la Unidad Rectora Central y asigna el código SIPAF — anotar cuando llegue el mail.
