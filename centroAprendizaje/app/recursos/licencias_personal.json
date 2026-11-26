@@ -1,0 +1,39 @@
+{
+  "titulo": "Licencias y trámites de personal",
+  "bajada": "Trámites frecuentes de personal para el equipo del hospital, con la normativa oficial de respaldo: Ley 8525 (Estatuto del Personal de la Administración Pública de Santa Fe) y su Decreto reglamentario 1919/1989.",
+  "consultado": "2026-11-26",
+  "tramites": [
+    {
+      "slug": "mudanza",
+      "titulo": "Licencia por mudanza",
+      "codigo": "Código 63 g",
+      "resumen": "2 días corridos con goce de sueldo, por cada mudanza.",
+      "cita": "«Mudanzas: dos días corridos en cada oportunidad con acreditación fehaciente dentro de los 30 días corridos.»",
+      "norma": "Decreto N° 1919/1989, artículo 63° inciso g) (reglamentario de la Ley 8525)",
+      "norma_url": "https://www.santafe.gob.ar/index.php/web/content/download/221945/1160980/file/Decreto%20N%C2%B0%201919-89.pdf",
+      "pasos": [
+        {
+          "t": "Pedí la licencia",
+          "items": [
+            "Completá el formulario de «Solicitud de Licencias, Justificaciones y Franquicias», código 63 g — Mudanza.",
+            "Presentalo en la Oficina de Personal del hospital.",
+            "La autoriza primero el Jefe de Personal y después tu jefe directo."
+          ]
+        },
+        {
+          "t": "Al reincorporarte, acreditala",
+          "items": [
+            "Presentá el formulario «Comunicación de novedades - Domicilios», detallando el cambio.",
+            "Adjuntá un certificado de vecindad o una copia del DNI actualizado con el domicilio nuevo.",
+            "Todo esto dentro de los 30 días corridos desde la mudanza: es la «acreditación fehaciente» que pide el Decreto."
+          ]
+        }
+      ],
+      "fuentes": [
+        {"titulo": "Decreto N° 1919/1989 — Régimen de Licencias, Justificaciones y Franquicias (art. 63° inc. g)", "url": "https://www.santafe.gob.ar/index.php/web/content/download/221945/1160980/file/Decreto%20N%C2%B0%201919-89.pdf"},
+        {"titulo": "Trámite oficial: Licencias, Justificaciones y Franquicias (incluye el formulario de reincorporación)", "url": "https://www.santafe.gob.ar/index.php/tramites/modul1/index?m=descripcion&id=145423"},
+        {"titulo": "Ley N° 8525 — Estatuto del Personal de la Administración Pública de Santa Fe", "url": "https://www.santafe.gov.ar/index.php/web/content/download/129853/641720/file/L8525.pdf"}
+      ]
+    }
+  ]
+}

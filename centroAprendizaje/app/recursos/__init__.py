@@ -226,6 +226,13 @@ def simulador_timbo():
 
 
 @lru_cache(maxsize=None)
+def licencias_personal():
+    # Trámites de personal para todo el equipo del hospital (no es de TIMBÓ):
+    # normativa de la Ley 8525 y su Decreto reglamentario 1919/89.
+    return _leer("licencias_personal.json")
+
+
+@lru_cache(maxsize=None)
 def curso_timbo():
     # Copia del curso oficial «Timbó, paso a paso» del Aula Virtual (texto,
     # PDF y preguntas tal cual); los PDF están en static/docs/timbo-paso-a-paso.
