@@ -10,7 +10,7 @@ La carga de altas de Informática en TIMBÓ ya se hizo y quedó enviada a firmar
 `/admin/diagnostico` y `/admin/comparar-manual` están deployadas pero solo funcionan en local (`_solo_local`).
 Seguir desde acá:
 
-- **Simulador de TIMBÓ (25/11, SIN commit, solo local)**: réplica de la «Bandeja de trámites» para practicar, en
+- **Simulador de TIMBÓ (commit `41b5de4`, deployado el 26/11; solo /admin, oculto al público)**: réplica de la «Bandeja de trámites» para practicar, en
   `/admin/capacitacion/simulador-timbo` (botón «🖥️ Simulador de TIMBÓ» en Capacitación). Archivos:
   `templates/admin/simulador_timbo.html` (página aparte, sin base_admin), `static/js/simulador_timbo.js`,
   `static/css/simulador_timbo.css`, datos en `app/recursos/simulador_timbo.json`. Pantallas relevadas en el Chrome de
@@ -38,6 +38,12 @@ Seguir desde acá:
   los pasos) se hacen con cualquiera de ellas. Licitación Privada y Pública NO tienen guía (genérica). Truco del navegador: si la pestaña de TIMBÓ queda en
   segundo plano Chrome no la dibuja (las capturas fallan); en la Biblioteca el menú ⋮ necesita clic real y, tras
   cerrar el visor, el primer clic se pierde.
+  **FALTA en el simulador (26/11; no se vio en TIMBÓ, no inventar):** 1) un expediente por dentro (pases, vincular
+  documentos, firmas): su usuario no tiene ninguno a la vista, ni compartido; es lo más importante para practicar una
+  compra completa (si consigue acceso, aunque sea en modo vista, relevarlo); 2) los campos de un trámite «Externo»
+  después de elegir persona física/jurídica; 3) el dibujo de «Ver Flujo» (quedó cargando); 4) el organigrama de
+  oficinas (solo están las 3 probadas); 5) la guía de la Ley 14237 (no se abrió); 6) Licitación Privada y Pública no
+  tienen paso a paso oficial (solo la genérica).
 - **Trámite real enviado**: SDO-202600431824, «Timbó Compras: Alta de bienes y servicios CAByS», Destinatario y
   Firmante Carolina Analia Milagros Retamar. Estado actual: esperando su firma (Paso 6 de
   `PASO_A_PASO`). Después evalúa la Unidad Rectora Central y asigna el código SIPAF — anotar cuando llegue el mail.
