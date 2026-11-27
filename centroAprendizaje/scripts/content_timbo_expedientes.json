@@ -504,6 +504,15 @@
             {
               "type": "tip",
               "text": "Fijate que el archivo termine en \".pdf\". Algunos sistemas exportan con la extensión en mayúsculas (\".PDF\") y eso puede dar problemas al subirlo: si pasa, renombralo."
+            },
+            {
+              "type": "warning",
+              "text": "Si subís un formulario PDF editable ya completado (por ejemplo, una solicitud de renuncia), puede verse vacío en la previsualización de TIMBÓ: desde la última actualización, no muestra los campos completados. Solución: después de completarlo, no lo guardes ni lo descargues directamente. Abrí la ventana de impresión (ícono de impresora o Ctrl+P), elegí \"Guardar como PDF\" como destino (Páginas: Todas) y guardalo así — recién ese PDF, con los datos ya fijos, es el que subís a TIMBÓ."
+            },
+            {
+              "type": "pdf",
+              "file": "formularios-pdf-editables.pdf",
+              "title": "Formularios PDF editables (instructivo oficial, Ministerio de Salud)"
             }
           ],
           "quiz": []
