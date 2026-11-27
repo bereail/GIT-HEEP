@@ -699,11 +699,6 @@ def curso_timbo():
     return render_template("curso_timbo.html", curso=recursos.curso_timbo())
 
 
-@ui_bp.route("/licencias-de-personal")
-def licencias_personal():
-    return render_template("licencias_personal.html", datos=recursos.licencias_personal())
-
-
 @ui_bp.route("/recursos/<clave>")
 def recursos_herramienta(clave):
     if clave not in recursos.HERRAMIENTAS or clave in recursos.OCULTOS_PUBLICO:

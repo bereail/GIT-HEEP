@@ -307,3 +307,12 @@ def test_simulador_timbo_solo_en_admin(app, admin_client):
     for clave, g in sim["guias"].items():
         assert [p["n"] for p in g["pasos"]] == list(range(1, len(g["pasos"]) + 1)), clave
         assert all(p["area"] and p["nombre"] for p in g["pasos"]), clave
+
+
+def test_licencias_de_personal_solo_en_admin(app, admin_client):
+    anonimo = app.test_client()
+    assert anonimo.get("/licencias-de-personal").status_code == 404
+    assert anonimo.get("/admin/capacitacion/licencias-de-personal").status_code in (302, 401, 403)
+    assert "Licencias de personal" not in anonimo.get("/").get_data(as_text=True)
+    r = admin_client.get("/admin/capacitacion/licencias-de-personal")
+    assert r.status_code == 200 and "mudanza" in r.get_data(as_text=True).lower()

@@ -5,7 +5,12 @@ en `README.md`; acá va lo que no se deduce del código.
 
 ## ▶ PUNTO DE RETOMA (25/11/2026) — leer primero
 
-Estado: **todo commiteado, pusheado y deployado** (`main`, `nomenclador-capacitacion` y el servidor en `55da77c`).
+Estado (27/11): **todo commiteado y pusheado; lo último SIN deployar** (la usuaria pidió no deployar). Pendiente de
+deploy: «Licencias de personal» pasada a SOLO /admin (`/admin/capacitacion/licencias-de-personal`, botón en
+Capacitación, franja «Oculto por ahora»; la ruta pública `/licencias-de-personal` ya no existe, test
+`test_licencias_de_personal_solo_en_admin`). En el servidor nunca estuvo pública. Revisión de material oficial (26/11):
+los índices de normativa TIMBÓ, normativa de Compras y tutoriales de Compras ya están todos cargados (comparar por
+número/título, no por URL: varias están con otra codificación); falta mirar YouTube y el Aula «Timbó paso a paso».
 La carga de altas de Informática en TIMBÓ ya se hizo y quedó enviada a firmar. Las herramientas
 `/admin/diagnostico` y `/admin/comparar-manual` están deployadas pero solo funcionan en local (`_solo_local`).
 Seguir desde acá:
