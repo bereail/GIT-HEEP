@@ -95,6 +95,7 @@
       { t: "Gestión de visualización", i: "carpeta", ir: "#/solicitud_vista_expediente" }] },
     { t: "Documentos oficiales", i: "carpetaDoc", sub: [
       { t: "Gestión", i: "editarDoc", ir: "#/documentos_oficiales" }, { t: "Consulta", i: "buscar", ir: "#/consulta_do" }, { t: "Visibilidad", i: "ojo" }] },
+    { t: "Licitaciones y Concursos", i: "flujo", ir: "#/compras_gestion" },
     { t: "Comunicaciones Oficiales", i: "flechas", sub: [
       { t: "Internas", i: "abajoIzq", ir: "#/communications_internas" }, { t: "Externas", i: "bandejaSalida", ir: "#/communications_externas" }] },
     { t: "Lista de destinatarios", i: "carpetaPersona", sub: [
@@ -238,6 +239,167 @@
   function vNoRelevado(titulo) {
     return '<div class="tb-titulo"><h1>' + h(titulo) + '</h1></div><div class="tb-tabs"></div><div class="sim-nota" style="max-width:620px;margin:40px auto">' +
       "<b>Pantalla todavía no relevada.</b> Para no inventar nada, el simulador solo copia lo que se vio en TIMBÓ. Esta parte se suma cuando se releve (con tu sesión o con un manual oficial).</div>";
+  }
+
+  // ------------------------------------------------------------ Gestión de Compras y Contrataciones
+  // Copiado del video oficial "Paso 02 - ¿Cómo aprobar la contratación, cronograma y nómina?" (Secretaría
+  // de Gestión Pública, youtu.be/Yq1RArIxk2I) y de una guía con capturas reales del mismo circuito.
+  var FORMULARIOS_PLIEGO = ["Aspectos Generales", "Detalle de Productos y Servicios", "Requisitos de Participación",
+    "Garantías", "Condiciones del Contrato", "Facturación y Pago", "Anexos", "Evaluadores"];
+  var PROVEEDORES_DEMO = [
+    { cuit: "30623415615", razonSocial: "GRUPO CONSULTAR SRL", rubro: "No posee", email: "cohen@consultar.org" },
+    { cuit: "30712345678", razonSocial: "INSUMOS DEL LITORAL SA", rubro: "Informática", email: "ventas@insumoslitoral.com.ar" }
+  ];
+  var PC = null; // proceso de contratación en práctica (se reinicia al recargar, como F y G)
+  function nuevoPC() {
+    return {
+      instancia: "GCyC-202600000100", exp: "EE-2026-00000052-APPSF-OD", nombre: "ELEMENTOS Y SERVICIOS INFORMATICOS",
+      jurisdiccionContratante: "SGC-PLIE - Pliegos - 00.01.14.02.01.01", jurisdiccionComitente: "MEC - Ministerio de Economía - 00.01.14",
+      estado: "Evaluar Contratación (Supervisor)", numeroProceso: "", form: 1, formularios: {}, motivos: {},
+      actoForm: null, acto: null, nomina: [], nominaForm: null, nominaAbierto: false, cronograma: {}, publicado: false
+    };
+  }
+  function camposCronograma() {
+    return [
+      ["fechaPublicacion", "Fecha Publicación en Portal", "date"], ["horaPublicacion", "Hora Publicación en Portal", "time"],
+      ["fechaInicioConsultas", "Fecha Inicio de Consultas", "date"], ["horaInicioConsultas", "Hora Inicio de Consultas", "time"],
+      ["fechaFinConsultas", "Fecha Fin de Consultas", "date"], ["horaFinConsultas", "Hora Fin de Consultas", "time"],
+      ["fechaInicioRecepcion", "Fecha Inicio Recepción de Documentos", "date"], ["horaInicioRecepcion", "Hora Inicio Recepción de Documentos", "time"],
+      ["fechaFinRecepcion", "Fecha Fin Recepción de Documentos", "date"], ["horaFinRecepcion", "Hora Fin Recepción de Documentos", "time"],
+      ["fechaApertura", "Fecha de Apertura", "date"], ["horaApertura", "Hora de Apertura", "time"]
+    ];
+  }
+  function cronogramaCompleto(pc) { return camposCronograma().every(function (c) { return (pc.cronograma[c[0]] || "").trim(); }); }
+  function tarjetaProcesoCompra(p) {
+    return '<article class="tb-tarjeta tb-tarjeta--compra"><div class="tb-tarjeta__fila-cab"><b>Proceso de Contratación</b><span>Número de la Instancia: ' + h(p.instancia) + "</span></div>" +
+      '<div class="tb-tarjeta__grilla"><div><b>Nombre del proceso</b>' + h(p.nombre) + "</div><div><b>Jurisdicción Contratante</b>" + h(p.jurisdiccionContratante) + "</div>" +
+      "<div><b>N° de Expediente</b>" + h(p.exp) + "</div>" + (p.numeroProceso ? "<div><b>Número de Proceso</b>" + h(p.numeroProceso) + "</div>" : "") +
+      "<div><b>Jurisdicción Comitente</b>" + h(p.jurisdiccionComitente) + "</div></div>" +
+      '<div class="tb-tarjeta__pie"><span>' + ico("cuenta", "tb-ico--chico") + ' Supervisor</span><span class="tb-estado-chip">' + h(p.estado) + "</span></div>" +
+      '<button type="button" class="tb-btn tb-btn--chico" style="margin-top:14px" data-ir="#/compras_gestion/proceso">Gestionar</button></article>';
+  }
+  function vComprasGestion() {
+    if (!PC) PC = nuevoPC();
+    return encabezadoLista("Gestión de Compras y Contrataciones", false) + pestanas(["Asignados", "Pendientes", "Finalizados"], 0) +
+      filtros([{ txt: "Buscar por nro. de Proceso" }, { txt: "Buscar por nombre de proceso" }, { txt: "Buscar por nro. de Exp." }, { dd: "Buscar por Jurisdicción" }, { dd: "Buscar por estado de Proceso" }, { fecha: "Desde" }, { fecha: "Hasta" }]) +
+      '<div class="tb-tarjetas">' + tarjetaProcesoCompra(PC) + "</div>" +
+      (PC.publicado ? '<p class="sim-nota" style="max-width:640px;margin:0 22px 20px">Este proceso ya se publicó en esta práctica.</p><p style="margin:0 22px"><button type="button" class="tb-btn tb-btn--gris tb-btn--chico" data-compra-reiniciar>Reiniciar este proceso</button></p>' : "");
+  }
+  function previsualizarPliego() {
+    modal('<div class="tb-visor"><div class="tb-visor__cab"><span>' + h(PC.numeroProceso || PC.instancia) + '</span><button type="button" data-cerrar-modal aria-label="clear">' + ico("cerrar") + "</button></div>" +
+      '<div class="tb-visor__cuerpo"><div class="tb-pdf"><div class="tb-pdf__logo">timbó</div><h2>Proyecto de Pliego de Bases y Condiciones</h2>' +
+      "<p>Provincia de Santa Fe</p><p>Número: " + h(PC.numeroProceso || "(sin asignar todavía)") + "</p><p>Referencia: " + h(PC.exp) + "</p>" +
+      '<p class="sim-nota">El contenido completo del pliego (son 10 páginas en TIMBÓ real) no se relevó en detalle: esto es solo la carátula.</p></div></div></div>');
+  }
+  function vComprasProceso() {
+    if (!PC) PC = nuevoPC();
+    var idx = PC.form, estado = PC.formularios[idx];
+    var o = '<div class="tb-form-cab"><button type="button" data-ir="#/compras_gestion">' + ico("izquierda", "tb-ico--chico") + h(PC.instancia) + "</button>" +
+      '<span class="tb-estado-chip" style="margin-left:14px">' + h(PC.estado) + '</span><button type="button" class="tb-acciones__link" style="margin-left:auto" data-compras-acciones>Acciones ' + ico("abajo", "tb-ico--naranja") + '</button></div>' +
+      '<div class="tb-compra"><nav class="tb-compra__menu">' + FORMULARIOS_PLIEGO.map(function (t, i) {
+        var n = i + 1, st = PC.formularios[n];
+        return '<button type="button" class="' + (n === idx ? "activo" : "") + '" data-compra-form="' + n + '">' + n + " - " + h(t) +
+          (st ? ' <small class="' + (st === "Aprobar" ? "ok" : "mal") + '">' + h(st) + "</small>" : "") + "</button>";
+      }).join("") + '</nav><div class="tb-compra__cuerpo">';
+    o += idx === 1
+      ? '<p class="tb-pliego-legal">La presentación por el proponente de la oferta implica la aceptación y sometimiento a las cláusulas de esta documentación básica, conforme al art. 187° de la Ley N° 12.510.</p>'
+      : '<p class="sim-nota">El contenido de este formulario no se relevó en detalle: se aprueba o se rechaza igual que «Aspectos Generales».</p>';
+    o += '<span class="tb-label">Estado</span><label class="tb-radio"><input type="radio" name="compra-estado" value="Aprobar" ' + (estado === "Aprobar" ? "checked" : "") + ">Aprobar</label>" +
+      '<label class="tb-radio"><input type="radio" name="compra-estado" value="Rechazar" ' + (estado === "Rechazar" ? "checked" : "") + ">Rechazar</label>";
+    if (estado === "Rechazar") {
+      o += '<span class="tb-label" style="margin-top:14px">Motivo de Rechazo<span class="tb-req">*</span></span><textarea class="tb-textarea" data-compra-motivo="' + idx + '">' + h(PC.motivos[idx] || "") + "</textarea>" +
+        '<span class="tb-label" style="margin-top:14px">Documentación adicional</span><button type="button" class="tb-btn-borde" data-aviso="En el simulador no se adjuntan archivos.">Examinar</button>' +
+        '<div class="tb-sub">Historial de Evaluación</div><div class="tb-tabla"><div class="tb-tabla__cab">N° de Comentario · Evaluador · Comentario · Fecha · Hora</div><div class="tb-tabla__fila tb-tabla__fila--vacia">Aún no has agregado ningún registro</div></div>';
+    }
+    o += '<div class="tb-guardar"><button type="button" class="tb-btn" data-compra-guardar-form>Guardar</button></div></div></div>';
+    return o;
+  }
+  function vComprasActo() {
+    if (!PC || !PC.numeroProceso) { location.hash = "#/compras_gestion/proceso"; return ""; }
+    var a = PC.actoForm || (PC.actoForm = { numero: "", buscado: false });
+    var o = '<div class="tb-form-cab"><button type="button" data-ir="#/compras_gestion/proceso">' + ico("izquierda", "tb-ico--chico") + "Seleccionar Documento Oficial Aprueba Pliego</button></div><div class=\"tb-form\">" +
+      '<span class="tb-label">N° de Documento Oficial<span class="tb-req">*</span></span><div class="tb-campo--fila">' +
+      '<input class="tb-input" data-pc="actoNumero" value="' + h(a.numero) + '" placeholder="RES-2025-00000011-APPSF-PE#..."><button type="button" class="tb-btn-borde" data-compra-buscar-acto>' + ico("buscar") + "</button></div>";
+    if (a.buscado) {
+      o += '<div class="tb-sub">Datos del documento oficial</div><div class="tb-grilla3">' +
+        '<div><span class="tb-label">Referencia</span><input class="tb-input" value="prueba2" readonly></div>' +
+        '<div><span class="tb-label">Iniciador</span><input class="tb-input" value="' + h(D.usuario.nombre) + '" readonly></div>' +
+        '<div><span class="tb-label">Oficina Iniciadora</span><input class="tb-input" value="' + h(PC.jurisdiccionComitente) + '" readonly></div></div>' +
+        '<div class="tb-sub">Firmantes del DO</div><div class="tb-tabla"><div class="tb-tabla__cab">Firmante · Cargo · Oficina · CUIL</div><div class="tb-tabla__fila tb-tabla__fila--vacia">Aún no has agregado ningún registro</div></div>' +
+        '<div class="tb-guardar"><button type="button" class="tb-btn" data-compra-guardar-acto>Guardar</button></div>';
+    }
+    return o + "</div>";
+  }
+  function vComprasNomina() {
+    if (!PC || !PC.acto) { location.hash = "#/compras_gestion/proceso"; return ""; }
+    var n = PC.nominaForm;
+    var o = '<div class="tb-form-cab"><button type="button" data-ir="#/compras_gestion/proceso">' + ico("izquierda", "tb-ico--chico") + "Nómina Proveedores</button></div><div class=\"tb-form\">" +
+      '<div class="tb-tabla"><div class="tb-tabla__cab">C.U.I.T. · Razón Social</div>' +
+      (PC.nomina.length ? PC.nomina.map(function (p) { return '<div class="tb-tabla__fila"><span>' + h(p.cuit) + "</span><span>" + h(p.razonSocial) + "</span></div>"; }).join("")
+        : '<div class="tb-tabla__fila tb-tabla__fila--vacia">Aún no has agregado ningún registro</div>') + "</div>" +
+      '<div class="tb-link-agregar"><button type="button" data-compra-nomina-abrir>' + ico("agregar", "tb-ico--naranja") + "Cargar Proveedor</button></div>";
+    if (PC.nominaAbierto && n) {
+      o += '<div class="tb-sub">Carga de proveedor</div><span class="tb-label">Carga Manual</span><label class="tb-toggle"><input type="checkbox" data-compra-nomina-manual ' + (n.manual ? "checked" : "") + ">" + (n.manual ? "Si" : "No") + "</label>";
+      if (!n.manual) {
+        o += '<span class="tb-label" style="margin-top:14px">Filtro<span class="tb-req">*</span></span>' +
+          '<label class="tb-radio"><input type="radio" name="compra-nomina-filtro" value="cuit" ' + (n.filtro === "cuit" ? "checked" : "") + ">CUIT/CUIL</label>" +
+          '<label class="tb-radio"><input type="radio" name="compra-nomina-filtro" value="razon" ' + (n.filtro === "razon" ? "checked" : "") + ">Razón Social o Nombre</label>" +
+          '<input class="tb-input" placeholder="' + (n.filtro === "cuit" ? "CUIT" : "Razón Social o Nombre") + '" data-pc="nominaTexto" value="' + h(n.texto) + '">';
+        if (n.encontrado) {
+          o += '<div class="tb-grilla3" style="margin-top:14px">' +
+            '<div><span class="tb-label">C.U.I.T.</span><input class="tb-input" value="' + h(n.encontrado.cuit) + '" readonly></div>' +
+            '<div><span class="tb-label">Razón Social</span><input class="tb-input" value="' + h(n.encontrado.razonSocial) + '" readonly></div>' +
+            '<div><span class="tb-label">Rubro/Clase</span><input class="tb-input" value="' + h(n.encontrado.rubro) + '" readonly></div>' +
+            '<div><span class="tb-label">Email del Proveedor</span><input class="tb-input" value="' + h(n.encontrado.email) + '" readonly></div></div>';
+        } else if (n.texto) {
+          o += '<p class="sim-nota">Para esta práctica, escribí «GRUPO CONSULTAR» o «INSUMOS DEL LITORAL».</p>';
+        }
+      } else {
+        o += '<div class="tb-grilla3" style="margin-top:14px">' +
+          '<div><span class="tb-label">C.U.I.T.<span class="tb-req">*</span></span><input class="tb-input" data-pc="nominaCuit" value="' + h(n.cuit) + '"></div>' +
+          '<div><span class="tb-label">Razón Social<span class="tb-req">*</span></span><input class="tb-input" data-pc="nominaRazon" value="' + h(n.razon) + '"></div>' +
+          '<div><span class="tb-label">Email del Proveedor<span class="tb-req">*</span></span><input class="tb-input" data-pc="nominaEmail" value="' + h(n.email) + '"></div></div>';
+      }
+      o += '<div class="tb-guardar"><button type="button" class="tb-btn tb-btn--gris" data-compra-nomina-cancelar>Cancelar</button><button type="button" class="tb-btn" data-compra-nomina-agregar>Agregar</button></div>';
+    }
+    o += '<div class="tb-guardar"><button type="button" class="tb-btn tb-btn--gris" data-ir="#/compras_gestion/proceso">Cancelar</button><button type="button" class="tb-btn" data-compra-nomina-enviar>Enviar</button></div>';
+    return o + "</div>";
+  }
+  function vComprasCronograma() {
+    if (!PC || !PC.acto) { location.hash = "#/compras_gestion/proceso"; return ""; }
+    var grupos = [["Fecha y Hora Estimada de Publicación", 0, 2], ["Fecha y Hora Inicio/Fin de Consultas", 2, 4],
+      ["Fecha y Hora Inicio/Fin Recepción de Documentos en Soporte Físico", 6, 4], ["Fecha y Hora Acto de Apertura", 10, 2]];
+    var campos = camposCronograma();
+    var o = '<div class="tb-form-cab"><button type="button" data-ir="#/compras_gestion/proceso">' + ico("izquierda", "tb-ico--chico") + "Cronograma de Fechas</button></div><div class=\"tb-form\">";
+    grupos.forEach(function (g) {
+      o += '<div class="tb-sub">' + h(g[0]) + '</div><div class="tb-grilla3">';
+      for (var i = g[1]; i < g[1] + g[2]; i++) {
+        var c = campos[i];
+        o += '<div><span class="tb-label">' + h(c[1]) + '<span class="tb-req">*</span></span><input class="tb-input" type="' + c[2] + '" data-pc="cronograma.' + c[0] + '" value="' + h(PC.cronograma[c[0]] || "") + '"></div>';
+      }
+      o += "</div>";
+    });
+    return o + '<div class="tb-guardar"><button type="button" class="tb-btn" data-compra-guardar-cronograma>Guardar</button></div></div>';
+  }
+  function enviarAPublicar() {
+    PC.publicado = true; PC.estado = "Publicado";
+    var resultado = ejercicioActivo === "aprobar-pliego" ? evaluarAprobarPliego() : null;
+    location.hash = "#/compras_gestion"; render();
+    modal('<div class="tb-confirmar" style="width:460px;text-align:left"><h2>Publicado (simulación)</h2><p>TIMBÓ suma solo al expediente, ya firmados: el pliego, el acto que lo aprueba, el cronograma de fechas (código <b>CF-</b>) y la nómina de proveedores (código <b>NP-</b>).</p>' +
+      '<button type="button" class="tb-btn" data-cerrar-modal>Entendido</button></div>');
+    if (resultado) mostrarResultado(resultado);
+  }
+  function evaluarAprobarPliego() {
+    var checks = [
+      { ok: FORMULARIOS_PLIEGO.every(function (_, i) { return PC.formularios[i + 1] === "Aprobar"; }), t: "Los 8 formularios del pliego quedaron en «Aprobar»", f: "El Supervisor evalúa formulario por formulario antes de que TIMBÓ asigne el número de proceso." },
+      { ok: !!PC.acto, t: "Vinculaste el documento oficial que aprueba el pliego", f: "Sin un acto administrativo válido no se puede avanzar a cronograma ni nómina." },
+      { ok: PC.nomina.length > 0, t: "Cargaste al menos un proveedor en la Nómina", f: "Mínimo real: 1 proveedor en licitación pública, 5 en licitación privada." },
+      { ok: cronogramaCompleto(PC), t: "Completaste todas las fechas y horas del Cronograma", f: "Publicación, consultas, recepción de documentos y apertura son obligatorias." },
+      { ok: !!PC.publicado, t: "Enviaste el proceso a Publicar", f: "Con el Cronograma y la Nómina completos, «Acciones» habilita «Enviar a Publicar»." }
+    ];
+    var pts = checks.filter(function (c) { return c.ok; }).length;
+    registrar("aprobar-pliego", pts, checks.length);
+    return { id: "aprobar-pliego", checks: checks, extra: [], pts: pts, total: checks.length };
   }
 
   // ------------------------------------------------------------ formulario: solicitud de caratulación
@@ -416,7 +578,10 @@
     { id: "docs", titulo: "4. ¿En qué paso va cada documento?", nivel: "Evaluación · elegís el procedimiento",
       consigna: "Para cada documento, elegí en qué paso de la Guía de Proceso se incorpora al expediente." },
     { id: "orden", titulo: "5. Ordená los pasos", nivel: "Evaluación · elegís el procedimiento",
-      consigna: "Los pasos están mezclados. Elegí el número de orden de cada uno según la Guía de Proceso." }
+      consigna: "Los pasos están mezclados. Elegí el número de orden de cada uno según la Guía de Proceso." },
+    { id: "aprobar-pliego", titulo: "6. Aprobar el pliego, cronograma y nómina", nivel: "Pantallas",
+      consigna: "Entrá a «Licitaciones y Concursos» y llevá el proceso de principio a fin: aprobá los 8 formularios del pliego, vinculá el acto que lo aprueba, cargá la nómina de proveedores y el cronograma de fechas, y enviá a publicar.",
+      pistas: ["Si rechazás un formulario, en esta práctica tenés que volver a aprobarlo: qué pasa en TIMBÓ real en ese caso no se relevó en detalle.", "Sin vincular el acto administrativo no se puede avanzar a cronograma ni nómina.", "Un proveedor no registrado se carga activando «Carga Manual»."] }
   ];
   var ejercicioActivo = null, panelVista = "inicio", quiz = null, plegado = false, quizPendiente = null;
   function nombreGuia(k) { return D.guias[k].titulo; }
@@ -779,7 +944,10 @@
         "#/bibloteca_de_procedimientos_administrativos": vBiblioteca, "#/consulta_de_usuarios": vConsultaUsuarios,
         "#/autorregistro": vAutorregistro,
         "#/autorregistro/create": function () { return vNuevoTramite(["Autorregistro de usuarios"], "#/autorregistro"); },
-        "#/autorregistro/form/1": vAutorregistroForm, "#/entity_attorneys_lookup": vApoderamientos
+        "#/autorregistro/form/1": vAutorregistroForm, "#/entity_attorneys_lookup": vApoderamientos,
+        "#/compras_gestion": vComprasGestion, "#/compras_gestion/proceso": vComprasProceso,
+        "#/compras_gestion/proceso/acto": vComprasActo, "#/compras_gestion/proceso/nomina": vComprasNomina,
+        "#/compras_gestion/proceso/cronograma": vComprasCronograma
       };
       if (RUTAS[ruta]) html = RUTAS[ruta]();
       else if (ruta === "#/solicitud_caratulacion") html = vSolicitudes();
@@ -792,6 +960,7 @@
     v.innerHTML = html;
     pintarIconosNav();
     if (foco.selFiltro) { var inp = $('[data-sel-filtro="' + foco.selFiltro + '"]'); if (inp) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } }
+    else if (foco.pc) { var ip = $('[data-pc="' + foco.pc + '"]'); if (ip) { ip.focus(); ip.setSelectionRange(ip.value.length, ip.value.length); } }
     else if (selAbierto) { var i2 = $('[data-sel-filtro="' + selAbierto + '"]'); if (i2) i2.focus(); }
   }
 
@@ -881,6 +1050,71 @@
     if (ds.agregarArchivo != null) { avisoSim("En el simulador no se suben archivos: los «Archivos de trabajo» no forman parte del documento."); return; }
     if (ds.guardarSol != null) { guardarSol(); return; }
     if (ds.guardarDoc != null) { guardarDoc(); return; }
+    if (ds.compraReiniciar != null) { PC = nuevoPC(); render(); return; }
+    if (ds.compraForm != null) { PC.form = +ds.compraForm; render(); return; }
+    if (ds.compraGuardarForm != null) {
+      var cVal = PC.formularios[PC.form];
+      if (!cVal) { avisoSim("Elegí Aprobar o Rechazar."); return; }
+      if (cVal === "Rechazar" && !(PC.motivos[PC.form] || "").trim()) { render(); avisoSim("El «Motivo de Rechazo» es obligatorio."); return; }
+      var cSig = null;
+      for (var cI = 1; cI <= 8; cI++) if (!PC.formularios[cI]) { cSig = cI; break; }
+      if (cSig) { PC.form = cSig; render(); return; }
+      var cHayRechazo = Object.keys(PC.formularios).some(function (k) { return PC.formularios[k] === "Rechazar"; });
+      render();
+      if (cHayRechazo) {
+        modal('<div class="tb-confirmar" style="width:420px;text-align:left"><h2>Hay formularios rechazados</h2><p>Para seguir con esta práctica, volvé a cada formulario marcado «Rechazar» y pasalo a «Aprobar» (qué pasa en TIMBÓ real cuando se rechaza un formulario no se relevó en detalle).</p><button type="button" class="tb-btn" data-cerrar-modal>Entendido</button></div>');
+      } else if (!PC.numeroProceso) {
+        PC.numeroProceso = "LPU-2026-00000010-APPSF-PE#MEC#SGC-PLIE"; PC.estado = "Aprobar Contratación";
+        modal('<div class="tb-confirmar" style="width:440px;text-align:left"><h2>Se generó el número de proceso</h2><p>Aprobaste los 8 formularios: TIMBÓ asignó el número de proceso definitivo <b>' + h(PC.numeroProceso) + '</b> y el estado pasó a <b>«Aprobar Contratación»</b>. Ahora hace falta tramitar por expediente el acto administrativo que lo aprueba y, cuando esté firmado, volver acá a vincularlo desde «Acciones».</p><button type="button" class="tb-btn" data-cerrar-modal>Entendido</button></div>');
+      }
+      return;
+    }
+    if (ds.comprasAcciones != null) {
+      var accItems = [["ojo", "Previsualizar", function () { previsualizarPliego(); }]];
+      if (PC.numeroProceso && !PC.acto) accItems.push(["editarDoc", "Seleccionar Documento Oficial Aprueba Pliego", function () { location.hash = "#/compras_gestion/proceso/acto"; }]);
+      if (PC.acto) {
+        accItems.push(["editarDoc", "Nómina Proveedores" + (PC.nomina.length ? " ✓" : ""), function () { location.hash = "#/compras_gestion/proceso/nomina"; }]);
+        accItems.push(["calendario", "Cronograma de Fechas" + (cronogramaCompleto(PC) ? " ✓" : ""), function () { location.hash = "#/compras_gestion/proceso/cronograma"; }]);
+      }
+      if (PC.acto && PC.nomina.length && cronogramaCompleto(PC) && !PC.publicado) accItems.push(["flechas", "Enviar a Publicar", function () { enviarAPublicar(); }]);
+      menuFlotante(b, accItems);
+      return;
+    }
+    if (ds.compraBuscarActo != null) {
+      if (!(PC.actoForm.numero || "").trim()) { avisoSim("Escribí el N° de Documento Oficial."); return; }
+      PC.actoForm.buscado = true; render(); return;
+    }
+    if (ds.compraGuardarActo != null) {
+      PC.acto = { numero: PC.actoForm.numero }; PC.nominaForm = { manual: false, filtro: "razon", texto: "", encontrado: null, cuit: "", razon: "", email: "" };
+      location.hash = "#/compras_gestion/proceso";
+      avisoSim("Documento vinculado. Ahora cargá la Nómina de Proveedores y el Cronograma de Fechas desde «Acciones».");
+      return;
+    }
+    if (ds.compraNominaAbrir != null) { PC.nominaAbierto = true; if (!PC.nominaForm) PC.nominaForm = { manual: false, filtro: "razon", texto: "", encontrado: null, cuit: "", razon: "", email: "" }; render(); return; }
+    if (ds.compraNominaCancelar != null) { PC.nominaAbierto = false; render(); return; }
+    if (ds.compraNominaAgregar != null) {
+      var nF = PC.nominaForm;
+      if (nF.manual) {
+        if (!nF.cuit.trim() || !nF.razon.trim() || !nF.email.trim()) { avisoSim("Completá CUIT, Razón Social y Email."); return; }
+        PC.nomina.push({ cuit: nF.cuit.trim(), razonSocial: nF.razon.trim(), rubro: "Carga Manual", email: nF.email.trim() });
+      } else {
+        if (!nF.encontrado) { avisoSim("Buscá y encontrá un proveedor antes de agregar."); return; }
+        PC.nomina.push(nF.encontrado);
+      }
+      PC.nominaAbierto = false; render(); return;
+    }
+    if (ds.compraNominaEnviar != null) {
+      if (!PC.nomina.length) { avisoSim("Cargá al menos un proveedor antes de enviar."); return; }
+      location.hash = "#/compras_gestion/proceso";
+      avisoSim("Nómina enviada (simulación). Volvé a «Acciones» para completar el Cronograma de Fechas.");
+      return;
+    }
+    if (ds.compraGuardarCronograma != null) {
+      if (!cronogramaCompleto(PC)) { avisoSim("Completá todas las fechas y horas: son obligatorias."); return; }
+      location.hash = "#/compras_gestion/proceso";
+      avisoSim("Cronograma guardado (simulación). Volvé a «Acciones»: si ya cargaste la Nómina, se habilita «Enviar a Publicar».");
+      return;
+    }
     if (ds.nada != null) { e.preventDefault(); return; }
     if (ds.ej) { empezarEjercicio(ds.ej); return; }
     if (ds.quizGuia) { if (ds.quizId) quizPendiente = ds.quizId; quiz = nuevoQuiz(quizPendiente, ds.quizGuia); panelVista = "quiz"; pintarPanel(true); $("#sim-panel").scrollTop = 0; return; }
@@ -902,11 +1136,29 @@
     if (t.dataset.selFiltro) { selFiltro = t.value; render(); return; }
     if (t.dataset.campo && F) { F[t.dataset.campo] = t.value; F.cambios = true; return; }
     if (t.dataset.g && G) { G.v[t.dataset.g] = t.value; return; }
+    if (t.dataset.compraMotivo != null && PC) { PC.motivos[t.dataset.compraMotivo] = t.value; return; }
+    if (t.dataset.pc && PC) {
+      var pcK = t.dataset.pc;
+      if (pcK === "actoNumero") { PC.actoForm.numero = t.value; return; }
+      if (pcK === "nominaTexto") {
+        PC.nominaForm.texto = t.value;
+        var q = sinTildes(t.value.trim());
+        PC.nominaForm.encontrado = (q ? PROVEEDORES_DEMO.filter(function (p) { return sinTildes(p.razonSocial).indexOf(q) >= 0 || p.cuit.indexOf(q) >= 0; })[0] : null) || null;
+        render(); return;
+      }
+      if (pcK === "nominaCuit") { PC.nominaForm.cuit = t.value; return; }
+      if (pcK === "nominaRazon") { PC.nominaForm.razon = t.value; return; }
+      if (pcK === "nominaEmail") { PC.nominaForm.email = t.value; return; }
+      if (pcK.indexOf("cronograma.") === 0) { PC.cronograma[pcK.slice(11)] = t.value; return; }
+    }
   });
   document.addEventListener("change", function (e) {
     var t = e.target;
     if (t.dataset.quiz != null) { quiz.resp[+t.dataset.quiz] = t.value; return; }
     if (t.dataset.g && G && t.type === "date") { G.v[t.dataset.g] = t.value; render(); return; }
+    if (PC && t.name === "compra-estado") { PC.formularios[PC.form] = t.value; render(); return; }
+    if (PC && t.name === "compra-nomina-filtro") { PC.nominaForm.filtro = t.value; PC.nominaForm.texto = ""; PC.nominaForm.encontrado = null; render(); return; }
+    if (PC && t.dataset.compraNominaManual != null) { PC.nominaForm.manual = t.checked; PC.nominaForm.encontrado = null; render(); return; }
     if (!F) return;
     if (t.name === "tipo") { F.tipo = t.value; F.cambios = true; render(); }
     else if (t.name === "vis") { F.visibilidad = t.value; }

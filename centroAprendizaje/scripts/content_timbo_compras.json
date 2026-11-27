@@ -2043,7 +2043,7 @@
         {
           "slug": "supervisor-aprobar-y-publicar",
           "titulo": "Supervisor: aprobar el pliego, cargar cronograma y nómina",
-          "minutos": 5,
+          "minutos": 7,
           "dificultad": "intermedio",
           "bloques": [
             {
@@ -2055,37 +2055,56 @@
             {
               "type": "step",
               "number": 1,
-              "explanation": "Revisá el pliego.",
-              "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de compras y contrataciones\". El proceso está en \"Evaluar contratación supervisor\". En \"Acciones\", aprobá, rechazá o pedí modificar formulario por formulario.",
-              "lookFor": "Si rechazás, dejá el motivo (y un archivo, si sirve): queda en el historial. Si vos mismo armaste el pliego, podés aprobar todos juntos."
+              "explanation": "Revisá el pliego, formulario por formulario.",
+              "doThis": "Bandeja \"Licitaciones y concursos\" → \"Gestión de Compras y Contrataciones\". El proceso está con el estado \"Evaluar Contratación (Supervisor)\". Entrá y recorrés las 8 pestañas del pliego (Aspectos Generales, Detalle de Productos y Servicios, Requisitos de Participación, Garantías, Condiciones del Contrato, Facturación y Pago, Anexos, Evaluadores): en cada una, \"Estado\" → \"Aprobar\" o \"Rechazar\" → \"Guardar\".",
+              "lookFor": "Si rechazás un formulario, el \"Motivo de Rechazo\" es obligatorio (podés sumar un archivo si hace falta). Queda registrado en el \"Historial de Evaluación\" de ese formulario, con evaluador, comentario y fecha. Si vos mismo armaste el pliego, podés ir aprobando todos.",
+              "image": "aprobar-rechazar-formulario.jpg",
+              "alt": "Formulario del pliego con las opciones Aprobar o Rechazar y el motivo de rechazo",
+              "caption": "Cada uno de los 8 formularios del pliego se aprueba o se rechaza por separado"
             },
             {
               "type": "step",
               "number": 2,
               "explanation": "Descargá el pliego y armá el acto por expediente.",
-              "doThis": "Aprobado todo, TIMBÓ da el número de proceso definitivo (estado \"Aprobar contratación\"). En \"Previsualizar\" descargá el pliego, sumalo al expediente y seguí el trámite del acto que aprueba el pliego y autoriza el llamado (dictamen, decisorio, etc.).",
-              "lookFor": "El acto se tramita por expediente, fuera de TIMBÓ Compras. El número de proceso lleva tipo de procedimiento, año, número y oficina."
+              "doThis": "Aprobados los 8 formularios, TIMBÓ asigna el número de proceso definitivo y el estado pasa a \"Aprobar Contratación\". Desde \"Acciones\" → \"Previsualizar\" podés recorrer el pliego página por página y descargarlo; sumalo al expediente y seguí ahí el trámite del acto administrativo que lo aprueba y autoriza el llamado (dictamen, decisorio, etc.).",
+              "lookFor": "El acto se tramita por expediente electrónico, fuera de TIMBÓ Compras. El número de proceso lleva el tipo de procedimiento, año, número y las siglas de la jurisdicción (por ejemplo, LPU-2026-00000010-APPSF-PE#...)."
             },
             {
               "type": "step",
               "number": 3,
-              "explanation": "Vinculá el acto.",
-              "doThis": "Cuando te avisen del acto: \"Acciones\" → \"Seleccionar documento oficial aprueba pliego\". Escribí el número, tocá la lupa, verificá que sea el correcto y \"Guardar\". Después, \"Completar cronograma y nómina\".",
-              "lookFor": "Sin un acto válido no se puede avanzar."
+              "explanation": "Vinculá el acto que aprueba el pliego.",
+              "doThis": "Cuando el acto esté firmado: \"Acciones\" → \"Seleccionar Documento Oficial Aprueba Pliego\" → escribí el \"N° de Documento Oficial\" y tocá la lupa. TIMBÓ muestra los datos del documento (Referencia, Iniciador, Oficina Iniciadora, Fecha de Creación) y sus firmantes para que confirmes que es el correcto → \"Guardar\".",
+              "lookFor": "Sin un acto administrativo válido vinculado, no se puede avanzar a cronograma ni nómina.",
+              "image": "seleccionar-doc-oficial-aprueba-pliego.jpg",
+              "alt": "Pantalla para vincular el documento oficial que aprueba el pliego, con sus datos y firmantes",
+              "caption": "Antes de guardar, TIMBÓ muestra los datos del acto para verificar que sea el correcto"
             },
             {
               "type": "step",
               "number": 4,
               "explanation": "Cargá la nómina de proveedores.",
-              "doThis": "\"Acciones\" → \"Nómina de proveedores\" → \"Carga de proveedor\". Buscalos por razón social o CUIT, o cargalos a mano si no están registrados. Después, \"Enviar\".",
-              "lookFor": "Mínimo: 1 proveedor en licitación pública y 5 en licitación privada. TIMBÓ les manda la invitación al correo cargado."
+              "doThis": "\"Acciones\" → \"Nómina Proveedores\" → \"Cargar Proveedor\". Elegí el filtro \"CUIT/CUIL\" o \"Razón Social o Nombre\" y buscalo: si está registrado, TIMBÓ completa solo el CUIT, la Razón Social, el Rubro/Clase y el email. Si no aparece, activá \"Carga Manual\" y completá esos datos a mano → \"Agregar\". Con todos cargados, \"Enviar\".",
+              "lookFor": "Mínimo: 1 proveedor en licitación pública y 5 en licitación privada. TIMBÓ les manda la invitación al correo cargado.",
+              "image": "nomina-proveedores-carga.jpg",
+              "alt": "Formulario de carga de un proveedor a la nómina, buscado por razón social",
+              "caption": "Buscando un proveedor por razón social: si está registrado, los datos se completan solos"
             },
             {
               "type": "step",
               "number": 5,
               "explanation": "Cargá el cronograma de fechas.",
-              "doThis": "Fecha y hora de: publicación, inicio y fin de consultas, inicio y fin de recepción de documentación física, apertura, e inicio y fin de impugnaciones. \"Guardar\" → \"Enviar a publicar\".",
-              "lookFor": "Queda en \"Pendientes\", estado \"Pendiente de publicación\", hasta la hora fijada. La \"fecha de publicación\" es cuando lo ven los proveedores en TIMBÓ, no la del portal web."
+              "doThis": "\"Acciones\" → \"Cronograma de Fechas\". Completá fecha y hora de: Publicación en el Portal; inicio y fin de Consultas; inicio y fin de Recepción de Documentos en Soporte Físico; y Apertura → \"Guardar\".",
+              "lookFor": "La fecha de publicación es cuando el proceso se ve en TIMBÓ para los proveedores, no necesariamente la del portal web.",
+              "image": "cronograma-fechas-form.jpg",
+              "alt": "Formulario de Cronograma de Fechas con los campos de publicación, consultas, recepción de documentos y apertura",
+              "caption": "Cronograma de Fechas: un grupo de campos por cada etapa del llamado"
+            },
+            {
+              "type": "step",
+              "number": 6,
+              "explanation": "Enviá a publicar.",
+              "doThis": "Con \"Cronograma de Fechas\" y \"Nómina Proveedores\" completos, \"Acciones\" avisa \"Completaste los formularios\" y lista los dos como completos → tocá \"Enviar a Publicar\".",
+              "lookFor": "Queda pendiente de publicación hasta la hora fijada."
             },
             {
               "type": "warning",
@@ -2097,13 +2116,13 @@
             },
             {
               "type": "tip",
-              "text": "Al publicarse, TIMBÓ suma solo al expediente (con una providencia automática) el pliego, el acto, el cronograma y la nómina, firmados."
+              "text": "Al publicarse, TIMBÓ suma solo al expediente, ya firmados, los cuatro documentos del proceso: el pliego, el acto que lo aprueba, el cronograma de fechas (código \"CF-\") y la nómina de proveedores (código \"NP-\")."
             },
             {
               "type": "video",
               "url": "https://youtu.be/Yq1RArIxk2I",
               "title": "Paso 02 – Cómo aprobar la contratación, el cronograma y la nómina",
-              "minutos": 3
+              "minutos": 1
             }
           ],
           "quiz": [
@@ -2111,7 +2130,7 @@
               "type": "order-steps",
               "instruction": "Ordená lo que hace el Supervisor:",
               "steps": [
-                "Aprobar los formularios del pliego",
+                "Aprobar los 8 formularios del pliego",
                 "Descargar el pliego y tramitar el acto por expediente",
                 "Vincular el documento oficial que aprueba el pliego",
                 "Cargar nómina y cronograma",
@@ -2128,6 +2147,12 @@
               ],
               "correctIndex": 0,
               "explanation": "5 en licitación privada y 1 en licitación pública."
+            },
+            {
+              "type": "true-false",
+              "question": "Si un proveedor no está registrado, no se lo puede sumar a la nómina.",
+              "answer": false,
+              "explanation": "Se activa \"Carga Manual\" y se completan sus datos a mano (CUIT, razón social, rubro y email)."
             }
           ]
         },

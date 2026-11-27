@@ -43,6 +43,7 @@ SINONIMOS = {
     "ayuda": "mesa de ayuda", "telefono": "mesa de ayuda", "contacto": "mesa de ayuda",
     "comprar": "compra", "compramos": "compra",
     "hablo": "hablar", "llamo": "llamar", "escribo": "escribir", "archivar": "archivo",
+    "nomecla": "nomenclador", "nomenclatura": "nomenclador",
 }
 
 _PIDE_DEFINICION = re.compile(r"^(que es|que son|que significa|que quiere decir)(?: |$)")

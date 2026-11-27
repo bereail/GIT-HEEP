@@ -159,6 +159,47 @@ SITUACIONES_TIMBO_EXPEDIENTES = [
         "categoria_libre": "Disponibilidad del sistema",
         "verificado": False,
     },
+    {
+        "slug": "pase-anular-expediente-compra-directa",
+        "situacion": "¿A qué oficina se hace el pase para anular un expediente de compra directa?",
+        "descripcion": "Se armó un expediente de compra directa que hay que anular, y no se sabe a qué oficina hacerle el pase.",
+        "solucion": (
+            "Según indicó la Secretaría de Gestión Pública (Unidad de Gestión TIMBÓ), el pase se hace a la oficina "
+            '"Mesa de Movimientos". No es ninguna de las Mesas de Entradas regionales (Nodo Rafaela/Santa Fe/Rosario) '
+            "ni la Mesa de Entradas propia del hospital: en el organigrama de TIMBÓ, \"Mesa de Movimientos\" cuelga del "
+            "Ministerio de Salud, bajo Subsecretaría Legal y Técnica → Dirección Provincial Legal y Técnico → "
+            "Dirección General Despacho."
+        ),
+        "notas_adicionales": "Respuesta dada por chat de soporte: todavía no hay una circular escrita que confirme este circuito — conviene pedir que lo dejen por escrito antes de tomarlo como procedimiento fijo.",
+        "categoria_libre": "Pases y circuitos",
+        "verificado": False,
+        "tutorial": ("expedientes", "enviar-pase"),
+    },
+    {
+        "slug": "diferencia-correr-vista-y-enviar-expediente",
+        "situacion": '¿Cuál es la diferencia entre "correr vista" y "enviar el expediente"?',
+        "descripcion": "Al terminar de cargar un expediente no queda claro si corresponde correr vista, enviarlo, o las dos cosas.",
+        "solucion": (
+            "Son dos acciones distintas. Correr vista (Gestión de visualización) le da a otra oficina o usuario permiso "
+            "para VER el expediente sin que cambie de manos — por ejemplo, para que el Tribunal de Cuentas tome "
+            "conocimiento de un decisorio, mientras el expediente sigue su trámite normal. Enviar el expediente (pase) "
+            "en cambio lo PASA a otra oficina para que siga el circuito — por ejemplo a Farmacia para que agregue "
+            "documentación, entre oficinas del mismo hospital para seguir el pago, o al ministerio para una autorización."
+        ),
+        "categoria_libre": "Pases y circuitos",
+        "verificado": True,
+        "tutorial": ("expedientes", "vistas-de-expediente"),
+    },
+    {
+        "slug": "marca-de-agua-al-previsualizar",
+        "situacion": "Al previsualizar un documento de otro expediente aparece mi nombre encima — ¿por qué?",
+        "descripcion": "Se previsualiza un documento ajeno solo para consultarlo, y la hoja sale con el nombre de quien lo mira.",
+        "causa": "Es el comportamiento normal del sistema: cada vez que se previsualiza un documento, TIMBÓ le superpone una marca de agua con los datos de quien lo está mirando en ese momento.",
+        "solucion": "No es un error ni significa que el documento se modificó: es una marca de agua de trazabilidad que se agrega solo a la vista previa, nunca al documento original.",
+        "categoria_libre": "Documentos y consultas",
+        "verificado": False,
+        "tutorial": ("expedientes", "buscar-expediente"),
+    },
 ]
 
 SITUACIONES_TIMBO_COMPRAS = [
@@ -267,6 +308,46 @@ SITUACIONES_TIMBO_COMPRAS = [
         "notas_adicionales": "Pedido abierto, sin respuesta todavía.",
         "categoria_libre": "Artículos y disponibilidad",
         "verificado": False,
+    },
+    {
+        "slug": "pase-anular-expediente-compra-directa",
+        "situacion": "¿A qué oficina se hace el pase para anular un expediente de compra directa?",
+        "descripcion": "Se armó un expediente de compra directa que hay que anular, y no se sabe a qué oficina hacerle el pase.",
+        "solucion": (
+            "Según indicó la Secretaría de Gestión Pública (Unidad de Gestión TIMBÓ), el pase se hace a la oficina "
+            '"Mesa de Movimientos". No es ninguna de las Mesas de Entradas regionales (Nodo Rafaela/Santa Fe/Rosario) '
+            "ni la Mesa de Entradas propia del hospital: en el organigrama de TIMBÓ, \"Mesa de Movimientos\" cuelga del "
+            "Ministerio de Salud, bajo Subsecretaría Legal y Técnica → Dirección Provincial Legal y Técnico → "
+            "Dirección General Despacho."
+        ),
+        "notas_adicionales": "Respuesta dada por chat de soporte: todavía no hay una circular escrita que confirme este circuito — conviene pedir que lo dejen por escrito antes de tomarlo como procedimiento fijo.",
+        "categoria_libre": "Pases y circuitos",
+        "verificado": False,
+        "tutorial": ("compras-directas", "armar-expediente-y-pase"),
+    },
+    {
+        "slug": "codigo-jurisdiccion-contratante-aprobar-pliego",
+        "situacion": "Dos procesos de la misma oficina muestran una jurisdicción contratante con nombre distinto — ¿cambió algo?",
+        "descripcion": "Al revisar un proceso vuelve a aparecer el nombre de la oficina de otra forma, aunque el número de oficina es el mismo de siempre.",
+        "causa": 'Tras una actualización de TIMBÓ se necesitó agregar un código adicional en las oficinas que son "jurisdicción contratante", para que el Supervisor pudiera seguir aprobando el pliego. Un proceso iniciado antes de ese cambio puede figurar con el nombre viejo.',
+        "solucion": "No es un error: la oficina es la misma, solo cambió cómo queda identificada después de agregarle ese código. Si un proceso se traba al aprobar todos los formularios del pliego por este motivo, hay que avisar a la Secretaría de Gestión Pública (Unidad de Gestión TIMBÓ).",
+        "categoria_libre": "Pliego y aprobación",
+        "verificado": False,
+        "tutorial": ("gestion-interna", "supervisor-aprobar-y-publicar"),
+    },
+    {
+        "slug": "rol-necesario-alta-articulo",
+        "situacion": "¿Qué rol de Timbó Compras hace falta para pedir el alta de un artículo en el nomenclador?",
+        "descripcion": "No está claro si hace falta ser Gestor, Supervisor o Evaluador para solicitar que se agregue un artículo nuevo.",
+        "solucion": (
+            'Ningún rol de Timbó Compras en particular: el alta se pide con un Documento Oficial ("Timbó Compras: '
+            'Alta de bienes y servicios CAByS"), no por un rol del módulo de compras. Lo que sí hace falta es tener '
+            "usuario y acceso habilitado en TIMBÓ en general, porque gestionar un Documento Oficial es otro módulo de la plataforma."
+        ),
+        "notas_adicionales": 'Coincide con la guía oficial "¿No encontrás un artículo en TIMBÓ? Resolvelo en 4 pasos": el paso 4 indica ingresar a TIMBÓ → Documentos Oficiales → Gestión, sin mencionar ningún rol de compras.',
+        "categoria_libre": "Artículos y disponibilidad",
+        "verificado": True,
+        "tutorial": ("gestion-interna", "pedir-alta-articulo"),
     },
 ]
 
