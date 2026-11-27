@@ -694,6 +694,11 @@ def recursos_explicame():
     )
 
 
+@ui_bp.route("/recursos/licencias-de-personal")
+def recursos_licencias_personal():
+    return render_template("recursos/licencias_personal.html", datos=recursos.licencias_personal(), **_contexto_recursos())
+
+
 @ui_bp.route("/timbo-paso-a-paso")
 def curso_timbo():
     return render_template("curso_timbo.html", curso=recursos.curso_timbo())

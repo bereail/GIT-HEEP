@@ -1,11 +1,60 @@
 {
   "titulo": "Licencias y trámites de personal",
-  "bajada": "Trámites frecuentes de personal para el equipo del hospital, con la normativa oficial de respaldo: Ley 8525 (Estatuto del Personal de la Administración Pública de Santa Fe) y su Decreto reglamentario 1919/1989.",
-  "consultado": "2026-11-26",
+  "bajada": "Trámites frecuentes de personal para el equipo del hospital, con la normativa oficial de respaldo: Ley 8525 (Estatuto del Personal de la Administración Pública de Santa Fe) y su Decreto reglamentario 1919/1989 (Régimen de Licencias, Justificaciones y Franquicias).",
+  "consultado": "2026-11-27",
+  "repositorio": {
+    "titulo": "Repositorio de PDFs de División Personal",
+    "descripcion": "Carpeta oficial con los formularios rellenables de los trámites de personal. Los descargás, los completás y los subís al firmador digital para que se envíen ya firmados a División Personal.",
+    "url": "https://tinyurl.com/3btvpbn9"
+  },
+  "procedimiento_general": {
+    "titulo": "¿Cómo pido una licencia, justificación o franquicia?",
+    "intro": "El Decreto 1919/89 agrupa muchos trámites distintos (médicas, maternidad, licencia anual ordinaria, extraordinarias, justificación de inasistencias y franquicias), y cada uno tiene su propio plazo de aviso. Esto es lo común a la mayoría; buscá tu caso en la tabla de abajo para el detalle puntual.",
+    "pasos": [
+      {
+        "t": "Identificá qué tipo de licencia te corresponde",
+        "items": [
+          "Mirá la tabla de causales más frecuentes, más abajo, para encontrar el artículo, la duración y el plazo de aviso que te aplica.",
+          "Si no aparece ahí, puede estar en otra sección del Decreto (licencias médicas, por accidente de trabajo, gremiales, etc.) — consultá en la Oficina de Personal."
+        ]
+      },
+      {
+        "t": "Pedila con el formulario que corresponda",
+        "items": [
+          "La mayoría se piden con el formulario «Solicitud de Licencias, Justificaciones y Franquicias», indicando el código del Decreto que corresponda (por ejemplo, 63 g para mudanza).",
+          "Se presenta en la Oficina de Personal del hospital. La autoriza primero el Jefe de Personal y después tu jefe directo.",
+          "Las licencias médicas y por maternidad tienen un circuito propio, a través del Servicio de Reconocimientos Médicos (Art. 11° y 35°)."
+        ],
+        "links": [["📄 Buscá el formulario en el Repositorio de PDFs de División Personal", "https://tinyurl.com/3btvpbn9"]]
+      },
+      {
+        "t": "Respetá el plazo de aviso",
+        "items": [
+          "Extraordinarias (matrimonio, cursos, congresos, investigaciones, cargos transitorios, razones particulares): con 15 días de anticipación como mínimo, ante el Jefe inmediato (Art. 62°) — salvo servicio militar, convocatoria a las Fuerzas Armadas y atención paterna, que se piden con menor antelación.",
+          "Licencia Anual Ordinaria: se pide por escrito antes del 15 de noviembre de cada año, para el plan de licencias del año siguiente (Art. 42°).",
+          "Licencias médicas y justificaciones de corta duración (enfermedad, mudanza, nacimiento de hijo, etc.): se avisan el mismo día, dentro de las dos primeras horas de la jornada (Art. 15° y 63°)."
+        ]
+      }
+    ]
+  },
+  "causales": [
+    {"causal": "Licencia Anual Ordinaria (vacaciones)", "duracion": "15 a 30 días hábiles según antigüedad (hasta 5 años: 15; hasta 10: 20; hasta 15: 25; hasta 20: 27; más de 20: 30)", "aviso": "Pedirla por escrito antes del 15 de noviembre", "articulo": "Art. 40° a 47°"},
+    {"causal": "Matrimonio del agente", "duracion": "10 días hábiles con goce de haberes", "aviso": "Puede iniciarse hasta 5 días antes de la fecha", "articulo": "Art. 52°"},
+    {"causal": "Mudanza", "duracion": "2 días corridos por cada mudanza, con acreditación dentro de los 30 días", "aviso": "—", "articulo": "Art. 63° inc. g)"},
+    {"causal": "Nacimiento de hijo (si no goza de licencia por maternidad)", "duracion": "3 días laborables", "aviso": "Comunicarlo el mismo día", "articulo": "Art. 63° inc. a)"},
+    {"causal": "Matrimonio de un hijo", "duracion": "2 días laborables (4 si es a más de 500 km)", "aviso": "—", "articulo": "Art. 63° inc. b)"},
+    {"causal": "Donación de sangre", "duracion": "El día que se realice", "aviso": "—", "articulo": "Art. 63° inc. d)"},
+    {"causal": "Fallecimiento de familiar", "duracion": "5 días (cónyuge, padres, hijos, hermanos) · 3 días (abuelos, sobrinos, nietos) · 2 días (políticos)", "aviso": "Comunicarlo el mismo día", "articulo": "Art. 63° inc. j)"},
+    {"causal": "Atención de familiar enfermo", "duracion": "Hasta 30 días hábiles por año calendario con goce de haberes (ampliable hasta 1 año sin goce)", "aviso": "Mismo procedimiento que licencia por enfermedad", "articulo": "Art. 23°"},
+    {"causal": "Enfermedad de corta duración", "duracion": "Primeros 35 días del año con goce íntegro, otros 35 al 60%, el resto sin remuneración", "aviso": "Comunicarlo dentro de las 2 primeras horas de la jornada", "articulo": "Art. 14° y 15°"},
+    {"causal": "Licencia por maternidad", "duracion": "Pre-parto hasta 45 días antes + hasta que el bebé cumpla 3 meses (6 meses en casos especiales)", "aviso": "Ante el Jefe inmediato, con el formulario oficial", "articulo": "Art. 34° y 35°"},
+    {"causal": "Exámenes secundarios y/o universitarios", "duracion": "Hasta 28 inasistencias por año calendario, en períodos de hasta 7", "aviso": "Acreditar con constancia de la institución educativa", "articulo": "Art. 54°"},
+    {"causal": "Día Preventivo de la Salud", "duracion": "1 día por año calendario, a cargo de IAPOS", "aviso": "—", "articulo": "Art. 63° inc. i)"}
+  ],
   "tramites": [
     {
       "slug": "mudanza",
-      "titulo": "Licencia por mudanza",
+      "titulo": "Licencia por mudanza (ejemplo paso a paso)",
       "codigo": "Código 63 g",
       "resumen": "2 días corridos con goce de sueldo, por cada mudanza.",
       "cita": "«Mudanzas: dos días corridos en cada oportunidad con acreditación fehaciente dentro de los 30 días corridos.»",
@@ -34,6 +83,36 @@
         {"titulo": "Trámite oficial: Licencias, Justificaciones y Franquicias (incluye el formulario de reincorporación)", "url": "https://www.santafe.gob.ar/index.php/tramites/modul1/index?m=descripcion&id=145423"},
         {"titulo": "Ley N° 8525 — Estatuto del Personal de la Administración Pública de Santa Fe", "url": "https://www.santafe.gov.ar/index.php/web/content/download/129853/641720/file/L8525.pdf"}
       ]
+    },
+    {
+      "slug": "cronograma-mensual-licencias",
+      "titulo": "Planilla Cronograma Mensual — Licencias Varias",
+      "codigo": "No es para LAO",
+      "resumen": "Reporte mensual de licencias y francos del área, por mail a heeplicencias@gmail.com.",
+      "pasos": [
+        {
+          "t": "Completá la planilla",
+          "items": [
+            "Formulario oficial «Planilla Cronograma Mensual — Licencias Varias» (Dependencia, N° de Planilla, Mes y Año, y una fila por agente: Servicio, Función, Adicionales, Art.+Inciso, Desde/Hasta).",
+            "La puede completar cualquiera del área.",
+            "La firman el agente y el jefe correspondiente."
+          ],
+          "links": [["📄 Buscala en el Repositorio de PDFs de División Personal", "https://tinyurl.com/3btvpbn9"]]
+        },
+        {
+          "t": "Envíala según el tipo y la fecha",
+          "items": [
+            "Licencias (en general): se presentan del día 01 al 10 de cada mes.",
+            "Francos: hay dos cortes por mes — los de la primera quincena se mandan el día 15, y los de la segunda quincena (16 en adelante) se mandan el día 30. Ejemplo: un franco del 20 se incluye en el envío del día 30.",
+            "Se manda por mail a heeplicencias@gmail.com."
+          ]
+        }
+      ],
+      "aviso": "Sin confirmar con una fuente normativa escrita — este circuito (quién firma, y los cortes de presentación) sale de una consulta interna por chat, no de una circular. El nombre y los campos de la planilla sí están confirmados (es el formulario oficial real, con membrete de la Provincia)."
     }
+  ],
+  "fuentes_generales": [
+    {"titulo": "Decreto N° 1919/1989 — Régimen de Licencias, Justificaciones y Franquicias", "url": "https://www.santafe.gob.ar/index.php/web/content/download/221945/1160980/file/Decreto%20N%C2%B0%201919-89.pdf"},
+    {"titulo": "Ley N° 8525 — Estatuto del Personal de la Administración Pública de Santa Fe", "url": "https://www.santafe.gov.ar/index.php/web/content/download/129853/641720/file/L8525.pdf"}
   ]
 }

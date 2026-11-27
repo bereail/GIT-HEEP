@@ -1118,8 +1118,8 @@ def curso_admin_local_archivo(nombre):
 @admin_bp.route("/capacitacion/licencias-de-personal")
 @requiere_admin
 def licencias_personal():
-    # Oculto por ahora: solo en el panel hasta que se decida publicarlo.
-    return render_template("admin/licencias_personal.html", datos=recursos.licencias_personal())
+    # Vista del panel del mismo recurso público (/recursos/licencias-de-personal).
+    return render_template("recursos/licencias_personal.html", datos=recursos.licencias_personal(), **_contexto_recursos())
 
 
 # ------------------------------------------------- revisión del nomenclador --

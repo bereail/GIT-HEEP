@@ -1,0 +1,75 @@
+{% extends layout %}
+{% block titulo %}Licencias y trámites de personal — Recursos{% endblock %}
+{% block contenido %}
+<div class="hero">
+  <div class="hero__eyebrow">Normativa oficial · Ley 8525 y Decreto 1919/89</div>
+  <h1>🏖️ {{ datos.titulo }}</h1>
+  <p class="hero__desc">{{ datos.bajada }}</p>
+</div>
+
+{% if datos.repositorio %}
+<div class="card prov-bloque">
+  <h2 class="section__title">📂 {{ datos.repositorio.titulo }}</h2>
+  <p>{{ datos.repositorio.descripcion }}</p>
+  <p class="prov-links"><a href="{{ datos.repositorio.url }}" target="_blank" rel="noopener">Abrir el repositorio ↗</a></p>
+</div>
+{% endif %}
+
+{% set pg = datos.procedimiento_general %}
+<section class="rec-bloque">
+  <h2 class="section__title">{{ pg.titulo }}</h2>
+  <p class="text-muted" style="margin-top:0">{{ pg.intro }}</p>
+  <ol class="prov-pasos">
+    {% for s in pg.pasos %}
+    <li class="card prov-paso">
+      <h3><span class="prov-n">{{ loop.index }}</span>{{ s.t }}</h3>
+      <ul>{% for i in s['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+      {% if s.links %}<p class="prov-links">{% for texto, url in s.links %}<a href="{{ url }}" target="_blank" rel="noopener">{{ texto }} ↗</a>{% endfor %}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="rec-bloque">
+  <h2 class="section__title">Causales más frecuentes</h2>
+  <div class="table-wrap">
+    <table class="data-table rec-tabla">
+      <thead><tr><th>Causal</th><th>Duración</th><th>Aviso</th><th>Artículo</th></tr></thead>
+      <tbody>
+        {% for c in datos.causales %}
+        <tr><td><b>{{ c.causal }}</b></td><td>{{ c.duracion }}</td><td>{{ c.aviso }}</td><td class="text-muted">{{ c.articulo }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-muted" style="margin-top:8px">¿Tu caso no está en la lista? El Decreto también regula licencias médicas, por accidente de trabajo, por guarda/tenencia de menores, gremiales y otras — consultá en la Oficina de Personal.</p>
+</section>
+
+{% for t in datos.tramites %}
+<section class="rec-bloque">
+  <h2 class="section__title">{{ t.titulo }} <small class="text-muted">({{ t.codigo }})</small></h2>
+  <div class="card prov-bloque">
+    <p><b>{{ t.resumen }}</b></p>
+    {% if t.cita %}<p class="text-muted" style="font-style:italic">{{ t.cita }}</p>{% endif %}
+    {% if t.norma %}<p class="prov-links"><a href="{{ t.norma_url }}" target="_blank" rel="noopener">📄 {{ t.norma }} ↗</a></p>{% endif %}
+    {% if t.aviso %}<p class="callout callout--warning" style="margin-top:.5rem"><span class="callout__icon">⚠️</span><span>{{ t.aviso }}</span></p>{% endif %}
+  </div>
+  <ol class="prov-pasos">
+    {% for s in t.pasos %}
+    <li class="card prov-paso">
+      <h3><span class="prov-n">{{ loop.index }}</span>{{ s.t }}</h3>
+      <ul>{% for i in s['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+      {% if s.links %}<p class="prov-links">{% for texto, url in s.links %}<a href="{{ url }}" target="_blank" rel="noopener">{{ texto }} ↗</a>{% endfor %}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+  {% if t.fuentes %}
+  <p class="rec-fuentes">Fuentes:{% for f in t.fuentes %} <a href="{{ f.url }}" target="_blank" rel="noopener">{{ f.titulo }}</a>{% if not loop.last %} ·{% endif %}{% endfor %}</p>
+  {% endif %}
+</section>
+{% endfor %}
+
+{% if datos.fuentes_generales %}
+<p class="rec-fuentes">Fuentes generales:{% for f in datos.fuentes_generales %} <a href="{{ f.url }}" target="_blank" rel="noopener">{{ f.titulo }}</a>{% if not loop.last %} ·{% endif %}{% endfor %}</p>
+{% endif %}
+{% endblock %}
