@@ -144,6 +144,18 @@ PREGUNTAS = [
     (EX, "como doy de alta un usuario en timbo", "permisos"),
     (EX, "como suelto un expediente para que lo tome un compañero", "tomar un expediente"),
     (CO, "chau", "CHARLA"),
+    # Agregadas el 28/11/2026: la misma tarea dicha con otras palabras
+    (EX, "¿Cómo hago para adjuntar un archivo?", "subir un archivo"),
+    (EX, "¿Dónde cargo un PDF?", "subir un archivo"),
+    (EX, "¿Cómo agrego documentación?", "subir un archivo"),
+    (EX, "quiero sumar una factura al expediente", "subir un archivo"),
+    (EX, "como le paso el expediente a compras", "pase"),
+    (EX, "no encuentro un expediente", "buscar un expediente"),
+    (EX, "donde veo los expedientes que tengo", "tomar un expediente"),
+    (EX, "necesito que otro firme", "nota o documento oficial"),
+    (CO, "donde subo el pliego", "gestor"),
+    (CO, "como adjunto el informe tecnico", "evaluar las ofertas"),
+    (CO, "necesito comprar algo urgente", "urgencia"),
 ]
 
 

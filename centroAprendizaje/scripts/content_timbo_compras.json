@@ -2241,7 +2241,7 @@
               "type": "step",
               "number": 1,
               "explanation": "Mirá lo que llegó.",
-              "doThis": "Bandeja \"Licitaciones y concursos\": el proceso está en \"Evaluar ofertas\". En \"Acciones\" ves el acta de apertura, todas las ofertas con sus documentos embebidos y el cuadro comparativo (de menor a mayor precio por renglón).",
+              "doThis": "Bandeja \"Licitaciones y concursos\", pestaña \"Asignados\": el proceso está en \"Evaluar ofertas\". En \"Acciones\" ves el acta de apertura, todas las ofertas con sus documentos embebidos y el cuadro comparativo (de menor a mayor precio por renglón).",
               "lookFor": "El cuadro comparativo se puede descargar en Excel."
             },
             {
@@ -2359,7 +2359,7 @@
               "number": 4,
               "explanation": "Los demás evaluadores revisan.",
               "doThis": "Les llega un correo. Lo encuentran en \"Asignados\", abren el informe y lo aprueban o lo rechazan → \"Guardar\" → \"Siguiente evaluador\".",
-              "lookFor": "Si alguien lo rechaza, vuelve al n.º 1."
+              "lookFor": "Quien lo rechaza tiene que escribir una breve descripción del motivo. Vuelve al n.º 1, que es el único que puede modificar el informe."
             },
             {
               "type": "step",
@@ -3525,7 +3525,13 @@
         "gestor",
         "formularios",
         "renglones",
-        "nuevo tramite"
+        "nuevo tramite",
+        "subo el pliego",
+        "subir el pliego",
+        "cargo el pliego",
+        "cargar el pliego",
+        "armar el pliego",
+        "armo el pliego"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "gestor-iniciar-proceso"
@@ -3574,7 +3580,10 @@
         "acta de apertura",
         "tecnica",
         "administrativa",
-        "economica"
+        "economica",
+        "informe tecnico",
+        "area tecnica",
+        "adjunto el informe"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "evaluador-evaluar-ofertas"
@@ -3736,7 +3745,12 @@
         "si fracasa",
         "fracasa un proceso",
         "proceso fracasado",
-        "quedo fracasado"
+        "quedo fracasado",
+        "algo urgente",
+        "comprar urgente",
+        "compra urgente",
+        "de urgencia",
+        "con urgencia"
       ],
       "tutorial_categoria_slug": "gestion-interna",
       "tutorial_slug": "directa-urgencia-o-desierto"

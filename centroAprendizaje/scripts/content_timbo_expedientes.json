@@ -429,11 +429,25 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Solo podés trabajar un expediente si está asignado a vos. Cuando un expediente llega a tu oficina por un pase, aparece con la palabra \"Todos\" en azul en Expedientes → Gestión."
+              "text": "Solo podés trabajar un expediente si está asignado a vos. En corto: Expedientes → Gestión → tocá \"Todos\" (en azul) → \"Asignar a mí mismo\"."
             },
             {
-              "type": "text",
-              "text": "Tocá la palabra \"Todos\" y elegí \"Asignar a mí mismo\". El expediente pasa a tu pestaña \"Asignados\". Si tenés permiso de supervisor, también podés asignarlo a otro compañero buscándolo por nombre."
+              "type": "step",
+              "number": 1,
+              "explanation": "Buscalo en tu oficina.",
+              "doThis": "Andá a Expedientes → Gestión.",
+              "lookFor": "Cuando un expediente llega a tu oficina por un pase, aparece con la palabra \"Todos\" en azul."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Asignátelo.",
+              "doThis": "Tocá la palabra \"Todos\" y elegí \"Asignar a mí mismo\".",
+              "lookFor": "El expediente pasa a tu pestaña \"Asignados\"."
+            },
+            {
+              "type": "tip",
+              "text": "Si tenés permiso de supervisor, también podés asignarlo a otro compañero buscándolo por nombre."
             },
             {
               "type": "tip",
@@ -479,11 +493,26 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Dentro del expediente: Acciones → Subir nuevo archivo → Agregar un archivo (o arrastrarlo) y elegilo desde tu computadora."
+              "text": "En corto: dentro del expediente, Acciones → \"Subir nuevo archivo\" → elegí el archivo → completá Nombre y Referencia → \"Subir\"."
             },
             {
-              "type": "text",
-              "text": "Revisá el campo \"Nombre\" y escribí una \"Referencia\" corta que diga qué es el archivo. Tocá \"Subir\": queda en \"Documentos pendientes\"."
+              "type": "step",
+              "number": 1,
+              "explanation": "Entrá al expediente.",
+              "doThis": "Acciones → \"Subir nuevo archivo\"."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Elegí el archivo.",
+              "doThis": "\"Agregar un archivo\" y elegilo desde tu computadora (o arrastralo)."
+            },
+            {
+              "type": "step",
+              "number": 3,
+              "explanation": "Ponele nombre y referencia.",
+              "doThis": "Revisá el campo \"Nombre\" y escribí una \"Referencia\" corta que diga qué es el archivo. Tocá \"Subir\".",
+              "lookFor": "Queda en \"Documentos pendientes\"."
             },
             {
               "type": "warning",
@@ -614,11 +643,19 @@
           "bloques": [
             {
               "type": "text",
-              "text": "Cuando terminaste tu parte, tocá \"Enviar Expediente\" (al final de la pantalla) y elegí \"Realizar Pase\"."
+              "text": "En corto: \"Enviar Expediente\" → \"Realizar Pase\" → elegí la oficina primaria y la secundaria → Continuar."
             },
             {
-              "type": "text",
-              "text": "Elegí la Oficina primaria (el ministerio u organismo) y la Oficina secundaria (la oficina exacta) — podés escribir el nombre o pegar el código → Continuar."
+              "type": "step",
+              "number": 1,
+              "explanation": "Cuando terminaste tu parte, abrí el pase.",
+              "doThis": "Tocá \"Enviar Expediente\" (al final de la pantalla) y elegí \"Realizar Pase\"."
+            },
+            {
+              "type": "step",
+              "number": 2,
+              "explanation": "Elegí a qué oficina va.",
+              "doThis": "Oficina primaria (el ministerio u organismo) y Oficina secundaria (la oficina exacta): podés escribir el nombre o pegar el código → Continuar."
             },
             {
               "type": "concepts",
@@ -2970,7 +3007,11 @@
         "desasignar",
         "liberar el expediente",
         "que lo tome un compañero",
-        "compañero"
+        "compañero",
+        "expedientes que tengo",
+        "mis expedientes",
+        "donde veo mis expedientes",
+        "asignados"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "tomar-expediente"
@@ -2988,7 +3029,17 @@
         "muy grande",
         "50 mb",
         "tamaño",
-        "adjunto"
+        "adjunto",
+        "agregar un archivo",
+        "agrego un archivo",
+        "agregar documentacion",
+        "agrego documentacion",
+        "cargar un pdf",
+        "cargo un pdf",
+        "factura al expediente",
+        "sumar al expediente",
+        "agregar al expediente",
+        "adjuntar al expediente"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "subir-archivo"
@@ -3029,7 +3080,12 @@
         "redactar",
         "firma conjunta",
         "varios firmantes",
-        "que firmen varios"
+        "que firmen varios",
+        "que otro firme",
+        "otra persona firme",
+        "otro firmante",
+        "firmantes",
+        "enviar a firmar"
       ],
       "tutorial_categoria_slug": "documentos-oficiales",
       "tutorial_slug": "crear-documento-oficial"
@@ -3187,7 +3243,11 @@
         "remitir",
         "que pongo en la providencia",
         "escribir la providencia",
-        "comentario del pase"
+        "comentario del pase",
+        "paso el expediente",
+        "pasar el expediente",
+        "pasarle el expediente",
+        "mandar el expediente"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "enviar-pase"
@@ -3225,7 +3285,11 @@
         "buscar",
         "consultar",
         "expediente",
-        "numero"
+        "numero",
+        "no encuentro un expediente",
+        "no encuentro el expediente",
+        "donde esta el expediente",
+        "donde esta un expediente"
       ],
       "tutorial_categoria_slug": "expedientes",
       "tutorial_slug": "buscar-expediente"

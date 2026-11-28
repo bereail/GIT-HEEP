@@ -186,6 +186,38 @@ Las demás preguntas de `importar_faq_chats.py` marcadas `verificado: True` tamb
 
 🔴 **Bloqueo nuevo (16/11): no se pudieron bajar subtítulos de YouTube en esta sesión.** Se intentó con yt-dlp (instalado en el venv del proyecto) para los videos Paso 01, Clase 02, etc. — cuatro variantes probadas (cliente por defecto, `--js-runtimes node`, cliente `ios`, cliente `web_embedded`) y todas terminan en "Only images are available" al pedir subtítulos. Parece un bloqueo general de YouTube en este momento, no algo de la configuración del cliente. Sin esto, no se puede avanzar con las 6 lecciones que dependen de esos videos. Si se retoma: probar de nuevo más tarde, o que la usuaria baje el audio a mano (como ya hace con whisper.cpp) y lo deje en una carpeta para transcribir.
 
+✅ **Desbloqueado el 28/11/2026.** Los subtítulos ya bajan con el comando de `FAQ_SOPORTE_TIMBO.md` 4.1
+(`player_client=web_embedded`). Se cotejaron las 7 lecciones que faltaban contra Paso 01 (Tt2_Z8fOAt8), Paso 03
+(7najG5QuTHY), Paso 04 (yUbSYwLQ0aU), el video del comunicable externo (6BtJX1bhwbg) y las Clases 02 (Kkt7GxVnIHA)
+y 03 (Lnd2-_XiOXI):
+
+| Lección | Resultado | Dónde se ve en el video |
+|---|---|---|
+| gestor-iniciar-proceso | Coincide. «Asignados» en estado «Gestionar contratación» y los 8 formularios | Paso 01 completo; Clase 02, min. 6:30–7:00 y 37:00 (pasa a «Pendientes», «Evaluar contratación supervisor») |
+| evaluador-evaluar-ofertas | Coincide. Se precisó la pestaña «Asignados» del paso 1 | Paso 03, 0:00; Clase 03, min. 7:30 (cuadro de menor a mayor), 16:00 (Pendientes y no Finalizada) y 54:00 (área técnica por expediente o correo) |
+| evaluador-preadjudicar | Coincide. Se agregó que quien rechaza el informe escribe el motivo y que solo el n.º 1 lo modifica | Paso 04, 2:00–2:30; Clase 03, min. 22:30 (lo gris ya quedó afuera), 36:30 (correo al siguiente evaluador), 42:00 («Confirmar» → «Espera incorporaciones») |
+| notificar-proveedor | Coincide paso por paso | 6BtJX1bhwbg completo |
+| supervisor-aprobar-y-publicar | Ya reescrita el 27/11 contra el Paso 02 (Yq1RArIxk2I) | — |
+| gestor-adjudicar | Los pasos coinciden (Clase 03, min. 49:00–49:30: «Adjudicar», cargar el acto, verificar que sea el final, «Guardar», pestaña «Finalizado»). 🔴 **Contradicción de roles, sin resolver** (ver abajo) | Clase 03, min. 48:00 |
+| gestor-mientras-esta-publicado | No se cotejó en esta pasada | — |
+
+🔴 **Contradicción entre fuentes oficiales (28/11, para decidir con la usuaria):** en la Clase 03 (min. 48:00) el
+capacitador dice que, en estado «Preadjudicado», **«el gestor va a tener la opción de pasar a adjudicar o de volver
+para atrás, organizar evaluadores»**, y lo hace con el usuario Gestor. La Circular UG TIMBÓ 7/2026, art. 10, dice que
+el **Supervisor** carga el acto de adjudicación y que organizar evaluadores es del **Evaluador**; por eso el 16/11 se
+corrigieron `gestor-adjudicar`, `gestor-mientras-esta-publicado` y `hacer-una-compra`. Puede ser que la clase sea
+anterior a la circular, o que el sistema muestre la opción al Gestor aunque la norma se la asigne al Supervisor. No se
+cambió nada. Fechas: la Clase 03 se subió el 27/03/2026; la circular está en la carpeta `2026/05` del sitio de TIMBÓ
+(mayo de 2026), o sea que la norma es posterior y la lección sigue a la norma. Si el sistema le muestra «Adjudicar»
+al Gestor, eso solo se confirma mirándolo en TIMBÓ con un proceso preadjudicado.
+
+Diferencia entre fuentes oficiales, sin corregir: para cerrar el cronograma de impugnaciones, el Paso 04 (3:00) dice
+«presionamos enviar» y la Clase 03 (42:00), con la pantalla en vivo, «vamos a confirmar». La lección dice
+«Confirmar» (la clase muestra el botón); si alguien ve otra cosa en TIMBÓ, corregir.
+
+Los videos en sí no se pudieron bajar para sacar capturas (YouTube pide un componente extra de yt-dlp que el control
+de permisos de Claude no deja bajar solo): queda para decidir con la usuaria.
+
 ## Normativa leída el 16/11/2026 (documentos que nunca se habían leído completos)
 
 Fuente: las páginas oficiales de normativa de TIMBÓ y de Compras, comparadas
